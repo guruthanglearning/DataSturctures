@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAMWorkbenchDB_DEVModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Engagement">
+          <Key>
+            <PropertyRef Name="EngagementId" />
+          </Key>
+          <Property Name="EngagementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EngagementName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngagementDescription" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CRMOpportunityID" Type="nvarchar" MaxLength="15" />
+          <Property Name="CRMOpportunityName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PartnerOrganizationID" Type="int" />
+          <Property Name="ProjectDivision" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="2" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime2" Precision="2" />
+          <Property Name="isDeleted" Type="bit" />
+          <Property Name="EngagementTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="Skey" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="isSelfServe" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SAMWorkbenchDB_DEVModel1StoreContainer">
+          <EntitySet Name="Engagement" EntityType="Self.Engagement" Schema="engagement" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAMWorkbenchDB_DEVModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SAMWorkbenchDB_DEVEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Engagements" EntityType="SAMWorkbenchDB_DEVModel1.Engagement" />
+        </EntityContainer>
+        <EntityType Name="Engagement">
+          <Key>
+            <PropertyRef Name="EngagementId" />
+          </Key>
+          <Property Name="EngagementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EngagementName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EngagementDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CRMOpportunityID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CRMOpportunityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PartnerOrganizationID" Type="Int32" />
+          <Property Name="ProjectDivision" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="2" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="2" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <Property Name="EngagementTypeID" Type="Byte" Nullable="false" />
+          <Property Name="Skey" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="isSelfServe" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAMWorkbenchDB_DEVModel1StoreContainer" CdmEntityContainer="SAMWorkbenchDB_DEVEntities1">
+          <EntitySetMapping Name="Engagements">
+            <EntityTypeMapping TypeName="SAMWorkbenchDB_DEVModel1.Engagement">
+              <MappingFragment StoreEntitySet="Engagement">
+                <ScalarProperty Name="isSelfServe" ColumnName="isSelfServe" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="Skey" ColumnName="Skey" />
+                <ScalarProperty Name="EngagementTypeID" ColumnName="EngagementTypeID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProjectDivision" ColumnName="ProjectDivision" />
+                <ScalarProperty Name="PartnerOrganizationID" ColumnName="PartnerOrganizationID" />
+                <ScalarProperty Name="CRMOpportunityName" ColumnName="CRMOpportunityName" />
+                <ScalarProperty Name="CRMOpportunityID" ColumnName="CRMOpportunityID" />
+                <ScalarProperty Name="EngagementDescription" ColumnName="EngagementDescription" />
+                <ScalarProperty Name="EngagementName" ColumnName="EngagementName" />
+                <ScalarProperty Name="EngagementId" ColumnName="EngagementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
