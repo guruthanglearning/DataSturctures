@@ -33,9 +33,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(15, 34);
+            this.button1.Location = new System.Drawing.Point(8, 18);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(440, 58);
+            this.button1.Size = new System.Drawing.Size(228, 48);
             this.button1.TabIndex = 0;
             this.button1.Text = "Kth smallest element in a row-wise and column-wise sorted 2D array | Set 1";
             this.button1.UseVisualStyleBackColor = true;
@@ -43,10 +44,11 @@
             // 
             // Matrix
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 531);
+            this.ClientSize = new System.Drawing.Size(574, 276);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Matrix";
             this.Text = "Matrix";
             this.ResumeLayout(false);

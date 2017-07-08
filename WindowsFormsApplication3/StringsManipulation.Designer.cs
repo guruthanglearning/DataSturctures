@@ -51,6 +51,9 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
+            this.Query_nth_most_frequent_word = new System.Windows.Forms.Button();
+            this.StringToInt = new System.Windows.Forms.Button();
+            this.FibonociSeries = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -240,8 +243,8 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(321, 425);
-            this.button18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button18.Location = new System.Drawing.Point(321, 419);
+            this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(280, 23);
             this.button18.TabIndex = 19;
@@ -252,7 +255,7 @@
             // button19
             // 
             this.button19.Location = new System.Drawing.Point(321, 320);
-            this.button19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button19.Margin = new System.Windows.Forms.Padding(2);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(280, 32);
             this.button19.TabIndex = 20;
@@ -263,7 +266,7 @@
             // button20
             // 
             this.button20.Location = new System.Drawing.Point(12, 365);
-            this.button20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button20.Margin = new System.Windows.Forms.Padding(2);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(280, 23);
             this.button20.TabIndex = 21;
@@ -282,11 +285,47 @@
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
+            // Query_nth_most_frequent_word
+            // 
+            this.Query_nth_most_frequent_word.Location = new System.Drawing.Point(321, 392);
+            this.Query_nth_most_frequent_word.Margin = new System.Windows.Forms.Padding(2);
+            this.Query_nth_most_frequent_word.Name = "Query_nth_most_frequent_word";
+            this.Query_nth_most_frequent_word.Size = new System.Drawing.Size(280, 23);
+            this.Query_nth_most_frequent_word.TabIndex = 23;
+            this.Query_nth_most_frequent_word.Text = "Query for the nth most frequent word(s)";
+            this.Query_nth_most_frequent_word.UseVisualStyleBackColor = true;
+            this.Query_nth_most_frequent_word.Click += new System.EventHandler(this.Query_nth_most_frequent_word_Click);
+            // 
+            // StringToInt
+            // 
+            this.StringToInt.Location = new System.Drawing.Point(12, 392);
+            this.StringToInt.Margin = new System.Windows.Forms.Padding(2);
+            this.StringToInt.Name = "StringToInt";
+            this.StringToInt.Size = new System.Drawing.Size(280, 23);
+            this.StringToInt.TabIndex = 24;
+            this.StringToInt.Text = "String To Int";
+            this.StringToInt.UseVisualStyleBackColor = true;
+            this.StringToInt.Click += new System.EventHandler(this.StringToInt_Click);
+            // 
+            // FibonociSeries
+            // 
+            this.FibonociSeries.Location = new System.Drawing.Point(12, 419);
+            this.FibonociSeries.Margin = new System.Windows.Forms.Padding(2);
+            this.FibonociSeries.Name = "FibonociSeries";
+            this.FibonociSeries.Size = new System.Drawing.Size(280, 23);
+            this.FibonociSeries.TabIndex = 25;
+            this.FibonociSeries.Text = "Fibonoci Series";
+            this.FibonociSeries.UseVisualStyleBackColor = true;
+            this.FibonociSeries.Click += new System.EventHandler(this.FibonociSeries_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 506);
+            this.Controls.Add(this.FibonociSeries);
+            this.Controls.Add(this.StringToInt);
+            this.Controls.Add(this.Query_nth_most_frequent_word);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.button19);
@@ -343,5 +382,8 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button Query_nth_most_frequent_word;
+        private System.Windows.Forms.Button StringToInt;
+        private System.Windows.Forms.Button FibonociSeries;
     }
 }

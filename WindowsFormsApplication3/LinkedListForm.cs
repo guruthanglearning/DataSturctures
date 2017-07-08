@@ -87,6 +87,27 @@ namespace WindowsFormsApplication3
         }
 
 
+        private NodeWithNext InsertNodeWithNext(int data, ref NodeWithNext tree)
+        {
+            if (tree == null)
+            {
+                tree = new NodeWithNext();
+                tree.data = data;
+            }
+            else
+            {
+                if (data > tree.data)
+                {
+                    InsertNodeWithNext(data, ref tree.right);
+                }
+                else if (data < tree.data)
+                {
+                    InsertNodeWithNext(data, ref tree.left);
+                }
+            }
+
+            return tree;
+        }
 
         private void InsertBFSNode(int data, ref BFSNode tree, BFSNode parent)
         {
@@ -492,7 +513,27 @@ namespace WindowsFormsApplication3
             DisplayLinkList(LLNodeFirst);            
             MessageBox.Show(datas.ToString());
 
-            LinkList current, previous;
+            LinkList current, previous, next_next;
+            current = LLNodeFirst;
+            /* Traverse list till the last node */
+            while (current.next != null)
+            {
+                /*Compare current node with the next node */
+                if (current.data == current.next.data)
+                {
+                    next_next = current.next.next;
+                    current.next = null;
+                    current.next = next_next;
+                }
+                else
+                    // advance if no deletion               
+                    current = current.next;
+            }
+
+            datas.Append("\n\n Time Complexity: O(n)");
+            DisplayLinkList(LLNodeFirst);
+            MessageBox.Show(datas.ToString());
+
             previous = LLNodeFirst;
             current = previous.next;
             while (current != null)
@@ -645,6 +686,7 @@ namespace WindowsFormsApplication3
         private void button10_Click(object sender, EventArgs e)
         {
             //http://www.geeksforgeeks.org/inorder-successor-in-binary-search-tree/
+            // Time Complexity: O(h) where h is height of tree.
             BFSNode tree = null;
             InsertBFSNode(10, ref tree,tree);
             InsertBFSNode(5, ref tree, tree);
@@ -1024,10 +1066,12 @@ namespace WindowsFormsApplication3
         private void button17_Click(object sender, EventArgs e)
         {
 
+            //Time complexity is O(n^2) since finding min from Linklist has to be travesal once and removing is another traversal
+
             LinkList linkList = null;
             
-            linkList = InsertLinkList(linkList, 4);
             linkList = InsertLinkList(linkList, 5);
+            linkList = InsertLinkList(linkList, 4);
             linkList = InsertLinkList(linkList, 10);
             linkList = InsertLinkList(linkList, 110);            
             linkList = InsertLinkList(linkList, 112);
@@ -1043,10 +1087,10 @@ namespace WindowsFormsApplication3
 
             if (linkList == null)
                 return;
-            
-            LinkList smallest = linkList;
+
+            LinkList smallest = linkList;            
             LinkList runner = linkList;
-            LinkList prev = null;
+            LinkList prev = linkList;
 
             while (runner != null)
             {
@@ -1056,29 +1100,29 @@ namespace WindowsFormsApplication3
                     prev = runner;
                 }
                 runner = runner.next;                             
-            }
+           }           
 
-            if (smallest != linkList)
-            { 
-                //First element is not min
-                prev.next = smallest.next;
-                LinkList current = prev.next;
-                while (current != null)
-                {
-                    if (current.data ==smallest.data)
-                    {
-                        LinkList temp = current.next;
-                        prev.next = temp;                        
-                    }
-                    prev = prev.next;
-                    current = current.next;
+           while (prev == smallest || linkList.data == smallest.data)
+           {
+                linkList = linkList.next;
+                prev = linkList;
+           }
 
-                }
-
-            }
-            else
+            LinkList current = prev.next;
+            
+            while (current != null)
             {
-                linkList = linkList.next; //If first element is smallest, update the head
+                if (current.data == smallest.data)
+                {
+                    LinkList temp = current.next;
+                    prev.next = temp;
+                    current = current.next;
+                }
+                else
+                {
+                    prev = current;
+                    current = current.next;
+                }
             }
 
             datas.Append("\n\n");
@@ -1241,7 +1285,8 @@ namespace WindowsFormsApplication3
         private void button18_Click(object sender, EventArgs e)
         {
             int a, b, x, y;
-            a = 1; b = 2; x = 3; y = 4;
+
+            a = 1; b = 2; x = 3; y = 4;            
             while(a!=x && b!=y)
             {
                 if (a > x)
@@ -1265,6 +1310,7 @@ namespace WindowsFormsApplication3
 
         private void button21_Click(object sender, EventArgs e)
         {
+            //Time Complexity is O(n) where n is the number nodes
             LinkListCharacter string1 = null;
             string1 = InsertLinkListForCharacter(string1, 'g');
             string1 = InsertLinkListForCharacter(string1, 'e');
@@ -1328,6 +1374,7 @@ namespace WindowsFormsApplication3
         private void button22_Click(object sender, EventArgs e)
         {
             //Refer : http://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/
+            //Time complexity : O(n^2)
             LinkList linkList = null;            
             linkList = InsertLinkList(linkList, 1);
             linkList = InsertLinkList(linkList, 2);
@@ -1515,7 +1562,7 @@ namespace WindowsFormsApplication3
 
         private void button25_Click(object sender, EventArgs e)
         {
-
+            //Time Complexity is O(n)
             LinkList list = null;
             list = InsertLinkList(list, 5);
             list = InsertLinkList(list, 1);
@@ -1562,6 +1609,9 @@ namespace WindowsFormsApplication3
 
         private void button26_Click(object sender, EventArgs e)
         {
+            //http://www.geeksforgeeks.org/merge-two-sorted-linked-lists-such-that-merged-list-is-in-reverse-order/
+            //Time Complexity =  O(n+m) where n and m are the nodes in LinkList1 and LinkList2
+            //Space Complexity = O(1) since traversing element has to stored one at a time 
             LinkList LLNodeFirst = null;
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
@@ -1596,12 +1646,12 @@ namespace WindowsFormsApplication3
             LinkList list2 = second;
 
             LinkList result = null;
-
+            LinkList temp = null;
             while (list1 != null && list2 != null)
             {
                 if (list1.data == list2.data)
                 {
-                    LinkList temp = list1.next;
+                    temp = list1.next;
                     list1.next = result;
                     result = list1;
                     list1 = temp;
@@ -1609,30 +1659,32 @@ namespace WindowsFormsApplication3
                 }
                 else if (list1.data < list2.data)
                 {
-                    LinkList temp = list1.next;
+                    temp = list1.next;
                     list1.next = result;
                     result = list1;
                     list1 = temp;
                 }
                 else if (list1.data > list2.data)
                 {
-                    LinkList temp = list2.next;
+                    temp = list2.next;
                     list2.next = result;
                     result = list2;
                     list2 = temp;
                 }
+                temp = null;
             }
-
-            while(list1!=null)
+            temp = null;
+            while (list1!=null)
             {
-                LinkList temp = list1.next;
+                temp = list1.next;
                 list1.next = result;
                 result = list1;
                 list1 = temp;
             }
-            while(list2!=null)
+            temp = null;
+            while (list2!=null)
             {
-                LinkList temp = list2.next;
+                temp = list2.next;
                 list2.next = result;
                 result = list2;
                 list2 = temp;
@@ -1643,6 +1695,9 @@ namespace WindowsFormsApplication3
 
         private void button27_Click(object sender, EventArgs e)
         {
+            //http://www.geeksforgeeks.org/select-a-random-node-from-a-singly-linked-list/
+            //Time Complexity : O(n) where n is the number of nodes in the linked list
+
             datas.Clear();
             LinkList LLNodeFirst = null;
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
@@ -1665,6 +1720,7 @@ namespace WindowsFormsApplication3
             LinkList result = linkList;
             
             Random r = new Random();
+            int i = 0;
             for (int n=2; list!= null; n++)
             {
                 if (r.Next() % n == 0)
@@ -1673,6 +1729,7 @@ namespace WindowsFormsApplication3
                     list.next = dummy;
                     result = list;
                     list = temp;
+                    i++;
                 }
                 else
                 {
@@ -1770,20 +1827,12 @@ namespace WindowsFormsApplication3
             //string[] input = {"5", "-2","4", "Z","X", "9", "+", "+" };
             //int sum = totalScore(input, 8);
             //MessageBox.Show(sum.ToString());
-            int red = 255;
+            //int red = 255;
             //int blue = 23;
             //int green = 0;
             //MessageBox.Show(string.Format("Cloning color RGB: {0,3},{1,3},{2,3}", red, blue, green));
 
-            Test tc = new Test();
-            tc.i = 1000;
-            TestClass(tc);
-            MessageBox.Show(tc.i.ToString());
-
-            StructTest t = new StructTest();
-            t.i = 1000;
-            TestStruct( t);
-            MessageBox.Show(t.i.ToString());
+          
 
 
 
@@ -1791,25 +1840,6 @@ namespace WindowsFormsApplication3
 
         }
 
-        private void TestClass(Test t)
-        {
-            t.i = 100;
-        }
-
-        private void TestStruct( StructTest t)
-        {
-            t.i = 100;
-        }
-
-        class Test
-        {
-            public int i;
-        }
-
-        struct StructTest
-        {
-            public int i;
-        }
 
         public static int totalScore(string[] blocks, int n)
         {
@@ -1991,6 +2021,7 @@ namespace WindowsFormsApplication3
         private void Check_whether_BST_contains_Dead_End_or_not_Click(object sender, EventArgs e)
         {
             // http://www.geeksforgeeks.org/check-whether-bst-contains-dead-end-not/
+            //Time Complexity is O(n)
             Node tree = null;
             //Insert(10, ref tree);
             //Insert(5, ref tree);
@@ -2063,6 +2094,98 @@ namespace WindowsFormsApplication3
             TraverseAndInsertIntoHashSet(root.left, treeNodes, leafNodes);
             TraverseAndInsertIntoHashSet(root.right, treeNodes, leafNodes);
         }
+
+        private void ConnectNodes_Click(object sender, EventArgs e)
+        {
+            NodeWithNext tree = null;
+            InsertNodeWithNext(10, ref tree);
+            InsertNodeWithNext(5, ref tree);
+            InsertNodeWithNext(20, ref tree);
+            InsertNodeWithNext(3, ref tree);
+            InsertNodeWithNext(8, ref tree);
+            InsertNodeWithNext(6, ref tree);
+            InsertNodeWithNext(15, ref tree);
+            InsertNodeWithNext(22, ref tree);
+            InsertNodeWithNext(1, ref tree);
+            InsertNodeWithNext(2, ref tree);
+            InsertNodeWithNext(4, ref tree);
+            InsertNodeWithNext(9, ref tree);
+            datas.Clear();
+            InOrderWithNext(tree);            
+            MessageBox.Show(datas.ToString());
+
+            Queue<NodeWithNext> q = new Queue<NodeWithNext>();
+            if (tree.left != null)
+            {
+                q.Enqueue(tree.left);
+            }
+
+            if (tree.right != null)
+            {
+                q.Enqueue(tree.right);
+            }
+
+            while (true)
+            {
+                List<NodeWithNext> nextNodes = new List<NodeWithNext>();
+                while (q.Count > 0)
+                {
+                    nextNodes.Add(q.Dequeue());                    
+                }
+
+                NodeWithNext previous = null;
+                NodeWithNext current = null;
+                foreach(var n in nextNodes )
+                {
+                    if (current == null)
+                    {
+                        current = n;
+                    }
+                    else
+                    {
+                        previous = current;
+                        current = n;
+                        previous.next = current;                        
+                        if (previous.left != null)
+                        {
+                            q.Enqueue(previous.left);
+                        }
+
+                        if (previous.right != null)
+                        {
+                            q.Enqueue(previous.right);
+                        }
+                    }
+                }
+                if (current.left != null)
+                {
+                    q.Enqueue(current.left);
+                }
+
+                if (current.right != null)
+                {
+                    q.Enqueue(current.right);
+                }
+
+                if (q.Count == 0)
+                {
+                    break;
+                }
+            }
+
+
+        }
+
+        private void InOrderWithNext(NodeWithNext node)
+        {
+            if (node==null)
+            {
+                return;
+            }
+            InOrderWithNext(node.left);
+            datas.Append(node.data.ToString() + ",");
+            InOrderWithNext(node.right);
+        }
     }
 
     class Graph
@@ -2076,6 +2199,14 @@ namespace WindowsFormsApplication3
         public int data;
         public Node right;
         public Node left;       
+    }
+
+    class NodeWithNext
+    {
+        public int data;
+        public NodeWithNext right;
+        public NodeWithNext left;
+        public NodeWithNext next;
     }
 
     public class BFSNode

@@ -11,7 +11,7 @@ namespace WebAPI.Controllers
 {      
     public partial class EngagementsController : ApiController
     {
-        public async Task<IEnumerable<Engagement>> GetAllEngagements()
+        private async Task<IEnumerable<Engagement>> GetAllEngagements()
         {
             SAMWorkbenchDB_DEVEntities1 context = new SAMWorkbenchDB_DEVEntities1();
             return await context.Engagements.ToListAsync();

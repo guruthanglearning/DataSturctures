@@ -29,96 +29,6 @@ namespace WindowsFormsApplication3
         }
 
 
-        private void quickSort_Lomuto_partition_scheme(int[] input, int lower, int upper)
-        {
-            if (input != null && input.Length> 0 && lower < upper)
-            {
-                int i = this.Lomuto_partition_scheme(input, lower, upper);
-                quickSort_Lomuto_partition_scheme(input, lower, i - 1);
-                quickSort_Lomuto_partition_scheme(input, i+1, upper);
-            }
-        }
-
-
-        private void quickSort_Hoares_partition_scheme(int[] input, int lower, int upper)
-        {
-            if (input != null && input.Length > 0 && lower < upper)
-            {
-                int i = this.Hoare_Partition_Scheme(input, lower, upper);
-                quickSort_Hoares_partition_scheme(input, lower, i);
-                quickSort_Hoares_partition_scheme(input, i + 1, upper);
-            }
-        }
-
-        /// <summary>
-        /// Complexity : Worst case is O(n^2) if the array is already ascending ordered
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="lower"></param>
-        /// <param name="upper"></param>
-        /// <returns></returns>
-        private int Lomuto_partition_scheme(int[] input , int lower, int upper)
-        {
-            int returnValue = -1;
-            if (input!=null && input.Length > 0)
-            {
-                int pivot = input[upper];    // pivot
-                int i = (lower - 1);  // Index of smaller element
-
-                for (int j = lower; j <= upper - 1; j++)
-                {
-                    // If current element is smaller than or
-                    // equal to pivot
-                    if (input[j] <= pivot)
-                    {
-                        i++;    // increment index of smaller element
-                        
-                        this.Swap(input, i, j);
-                    }
-                }
-                this.Swap(input, i+1, upper);                
-                return (i + 1);
-
-            }
-            return returnValue;
-        }
-
-
-        private int Hoare_Partition_Scheme(int[] arr, int low, int high)
-        {
-                int pivot = arr[low];
-                int i = low - 1, j = high + 1;
-
-                while (true)
-                {
-                    // Find leftmost element greater than
-                    // or equal to pivot
-                    do
-                    {
-                        i++;
-                    } while (arr[i] < pivot);
-
-                    // Find rightmost element smaller than
-                    // or equal to pivot
-                    do
-                    {
-                        j--;
-                    } while (arr[j] > pivot);
-
-                    // If two pointers met.
-                    if (i >= j)
-                        return j;
-
-                    Swap(arr, i, j);
-                }            
-        }
-
-        private void Swap(int[] input , int from, int to)
-        {
-            int t = input[from];
-            input[from] = input[to];
-            input[to] = t;
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -181,28 +91,62 @@ namespace WindowsFormsApplication3
             MessageBox.Show(this.Display(arr));
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {            
-            int[] a = new int[] {37, 23, 0, 17, 12, 72, 31,46, 100, 88, 54};
-            int searchResult = binarySearch(a, 12, 0, a.Length - 1);
-            MessageBox.Show(searchResult.ToString());
-        }
+      
 
-        int binarySearch(int[] a, int item, int low, int high)
+
+
+        private void quickSort_Lomuto_partition_scheme(int[] input, int lower, int upper)
         {
-            if (high <= low)
-                return (item > a[low]) ? (low + 1) : low;
-
-            int mid = (low + high) / 2;
-
-            if (item == a[mid])
-                return mid + 1;
-
-            if (item > a[mid])
-                return binarySearch(a, item, mid + 1, high);
-            return binarySearch(a, item, low, mid - 1);
+            if (input != null && input.Length > 0 && lower < upper)
+            {
+                int i = this.Lomuto_partition_scheme(input, lower, upper);
+                quickSort_Lomuto_partition_scheme(input, lower, i - 1);
+                quickSort_Lomuto_partition_scheme(input, i + 1, upper);
+            }
         }
 
+
+        /// <summary>
+        /// Complexity : Worst case is O(n^2) if the array is already ascending ordered
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="lower"></param>
+        /// <param name="upper"></param>
+        /// <returns></returns>
+        private int Lomuto_partition_scheme(int[] input, int lower, int upper)
+        {
+            int returnValue = -1;
+            if (input != null && input.Length > 0)
+            {
+                int pivot = input[upper];    // pivot
+                int i = (lower - 1);  // Index of smaller element
+
+                for (int j = lower; j <= upper - 1; j++)
+                {
+                    // If current element is smaller than or
+                    // equal to pivot
+                    if (input[j] <= pivot)
+                    {
+                        i++;    // increment index of smaller element
+
+                        this.Swap(input, i, j);
+                    }
+                }
+                this.Swap(input, i + 1, upper);
+                return (i + 1);
+
+            }
+            return returnValue;
+        }
+
+
+
+        private void Swap(int[] input, int from, int to)
+        {
+            int t = input[from];
+            input[from] = input[to];
+            input[to] = t;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -218,6 +162,49 @@ namespace WindowsFormsApplication3
             quickSort_Lomuto_partition_scheme(input, 0, input.Length - 1);
             result.AppendLine($"After Sorting {DisplayResult(input)}");
             MessageBox.Show(result.ToString());
+        }
+
+
+
+        private void quickSort_Hoares_partition_scheme(int[] input, int lower, int upper)
+        {
+            if (input != null && input.Length > 0 && lower < upper)
+            {
+                int i = this.Hoare_Partition_Scheme(input, lower, upper);
+                quickSort_Hoares_partition_scheme(input, lower, i);
+                quickSort_Hoares_partition_scheme(input, i + 1, upper);
+            }
+        }
+
+
+
+        private int Hoare_Partition_Scheme(int[] arr, int low, int high)
+        {
+            int pivot = arr[low];
+            int i = low - 1, j = high + 1;
+
+            while (true)
+            {
+                // Find leftmost element greater than
+                // or equal to pivot
+                do
+                {
+                    i++;
+                } while (arr[i] < pivot);
+
+                // Find rightmost element smaller than
+                // or equal to pivot
+                do
+                {
+                    j--;
+                } while (arr[j] > pivot);
+
+                // If two pointers met.
+                if (i >= j)
+                    return j;
+
+                Swap(arr, i, j);
+            }       
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -287,12 +274,12 @@ namespace WindowsFormsApplication3
                 if (i < iMiddle && (j >= iEnd || A[i] <= A[j]))
                 {
                     B[k] = A[i];
-                    i = i + 1;
+                    i++;
                 }
                 else
                 {
                     B[k] = A[j];
-                    j = j + 1;
+                    j++;
                 }
             }
         }
@@ -301,6 +288,46 @@ namespace WindowsFormsApplication3
         private void button6_Click(object sender, EventArgs e)
         {
             Merge_Sort_Top_down_implementation();
+        }
+
+
+        
+        public void HeapSortAlgorithm(int[] input, int lower, int upper)
+        {
+            if (input != null && input.Length > 0 && lower < upper)
+            {
+                int i = this.HeapSortPartition(input, lower, upper);
+                HeapSortAlgorithm(input, lower, i-1);
+                HeapSortAlgorithm(input, i, upper);
+            }
+        }
+        
+        public int HeapSortPartition(int[] input, int lower, int upper)
+        {
+            var i = lower;
+            for (var s = lower; s < upper; s++)
+            {
+                if (input[s] <= input[upper])
+                {
+                    this.Swap(input, s, i);
+                    i++;
+                }
+            }
+            this.Swap(input, upper, i);            
+            return i;
+        }
+
+
+        private void HeapSort_Click(object sender, EventArgs e)
+        {
+
+            int[] input = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            StringBuilder result = new StringBuilder();
+            result.AppendLine($"Before Sorting {DisplayResult(input)}");
+
+            HeapSortAlgorithm(input, 0, input.Length - 1);
+            result.AppendLine($"After Sorting {DisplayResult(input)}");
+            MessageBox.Show(result.ToString());
         }
     }
 }

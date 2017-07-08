@@ -247,13 +247,51 @@ namespace WindowsFormsApplication3
 
         private void button13_Click(object sender, EventArgs e)
         {
-            //string data = "09bslRH81c6N6ql//koZtCGyI6K9ri9fSsSRteOw8Ng=";
-            //data = data.Substring(1, data.IndexOf(" "));
-            //MessageBox.Show(data);
-            int i = 1234;
-            MessageBox.Show($"{i:#,##0}");
+
+
+            Test tc = new Test();
+            tc.i = 1000;
+            TestClass(tc);
+            MessageBox.Show(tc.i.ToString());
+
+            StructTest t = new StructTest();
+            t.i = 1000;
+            TestStruct(t);
+            MessageBox.Show(t.i.ToString());
         }
 
+
+
+        private void TestClass(Test t)
+        {
+            t.i = 100;
+        }
+
+        private void TestStruct(StructTest t)
+        {
+            t.i = 100;
+        }
+
+        class Test
+        {
+            public int i;
+        }
+
+        struct StructTest
+        {
+            public int i;
+        }
+
+        public class A
+        {
+            public int A1;
+        }
+        
+
+        public class B : A
+        {
+            public int B1;
+        }
 
         public string ValidateChain(string input)
         {
@@ -315,8 +353,89 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            StructTestInterface t = new StructTestInterface();
+            t.i = 100;
+            t.j = -100;
+            t.Test();
+
+            MessageBox.Show($"I={t.i.ToString()}, J={t.j.ToString()}");
+
+            Base b = new Derived();
+            Derived d = new Derived();
+            b.Test();
+
+            
+            
+        }
+
+
+        abstract class AbstractClass
+        {
+            public abstract void AbstractClassMethod1();
+            public virtual void AbstractClassMethod2()
+            {
+                MessageBox.Show("Testing Abstract class method");
+            }
+        }
+
+
+        class AbstractClassDervied : AbstractClass
+        {
+            public override void AbstractClassMethod1()
+            {
+                MessageBox.Show("Testing Abstract class method implementation in dervied class");
+            }
+            public override void AbstractClassMethod2()
+            {
+                MessageBox.Show("Testing Abstract class method");
+            }
+        }
+
+
+        class Base
+        {
+            public int i;
+
+            public virtual void Test()
+            {
+                MessageBox.Show("Base");
+            }
+        }
+
+        class Derived : Base
+        {
+            public override void Test()
+            {
+                MessageBox.Show("Derived");
+            }
+        }
+        
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+
+            
+
+
+        }
     }
 
+
+    public struct StructTestInterface : IGeneralInterfaceTest
+    {
+        public int i;
+        public int j;
+        
+
+        public void Test()
+        {
+            this.i = 1000;
+            this.j = i;            
+        }   
+    }
 
     interface IGeneralInterfaceTest
     {

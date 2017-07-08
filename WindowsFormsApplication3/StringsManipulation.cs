@@ -446,8 +446,7 @@ namespace WindowsFormsApplication3
 
             builder.Append("\n \n");
 
-            int left = 0, right = columnSize, top = 0, down = rowSize, i, j;
-            int[,] spirialmatrix = new int[rowSize, columnSize];
+            int left = 0, right = columnSize, top = 0, down = rowSize, i, j;            
             while (true)
             {
 
@@ -796,6 +795,10 @@ namespace WindowsFormsApplication3
 
         }
 
+
+        // Given a list of m words, I’d like to query for the nth most frequent word(s). (e.g. Given 1000 words, tell me 
+       
+
         private void button18_Click(object sender, EventArgs e)
         {
             string inputJavaScript = @"// This function says 'hello' to the user
@@ -960,6 +963,117 @@ function sayHello() {
             }
             MessageBox.Show(totalValue.ToString());
 
+        }
+
+        private void Query_nth_most_frequent_word_Click(object sender, EventArgs e)
+        {
+            string word = this.GetNthMostFrequentWord(new string[] { "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C" }, 2);
+
+
+        }
+
+        // the 5th most frequent word(s), or the 10th most frequent word(s) etc). Would like to query multiple times for 
+        // different n’s. Solution should be optimized for querying.
+        public string GetNthMostFrequentWord(string[] words, int nthFrequentWord)
+        {
+            if (words == null || nthFrequentWord == 0)
+            {
+                return null;
+            }
+
+            Dictionary<string, int> wordCount = new Dictionary<string, int>();
+            foreach (string word in words)
+            {
+                if (wordCount.ContainsKey(word))
+                {
+                    wordCount[word]++;
+                }
+                else
+                {
+                    wordCount.Add(word, 1);
+                }
+            }
+
+            int max = 0 ;
+            foreach (string key in wordCount.Keys)
+            {
+
+            }
+
+            return string.Empty;
+        }
+
+        private void StringToInt_Click(object sender, EventArgs e)
+        {
+            string input = textBox1.Text;
+            long result = 0;
+            char c;
+            
+
+            for(int i = 0; i <input.Length; i++) 
+            {
+                c = input[i];
+                if (char.IsNumber(c))
+                {
+                    if (result == 0)
+                    {
+                        result = Convert.ToInt64(c.ToString());
+                    }
+                    else
+                    {
+                        result = (result * 10) + Convert.ToInt64(c.ToString());
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            MessageBox.Show(result.ToString());
+
+        }
+
+        private void FibonociSeries_Click(object sender, EventArgs e)
+        {
+
+            int input = int.Parse(textBox1.Text);
+
+            bool isNegativeInput = !(input > 0);
+
+            input = (isNegativeInput ? -1 : 1) * input;
+
+            int previous = 0;
+            int current = 0;
+
+            int temp = 0;
+            for (int i = 1; i <= input; i++)
+            {
+                if (i == 1)
+                {
+                    current = 1;
+                }
+                else
+                {                    
+                    if (current < 0)
+                    {
+                        current *= -1;
+                    }
+                    temp = previous;
+                    previous = current;
+                    current = current + temp;
+                    if (isNegativeInput)
+                    {                            
+                        if (i %2 == 0)
+                        {
+                            current *= -1;
+                        }
+
+                    }
+                }
+            }
+            
+
+            MessageBox.Show($"Fibonacci Series of {textBox1.Text} : {current.ToString()}");
         }
     }
 }
