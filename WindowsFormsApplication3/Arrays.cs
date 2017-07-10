@@ -242,5 +242,68 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"After Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
         }
+
+        private void Array_Reduction_Cost_Click(object sender, EventArgs e)
+        {
+            int[] input = new int[] { 1, 2 };
+            if (input==null || input.Length ==0)
+            {
+                MessageBox.Show("Invalid inputs");
+            }
+            int sum= input[0];
+            int reductionCost = 0;
+            int incrementer = 1;
+            while (incrementer <= input.Length -1)
+            {
+                if (incrementer == 1)
+                {
+                    sum += input[incrementer];
+                }
+                else
+                {
+                    reductionCost += sum;
+                    sum += input[incrementer] ;
+                }
+                incrementer++;
+            }
+
+            reductionCost += sum;
+
+
+            MessageBox.Show($"Array Reduction cost {reductionCost.ToString()}");
+        }
+
+        private void Array_Binary_digits_0_to_1_Click(object sender, EventArgs e)
+        {
+            int[] input = new int[] {1,1,0,0,0,1,1,1,1,1 };
+
+            if (input == null || input.Length == 0)
+            {
+                MessageBox.Show("Invalid inputs");
+            }
+
+            int start = 0;
+            int end = input.Length - 1;
+            string before = Display(input);
+            while (start < end)
+            {
+                if (input[start] == 0)
+                {
+                    start++;
+                }
+                else if (input[end]==1)
+                {
+                    end--;
+                }
+                else
+                {
+                    input[start] = 0;
+                    input[end] = 1;
+                }
+            }
+
+            MessageBox.Show($"Before Input = {before}\nAfter input = {Display(input)}");
+
+        }
     }
 }

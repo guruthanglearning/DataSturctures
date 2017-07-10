@@ -11,9 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using OfficeOpenXml;
-using OfficeOpenXml.Style;
-using OfficeOpenXml.Table.PivotTable;
+//using OfficeOpenXml;
+//using OfficeOpenXml.Style;
+//using OfficeOpenXml.Table.PivotTable;
 
 namespace WindowsFormsApplication3
 {
