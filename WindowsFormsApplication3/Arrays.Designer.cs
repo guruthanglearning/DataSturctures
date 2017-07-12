@@ -33,6 +33,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.Array_Reduction_Cost = new System.Windows.Forms.Button();
             this.Array_Binary_digits_0_to_1 = new System.Windows.Forms.Button();
+            this.Sort_int_array_through_binary_digits_based_on_1 = new System.Windows.Forms.Button();
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -85,11 +87,33 @@
             this.Array_Binary_digits_0_to_1.UseVisualStyleBackColor = true;
             this.Array_Binary_digits_0_to_1.Click += new System.EventHandler(this.Array_Binary_digits_0_to_1_Click);
             // 
+            // Sort_int_array_through_binary_digits_based_on_1
+            // 
+            this.Sort_int_array_through_binary_digits_based_on_1.Location = new System.Drawing.Point(6, 145);
+            this.Sort_int_array_through_binary_digits_based_on_1.Name = "Sort_int_array_through_binary_digits_based_on_1";
+            this.Sort_int_array_through_binary_digits_based_on_1.Size = new System.Drawing.Size(405, 24);
+            this.Sort_int_array_through_binary_digits_based_on_1.TabIndex = 5;
+            this.Sort_int_array_through_binary_digits_based_on_1.Text = "Sort int array through binary digits based on 1";
+            this.Sort_int_array_through_binary_digits_based_on_1.UseVisualStyleBackColor = true;
+            this.Sort_int_array_through_binary_digits_based_on_1.Click += new System.EventHandler(this.Sort_int_array_through_binary_digits_based_on_1_Click);
+            // 
+            // Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x
+            // 
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Location = new System.Drawing.Point(6, 174);
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Name = "Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x";
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Size = new System.Drawing.Size(405, 23);
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.TabIndex = 6;
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Text = "Given an array and a number x check for pair in Array with sum as x";
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.UseVisualStyleBackColor = true;
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Click += new System.EventHandler(this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1073, 502);
+            this.Controls.Add(this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x);
+            this.Controls.Add(this.Sort_int_array_through_binary_digits_based_on_1);
             this.Controls.Add(this.Array_Binary_digits_0_to_1);
             this.Controls.Add(this.Array_Reduction_Cost);
             this.Controls.Add(this.button2);
@@ -108,5 +132,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Array_Reduction_Cost;
         private System.Windows.Forms.Button Array_Binary_digits_0_to_1;
+        private System.Windows.Forms.Button Sort_int_array_through_binary_digits_based_on_1;
+        private System.Windows.Forms.Button Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x;
     }
 }

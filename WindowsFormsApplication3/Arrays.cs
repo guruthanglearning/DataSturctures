@@ -305,5 +305,57 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Before Input = {before}\nAfter input = {Display(input)}");
 
         }
+
+        public string IntToBinaryString(int number)
+        {
+            const int mask = 1;
+            var binary = string.Empty;
+            while (number > 0)
+            {
+                // Logical AND the number and prepend it to the result string
+                binary = (number & mask) + binary;
+                number = number >> 1;
+            }
+
+            return binary;
+        }
+
+        private void Sort_int_array_through_binary_digits_based_on_1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.IntToBinaryString(60));
+        }
+
+        private string FindPairs(int[] input, int sum)
+        {
+ 
+            if (input== null || input.Length ==0 )
+            {
+                MessageBox.Show("Invalid Inputs");
+            }
+
+            StringBuilder builder = new StringBuilder();
+            Dictionary<int, bool> hashmap = new Dictionary<int, bool>();
+            int temp = 0;
+            for (int i =0; i <input.Length; i++)
+            {
+                temp = sum - input[i];
+                if (hashmap.ContainsKey(temp) && hashmap[temp])
+                {
+                    builder.Append($"Pairs {temp},{input[i].ToString()}\n");
+                }
+                if (!hashmap.ContainsKey(input[i]))
+                {
+                    hashmap.Add(input[i], true);
+                }
+            }
+
+            return builder.ToString();
+        }
+
+        private void Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x_Click(object sender, EventArgs e)
+        {
+            int[] input = new int[] { 1, 2, 10, 4, 6, 8, 8,-20 };
+            MessageBox.Show(this.FindPairs(input, -16));
+        }
     }
 }
