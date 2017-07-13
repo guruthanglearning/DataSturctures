@@ -334,18 +334,18 @@ namespace WindowsFormsApplication3
             }
 
             StringBuilder builder = new StringBuilder();
-            Dictionary<int, bool> hashmap = new Dictionary<int, bool>();
+            List<int> hashmap = new List<int>();
             int temp = 0;
             for (int i =0; i <input.Length; i++)
             {
                 temp = sum - input[i];
-                if (hashmap.ContainsKey(temp) && hashmap[temp])
+                if (hashmap.Contains(temp))
                 {
                     builder.Append($"Pairs {temp},{input[i].ToString()}\n");
                 }
-                if (!hashmap.ContainsKey(input[i]))
+                if (!hashmap.Contains(input[i]))
                 {
-                    hashmap.Add(input[i], true);
+                    hashmap.Add(input[i]);
                 }
             }
 
@@ -356,6 +356,11 @@ namespace WindowsFormsApplication3
         {
             int[] input = new int[] { 1, 2, 10, 4, 6, 8, 8,-20 };
             MessageBox.Show(this.FindPairs(input, -16));
+        }
+
+        private void MajorityElement_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
