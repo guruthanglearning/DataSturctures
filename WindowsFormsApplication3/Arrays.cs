@@ -354,13 +354,48 @@ namespace WindowsFormsApplication3
 
         private void Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x_Click(object sender, EventArgs e)
         {
+            //http://www.geeksforgeeks.org/write-a-c-program-that-given-a-set-a-of-n-numbers-and-another-number-x-determines-whether-or-not-there-exist-two-elements-in-s-whose-sum-is-exactly-x/
             int[] input = new int[] { 1, 2, 10, 4, 6, 8, 8,-20 };
             MessageBox.Show(this.FindPairs(input, -16));
         }
 
         private void MajorityElement_Click(object sender, EventArgs e)
         {
+            //http://www.geeksforgeeks.org/majority-element/
+            int[] input = new int[] { 1, 2, 3, 4, 5, 6, 8, -20 }; // 8 items
 
+            int count = 1;
+            int majorityIndex = 0;
+            int maxOccurance = 1;
+
+            for(int i = 1; i <input.Length; i++)
+            {
+                if (input[majorityIndex] == input[i])
+                {
+                    count++;
+                    maxOccurance++;
+                }
+                else
+                {                    
+                    count--;
+                }
+
+                if (count == 0)
+                {
+                    majorityIndex = i;
+                    count = 1;
+                    maxOccurance = 1;
+                }
+            }
+
+            if (maxOccurance >= (input.Length / 2))
+            {
+                MessageBox.Show($"Majority Element {input[majorityIndex].ToString()}");
+            }
+            else
+            {
+                MessageBox.Show($"No Majority Element present");
+            }
         }
     }
 }
