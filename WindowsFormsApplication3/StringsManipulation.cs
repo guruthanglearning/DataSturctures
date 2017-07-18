@@ -981,8 +981,7 @@ function sayHello() {
                 return null;
             }
 
-            Dictionary<string, int> wordCount = new Dictionary<string, int>();
-            int max = 0;
+            Dictionary<string, int> wordCount = new Dictionary<string, int>();            
             string maxword = string.Empty;                        
             foreach (string word in words)
             {
