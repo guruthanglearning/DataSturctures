@@ -182,8 +182,7 @@ namespace WindowsFormsApplication3
                     {
                         temp = arr1[arr1Incr];
                         arr1[arr1Incr] = arr2[arr2Incr];
-                        arr2[arr2Incr] = temp;
-                        arr2Incr++;
+                        arr2[arr2Incr] = temp;                        
                         arr1Incr++;
 
                     }
@@ -239,6 +238,7 @@ namespace WindowsFormsApplication3
             MergeArraysDuplicateValues(arr1, arr2);
 
             //Merge(arr2, arr1);
+
             MessageBox.Show($"After Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
         }
@@ -396,6 +396,19 @@ namespace WindowsFormsApplication3
             {
                 MessageBox.Show($"No Majority Element present");
             }
+        }
+
+        private void Find_the_Number_Occurring_Odd_Number_of_Times_Click(object sender, EventArgs e)
+        {
+            int[] input = new int[] { 1, 2, 3, 2, 3, 1, 3 };
+
+            int res = 0;
+            for(int i =0; i<input.Length;i++)
+            {
+                res = res ^ input[i];
+            }
+
+            MessageBox.Show($"Odd Number {res.ToString()}");
         }
     }
 }

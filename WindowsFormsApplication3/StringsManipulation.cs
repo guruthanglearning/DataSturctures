@@ -982,11 +982,13 @@ function sayHello() {
             }
 
             Dictionary<string, int> wordCount = new Dictionary<string, int>();
+            int max = 0;
+            string maxword = string.Empty;                        
             foreach (string word in words)
             {
                 if (wordCount.ContainsKey(word))
                 {
-                    wordCount[word]++;
+                    wordCount[word]++;                    
                 }
                 else
                 {
@@ -994,7 +996,7 @@ function sayHello() {
                 }
             }
 
-            int max = 0 ;
+            int max = 0;
             foreach (string key in wordCount.Keys)
             {
 
@@ -1074,6 +1076,79 @@ function sayHello() {
             
 
             MessageBox.Show($"Fibonacci Series of {textBox1.Text} : {current.ToString()}");
+        }
+
+        private int GetPalindromes(string input, int start, int end )
+        {
+            // Base Case 1: If there is only 1 character
+            if (start == end)
+                return 1;
+
+            // Base Case 2: If there are only 2 characters and both are same
+            if (input[start] == input[end] && start + 1 == end)
+            {
+                return 2;
+            }
+            else
+            {
+
+                // If the first and last characters match
+                if (input[start] == input[end])
+                    return GetPalindromes(input, start + 1, end - 1) + 2;
+
+                // If the first and last characters do not match
+                return Math.Max(GetPalindromes(input, start, end - 1), GetPalindromes(input, start + 1, end));
+            }
+        }
+
+        private void Longest_Palondrome_in_a_given_string_Click(object sender, EventArgs e)
+        {
+            //http://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/
+            // Time Complexity : O(n^2)
+            string input = "GEEKSFORGEEKS";
+            MessageBox.Show($"Max Palondrom sequence {this.GetPalindromes(input,0, input.Length-1)}");
+        }
+
+        public int longestPalindromeSubstringEasy(string input)
+        {
+
+            int longest_substring = 1;
+
+            int x, y;
+            int palindrome;
+            
+            for (int i = 0; i < input.Length; i++)
+            {
+                x = i;
+                y = i + 1;
+                palindrome = 0;
+                while (x >= 0 && y < input.Length && input[x] == input[y])
+                {
+                    x--;
+                    y++;
+                    palindrome += 2;
+                }
+                longest_substring = Math.Max(longest_substring, palindrome);
+
+                x = i - 1;
+                y = i + 1;
+                palindrome = 1;
+                while (x >= 0 && y < input.Length && input[x] == input[y])
+                {
+                    x--;
+                    y++;
+                    palindrome += 2;
+                }
+                longest_substring = Math.Max(longest_substring, palindrome);
+            }
+            return longest_substring;
+        }
+
+        private void Longest_Palondrome_in_a_given_string_O_Off_N_Click(object sender, EventArgs e)
+        {
+            //Time Complexity : O(n)
+            string input = "abaab";
+            MessageBox.Show(this.longestPalindromeSubstringEasy(input).ToString());
         }
     }
 }

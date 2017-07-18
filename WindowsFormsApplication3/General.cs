@@ -367,8 +367,11 @@ namespace WindowsFormsApplication3
             Derived d = new Derived();
             b.Test();
 
-            
-            
+            AbstractClassDervied ab = new AbstractClassDervied();
+            ab.AbstractClassMethod2();
+
+
+
         }
 
 
@@ -377,7 +380,7 @@ namespace WindowsFormsApplication3
             public abstract void AbstractClassMethod1();
             public virtual void AbstractClassMethod2()
             {
-                MessageBox.Show("Testing Abstract class method");
+                MessageBox.Show("Base - Testing Abstract class method");
             }
         }
 
