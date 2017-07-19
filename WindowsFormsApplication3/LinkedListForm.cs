@@ -1466,16 +1466,14 @@ namespace WindowsFormsApplication3
             LinkList headB = new LinkList();
 
             //Split the link list
-            split(headA, headB);
-            headA = headA.next;
-            headB = headB.next;
+            split(ref headA, ref headB);           
 
             headB = Reverse(headB);
             linkListNode =  MergeLinkList(headA, headB);
         }
 
 
-        private void split(LinkList headA, LinkList headB)
+        private void split(ref LinkList headA, ref LinkList headB)
         {
 
             LinkList asc = headA;
@@ -1577,7 +1575,7 @@ namespace WindowsFormsApplication3
             previous = current;
 
             int input = 4;
-           
+                       
             while (current != null)
             {
                 if (list == current && current.data >= input)
