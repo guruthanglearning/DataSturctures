@@ -19,7 +19,7 @@ namespace WindowsFormsApplication3
 
         private void singleton_Click(object sender, EventArgs e)
         {
-            Singleton.
+            var t = Singleton.Instance;
         }
     }
 

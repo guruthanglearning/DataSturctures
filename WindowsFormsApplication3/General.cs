@@ -368,8 +368,7 @@ namespace WindowsFormsApplication3
             b.Test();
 
             AbstractClassDervied ab = new AbstractClassDervied();
-            ab.AbstractClassMethod2();
-
+            ab.AbstractClassMethod2();           
 
 
         }
@@ -394,6 +393,10 @@ namespace WindowsFormsApplication3
             public override void AbstractClassMethod2()
             {
                 MessageBox.Show("Testing Abstract class method");
+            }
+            public void Test()
+            {
+
             }
         }
 

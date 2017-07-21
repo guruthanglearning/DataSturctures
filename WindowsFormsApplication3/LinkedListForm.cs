@@ -1537,7 +1537,7 @@ namespace WindowsFormsApplication3
                 headB.next = node;
                 node = headB;
                 headB = temp;                
-            }            
+            }
             return node;
         }
 
@@ -1718,7 +1718,6 @@ namespace WindowsFormsApplication3
             LinkList result = linkList;
             
             Random r = new Random();
-            int i = 0;
             for (int n=2; list!= null; n++)
             {
                 if (r.Next() % n == 0)
@@ -1726,8 +1725,7 @@ namespace WindowsFormsApplication3
                     LinkList temp = list.next;
                     list.next = dummy;
                     result = list;
-                    list = temp;
-                    i++;
+                    list = temp;                    
                 }
                 else
                 {
