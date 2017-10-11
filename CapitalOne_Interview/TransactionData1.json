@@ -1,0 +1,30 @@
+﻿{
+  "transactions": [
+    {
+      "account-id": "nonce:comfy-cc/hdhehe",
+      "aggregation-time": 1412686740000,
+      "amount": -34300,
+      "categorization": "Unknown",
+      "clear-date": 1412790480000,
+      "is-pending": false,
+      "merchant": "7-Eleven 23853",
+      "raw-merchant": "7-ELEVEN 23853",
+      "transaction-id": "1412790480000",
+      "transaction-time": "2014-10-07T12:59:00.000Z"
+    },
+    {
+      "amount": 17408600,
+      "is-pending": false,
+      "payee-name-only-for-testing": "ZENPAYROLL",
+      "aggregation-time": 1490396868051,
+      "account-id": "nonce:comfy-checking/hdhehe",
+      "clear-date": 1490377140000,
+      "memo-only-for-testing": "Example Memo",
+      "transaction-id": "1490377140000",
+      "raw-merchant": "ZENPAYROLL",
+      "categorization": "Paycheck",
+      "merchant": "Zenpayroll",
+      "transaction-time": "2017-03-24T00:00:00.000Z"
+    }
+  ]
+}
