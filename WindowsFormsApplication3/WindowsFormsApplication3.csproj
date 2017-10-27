@@ -206,8 +206,8 @@
       <DependentUpon>StringsManipulation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="MonthlyExpenses%28Oct 17%29.xlsx" />
-    <None Include="MonthlyExpenses%28Sep 17%29.xlsx" />
+    <Compile Include="MonthlyExpenses%28Oct 17%29.cs" />
+    <Compile Include="MonthlyExpenses%28Sep 17%29.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -235,7 +235,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MonthlyExpenses%28Aug 17%29.txt" />
+    <Compile Include="MonthlyExpenses%28Aug 17%29.cs" />
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
