@@ -37,6 +37,7 @@ namespace WindowsFormsApplication3
         {
             MessageBox.Show("Made INotify.Notify as private method");
         }
+        
     }
 
 }

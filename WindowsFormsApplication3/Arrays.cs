@@ -54,7 +54,7 @@ namespace WindowsFormsApplication3
             arr1[5] = 6;
             arr1[6] = 7;
             int[] arr2 = new int[3];
-            arr2[0] = 8;
+            arr2[0] = 3;
             arr2[1] = 9;
             arr2[2] = 10; //Best Case O(n+m)
 
@@ -127,6 +127,8 @@ namespace WindowsFormsApplication3
             int[] buffer = new int[] { 1, 2, 3, 3, 3, 4, 4, 5, 5 };
             Array.Resize<int>(ref buffer, 12);
 
+            //insert = 2, i =3
+
             int insert = 0;            
             for (int i = 1; i < buffer.Length - 1; i++)
             {
@@ -155,7 +157,6 @@ namespace WindowsFormsApplication3
             MessageBox.Show(builder.ToString());
         }
 
-
         public void MergeArraysDuplicateValues(int[] arr1, int[] arr2)
         {
             int arr1Length = arr1.Length - 1;
@@ -165,10 +166,10 @@ namespace WindowsFormsApplication3
             List<int> unique = new List<int>();
 
             int temp = 0;
-            while (true )
+            while (true)
             {
                 if (arr1Incr <= arr1LastFilledIndex && arr2Incr <= arr2Length)
-                {                    
+                {
                     if (arr1[arr1Incr] < arr2[arr2Incr])
                     {
                         arr1Incr++;
@@ -182,28 +183,28 @@ namespace WindowsFormsApplication3
                     {
                         temp = arr1[arr1Incr];
                         arr1[arr1Incr] = arr2[arr2Incr];
-                        arr2[arr2Incr] = temp;                        
+                        arr2[arr2Incr] = temp;
                         arr1Incr++;
 
                     }
-                    unique.Add(arr1[arr1Incr-1]);
-                }             
+                    unique.Add(arr1[arr1Incr - 1]);
+                }
                 else
                 {
                     break;
                 }
             }
 
-            if (arr1Incr<=arr1LastFilledIndex && arr2Incr > arr2Length)
-            {
-                while (arr1LastFilledIndex >= arr1Incr)
-                {
-                    arr1[arr1Length] = arr1[arr1LastFilledIndex];
-                    arr1LastFilledIndex--;
-                }
-                arr2Incr = 0;
-            }
-            
+            //if (arr1Incr <= arr1LastFilledIndex && arr2Incr > arr2Length)
+            //{
+            //    while (arr1LastFilledIndex >= arr1Incr)
+            //    {
+            //        arr1[arr1Length] = arr1[arr1LastFilledIndex];
+            //        arr1LastFilledIndex--;
+            //    }
+            //    arr2Incr = 0;
+            //}
+
             while (arr2Incr <= arr2Length)
             {
                 if (!unique.Contains(arr2[arr2Incr]))
@@ -211,11 +212,12 @@ namespace WindowsFormsApplication3
                     arr1[arr1Incr] = arr2[arr2Incr];
                     arr1Incr++;
                 }
-                
+
                 arr2Incr++;
             }
 
         }
+
 
         private void Merge_Two_sorted_Arrays_with_out_3rd_Array_With_duplicate(object sender, EventArgs e)
         {
@@ -223,7 +225,7 @@ namespace WindowsFormsApplication3
             arr1[0] = 1;
             arr1[1] = 2;
             arr1[2] = 3;
-            arr1[3] = 5;
+            arr1[3] = 3;
             arr1[4] = 6;
             arr1[5] = 7;
             //arr1[6] = 10;
@@ -245,7 +247,7 @@ namespace WindowsFormsApplication3
 
         private void Array_Reduction_Cost_Click(object sender, EventArgs e)
         {
-            int[] input = new int[] { 1, 2 };
+            int[] input = new int[] { 1, 2, 3};
             if (input==null || input.Length ==0)
             {
                 MessageBox.Show("Invalid inputs");
@@ -327,7 +329,7 @@ namespace WindowsFormsApplication3
 
         private string FindPairs(int[] input, int sum)
         {
- 
+            // 1, 2, 10, 4, 6, 8, 8,-20
             if (input== null || input.Length ==0 )
             {
                 MessageBox.Show("Invalid Inputs");
@@ -362,7 +364,11 @@ namespace WindowsFormsApplication3
         private void MajorityElement_Click(object sender, EventArgs e)
         {
             //http://www.geeksforgeeks.org/majority-element/
-            int[] input = new int[] { 1, 2, 3, 4, 5, 6, 8, -20 }; // 8 items
+            //int[] input = new int[] { 1, 2, 3, 4, 5, 6, 8, -20 }; // 8 items
+            //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 }; // 9
+            int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }; // 8
+
+
 
             int count = 1;
             int majorityIndex = 0;

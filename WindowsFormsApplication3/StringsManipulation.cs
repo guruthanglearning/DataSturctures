@@ -78,6 +78,8 @@ namespace WindowsFormsApplication3
 
             int checker = 0;
 
+            //input =  abca
+
             for (int i = 0; i < str.Length; i++)
             {
                 int val = str[i] - 'a';
@@ -91,6 +93,8 @@ namespace WindowsFormsApplication3
                     checker |= (1 << val);
                 }
             }
+
+
 
             return isTrue;
         }
@@ -877,7 +881,7 @@ function sayHello() {
         private void button20_Click(object sender, EventArgs e)
         {
 
-            int currency = 1000000000;
+            int currency = 1230000001;
             MessageBox.Show(this, NumberToWords(currency));
         }
 

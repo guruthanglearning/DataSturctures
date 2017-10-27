@@ -21,12 +21,25 @@ namespace WindowsFormsApplication3
         {
             var t = Singleton.Instance;
         }
-    }
 
+        private void btn_Private_Methods_In_Abstract_Class_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Abstract Private members are not allowed in Abstract Class, but private and public methods are allowed");
+        }
+    }
+    
+
+    abstract class Private_Methods_In_Abstract_Class
+    {
+        private void btn_Private_Methods_In_Abstract_Class_Method1()
+        {
+
+        }
+    }
 
     public sealed class Singleton
     {
-        private static volatile Singleton instance;
+        private static Singleton instance;
         private static object syncRoot = new Object();
 
         private Singleton() { }

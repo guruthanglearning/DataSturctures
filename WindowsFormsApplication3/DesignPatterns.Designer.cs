@@ -29,24 +29,38 @@
         private void InitializeComponent()
         {
             this.singleton = new System.Windows.Forms.Button();
+            this.btn_Private_Methods_In_Abstract_Class = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // singleton
             // 
-            this.singleton.Location = new System.Drawing.Point(19, 30);
+            this.singleton.Location = new System.Drawing.Point(21, 38);
+            this.singleton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.singleton.Name = "singleton";
-            this.singleton.Size = new System.Drawing.Size(182, 35);
+            this.singleton.Size = new System.Drawing.Size(274, 44);
             this.singleton.TabIndex = 0;
             this.singleton.Text = "SingleTon";
             this.singleton.UseVisualStyleBackColor = true;
             this.singleton.Click += new System.EventHandler(this.singleton_Click);
             // 
+            // btn_Private_Methods_In_Abstract_Class
+            // 
+            this.btn_Private_Methods_In_Abstract_Class.Location = new System.Drawing.Point(1186, 24);
+            this.btn_Private_Methods_In_Abstract_Class.Name = "btn_Private_Methods_In_Abstract_Class";
+            this.btn_Private_Methods_In_Abstract_Class.Size = new System.Drawing.Size(274, 49);
+            this.btn_Private_Methods_In_Abstract_Class.TabIndex = 1;
+            this.btn_Private_Methods_In_Abstract_Class.Text = "Private Methods in Abstract Class";
+            this.btn_Private_Methods_In_Abstract_Class.UseVisualStyleBackColor = true;
+            this.btn_Private_Methods_In_Abstract_Class.Click += new System.EventHandler(this.btn_Private_Methods_In_Abstract_Class_Click);
+            // 
             // DesignPatterns
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 551);
+            this.ClientSize = new System.Drawing.Size(1485, 689);
+            this.Controls.Add(this.btn_Private_Methods_In_Abstract_Class);
             this.Controls.Add(this.singleton);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DesignPatterns";
             this.Text = "DesignPatterns";
             this.ResumeLayout(false);
@@ -56,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Button singleton;
+        private System.Windows.Forms.Button btn_Private_Methods_In_Abstract_Class;
     }
 }

@@ -115,6 +115,7 @@ namespace WindowsFormsApplication3
         /// <returns></returns>
         private int Lomuto_partition_scheme(int[] input, int lower, int upper)
         {
+            // original input 11, 23, 1, 4, 0, -1, 55, 20
             int returnValue = -1;
             if (input != null && input.Length > 0)
             {
@@ -132,6 +133,7 @@ namespace WindowsFormsApplication3
                         this.Swap(input, i, j);
                     }
                 }
+
                 this.Swap(input, i + 1, upper);
                 return (i + 1);
 
@@ -180,6 +182,7 @@ namespace WindowsFormsApplication3
 
         private int Hoare_Partition_Scheme(int[] arr, int low, int high)
         {
+            //initial input  11, 23, 1, 4, 0, -1, 55, 20 
             int pivot = arr[low];
             int i = low - 1, j = high + 1;
 
@@ -235,7 +238,7 @@ namespace WindowsFormsApplication3
             int[] A = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Top Down : Before Sorting {DisplayResult(A)} \n");
-            int[] B = new int[A.Length];
+            int[] B = new int[A.Length];            
             Array.Copy(A, B, A.Length);
             this.TopDownSplitMerge(B, 0, A.Length, A);
             result.AppendLine($"Top Down : After Sorting {DisplayResult(A)}");
@@ -292,7 +295,8 @@ namespace WindowsFormsApplication3
 
         private int IParent(int count)
         {
-            return (count - 1) / 2;
+            // 11, 23, 1, 4, 0, -1, 55, 20
+            return (count) / 2;
         }
 
         private int ILeft(int count)
@@ -315,7 +319,7 @@ namespace WindowsFormsApplication3
 
             {
                 child = this.ILeft(root); // (Left child of root)
-                interChange = root;               // (Keeps track of child to swap with)
+                interChange = root;       // (Keeps track of child to swap with)
 
                 if (a[interChange] < a[child])
                 {
@@ -383,8 +387,16 @@ namespace WindowsFormsApplication3
 
         private void HeapSort_Click(object sender, EventArgs e)
         {
+            //https://en.wikipedia.org/wiki/Heapsort
+            //http://www.geeksforgeeks.org/heap-sort/
 
-            int[] input = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            // Worst -case performance O(n log n)
+            // Best -case performance O(n) 
+            // Average performance O(n log n)
+            // Worst -case space complexity  O(1) auxiliary
+
+            //11, 23, 1, 4, 0, -1, 55, 20 
+            int[] input = new int[] { 11, 23, 1};
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Before Sorting {DisplayResult(input)}");
 

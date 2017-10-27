@@ -420,11 +420,27 @@ namespace WindowsFormsApplication3
         }
         
 
+        private void OutParameterFunction(out int i)
+        {
+            i = 1;
+        }
+
+        private void RefParameterFunction(ref int i)
+        {
+            
+        }
+
         private void button15_Click(object sender, EventArgs e)
         {
+            int m = 1 ;
+            this.RefParameterFunction(ref m);
+            this.OutParameterFunction(out m);
+            string message = "Ref parameter should be initialized before passing to the calling method \n";
+            message += "Out Parameter is not reuqired to initialized before passing to the calling method but inside the calling method it should be initialized";
+        }
 
-            
-
+        private void button15_Click_1(object sender, EventArgs e)
+        {
 
         }
     }

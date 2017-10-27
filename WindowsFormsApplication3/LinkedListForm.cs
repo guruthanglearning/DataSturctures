@@ -500,6 +500,7 @@ namespace WindowsFormsApplication3
 
         private void button6_Click(object sender, EventArgs e)
         {
+            
             LinkList LLNodeFirst = null;
             LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
@@ -515,25 +516,32 @@ namespace WindowsFormsApplication3
 
             LinkList current, previous, next_next;
             current = LLNodeFirst;
-            /* Traverse list till the last node */
-            while (current.next != null)
-            {
-                /*Compare current node with the next node */
-                if (current.data == current.next.data)
-                {
-                    next_next = current.next.next;
-                    current.next = null;
-                    current.next = next_next;
-                }
-                else
-                    // advance if no deletion               
-                    current = current.next;
-            }
 
-            datas.Append("\n\n Time Complexity: O(n)");
-            DisplayLinkList(LLNodeFirst);
-            MessageBox.Show(datas.ToString());
+            datas.Clear();
 
+            //// Delete duplicate node from a sorted linked list
+            ///* Traverse list till the last node */
+            //while (current.next != null)
+            //{
+            //    /*Compare current node with the next node */
+            //    if (current.data == current.next.data)
+            //    {
+            //        next_next = current.next.next;
+            //        current.next = null;
+            //        current.next = next_next;
+            //    }
+            //    else
+            //        // advance if no deletion               
+            //        current = current.next;
+            //}
+
+            //datas.Append("\n\n Time Complexity: O(n)");
+            //DisplayLinkList(LLNodeFirst);
+            //MessageBox.Show(datas.ToString());
+
+            //4->4->5->1->0->11->1->2
+            //Complexity is O(n^2)
+            datas.Clear();
             previous = LLNodeFirst;
             current = previous.next;
             while (current != null)
@@ -558,9 +566,14 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            datas.Append("\n\n");
+            datas.Append("\n\n Time Complexity: O(n^2)");            
             DisplayLinkList(LLNodeFirst);
             MessageBox.Show(datas.ToString());
+
+
+
+
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -1068,8 +1081,7 @@ namespace WindowsFormsApplication3
 
             //Time complexity is O(n^2) since finding min from Linklist has to be travesal once and removing is another traversal
 
-            LinkList linkList = null;
-            
+            LinkList linkList = null;           
             linkList = InsertLinkList(linkList, 5);
             linkList = InsertLinkList(linkList, 4);
             linkList = InsertLinkList(linkList, 10);
@@ -1091,7 +1103,7 @@ namespace WindowsFormsApplication3
             LinkList smallest = linkList;            
             LinkList runner = linkList;
             LinkList prev = linkList;
-
+            //5->4->10>110->112->3->123->24->3
             while (runner != null)
             {
                 if (runner.next != null && runner.next.data < smallest.data)
@@ -1259,7 +1271,7 @@ namespace WindowsFormsApplication3
             LinkList fast = linkList;
             LinkList slow = linkList;
             bool isCylic = false;
-
+            //4->3->5->1->0->11->2
             while (fast != null && slow != null && fast.next != null && !isCylic)
             {
                 slow = slow.next;
@@ -1374,7 +1386,7 @@ namespace WindowsFormsApplication3
         private void button22_Click(object sender, EventArgs e)
         {
             //Refer : http://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/
-            //Time complexity : O(n^2)
+            //Time complexity : O(n)
             LinkList linkList = null;            
             linkList = InsertLinkList(linkList, 1);
             linkList = InsertLinkList(linkList, 2);
@@ -1392,6 +1404,8 @@ namespace WindowsFormsApplication3
 
         private LinkList Rearrage(LinkList node)
         {
+            //1->2->3->4->5
+
             LinkList slow = node;
             LinkList fast = slow.next;            
 
@@ -1466,14 +1480,14 @@ namespace WindowsFormsApplication3
             LinkList headB = new LinkList();
 
             //Split the link list
-            split(ref headA, ref headB);           
+            split(headA, headB);           
 
             headB = Reverse(headB);
             linkListNode =  MergeLinkList(headA, headB);
         }
 
 
-        private void split(ref LinkList headA, ref LinkList headB)
+        private void split(LinkList headA, LinkList headB)
         {
 
             LinkList asc = headA;
@@ -1640,6 +1654,8 @@ namespace WindowsFormsApplication3
 
         private LinkList MergeTwoSortedLinkListInReverseOrder(LinkList first, LinkList second)
         {
+            //1->3->5->7->9->11
+            //1->2->4->6->8->10->12
             LinkList list1 = first;
             LinkList list2 = second;
 

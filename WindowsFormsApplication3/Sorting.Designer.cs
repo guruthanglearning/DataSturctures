@@ -38,9 +38,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(7, 15);
+            this.button1.Location = new System.Drawing.Point(10, 23);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(253, 24);
+            this.button1.Size = new System.Drawing.Size(380, 37);
             this.button1.TabIndex = 0;
             this.button1.Text = "Quick Sort Lomuto partition scheme";
             this.button1.UseVisualStyleBackColor = true;
@@ -48,9 +49,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(11, 191);
+            this.button2.Location = new System.Drawing.Point(16, 212);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(253, 24);
+            this.button2.Size = new System.Drawing.Size(380, 37);
             this.button2.TabIndex = 1;
             this.button2.Text = "Insertion Sort";
             this.button2.UseVisualStyleBackColor = true;
@@ -58,9 +60,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(11, 221);
+            this.button3.Location = new System.Drawing.Point(16, 258);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(253, 24);
+            this.button3.Size = new System.Drawing.Size(380, 37);
             this.button3.TabIndex = 2;
             this.button3.Text = "Selection Sort";
             this.button3.UseVisualStyleBackColor = true;
@@ -68,9 +71,10 @@
             // 
             // HeapSort
             // 
-            this.HeapSort.Location = new System.Drawing.Point(12, 277);
+            this.HeapSort.Location = new System.Drawing.Point(16, 165);
+            this.HeapSort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.HeapSort.Name = "HeapSort";
-            this.HeapSort.Size = new System.Drawing.Size(253, 24);
+            this.HeapSort.Size = new System.Drawing.Size(380, 37);
             this.HeapSort.TabIndex = 3;
             this.HeapSort.Text = "Heap Sort";
             this.HeapSort.UseVisualStyleBackColor = true;
@@ -78,9 +82,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(10, 45);
+            this.button5.Location = new System.Drawing.Point(15, 69);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(249, 27);
+            this.button5.Size = new System.Drawing.Size(374, 42);
             this.button5.TabIndex = 4;
             this.button5.Text = "Quick Sort Hoare\'s partition scheme";
             this.button5.UseVisualStyleBackColor = true;
@@ -88,9 +93,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(10, 78);
+            this.button6.Location = new System.Drawing.Point(15, 120);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(244, 23);
+            this.button6.Size = new System.Drawing.Size(366, 35);
             this.button6.TabIndex = 5;
             this.button6.Text = "Merge Sort";
             this.button6.UseVisualStyleBackColor = true;
@@ -98,15 +104,16 @@
             // 
             // Sorting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 435);
+            this.ClientSize = new System.Drawing.Size(543, 669);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.HeapSort);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Sorting";
             this.Text = "Sorting";
             this.ResumeLayout(false);
