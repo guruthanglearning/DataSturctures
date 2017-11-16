@@ -90,6 +90,12 @@
     <Compile Include="Arrays.Designer.cs">
       <DependentUpon>Arrays.cs</DependentUpon>
     </Compile>
+    <Compile Include="BitOperators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BitOperators.Designer.cs">
+      <DependentUpon>BitOperators.cs</DependentUpon>
+    </Compile>
     <Compile Include="DesignPatterns.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     <Compile Include="UnitTestMocks\MockMessageHandler.cs" />
     <EmbeddedResource Include="Arrays.resx">
       <DependentUpon>Arrays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BitOperators.resx">
+      <DependentUpon>BitOperators.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DesignPatterns.resx">
       <DependentUpon>DesignPatterns.cs</DependentUpon>
