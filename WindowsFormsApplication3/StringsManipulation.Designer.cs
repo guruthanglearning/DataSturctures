@@ -56,6 +56,7 @@
             this.FibonociSeries = new System.Windows.Forms.Button();
             this.Longest_Palondrome_in_a_given_string = new System.Windows.Forms.Button();
             this.Longest_Palondrome_in_a_given_string_O_Off_N = new System.Windows.Forms.Button();
+            this.btn_Find_index_of_homogenous_continous_charcter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -361,11 +362,22 @@
             this.Longest_Palondrome_in_a_given_string_O_Off_N.UseVisualStyleBackColor = true;
             this.Longest_Palondrome_in_a_given_string_O_Off_N.Click += new System.EventHandler(this.Longest_Palondrome_in_a_given_string_O_Off_N_Click);
             // 
+            // btn_Find_index_of_homogenous_continous_charcter
+            // 
+            this.btn_Find_index_of_homogenous_continous_charcter.Location = new System.Drawing.Point(18, 685);
+            this.btn_Find_index_of_homogenous_continous_charcter.Name = "btn_Find_index_of_homogenous_continous_charcter";
+            this.btn_Find_index_of_homogenous_continous_charcter.Size = new System.Drawing.Size(420, 39);
+            this.btn_Find_index_of_homogenous_continous_charcter.TabIndex = 28;
+            this.btn_Find_index_of_homogenous_continous_charcter.Text = "Find index of homogenous continous charcter";
+            this.btn_Find_index_of_homogenous_continous_charcter.UseVisualStyleBackColor = true;
+            this.btn_Find_index_of_homogenous_continous_charcter.Click += new System.EventHandler(this.btn_Find_index_of_homogenous_continous_charcter_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 779);
+            this.Controls.Add(this.btn_Find_index_of_homogenous_continous_charcter);
             this.Controls.Add(this.Longest_Palondrome_in_a_given_string_O_Off_N);
             this.Controls.Add(this.Longest_Palondrome_in_a_given_string);
             this.Controls.Add(this.FibonociSeries);
@@ -433,5 +445,6 @@
         private System.Windows.Forms.Button FibonociSeries;
         private System.Windows.Forms.Button Longest_Palondrome_in_a_given_string;
         private System.Windows.Forms.Button Longest_Palondrome_in_a_given_string_O_Off_N;
+        private System.Windows.Forms.Button btn_Find_index_of_homogenous_continous_charcter;
     }
 }

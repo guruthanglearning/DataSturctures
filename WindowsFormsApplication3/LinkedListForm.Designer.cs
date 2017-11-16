@@ -62,13 +62,15 @@
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree = new System.Windows.Forms.Button();
             this.Check_whether_BST_contains_Dead_End_or_not = new System.Windows.Forms.Button();
             this.ConnectNodes = new System.Windows.Forms.Button();
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(0, 58);
+            this.button1.Location = new System.Drawing.Point(10, 89);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(203, 23);
+            this.button1.Size = new System.Drawing.Size(304, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "Tree Traversal";
             this.button1.UseVisualStyleBackColor = true;
@@ -76,9 +78,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(228, 90);
+            this.button2.Location = new System.Drawing.Point(342, 138);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(203, 23);
+            this.button2.Size = new System.Drawing.Size(304, 35);
             this.button2.TabIndex = 1;
             this.button2.Text = "+ve and -ve arragement  with While";
             this.button2.UseVisualStyleBackColor = true;
@@ -86,9 +89,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(228, 61);
+            this.button3.Location = new System.Drawing.Point(342, 94);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(203, 23);
+            this.button3.Size = new System.Drawing.Size(304, 35);
             this.button3.TabIndex = 2;
             this.button3.Text = "+ve and -ve arragement O(n2)";
             this.button3.UseVisualStyleBackColor = true;
@@ -96,16 +100,18 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(61, 12);
+            this.textBox1.Location = new System.Drawing.Point(92, 18);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 20);
+            this.textBox1.Size = new System.Drawing.Size(289, 26);
             this.textBox1.TabIndex = 3;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(0, 87);
+            this.button4.Location = new System.Drawing.Point(10, 134);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(203, 23);
+            this.button4.Size = new System.Drawing.Size(304, 35);
             this.button4.TabIndex = 4;
             this.button4.Text = "Tree Traversal BFS";
             this.button4.UseVisualStyleBackColor = true;
@@ -113,9 +119,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(817, 342);
+            this.button5.Location = new System.Drawing.Point(1226, 526);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(203, 23);
+            this.button5.Size = new System.Drawing.Size(304, 35);
             this.button5.TabIndex = 5;
             this.button5.Text = "Merging Linked List";
             this.button5.UseVisualStyleBackColor = true;
@@ -123,9 +130,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(818, 53);
+            this.button6.Location = new System.Drawing.Point(1227, 82);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(203, 23);
+            this.button6.Size = new System.Drawing.Size(304, 35);
             this.button6.TabIndex = 6;
             this.button6.Text = "Remove Dup Item in Linked List";
             this.button6.UseVisualStyleBackColor = true;
@@ -133,9 +141,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(818, 82);
+            this.button7.Location = new System.Drawing.Point(1227, 126);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(203, 23);
+            this.button7.Size = new System.Drawing.Size(304, 35);
             this.button7.TabIndex = 7;
             this.button7.Text = "Sum Two given linkList";
             this.button7.UseVisualStyleBackColor = true;
@@ -143,9 +152,10 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(0, 136);
+            this.button8.Location = new System.Drawing.Point(10, 209);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(203, 23);
+            this.button8.Size = new System.Drawing.Size(304, 35);
             this.button8.TabIndex = 8;
             this.button8.Text = "Depth of the Tree";
             this.button8.UseVisualStyleBackColor = true;
@@ -153,9 +163,10 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(0, 223);
+            this.button9.Location = new System.Drawing.Point(10, 343);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(203, 23);
+            this.button9.Size = new System.Drawing.Size(304, 35);
             this.button9.TabIndex = 9;
             this.button9.Text = "Tree To LinkList";
             this.button9.UseVisualStyleBackColor = true;
@@ -163,9 +174,10 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(0, 165);
+            this.button10.Location = new System.Drawing.Point(10, 254);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(203, 23);
+            this.button10.Size = new System.Drawing.Size(304, 35);
             this.button10.TabIndex = 10;
             this.button10.Text = "Get Inorder successor of a Tree ";
             this.button10.UseVisualStyleBackColor = true;
@@ -173,9 +185,10 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(0, 194);
+            this.button11.Location = new System.Drawing.Point(10, 298);
+            this.button11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(203, 23);
+            this.button11.Size = new System.Drawing.Size(304, 35);
             this.button11.TabIndex = 11;
             this.button11.Text = "Common Ancestor";
             this.button11.UseVisualStyleBackColor = true;
@@ -183,9 +196,10 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(0, 252);
+            this.button12.Location = new System.Drawing.Point(10, 388);
+            this.button12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(203, 23);
+            this.button12.Size = new System.Drawing.Size(304, 35);
             this.button12.TabIndex = 12;
             this.button12.Text = "Tree to Double LinkList";
             this.button12.UseVisualStyleBackColor = true;
@@ -193,9 +207,10 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(818, 30);
+            this.button13.Location = new System.Drawing.Point(1227, 46);
+            this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(203, 23);
+            this.button13.Size = new System.Drawing.Size(304, 35);
             this.button13.TabIndex = 13;
             this.button13.Text = "Reverse a linked List";
             this.button13.UseVisualStyleBackColor = true;
@@ -203,9 +218,10 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(0, 110);
+            this.button14.Location = new System.Drawing.Point(10, 169);
+            this.button14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(203, 23);
+            this.button14.Size = new System.Drawing.Size(304, 35);
             this.button14.TabIndex = 14;
             this.button14.Text = "Tree Traversal BFS with Queque";
             this.button14.UseVisualStyleBackColor = true;
@@ -213,9 +229,10 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(0, 436);
+            this.button15.Location = new System.Drawing.Point(10, 671);
+            this.button15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(203, 23);
+            this.button15.Size = new System.Drawing.Size(304, 35);
             this.button15.TabIndex = 15;
             this.button15.Text = "Arbitary Graph";
             this.button15.UseVisualStyleBackColor = true;
@@ -223,9 +240,10 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(818, 211);
+            this.button17.Location = new System.Drawing.Point(1227, 325);
+            this.button17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(203, 23);
+            this.button17.Size = new System.Drawing.Size(304, 35);
             this.button17.TabIndex = 17;
             this.button17.Text = "Remove Min Item in Linked List";
             this.button17.UseVisualStyleBackColor = true;
@@ -233,9 +251,10 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(818, 111);
+            this.button19.Location = new System.Drawing.Point(1227, 171);
+            this.button19.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(203, 23);
+            this.button19.Size = new System.Drawing.Size(304, 35);
             this.button19.TabIndex = 19;
             this.button19.Text = "Insert Item in Linked List in sorted order";
             this.button19.UseVisualStyleBackColor = true;
@@ -243,9 +262,10 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(818, 136);
+            this.button16.Location = new System.Drawing.Point(1227, 209);
+            this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(203, 40);
+            this.button16.Size = new System.Drawing.Size(304, 62);
             this.button16.TabIndex = 20;
             this.button16.Text = "Find nth element starting from the end of the linklist";
             this.button16.UseVisualStyleBackColor = true;
@@ -253,9 +273,10 @@
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(818, 182);
+            this.button20.Location = new System.Drawing.Point(1227, 280);
+            this.button20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(203, 23);
+            this.button20.Size = new System.Drawing.Size(304, 35);
             this.button20.TabIndex = 21;
             this.button20.Text = "Find Linked List is Cyclic";
             this.button20.UseVisualStyleBackColor = true;
@@ -263,9 +284,10 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(484, 61);
+            this.button18.Location = new System.Drawing.Point(726, 94);
+            this.button18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(203, 23);
+            this.button18.Size = new System.Drawing.Size(304, 35);
             this.button18.TabIndex = 22;
             this.button18.Text = "Find bug";
             this.button18.UseVisualStyleBackColor = true;
@@ -273,9 +295,10 @@
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(818, 240);
+            this.button21.Location = new System.Drawing.Point(1227, 369);
+            this.button21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(203, 23);
+            this.button21.Size = new System.Drawing.Size(304, 35);
             this.button21.TabIndex = 23;
             this.button21.Text = "String compare using Linked List";
             this.button21.UseVisualStyleBackColor = true;
@@ -283,9 +306,10 @@
             // 
             // button22
             // 
-            this.button22.Location = new System.Drawing.Point(818, 269);
+            this.button22.Location = new System.Drawing.Point(1227, 414);
+            this.button22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(203, 23);
+            this.button22.Size = new System.Drawing.Size(304, 35);
             this.button22.TabIndex = 24;
             this.button22.Text = "Rearrange a given linked list in-place";
             this.button22.UseVisualStyleBackColor = true;
@@ -293,9 +317,10 @@
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(817, 298);
+            this.button23.Location = new System.Drawing.Point(1226, 458);
+            this.button23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(203, 37);
+            this.button23.Size = new System.Drawing.Size(304, 57);
             this.button23.TabIndex = 25;
             this.button23.Text = "Sort a linked list that is sorted alternating ascending and descending orders";
             this.button23.UseVisualStyleBackColor = true;
@@ -303,10 +328,9 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(817, 512);
-            this.button24.Margin = new System.Windows.Forms.Padding(2);
+            this.button24.Location = new System.Drawing.Point(1226, 788);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(196, 23);
+            this.button24.Size = new System.Drawing.Size(294, 35);
             this.button24.TabIndex = 26;
             this.button24.Text = "Ignore Special Character";
             this.button24.UseVisualStyleBackColor = true;
@@ -314,9 +338,10 @@
             // 
             // button25
             // 
-            this.button25.Location = new System.Drawing.Point(817, 456);
+            this.button25.Location = new System.Drawing.Point(1226, 702);
+            this.button25.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(203, 51);
+            this.button25.Size = new System.Drawing.Size(304, 78);
             this.button25.TabIndex = 27;
             this.button25.Text = "Delete Node greater than the given value";
             this.button25.UseVisualStyleBackColor = true;
@@ -324,10 +349,9 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(817, 369);
-            this.button26.Margin = new System.Windows.Forms.Padding(2);
+            this.button26.Location = new System.Drawing.Point(1226, 568);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(200, 35);
+            this.button26.Size = new System.Drawing.Size(300, 54);
             this.button26.TabIndex = 28;
             this.button26.Text = "Merge two sorted linked lists such that merged list is in reverse order";
             this.button26.UseVisualStyleBackColor = true;
@@ -335,10 +359,9 @@
             // 
             // button27
             // 
-            this.button27.Location = new System.Drawing.Point(819, 412);
-            this.button27.Margin = new System.Windows.Forms.Padding(2);
+            this.button27.Location = new System.Drawing.Point(1228, 634);
             this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(194, 34);
+            this.button27.Size = new System.Drawing.Size(291, 52);
             this.button27.TabIndex = 29;
             this.button27.Text = "Random Node from a Singly Linked List";
             this.button27.UseVisualStyleBackColor = true;
@@ -346,10 +369,9 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(817, 543);
-            this.button28.Margin = new System.Windows.Forms.Padding(2);
+            this.button28.Location = new System.Drawing.Point(1226, 835);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(202, 22);
+            this.button28.Size = new System.Drawing.Size(303, 34);
             this.button28.TabIndex = 30;
             this.button28.Text = "Delete Nodes for the given inputs";
             this.button28.UseVisualStyleBackColor = true;
@@ -357,10 +379,9 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(6, 280);
-            this.button29.Margin = new System.Windows.Forms.Padding(2);
+            this.button29.Location = new System.Drawing.Point(10, 431);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(194, 24);
+            this.button29.Size = new System.Drawing.Size(291, 37);
             this.button29.TabIndex = 31;
             this.button29.Text = "Create a balanced BST for the sorted int array";
             this.button29.UseVisualStyleBackColor = true;
@@ -368,9 +389,10 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(361, 375);
+            this.button30.Location = new System.Drawing.Point(542, 577);
+            this.button30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(203, 23);
+            this.button30.Size = new System.Drawing.Size(304, 35);
             this.button30.TabIndex = 32;
             this.button30.Text = "Test";
             this.button30.UseVisualStyleBackColor = true;
@@ -378,9 +400,10 @@
             // 
             // Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree
             // 
-            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Location = new System.Drawing.Point(8, 313);
+            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Location = new System.Drawing.Point(10, 481);
+            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Name = "Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree";
-            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Size = new System.Drawing.Size(203, 52);
+            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Size = new System.Drawing.Size(304, 80);
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.TabIndex = 33;
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Text = "Check if given sorted sub-sequence exists in binary search tree";
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.UseVisualStyleBackColor = true;
@@ -388,9 +411,10 @@
             // 
             // Check_whether_BST_contains_Dead_End_or_not
             // 
-            this.Check_whether_BST_contains_Dead_End_or_not.Location = new System.Drawing.Point(6, 375);
+            this.Check_whether_BST_contains_Dead_End_or_not.Location = new System.Drawing.Point(10, 577);
+            this.Check_whether_BST_contains_Dead_End_or_not.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Check_whether_BST_contains_Dead_End_or_not.Name = "Check_whether_BST_contains_Dead_End_or_not";
-            this.Check_whether_BST_contains_Dead_End_or_not.Size = new System.Drawing.Size(203, 52);
+            this.Check_whether_BST_contains_Dead_End_or_not.Size = new System.Drawing.Size(304, 80);
             this.Check_whether_BST_contains_Dead_End_or_not.TabIndex = 34;
             this.Check_whether_BST_contains_Dead_End_or_not.Text = "Check whether BST contains Dead End or not";
             this.Check_whether_BST_contains_Dead_End_or_not.UseVisualStyleBackColor = true;
@@ -398,19 +422,31 @@
             // 
             // ConnectNodes
             // 
-            this.ConnectNodes.Location = new System.Drawing.Point(0, 465);
+            this.ConnectNodes.Location = new System.Drawing.Point(10, 715);
+            this.ConnectNodes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ConnectNodes.Name = "ConnectNodes";
-            this.ConnectNodes.Size = new System.Drawing.Size(203, 23);
+            this.ConnectNodes.Size = new System.Drawing.Size(304, 35);
             this.ConnectNodes.TabIndex = 35;
             this.ConnectNodes.Text = "Connect Nodes";
             this.ConnectNodes.UseVisualStyleBackColor = true;
             this.ConnectNodes.Click += new System.EventHandler(this.ConnectNodes_Click);
             // 
+            // btnDistance_of_two_nodes_in_Binary_Search_Tree
+            // 
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(10, 758);
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Name = "btnDistance_of_two_nodes_in_Binary_Search_Tree";
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Size = new System.Drawing.Size(304, 65);
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.TabIndex = 36;
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Text = "Distance of two nodes in Binary Search Tree";
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.UseVisualStyleBackColor = true;
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Click += new System.EventHandler(this.btnDistance_of_two_nodes_in_Binary_Search_Tree_Click);
+            // 
             // LinkedListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1038, 730);
+            this.ClientSize = new System.Drawing.Size(1557, 1123);
+            this.Controls.Add(this.btnDistance_of_two_nodes_in_Binary_Search_Tree);
             this.Controls.Add(this.ConnectNodes);
             this.Controls.Add(this.Check_whether_BST_contains_Dead_End_or_not);
             this.Controls.Add(this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree);
@@ -445,6 +481,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LinkedListForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.LinkedListForm_Load);
@@ -489,5 +526,6 @@
         private System.Windows.Forms.Button Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree;
         private System.Windows.Forms.Button Check_whether_BST_contains_Dead_End_or_not;
         private System.Windows.Forms.Button ConnectNodes;
+        private System.Windows.Forms.Button btnDistance_of_two_nodes_in_Binary_Search_Tree;
     }
 }

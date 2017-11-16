@@ -2198,6 +2198,122 @@ namespace WindowsFormsApplication3
             datas.Append(node.data.ToString() + ",");
             InOrderWithNext(node.right);
         }
+
+        private void btnDistance_of_two_nodes_in_Binary_Search_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+                                          10
+                                       /      \
+                                      /        \
+                                     /          \
+                                    /            \                           
+                                   /              \
+                                  5               20
+                                /  \             / \
+                               /    \           /   \  
+                              /      \         /     \
+                             3        8       15     22 
+                            / \      / \ 
+                           /   \    /   \
+                          1    4    6    9
+                           \
+                            \
+                             2
+            */
+
+
+            Node tree = null;
+            Insert(10, ref tree);
+            Insert(5, ref tree);
+            Insert(20, ref tree);
+            Insert(3, ref tree);
+            Insert(8, ref tree);
+            Insert(6, ref tree);
+            Insert(15, ref tree);
+            Insert(22, ref tree);
+            Insert(1, ref tree);
+            Insert(2, ref tree);
+            Insert(4, ref tree);
+            Insert(9, ref tree);
+            datas.Clear();
+            datas.Append("\r\n InOrder Traversal :");
+            InOrder(tree);
+            MessageBox.Show(datas.ToString());
+
+            int input1 = 9;
+            int input2 = 11;
+
+            Node commonAccesstorNode = this.GetCommonAncestor_Distance_of_two_nodes_in_Binary_Search_Tree(tree, input1, input2);
+            int distance1 = this.FindDistanceForElementInBinary_SearchTree(commonAccesstorNode, input1);
+            int distance2 = -1;
+            if (distance1 > 0)
+            {
+                distance2 = this.FindDistanceForElementInBinary_SearchTree(commonAccesstorNode, input2);
+            }
+
+            MessageBox.Show($"The distance between {input1} and {input2} is {(distance1 > 0 && distance2>0 ? (distance1 + distance2).ToString() : "-1" )}");
+
+
+
+        }
+
+        private int FindDistanceForElementInBinary_SearchTree(Node node, int input)
+        {
+            int distance = -1;
+            bool nodeExists = false;
+            if (node == null)
+            {
+                return distance;
+            }
+
+            distance = 0;
+            while (node != null)
+            {
+                if (node.data > input)
+                {
+                    node = node.left;
+                    distance++;
+                }
+                else if (node.data < input)
+                {
+                    node = node.right;
+                    distance++;
+                }
+                else if (node.data == input)
+                {
+                    nodeExists = true;
+                    break;
+                }
+            }
+            
+            return nodeExists ? distance : -1;
+        }
+
+        private Node GetCommonAncestor_Distance_of_two_nodes_in_Binary_Search_Tree(Node tree, int input1, int input2)
+        {
+            if (tree==null)
+            {
+                return null;
+            }
+
+            while (tree!=null)
+            {
+                if (tree.data > input1 && tree.data > input2)
+                {
+                    tree = tree.left;
+                }
+                else if (tree.data<input1 && tree.data < input2)
+                {
+                    tree = tree.right;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return tree;
+        }
     }
 
     class Graph

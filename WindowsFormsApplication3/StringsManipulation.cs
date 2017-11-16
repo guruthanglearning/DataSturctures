@@ -1153,5 +1153,59 @@ function sayHello() {
             string input = "abaab";
             MessageBox.Show(this.longestPalindromeSubstringEasy(input).ToString());
         }
+
+        private void btn_Find_index_of_homogenous_continous_charcter_Click(object sender, EventArgs e)
+        {
+
+            string input = "AAAABBCBBBDEEEEEFFFF";
+            //string input = "ABCCDEF";
+            int previousCharCount = 0;
+            int previousCharIndex = -1;
+            int currentCharStartIndex = -1;
+            var previousChar = input[0];            
+            int currentCharCount = 1;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (i + 1 < input.Length)
+                {
+                    if (input[i] == input[i + 1])
+                    {
+                        currentCharCount++;
+                        if (currentCharStartIndex == -1)
+                        {
+                            currentCharStartIndex = i;
+                        }
+                    }
+                    else
+                    {
+                        if (previousCharCount < currentCharCount)
+                        {
+                            previousCharCount = currentCharCount;
+                            previousChar = input[i];
+                            previousCharIndex = currentCharStartIndex;
+                        }
+
+                        currentCharStartIndex = -1;
+                        currentCharCount = 1;
+                    }
+                }
+                else
+                {
+                    if (previousCharCount < currentCharCount)
+                    {
+                        previousCharCount = currentCharCount;
+                        previousChar = input[i];
+                        previousCharIndex = currentCharStartIndex;
+                    }
+                }
+
+               
+            }
+
+            
+            MessageBox.Show(previousCharIndex >=0 ? input[previousCharIndex].ToString() : "No character exists in continous homogenous.");
+
+        }
     }
 }

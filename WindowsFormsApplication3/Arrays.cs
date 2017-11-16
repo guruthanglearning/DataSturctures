@@ -12,6 +12,7 @@ namespace WindowsFormsApplication3
 {
     public partial class Arrays : Form
     {
+        StringBuilder inputDisplayBuilder = new StringBuilder();
         public Arrays()
         {
             InitializeComponent();
@@ -416,5 +417,68 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show($"Odd Number {res.ToString()}");
         }
+
+        private void Function_rotate_that_rotates_arr_of_size_n_by_d_elements_Click(object sender, EventArgs e)
+        {
+            int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            int d = 2;
+            inputDisplayBuilder.Clear();
+            MessageBox.Show($"Input Array is {printArray(input)}");
+            this.leftRotate(input, d, input.Length);
+            MessageBox.Show($"After rotation array is {printArray(input)}");
+
+            //int i = 7;
+            //int j = 10;
+
+            //MessageBox.Show($"GCD of {i} and {j} is {this.GCD(i,j).ToString()}");
+
+        }
+
+
+        public string printArray(int[] arr)
+        {
+
+            inputDisplayBuilder.Clear();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                inputDisplayBuilder.Append(arr[i] + " ");
+            }
+            return inputDisplayBuilder.ToString();
+
+        }
+
+
+        private int GCD(int a, int b)
+        {
+            if (b==0)
+            {
+                return a;
+            }
+            return GCD(b, a % b);
+
+        }
+
+        private void leftRotate(int[] arr, int d, int n)
+        {
+            int i, j, k, temp;
+            for (i = 0; i < this.GCD(d, n); i++)
+            {
+                /* move i-th values of blocks */
+                temp = arr[i];
+                j = i;
+                while (1 != 0)
+                {
+                    k = j + d;
+                    if (k >= n)
+                        k = k - n;
+                    if (k == i)
+                        break;
+                    arr[j] = arr[k];
+                    j = k;
+                }
+                arr[j] = temp;
+            }
+        }
+
     }
 }

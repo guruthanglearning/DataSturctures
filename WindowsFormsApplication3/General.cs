@@ -441,6 +441,10 @@ namespace WindowsFormsApplication3
 
         private void button15_Click_1(object sender, EventArgs e)
         {
+            dynamic dyn = 1;
+            object obj = 1;
+
+
 
         }
     }
