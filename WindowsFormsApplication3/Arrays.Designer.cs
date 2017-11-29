@@ -38,6 +38,7 @@
             this.MajorityElement = new System.Windows.Forms.Button();
             this.Find_the_Number_Occurring_Odd_Number_of_Times = new System.Windows.Forms.Button();
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements = new System.Windows.Forms.Button();
+            this.btn_Block_swap_algorithm_for_array_rotation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -149,11 +150,22 @@
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.UseVisualStyleBackColor = true;
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Click += new System.EventHandler(this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements_Click);
             // 
+            // btn_Block_swap_algorithm_for_array_rotation
+            // 
+            this.btn_Block_swap_algorithm_for_array_rotation.Location = new System.Drawing.Point(9, 465);
+            this.btn_Block_swap_algorithm_for_array_rotation.Name = "btn_Block_swap_algorithm_for_array_rotation";
+            this.btn_Block_swap_algorithm_for_array_rotation.Size = new System.Drawing.Size(608, 49);
+            this.btn_Block_swap_algorithm_for_array_rotation.TabIndex = 10;
+            this.btn_Block_swap_algorithm_for_array_rotation.Text = "Block swap algorithm for array rotation";
+            this.btn_Block_swap_algorithm_for_array_rotation.UseVisualStyleBackColor = true;
+            this.btn_Block_swap_algorithm_for_array_rotation.Click += new System.EventHandler(this.btn_Block_swap_algorithm_for_array_rotation_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 772);
+            this.Controls.Add(this.btn_Block_swap_algorithm_for_array_rotation);
             this.Controls.Add(this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements);
             this.Controls.Add(this.Find_the_Number_Occurring_Odd_Number_of_Times);
             this.Controls.Add(this.MajorityElement);
@@ -183,5 +195,6 @@
         private System.Windows.Forms.Button MajorityElement;
         private System.Windows.Forms.Button Find_the_Number_Occurring_Odd_Number_of_Times;
         private System.Windows.Forms.Button Function_rotate_that_rotates_arr_of_size_n_by_d_elements;
+        private System.Windows.Forms.Button btn_Block_swap_algorithm_for_array_rotation;
     }
 }

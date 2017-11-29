@@ -407,6 +407,9 @@ namespace WindowsFormsApplication3
 
         private void Find_the_Number_Occurring_Odd_Number_of_Times_Click(object sender, EventArgs e)
         {
+            //Time complexity : O(n)
+            //Space Complexity : O(1)
+
             int[] input = new int[] { 1, 2, 3, 2, 3, 1, 3 };
 
             int res = 0;
@@ -420,6 +423,10 @@ namespace WindowsFormsApplication3
 
         private void Function_rotate_that_rotates_arr_of_size_n_by_d_elements_Click(object sender, EventArgs e)
         {
+
+            // Time complexity: O(n)
+            // Auxiliary Space: O(1)
+
             int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int d = 2;
             inputDisplayBuilder.Clear();
@@ -460,6 +467,7 @@ namespace WindowsFormsApplication3
 
         private void leftRotate(int[] arr, int d, int n)
         {
+            // input  1, 2, 3, 4, 5, 6, 7
             int i, j, k, temp;
             for (i = 0; i < this.GCD(d, n); i++)
             {
@@ -480,5 +488,64 @@ namespace WindowsFormsApplication3
             }
         }
 
+
+        /*This function swaps d elements starting at index fi
+        with d elements starting at index si */
+        private void swap(int[] arr, int fi, int si, int d)
+        {
+            int i, temp;
+            for (i = 0; i < d; i++)
+            {
+                temp = arr[fi + i];
+                arr[fi + i] = arr[si + i];
+                arr[si + i] = temp;
+            }
+        }
+
+        private void LeftRotateBlockSwap(int[] arr, int d, int n)
+        {
+            /* Return If number of elements to be rotated is
+	        zero or equal to array size */
+            if (d == 0 || d == n)
+                return;
+
+            /*If number of elements to be rotated is exactly
+            half of array size */
+            if (n - d == d)
+            {
+                this.swap(arr, 0, n - d, d);                
+                return;
+            }
+
+            /* If A is shorter*/
+            if (d < n - d)
+            {
+                this.swap(arr, 0, n - d, d);
+                this.LeftRotateBlockSwap(arr, d, n - d);
+            }
+            else /* If B is shorter*/
+            {
+                this.swap(arr, 0, d, n - d);
+                //this.LeftRotateBlockSwap(arr + n - d, 2 * d - n, d); /*This is tricky*/)
+                if (n - d == d)
+                {
+                    this.swap(arr, n - d, n, d);
+                }                
+            }
+        }
+
+        private void btn_Block_swap_algorithm_for_array_rotation_Click(object sender, EventArgs e)
+        {
+            //http://www.geeksforgeeks.org/block-swap-algorithm-for-array-rotation/
+
+            //Time Complexity : O(n)
+            StringBuilder result = new StringBuilder();
+            int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7,8, 9, 10};
+            result.Append($"Before Swap {this.printArray(arr)}");
+            this.LeftRotateBlockSwap(arr, 7, arr.Length);
+            result.AppendLine($"After Swap {this.printArray(arr)}");
+            MessageBox.Show(result.ToString());
+
+        }
     }
 }
