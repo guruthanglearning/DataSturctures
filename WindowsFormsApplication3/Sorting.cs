@@ -144,10 +144,10 @@ namespace WindowsFormsApplication3
 
 
         private void Swap(int[] input, int from, int to)
-        {
-            int t = input[from];
-            input[from] = input[to];
-            input[to] = t;
+        {            
+            input[from] = input[from] + input[to];
+            input[to]= input[from] - input[to];
+            input[from] = input[from] - input[to];
         }
 
         private void button1_Click(object sender, EventArgs e)

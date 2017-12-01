@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -355,10 +356,40 @@ namespace WindowsFormsApplication3
             return builder.ToString();
         }
 
+        private int[,] FindPairsAndReturnArray(int[] input, int sum)
+        {
+            
+            // 1, 2, 10, 4, 6, 8, 8,-20
+            if (input == null || input.Length == 0)
+            {
+                MessageBox.Show("Invalid Inputs");
+            }
+
+            StringBuilder builder = new StringBuilder();
+            Dictionary<int, int>  hashmap = new Dictionary<int, int>();
+
+            int temp = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                temp = sum - input[i];
+                if (hashmap.ContainsKey(temp))
+                {                                       
+                    return new int[,] { { hashmap[temp], i } } ;                    
+                }
+                if (!hashmap.ContainsKey(input[i]))
+                {
+                    hashmap.Add(input[i], i);
+                }
+            }
+
+            return null;
+        }
+
         private void Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x_Click(object sender, EventArgs e)
         {
             //http://www.geeksforgeeks.org/write-a-c-program-that-given-a-set-a-of-n-numbers-and-another-number-x-determines-whether-or-not-there-exist-two-elements-in-s-whose-sum-is-exactly-x/
             int[] input = new int[] { 1, 2, 10, 4, 6, 8, 8,-20 };
+            var t = this.FindPairsAndReturnArray(input, -16);
             MessageBox.Show(this.FindPairs(input, -16));
         }
 
@@ -546,6 +577,6 @@ namespace WindowsFormsApplication3
             result.AppendLine($"After Swap {this.printArray(arr)}");
             MessageBox.Show(result.ToString());
 
-        }
+        }        
     }
 }
