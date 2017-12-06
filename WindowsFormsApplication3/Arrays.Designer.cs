@@ -39,6 +39,7 @@
             this.Find_the_Number_Occurring_Odd_Number_of_Times = new System.Windows.Forms.Button();
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements = new System.Windows.Forms.Button();
             this.btn_Block_swap_algorithm_for_array_rotation = new System.Windows.Forms.Button();
+            this.btn_Median_of_Two_sorted_arrays = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -160,11 +161,22 @@
             this.btn_Block_swap_algorithm_for_array_rotation.UseVisualStyleBackColor = true;
             this.btn_Block_swap_algorithm_for_array_rotation.Click += new System.EventHandler(this.btn_Block_swap_algorithm_for_array_rotation_Click);
             // 
+            // btn_Median_of_Two_sorted_arrays
+            // 
+            this.btn_Median_of_Two_sorted_arrays.Location = new System.Drawing.Point(12, 520);
+            this.btn_Median_of_Two_sorted_arrays.Name = "btn_Median_of_Two_sorted_arrays";
+            this.btn_Median_of_Two_sorted_arrays.Size = new System.Drawing.Size(605, 48);
+            this.btn_Median_of_Two_sorted_arrays.TabIndex = 11;
+            this.btn_Median_of_Two_sorted_arrays.Text = "Median of Two sorted arrays";
+            this.btn_Median_of_Two_sorted_arrays.UseVisualStyleBackColor = true;
+            this.btn_Median_of_Two_sorted_arrays.Click += new System.EventHandler(this.btn_Median_of_Two_sorted_arrays_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 772);
+            this.Controls.Add(this.btn_Median_of_Two_sorted_arrays);
             this.Controls.Add(this.btn_Block_swap_algorithm_for_array_rotation);
             this.Controls.Add(this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements);
             this.Controls.Add(this.Find_the_Number_Occurring_Odd_Number_of_Times);
@@ -196,5 +208,6 @@
         private System.Windows.Forms.Button Find_the_Number_Occurring_Odd_Number_of_Times;
         private System.Windows.Forms.Button Function_rotate_that_rotates_arr_of_size_n_by_d_elements;
         private System.Windows.Forms.Button btn_Block_swap_algorithm_for_array_rotation;
+        private System.Windows.Forms.Button btn_Median_of_Two_sorted_arrays;
     }
 }

@@ -577,6 +577,167 @@ namespace WindowsFormsApplication3
             result.AppendLine($"After Swap {this.printArray(arr)}");
             MessageBox.Show(result.ToString());
 
-        }        
+        }
+
+        public double FindMedianSortedArrayNew(int[] nums1, int[] nums2)
+        {
+
+            /*
+                int[] nums1 = new int[] {1 };
+                int[] nums2 = new int[] { 2, 3, 4};
+            */
+
+            if ((nums1 == null || nums1.Length == 0) && (nums2==null || nums2.Length == 0))
+            {
+                return 0;
+            }
+
+            int m = nums1.Length;
+            int n = nums2.Length;
+            int total = m + n;
+            int mid = total / 2;
+            double median = 0;
+            
+            if (total % 2 == 0)
+            {
+                if (m==n)
+                {
+                    median = (nums1[mid-1] + nums2[mid -n]) / 2.0 ;
+                }
+                else if (m<n)
+                {
+                    if (m == 0)
+                    {
+                        median = (nums2[mid] + nums2[mid - 1]) / 2.0;
+                    }
+                    else if (mid > m)
+                    {
+                        median = (nums2[total - mid - 1] + nums2[total - n - 1]) / 2.0;
+                    }
+                }
+                else if (n < m)
+                {
+                    if (mid > n)
+                    {
+                        median = (nums1[mid] + nums1[mid-1]) / 2.0;
+                    }
+                }
+            }
+            else
+            {
+                if (mid == 0)
+                {
+                    //Only 1 items is available in A or B arrays
+                    median = nums1.Length == 1 ? nums1[0] : nums2[0];
+                }
+                else
+                {
+                    if (m > n)
+                    {
+                        median = nums1[mid];
+                    }
+                    else if (m > 0 && n>m)
+                    {
+                        median = nums2[mid - 1];
+                    }
+                    else
+                    {
+                        median = nums2[mid];
+                    }
+
+                }
+            }
+            
+            return median;
+
+
+        }
+
+        public double findMedianSortedArrays(int[] A, int[] B)
+        {
+            int m = A.Length;
+            int n = B.Length;
+            if (m > n)
+            { // to ensure m<=n. Always maching array A is smalles array
+                int[] temp = A; A = B; B = temp;
+                int tmp = m; m = n; n = tmp;
+            }
+
+            /*             
+                int[] nums1 = new int[] { 3, 4, 5  };
+                int[] nums2 = new int[] { 1,2 };
+            */
+            int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
+            while (iMin <= iMax)
+            {
+                int i = (iMin + iMax) / 2;
+                int j = halfLen - i;
+
+                if (i < iMax && B[j - 1] > A[i])
+                {
+                    iMin = iMin + 1; // i is too small
+                }
+                else if (i > iMin && A[i - 1] > B[j])
+                {
+                    iMax = iMax - 1; // i is too big
+                }
+                else
+                { // i is perfect
+                    int maxLeft = 0;
+                    if (i == 0)
+                    {
+                        maxLeft = B[j - 1];
+                    }
+                    else if (j == 0)
+                    {
+                        maxLeft = A[i - 1];
+                    }
+                    else
+                    {
+                        maxLeft = Math.Max(A[i - 1], B[j - 1]);
+                    }
+                    if ((m + n) % 2 == 1)
+                    {
+                        return maxLeft;
+                    }
+
+                    int minRight = 0;
+                    if (i == m)
+                    {
+                        minRight = B[j];
+                    }
+                    else if (j == n)
+                    {
+                        minRight = A[i];
+                    }
+                    else
+                    {
+                        minRight = Math.Min(B[j], A[i]);
+                    }
+
+                    return (maxLeft + minRight) / 2.0;
+                }
+            }
+            return 0.0;
+        }
+        
+        private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
+        {
+            /*
+                Time Complexity         : O(log n)
+                Space Complexity        : O(1)
+                               
+                At first, the searching range is [0, m][0,m]. And the length of this searching range will be reduced by half after each loop. 
+                So, we only need log(m) loops. Since we do constant operations in each loop, so the time complexity is 
+                O(log(m)). Since m <= n, so the time complexity is O(log(min(m,n))).               
+                We only need constant memory to store 9 local variables, so the space complexity is O(1).
+            */
+
+            int[] nums1 = new int[] {1, 4  };
+            int[] nums2 = new int[] { 3,5, 7, 9 };
+            //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
+            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());            
+
+        }
     }
 }

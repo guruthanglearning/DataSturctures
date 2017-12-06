@@ -47,7 +47,7 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
+            this.btnLongest_Substring_Without_Repeating_Characters = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
@@ -263,16 +263,16 @@
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
-            // button18
+            // btnLongest_Substring_Without_Repeating_Characters
             // 
-            this.button18.Location = new System.Drawing.Point(482, 645);
-            this.button18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(420, 35);
-            this.button18.TabIndex = 19;
-            this.button18.Text = "Test";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.btnLongest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(482, 645);
+            this.btnLongest_Substring_Without_Repeating_Characters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLongest_Substring_Without_Repeating_Characters.Name = "btnLongest_Substring_Without_Repeating_Characters";
+            this.btnLongest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(412, 35);
+            this.btnLongest_Substring_Without_Repeating_Characters.TabIndex = 19;
+            this.btnLongest_Substring_Without_Repeating_Characters.Text = "Longest Substring Without Repeating Characters";
+            this.btnLongest_Substring_Without_Repeating_Characters.UseVisualStyleBackColor = true;
+            this.btnLongest_Substring_Without_Repeating_Characters.Click += new System.EventHandler(this.btnLongest_Substring_Without_Repeating_Characters_Click);
             // 
             // button19
             // 
@@ -386,7 +386,7 @@
             this.Controls.Add(this.button21);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.button19);
-            this.Controls.Add(this.button18);
+            this.Controls.Add(this.btnLongest_Substring_Without_Repeating_Characters);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
@@ -436,7 +436,7 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button btnLongest_Substring_Without_Repeating_Characters;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button21;

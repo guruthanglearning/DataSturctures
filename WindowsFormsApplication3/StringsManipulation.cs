@@ -803,45 +803,38 @@ namespace WindowsFormsApplication3
         // Given a list of m words, I’d like to query for the nth most frequent word(s). (e.g. Given 1000 words, tell me 
        
 
-        private void button18_Click(object sender, EventArgs e)
+        private void btnLongest_Substring_Without_Repeating_Characters_Click(object sender, EventArgs e)
         {
-            string inputJavaScript = @"// This function says 'hello' to the user
-function sayHello() {
-    var world = 'Hello';
-    alert(world);
-}";
-            bool dontPerformReplacement = false;
-            bool singleLineComments = false;
-            char[] input = inputJavaScript.ToCharArray();
-            for (int i = 0; i < inputJavaScript.Length; i++)
-            {
-                if (!dontPerformReplacement && inputJavaScript[i] == 47 && (inputJavaScript[i + 1] == 42))
-                {
-                    dontPerformReplacement = true;
-                }
-                else if (dontPerformReplacement && inputJavaScript[i] == 42 && inputJavaScript[i + 1] == 47)
-                {
-                    dontPerformReplacement = false;
-                }
-                else if (inputJavaScript[i] == 47 && inputJavaScript[i + 1] == 47)
-                {
-                    singleLineComments = true;
-                }
-                else if (singleLineComments && inputJavaScript[i] == 10)
-                {
-                    singleLineComments = false;
-                }
+            /*
+                https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+                iven a string, find the length of the longest substring without repeating characters.
+                Examples:
+                Given "abcabcbb", the answer is "abc", which the length is 3.
+                Given "bbbbb", the answer is "b", with the length of 1.
+                Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-                if (!dontPerformReplacement && !singleLineComments)
-                {
-                    if (inputJavaScript[i] == 39)
-                    {
-                        input[i] = (char)34;
-                    }
-                }
-            }
-            MessageBox.Show(new string(input));
+                Time Complexity  : O(n)
+                Space Complexity : O(m) where m is the input character set
+             */
+            MessageBox.Show(this.lengthOfLongestSubstring("abcaa").ToString());
         }
+
+
+        public int lengthOfLongestSubstring(String s)
+        {
+           
+            int n = s.Length, ans = 0;
+            int[] index = new int[128]; // current index of character
+                                        // try to extend the range [i, j]
+            for (int j = 0, i = 0; j < n; j++)
+            {
+                i = Math.Max(index[s[j]], i);
+                ans = Math.Max(ans, j - i + 1);
+                index[s[j]] = j + 1;
+            }
+            return ans;
+        }
+
 
         private void button19_Click(object sender, EventArgs e)
         {
@@ -1207,5 +1200,6 @@ function sayHello() {
             MessageBox.Show(previousCharIndex >=0 ? input[previousCharIndex].ToString() : "No character exists in continous homogenous.");
 
         }
+
     }
 }
