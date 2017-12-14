@@ -40,6 +40,7 @@
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements = new System.Windows.Forms.Button();
             this.btn_Block_swap_algorithm_for_array_rotation = new System.Windows.Forms.Button();
             this.btn_Median_of_Two_sorted_arrays = new System.Windows.Forms.Button();
+            this.btn_Maximum_Rectangular_Area_in_Histogram = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -171,11 +172,22 @@
             this.btn_Median_of_Two_sorted_arrays.UseVisualStyleBackColor = true;
             this.btn_Median_of_Two_sorted_arrays.Click += new System.EventHandler(this.btn_Median_of_Two_sorted_arrays_Click);
             // 
+            // btn_Maximum_Rectangular_Area_in_Histogram
+            // 
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Location = new System.Drawing.Point(12, 574);
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Name = "btn_Maximum_Rectangular_Area_in_Histogram";
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Size = new System.Drawing.Size(605, 46);
+            this.btn_Maximum_Rectangular_Area_in_Histogram.TabIndex = 12;
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Text = "Maximum Rectangular Area in Histogram";
+            this.btn_Maximum_Rectangular_Area_in_Histogram.UseVisualStyleBackColor = true;
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Click += new System.EventHandler(this.btn_Maximum_Rectangular_Area_in_Histogram_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 772);
+            this.Controls.Add(this.btn_Maximum_Rectangular_Area_in_Histogram);
             this.Controls.Add(this.btn_Median_of_Two_sorted_arrays);
             this.Controls.Add(this.btn_Block_swap_algorithm_for_array_rotation);
             this.Controls.Add(this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements);
@@ -209,5 +221,6 @@
         private System.Windows.Forms.Button Function_rotate_that_rotates_arr_of_size_n_by_d_elements;
         private System.Windows.Forms.Button btn_Block_swap_algorithm_for_array_rotation;
         private System.Windows.Forms.Button btn_Median_of_Two_sorted_arrays;
+        private System.Windows.Forms.Button btn_Maximum_Rectangular_Area_in_Histogram;
     }
 }

@@ -1065,7 +1065,6 @@ namespace WindowsFormsApplication3
                         {
                             current *= -1;
                         }
-
                     }
                 }
             }

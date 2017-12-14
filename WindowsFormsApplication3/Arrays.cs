@@ -723,6 +723,8 @@ namespace WindowsFormsApplication3
         
         private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
         {
+            
+
             /*
                 Time Complexity         : O(log n)
                 Space Complexity        : O(1)
@@ -737,6 +739,54 @@ namespace WindowsFormsApplication3
             int[] nums2 = new int[] { 3,5, 7, 9 };
             //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
             MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());            
+
+        }
+
+        private void btn_Maximum_Rectangular_Area_in_Histogram_Click(object sender, EventArgs e)
+        {
+            /*
+              Time Complexity is O(n)
+              Space Complexity is O(2 logn)
+            */
+
+           
+
+            int[] heights = new int[] { 1,2,2 };
+            int tempPos = 0;
+            int tempHist = 0;
+            Stack pos = new Stack();
+            Stack histogram = new Stack();
+            int largest = 0;
+            for (int i = 0; i < heights.Length; i++)
+            {
+                int h = heights[i];
+                if (histogram.Count == 0 || h >= (int)histogram.Peek())
+                {
+                    histogram.Push(h);
+                    pos.Push(i);
+                }
+                else
+                {
+                    while (histogram.Count > 0 &&  h < (int)histogram.Peek())
+                    {
+                        tempPos = (int)pos.Pop();
+                        tempHist = (int)histogram.Pop();
+                        largest = Math.Max(tempHist * (i - tempPos), largest);
+                    }
+                    histogram.Push(h);
+                    pos.Push(tempPos);
+                }
+
+            }
+            while (histogram.Count >0)
+            {
+                tempPos = (int)pos.Pop();
+                tempHist = (int)histogram.Pop();
+                largest = Math.Max(tempHist * (heights.Length - tempPos), largest);
+            }
+
+
+            MessageBox.Show($"Largest rectangle in histogram is {largest.ToString()} ");
 
         }
     }

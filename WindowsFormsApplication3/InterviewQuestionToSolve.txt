@@ -1,0 +1,4 @@
+﻿1.) Given an input {1,10%}, {2,30%}, {3, 40%}, total percentage should not exceed 
+more than 100%. Write a function to give random number from the list and ensure its not exceeding 
+the given possibility, for example if a function is called 100 times and 1 is picked randomly 100 times,
+then it can return 1 only 12.5 times = 10/(10+30+40) = 0.125 *100 = 12.5 

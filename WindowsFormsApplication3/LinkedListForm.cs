@@ -2241,7 +2241,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show(datas.ToString());
 
             int input1 = 9;
-            int input2 = 11;
+            int input2 = 9;
 
             Node commonAccesstorNode = this.GetCommonAncestor_Distance_of_two_nodes_in_Binary_Search_Tree(tree, input1, input2);
             int distance1 = this.FindDistanceForElementInBinary_SearchTree(commonAccesstorNode, input1);
