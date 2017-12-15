@@ -63,6 +63,7 @@
             this.Check_whether_BST_contains_Dead_End_or_not = new System.Windows.Forms.Button();
             this.ConnectNodes = new System.Windows.Forms.Button();
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree = new System.Windows.Forms.Button();
+            this.btnBinary_Tree_Is_BST = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -441,11 +442,22 @@
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.UseVisualStyleBackColor = true;
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Click += new System.EventHandler(this.btnDistance_of_two_nodes_in_Binary_Search_Tree_Click);
             // 
+            // btnBinary_Tree_Is_BST
+            // 
+            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(10, 829);
+            this.btnBinary_Tree_Is_BST.Name = "btnBinary_Tree_Is_BST";
+            this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(304, 59);
+            this.btnBinary_Tree_Is_BST.TabIndex = 37;
+            this.btnBinary_Tree_Is_BST.Text = "Binary Tree Is BST";
+            this.btnBinary_Tree_Is_BST.UseVisualStyleBackColor = true;
+            this.btnBinary_Tree_Is_BST.Click += new System.EventHandler(this.btnBinary_Tree_Is_BST_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1123);
+            this.Controls.Add(this.btnBinary_Tree_Is_BST);
             this.Controls.Add(this.btnDistance_of_two_nodes_in_Binary_Search_Tree);
             this.Controls.Add(this.ConnectNodes);
             this.Controls.Add(this.Check_whether_BST_contains_Dead_End_or_not);
@@ -527,5 +539,6 @@
         private System.Windows.Forms.Button Check_whether_BST_contains_Dead_End_or_not;
         private System.Windows.Forms.Button ConnectNodes;
         private System.Windows.Forms.Button btnDistance_of_two_nodes_in_Binary_Search_Tree;
+        private System.Windows.Forms.Button btnBinary_Tree_Is_BST;
     }
 }

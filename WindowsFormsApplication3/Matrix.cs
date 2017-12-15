@@ -108,5 +108,37 @@ namespace WindowsFormsApplication3
             return hr.value;            
         }
 
+        private void btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix_Click(object sender, EventArgs e)
+        {
+            /*
+            Time complexity is O(n+m) where n= row and m=column
+
+           http://www.geeksforgeeks.org/count-negative-numbers-in-a-column-wise-row-wise-sorted-matrix/
+
+            */
+
+            int[,] matrix = new int[,] { { -3, -2, -1, 1 }, { -2, 2, 3, 4 }, { 4, 3, 2, 1 } };
+
+            int count = 0;
+            int i = 0; //starting row
+            int j = matrix.GetLength(0); //max columns
+            int n = matrix.GetUpperBound(0); // max rows
+
+            while (j >= 0 && i < n)
+            {
+                if (matrix[i, j] < 0)
+                {
+                    count += (j + 1);
+                    i++;
+                }
+                else
+                {
+                    j--;
+                }
+            }
+
+            MessageBox.Show($"Total no of negative number in matrix is {count.ToString()} ");
+
+        }
     }
 }

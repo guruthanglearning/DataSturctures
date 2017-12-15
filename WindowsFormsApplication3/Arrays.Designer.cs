@@ -41,6 +41,7 @@
             this.btn_Block_swap_algorithm_for_array_rotation = new System.Windows.Forms.Button();
             this.btn_Median_of_Two_sorted_arrays = new System.Windows.Forms.Button();
             this.btn_Maximum_Rectangular_Area_in_Histogram = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -182,11 +183,20 @@
             this.btn_Maximum_Rectangular_Area_in_Histogram.UseVisualStyleBackColor = true;
             this.btn_Maximum_Rectangular_Area_in_Histogram.Click += new System.EventHandler(this.btn_Maximum_Rectangular_Area_in_Histogram_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(12, 626);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(604, 42);
+            this.button3.TabIndex = 13;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 772);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_Maximum_Rectangular_Area_in_Histogram);
             this.Controls.Add(this.btn_Median_of_Two_sorted_arrays);
             this.Controls.Add(this.btn_Block_swap_algorithm_for_array_rotation);
@@ -222,5 +232,6 @@
         private System.Windows.Forms.Button btn_Block_swap_algorithm_for_array_rotation;
         private System.Windows.Forms.Button btn_Median_of_Two_sorted_arrays;
         private System.Windows.Forms.Button btn_Maximum_Rectangular_Area_in_Histogram;
+        private System.Windows.Forms.Button button3;
     }
 }
