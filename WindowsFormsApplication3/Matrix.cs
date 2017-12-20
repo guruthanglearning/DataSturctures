@@ -117,7 +117,11 @@ namespace WindowsFormsApplication3
 
             */
 
-            int[,] matrix = new int[,] { { -3, -2, -1, 1 }, { -2, 2, 3, 4 }, { 4, 3, 2, 1 } };
+            int[,] matrix = new int[,] { 
+                                            { -3, -2, -1, 1 },
+                                            { -4, -3, -2, -1 }, 
+                                            {  4, 3, 2, 1 }
+                                        };
 
             int count = 0;
             int i = 0; //starting row
@@ -129,6 +133,7 @@ namespace WindowsFormsApplication3
                 if (matrix[i, j] < 0)
                 {
                     count += (j + 1);
+                    j = matrix.GetLength(0);
                     i++;
                 }
                 else

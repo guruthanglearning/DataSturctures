@@ -41,7 +41,10 @@
             this.btn_Block_swap_algorithm_for_array_rotation = new System.Windows.Forms.Button();
             this.btn_Median_of_Two_sorted_arrays = new System.Windows.Forms.Button();
             this.btn_Maximum_Rectangular_Area_in_Histogram = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not = new System.Windows.Forms.Button();
+            this.btn_Union_and_Intersection_of_two_sorted_arrays = new System.Windows.Forms.Button();
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays = new System.Windows.Forms.Button();
+            this.btn_Merge_Overlapping_Intervals = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -183,20 +186,55 @@
             this.btn_Maximum_Rectangular_Area_in_Histogram.UseVisualStyleBackColor = true;
             this.btn_Maximum_Rectangular_Area_in_Histogram.Click += new System.EventHandler(this.btn_Maximum_Rectangular_Area_in_Histogram_Click);
             // 
-            // button3
+            // btn_Check_Given_Array_Is_Sorted_Or_Not
             // 
-            this.button3.Location = new System.Drawing.Point(12, 626);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(604, 42);
-            this.button3.TabIndex = 13;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Location = new System.Drawing.Point(12, 626);
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Name = "btn_Check_Given_Array_Is_Sorted_Or_Not";
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Size = new System.Drawing.Size(604, 42);
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.TabIndex = 13;
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Text = "Check Given Array is sorted or not";
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.UseVisualStyleBackColor = true;
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Click += new System.EventHandler(this.btn_Check_Given_Array_Is_Sorted_Or_Not_Click);
+            // 
+            // btn_Union_and_Intersection_of_two_sorted_arrays
+            // 
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Location = new System.Drawing.Point(12, 674);
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Name = "btn_Union_and_Intersection_of_two_sorted_arrays";
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Size = new System.Drawing.Size(605, 46);
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.TabIndex = 14;
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Text = "Union and Intersection of two sorted arrays";
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.UseVisualStyleBackColor = true;
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Click += new System.EventHandler(this.btn_Union_and_Intersection_of_two_sorted_arrays_Click);
+            // 
+            // btn_Find_Union_and_Intersection_of_two_unsorted_arrays
+            // 
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Location = new System.Drawing.Point(12, 726);
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Name = "btn_Find_Union_and_Intersection_of_two_unsorted_arrays";
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Size = new System.Drawing.Size(604, 43);
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.TabIndex = 15;
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Text = "Find Union and Intersection of two unsorted arrays";
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.UseVisualStyleBackColor = true;
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Click += new System.EventHandler(this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays_Click);
+            // 
+            // btn_Merge_Overlapping_Intervals
+            // 
+            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(3, 775);
+            this.btn_Merge_Overlapping_Intervals.Name = "btn_Merge_Overlapping_Intervals";
+            this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(614, 40);
+            this.btn_Merge_Overlapping_Intervals.TabIndex = 16;
+            this.btn_Merge_Overlapping_Intervals.Text = "Merge Overlapping Intervals";
+            this.btn_Merge_Overlapping_Intervals.UseVisualStyleBackColor = true;
+            this.btn_Merge_Overlapping_Intervals.Click += new System.EventHandler(this.btn_Merge_Overlapping_Intervals_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1610, 772);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(1610, 864);
+            this.Controls.Add(this.btn_Merge_Overlapping_Intervals);
+            this.Controls.Add(this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays);
+            this.Controls.Add(this.btn_Union_and_Intersection_of_two_sorted_arrays);
+            this.Controls.Add(this.btn_Check_Given_Array_Is_Sorted_Or_Not);
             this.Controls.Add(this.btn_Maximum_Rectangular_Area_in_Histogram);
             this.Controls.Add(this.btn_Median_of_Two_sorted_arrays);
             this.Controls.Add(this.btn_Block_swap_algorithm_for_array_rotation);
@@ -232,6 +270,9 @@
         private System.Windows.Forms.Button btn_Block_swap_algorithm_for_array_rotation;
         private System.Windows.Forms.Button btn_Median_of_Two_sorted_arrays;
         private System.Windows.Forms.Button btn_Maximum_Rectangular_Area_in_Histogram;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Check_Given_Array_Is_Sorted_Or_Not;
+        private System.Windows.Forms.Button btn_Union_and_Intersection_of_two_sorted_arrays;
+        private System.Windows.Forms.Button btn_Find_Union_and_Intersection_of_two_unsorted_arrays;
+        private System.Windows.Forms.Button btn_Merge_Overlapping_Intervals;
     }
 }

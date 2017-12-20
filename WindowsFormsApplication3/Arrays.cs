@@ -13,6 +13,12 @@ namespace WindowsFormsApplication3
 {
     public partial class Arrays : Form
     {
+        public struct Interval
+        {
+            public int Start;
+            public int End;
+        }
+
         StringBuilder inputDisplayBuilder = new StringBuilder();
         public Arrays()
         {
@@ -789,5 +795,144 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Largest rectangle in histogram is {largest.ToString()} ");
 
         }
+
+        private void btn_Check_Given_Array_Is_Sorted_Or_Not_Click(object sender, EventArgs e)
+        {
+            /*
+             Time Complexity    :   O(n)
+             http://www.geeksforgeeks.org/program-check-array-sorted-not-iterative-recursive/
+            */
+
+            int[] input = new int[] {1, 2, 3, 4, 10, 5 };
+            bool? returnValue = null;
+            if (input != null && input.Length > 0)
+            {
+                returnValue = true;
+                for (int i = 0; i < input.Length; i++)
+                {
+                    if (i + 1 < input.Length)
+                    {
+                        if (input[i] > input[i + 1])
+                        {
+                            returnValue = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            string result = returnValue !=null ? "Empyt" : returnValue.Value ? "Sorted" : "Not Sorted";
+            MessageBox.Show($"Given array is {result}");
+            
+        }
+
+        private void btn_Union_and_Intersection_of_two_sorted_arrays_Click(object sender, EventArgs e)
+        {
+            
+            /*
+             Time Complexity is O(m+n) where m and n is the length of the input 1 and input 2 array respectivey
+             http://www.geeksforgeeks.org/union-and-intersection-of-two-sorted-arrays-2/
+            */
+            int[] input1 = new int[] {1, 2, 3, 4, 5 };
+            int[] input2 = new int[] { 3,5,7,9,11 };
+            StringBuilder result = new StringBuilder();
+            if (input1!=null && input1.Length > 0 && input2!= null && input2.Length > 0)
+            {                                 
+                int i = 0, j = 0;
+
+                while (i < input1.Length && j< input2.Length)
+                {
+                    if (input1[i] < input2[j])
+                    {
+                        i++;
+                    }
+                    else if (input1[i] > input2[j])
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        result.Append(input1[i] + " ");
+                        i++;
+                        j++;
+                    }
+                }
+
+
+                MessageBox.Show($"Interaction of two sorted arrays are {(result.Length > 0 ? result.ToString() : "none")}");
+
+            }
+
+
+        }
+
+        private void btn_Find_Union_and_Intersection_of_two_unsorted_arrays_Click(object sender, EventArgs e)
+        {
+            /*
+             Sort both the input arrays and find the union and intersect 
+             Time Complexity -
+                                Sorting using Merge sort would be O(m log m) + O(n log n) 
+                                Union and Intersect would be  O(m+n)
+                                Total Comlexity would be O(m log m) + O(m log n) + O(m+n)
+
+            http://www.geeksforgeeks.org/find-union-and-intersection-of-two-unsorted-arrays/
+
+             */
+            int[] input1 = new int[] { 7, 1, 5, 2, 3, 6 };
+            int[] input2 = new int[] { 3, 8, 6, 20, 7 };
+           
+        }
+
+        private void btn_Merge_Overlapping_Intervals_Click(object sender, EventArgs e)
+        {
+            /*
+                 Time Complexity - 
+                                    Sorting for Merge Sorting is O(n log n )
+                                    Overlapping Interval O(n)
+                 http://www.geeksforgeeks.org/merging-intervals/
+            */
+            //int[,] input1 = new int[4, 2] { { 6, 8 }, { 1, 9 }, { 2, 4 }, { 4, 7 } };
+            Interval[] input1 = new Interval[] {
+                                                    new Interval(){Start = 1, End = 9},
+                                                    new Interval(){Start = 2, End = 4},
+                                                    new Interval(){Start = 4, End = 7},
+                                                    new Interval(){Start = 6, End = 8}                                                    
+                                                };
+            
+            if (input1!=null && input1.Length == 0)
+            {
+                MessageBox.Show("Input is empty");
+            }
+
+            StringBuilder overlapping = new StringBuilder();            
+            Stack<Interval> stack = new Stack<Interval>();
+            stack.Push(input1[0]);
+
+            for(int i =1; i<input1.Length; i++ )
+            {
+                Interval interval = stack.Peek();
+                if (interval.End < input1[i].Start)
+                {
+                    stack.Push(input1[i]);
+                }
+                else if (interval.End < input1[i].End)
+                {
+                    interval.End = input1[i].End;
+                    stack.Pop();
+                    stack.Push(interval);                    
+                }
+            }    
+            
+            while (stack.Count!=0)
+            {
+                Interval interval = stack.Pop();
+                overlapping.Append($"{interval.Start.ToString()} {interval.End.ToString()} \n");
+            }
+
+            MessageBox.Show($"Overlapping pair: \n {overlapping.ToString()}"); 
+
+        }
+
+                
     }
 }

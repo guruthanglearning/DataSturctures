@@ -64,6 +64,9 @@
             this.ConnectNodes = new System.Windows.Forms.Button();
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree = new System.Windows.Forms.Button();
             this.btnBinary_Tree_Is_BST = new System.Windows.Forms.Button();
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer = new System.Windows.Forms.Button();
+            this.btn_Clone_a_linked_list_with_next_pointer = new System.Windows.Forms.Button();
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -71,7 +74,7 @@
             this.button1.Location = new System.Drawing.Point(10, 89);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(304, 35);
+            this.button1.Size = new System.Drawing.Size(472, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "Tree Traversal";
             this.button1.UseVisualStyleBackColor = true;
@@ -79,7 +82,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(342, 138);
+            this.button2.Location = new System.Drawing.Point(516, 126);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(304, 35);
@@ -90,7 +93,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(342, 94);
+            this.button3.Location = new System.Drawing.Point(516, 82);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(304, 35);
@@ -112,7 +115,7 @@
             this.button4.Location = new System.Drawing.Point(10, 134);
             this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(304, 35);
+            this.button4.Size = new System.Drawing.Size(472, 35);
             this.button4.TabIndex = 4;
             this.button4.Text = "Tree Traversal BFS";
             this.button4.UseVisualStyleBackColor = true;
@@ -156,7 +159,7 @@
             this.button8.Location = new System.Drawing.Point(10, 209);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(304, 35);
+            this.button8.Size = new System.Drawing.Size(472, 35);
             this.button8.TabIndex = 8;
             this.button8.Text = "Depth of the Tree";
             this.button8.UseVisualStyleBackColor = true;
@@ -167,7 +170,7 @@
             this.button9.Location = new System.Drawing.Point(10, 343);
             this.button9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(304, 35);
+            this.button9.Size = new System.Drawing.Size(472, 35);
             this.button9.TabIndex = 9;
             this.button9.Text = "Tree To LinkList";
             this.button9.UseVisualStyleBackColor = true;
@@ -178,7 +181,7 @@
             this.button10.Location = new System.Drawing.Point(10, 254);
             this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(304, 35);
+            this.button10.Size = new System.Drawing.Size(472, 35);
             this.button10.TabIndex = 10;
             this.button10.Text = "Get Inorder successor of a Tree ";
             this.button10.UseVisualStyleBackColor = true;
@@ -189,7 +192,7 @@
             this.button11.Location = new System.Drawing.Point(10, 298);
             this.button11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(304, 35);
+            this.button11.Size = new System.Drawing.Size(472, 35);
             this.button11.TabIndex = 11;
             this.button11.Text = "Common Ancestor";
             this.button11.UseVisualStyleBackColor = true;
@@ -200,7 +203,7 @@
             this.button12.Location = new System.Drawing.Point(10, 388);
             this.button12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(304, 35);
+            this.button12.Size = new System.Drawing.Size(472, 35);
             this.button12.TabIndex = 12;
             this.button12.Text = "Tree to Double LinkList";
             this.button12.UseVisualStyleBackColor = true;
@@ -222,7 +225,7 @@
             this.button14.Location = new System.Drawing.Point(10, 169);
             this.button14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(304, 35);
+            this.button14.Size = new System.Drawing.Size(472, 35);
             this.button14.TabIndex = 14;
             this.button14.Text = "Tree Traversal BFS with Queque";
             this.button14.UseVisualStyleBackColor = true;
@@ -230,10 +233,10 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(10, 671);
+            this.button15.Location = new System.Drawing.Point(10, 578);
             this.button15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(304, 35);
+            this.button15.Size = new System.Drawing.Size(472, 35);
             this.button15.TabIndex = 15;
             this.button15.Text = "Arbitary Graph";
             this.button15.UseVisualStyleBackColor = true;
@@ -285,7 +288,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(726, 94);
+            this.button18.Location = new System.Drawing.Point(900, 82);
             this.button18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(304, 35);
@@ -382,7 +385,7 @@
             // 
             this.button29.Location = new System.Drawing.Point(10, 431);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(291, 37);
+            this.button29.Size = new System.Drawing.Size(472, 37);
             this.button29.TabIndex = 31;
             this.button29.Text = "Create a balanced BST for the sorted int array";
             this.button29.UseVisualStyleBackColor = true;
@@ -390,7 +393,7 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(542, 577);
+            this.button30.Location = new System.Drawing.Point(731, 587);
             this.button30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(304, 35);
@@ -401,10 +404,10 @@
             // 
             // Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree
             // 
-            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Location = new System.Drawing.Point(10, 481);
+            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Location = new System.Drawing.Point(10, 476);
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Name = "Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree";
-            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Size = new System.Drawing.Size(304, 80);
+            this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Size = new System.Drawing.Size(472, 39);
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.TabIndex = 33;
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.Text = "Check if given sorted sub-sequence exists in binary search tree";
             this.Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree.UseVisualStyleBackColor = true;
@@ -412,10 +415,10 @@
             // 
             // Check_whether_BST_contains_Dead_End_or_not
             // 
-            this.Check_whether_BST_contains_Dead_End_or_not.Location = new System.Drawing.Point(10, 577);
+            this.Check_whether_BST_contains_Dead_End_or_not.Location = new System.Drawing.Point(10, 525);
             this.Check_whether_BST_contains_Dead_End_or_not.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Check_whether_BST_contains_Dead_End_or_not.Name = "Check_whether_BST_contains_Dead_End_or_not";
-            this.Check_whether_BST_contains_Dead_End_or_not.Size = new System.Drawing.Size(304, 80);
+            this.Check_whether_BST_contains_Dead_End_or_not.Size = new System.Drawing.Size(472, 42);
             this.Check_whether_BST_contains_Dead_End_or_not.TabIndex = 34;
             this.Check_whether_BST_contains_Dead_End_or_not.Text = "Check whether BST contains Dead End or not";
             this.Check_whether_BST_contains_Dead_End_or_not.UseVisualStyleBackColor = true;
@@ -423,10 +426,10 @@
             // 
             // ConnectNodes
             // 
-            this.ConnectNodes.Location = new System.Drawing.Point(10, 715);
+            this.ConnectNodes.Location = new System.Drawing.Point(13, 623);
             this.ConnectNodes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ConnectNodes.Name = "ConnectNodes";
-            this.ConnectNodes.Size = new System.Drawing.Size(304, 35);
+            this.ConnectNodes.Size = new System.Drawing.Size(472, 39);
             this.ConnectNodes.TabIndex = 35;
             this.ConnectNodes.Text = "Connect Nodes";
             this.ConnectNodes.UseVisualStyleBackColor = true;
@@ -434,9 +437,9 @@
             // 
             // btnDistance_of_two_nodes_in_Binary_Search_Tree
             // 
-            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(10, 758);
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(13, 670);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Name = "btnDistance_of_two_nodes_in_Binary_Search_Tree";
-            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Size = new System.Drawing.Size(304, 65);
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Size = new System.Drawing.Size(472, 46);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.TabIndex = 36;
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Text = "Distance of two nodes in Binary Search Tree";
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.UseVisualStyleBackColor = true;
@@ -444,19 +447,52 @@
             // 
             // btnBinary_Tree_Is_BST
             // 
-            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(10, 829);
+            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(13, 722);
             this.btnBinary_Tree_Is_BST.Name = "btnBinary_Tree_Is_BST";
-            this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(304, 59);
+            this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(472, 42);
             this.btnBinary_Tree_Is_BST.TabIndex = 37;
             this.btnBinary_Tree_Is_BST.Text = "Binary Tree Is BST";
             this.btnBinary_Tree_Is_BST.UseVisualStyleBackColor = true;
             this.btnBinary_Tree_Is_BST.Click += new System.EventHandler(this.btnBinary_Tree_Is_BST_Click);
+            // 
+            // btn_Clone_a_linked_list_with_next_and_random_pointer
+            // 
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Location = new System.Drawing.Point(1226, 882);
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Name = "btn_Clone_a_linked_list_with_next_and_random_pointer";
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Size = new System.Drawing.Size(292, 59);
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.TabIndex = 38;
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Text = "Clone a linked list with next and random pointer";
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.UseVisualStyleBackColor = true;
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Click += new System.EventHandler(this.btn_Clone_a_linked_list_with_next_and_random_pointer_Click);
+            // 
+            // btn_Clone_a_linked_list_with_next_pointer
+            // 
+            this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(1228, 956);
+            this.btn_Clone_a_linked_list_with_next_pointer.Name = "btn_Clone_a_linked_list_with_next_pointer";
+            this.btn_Clone_a_linked_list_with_next_pointer.Size = new System.Drawing.Size(290, 51);
+            this.btn_Clone_a_linked_list_with_next_pointer.TabIndex = 39;
+            this.btn_Clone_a_linked_list_with_next_pointer.Text = "Clone a linked list with next pointer";
+            this.btn_Clone_a_linked_list_with_next_pointer.UseVisualStyleBackColor = true;
+            this.btn_Clone_a_linked_list_with_next_pointer.Click += new System.EventHandler(this.btn_Clone_a_linked_list_with_next_pointer_Click);
+            // 
+            // btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree
+            // 
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(13, 775);
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Name = "btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree";
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Size = new System.Drawing.Size(470, 48);
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.TabIndex = 40;
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Text = "Sum of the nodes at each level in a Binary tree";
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.UseVisualStyleBackColor = true;
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Click += new System.EventHandler(this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree_Click);
             // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1123);
+            this.Controls.Add(this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree);
+            this.Controls.Add(this.btn_Clone_a_linked_list_with_next_pointer);
+            this.Controls.Add(this.btn_Clone_a_linked_list_with_next_and_random_pointer);
             this.Controls.Add(this.btnBinary_Tree_Is_BST);
             this.Controls.Add(this.btnDistance_of_two_nodes_in_Binary_Search_Tree);
             this.Controls.Add(this.ConnectNodes);
@@ -540,5 +576,8 @@
         private System.Windows.Forms.Button ConnectNodes;
         private System.Windows.Forms.Button btnDistance_of_two_nodes_in_Binary_Search_Tree;
         private System.Windows.Forms.Button btnBinary_Tree_Is_BST;
+        private System.Windows.Forms.Button btn_Clone_a_linked_list_with_next_and_random_pointer;
+        private System.Windows.Forms.Button btn_Clone_a_linked_list_with_next_pointer;
+        private System.Windows.Forms.Button btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree;
     }
 }

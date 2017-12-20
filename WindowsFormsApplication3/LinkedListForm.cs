@@ -2443,7 +2443,204 @@ namespace WindowsFormsApplication3
             return true;            
         }
 
+        private void btn_Clone_a_linked_list_with_next_and_random_pointer_Click(object sender, EventArgs e)
+        {
+            /* 
+             Time Complexity    :O(n)
+             Space Complexity   :O(n)             
+             http://www.geeksforgeeks.org/clone-linked-list-next-arbit-pointer-set-2/
+
+            4----->3----->5----->1----->0----->11----->2
+            |      |      ^                            ^
+            |      |      |                            | 
+            |      |      |                            |
+            -------|-------                            |
+                   |------------------------------------ 
+             */
+
+            LinkList LLNodeFirst = null;
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 0);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 11);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
+            datas.Append("Original List \n");
+            DisplayLinkList(LLNodeFirst);
+            datas.Append("\n");
+
+            LLNodeFirst.random = LLNodeFirst.next.next;
+            LLNodeFirst.next.next.random = LLNodeFirst.next.next.next.next.next.next;
+
+            // Time Complexity    :O(n)
+            // Space Complexity   :O(n)            
+            
+            Dictionary <LinkList, LinkList> storage = new Dictionary<LinkList, LinkList>();
+            LinkList original = LLNodeFirst;
+            LinkList clone = null;
+            while (original != null)
+            {
+                clone = new LinkList();
+                clone.data = original.data;
+                storage.Add(original, clone);
+                original = original.next;
+            }
+
+            original = LLNodeFirst;
+
+            while (original!=null)
+            {
+                clone = storage[original];
+                if (original.next!=null)
+                { 
+                    clone.next = storage[original.next];
+                }
+                if (original.random!=null)
+                { 
+                    clone.random = storage[original.random];
+                }
+                original = original.next;
+            }
+            datas.Append("Cloned List \n");
+            datas.Append("Time Complexity    :O(n) and Space Complexity   :O(n) \n\n");
+            DisplayLinkList(storage[LLNodeFirst]);
+
+            // Time Complexity    :O(n)
+            // Space Complexity   :O(1)
+            datas.Append("Time Complexity    :O(n) and Space Complexity   :O(1) \n\n");
+
+            original = LLNodeFirst;
+            clone = null;
+            while (original!=null)
+            {
+                LinkList temp = original.next;
+                clone = new LinkList() { data = original.data };
+                original.next = clone;
+                clone.next = temp;
+                original = temp;                
+            }
+
+            original = LLNodeFirst;
+            while (original!=null && original.next!=null)
+            {
+                if (original.random != null)
+                {
+                    original.next.random = original.random.next;
+                }
+                original = original.next.next;
+            }
+
+            original = LLNodeFirst;
+            clone = LLNodeFirst.next;
+            LinkList tempCloned = clone;
+
+            while (original!=null && clone!=null)
+            {
+                original.next = original.next != null ? original.next.next : original.next;
+                clone.next = clone.next != null ? clone.next.next : clone.next;
+                original = original.next;
+                clone = clone.next;
+            }
+
+            DisplayLinkList(tempCloned);
+
+            MessageBox.Show(datas.ToString());
+
+        }
+
+        private void btn_Clone_a_linked_list_with_next_pointer_Click(object sender, EventArgs e)
+        {
+            /* 
+            Time Complexity    :O(n)            
+            
+           4----->3----->5----->1----->0----->11----->2
+           |      |      ^                            ^
+           |      |      |                            | 
+           |      |      |                            |
+           -------|-------                            |
+                  |------------------------------------ 
+            */
+
+            LinkList LLNodeFirst = null;
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 0);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 11);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
+            datas.Append("Original List \n");
+            DisplayLinkList(LLNodeFirst);
+            datas.Append("\n");
+
+            datas.Append("Cloned List \n");
+
+            LinkList original = LLNodeFirst;
+            LinkList clone = new LinkList();            
+            LinkList temp = clone;
+
+            while (original != null)
+            {
+                temp.next = new LinkList() { data = original.data };
+                original = original.next;
+                temp = temp.next;
+            }
+            clone = clone.next;
+
+            DisplayLinkList(clone);
+            datas.Append("\n");
+
+            MessageBox.Show(datas.ToString());
+
+
+        }
+
+        private void btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree_Click(object sender, EventArgs e)
+        {
+            /*
+                                         10
+                                      /      \
+                                     /        \
+                                    /          \
+                                   /            \                           
+                                  /              \
+                                 5               20
+                               /  \             / \
+                              /    \           /   \  
+                             /      \         /     \
+                            3        8       15     22 
+                           / \      / \ 
+                          /   \    /   \
+                         1    4    6    9
+                          \
+                           \
+                            2
+           */
+
+
+            Node tree = null;
+            Insert(10, ref tree);
+            Insert(5, ref tree);
+            Insert(20, ref tree);
+            Insert(3, ref tree);
+            Insert(8, ref tree);
+            Insert(6, ref tree);
+            Insert(15, ref tree);
+            Insert(22, ref tree);
+            Insert(1, ref tree);
+            Insert(2, ref tree);
+            Insert(4, ref tree);
+            Insert(9, ref tree);
+            datas.Clear();
+            datas.Append("\r\n InOrder Traversal :");
+            InOrder(tree);
+            MessageBox.Show(datas.ToString());
+        }
     }
+
+
+
 
     class Graph
     {
@@ -2480,6 +2677,7 @@ namespace WindowsFormsApplication3
     {
         public int data;
         public LinkList next;
+        public LinkList random;
     }
 
     public class LinkListCharacter
