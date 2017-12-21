@@ -404,5 +404,41 @@ namespace WindowsFormsApplication3
             result.AppendLine($"After Sorting {DisplayResult(input)}");
             MessageBox.Show(result.ToString());
         }
+
+        private void btn_Bubble_Sort_Click(object sender, EventArgs e)
+        {
+            /*
+            Time Complexity is O(n^2)
+            http://www.geeksforgeeks.org/bubble-sort/
+             */
+
+            int[] input = new int[] { 1,5, 4,2, 0, 12, 10 };
+
+            if (input == null || input.Length == 0)
+            {
+                MessageBox.Show("Input array is empty");
+            }
+
+            StringBuilder result = new StringBuilder();
+            result.Append($"Before Sorting {DisplayResult(input)} \n \n");
+
+            for(int i = 0; i<input.Length; i++)
+            {
+                for (int j = 0; j < input.Length - i-1; j++)
+                {
+                    if (input[j] > input[j + 1])
+                    {
+                        input[j] = input[j] + input[j + 1];
+                        input[j + 1] = input[j] - input[j + 1];
+                        input[j] = input[j] - input[j + 1];
+                    }
+                }
+            }
+
+            result.Append($"After Sorting {DisplayResult(input)}");
+
+            MessageBox.Show(result.ToString());
+
+        }
     }
 }

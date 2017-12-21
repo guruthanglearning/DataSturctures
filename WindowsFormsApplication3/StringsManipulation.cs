@@ -1153,8 +1153,8 @@ namespace WindowsFormsApplication3
             //string input = "ABCCDEF";
             int previousCharCount = 0;
             int previousCharIndex = -1;
+            char previousChar = input[0];
             int currentCharStartIndex = -1;
-            var previousChar = input[0];            
             int currentCharCount = 1;
 
             for (int i = 0; i < input.Length; i++)
@@ -1196,7 +1196,7 @@ namespace WindowsFormsApplication3
             }
 
             
-            MessageBox.Show(previousCharIndex >=0 ? input[previousCharIndex].ToString() : "No character exists in continous homogenous.");
+            MessageBox.Show(previousCharIndex >=0 ? $"Homogenous continous character is {input[previousCharIndex].ToString()} and count is {previousCharCount.ToString()}" : "No character exists in continous homogenous.");
 
         }
 

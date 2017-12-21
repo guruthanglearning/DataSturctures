@@ -114,6 +114,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cache.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cache.Designer.cs">
+      <DependentUpon>Cache.cs</DependentUpon>
+    </Compile>
     <Compile Include="Functions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BitOperators.resx">
       <DependentUpon>BitOperators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cache.resx">
+      <DependentUpon>Cache.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DesignPatterns.resx">
       <DependentUpon>DesignPatterns.cs</DependentUpon>

@@ -41,6 +41,10 @@ namespace WindowsFormsApplication3
             {
                 result = ++input;
             }
+            else if (input % 4 == 3)
+            {
+                result = 0;
+            }
 
             MessageBox.Show(result.ToString());
             
