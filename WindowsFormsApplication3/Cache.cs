@@ -17,51 +17,38 @@ namespace WindowsFormsApplication3
             InitializeComponent();
         }
 
-        private void btn_Implement_Cache_From_Amazon_Click(object sender, EventArgs e)
+       
+        private void btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList_Click(object sender, EventArgs e)
         {
             /*
-             Given an Interface below
-             public interface IAmazonCache
-             {
-                string Put(string data);
-                string Get(string key);
-             }
+                Time Complexity for adding an item to cache is O(1)
+                Time Complexity for getting an item from cache is O(1)
+            */
 
-             Implement caching 
-             What data structure we would be using to implement caching efficiently
-             */
+            AmazonCacheWithDictionaryValueAsLinkedList cache = new AmazonCacheWithDictionaryValueAsLinkedList();
+            cache.Put("A");
+            cache.Put("B");
+            cache.Put("C");
+            cache.Get("B");
+            cache.Put("D");
+            cache.Put("E");
+            cache.Put("F");
+            cache.Put("G");
+            cache.Put("H");
+            cache.Put("I");
+            cache.Put("J");
+            cache.Put("K");
+            MessageBox.Show($"Foward list \n{cache.DisplayForward()}\n\nBackward list \n{cache.DisplayBackward()}");
 
-            AmazonCache cache = new AmazonCache();
-            cache.Put("1");
-            cache.Put("2");
-            cache.Put("3");
-            cache.Put("4");
-            cache.Put("5");
-            cache.Put("6");
-            cache.Get("2");
-            cache.Put("7");
-            cache.Put("8");
-            cache.Put("9");
-            cache.Put("10");
-            StringBuilder message = new StringBuilder($"Before Accessing Cache \n {cache.Display()}");
 
-            cache.Get("1");
-            message.Append($"After Accessing Cache \n {cache.Display()}");
-
-            cache.Put("11");
-            message.Append($"After putting new item into Cache when cache size exceeds \n {cache.Display()}");
-
-            MessageBox.Show(message.ToString());
         }
-
-
-
-    }    
+    }
 
     public class LinkedList
     {
         public string Data;
         public LinkedList Next;
+        public LinkedList Previous;
     }
 
     public interface IAmazonCache
@@ -70,92 +57,93 @@ namespace WindowsFormsApplication3
         string Get(string key);
     }
 
-    public class AmazonCache : IAmazonCache
-    {
-        Dictionary<string, string> cacheStorage = new Dictionary<string, string>();
-        LinkedList linkedList = null;
-        LinkedList linkedListStart = null;        
-        int size = 0;
 
-        public string Put(string data)
-        {
-            if (!cacheStorage.ContainsKey(data))
-            {
-                if (size < 10)
-                {                    
-                    if (linkedList == null)
-                    {
-                        linkedList = new LinkedList() { Data = data };
-                        linkedListStart = linkedList;
-                    }
-                    else
-                    {
-                        linkedList.Next = new LinkedList() { Data = data };
-                        linkedList= linkedList.Next;
-                    }
-                    cacheStorage.Add(data, data);
-                    ++size;                    
-                }
-                else
-                {
-                    string removeItemKey = linkedListStart.Data;
-                    if (cacheStorage.ContainsKey(removeItemKey))
-                    {
-                        cacheStorage.Remove(removeItemKey);
-                    }
-                    linkedListStart = linkedListStart.Next;
-                    linkedList.Next = new LinkedList() { Data = data };
-                    cacheStorage.Add(data, data);
-                }                
-            }
-            return data; 
-        }
+    public class AmazonCacheWithDictionaryValueAsLinkedList: IAmazonCache
+    {
+        Dictionary<string, LinkedList> cacheStorage = new Dictionary<string, LinkedList>();
+        LinkedList linkList = null;
+        LinkedList startPointLinkList = null;
+     
+        int size = 0;
 
         public string Get(string key)
         {
-            string returnValue = string.Empty;
-            if (cacheStorage.ContainsKey(key))
+            if (!cacheStorage.ContainsKey(key))
             {
-                LinkedList previous = linkedListStart;
-                LinkedList current = previous.Next;
-                returnValue = cacheStorage[key];
-                if (previous.Data == returnValue)
+                throw new Exception("Invalid key");
+            }
+
+            LinkedList tempList = cacheStorage[key];
+            tempList.Previous.Next = tempList.Next;
+            tempList.Next.Previous = tempList.Previous;
+            cacheStorage.Remove(key);
+            linkList.Next = new LinkedList() { Data = key, Previous = linkList };
+            linkList = linkList.Next;
+            cacheStorage.Add(key, linkList);
+            return key;
+        }
+
+        public string Put(string data)
+        {
+
+            if (string.IsNullOrWhiteSpace(data))
+            {
+                throw new Exception("Invalid Input");
+            }
+
+            if (size < 10 )
+            {                
+                if (linkList == null)
                 {
-                    previous = previous.Next;
-                    linkedListStart = previous;
-                    linkedList.Next = new LinkedList() { Data = returnValue };
-                    linkedList = linkedList.Next;
+                    linkList = new LinkedList() { Data = data }; 
+                    startPointLinkList = linkList;                 
                 }
                 else
                 {
-
-                    while (current != null)
-                    {
-                        if (current.Data == returnValue)
-                        {
-                            previous.Next = current.Next;
-                            current = current.Next;
-                            linkedList.Next = new LinkedList() { Data = returnValue };
-                            linkedList = linkedList.Next;
-                            break;
-                        }
-                    }
-                }
+                    linkList.Next = new LinkedList() { Data = data,Previous = linkList };
+                    linkList = linkList.Next;
+                }                
+                cacheStorage.Add(data, linkList);
+                size++;                
             }
-            return returnValue;
+            else
+            {
+                string key = startPointLinkList.Data;
+                if (cacheStorage.ContainsKey(key))
+                {                   
+                    startPointLinkList = startPointLinkList.Next;
+                    startPointLinkList.Previous = null;
+                    linkList.Next = new LinkedList() { Data = data, Previous = linkList };
+                    linkList = linkList.Next;
+                    cacheStorage[key] = linkList;
+                }                                                
+            }            
+            return data;
         }
 
-        public string Display()
+        public string DisplayForward()
         {
             StringBuilder result = new StringBuilder();
-            LinkedList traverse = linkedListStart;
-            while (traverse!=null) 
-            {               
+            LinkedList traverse = startPointLinkList;
+            while (traverse != null)
+            {
                 result.Append($"Key = {traverse.Data} Value = {traverse.Data} \n");
                 traverse = traverse.Next;
             }
             return result.ToString();
         }
 
+
+        public string DisplayBackward()
+        {
+            StringBuilder result = new StringBuilder();
+            LinkedList traverse = linkList;
+            while (traverse != null)
+            {
+                result.Append($"Key = {traverse.Data} Value = {traverse.Data} \n");
+                traverse = traverse.Previous;
+            }
+            return result.ToString();
+        }
     }
 }

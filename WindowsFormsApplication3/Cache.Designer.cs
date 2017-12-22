@@ -28,33 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_Implement_Cache_From_Amazon = new System.Windows.Forms.Button();
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btn_Implement_Cache_From_Amazon
+            // btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList
             // 
-            this.btn_Implement_Cache_From_Amazon.Location = new System.Drawing.Point(12, 12);
-            this.btn_Implement_Cache_From_Amazon.Name = "btn_Implement_Cache_From_Amazon";
-            this.btn_Implement_Cache_From_Amazon.Size = new System.Drawing.Size(289, 36);
-            this.btn_Implement_Cache_From_Amazon.TabIndex = 0;
-            this.btn_Implement_Cache_From_Amazon.Text = "Implement Cache from Amazon";
-            this.btn_Implement_Cache_From_Amazon.UseVisualStyleBackColor = true;
-            this.btn_Implement_Cache_From_Amazon.Click += new System.EventHandler(this.btn_Implement_Cache_From_Amazon_Click);
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Location = new System.Drawing.Point(12, 12);
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Name = "btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList";
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Size = new System.Drawing.Size(677, 37);
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.TabIndex = 1;
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Text = "Implement Cache from Amazon (Implemented Dictionary having value as LinkedList)";
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.UseVisualStyleBackColor = true;
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Click += new System.EventHandler(this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList_Click);
             // 
             // Cache
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 576);
-            this.Controls.Add(this.btn_Implement_Cache_From_Amazon);
+            this.Controls.Add(this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList);
             this.Name = "Cache";
-            this.Text = "Form2";
+            this.Text = "Cache";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btn_Implement_Cache_From_Amazon;
+        private System.Windows.Forms.Button btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList;
     }
 }
