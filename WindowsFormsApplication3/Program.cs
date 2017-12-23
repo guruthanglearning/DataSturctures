@@ -15,7 +15,7 @@ namespace WindowsFormsApplication3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Cache());
+            Application.Run(new LinkedListForm());
         }
     }
 }

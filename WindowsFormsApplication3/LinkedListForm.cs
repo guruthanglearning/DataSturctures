@@ -2636,6 +2636,57 @@ namespace WindowsFormsApplication3
             datas.Append("\r\n InOrder Traversal :");
             InOrder(tree);
             MessageBox.Show(datas.ToString());
+
+            Queue que = new Queue();
+            que.Enqueue(tree);
+            int maxSum = 0;
+            int temp = 0;
+            int count = 0;
+            int level = 0;
+            StringBuilder builder = new StringBuilder();
+            while (true)
+            {
+
+
+                temp = 0;
+                count = que.Count;
+
+                if (count == 0)
+                {
+                    break;
+                }
+
+                level++;
+
+                while (count>0)
+                {
+                    Node node = (Node)que.Dequeue();
+                    if (node != null)
+                    {
+                        temp += node.data;
+                    }
+                                         
+                    if (node.left!=null)
+                    {
+                        que.Enqueue(node.left);
+                    }
+
+                    if (node.right != null)
+                    {
+                        que.Enqueue(node.right);
+                    }
+                    count--;
+                }
+
+                builder.Append($"Level {level.ToString()} sum is {temp.ToString()}\n");
+
+                maxSum = Math.Max(maxSum, temp);
+            }
+
+            builder.Append("\n");
+            builder.Append($"The max sum in tree is {maxSum.ToString()}\n\n");
+
+            MessageBox.Show(builder.ToString());
         }
     }
 
