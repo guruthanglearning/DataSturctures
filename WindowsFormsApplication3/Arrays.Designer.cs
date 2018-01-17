@@ -45,6 +45,7 @@
             this.btn_Union_and_Intersection_of_two_sorted_arrays = new System.Windows.Forms.Button();
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays = new System.Windows.Forms.Button();
             this.btn_Merge_Overlapping_Intervals = new System.Windows.Forms.Button();
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -115,7 +116,7 @@
             // 
             // Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x
             // 
-            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Location = new System.Drawing.Point(9, 268);
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Location = new System.Drawing.Point(12, 267);
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Name = "Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x";
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Size = new System.Drawing.Size(608, 35);
@@ -208,7 +209,7 @@
             // 
             // btn_Find_Union_and_Intersection_of_two_unsorted_arrays
             // 
-            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Location = new System.Drawing.Point(12, 726);
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Location = new System.Drawing.Point(13, 726);
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Name = "btn_Find_Union_and_Intersection_of_two_unsorted_arrays";
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Size = new System.Drawing.Size(604, 43);
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.TabIndex = 15;
@@ -218,19 +219,30 @@
             // 
             // btn_Merge_Overlapping_Intervals
             // 
-            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(3, 775);
+            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(12, 775);
             this.btn_Merge_Overlapping_Intervals.Name = "btn_Merge_Overlapping_Intervals";
-            this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(614, 40);
+            this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(604, 40);
             this.btn_Merge_Overlapping_Intervals.TabIndex = 16;
             this.btn_Merge_Overlapping_Intervals.Text = "Merge Overlapping Intervals";
             this.btn_Merge_Overlapping_Intervals.UseVisualStyleBackColor = true;
             this.btn_Merge_Overlapping_Intervals.Click += new System.EventHandler(this.btn_Merge_Overlapping_Intervals_Click);
             // 
+            // btn_Random_number_generator_in_arbitrary_probability_distribution_fashion
+            // 
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(12, 821);
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Name = "btn_Random_number_generator_in_arbitrary_probability_distribution_fashion";
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Size = new System.Drawing.Size(604, 43);
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.TabIndex = 17;
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Text = "Random number generator in arbitrary probability distribution fashion";
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.UseVisualStyleBackColor = true;
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Click += new System.EventHandler(this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1610, 864);
+            this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion);
             this.Controls.Add(this.btn_Merge_Overlapping_Intervals);
             this.Controls.Add(this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays);
             this.Controls.Add(this.btn_Union_and_Intersection_of_two_sorted_arrays);
@@ -274,5 +286,6 @@
         private System.Windows.Forms.Button btn_Union_and_Intersection_of_two_sorted_arrays;
         private System.Windows.Forms.Button btn_Find_Union_and_Intersection_of_two_unsorted_arrays;
         private System.Windows.Forms.Button btn_Merge_Overlapping_Intervals;
+        private System.Windows.Forms.Button btn_Random_number_generator_in_arbitrary_probability_distribution_fashion;
     }
 }

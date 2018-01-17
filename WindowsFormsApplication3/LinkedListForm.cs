@@ -1855,25 +1855,22 @@ namespace WindowsFormsApplication3
 
         private void button30_Click(object sender, EventArgs e)
         {
-            //Func<int, int> f = X(Sum);
-            //var res = f(5);
-            //MessageBox.Show(res.ToString());
 
+            Test t = new Test() { i = 1, data = "outside method" };
+            FunctionTest(t);
+            MessageBox.Show(t.data);
+            
+        }
 
-            //string[] input = {"5", "-2","4", "Z","X", "9", "+", "+" };
-            //int sum = totalScore(input, 8);
-            //MessageBox.Show(sum.ToString());
-            //int red = 255;
-            //int blue = 23;
-            //int green = 0;
-            //MessageBox.Show(string.Format("Cloning color RGB: {0,3},{1,3},{2,3}", red, blue, green));
+        private void FunctionTest(Test t)
+        {
+            t.data = "inside function";
+        }
 
-          
-
-
-
-
-
+        public class Test
+        {
+            public int i;
+            public string data;
         }
 
 
@@ -2415,10 +2412,7 @@ namespace WindowsFormsApplication3
             datas.Clear();            
             InOrder(tree);
             MessageBox.Show($"\r\n InOrder Traversal:{datas.ToString()}");
-            MessageBox.Show($"Is valid BST {this.IsBSTUsingInOrderTravel(tree, null).ToString()}"  );
-
-
-
+            MessageBox.Show($"Is valid BST {this.IsBSTUsingInOrderTravel(tree, null).ToString()}"  );            
         }
         
 
@@ -2646,11 +2640,8 @@ namespace WindowsFormsApplication3
             StringBuilder builder = new StringBuilder();
             while (true)
             {
-
-
                 temp = 0;
                 count = que.Count;
-
                 if (count == 0)
                 {
                     break;
@@ -2688,6 +2679,87 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(builder.ToString());
         }
+
+        private void btn_Build_Binary_Tree_for_the_given_arithmatic_expression_Click(object sender, EventArgs e)
+        {
+            //string input = "(x+1)/(((y+3)+x)*m)";
+            //input = "ab+cde+**";
+            //input = "a+b*c*d+e";
+            //Given post fix binary tree expression, build binary tree expression and out the
+            //result in infix expression
+            string input = "x1+y3xm*++/";
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                MessageBox.Show("Expression is empty");               
+            }
+
+            Stack expHolder = new Stack();
+            List<char> operators = new List<char>() {'+','-','/','*','^' };
+            NodeWithObjectData t=null;
+            //int bracesCounter = 0;
+
+            foreach (char c in input)
+            {
+                if (c == '(' || c == ')')
+                {
+                    continue;   
+                }
+                //if (c == '(' )
+                //{
+                //    ++bracesCounter;
+                //}
+                //else if (c == ')')
+                //{
+                //    --bracesCounter;
+                //}
+                //else if (bracesCounter == 0)
+                //{
+                //    if (expHolder.Count > 0)
+                //    {
+                //        t= (NodeWithObjectData)expHolder.Pop();
+                //        t.right = new NodeWithObjectData() { data = c };
+                //        expHolder.Push(t);
+                //    }
+                //}
+                //else 
+                if (!operators.Contains(c))
+                {
+                    t = new NodeWithObjectData() { data = c };                    
+                }               
+                else
+                {
+                    t = new NodeWithObjectData() { data = c };
+                    if (expHolder.Count > 0)
+                    {
+                        t.right = (NodeWithObjectData)expHolder.Pop();
+                    }
+
+                    if (expHolder.Count > 0)
+                    {
+                        t.left = (NodeWithObjectData)expHolder.Pop();
+                    }
+                }
+                expHolder.Push(t);
+            }
+            
+            var expressionBinaryTree = (NodeWithObjectData)expHolder.Pop();
+            datas.Clear();
+            this.InOrderTravel_NodeWithObjectData(expressionBinaryTree);
+            MessageBox.Show($"Binary expression is { datas.ToString() } for Expression {input}");
+        }
+
+        private void InOrderTravel_NodeWithObjectData(NodeWithObjectData node)
+        {        
+            if (node!=null)
+            {
+                this.InOrderTravel_NodeWithObjectData(node.left);
+                datas.Append(node.data.ToString());            
+                this.InOrderTravel_NodeWithObjectData(node.right);
+            }
+
+
+        }
     }
 
 
@@ -2704,6 +2776,13 @@ namespace WindowsFormsApplication3
         public int data;
         public Node right;
         public Node left;       
+    }
+
+    class NodeWithObjectData
+    {
+        public object data;
+        public NodeWithObjectData right;
+        public NodeWithObjectData left;
     }
 
     class NodeWithNext

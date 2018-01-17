@@ -67,6 +67,7 @@
             this.btn_Clone_a_linked_list_with_next_and_random_pointer = new System.Windows.Forms.Button();
             this.btn_Clone_a_linked_list_with_next_pointer = new System.Windows.Forms.Button();
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree = new System.Windows.Forms.Button();
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -485,11 +486,22 @@
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.UseVisualStyleBackColor = true;
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Click += new System.EventHandler(this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree_Click);
             // 
+            // btn_Build_Binary_Tree_for_the_given_arithmatic_expression
+            // 
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(10, 829);
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Name = "btn_Build_Binary_Tree_for_the_given_arithmatic_expression";
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Size = new System.Drawing.Size(472, 50);
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.TabIndex = 41;
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Text = "Build Binary Tree for the given arithmatic expression";
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.UseVisualStyleBackColor = true;
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Click += new System.EventHandler(this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1123);
+            this.Controls.Add(this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression);
             this.Controls.Add(this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree);
             this.Controls.Add(this.btn_Clone_a_linked_list_with_next_pointer);
             this.Controls.Add(this.btn_Clone_a_linked_list_with_next_and_random_pointer);
@@ -579,5 +591,6 @@
         private System.Windows.Forms.Button btn_Clone_a_linked_list_with_next_and_random_pointer;
         private System.Windows.Forms.Button btn_Clone_a_linked_list_with_next_pointer;
         private System.Windows.Forms.Button btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree;
+        private System.Windows.Forms.Button btn_Build_Binary_Tree_for_the_given_arithmatic_expression;
     }
 }

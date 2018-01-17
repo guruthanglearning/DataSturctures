@@ -661,6 +661,13 @@ namespace WindowsFormsApplication3
 
         public double findMedianSortedArrays(int[] A, int[] B)
         {
+
+            /*             
+                int[] nums1 = new int[] { 3, 4, 5  }; --A
+                int[] nums2 = new int[] { 1,2, 3 }; --B
+
+            */
+
             int m = A.Length;
             int n = B.Length;
             if (m > n)
@@ -669,15 +676,14 @@ namespace WindowsFormsApplication3
                 int tmp = m; m = n; n = tmp;
             }
 
-            /*             
-                int[] nums1 = new int[] { 3, 4, 5  };
-                int[] nums2 = new int[] { 1,2 };
-            */
+            
             int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
             while (iMin <= iMax)
             {
-                int i = (iMin + iMax) / 2;
-                int j = halfLen - i;
+                //iMin = 2 Max = 2
+
+                int i = (iMin + iMax) / 2; // i = 2 
+                int j = halfLen - i;       // j=1
 
                 if (i < iMax && B[j - 1] > A[i])
                 {
@@ -729,7 +735,7 @@ namespace WindowsFormsApplication3
         
         private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
         {
-            
+
 
             /*
                 Time Complexity         : O(log n)
@@ -741,8 +747,8 @@ namespace WindowsFormsApplication3
                 We only need constant memory to store 9 local variables, so the space complexity is O(1).
             */
 
-            int[] nums1 = new int[] {1, 4  };
-            int[] nums2 = new int[] { 3,5, 7, 9 };
+            int[] nums1 = new int[] { 3, 4, 5 };
+            int[] nums2 = new int[] { 1, 2, 3 };
             //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
             MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());            
 
@@ -755,9 +761,8 @@ namespace WindowsFormsApplication3
               Space Complexity is O(2 logn)
             */
 
-           
-
-            int[] heights = new int[] { 1,2,2 };
+          
+            int[] heights = new int[] { 1,2,4,2 };
             int tempPos = 0;
             int tempHist = 0;
             Stack pos = new Stack();
@@ -880,6 +885,9 @@ namespace WindowsFormsApplication3
              */
             int[] input1 = new int[] { 7, 1, 5, 2, 3, 6 };
             int[] input2 = new int[] { 3, 8, 6, 20, 7 };
+
+
+
            
         }
 
@@ -933,6 +941,70 @@ namespace WindowsFormsApplication3
 
         }
 
-                
+        // Utility function to find ceiling of r in arr[l..h]
+        int FindCeil(int[] arr, int r, int l, int h)
+        {
+            int mid;
+            while (l < h)
+            {
+                mid = (l + h) / 2; //l + ((h - l) >> 1);  // Same as mid = (l+h)/2
+                if (r > arr[mid])
+                {
+                    l = mid + 1;
+                }
+                else
+                {
+                     h = mid;
+                }                
+            }
+            return (arr[l] >= r) ? l : -1;
+        }
+
+        // The main function that returns a random number from arr[] according to
+        // distribution array defined by freq[]. n is size of arrays.
+        private int Get_Arbitrary_Probability_Distribution_Fashion(int[] arr, int[] freq, int n)
+        {
+            // Create and fill prefix array
+            int[] prefix = new int[n];            
+            prefix[0] = freq[0];
+            for (int i = 1; i < n; i++)
+            {
+                prefix[i] = prefix[i - 1] + freq[i];
+            }
+
+            //https://msdn.microsoft.com/en-us/library/ctssatww(v=vs.110).aspx
+            //By having different seed value to Random constructor which will leads to generate different set of random numbers for each run
+            //Random random = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
+            Random random = new Random((int)DateTime.Now.Ticks);
+
+            // prefix[n-1] is sum of all frequencies. Generate a random number
+            // with value from 1 to this sum
+            int r = random.Next(1, prefix[n - 1]); //(random.Next(1, prefix[n-1]) % prefix[n - 1]) +1;
+
+            // Find index of ceiling of r in prefix arrat
+            int indexc = FindCeil(prefix, r, 0, n - 1);
+            return arr[indexc];
+        }
+
+        private void btn_Random_number_generator_in_arbitrary_probability_distribution_fashion_Click(object sender, EventArgs e)
+        {
+            //https://www.geeksforgeeks.org/random-number-generator-in-arbitrary-probability-distribution-fashion/
+            //Time Complexity   : O(n)
+            //Space Complexity  : O(n)
+
+            int[] arr = new int[] { 1, 2, 3};
+            int[] freq = new int[] { 49, 0, 50};
+            StringBuilder resultBuilder = new StringBuilder();
+
+            // Use a different seed value for every run.
+
+            // Let us generate 10 random numbers accroding to
+            // given distribution
+            for (int i = 0; i < 100; i++)
+                resultBuilder.Append(this.Get_Arbitrary_Probability_Distribution_Fashion(arr, freq, arr.Length) + " " );
+
+            MessageBox.Show($"Random number generator in arbitrary probability distribution {resultBuilder.ToString()}");
+
+        }
     }
 }
