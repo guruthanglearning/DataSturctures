@@ -212,7 +212,6 @@ namespace WindowsFormsApplication3
 
         private void button6_Click(object sender, EventArgs e)
         {
-
             int[,] matrix = new int[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
             int offset, first, last, top, n;
             n = matrix.GetUpperBound(0) + 1;
@@ -803,7 +802,7 @@ namespace WindowsFormsApplication3
         // Given a list of m words, I’d like to query for the nth most frequent word(s). (e.g. Given 1000 words, tell me 
        
 
-        private void btnLongest_Substring_Without_Repeating_Characters_Click(object sender, EventArgs e)
+        private void btnLength_Of_Longest_Substring_Without_Repeating_Characters_Click(object sender, EventArgs e)
         {
             /*
                 https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
@@ -938,6 +937,7 @@ namespace WindowsFormsApplication3
         {
             //MMMCMXCIX
             Dictionary<char, int> _romanMap = new Dictionary<char, int> { { 'I', 1 }, { 'V', 5 }, { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 }, { 'M', 1000 } };
+            textBox1.Text = "MMMCMXCIX";
             string text = textBox1.Text;
             int totalValue = 0, prevValue = 0;
             foreach (var c in text)
@@ -1200,5 +1200,11 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void button18_Click(object sender, EventArgs e)
+        {
+            string result =  Convert.ToBase64String(Encoding.UTF8.GetBytes(textBox1.Text));
+            MessageBox.Show(Encoding.UTF8.GetString(Convert.FromBase64String(result)));
+                
+        }
     }
 }

@@ -133,7 +133,7 @@ namespace WindowsFormsApplication3
 
             //Time Complexity is O(n)
             int[] buffer = new int[] { 1, 2, 3, 3, 3, 4, 4, 5, 5 };
-            Array.Resize<int>(ref buffer, 12);
+            //Array.Resize<int>(ref buffer, 12);
 
             //insert = 2, i =3
 
@@ -255,7 +255,7 @@ namespace WindowsFormsApplication3
 
         private void Array_Reduction_Cost_Click(object sender, EventArgs e)
         {
-            int[] input = new int[] { 1, 2, 3};
+            int[] input = new int[] { 1, 2, 3, 4};
             if (input==null || input.Length ==0)
             {
                 MessageBox.Show("Invalid inputs");
@@ -332,6 +332,7 @@ namespace WindowsFormsApplication3
 
         private void Sort_int_array_through_binary_digits_based_on_1_Click(object sender, EventArgs e)
         {
+            //Not Implemented
             MessageBox.Show(this.IntToBinaryString(60));
         }
 
@@ -458,43 +459,9 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Odd Number {res.ToString()}");
         }
 
-        private void Function_rotate_that_rotates_arr_of_size_n_by_d_elements_Click(object sender, EventArgs e)
-        {
-
-            // Time complexity: O(n)
-            // Auxiliary Space: O(1)
-
-            int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-            int d = 2;
-            inputDisplayBuilder.Clear();
-            MessageBox.Show($"Input Array is {printArray(input)}");
-            this.leftRotate(input, d, input.Length);
-            MessageBox.Show($"After rotation array is {printArray(input)}");
-
-            //int i = 7;
-            //int j = 10;
-
-            //MessageBox.Show($"GCD of {i} and {j} is {this.GCD(i,j).ToString()}");
-
-        }
-
-
-        public string printArray(int[] arr)
-        {
-
-            inputDisplayBuilder.Clear();
-            for (int i = 0; i < arr.Length; i++)
-            {
-                inputDisplayBuilder.Append(arr[i] + " ");
-            }
-            return inputDisplayBuilder.ToString();
-
-        }
-
-
         private int GCD(int a, int b)
         {
-            if (b==0)
+            if (b == 0)
             {
                 return a;
             }
@@ -526,6 +493,43 @@ namespace WindowsFormsApplication3
         }
 
 
+        private void Function_rotate_that_rotates_arr_of_size_n_by_d_elements_Click(object sender, EventArgs e)
+        {
+
+            // Time complexity: O(n)
+            // Auxiliary Space: O(1)
+            // https://www.geeksforgeeks.org/?p=2398
+
+            int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            int d = 2;
+            inputDisplayBuilder.Clear();
+            MessageBox.Show($"Input Array is {printArray(input)}");
+            this.leftRotate(input, d, input.Length);
+            MessageBox.Show($"After rotation array is {printArray(input)}");
+
+            //int i = 7;
+            //int j = 10;
+
+            //MessageBox.Show($"GCD of {i} and {j} is {this.GCD(i,j).ToString()}");
+
+        }
+
+
+        public string printArray(int[] arr)
+        {
+
+            inputDisplayBuilder.Clear();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                inputDisplayBuilder.Append(arr[i] + " ");
+            }
+            return inputDisplayBuilder.ToString();
+
+        }
+
+
+       
+
         /*This function swaps d elements starting at index fi
         with d elements starting at index si */
         private void swap(int[] arr, int fi, int si, int d)
@@ -541,34 +545,27 @@ namespace WindowsFormsApplication3
 
         private void LeftRotateBlockSwap(int[] arr, int d, int n)
         {
-            /* Return If number of elements to be rotated is
-	        zero or equal to array size */
+            int i, j;
             if (d == 0 || d == n)
                 return;
-
-            /*If number of elements to be rotated is exactly
-            half of array size */
-            if (n - d == d)
+            i = d;
+            j = n - d;
+            while (i != j)
             {
-                this.swap(arr, 0, n - d, d);                
-                return;
-            }
-
-            /* If A is shorter*/
-            if (d < n - d)
-            {
-                this.swap(arr, 0, n - d, d);
-                this.LeftRotateBlockSwap(arr, d, n - d);
-            }
-            else /* If B is shorter*/
-            {
-                this.swap(arr, 0, d, n - d);
-                //this.LeftRotateBlockSwap(arr + n - d, 2 * d - n, d); /*This is tricky*/)
-                if (n - d == d)
+                if (i < j) /*A is shorter*/
                 {
-                    this.swap(arr, n - d, n, d);
-                }                
+                    swap(arr, d - i, d + j - i, i);
+                    j -= i;
+                }
+                else /*B is shorter*/
+                {
+                    swap(arr, d - i, d, j);
+                    i -= j;
+                }
+                // printArray(arr, 7);
             }
+            /*Finally, block swap A and B*/
+            swap(arr, d - i, d, i);
         }
 
         private void btn_Block_swap_algorithm_for_array_rotation_Click(object sender, EventArgs e)
@@ -663,8 +660,8 @@ namespace WindowsFormsApplication3
         {
 
             /*             
-                int[] nums1 = new int[] { 3, 4, 5  }; --A
-                int[] nums2 = new int[] { 1,2, 3 }; --B
+                int[] nums1 = new int[] { 3, 4, 5, 6  }; --A
+                int[] nums2 = new int[] { 1,2, 3, 7 }; --B
 
             */
 
@@ -680,10 +677,10 @@ namespace WindowsFormsApplication3
             int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
             while (iMin <= iMax)
             {
-                //iMin = 2 Max = 2
+                //iMin = 0 Max = 3
 
-                int i = (iMin + iMax) / 2; // i = 2 
-                int j = halfLen - i;       // j=1
+                int i = (iMin + iMax) / 2; // i = 1 
+                int j = halfLen - i;       // j = 3
 
                 if (i < iMax && B[j - 1] > A[i])
                 {
@@ -747,8 +744,8 @@ namespace WindowsFormsApplication3
                 We only need constant memory to store 9 local variables, so the space complexity is O(1).
             */
 
-            int[] nums1 = new int[] { 3, 4, 5 };
-            int[] nums2 = new int[] { 1, 2, 3 };
+            int[] nums1 = new int[] { 3, 4, 5, 6 };
+            int[] nums2 = new int[] { 1, 2, 3, 7 };
             //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
             MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());            
 
@@ -900,13 +897,20 @@ namespace WindowsFormsApplication3
                  http://www.geeksforgeeks.org/merging-intervals/
             */
             //int[,] input1 = new int[4, 2] { { 6, 8 }, { 1, 9 }, { 2, 4 }, { 4, 7 } };
+            //Interval[] input1 = new Interval[] {
+            //                                        new Interval(){Start = 1, End = 9},
+            //                                        new Interval(){Start = 2, End = 4},
+            //                                        new Interval(){Start = 4, End = 7},
+            //                                        new Interval(){Start = 6, End = 8}                                                    
+            //                                    };
+
             Interval[] input1 = new Interval[] {
-                                                    new Interval(){Start = 1, End = 9},
-                                                    new Interval(){Start = 2, End = 4},
-                                                    new Interval(){Start = 4, End = 7},
-                                                    new Interval(){Start = 6, End = 8}                                                    
+                                                    new Interval(){Start = 1, End = 3},
+                                                    new Interval(){Start = 5, End = 7},
+                                                    new Interval(){Start = 10, End = 14},
+                                                    new Interval(){Start = 13, End = 18}
                                                 };
-            
+
             if (input1!=null && input1.Length == 0)
             {
                 MessageBox.Show("Input is empty");

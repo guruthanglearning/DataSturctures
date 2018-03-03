@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Xml.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
@@ -409,6 +410,11 @@ namespace WindowsFormsApplication3
             {
                 MessageBox.Show("Base");
             }
+
+            public static implicit operator Base(Derviced v)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         class Derived : Base
@@ -444,11 +450,93 @@ namespace WindowsFormsApplication3
             dynamic dyn = 1;
             object obj = 1;
 
+            TestClass t = new T();
+            t.display("Test");
 
+            Derviced d = new Derviced() {i = 10, j = 11 };
+
+            BaseTest b = d;
+
+            
+
+        }
+
+      
+
+        private void btnMatch_The_Numbers_Click(object sender, EventArgs e)
+        {
+            int a = -2, b = 4, x = -10, y = 2;
+
+            while (true)
+            {
+
+                if (a > x)
+                {
+                    a--;
+                }
+                else if (a < x)
+                {
+                    x--;
+                }
+                if (b > y)
+                {
+                    b--;
+                }
+                else if (b < y)
+                {
+                    y--;
+                }
+
+                if (a==x && b==y)
+                {
+                    break;
+                }
+            }
+
+            MessageBox.Show($"a {a.ToString()} b {b.ToString()} x {x.ToString()} y {y.ToString()}");
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            XElement xElement = XElement.Load(@"C:\Work\UniversalSettler.exe.config");
 
         }
     }
 
+
+    public class BaseTest
+    {
+        public int i;
+    }
+
+    public class Derviced : BaseTest
+    {
+        public int j;
+    }
+
+    public abstract class TestClass
+    {
+        public virtual void display(string msg)
+        {
+            MessageBox.Show(msg);
+        }
+
+        //public abstract void display(string msg);        
+    }
+
+    public class T:TestClass
+    {
+        public override void display(string msg)
+        {
+            MessageBox.Show($"Dervied T Display {msg}");
+        }
+    }
+
+
+    public class T1 : T
+    {
+       
+    }
 
     public struct StructTestInterface : IGeneralInterfaceTest
     {

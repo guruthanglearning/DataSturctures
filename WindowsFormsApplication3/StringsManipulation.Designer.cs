@@ -57,6 +57,7 @@
             this.Longest_Palondrome_in_a_given_string = new System.Windows.Forms.Button();
             this.Longest_Palondrome_in_a_given_string_O_Off_N = new System.Windows.Forms.Button();
             this.btn_Find_index_of_homogenous_continous_charcter = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -270,9 +271,9 @@
             this.btnLongest_Substring_Without_Repeating_Characters.Name = "btnLongest_Substring_Without_Repeating_Characters";
             this.btnLongest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(412, 35);
             this.btnLongest_Substring_Without_Repeating_Characters.TabIndex = 19;
-            this.btnLongest_Substring_Without_Repeating_Characters.Text = "Longest Substring Without Repeating Characters";
+            this.btnLongest_Substring_Without_Repeating_Characters.Text = "Length of Longest Substring Without Repeating Characters";
             this.btnLongest_Substring_Without_Repeating_Characters.UseVisualStyleBackColor = true;
-            this.btnLongest_Substring_Without_Repeating_Characters.Click += new System.EventHandler(this.btnLongest_Substring_Without_Repeating_Characters_Click);
+            this.btnLongest_Substring_Without_Repeating_Characters.Click += new System.EventHandler(this.btnLength_Of_Longest_Substring_Without_Repeating_Characters_Click);
             // 
             // button19
             // 
@@ -372,11 +373,22 @@
             this.btn_Find_index_of_homogenous_continous_charcter.UseVisualStyleBackColor = true;
             this.btn_Find_index_of_homogenous_continous_charcter.Click += new System.EventHandler(this.btn_Find_index_of_homogenous_continous_charcter_Click);
             // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(494, 698);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(370, 35);
+            this.button18.TabIndex = 29;
+            this.button18.Text = "button18";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 779);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.btn_Find_index_of_homogenous_continous_charcter);
             this.Controls.Add(this.Longest_Palondrome_in_a_given_string_O_Off_N);
             this.Controls.Add(this.Longest_Palondrome_in_a_given_string);
@@ -446,5 +458,6 @@
         private System.Windows.Forms.Button Longest_Palondrome_in_a_given_string;
         private System.Windows.Forms.Button Longest_Palondrome_in_a_given_string_O_Off_N;
         private System.Windows.Forms.Button btn_Find_index_of_homogenous_continous_charcter;
+        private System.Windows.Forms.Button button18;
     }
 }

@@ -2262,7 +2262,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show(datas.ToString());
 
             int input1 = 9;
-            int input2 = 9;
+            int input2 = 2;
 
             Node commonAccesstorNode = this.GetCommonAncestor_Distance_of_two_nodes_in_Binary_Search_Tree(tree, input1, input2);
             int distance1 = this.FindDistanceForElementInBinary_SearchTree(commonAccesstorNode, input1);
@@ -2696,33 +2696,14 @@ namespace WindowsFormsApplication3
 
             Stack expHolder = new Stack();
             List<char> operators = new List<char>() {'+','-','/','*','^' };
-            NodeWithObjectData t=null;
-            //int bracesCounter = 0;
+            NodeWithObjectData t=null;     
 
             foreach (char c in input)
             {
                 if (c == '(' || c == ')')
                 {
                     continue;   
-                }
-                //if (c == '(' )
-                //{
-                //    ++bracesCounter;
-                //}
-                //else if (c == ')')
-                //{
-                //    --bracesCounter;
-                //}
-                //else if (bracesCounter == 0)
-                //{
-                //    if (expHolder.Count > 0)
-                //    {
-                //        t= (NodeWithObjectData)expHolder.Pop();
-                //        t.right = new NodeWithObjectData() { data = c };
-                //        expHolder.Push(t);
-                //    }
-                //}
-                //else 
+                }              
                 if (!operators.Contains(c))
                 {
                     t = new NodeWithObjectData() { data = c };                    
