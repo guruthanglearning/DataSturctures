@@ -46,6 +46,8 @@
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays = new System.Windows.Forms.Button();
             this.btn_Merge_Overlapping_Intervals = new System.Windows.Forms.Button();
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion = new System.Windows.Forms.Button();
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array = new System.Windows.Forms.Button();
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -237,11 +239,33 @@
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.UseVisualStyleBackColor = true;
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Click += new System.EventHandler(this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion_Click);
             // 
+            // btn_Sum_the_first_two_min_elements_from_the_given_array
+            // 
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(12, 870);
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Name = "btn_Sum_the_first_two_min_elements_from_the_given_array";
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Size = new System.Drawing.Size(604, 41);
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.TabIndex = 18;
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Text = "Sum the first two min elements from the given array";
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.UseVisualStyleBackColor = true;
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Click += new System.EventHandler(this.btn_Sum_the_first_two_min_elements_from_the_given_array_Click);
+            // 
+            // btn_Find_the_largest_square_of_1_in_a_given_matrix
+            // 
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Location = new System.Drawing.Point(13, 917);
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Name = "btn_Find_the_largest_square_of_1_in_a_given_matrix";
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Size = new System.Drawing.Size(603, 43);
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.TabIndex = 19;
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Text = "Find the largest square of 1 in a given matrix";
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.UseVisualStyleBackColor = true;
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Click += new System.EventHandler(this.btn_Find_the_largest_square_of_1_in_a_given_matrix_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Find_the_largest_square_of_1_in_a_given_matrix);
+            this.Controls.Add(this.btn_Sum_the_first_two_min_elements_from_the_given_array);
             this.Controls.Add(this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion);
             this.Controls.Add(this.btn_Merge_Overlapping_Intervals);
             this.Controls.Add(this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays);
@@ -287,5 +311,7 @@
         private System.Windows.Forms.Button btn_Find_Union_and_Intersection_of_two_unsorted_arrays;
         private System.Windows.Forms.Button btn_Merge_Overlapping_Intervals;
         private System.Windows.Forms.Button btn_Random_number_generator_in_arbitrary_probability_distribution_fashion;
+        private System.Windows.Forms.Button btn_Sum_the_first_two_min_elements_from_the_given_array;
+        private System.Windows.Forms.Button btn_Find_the_largest_square_of_1_in_a_given_matrix;
     }
 }

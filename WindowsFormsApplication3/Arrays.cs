@@ -70,7 +70,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
             MergeArrays(arr1, arr2);
-                
+
             //Merge(arr2, arr1);
             MessageBox.Show($"After Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
@@ -78,29 +78,29 @@ namespace WindowsFormsApplication3
 
         void MergeArrays(int[] arr1, int[] arr2)
         {
-            int arr1Length = arr1.Length-1;
+            int arr1Length = arr1.Length - 1;
             int arr1LastFilledIndex = this.GetLastFilledArrayIndex(arr1);
-            int arr2Length = arr2.Length-1;            
+            int arr2Length = arr2.Length - 1;
 
 
 
-            while(true)
-            { 
+            while (true)
+            {
                 if (arr2Length < 0)
                 {
                     break;
                 }
 
-                if (arr1LastFilledIndex >= 0 &&  arr1[arr1LastFilledIndex] > arr2[arr2Length])
+                if (arr1LastFilledIndex >= 0 && arr1[arr1LastFilledIndex] > arr2[arr2Length])
                 {
                     arr1[arr1Length] = arr1[arr1LastFilledIndex];
                     arr1[arr1LastFilledIndex] = 0;
                     arr1LastFilledIndex--;
-                }               
+                }
                 else
                 {
                     arr1[arr1Length] = arr2[arr2Length];
-                    arr2Length--;                   
+                    arr2Length--;
                 }
                 arr1Length--;
             }
@@ -109,11 +109,11 @@ namespace WindowsFormsApplication3
         private int GetLastFilledArrayIndex(int[] array)
         {
             int returnValue = -1;
-            for(int i= 0; i<array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == 0)
                 {
-                    returnValue =  i-1;
+                    returnValue = i - 1;
                     break;
                 }
             }
@@ -137,24 +137,24 @@ namespace WindowsFormsApplication3
 
             //insert = 2, i =3
 
-            int insert = 0;            
+            int insert = 0;
             for (int i = 1; i < buffer.Length - 1; i++)
             {
                 if (buffer[i] != buffer[insert])
                 {
                     insert++;
 
-                    if (insert != i )
+                    if (insert != i)
                     {
-                        buffer[insert] = buffer[i];                        
+                        buffer[insert] = buffer[i];
                     }
-                }                           
+                }
             }
-                        
-            while (insert < buffer.Length-1)
+
+            while (insert < buffer.Length - 1)
             {
                 insert++;
-                buffer[insert] = 0;                
+                buffer[insert] = 0;
             }
 
             StringBuilder builder = new StringBuilder();
@@ -255,15 +255,15 @@ namespace WindowsFormsApplication3
 
         private void Array_Reduction_Cost_Click(object sender, EventArgs e)
         {
-            int[] input = new int[] { 1, 2, 3, 4};
-            if (input==null || input.Length ==0)
+            int[] input = new int[] { 1, 2, 3, 4 };
+            if (input == null || input.Length == 0)
             {
                 MessageBox.Show("Invalid inputs");
             }
-            int sum= input[0];
+            int sum = input[0];
             int reductionCost = 0;
             int incrementer = 1;
-            while (incrementer <= input.Length -1)
+            while (incrementer <= input.Length - 1)
             {
                 if (incrementer == 1)
                 {
@@ -272,7 +272,7 @@ namespace WindowsFormsApplication3
                 else
                 {
                     reductionCost += sum;
-                    sum += input[incrementer] ;
+                    sum += input[incrementer];
                 }
                 incrementer++;
             }
@@ -285,7 +285,7 @@ namespace WindowsFormsApplication3
 
         private void Array_Binary_digits_0_to_1_Click(object sender, EventArgs e)
         {
-            int[] input = new int[] {1,1,0,0,0,1,1,1,1,1 };
+            int[] input = new int[] { 1, 1, 0, 0, 0, 1, 1, 1, 1, 1 };
 
             if (input == null || input.Length == 0)
             {
@@ -301,7 +301,7 @@ namespace WindowsFormsApplication3
                 {
                     start++;
                 }
-                else if (input[end]==1)
+                else if (input[end] == 1)
                 {
                     end--;
                 }
@@ -339,7 +339,7 @@ namespace WindowsFormsApplication3
         private string FindPairs(int[] input, int sum)
         {
             // 1, 2, 10, 4, 6, 8, 8,-20
-            if (input== null || input.Length ==0 )
+            if (input == null || input.Length == 0)
             {
                 MessageBox.Show("Invalid Inputs");
             }
@@ -347,7 +347,7 @@ namespace WindowsFormsApplication3
             StringBuilder builder = new StringBuilder();
             List<int> hashmap = new List<int>();
             int temp = 0;
-            for (int i =0; i <input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 temp = sum - input[i];
                 if (hashmap.Contains(temp))
@@ -365,7 +365,7 @@ namespace WindowsFormsApplication3
 
         private int[,] FindPairsAndReturnArray(int[] input, int sum)
         {
-            
+
             // 1, 2, 10, 4, 6, 8, 8,-20
             if (input == null || input.Length == 0)
             {
@@ -373,15 +373,15 @@ namespace WindowsFormsApplication3
             }
 
             StringBuilder builder = new StringBuilder();
-            Dictionary<int, int>  hashmap = new Dictionary<int, int>();
+            Dictionary<int, int> hashmap = new Dictionary<int, int>();
 
             int temp = 0;
             for (int i = 0; i < input.Length; i++)
             {
                 temp = sum - input[i];
                 if (hashmap.ContainsKey(temp))
-                {                                       
-                    return new int[,] { { hashmap[temp], i } } ;                    
+                {
+                    return new int[,] { { hashmap[temp], i } };
                 }
                 if (!hashmap.ContainsKey(input[i]))
                 {
@@ -395,7 +395,7 @@ namespace WindowsFormsApplication3
         private void Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x_Click(object sender, EventArgs e)
         {
             //http://www.geeksforgeeks.org/write-a-c-program-that-given-a-set-a-of-n-numbers-and-another-number-x-determines-whether-or-not-there-exist-two-elements-in-s-whose-sum-is-exactly-x/
-            int[] input = new int[] { 1, 2, 10, 4, 6, 8, 8,-20 };
+            int[] input = new int[] { 1, 2, 10, 4, 6, 8, 8, -20 };
             var t = this.FindPairsAndReturnArray(input, -16);
             MessageBox.Show(this.FindPairs(input, -16));
         }
@@ -413,7 +413,7 @@ namespace WindowsFormsApplication3
             int majorityIndex = 0;
             int maxOccurance = 1;
 
-            for(int i = 1; i <input.Length; i++)
+            for (int i = 1; i < input.Length; i++)
             {
                 if (input[majorityIndex] == input[i])
                 {
@@ -421,7 +421,7 @@ namespace WindowsFormsApplication3
                     maxOccurance++;
                 }
                 else
-                {                    
+                {
                     count--;
                 }
 
@@ -451,7 +451,7 @@ namespace WindowsFormsApplication3
             int[] input = new int[] { 1, 2, 3, 2, 3, 1, 3 };
 
             int res = 0;
-            for(int i =0; i<input.Length;i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 res = res ^ input[i];
             }
@@ -528,7 +528,7 @@ namespace WindowsFormsApplication3
         }
 
 
-       
+
 
         /*This function swaps d elements starting at index fi
         with d elements starting at index si */
@@ -574,7 +574,7 @@ namespace WindowsFormsApplication3
 
             //Time Complexity : O(n)
             StringBuilder result = new StringBuilder();
-            int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7,8, 9, 10};
+            int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             result.Append($"Before Swap {this.printArray(arr)}");
             this.LeftRotateBlockSwap(arr, 7, arr.Length);
             result.AppendLine($"After Swap {this.printArray(arr)}");
@@ -590,7 +590,7 @@ namespace WindowsFormsApplication3
                 int[] nums2 = new int[] { 2, 3, 4};
             */
 
-            if ((nums1 == null || nums1.Length == 0) && (nums2==null || nums2.Length == 0))
+            if ((nums1 == null || nums1.Length == 0) && (nums2 == null || nums2.Length == 0))
             {
                 return 0;
             }
@@ -600,14 +600,14 @@ namespace WindowsFormsApplication3
             int total = m + n;
             int mid = total / 2;
             double median = 0;
-            
+
             if (total % 2 == 0)
             {
-                if (m==n)
+                if (m == n)
                 {
-                    median = (nums1[mid-1] + nums2[mid -n]) / 2.0 ;
+                    median = (nums1[mid - 1] + nums2[mid - n]) / 2.0;
                 }
-                else if (m<n)
+                else if (m < n)
                 {
                     if (m == 0)
                     {
@@ -622,7 +622,7 @@ namespace WindowsFormsApplication3
                 {
                     if (mid > n)
                     {
-                        median = (nums1[mid] + nums1[mid-1]) / 2.0;
+                        median = (nums1[mid] + nums1[mid - 1]) / 2.0;
                     }
                 }
             }
@@ -639,7 +639,7 @@ namespace WindowsFormsApplication3
                     {
                         median = nums1[mid];
                     }
-                    else if (m > 0 && n>m)
+                    else if (m > 0 && n > m)
                     {
                         median = nums2[mid - 1];
                     }
@@ -650,7 +650,7 @@ namespace WindowsFormsApplication3
 
                 }
             }
-            
+
             return median;
 
 
@@ -673,7 +673,7 @@ namespace WindowsFormsApplication3
                 int tmp = m; m = n; n = tmp;
             }
 
-            
+
             int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
             while (iMin <= iMax)
             {
@@ -729,7 +729,7 @@ namespace WindowsFormsApplication3
             }
             return 0.0;
         }
-        
+
         private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
         {
 
@@ -747,7 +747,7 @@ namespace WindowsFormsApplication3
             int[] nums1 = new int[] { 3, 4, 5, 6 };
             int[] nums2 = new int[] { 1, 2, 3, 7 };
             //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
-            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());            
+            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
 
         }
 
@@ -758,8 +758,8 @@ namespace WindowsFormsApplication3
               Space Complexity is O(2 logn)
             */
 
-          
-            int[] heights = new int[] { 1,2,4,2 };
+
+            int[] heights = new int[] { 1, 2, 4, 2 };
             int tempPos = 0;
             int tempHist = 0;
             Stack pos = new Stack();
@@ -775,7 +775,7 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    while (histogram.Count > 0 &&  h < (int)histogram.Peek())
+                    while (histogram.Count > 0 && h < (int)histogram.Peek())
                     {
                         tempPos = (int)pos.Pop();
                         tempHist = (int)histogram.Pop();
@@ -786,7 +786,7 @@ namespace WindowsFormsApplication3
                 }
 
             }
-            while (histogram.Count >0)
+            while (histogram.Count > 0)
             {
                 tempPos = (int)pos.Pop();
                 tempHist = (int)histogram.Pop();
@@ -805,7 +805,7 @@ namespace WindowsFormsApplication3
              http://www.geeksforgeeks.org/program-check-array-sorted-not-iterative-recursive/
             */
 
-            int[] input = new int[] {1, 2, 3, 4, 10, 5 };
+            int[] input = new int[] { 1, 2, 3, 4, 10, 5 };
             bool? returnValue = null;
             if (input != null && input.Length > 0)
             {
@@ -823,26 +823,26 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            string result = returnValue !=null ? "Empyt" : returnValue.Value ? "Sorted" : "Not Sorted";
+            string result = returnValue != null ? "Empyt" : returnValue.Value ? "Sorted" : "Not Sorted";
             MessageBox.Show($"Given array is {result}");
-            
+
         }
 
         private void btn_Union_and_Intersection_of_two_sorted_arrays_Click(object sender, EventArgs e)
         {
-            
+
             /*
              Time Complexity is O(m+n) where m and n is the length of the input 1 and input 2 array respectivey
              http://www.geeksforgeeks.org/union-and-intersection-of-two-sorted-arrays-2/
             */
-            int[] input1 = new int[] {1, 2, 3, 4, 5 };
-            int[] input2 = new int[] { 3,5,7,9,11 };
+            int[] input1 = new int[] { 1, 2, 3, 4, 5 };
+            int[] input2 = new int[] { 3, 5, 7, 9, 11 };
             StringBuilder result = new StringBuilder();
-            if (input1!=null && input1.Length > 0 && input2!= null && input2.Length > 0)
-            {                                 
+            if (input1 != null && input1.Length > 0 && input2 != null && input2.Length > 0)
+            {
                 int i = 0, j = 0;
 
-                while (i < input1.Length && j< input2.Length)
+                while (i < input1.Length && j < input2.Length)
                 {
                     if (input1[i] < input2[j])
                     {
@@ -885,7 +885,7 @@ namespace WindowsFormsApplication3
 
 
 
-           
+
         }
 
         private void btn_Merge_Overlapping_Intervals_Click(object sender, EventArgs e)
@@ -911,16 +911,16 @@ namespace WindowsFormsApplication3
                                                     new Interval(){Start = 13, End = 18}
                                                 };
 
-            if (input1!=null && input1.Length == 0)
+            if (input1 != null && input1.Length == 0)
             {
                 MessageBox.Show("Input is empty");
             }
 
-            StringBuilder overlapping = new StringBuilder();            
+            StringBuilder overlapping = new StringBuilder();
             Stack<Interval> stack = new Stack<Interval>();
             stack.Push(input1[0]);
 
-            for(int i =1; i<input1.Length; i++ )
+            for (int i = 1; i < input1.Length; i++)
             {
                 Interval interval = stack.Peek();
                 if (interval.End < input1[i].Start)
@@ -931,17 +931,17 @@ namespace WindowsFormsApplication3
                 {
                     interval.End = input1[i].End;
                     stack.Pop();
-                    stack.Push(interval);                    
+                    stack.Push(interval);
                 }
-            }    
-            
-            while (stack.Count!=0)
+            }
+
+            while (stack.Count != 0)
             {
                 Interval interval = stack.Pop();
                 overlapping.Append($"{interval.Start.ToString()} {interval.End.ToString()} \n");
             }
 
-            MessageBox.Show($"Overlapping pair: \n {overlapping.ToString()}"); 
+            MessageBox.Show($"Overlapping pair: \n {overlapping.ToString()}");
 
         }
 
@@ -958,8 +958,8 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                     h = mid;
-                }                
+                    h = mid;
+                }
             }
             return (arr[l] >= r) ? l : -1;
         }
@@ -969,7 +969,7 @@ namespace WindowsFormsApplication3
         private int Get_Arbitrary_Probability_Distribution_Fashion(int[] arr, int[] freq, int n)
         {
             // Create and fill prefix array
-            int[] prefix = new int[n];            
+            int[] prefix = new int[n];
             prefix[0] = freq[0];
             for (int i = 1; i < n; i++)
             {
@@ -996,8 +996,8 @@ namespace WindowsFormsApplication3
             //Time Complexity   : O(n)
             //Space Complexity  : O(n)
 
-            int[] arr = new int[] { 1, 2, 3};
-            int[] freq = new int[] { 49, 0, 50};
+            int[] arr = new int[] { 1, 2, 3 };
+            int[] freq = new int[] { 49, 0, 50 };
             StringBuilder resultBuilder = new StringBuilder();
 
             // Use a different seed value for every run.
@@ -1005,9 +1005,81 @@ namespace WindowsFormsApplication3
             // Let us generate 10 random numbers accroding to
             // given distribution
             for (int i = 0; i < 100; i++)
-                resultBuilder.Append(this.Get_Arbitrary_Probability_Distribution_Fashion(arr, freq, arr.Length) + " " );
+                resultBuilder.Append(this.Get_Arbitrary_Probability_Distribution_Fashion(arr, freq, arr.Length) + " ");
 
             MessageBox.Show($"Random number generator in arbitrary probability distribution {resultBuilder.ToString()}");
+
+        }
+
+        private void btn_Sum_the_first_two_min_elements_from_the_given_array_Click(object sender, EventArgs e)
+        {
+            int[] input = new int[] { 4, 3, 2, 1, 4, -1 };
+            int firstMin = input[0];
+            int secondMin = input[1];
+
+            //Swapping firstMin and secondMin if secondMin is less than second min
+            if (secondMin < firstMin)
+            {
+                secondMin = firstMin + secondMin;
+                firstMin = secondMin - firstMin;
+                secondMin = secondMin - firstMin;
+            }
+
+
+            for (int i = 2; i < input.Length; i++)
+            {
+                if (secondMin > input[i] && firstMin > input[i]) //When firstMin and SecondMin values are greater than currentValue
+                {
+                    secondMin = firstMin;
+                    firstMin = input[i];
+                }
+                else if (secondMin > input[i] && firstMin < input[i]) //When second value is greater and firstMin value is less than currentValue
+                {
+                    secondMin = input[i];
+                }
+            }
+
+            MessageBox.Show($"First Min value :  {firstMin.ToString()} Second Min value : {secondMin.ToString()} Sum : {(firstMin + secondMin).ToString()}");
+
+        }
+
+        private void btn_Find_the_largest_square_of_1_in_a_given_matrix_Click(object sender, EventArgs e)
+        {
+            /*
+                Time Complexity is O(n^2) 
+                Space Complexity is 4 X 4
+
+             */
+
+            int[,] input = new int[,] { 
+                                            { 0, 1, 0, 1 },
+                                            { 0, 1, 1, 1 },
+                                            { 1, 1, 1, 1 },
+                                            { 0, 1, 1, 1,}
+                                        };
+
+            var cache = input;
+            int result = 0;            
+            for(int i = 1; i<=input.GetUpperBound(0); i++)
+            {                
+                for (int j = 0; j<= input.GetUpperBound(0); j++)
+                {                    
+                    if (i > 0 &&  j > 0)
+                    {
+                        if (input[i, j] > 0)
+                        {
+                            cache[i, j] = 1 + Math.Min(Math.Min(cache[i, j - 1], cache[i - 1, j]), cache[i - 1, j - 1]);
+                        }
+                    }
+
+                    if (cache[i, j] > result)
+                        result = cache[i, j];
+                    
+                }
+            }
+
+            MessageBox.Show($"Largest square in the matrix is  {result.ToString()}");
+
 
         }
     }

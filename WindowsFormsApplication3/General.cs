@@ -44,8 +44,8 @@ namespace WindowsFormsApplication3
             Del a, b, c, d;
             a = Hello;
             b = Goodbye;
-            c = a+b;
-            d = c-b;
+            c = a + b;
+            d = c - b;
 
             string data;
             data = a("Testing Hello");
@@ -63,23 +63,23 @@ namespace WindowsFormsApplication3
         {
             string data = "Returning from Hello Method " + s;
             //MessageBox.Show(data);
-            return data ;
+            return data;
         }
 
         private string Goodbye(string s)
         {
             string data = "Returning from GoodBye Method " + s;
             //MessageBox.Show(data);
-            return data;            
+            return data;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-           Circle c = new Circle();
-             c.Draw();
-            Shape s = (Shape) c ;
+            Circle c = new Circle();
+            c.Draw();
+            Shape s = (Shape)c;
             s.Draw();
-         
+
 
             Circle1 c1 = new Circle1();
             c1.Draw();
@@ -94,10 +94,10 @@ namespace WindowsFormsApplication3
             MessageBox.Show(y.ToString());
 
             List<int> lt = new List<int>();
-            int[] lti = new int[]{};
+            int[] lti = new int[] { };
 
             object t1 = new object();
-            t1= 1;
+            t1 = 1;
             MessageBox.Show(t1.ToString());
             object t2 = t1;
             //t1 = 2;
@@ -118,7 +118,7 @@ namespace WindowsFormsApplication3
             //This call invokes the implicit "Digit" operator
             Digit dig2 = 12;
             MessageBox.Show(string.Format("num = {0} dig2 = {1}", num, dig2.val));
-            
+
 
         }
 
@@ -140,7 +140,7 @@ namespace WindowsFormsApplication3
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
             var firstNumbersLessThan6 = numbers.TakeWhile(n => n < 6);
 
-            int i=0;
+            int i = 0;
             MessageBox.Show((++i).ToString() + "      " + (i++).ToString());
         }
 
@@ -148,7 +148,7 @@ namespace WindowsFormsApplication3
         {
             Hashtable hashTable = new Hashtable();
             //List<string> list = new List<string>();
-            
+
             //for ( int i = 0;i <5000; i++)
             //{
             //    if (list.Where(w=>w == string.Format("{0}-{1}",i.ToString().GetHashCode().ToString(),i.ToString())).Count()>0)
@@ -161,12 +161,12 @@ namespace WindowsFormsApplication3
             //}
 
 
-            
-            hashTable.Add("1000", 10);           
+
+            hashTable.Add("1000", 10);
             hashTable.Add("2000", 10);
 
-            
-            
+
+
 
             foreach (DictionaryEntry key in hashTable)
             {
@@ -174,12 +174,12 @@ namespace WindowsFormsApplication3
             }
 
 
-       
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-      
+
 
         }
 
@@ -287,7 +287,7 @@ namespace WindowsFormsApplication3
         {
             public int A1;
         }
-        
+
 
         public class B : A
         {
@@ -302,7 +302,7 @@ namespace WindowsFormsApplication3
             string begin = "BEGIN";
             string end = "END";
 
-            if (string.IsNullOrWhiteSpace(input) || !(input.Contains(begin+"-") && input.Contains("-" + end)))
+            if (string.IsNullOrWhiteSpace(input) || !(input.Contains(begin + "-") && input.Contains("-" + end)))
             {
                 return bad;
             }
@@ -336,7 +336,7 @@ namespace WindowsFormsApplication3
                         {
                             break;
                         }
-              
+
                     }
                     else
                     {
@@ -369,7 +369,7 @@ namespace WindowsFormsApplication3
             b.Test();
 
             AbstractClassDervied ab = new AbstractClassDervied();
-            ab.AbstractClassMethod2();           
+            ab.AbstractClassMethod2();
 
 
         }
@@ -424,7 +424,7 @@ namespace WindowsFormsApplication3
                 MessageBox.Show("Derived");
             }
         }
-        
+
 
         private void OutParameterFunction(out int i)
         {
@@ -433,12 +433,12 @@ namespace WindowsFormsApplication3
 
         private void RefParameterFunction(ref int i)
         {
-            
+
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
-            int m = 1 ;
+            int m = 1;
             this.RefParameterFunction(ref m);
             this.OutParameterFunction(out m);
             string message = "Ref parameter should be initialized before passing to the calling method \n";
@@ -453,15 +453,15 @@ namespace WindowsFormsApplication3
             TestClass t = new T();
             t.display("Test");
 
-            Derviced d = new Derviced() {i = 10, j = 11 };
+            Derviced d = new Derviced() { i = 10, j = 11 };
 
             BaseTest b = d;
 
-            
+
 
         }
 
-      
+
 
         private void btnMatch_The_Numbers_Click(object sender, EventArgs e)
         {
@@ -487,7 +487,7 @@ namespace WindowsFormsApplication3
                     y--;
                 }
 
-                if (a==x && b==y)
+                if (a == x && b == y)
                 {
                     break;
                 }
@@ -498,10 +498,64 @@ namespace WindowsFormsApplication3
 
         private void button17_Click(object sender, EventArgs e)
         {
-            XElement xElement = XElement.Load(@"C:\Work\UniversalSettler.exe.config");
-
+            MessageBox.Show(URLDecode("subMerchant12%40visa%2Ecom"));
         }
-    }
+
+
+
+        public string URLDecode(string pszString)
+        {
+            int nCurPos, nCurBufPos;
+            char nValue;            
+            int nBufLen = 0;
+            char[] pszBuffer = new char[pszString.Length];
+            if (null == pszString || pszString.Length == 0)
+                return string.Empty;
+
+            nBufLen = pszString.Length;
+            nCurBufPos = 0;
+            
+            for (nCurPos = 0; nCurPos < nBufLen; nCurPos++)
+            {
+                if (pszString[nCurPos] == '+')
+                {
+                    pszBuffer[nCurBufPos++] = '\0';
+                }
+                else if (pszString[nCurPos] == '%')
+                {
+                    //check for end of value
+                    if (nCurPos + 2 < nBufLen)
+                    {
+                        nValue = Convert.ToChar(HexToInt(pszString[nCurPos + 1]) * 16 + HexToInt(pszString[nCurPos + 2]));
+                        pszBuffer[nCurBufPos++] = nValue;
+                        nCurPos += 2;
+                    }
+                }
+                else
+                {
+                    pszBuffer[nCurBufPos++] = pszString[nCurPos];
+                }
+            }
+
+            return new string(pszBuffer);
+        }
+
+        int HexToInt(char tc)
+        {
+            int ch = 255;       // 255 indicates invalid hex character            
+            if (tc >= '0' && tc <= '9')
+            {
+                ch = (tc - '0');
+            }
+            else if ((tc >= 'a' && tc <= 'f') || (tc >= 'A' && tc <= 'F'))
+            {
+
+                ch = (Convert.ToChar(tc.ToString().ToLower())- ('a') + 10);
+            }
+            return ch;
+        }
+
+    }   
 
 
     public class BaseTest
