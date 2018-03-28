@@ -48,6 +48,7 @@
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion = new System.Windows.Forms.Button();
             this.btn_Sum_the_first_two_min_elements_from_the_given_array = new System.Windows.Forms.Button();
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix = new System.Windows.Forms.Button();
+            this.btn_Implement_Stack_as_a_queue = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -259,11 +260,22 @@
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.UseVisualStyleBackColor = true;
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Click += new System.EventHandler(this.btn_Find_the_largest_square_of_1_in_a_given_matrix_Click);
             // 
+            // btn_Implement_Stack_as_a_queue
+            // 
+            this.btn_Implement_Stack_as_a_queue.Location = new System.Drawing.Point(623, 2);
+            this.btn_Implement_Stack_as_a_queue.Name = "btn_Implement_Stack_as_a_queue";
+            this.btn_Implement_Stack_as_a_queue.Size = new System.Drawing.Size(537, 34);
+            this.btn_Implement_Stack_as_a_queue.TabIndex = 20;
+            this.btn_Implement_Stack_as_a_queue.Text = "Implement Stack as a queue";
+            this.btn_Implement_Stack_as_a_queue.UseVisualStyleBackColor = true;
+            this.btn_Implement_Stack_as_a_queue.Click += new System.EventHandler(this.btn_Implement_Stack_as_a_queue_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Implement_Stack_as_a_queue);
             this.Controls.Add(this.btn_Find_the_largest_square_of_1_in_a_given_matrix);
             this.Controls.Add(this.btn_Sum_the_first_two_min_elements_from_the_given_array);
             this.Controls.Add(this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion);
@@ -313,5 +325,6 @@
         private System.Windows.Forms.Button btn_Random_number_generator_in_arbitrary_probability_distribution_fashion;
         private System.Windows.Forms.Button btn_Sum_the_first_two_min_elements_from_the_given_array;
         private System.Windows.Forms.Button btn_Find_the_largest_square_of_1_in_a_given_matrix;
+        private System.Windows.Forms.Button btn_Implement_Stack_as_a_queue;
     }
 }
