@@ -30,6 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix = new System.Windows.Forms.Button();
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -52,11 +53,22 @@
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.UseVisualStyleBackColor = true;
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Click += new System.EventHandler(this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix_Click);
             // 
+            // btn_Find_the_largest_square_of_1_in_a_given_matrix
+            // 
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Location = new System.Drawing.Point(2, 102);
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Name = "btn_Find_the_largest_square_of_1_in_a_given_matrix";
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Size = new System.Drawing.Size(583, 43);
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.TabIndex = 20;
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Text = "Find the largest square of 1 in a given matrix";
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.UseVisualStyleBackColor = true;
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Click += new System.EventHandler(this.btn_Find_the_largest_square_of_1_in_a_given_matrix_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 425);
+            this.Controls.Add(this.btn_Find_the_largest_square_of_1_in_a_given_matrix);
             this.Controls.Add(this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix);
             this.Controls.Add(this.button1);
             this.Name = "Matrix";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix;
+        private System.Windows.Forms.Button btn_Find_the_largest_square_of_1_in_a_given_matrix;
     }
 }

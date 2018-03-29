@@ -145,5 +145,44 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Total no of negative number in matrix is {count.ToString()} ");
 
         }
+
+        private void btn_Find_the_largest_square_of_1_in_a_given_matrix_Click(object sender, EventArgs e)
+        {
+            /*
+               Time Complexity is O(n^2) 
+               Space Complexity is 4 X 4
+
+            */
+
+            int[,] input = new int[,] {
+                                            { 0, 1, 0, 1 },
+                                            { 0, 1, 1, 1 },
+                                            { 1, 1, 1, 1 },
+                                            { 0, 1, 1, 1,}
+                                        };
+
+            var cache = input;
+            int result = 0;
+            for (int i = 1; i <= input.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= input.GetUpperBound(0); j++)
+                {
+                    if (i > 0 && j > 0)
+                    {
+                        if (input[i, j] > 0)
+                        {
+                            cache[i, j] = 1 + Math.Min(Math.Min(cache[i, j - 1], cache[i - 1, j]), cache[i - 1, j - 1]);
+                        }
+                    }
+
+                    if (cache[i, j] > result)
+                        result = cache[i, j];
+
+                }
+            }
+
+            MessageBox.Show($"Largest square in the matrix is  {result.ToString()}");
+
+        }
     }
 }

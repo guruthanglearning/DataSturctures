@@ -15,7 +15,7 @@ namespace WindowsFormsApplication3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Coordinates());
+            Application.Run(new Arrays());
         }
     }
 }

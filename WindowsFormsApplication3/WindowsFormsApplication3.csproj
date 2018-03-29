@@ -170,6 +170,12 @@
     <Compile Include="Sorting.Designer.cs">
       <DependentUpon>Sorting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stacks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stacks.Designer.cs">
+      <DependentUpon>Stacks.cs</DependentUpon>
+    </Compile>
     <Compile Include="StringsManipulation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sorting.resx">
       <DependentUpon>Sorting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stacks.resx">
+      <DependentUpon>Stacks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StringsManipulation.resx">
       <DependentUpon>StringsManipulation.cs</DependentUpon>

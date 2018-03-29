@@ -1043,109 +1043,62 @@ namespace WindowsFormsApplication3
 
         }
 
-        private void btn_Find_the_largest_square_of_1_in_a_given_matrix_Click(object sender, EventArgs e)
+        private void btn_Arrange_all_zero_in_an_array_toward_right_Click(object sender, EventArgs e)
         {
-            /*
-                Time Complexity is O(n^2) 
-                Space Complexity is 4 X 4
+            Dictionary<int, int[]> inputs = new Dictionary<int, int[]>();
 
-             */
+            inputs.Add(1, new int[] { 1, 2, 3, 4, 5, 6 });
+            inputs.Add(2, new int[] { 1, 0, 2, 0, 3, 0 });
+            inputs.Add(3, new int[] { 1, 2, 3, 0, 0, 0 });
+            inputs.Add(4, new int[] { 0, 0, 0, 1, 2, 3 });
+            inputs.Add(5, new int[] { 0, 0, 0, 1, 0, 0 });
+            int lastIndexOfZero = 0;
+            StringBuilder result = new StringBuilder();
 
-            int[,] input = new int[,] { 
-                                            { 0, 1, 0, 1 },
-                                            { 0, 1, 1, 1 },
-                                            { 1, 1, 1, 1 },
-                                            { 0, 1, 1, 1,}
-                                        };
-
-            var cache = input;
-            int result = 0;            
-            for(int i = 1; i<=input.GetUpperBound(0); i++)
-            {                
-                for (int j = 0; j<= input.GetUpperBound(0); j++)
-                {                    
-                    if (i > 0 &&  j > 0)
+            foreach (int key in inputs.Keys)
+            {
+                lastIndexOfZero = 0;
+                var input = inputs[key];
+                           
+                result.Append($"Before swap input array :  {Display(input)} \n");                
+                for (int i = 1; i < input.Length; i++)
+                {
+                    //if (i + 1 < input.Length)
+                    //{
+                    //    if (input[i] == 0 && input[i + 1] != 0)
+                    //    {
+                    //        this.Swap(input, lastIndexOfZero, i + 1);
+                    //        lastIndexOfZero++;
+                    //    }
+                    //    else if (input[i]!=0 && input[i+1]==0)
+                    //    {
+                    //        lastIndexOfZero++;
+                    //    }
+                    //}
+                    if (input[lastIndexOfZero] == 0 && input[i] != 0)
                     {
-                        if (input[i, j] > 0)
-                        {
-                            cache[i, j] = 1 + Math.Min(Math.Min(cache[i, j - 1], cache[i - 1, j]), cache[i - 1, j - 1]);
-                        }
+                        this.Swap(input, lastIndexOfZero, i);
+                        lastIndexOfZero++;
+                    }
+                    else if (input[lastIndexOfZero] != 0)
+                    {
+                        lastIndexOfZero++;
                     }
 
-                    if (cache[i, j] > result)
-                        result = cache[i, j];
-                    
+
                 }
+                result.Append($"After swap input array: {Display(input)} \n");
             }
+            
 
-            MessageBox.Show($"Largest square in the matrix is  {result.ToString()}");
-
-
+            MessageBox.Show(result.ToString());
         }
 
-        private void btn_Implement_Stack_as_a_queue_Click(object sender, EventArgs e)
+        private void Swap(int[] array, int i, int j)
         {
-            StringBuilder result = new StringBuilder();
-            StackAsQueue que = new StackAsQueue();
-            que.Enque(1);
-            que.Enque(2);
-            que.Enque(3);
-            que.Enque(4);
-
-            while (true)
-            {
-                try
-                {
-                    result.Append($"{que.Deque().ToString()} ");
-                }
-                catch(Exception)
-                {
-                    break;
-                }
-            }
-
-            MessageBox.Show($"Items in the Queues {result.ToString()}");
-      
-
-
+            array[i] = array[i] + array[j];
+            array[j] = array[i] - array[j];
+            array[i] = array[i] - array[j];
         }
-
-
-        public class StackAsQueue
-        {
-            Stack queue;
-
-            public StackAsQueue()
-            {
-                queue = new Stack();
-            }
-
-            public int Deque()
-            {
-                if (queue.Count == 0)
-                {
-                    throw new InvalidOperationException("Queue is empty");
-                }
-
-                if (queue.Count == 1)
-                {
-                    return (int)queue.Pop();
-                }
-
-                int item = (int)queue.Pop();
-                int result = Deque();
-                queue.Push(item);
-                return result;
-            }
-
-            public void Enque(int input)
-            {
-                queue.Push(input);
-            }
-        }
-
-        
-
-        
     }
 }
