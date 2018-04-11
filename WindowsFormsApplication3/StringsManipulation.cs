@@ -1200,11 +1200,28 @@ namespace WindowsFormsApplication3
 
         }
 
-        private void button18_Click(object sender, EventArgs e)
+      
+
+        private void btn_First_Recurring_character_Click(object sender, EventArgs e)
         {
-            string result =  Convert.ToBase64String(Encoding.UTF8.GetBytes(textBox1.Text));
-            MessageBox.Show(Encoding.UTF8.GetString(Convert.FromBase64String(result)));
-                
+            /*
+               Time Complexity is O(n)
+               Space Complexity is O(n)
+             */
+            string input = "ABCDEFBACBAC";
+            List<char> recurringChar = new List<char>();
+            foreach(char c in input)
+            {
+                if (!recurringChar.Contains(c))
+                {
+                    recurringChar.Add(c);
+                }
+                else
+                {
+                    MessageBox.Show($"First recurring character is {c}");
+                    break;
+                }
+            }
         }
     }
 }
