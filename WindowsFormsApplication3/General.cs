@@ -10,7 +10,10 @@ using System.Xml.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.Security.Cryptography;
 using ExtensionMethodsDemo1;
+using System.Security.Cryptography.X509Certificates;
+
 namespace WindowsFormsApplication3
 {
     public partial class General : Form
@@ -498,7 +501,11 @@ namespace WindowsFormsApplication3
 
         private void button17_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(URLDecode("subMerchant12%40visa%2Ecom"));
+            var certStore = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+            certStore.Open(OpenFlags.ReadOnly);
+            var certCollection =  certStore.Certificates.Find(X509FindType.FindBySubjectName, "ots.ic3.com", true);
+
+
         }
 
 

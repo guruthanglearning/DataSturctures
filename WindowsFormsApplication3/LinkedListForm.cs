@@ -1105,7 +1105,8 @@ namespace WindowsFormsApplication3
 
             //Time complexity is O(n^2) since finding min from Linklist has to be travesal once and removing is another traversal
 
-            LinkList linkList = null;           
+            LinkList linkList = null;
+            linkList = InsertLinkList(linkList, 1);
             linkList = InsertLinkList(linkList, 5);
             linkList = InsertLinkList(linkList, 4);
             linkList = InsertLinkList(linkList, 10);
@@ -1115,51 +1116,90 @@ namespace WindowsFormsApplication3
             linkList = InsertLinkList(linkList, 123);
             linkList = InsertLinkList(linkList, 24);
             linkList = InsertLinkList(linkList, 3);
+         
 
 
             datas.Clear();
             DisplayLinkList(linkList);
             MessageBox.Show(datas.ToString());
 
-            if (linkList == null)
-                return;
+            LinkList r = linkList;
+            LinkList p = linkList;
+            LinkList m = linkList;
 
-            LinkList smallest = linkList;            
-            LinkList runner = linkList;
-            LinkList prev = linkList;
-            //5->4->10>110->112->3->123->24->3
-            while (runner != null)
+            while (r.next!=null)
             {
-                if (runner.next != null && runner.next.data < smallest.data)
+                if (r.next.data < m.data)
                 {
-                    smallest = runner.next;
-                    prev = runner;
+                    m = r.next;
+                    p = r;
                 }
-                runner = runner.next;                             
-           }           
-
-           while (prev == smallest || linkList.data == smallest.data)
-           {
-                linkList = linkList.next;
-                prev = linkList;
-           }
-
-            LinkList current = prev.next;
-            
-            while (current != null)
-            {
-                if (current.data == smallest.data)
-                {
-                    LinkList temp = current.next;
-                    prev.next = temp;
-                    current = current.next;
-                }
-                else
-                {
-                    prev = current;
-                    current = current.next;
-                }
+                r = r.next;
             }
+
+            if (p == m)
+            {
+                linkList = m.next;
+            }
+            else
+            {
+                p.next = m.next;
+                r = p.next;
+
+                while (r != null)
+                {
+                    if (r.data == m.data)
+                    {
+                        p.next = r.next;
+                    }
+                    else
+                    {
+                        p = r;
+                    }
+                    r = r.next;
+                }
+
+            }
+
+           // if (linkList == null)
+           //     return;
+
+           // LinkList smallest = linkList;            
+           // LinkList runner = linkList;
+           // LinkList prev = linkList;
+           // //5->4->10>110->112->3->123->24->3
+           // while (runner != null)
+           // {
+           //     if (runner.next != null && runner.next.data < smallest.data)
+           //     {
+           //         smallest = runner.next;
+           //         prev = runner;
+           //     }
+           //     runner = runner.next;                             
+           //}           
+
+           //while (prev == smallest || linkList.data == smallest.data)
+           //{
+           //     linkList = linkList.next;
+           //     prev = linkList;
+           //}
+
+           // LinkList current = prev.next;
+            
+           // while (current != null)
+           // {
+           //     if (current.data == smallest.data)
+           //     {
+           //         LinkList temp = current.next;
+           //         prev.next = temp;
+           //         current = current.next;
+           //     }
+           //     else
+           //     {
+           //         prev = current;
+           //         current = current.next;
+           //     }
+           // }
 
             datas.Append("\n\n");
             DisplayLinkList(linkList);

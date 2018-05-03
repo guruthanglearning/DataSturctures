@@ -58,6 +58,7 @@
             this.Longest_Palondrome_in_a_given_string_O_Off_N = new System.Windows.Forms.Button();
             this.btn_Find_index_of_homogenous_continous_charcter = new System.Windows.Forms.Button();
             this.btn_First_Recurring_character = new System.Windows.Forms.Button();
+            this.btn_First_Non_Occuring_Character = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -375,19 +376,30 @@
             // 
             // btn_First_Recurring_character
             // 
-            this.btn_First_Recurring_character.Location = new System.Drawing.Point(494, 698);
+            this.btn_First_Recurring_character.Location = new System.Drawing.Point(482, 685);
             this.btn_First_Recurring_character.Name = "btn_First_Recurring_character";
-            this.btn_First_Recurring_character.Size = new System.Drawing.Size(370, 35);
+            this.btn_First_Recurring_character.Size = new System.Drawing.Size(412, 35);
             this.btn_First_Recurring_character.TabIndex = 29;
             this.btn_First_Recurring_character.Text = "First Recurring character";
             this.btn_First_Recurring_character.UseVisualStyleBackColor = true;
             this.btn_First_Recurring_character.Click += new System.EventHandler(this.btn_First_Recurring_character_Click);
             // 
+            // btn_First_Non_Occuring_Character
+            // 
+            this.btn_First_Non_Occuring_Character.Location = new System.Drawing.Point(910, 102);
+            this.btn_First_Non_Occuring_Character.Name = "btn_First_Non_Occuring_Character";
+            this.btn_First_Non_Occuring_Character.Size = new System.Drawing.Size(412, 35);
+            this.btn_First_Non_Occuring_Character.TabIndex = 30;
+            this.btn_First_Non_Occuring_Character.Text = "First Non Occuring Character";
+            this.btn_First_Non_Occuring_Character.UseVisualStyleBackColor = true;
+            this.btn_First_Non_Occuring_Character.Click += new System.EventHandler(this.btn_First_Non_Occuring_Character_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 779);
+            this.ClientSize = new System.Drawing.Size(1334, 779);
+            this.Controls.Add(this.btn_First_Non_Occuring_Character);
             this.Controls.Add(this.btn_First_Recurring_character);
             this.Controls.Add(this.btn_Find_index_of_homogenous_continous_charcter);
             this.Controls.Add(this.Longest_Palondrome_in_a_given_string_O_Off_N);
@@ -459,5 +471,6 @@
         private System.Windows.Forms.Button Longest_Palondrome_in_a_given_string_O_Off_N;
         private System.Windows.Forms.Button btn_Find_index_of_homogenous_continous_charcter;
         private System.Windows.Forms.Button btn_First_Recurring_character;
+        private System.Windows.Forms.Button btn_First_Non_Occuring_Character;
     }
 }

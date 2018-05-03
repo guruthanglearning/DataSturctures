@@ -1148,8 +1148,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_index_of_homogenous_continous_charcter_Click(object sender, EventArgs e)
         {
-
-            string input = "AAAABBCBBBDEEEEEFFFF";
+            // string input = "AAAABBCBBBDEEEEEFFFF";
+            string input = "DBCAAB";
             //string input = "ABCCDEF";
             int previousCharCount = 0;
             int previousCharIndex = -1;
@@ -1191,37 +1191,78 @@ namespace WindowsFormsApplication3
                         previousCharIndex = currentCharStartIndex;
                     }
                 }
-
-               
             }
-
-            
-            MessageBox.Show(previousCharIndex >=0 ? $"Homogenous continous character is {input[previousCharIndex].ToString()} and count is {previousCharCount.ToString()}" : "No character exists in continous homogenous.");
-
+            MessageBox.Show(previousCharIndex >=0 ? $"Homogenous continous character is {input[previousCharIndex].ToString()} and count is {previousCharCount.ToString()}" : "No character exists in continous homogenous.");            
         }
 
-      
+        private Dictionary<char, int> GetCharIndexesInAGivenString(string input)
+        {
+            var result = new Dictionary<char, int>();
+            for(int i = 0; i<input.Length; i++)
+            {
+
+                if (!result.ContainsKey(input[i]))
+                {
+                    result.Add(input[i], i);
+                }
+                else
+                {
+                    result[input[i]] = -1;
+                }
+            }
+            return result;
+        }
 
         private void btn_First_Recurring_character_Click(object sender, EventArgs e)
         {
-            /*
+             /*
                Time Complexity is O(n)
-               Space Complexity is O(n)
+               Space Complexity is O(1)
              */
-            string input = "ABCDEFBACBAC";
-            List<char> recurringChar = new List<char>();
-            foreach(char c in input)
+
+            //string input = "ABCDEFBACBAC";
+            string input = "DBCAAB";
+            var result = this.GetCharIndexesInAGivenString(input);
+            
+            foreach (char c in result.Keys)
             {
-                if (!recurringChar.Contains(c))
-                {
-                    recurringChar.Add(c);
-                }
-                else
+                if (result[c] == -1)
                 {
                     MessageBox.Show($"First recurring character is {c}");
                     break;
                 }
             }
+
+
+            
+        }
+
+        private void btn_First_Non_Occuring_Character_Click(object sender, EventArgs e)
+        {
+            /*
+               Time Complexity is O(n)
+               Space Complexity is O(1)
+             */
+
+            string input = "DBCAAB";
+            var result = this.GetCharIndexesInAGivenString(input);
+            int index = -1;
+            foreach (char c in result.Keys)
+            {
+                if (result[c] != -1)
+                {                    
+                    if (index == -1 && result[c] ==0)
+                    {
+                        index = 0;
+                    }
+                    else if (result[c] < index)
+                    {
+                        index = result[c];
+                    }
+                }
+            }
+
+            MessageBox.Show($"First non repeating character {(index == -1 ? "is not available" : input[index].ToString())}");
         }
     }
 }

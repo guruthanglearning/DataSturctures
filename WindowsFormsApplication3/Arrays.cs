@@ -293,17 +293,17 @@ namespace WindowsFormsApplication3
             }
 
             int start = 0;
-            int end = input.Length - 1;
+            int end = input.Length - 1; //9
             string before = Display(input);
             while (start < end)
             {
                 if (input[start] == 0)
                 {
-                    start++;
+                    start++; 
                 }
                 else if (input[end] == 1)
                 {
-                    end--;
+                    end--; 
                 }
                 else
                 {
@@ -759,7 +759,7 @@ namespace WindowsFormsApplication3
             */
 
 
-            int[] heights = new int[] { 1, 2, 4, 2 };
+            int[] heights = new int[] { 1, 2, 4, 2, 1 };
             int tempPos = 0;
             int tempHist = 0;
             Stack pos = new Stack();
@@ -992,9 +992,11 @@ namespace WindowsFormsApplication3
 
         private void btn_Random_number_generator_in_arbitrary_probability_distribution_fashion_Click(object sender, EventArgs e)
         {
-            //https://www.geeksforgeeks.org/random-number-generator-in-arbitrary-probability-distribution-fashion/
-            //Time Complexity   : O(n)
-            //Space Complexity  : O(n)
+            /*
+             * https://www.geeksforgeeks.org/random-number-generator-in-arbitrary-probability-distribution-fashion/
+               Time Complexity   : O(n)
+               Space Complexity  : O(n)
+            */
 
             int[] arr = new int[] { 1, 2, 3 };
             int[] freq = new int[] { 49, 0, 50 };
@@ -1013,6 +1015,10 @@ namespace WindowsFormsApplication3
 
         private void btn_Sum_the_first_two_min_elements_from_the_given_array_Click(object sender, EventArgs e)
         {
+            /*
+                Time Complexity     : O(n)
+                Space Complexity    : Since we are not using any addition memory even for swapping.
+            */
             int[] input = new int[] { 4, 3, 2, 1, 4, -1 };
             int firstMin = input[0];
             int secondMin = input[1];
@@ -1045,6 +1051,11 @@ namespace WindowsFormsApplication3
 
         private void btn_Arrange_all_zero_in_an_array_toward_right_Click(object sender, EventArgs e)
         {
+            /*
+                Time Complexity     : O(n)
+                Space Complexity    : Since we are not using any addition memory even for swapping.
+             */
+
             Dictionary<int, int[]> inputs = new Dictionary<int, int[]>();
 
             inputs.Add(1, new int[] { 1, 2, 3, 4, 5, 6 });
