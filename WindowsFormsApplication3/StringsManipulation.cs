@@ -1264,5 +1264,51 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show($"First non repeating character {(index == -1 ? "is not available" : input[index].ToString())}");
         }
+
+        private void btn_Find_max_space_substring_with_in_a_string__Click(object sender, EventArgs e)
+        {
+            string input = "    ";
+            //string input = "ab  tf   xy j1234";
+            //string input = "ab ";
+            MessageBox.Show($"The max space substring with this string {input} is {this.FindMaxSpaceLengthInString(input)}");
+
+        }
+
+        public int FindMaxSpaceLengthInString(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return -1;
+            }
+
+            int previous = 0;
+            int current = 0;
+
+            foreach (char c in input)
+            {
+                if (c == ' ')
+                {
+                    current++;
+                }
+                else
+                {
+                    if (current > 0)
+                    {
+                        if (previous < current)
+                        {
+                            previous = current;
+
+                        }
+                    }
+                    current = 0;
+                }
+            }
+
+            if (current > previous)
+            {
+                previous = current;
+            }
+            return previous;
+        }
     }
 }

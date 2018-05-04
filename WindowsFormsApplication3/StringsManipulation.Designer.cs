@@ -59,6 +59,7 @@
             this.btn_Find_index_of_homogenous_continous_charcter = new System.Windows.Forms.Button();
             this.btn_First_Recurring_character = new System.Windows.Forms.Button();
             this.btn_First_Non_Occuring_Character = new System.Windows.Forms.Button();
+            this.btn_Find_max_space_substring_with_in_a_string_ = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -394,11 +395,22 @@
             this.btn_First_Non_Occuring_Character.UseVisualStyleBackColor = true;
             this.btn_First_Non_Occuring_Character.Click += new System.EventHandler(this.btn_First_Non_Occuring_Character_Click);
             // 
+            // btn_Find_max_space_substring_with_in_a_string_
+            // 
+            this.btn_Find_max_space_substring_with_in_a_string_.Location = new System.Drawing.Point(910, 148);
+            this.btn_Find_max_space_substring_with_in_a_string_.Name = "btn_Find_max_space_substring_with_in_a_string_";
+            this.btn_Find_max_space_substring_with_in_a_string_.Size = new System.Drawing.Size(398, 31);
+            this.btn_Find_max_space_substring_with_in_a_string_.TabIndex = 31;
+            this.btn_Find_max_space_substring_with_in_a_string_.Text = "Find max space substring with in a string ";
+            this.btn_Find_max_space_substring_with_in_a_string_.UseVisualStyleBackColor = true;
+            this.btn_Find_max_space_substring_with_in_a_string_.Click += new System.EventHandler(this.btn_Find_max_space_substring_with_in_a_string__Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 779);
+            this.Controls.Add(this.btn_Find_max_space_substring_with_in_a_string_);
             this.Controls.Add(this.btn_First_Non_Occuring_Character);
             this.Controls.Add(this.btn_First_Recurring_character);
             this.Controls.Add(this.btn_Find_index_of_homogenous_continous_charcter);
@@ -472,5 +484,6 @@
         private System.Windows.Forms.Button btn_Find_index_of_homogenous_continous_charcter;
         private System.Windows.Forms.Button btn_First_Recurring_character;
         private System.Windows.Forms.Button btn_First_Non_Occuring_Character;
+        private System.Windows.Forms.Button btn_Find_max_space_substring_with_in_a_string_;
     }
 }
