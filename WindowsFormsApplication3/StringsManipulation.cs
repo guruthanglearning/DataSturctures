@@ -1267,8 +1267,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_max_space_substring_with_in_a_string__Click(object sender, EventArgs e)
         {
-            string input = "    ";
-            //string input = "ab  tf   xy j1234";
+            //string input = "    ";
+            string input = "ab  tf   xy j1234";
             //string input = "ab ";
             MessageBox.Show($"The max space substring with this string {input} is {this.FindMaxSpaceLengthInString(input)}");
 
@@ -1282,11 +1282,10 @@ namespace WindowsFormsApplication3
             }
 
             int previous = 0;
-            int current = 0;
-
-            foreach (char c in input)
+            int current = 0;            
+            for (int i = 0; i < input.Length; i++)
             {
-                if (c == ' ')
+                if (input[i] == ' ')
                 {
                     current++;
                 }
@@ -1302,6 +1301,12 @@ namespace WindowsFormsApplication3
                     }
                     current = 0;
                 }
+
+                if (previous > (input.Length - i))
+                {
+                    break;
+                }
+
             }
 
             if (current > previous)
