@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace WindowsFormsApplication3
 {
@@ -110,6 +112,37 @@ namespace WindowsFormsApplication3
             
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            XElement elements = XElement.Load(@"C:\Personal\Study\WindowsFormsApplication3\XMLFile1.xml");
+            foreach(XElement x in elements.Descendants())
+            {
+                string fileName = x.Attribute("Name").Value;
+                if (File.Exists(fileName))
+                { 
+                    try
+                    {
+                    
+                        using (StreamWriter writer = File.AppendText(fileName))
+                        {
+                            writer.Write(' ');
+                        }
+                        File.AppendAllText(@"E:\Temp\TempLog\Success.txt", $"{fileName} \n");
+                    }
+                    catch(Exception ex)
+                    {
+                        File.AppendAllText(@"E:\Temp\TempLog\Failure.txt", $"{fileName} {ex.StackTrace} \n");
+                    }
+                }
+                else
+                {
+                    File.AppendAllText(@"E:\Temp\TempLog\FileNotExists.txt", $"{fileName} \n");
+                }
+            }
+
+            MessageBox.Show("Completed");
+
+        }
     }
 
     public class Employee

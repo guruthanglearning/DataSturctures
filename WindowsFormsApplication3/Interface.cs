@@ -33,7 +33,7 @@ namespace WindowsFormsApplication3
 
     public class Notify : INotify
     {
-        void INotify.Notify()
+         void INotify.Notify()
         {
             MessageBox.Show("Made INotify.Notify as private method");
         }

@@ -35,9 +35,10 @@
             // 
             this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Location = new System.Drawing.Point(12, 12);
             this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Name = "btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList";
-            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Size = new System.Drawing.Size(677, 37);
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Size = new System.Drawing.Size(867, 37);
             this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.TabIndex = 1;
-            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Text = "Implement Cache from Amazon (Implemented Dictionary having value as LinkedList)";
+            this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Text = "Implement Cache from Amazon (Implemented Dictionary having value as LinkedList)  " +
+    "Least Recently Used (LRU) cache";
             this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.UseVisualStyleBackColor = true;
             this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList.Click += new System.EventHandler(this.btn_ImplementCache_from_Amazon_Implemented_Dictionary_having_value_as_LinkedList_Click);
             // 

@@ -40,6 +40,30 @@ namespace WindowsFormsApplication3
             }
         }
 
+        private bool IsSafe(int row, int column, Tuple<int, int>[,] queens)
+        {
+           for(int i = 0; i<queens.Length; i++)
+            {
+                
+            }
+            return false;
+        }
 
+
+        private bool PlaceQueens(int col)
+        {
+            return true;
+        }
+
+        private void N_Queens_Backtracking_Algorithm_Click(object sender, EventArgs e)
+        {
+            int[,] queens = new int[3, 3];
+
+
+            
+
+
+
+        }
     }
 }

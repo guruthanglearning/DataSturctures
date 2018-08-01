@@ -32,6 +32,7 @@ namespace WindowsFormsApplication3
 
         private void button2_Click(object sender, EventArgs e)
         {
+             
             //http://quiz.geeksforgeeks.org/insertion-sort/
             //Time Complexity : 
             // Best case  : If array is in sorted order from small to big then time complexity is O(n) since no inversion 
@@ -144,16 +145,21 @@ namespace WindowsFormsApplication3
 
 
         private void Swap(int[] input, int from, int to)
-        {            
-            input[from] = input[from] + input[to];
-            input[to]= input[from] - input[to];
-            input[from] = input[from] - input[to];
+        {
+            if (from != to)
+            {
+                input[from] = input[from] + input[to];
+                input[to] = input[from] - input[to];
+                input[from] = input[from] - input[to];
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             // https://en.wikipedia.org/wiki/Quicksort
-            int[] input = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            //int[] input = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            int[] input = new int[] { 3,2,1};
+
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Before Sorting {DisplayResult(input)}");
             //Complexity  
@@ -235,7 +241,8 @@ namespace WindowsFormsApplication3
             // Average performance O(n log n)
             // Worst -case space complexity  О(n) total, O(n) auxiliary
 
-            int[] A = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            //int[] A = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            int[] A = new int[] { 3,2,1};
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Top Down : Before Sorting {DisplayResult(A)} \n");
             int[] B = new int[A.Length];            

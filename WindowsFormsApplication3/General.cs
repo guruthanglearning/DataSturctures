@@ -76,6 +76,56 @@ namespace WindowsFormsApplication3
             return data;
         }
 
+
+        public class Shape
+        {
+            // A few example members
+            public int X { get; private set; }
+            public int Y { get; private set; }
+            public int Height { get; set; }
+            public int Width { get; set; }
+
+            // Virtual method
+            public virtual void Draw()
+            {
+                MessageBox.Show("Performing base class drawing tasks");
+            }
+        }
+
+        class Circle : Shape
+        {
+            public sealed override void Draw()
+            {
+                // Code to draw a circle...
+                MessageBox.Show("Drawing a circle");
+            }
+        }
+        class Rectangle : Shape
+        {
+            public override void Draw()
+            {
+                // Code to draw a rectangle...
+                MessageBox.Show("Drawing a rectangle");
+            }
+        }
+        class Triangle : Shape
+        {
+            public override void Draw()
+            {
+                // Code to draw a triangle...
+                MessageBox.Show("Drawing a triangle");
+            }
+        }
+
+        class Circle1 : Circle
+        {
+
+            public new void Draw()
+            {
+                MessageBox.Show("Drawing a Circle1");
+            }
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             Circle c = new Circle();
@@ -240,6 +290,25 @@ namespace WindowsFormsApplication3
             public int MegaLightYears { get; set; }
         }
 
+
+        interface IGeneralInterfaceTest
+        {
+            void Test();
+        }
+
+        class GeneralInterfaceTest : IGeneralInterfaceTest
+        {
+            public virtual void Test()
+            {
+                MessageBox.Show(this.GetType().Name);
+            }
+        }
+
+        class GeneralTest : GeneralInterfaceTest, IGeneralInterfaceTest
+        {
+
+        }
+
         private void button12_Click(object sender, EventArgs e)
         {
             IGeneralInterfaceTest t = new GeneralTest();
@@ -357,6 +426,21 @@ namespace WindowsFormsApplication3
 
 
         }
+
+
+        public struct StructTestInterface : IGeneralInterfaceTest
+        {
+            public int i;
+            public int j;
+
+
+            public void Test()
+            {
+                this.i = 1000;
+                this.j = i;
+            }
+        }
+
 
         private void button14_Click(object sender, EventArgs e)
         {
@@ -599,37 +683,6 @@ namespace WindowsFormsApplication3
        
     }
 
-    public struct StructTestInterface : IGeneralInterfaceTest
-    {
-        public int i;
-        public int j;
-        
-
-        public void Test()
-        {
-            this.i = 1000;
-            this.j = i;            
-        }   
-    }
-
-    interface IGeneralInterfaceTest
-    {
-       void Test();
-    }
-
-    class GeneralInterfaceTest : IGeneralInterfaceTest
-    {
-        public virtual void Test()
-        {
-            MessageBox.Show(this.GetType().Name);
-        }
-    }
-
-    class GeneralTest: GeneralInterfaceTest, IGeneralInterfaceTest
-    {
-       
-    }
-
     class Temp
     {
         public int ID;
@@ -637,54 +690,6 @@ namespace WindowsFormsApplication3
     }
 
 
-    public class Shape
-    {
-        // A few example members
-        public int X { get; private set; }
-        public int Y { get; private set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
-
-        // Virtual method
-        public virtual void Draw()
-        {
-            MessageBox.Show("Performing base class drawing tasks");
-        }
-    }
-
-    class Circle : Shape
-    {
-        public sealed override  void Draw()
-        {
-            // Code to draw a circle...
-            MessageBox.Show("Drawing a circle");            
-        }
-    }
-    class Rectangle : Shape
-    {
-        public override void Draw()
-        {
-            // Code to draw a rectangle...
-            MessageBox.Show("Drawing a rectangle");
-        }
-    }
-    class Triangle : Shape
-    {
-        public override void Draw()
-        {
-            // Code to draw a triangle...
-            MessageBox.Show("Drawing a triangle");
-        }
-    }
-
-    class Circle1 : Circle
-    {
-
-        public new void Draw()
-        {
-            MessageBox.Show("Drawing a Circle1");
-        }
-    }
 
 
     class Digit

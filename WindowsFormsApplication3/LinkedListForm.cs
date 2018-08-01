@@ -36,6 +36,27 @@ namespace WindowsFormsApplication3
    
         private void button1_Click(object sender, EventArgs e)
         {
+
+            /*
+                                       10
+                                    /      \
+                                   /        \
+                                  /          \
+                                 /            \                           
+                                /              \
+                               5               20
+                             /  \             / \
+                            /    \           /   \  
+                           /      \         /     \
+                          3        8       15     22 
+                         / \      / \ 
+                        /   \    /   \
+                       1    4    6    9
+                        \
+                         \
+                          2
+         */
+
             Node tree = null;                    
             Insert(10, ref tree);
             Insert(5, ref tree);
@@ -542,7 +563,8 @@ namespace WindowsFormsApplication3
             current = LLNodeFirst;
 
             datas.Clear();
-
+            //4->4->5->1->0->11->1->2
+            current = LLNodeFirst;
             //// Delete duplicate node from a sorted linked list
             ///* Traverse list till the last node */
             //while (current.next != null)
@@ -593,9 +615,7 @@ namespace WindowsFormsApplication3
             datas.Append("\n\n Time Complexity: O(n^2)");            
             DisplayLinkList(LLNodeFirst);
             MessageBox.Show(datas.ToString());
-
-
-
+            
 
 
         }
@@ -668,6 +688,26 @@ namespace WindowsFormsApplication3
 
         private void button8_Click(object sender, EventArgs e)
         {
+            /*
+                             10
+                          /      \
+                         /        \
+                        /          \
+                       /            \                           
+                      /              \
+                     5               20
+                   /  \             / \
+                  /    \           /   \  
+                 /      \         /     \
+                3        8       15     22 
+               / \      / \ 
+              /   \    /   \
+             1    4    6    9
+              \
+               \
+                2
+        */
+
             Node tree = null;
             Insert(10, ref tree);
             Insert(5, ref tree);
@@ -722,6 +762,27 @@ namespace WindowsFormsApplication3
 
         private void button10_Click(object sender, EventArgs e)
         {
+            /*
+                             10
+                          /      \
+                         /        \
+                        /          \
+                       /            \                           
+                      /              \
+                     5               20
+                   /  \             / \
+                  /    \           /   \  
+                 /      \         /     \
+                3        8       15     22 
+               / \      / \ 
+              /   \    /   \
+             1    4    6    9
+              \
+               \
+                2
+         */
+
+
             //http://www.geeksforgeeks.org/inorder-successor-in-binary-search-tree/
             // Time Complexity: O(h) where h is height of tree.
             BFSNode tree = null;
@@ -738,7 +799,7 @@ namespace WindowsFormsApplication3
             InsertBFSNode(2, ref tree, tree);
             InsertBFSNode(1, ref tree, tree);
 
-            BFSNode inputNode = tree.right.left;
+            BFSNode inputNode = tree.left.right.right;
             //BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
             //MessageBox.Show(node.data.ToString());
             BFSNode node = GetInOrderSuccessorWithoutParentNode(inputNode, tree);
@@ -850,6 +911,27 @@ namespace WindowsFormsApplication3
 
         private void button11_Click(object sender, EventArgs e)
         {
+
+            /*
+                               10
+                            /      \
+                           /        \
+                          /          \
+                         /            \                           
+                        /              \
+                       5               20
+                     /  \             / \
+                    /    \           /   \  
+                   /      \         /     \
+                  3        8       15     22 
+                 / \      / \ 
+                /   \    /   \
+               1    4    6    9
+                \
+                 \
+                  2
+            */
+
             Node tree = null;
             Insert(10, ref tree);
             Insert(5, ref tree);
@@ -862,10 +944,7 @@ namespace WindowsFormsApplication3
             Insert(4, ref tree);
             Insert(6, ref tree);
             Insert(9, ref tree);
-            Insert(1, ref tree);
-
-
-
+            Insert(1, ref tree);            
             //Node node = CommonAncestor(tree, tree.left.left.left, tree.left.right);
             Node node = CommonAncestorSimple(tree, tree.left.left.left, tree.right.left);
             MessageBox.Show(node.data.ToString());
@@ -1069,7 +1148,27 @@ namespace WindowsFormsApplication3
         }
 
         private void button14_Click(object sender, EventArgs e)
-        {
+        {            
+            /*
+                                     10
+                                  /      \
+                                 /        \
+                                /          \
+                               /            \                           
+                              /              \
+                             5               20
+                           /  \             / \
+                          /    \           /   \  
+                         /      \         /     \
+                        3        8       15     22 
+                       / \      / \ 
+                      /   \    /   \
+                     1    4    6    9
+                      \
+                       \
+                        2
+            */
+
             Node tree = null;
             Insert(10, ref tree);
             Insert(5, ref tree);
@@ -1088,7 +1187,7 @@ namespace WindowsFormsApplication3
                 if (n.left != null)
                     q.Enqueue(n.left);
                 if (n.right != null)
-                    q.Enqueue(n.right);
+                    q.Enqueue(n.right);                
             }
 
             MessageBox.Show(datas.ToString());
@@ -1104,7 +1203,7 @@ namespace WindowsFormsApplication3
         {
 
             //Time complexity is O(n^2) since finding min from Linklist has to be travesal once and removing is another traversal
-
+            //1->5->4->10->110->112->3->123->24->3
             LinkList linkList = null;
             linkList = InsertLinkList(linkList, 1);
             linkList = InsertLinkList(linkList, 5);
@@ -1116,9 +1215,7 @@ namespace WindowsFormsApplication3
             linkList = InsertLinkList(linkList, 123);
             linkList = InsertLinkList(linkList, 24);
             linkList = InsertLinkList(linkList, 3);
-         
-
-
+            
             datas.Clear();
             DisplayLinkList(linkList);
             MessageBox.Show(datas.ToString());
@@ -1126,6 +1223,8 @@ namespace WindowsFormsApplication3
             LinkList r = linkList;
             LinkList p = linkList;
             LinkList m = linkList;
+            //1->5->4->10->110->112->3->123->24->3
+            //5->4->10->110->112->3->123->24->3
 
             while (r.next!=null)
             {
@@ -1640,7 +1739,7 @@ namespace WindowsFormsApplication3
         {
             //Time Complexity is O(n)
             LinkList list = null;
-            list = InsertLinkList(list, 5);
+            list = InsertLinkList(list, 4);
             list = InsertLinkList(list, 1);
             list = InsertLinkList(list, 2);
             list = InsertLinkList(list, 3);
@@ -1669,18 +1768,10 @@ namespace WindowsFormsApplication3
                     previous = current;                    
                 }
                 current = current.next;
-
             }
+
             DisplayLinkList(list);
-            MessageBox.Show(datas.ToString());
-
-
-
-        
-
-
-
-
+            MessageBox.Show(datas.ToString());            
         }
 
         private void button26_Click(object sender, EventArgs e)
@@ -1829,11 +1920,11 @@ namespace WindowsFormsApplication3
         {
             int[] test = new int[] { 1, 2 };
             LinkList list = null;
-            list = InsertLinkList(list, 5);
+            //list = InsertLinkList(list, 5);
             list = InsertLinkList(list, 1);
             list = InsertLinkList(list, 2);
             list = InsertLinkList(list, 3);
-            list = InsertLinkList(list, 4);
+            list = InsertLinkList(list, 2);
             list = InsertLinkList(list, 5);
             list = InsertLinkList(list, 3);
 
@@ -2039,6 +2130,27 @@ namespace WindowsFormsApplication3
         private void Check_if_given_sorted_sub_sequence_exists_in_binary_search_tree_Click(object sender, EventArgs e)
         {
             // http://www.geeksforgeeks.org/check-if-given-sorted-sub-sequence-exists-in-binary-search-tree/
+
+             /*
+                                 10
+                              /      \
+                             /        \
+                            /          \
+                           /            \                           
+                          /              \
+                         5               20
+                       /  \             / \
+                      /    \           /   \  
+                     /      \         /     \
+                    3        8       15     22 
+                   / \      / \ 
+                  /   \    /   \
+                 1    4    6    9
+                  \
+                   \
+                    2
+             */
+
             Node tree = null;
             Insert(10, ref tree);
             Insert(5, ref tree);
@@ -2093,6 +2205,28 @@ namespace WindowsFormsApplication3
 
         private void Check_whether_BST_contains_Dead_End_or_not_Click(object sender, EventArgs e)
         {
+
+            /*
+                                10
+                             /      \
+                            /        \
+                           /          \
+                          /            \                           
+                         /              \
+                        5               20
+                      /  \             / \
+                     /    \           /   \  
+                    /      \         /     \
+                   3        8       15     22 
+                  / \      / \ 
+                 /   \    /   \
+                1    4    6    9
+                 \
+                  \
+                   2
+            */
+
+
             // http://www.geeksforgeeks.org/check-whether-bst-contains-dead-end-not/
             //Time Complexity is O(n)
             Node tree = null;
@@ -2170,6 +2304,28 @@ namespace WindowsFormsApplication3
 
         private void ConnectNodes_Click(object sender, EventArgs e)
         {
+
+            /*
+                                10
+                             /      \
+                            /        \
+                           /          \
+                          /            \                           
+                         /              \
+                        5               20
+                      /  \             / \
+                     /    \           /   \  
+                    /      \         /     \
+                   3        8       15     22 
+                  / \      / \ 
+                 /   \    /   \
+                1    4    6    9
+                 \
+                  \
+                   2
+            */
+
+
             NodeWithNext tree = null;
             InsertNodeWithNext(10, ref tree);
             InsertNodeWithNext(5, ref tree);
@@ -2458,7 +2614,26 @@ namespace WindowsFormsApplication3
 
         private bool IsBSTUsingInOrderTravel(Node current, Node prev)
         {
-            
+            /*
+                                          10
+                                       /      \
+                                      /        \
+                                     /          \
+                                    /            \                           
+                                   /              \
+                                  20              5
+                                /  \              / \
+                               /    \            /   \  
+                              /      \          /     \
+                             22      15        8       3                               
+                                              / \      / \ 
+                                             /   \    /   \
+                                            9     6  4     1
+                                                         / 
+                                                        /
+                                                       2 
+            */
+
             if (current != null)
             {
                 if (!IsBSTUsingInOrderTravel(current.left, prev))

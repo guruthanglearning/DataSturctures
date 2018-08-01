@@ -25,7 +25,7 @@ namespace WindowsFormsApplication3
                 Time Complexity for getting an item from cache is O(1)
             */
 
-            AmazonCacheWithDictionaryValueAsLinkedList cache = new AmazonCacheWithDictionaryValueAsLinkedList();
+            LRUCacheWithDictionaryValueAsLinkedList cache = new LRUCacheWithDictionaryValueAsLinkedList();
             cache.Put("A");
             cache.Put("B");
             cache.Put("C");
@@ -44,25 +44,25 @@ namespace WindowsFormsApplication3
         }
     }
 
-    public class LinkedList
+    public class DDLinkedList
     {
         public string Data;
-        public LinkedList Next;
-        public LinkedList Previous;
+        public DDLinkedList Next;
+        public DDLinkedList Previous;
     }
 
-    public interface IAmazonCache
+    public interface ILRUCache
     {
         string Put(string data);
         string Get(string key);
     }
 
 
-    public class AmazonCacheWithDictionaryValueAsLinkedList: IAmazonCache
+    public class LRUCacheWithDictionaryValueAsLinkedList: ILRUCache
     {
-        Dictionary<string, LinkedList> cacheStorage = new Dictionary<string, LinkedList>();
-        LinkedList linkList = null;
-        LinkedList startPointLinkList = null;
+        Dictionary<string, DDLinkedList> cacheStorage = new Dictionary<string, DDLinkedList>();
+        DDLinkedList linkList = null;
+        DDLinkedList startPointLinkList = null;
      
         int size = 0;
 
@@ -73,11 +73,11 @@ namespace WindowsFormsApplication3
                 throw new Exception("Invalid key");
             }
 
-            LinkedList tempList = cacheStorage[key];
+            DDLinkedList tempList = cacheStorage[key];
             tempList.Previous.Next = tempList.Next;
             tempList.Next.Previous = tempList.Previous;
             cacheStorage.Remove(key);
-            linkList.Next = new LinkedList() { Data = key, Previous = linkList };
+            linkList.Next = new DDLinkedList() { Data = key, Previous = linkList };
             linkList = linkList.Next;
             cacheStorage.Add(key, linkList);
             return key;
@@ -95,12 +95,12 @@ namespace WindowsFormsApplication3
             {                
                 if (linkList == null)
                 {
-                    linkList = new LinkedList() { Data = data }; 
+                    linkList = new DDLinkedList() { Data = data }; 
                     startPointLinkList = linkList;                 
                 }
                 else
                 {
-                    linkList.Next = new LinkedList() { Data = data,Previous = linkList };
+                    linkList.Next = new DDLinkedList() { Data = data,Previous = linkList };
                     linkList = linkList.Next;
                 }                
                 cacheStorage.Add(data, linkList);
@@ -113,9 +113,10 @@ namespace WindowsFormsApplication3
                 {                   
                     startPointLinkList = startPointLinkList.Next;
                     startPointLinkList.Previous = null;
-                    linkList.Next = new LinkedList() { Data = data, Previous = linkList };
+                    linkList.Next = new DDLinkedList() { Data = data, Previous = linkList };
                     linkList = linkList.Next;
-                    cacheStorage[key] = linkList;
+                    cacheStorage.Remove(key);
+                    cacheStorage.Add(data,linkList);
                 }                                                
             }            
             return data;
@@ -124,7 +125,7 @@ namespace WindowsFormsApplication3
         public string DisplayForward()
         {
             StringBuilder result = new StringBuilder();
-            LinkedList traverse = startPointLinkList;
+            DDLinkedList traverse = startPointLinkList;
             while (traverse != null)
             {
                 result.Append($"Key = {traverse.Data} Value = {traverse.Data} \n");
@@ -137,7 +138,7 @@ namespace WindowsFormsApplication3
         public string DisplayBackward()
         {
             StringBuilder result = new StringBuilder();
-            LinkedList traverse = linkList;
+            DDLinkedList traverse = linkList;
             while (traverse != null)
             {
                 result.Append($"Key = {traverse.Data} Value = {traverse.Data} \n");
