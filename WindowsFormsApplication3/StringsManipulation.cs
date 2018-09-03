@@ -815,7 +815,7 @@ namespace WindowsFormsApplication3
                 Time Complexity  : O(n)
                 Space Complexity : O(m) where m is the input character set
              */
-            MessageBox.Show(this.lengthOfLongestSubstring("abcaa").ToString());
+            MessageBox.Show(this.lengthOfLongestSubstring("abcac").ToString());
         }
 
 
@@ -823,14 +823,35 @@ namespace WindowsFormsApplication3
         {
            
             int n = s.Length, ans = 0;
-            int[] index = new int[128]; // current index of character
-                                        // try to extend the range [i, j]
+            //using dictionary
+
+            //Time Complexity  : O(n)
+            //Space Complexity : O(m) where m is the input character set
+            //Using array
+            //int[] index = new int[128]; // current index of character
+            // try to extend the range [i, j]
+            //for (int j = 0, i = 0; j < n; j++)
+            //{
+            //    i = Math.Max(index[s[j]], i);
+            //    ans = Math.Max(ans, j - i + 1);
+            //    index[s[j]] = j + 1;
+            //}
+
+
+            // Time Complexity  : O(n)
+            // Space Complexity : O(min(m,n)) where m is the input character in the dictionary and n is the total input character set
+            Dictionary<char, int> index = new Dictionary<char, int>();
             for (int j = 0, i = 0; j < n; j++)
             {
-                i = Math.Max(index[s[j]], i);
+                if (index.ContainsKey(s[j]))
+                {
+                    i = Math.Max(index[s[j]],i);
+                }
+                
                 ans = Math.Max(ans, j - i + 1);
                 index[s[j]] = j + 1;
             }
+
             return ans;
         }
 
@@ -1314,6 +1335,93 @@ namespace WindowsFormsApplication3
                 previous = current;
             }
             return previous;
+        }
+
+        private void btn_Longest_Substring_Without_Repeating_Characters_Click(object sender, EventArgs e)
+        {
+
+            //string input = "pwwkew";
+            //string input = "abcabcbb";
+            //string input = "abc";
+            //string input = "bbbbb";   
+            // string input = "aabaab!bb";
+            // string input = " ";
+            // string input = "    ";
+            // string input = "au";
+             //string input = "   a u";
+            //string input = "dvdf";
+            //string input = "pwwkew";
+            string input = textBox1.Text;           
+            int start = 0;            
+            string previousString = string.Empty;
+
+            if (input.Length <= 1 )
+            {
+                previousString = input;
+            }
+            else
+            {                 
+                int i;
+                int pos = -1;
+                for(i = 1; i<input.Length; i++)
+                {
+                    pos = input.IndexOf(input[i],start, (i - start));
+                    if (pos > -1)
+                    {                       
+                        if (previousString.Length < input.Substring(start, i - start).Length)
+                        {
+                            previousString = input.Substring(start, i - start);
+                        }
+                        start = pos + 1;
+                    }
+                }
+
+                if (previousString.Length < input.Substring(start, i - start).Length)
+                {
+                    previousString = input.Substring(start, i - start);
+                }              
+            }
+           
+            MessageBox.Show($"Longest Substring of an given string {input}  is {previousString}");
+
+        }
+
+        private void btn_Reverse_the_string_word_by_word_Click(object sender, EventArgs e)
+        {
+            string input = "the sky is blue";
+            char[] charInputs = input.ToCharArray();
+            this.reverseWords(charInputs);
+            MessageBox.Show(new string(charInputs));
+
+        }
+
+        public void reverseWords(char[] s)
+        {
+            int i = 0;
+            for (int j = 0; j < s.Length; j++)
+            {
+                if (s[j] == ' ')
+                {
+                    reverse(s, i, j - 1);
+                    i = j + 1;
+                }
+            }
+
+            reverse(s, i, s.Length - 1);
+
+            reverse(s, 0, s.Length - 1);
+        }
+
+        public void reverse(char[] s, int i, int j)
+        {
+            while (i < j)
+            {
+                char temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+                i++;
+                j--;
+            }
         }
     }
 }

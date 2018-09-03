@@ -60,6 +60,8 @@
             this.btn_First_Recurring_character = new System.Windows.Forms.Button();
             this.btn_First_Non_Occuring_Character = new System.Windows.Forms.Button();
             this.btn_Find_max_space_substring_with_in_a_string_ = new System.Windows.Forms.Button();
+            this.btn_Longest_Substring_Without_Repeating_Characters = new System.Windows.Forms.Button();
+            this.btn_Reverse_the_string_word_by_word = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -377,7 +379,7 @@
             // 
             // btn_First_Recurring_character
             // 
-            this.btn_First_Recurring_character.Location = new System.Drawing.Point(482, 685);
+            this.btn_First_Recurring_character.Location = new System.Drawing.Point(482, 732);
             this.btn_First_Recurring_character.Name = "btn_First_Recurring_character";
             this.btn_First_Recurring_character.Size = new System.Drawing.Size(412, 35);
             this.btn_First_Recurring_character.TabIndex = 29;
@@ -399,17 +401,40 @@
             // 
             this.btn_Find_max_space_substring_with_in_a_string_.Location = new System.Drawing.Point(910, 148);
             this.btn_Find_max_space_substring_with_in_a_string_.Name = "btn_Find_max_space_substring_with_in_a_string_";
-            this.btn_Find_max_space_substring_with_in_a_string_.Size = new System.Drawing.Size(398, 31);
+            this.btn_Find_max_space_substring_with_in_a_string_.Size = new System.Drawing.Size(412, 31);
             this.btn_Find_max_space_substring_with_in_a_string_.TabIndex = 31;
             this.btn_Find_max_space_substring_with_in_a_string_.Text = "Find max space substring with in a string ";
             this.btn_Find_max_space_substring_with_in_a_string_.UseVisualStyleBackColor = true;
             this.btn_Find_max_space_substring_with_in_a_string_.Click += new System.EventHandler(this.btn_Find_max_space_substring_with_in_a_string__Click);
+            // 
+            // btn_Longest_Substring_Without_Repeating_Characters
+            // 
+            this.btn_Longest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(484, 687);
+            this.btn_Longest_Substring_Without_Repeating_Characters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Longest_Substring_Without_Repeating_Characters.Name = "btn_Longest_Substring_Without_Repeating_Characters";
+            this.btn_Longest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(412, 35);
+            this.btn_Longest_Substring_Without_Repeating_Characters.TabIndex = 32;
+            this.btn_Longest_Substring_Without_Repeating_Characters.Text = "Longest Substring Without Repeating Characters ";
+            this.btn_Longest_Substring_Without_Repeating_Characters.UseVisualStyleBackColor = true;
+            this.btn_Longest_Substring_Without_Repeating_Characters.Click += new System.EventHandler(this.btn_Longest_Substring_Without_Repeating_Characters_Click);
+            // 
+            // btn_Reverse_the_string_word_by_word
+            // 
+            this.btn_Reverse_the_string_word_by_word.Location = new System.Drawing.Point(909, 185);
+            this.btn_Reverse_the_string_word_by_word.Name = "btn_Reverse_the_string_word_by_word";
+            this.btn_Reverse_the_string_word_by_word.Size = new System.Drawing.Size(413, 34);
+            this.btn_Reverse_the_string_word_by_word.TabIndex = 33;
+            this.btn_Reverse_the_string_word_by_word.Text = "Reverse the string word by word";
+            this.btn_Reverse_the_string_word_by_word.UseVisualStyleBackColor = true;
+            this.btn_Reverse_the_string_word_by_word.Click += new System.EventHandler(this.btn_Reverse_the_string_word_by_word_Click);
             // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 779);
+            this.Controls.Add(this.btn_Reverse_the_string_word_by_word);
+            this.Controls.Add(this.btn_Longest_Substring_Without_Repeating_Characters);
             this.Controls.Add(this.btn_Find_max_space_substring_with_in_a_string_);
             this.Controls.Add(this.btn_First_Non_Occuring_Character);
             this.Controls.Add(this.btn_First_Recurring_character);
@@ -485,5 +510,7 @@
         private System.Windows.Forms.Button btn_First_Recurring_character;
         private System.Windows.Forms.Button btn_First_Non_Occuring_Character;
         private System.Windows.Forms.Button btn_Find_max_space_substring_with_in_a_string_;
+        private System.Windows.Forms.Button btn_Longest_Substring_Without_Repeating_Characters;
+        private System.Windows.Forms.Button btn_Reverse_the_string_word_by_word;
     }
 }

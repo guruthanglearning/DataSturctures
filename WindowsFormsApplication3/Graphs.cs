@@ -200,8 +200,6 @@ namespace WindowsFormsApplication3
             result.Append("\n Breadth First Traversal of a graph \n");
             BreadthFirstRecursiveForDependencies(visitedStack, graph);
             
-            
-
             foreach (var key in visitedStack)
             {
                 result.Append($" {key} ");

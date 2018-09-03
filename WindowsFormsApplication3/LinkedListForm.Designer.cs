@@ -68,6 +68,7 @@
             this.btn_Clone_a_linked_list_with_next_pointer = new System.Windows.Forms.Button();
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree = new System.Windows.Forms.Button();
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression = new System.Windows.Forms.Button();
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -438,7 +439,7 @@
             // 
             // btnDistance_of_two_nodes_in_Binary_Search_Tree
             // 
-            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(13, 670);
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(10, 718);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Name = "btnDistance_of_two_nodes_in_Binary_Search_Tree";
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Size = new System.Drawing.Size(472, 46);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.TabIndex = 36;
@@ -448,7 +449,7 @@
             // 
             // btnBinary_Tree_Is_BST
             // 
-            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(13, 722);
+            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(10, 770);
             this.btnBinary_Tree_Is_BST.Name = "btnBinary_Tree_Is_BST";
             this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(472, 42);
             this.btnBinary_Tree_Is_BST.TabIndex = 37;
@@ -478,7 +479,7 @@
             // 
             // btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree
             // 
-            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(13, 775);
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(10, 823);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Name = "btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree";
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Size = new System.Drawing.Size(470, 48);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.TabIndex = 40;
@@ -488,7 +489,7 @@
             // 
             // btn_Build_Binary_Tree_for_the_given_arithmatic_expression
             // 
-            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(10, 829);
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(7, 877);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Name = "btn_Build_Binary_Tree_for_the_given_arithmatic_expression";
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Size = new System.Drawing.Size(472, 50);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.TabIndex = 41;
@@ -496,11 +497,23 @@
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.UseVisualStyleBackColor = true;
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Click += new System.EventHandler(this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression_Click);
             // 
+            // btn_Connect_Nodes_with_right_to_left_and_left_to_right
+            // 
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Location = new System.Drawing.Point(13, 671);
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Name = "btn_Connect_Nodes_with_right_to_left_and_left_to_right";
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Size = new System.Drawing.Size(472, 39);
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.TabIndex = 42;
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Text = "Connect Nodes with right to left and left to right";
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.UseVisualStyleBackColor = true;
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Click += new System.EventHandler(this.btn_Connect_Nodes_with_right_to_left_and_left_to_right_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1123);
+            this.Controls.Add(this.btn_Connect_Nodes_with_right_to_left_and_left_to_right);
             this.Controls.Add(this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression);
             this.Controls.Add(this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree);
             this.Controls.Add(this.btn_Clone_a_linked_list_with_next_pointer);
@@ -592,5 +605,6 @@
         private System.Windows.Forms.Button btn_Clone_a_linked_list_with_next_pointer;
         private System.Windows.Forms.Button btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree;
         private System.Windows.Forms.Button btn_Build_Binary_Tree_for_the_given_arithmatic_expression;
+        private System.Windows.Forms.Button btn_Connect_Nodes_with_right_to_left_and_left_to_right;
     }
 }

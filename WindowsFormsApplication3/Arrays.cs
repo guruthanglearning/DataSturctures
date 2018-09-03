@@ -27,6 +27,8 @@ namespace WindowsFormsApplication3
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // int?[] array = new int?[10]; --Nullable Array
+
             //int[] arr1 = new int[10];
             //arr1[0] = 4;
             //arr1[1] = 5;
@@ -82,7 +84,7 @@ namespace WindowsFormsApplication3
             int arr1LastFilledIndex = this.GetLastFilledArrayIndex(arr1);
             int arr2Length = arr2.Length - 1;
 
-
+            
 
             while (true)
             {
@@ -262,9 +264,10 @@ namespace WindowsFormsApplication3
             }
             int sum = input[0];
             int reductionCost = 0;
-            int incrementer = 1;
+            int incrementer = 1; 
             while (incrementer <= input.Length - 1)
             {
+                // incrementer = 3 , sum = 10, reductionCost = 9
                 if (incrementer == 1)
                 {
                     sum += input[incrementer];
@@ -322,7 +325,7 @@ namespace WindowsFormsApplication3
             var binary = string.Empty;
             while (number > 0)
             {
-                // Logical AND the number and prepend it to the result string
+                // Logical AND the number and prepend it to the result string        
                 binary = (number & mask) + binary;
                 number = number >> 1;
             }
@@ -668,7 +671,8 @@ namespace WindowsFormsApplication3
             int m = A.Length;
             int n = B.Length;
             if (m > n)
-            { // to ensure m<=n. Always maching array A is smalles array
+            { 
+                // to ensure m<=n. Always maching array A is smalles array
                 int[] temp = A; A = B; B = temp;
                 int tmp = m; m = n; n = tmp;
             }
@@ -724,16 +728,81 @@ namespace WindowsFormsApplication3
                         minRight = Math.Min(B[j], A[i]);
                     }
 
-                    return (maxLeft + minRight) / 2.0;
+                    return (maxLeft + minRight) / 2.0; ;
                 }
             }
             return 0.0;
         }
 
+        private double findMedianSortedArraysGuruApproach(int[] A, int[] B)
+        {
+            int totalLength = A.Length + B.Length;
+            int currentInc = 1;
+            int aInc = 0;
+            int bInc = 0;
+            /*
+             
+            int[] A = new int[] { 3, 4, 5, 6 };
+            int[] B = new int[] { 1, 2, 3, 7 };  
+            
+            int[] A = new int[] { 1, 2, 3, 7 };        
+            int[] B = new int[] { 3, 4, 5, 6 };
+            
+            int[] A = new int[] { 1, 2, 3, 7 };        
+            int[] B = new int[] { 4, 5 };                    
+
+            aInc                = 3
+            bInc                = 0
+            currentInc          = 4
+
+            */
+
+            while (true)
+            {
+                if (aInc < A.Length && bInc < B.Length)
+                {
+                    if (A[aInc] < B[bInc])
+                    {
+                        aInc++;
+                    }
+                    else if (A[aInc] > B[bInc])
+                    {
+                        bInc++;
+                    }
+                    else if (bInc < B.Length)
+                    {
+                        aInc++;
+                        bInc++;
+                    }
+
+                    currentInc++;
+
+                    if (currentInc == totalLength / 2)
+                    {
+                        if (aInc - 1 > -1 && bInc - 1 > -1 && A[aInc - 1] == B[bInc - 1])
+                        {
+                            if (A[aInc] < B[bInc])
+                            {
+                                return A[aInc - 1] + A[aInc] / 2;
+                            }
+                            else
+                            {
+                                return A[aInc - 1] + B[bInc] / 2;
+                            }
+                        }
+                        else
+                        {
+                            return A[aInc] + B[bInc] / 2;
+                        }
+                    }
+                }
+            }
+            return 0.0;
+
+        }
+
         private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
         {
-
-
             /*
                 Time Complexity         : O(log n)
                 Space Complexity        : O(1)
@@ -744,10 +813,21 @@ namespace WindowsFormsApplication3
                 We only need constant memory to store 9 local variables, so the space complexity is O(1).
             */
 
-            int[] nums1 = new int[] { 3, 4, 5, 6 };
-            int[] nums2 = new int[] { 1, 2, 3, 7 };
+            /*
+                int[] nums1 = new int[] { 3, 4, 5, 6 };
+                int[] nums2 = new int[] { 1, 2, 3, 7 };
+                
+                int[] nums1 = new int[] { 3, 4, 5, 6 };
+                int[] nums2 = new int[] { 1, 2, 3, 7 };                
+            */
+
+            int[] nums1 = new int[] { 1, 2, 3, 4 };
+            int[] nums2 = new int[] { 0, 0,  };
+
+            //1 2 3 3 5 6 7 
             //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
-            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
+            //MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
+            MessageBox.Show(this.findMedianSortedArraysGuruApproach(nums1, nums2).ToString());
 
         }
 
@@ -756,6 +836,17 @@ namespace WindowsFormsApplication3
             /*
               Time Complexity is O(n)
               Space Complexity is O(2 logn)
+            		            _____
+		                        |	|
+		                        |	|
+	                        ____|	|____
+	                        |	|	|	|
+                        ____|	|	|	|____
+                        |	|	|	|	|	 |
+                        |	|	|	|	|	 |
+                        |___|___|___|___|____|
+                    His   1   2	  4	  2	   1
+                    Pos   0   1   2   3    4
             */
 
 

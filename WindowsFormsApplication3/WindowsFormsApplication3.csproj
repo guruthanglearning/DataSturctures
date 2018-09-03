@@ -279,7 +279,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="InterviewQuestionToSolve.txt" />
+    <Content Include="QuestionToSolve.txt" />
     <Content Include="TextFile1.txt" />
     <Content Include="XMLFile1.xml" />
   </ItemGroup>

@@ -2621,7 +2621,7 @@ namespace WindowsFormsApplication3
                                      /          \
                                     /            \                           
                                    /              \
-                                  20              5
+                                  20               5
                                 /  \              / \
                                /    \            /   \  
                               /      \          /     \
@@ -2955,6 +2955,133 @@ namespace WindowsFormsApplication3
             }
 
 
+        }
+
+        private void btn_Connect_Nodes_with_right_to_left_and_left_to_right_Click(object sender, EventArgs e)
+        {
+            /*
+                               10
+                            /      \
+                           /        \
+                          /          \
+                         /            \                           
+                        /              \
+                       5 ------------->20
+                     /  \             / \
+                    /    \           /   \  
+                   /      \         /     \
+                  3<-------8<------15<----22 
+                 / \      / \ 
+                /   \    /   \
+               1---->4->6---->9
+                \
+                 \
+                  2
+           */
+
+            NodeWithNext tree = null;
+            InsertNodeWithNext(10, ref tree);
+            InsertNodeWithNext(5, ref tree);
+            InsertNodeWithNext(20, ref tree);
+            InsertNodeWithNext(3, ref tree);
+            InsertNodeWithNext(8, ref tree);
+            InsertNodeWithNext(6, ref tree);
+            InsertNodeWithNext(15, ref tree);
+            InsertNodeWithNext(22, ref tree);
+            InsertNodeWithNext(1, ref tree);
+            InsertNodeWithNext(2, ref tree);
+            InsertNodeWithNext(4, ref tree);
+            InsertNodeWithNext(9, ref tree);
+            datas.Clear();
+            InOrderWithNext(tree);
+            MessageBox.Show(datas.ToString());
+
+            if (tree == null)
+            {
+                return;
+            }
+
+            bool direction = true;
+            List<NodeWithNext> nodes = new List<NodeWithNext>();
+
+            Queue<NodeWithNext> que = new Queue<NodeWithNext>();
+            if (tree.left!=null)
+            {
+                que.Enqueue(tree.left);
+            }
+
+            if (tree.right!= null)
+            {
+                que.Enqueue(tree.right);
+            }
+
+            NodeWithNext current = null, previous = null;
+            NodeWithNext node = null;
+            
+            while (true)
+            {
+                node = null;
+                previous = null;
+                current = null;
+                nodes.Clear();
+                while (que.Count > 0)
+                {
+                    node = que.Dequeue();
+                    if (node != null)
+                    {
+                        nodes.Add(node);
+                    }                    
+                }                
+
+                foreach(var n in nodes)
+                {
+                    if (current == null)
+                    {
+                        current = n;
+                    }
+                    else
+                    {
+                        previous = current;
+                        current = n;
+                        if (direction)
+                        {
+                            previous.next = current;
+                        }
+                        else
+                        {
+                            current.next = previous;
+                        }                                            
+                        if (previous.left!=null)
+                        {
+                            que.Enqueue(previous.left);
+                        }
+
+                        if (previous.right!= null)
+                        {
+                            que.Enqueue(previous.right);
+                        }
+                    }
+                }
+
+                if (current.left != null)
+                {
+                    que.Enqueue(current.left);
+                }
+
+                if (current.right != null)
+                {
+                    que.Enqueue(current.right);
+                }
+
+                if (que.Count == 0)
+                {
+                    break;
+                }
+
+                direction = !direction;
+
+            }
+            
         }
     }
 
