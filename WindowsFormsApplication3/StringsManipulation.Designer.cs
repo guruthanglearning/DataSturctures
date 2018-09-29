@@ -62,6 +62,9 @@
             this.btn_Find_max_space_substring_with_in_a_string_ = new System.Windows.Forms.Button();
             this.btn_Longest_Substring_Without_Repeating_Characters = new System.Windows.Forms.Button();
             this.btn_Reverse_the_string_word_by_word = new System.Windows.Forms.Button();
+            this.btn_Evaluate_Reverse_Polish_Notation = new System.Windows.Forms.Button();
+            this.btn_Isomorphic_Strings = new System.Windows.Forms.Button();
+            this.btn_Word_Break_cats_and_dogs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -163,7 +166,7 @@
             this.button8.Location = new System.Drawing.Point(20, 237);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(454, 35);
+            this.button8.Size = new System.Drawing.Size(444, 35);
             this.button8.TabIndex = 9;
             this.button8.Text = "Remove duplicate characters Without additional  Constant";
             this.button8.UseVisualStyleBackColor = true;
@@ -428,11 +431,44 @@
             this.btn_Reverse_the_string_word_by_word.UseVisualStyleBackColor = true;
             this.btn_Reverse_the_string_word_by_word.Click += new System.EventHandler(this.btn_Reverse_the_string_word_by_word_Click);
             // 
+            // btn_Evaluate_Reverse_Polish_Notation
+            // 
+            this.btn_Evaluate_Reverse_Polish_Notation.Location = new System.Drawing.Point(909, 232);
+            this.btn_Evaluate_Reverse_Polish_Notation.Name = "btn_Evaluate_Reverse_Polish_Notation";
+            this.btn_Evaluate_Reverse_Polish_Notation.Size = new System.Drawing.Size(413, 37);
+            this.btn_Evaluate_Reverse_Polish_Notation.TabIndex = 34;
+            this.btn_Evaluate_Reverse_Polish_Notation.Text = "Evaluate Reverse Polish Notation";
+            this.btn_Evaluate_Reverse_Polish_Notation.UseVisualStyleBackColor = true;
+            this.btn_Evaluate_Reverse_Polish_Notation.Click += new System.EventHandler(this.btn_Evaluate_Reverse_Polish_Notation_Click);
+            // 
+            // btn_Isomorphic_Strings
+            // 
+            this.btn_Isomorphic_Strings.Location = new System.Drawing.Point(914, 278);
+            this.btn_Isomorphic_Strings.Name = "btn_Isomorphic_Strings";
+            this.btn_Isomorphic_Strings.Size = new System.Drawing.Size(408, 34);
+            this.btn_Isomorphic_Strings.TabIndex = 35;
+            this.btn_Isomorphic_Strings.Text = "Isomorphic Strings";
+            this.btn_Isomorphic_Strings.UseVisualStyleBackColor = true;
+            this.btn_Isomorphic_Strings.Click += new System.EventHandler(this.btn_Isomorphic_Strings_Click);
+            // 
+            // btn_Word_Break_cats_and_dogs
+            // 
+            this.btn_Word_Break_cats_and_dogs.Location = new System.Drawing.Point(913, 323);
+            this.btn_Word_Break_cats_and_dogs.Name = "btn_Word_Break_cats_and_dogs";
+            this.btn_Word_Break_cats_and_dogs.Size = new System.Drawing.Size(408, 31);
+            this.btn_Word_Break_cats_and_dogs.TabIndex = 36;
+            this.btn_Word_Break_cats_and_dogs.Text = "Word Break - catsanddays with \"cats\", \"dogs\", \"and\", \"cat\", \"cats\"";
+            this.btn_Word_Break_cats_and_dogs.UseVisualStyleBackColor = true;
+            this.btn_Word_Break_cats_and_dogs.Click += new System.EventHandler(this.btn_Word_Break_cats_and_dogs_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 779);
+            this.Controls.Add(this.btn_Word_Break_cats_and_dogs);
+            this.Controls.Add(this.btn_Isomorphic_Strings);
+            this.Controls.Add(this.btn_Evaluate_Reverse_Polish_Notation);
             this.Controls.Add(this.btn_Reverse_the_string_word_by_word);
             this.Controls.Add(this.btn_Longest_Substring_Without_Repeating_Characters);
             this.Controls.Add(this.btn_Find_max_space_substring_with_in_a_string_);
@@ -512,5 +548,8 @@
         private System.Windows.Forms.Button btn_Find_max_space_substring_with_in_a_string_;
         private System.Windows.Forms.Button btn_Longest_Substring_Without_Repeating_Characters;
         private System.Windows.Forms.Button btn_Reverse_the_string_word_by_word;
+        private System.Windows.Forms.Button btn_Evaluate_Reverse_Polish_Notation;
+        private System.Windows.Forms.Button btn_Isomorphic_Strings;
+        private System.Windows.Forms.Button btn_Word_Break_cats_and_dogs;
     }
 }

@@ -15,7 +15,7 @@ namespace WindowsFormsApplication3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StringsManipulation());
+            Application.Run(new DoubleLinkList());
         }
     }
 }

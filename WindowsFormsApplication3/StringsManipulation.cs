@@ -79,6 +79,36 @@ namespace WindowsFormsApplication3
             int checker = 0;
 
             //input =  abca
+            /*
+                Bit Operator 
+                	1	0	0
+	                1	1	0
+                Add	1	0	0
+                OR	1	1	0
+                XOR	0	1	0
+
+            Shift left(<<)	
+                    23						
+		            11	1					
+		            5	1					
+		            2	1					
+		            1	0					
+            7 bit	Binary      	0	0	1	0	1	1	1
+	            Apply Shift Left	0	1	0	1	1	1	0
+	            Hexa	            0	32	0	8	4	2	0
+	            Result	            46						
+								
+            Shift right(>>)	
+                    23						
+		            11	1					
+		            5	1					
+		            2	1					
+		            1	0					
+	            Binary 	            0	0	1	0	1	1	1
+	            Apply Shift Right	0	0	0	1	0	1	1
+	            Hexa	            0	0	0	8	0	2	1
+	            Result	            10						
+            */
 
             for (int i = 0; i < str.Length; i++)
             {
@@ -131,6 +161,10 @@ namespace WindowsFormsApplication3
 
         private void button4_Click(object sender, EventArgs e)
         {
+            /*
+             abc & cba is Anagram
+             abc & ceb is not Anagram
+             */
             if (textBox1.Text.Length != textBox2.Text.Length)
             {
                 MessageBox.Show("No Anagrams");
@@ -202,7 +236,7 @@ namespace WindowsFormsApplication3
                 else
                 {
                     data[newLength - 1] = data[i];
-                    newLength = newLength - 1;
+                    newLength--;
                 }
             }
 
@@ -400,6 +434,11 @@ namespace WindowsFormsApplication3
 
         private void button10_Click(object sender, EventArgs e)
         {
+
+            /*
+                This is testing
+            */
+
             int end = 0, start = 0;
             int length = textBox1.Text.Length - 1;
             string sentenace = textBox1.Text;
@@ -457,13 +496,14 @@ namespace WindowsFormsApplication3
                 {
                     builder.Append(matrix[top, j].ToString() + " , ");
                 }
-
+                
                 top++;
                 if (left > right - 1 || top > down - 1)
                 {
                     break;
                 }
 
+                builder.Append("\n");
                 for (i = top; i < down; i++)
                 {
                     builder.Append(matrix[i, right - 1].ToString() + " , ");
@@ -475,6 +515,7 @@ namespace WindowsFormsApplication3
                     break;
                 }
 
+                builder.Append("\n");
                 for (j = right - 1; j >= left; j--)
                 {
                     builder.Append(matrix[down - 1, j].ToString() + " , ");
@@ -486,6 +527,7 @@ namespace WindowsFormsApplication3
                     break;
                 }
 
+                builder.Append("\n");
                 for (i = down - 1; i >= top; i--)
                 {
                     builder.Append(matrix[i, left].ToString() + " , ");
@@ -554,6 +596,23 @@ namespace WindowsFormsApplication3
                     incr++;
                     result = incr;
                 }
+            }
+
+            data.Append("\nSimple approach: \n ");
+            incr = 0;
+            while (incr <= maxNumbers)
+            {
+                incr++;
+                if (incr > maxNumbers)
+                {
+                    break;
+                }
+
+                if (incr%10 > 0)
+                {
+                    data.Append(incr.ToString() + ",");
+                }
+               
             }
 
             MessageBox.Show(data.ToString());
@@ -661,18 +720,25 @@ namespace WindowsFormsApplication3
 
         private void button16_Click(object sender, EventArgs e)
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 4, 3 };
-            Hashtable table = new Hashtable();
-            int m = 0;
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                table.Add(array[i], m++);
-            }
-            for (int i = 0; i < table.Count; i++)
-            {
-                MessageBox.Show(table[array[i]].ToString());
+            int[] array = new int[] { 1, 2, 3, 4, 5, 4, 3 };            
+            StringBuilder result = new StringBuilder();
+            int checker = 0;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                int val = array[i];
+
+                if ((checker & (1<<val)) > 0)
+                {
+                    result.Append(array[i].ToString() + ",");
+                }
+                checker |= (1 << val);              
             }
+           
+            MessageBox.Show($"Duplicate element in array is {result}");
+
+
+
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -920,7 +986,7 @@ namespace WindowsFormsApplication3
                 words += NumberToWords(number / 1000000) + " million ";
                 number %= 1000000;
             }
-
+            //1101
             if ((number / 1000) > 0)
             {
                 words += NumberToWords(number / 1000) + " thousand ";
@@ -1054,7 +1120,7 @@ namespace WindowsFormsApplication3
 
         private void FibonociSeries_Click(object sender, EventArgs e)
         {
-
+            //https://en.wikipedia.org/wiki/Fibonacci_number
             int input = int.Parse(textBox1.Text);
 
             bool isNegativeInput = !(input > 0);
@@ -1077,6 +1143,8 @@ namespace WindowsFormsApplication3
                     {
                         current *= -1;
                     }
+
+                    // current = 1, previous = 1, temp =1
                     temp = previous;
                     previous = current;
                     current = current + temp;
@@ -1174,7 +1242,7 @@ namespace WindowsFormsApplication3
             //string input = "ABCCDEF";
             int previousCharCount = 0;
             int previousCharIndex = -1;
-            char previousChar = input[0];
+            char previousChar = '\0';
             int currentCharStartIndex = -1;
             int currentCharCount = 1;
 
@@ -1245,11 +1313,11 @@ namespace WindowsFormsApplication3
             string input = "DBCAAB";
             var result = this.GetCharIndexesInAGivenString(input);
             
-            foreach (char c in result.Keys)
+            foreach (char c in input)
             {
                 if (result[c] == -1)
                 {
-                    MessageBox.Show($"First recurring character is {c}");
+                    MessageBox.Show($"First recurring character is {c} for the string {input}");
                     break;
                 }
             }
@@ -1268,7 +1336,7 @@ namespace WindowsFormsApplication3
             string input = "DBCAAB";
             var result = this.GetCharIndexesInAGivenString(input);
             int index = -1;
-            foreach (char c in result.Keys)
+            foreach (char c in input)
             {
                 if (result[c] != -1)
                 {                    
@@ -1283,7 +1351,7 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            MessageBox.Show($"First non repeating character {(index == -1 ? "is not available" : input[index].ToString())}");
+            MessageBox.Show($"First non repeating character {(index == -1 ? "is not available" : input[index].ToString())} for the string {input}");
         }
 
         private void btn_Find_max_space_substring_with_in_a_string__Click(object sender, EventArgs e)
@@ -1301,7 +1369,7 @@ namespace WindowsFormsApplication3
             {
                 return -1;
             }
-
+            /* "ab  tf   xy j1234" */
             int previous = 0;
             int current = 0;            
             for (int i = 0; i < input.Length; i++)
@@ -1391,7 +1459,7 @@ namespace WindowsFormsApplication3
             string input = "the sky is blue";
             char[] charInputs = input.ToCharArray();
             this.reverseWords(charInputs);
-            MessageBox.Show(new string(charInputs));
+            MessageBox.Show($"Reverse the string word by word for the input string {input} is \n {new string(charInputs)}");
 
         }
 
@@ -1421,6 +1489,185 @@ namespace WindowsFormsApplication3
                 s[j] = temp;
                 i++;
                 j--;
+            }
+        }
+
+        private void btn_Evaluate_Reverse_Polish_Notation_Click(object sender, EventArgs e)
+        {
+            char[] inputs = new char[] { '2', '1', '+', '3', '*' };
+            Stack<string> expressions = new Stack<string>();
+            List<char> operators = new List<char>() { '+', '-', '/', '*', '^' };
+            int result = 0;
+            foreach (char c in inputs)
+            {
+                if (!operators.Contains(c))
+                {
+                    expressions.Push(c.ToString());
+                }
+                else
+                {
+                    switch(c)
+                    {
+                        case '+':
+                        {
+                            result = int.Parse(expressions.Pop()) + int.Parse(expressions.Pop());
+                                expressions.Push(result.ToString());
+                           break;
+                        }
+                        case '-':
+                            {
+                                result = int.Parse(expressions.Pop()) - int.Parse(expressions.Pop());
+                                expressions.Push(result.ToString());
+                                break;
+                            }
+                        case '/':
+                            {
+                                result = int.Parse(expressions.Pop()) / int.Parse(expressions.Pop());
+                                expressions.Push(result.ToString());
+                                break;
+                            }
+                        case '*':
+                            {
+                                result = int.Parse(expressions.Pop()) * int.Parse(expressions.Pop());
+                                expressions.Push(result.ToString());
+                                break;
+                            }
+                        case '^':
+                            {
+                                result = int.Parse(expressions.Pop()) ^ int.Parse(expressions.Pop());
+                                expressions.Push(result.ToString());
+                                break;
+                            }
+                    }
+                }
+            }
+
+            MessageBox.Show($"Value for this Reverse Polish Notation {new string(inputs)} is {expressions.Pop()} ");
+
+        }
+
+        private void btn_Isomorphic_Strings_Click(object sender, EventArgs e)
+        {
+            //string input1 = "abb";
+            //string input2 = "cxx";
+            string input1 = textBox1.Text;
+            string input2 = textBox2.Text;
+            Dictionary<char, char> storage = new Dictionary<char, char>();
+            char char1;
+            char char2;
+            bool isIsomorphic = true;
+            
+            if (!(string.IsNullOrEmpty(input1) || string.IsNullOrEmpty(input2) || input1.Length != input2.Length))
+            {                
+                for (int i = 0; i < input1.Length; i ++)
+                {
+                    char1 = input1[i];
+                    char2 = input2[i];
+                   if (storage.ContainsKey(char1))
+                   {
+                        if (storage[char1] != char2)
+                        {
+                            isIsomorphic = false;
+                            break;
+                        }
+                    }
+                   else
+                    {
+                        if (storage.ContainsValue(char2))
+                        {
+                            isIsomorphic = false;
+                        }                       
+                        storage[char1] = char2;
+                    }
+                }
+             }
+            else
+            {
+                isIsomorphic = false;
+            }
+
+            MessageBox.Show($"The given inputs strings {input1} and {input2} is {(isIsomorphic ? "" : "not")} isomorphic strings");
+        }
+
+        private void btn_Word_Break_cats_and_dogs_Click(object sender, EventArgs e)
+        {
+            //string input = "catsanddogs";
+            //List<string> dictionary = new List<string>() {"cats", "cat", "and", "dogs", "sand", "dog" };
+
+            /*
+             Output:
+                [
+                  "cats and dog",
+                  "cat sand dog"
+                ]
+             */
+
+            string input = "pineapplepenapple";
+            List<string> dictionary = new List<string>() { "apple", "pen", "applepen", "pine", "pineapple" };
+            /*
+              Output:
+                [
+                  "pine apple pen apple",
+                  "pineapple pen apple",
+                  "pine applepen apple"
+                ]             
+             */
+
+            List<string>[] pos = new List<string>[input.Length];
+            pos[0] = new List<string>();
+            string subString = string.Empty;
+            for(int i = 0; i<input.Length; i++)
+            {
+                for(int j=i+1;j<input.Length; j++)
+                {
+                    subString = input.Substring(i,  (j-i)+1);
+                    if (dictionary.Contains(subString))
+                    {
+                        if (pos[j] == null)
+                        {
+                            pos[j] = new List<string>();
+                            pos[j].Add(subString);
+                        }
+                        else
+                        {
+                            pos[j].Add(subString);
+                        }
+                    }
+                }
+            }
+            
+            if (pos[input.Length-1] == null)
+            {
+                MessageBox.Show($"No sentence avialable for this input {input} ");
+            }
+            else
+            {
+                List<string> result = new List<string>();
+                dfs(pos, result, "", input.Length-1);
+                StringBuilder outputs = new StringBuilder();
+                foreach(string str in result)
+                {
+                    outputs.Append(str + "\n");
+                }
+
+                MessageBox.Show($"The list of words from the given input {input} is \n {outputs.ToString()}");
+            }
+
+            
+        }
+
+        public void dfs(List<String>[] pos, List<String> result, String curr, int i)
+        {
+            if (i <= 0)
+            {
+                result.Add(curr.Trim());
+                return;
+            }
+
+            foreach (String s in pos[i])
+            {
+                String combined = s + " " + curr;
+                dfs(pos, result, combined, i - s.Length);
             }
         }
     }

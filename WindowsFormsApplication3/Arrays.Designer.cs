@@ -48,7 +48,7 @@
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion = new System.Windows.Forms.Button();
             this.btn_Sum_the_first_two_min_elements_from_the_given_array = new System.Windows.Forms.Button();
             this.btn_Arrange_all_zero_in_an_array_toward_right = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Max_sub_series_sum_in_an_given_array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -222,7 +222,7 @@
             // 
             // btn_Merge_Overlapping_Intervals
             // 
-            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(16, 821);
+            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(13, 775);
             this.btn_Merge_Overlapping_Intervals.Name = "btn_Merge_Overlapping_Intervals";
             this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(604, 40);
             this.btn_Merge_Overlapping_Intervals.TabIndex = 16;
@@ -232,7 +232,7 @@
             // 
             // btn_Random_number_generator_in_arbitrary_probability_distribution_fashion
             // 
-            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(16, 867);
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(13, 821);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Name = "btn_Random_number_generator_in_arbitrary_probability_distribution_fashion";
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Size = new System.Drawing.Size(604, 43);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.TabIndex = 17;
@@ -242,7 +242,7 @@
             // 
             // btn_Sum_the_first_two_min_elements_from_the_given_array
             // 
-            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(16, 916);
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(13, 870);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Name = "btn_Sum_the_first_two_min_elements_from_the_given_array";
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Size = new System.Drawing.Size(604, 41);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.TabIndex = 18;
@@ -260,21 +260,22 @@
             this.btn_Arrange_all_zero_in_an_array_toward_right.UseVisualStyleBackColor = true;
             this.btn_Arrange_all_zero_in_an_array_toward_right.Click += new System.EventHandler(this.btn_Arrange_all_zero_in_an_array_toward_right_Click);
             // 
-            // button3
+            // btn_Max_sub_series_sum_in_an_given_array
             // 
-            this.button3.Location = new System.Drawing.Point(16, 775);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(607, 40);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_Max_sub_series_sum_in_an_given_array.Location = new System.Drawing.Point(634, 49);
+            this.btn_Max_sub_series_sum_in_an_given_array.Name = "btn_Max_sub_series_sum_in_an_given_array";
+            this.btn_Max_sub_series_sum_in_an_given_array.Size = new System.Drawing.Size(595, 38);
+            this.btn_Max_sub_series_sum_in_an_given_array.TabIndex = 20;
+            this.btn_Max_sub_series_sum_in_an_given_array.Text = "Max sub series sum in an given array";
+            this.btn_Max_sub_series_sum_in_an_given_array.UseVisualStyleBackColor = true;
+            this.btn_Max_sub_series_sum_in_an_given_array.Click += new System.EventHandler(this.btn_Max_sub_series_sum_in_an_given_array_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_Max_sub_series_sum_in_an_given_array);
             this.Controls.Add(this.btn_Arrange_all_zero_in_an_array_toward_right);
             this.Controls.Add(this.btn_Sum_the_first_two_min_elements_from_the_given_array);
             this.Controls.Add(this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion);
@@ -324,6 +325,6 @@
         private System.Windows.Forms.Button btn_Random_number_generator_in_arbitrary_probability_distribution_fashion;
         private System.Windows.Forms.Button btn_Sum_the_first_two_min_elements_from_the_given_array;
         private System.Windows.Forms.Button btn_Arrange_all_zero_in_an_array_toward_right;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Max_sub_series_sum_in_an_given_array;
     }
 }

@@ -554,17 +554,17 @@ namespace WindowsFormsApplication3
             LLNodeFirst = InsertLinkList(LLNodeFirst, 0);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 11);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
             datas.Clear();
             DisplayLinkList(LLNodeFirst);            
             MessageBox.Show(datas.ToString());
 
             LinkList current, previous, next_next;
-            current = LLNodeFirst;
-
             datas.Clear();
+
+            //current = LLNodeFirst;
             //4->4->5->1->0->11->1->2
-            current = LLNodeFirst;
+            //current = LLNodeFirst;
             //// Delete duplicate node from a sorted linked list
             ///* Traverse list till the last node */
             //while (current.next != null)
@@ -587,35 +587,57 @@ namespace WindowsFormsApplication3
 
             //4->4->5->1->0->11->1->2
             //Complexity is O(n^2)
-            datas.Clear();
+            //datas.Clear();
+            //previous = LLNodeFirst;
+            //current = previous.next;
+            //while (current != null)
+            //{
+            //    LinkList runner = LLNodeFirst;
+            //    while (runner != current)
+            //    {
+            //        if (runner.data == current.data)
+            //        {
+            //            LinkList temp = current.next;
+            //            previous.next = temp;
+            //            current = temp;
+            //            break;
+            //        }
+            //        runner = runner.next;
+            //    }
+
+            //    if (current == runner)
+            //    {
+            //        previous = current;
+            //        current = current.next;
+            //    }
+            //}
+
+            //Removing duplicate from unsorted array
+            List<int> visited = new List<int>();
+            visited.Add(LLNodeFirst.data);
             previous = LLNodeFirst;
             current = previous.next;
-            while (current != null)
+            while (current!=null)
             {
-                LinkList runner = LLNodeFirst;
-                while (runner != current)
+                if (visited.Contains(current.data))
                 {
-                    if (runner.data == current.data)
-                    {
-                        LinkList temp = current.next;
-                        previous.next = temp;
-                        current = temp;
-                        break;
-                    }
-                    runner = runner.next;
+                    previous.next = current.next;                    
                 }
-
-                if (current == runner)
+                else
                 {
-                    previous = current;
-                    current = current.next;
+                    visited.Add(current.data);
+                    previous = previous.next;
                 }
+                current = current.next;                
             }
 
-            datas.Append("\n\n Time Complexity: O(n^2)");            
+
+            datas.Append("\n\n Time Complexity: O(n) Space Complexity : O(n)\n ");            
             DisplayLinkList(LLNodeFirst);
             MessageBox.Show(datas.ToString());
+
             
+
 
 
         }
@@ -624,6 +646,11 @@ namespace WindowsFormsApplication3
         {
             datas.Clear();
             LinkList LLNodeFirst = null;
+
+            /*
+             1->3->5->7->9->11
+             1->1->6->8->10->12
+            */
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
@@ -654,6 +681,10 @@ namespace WindowsFormsApplication3
 
         private LinkList AddLinkList(LinkList l1, LinkList l2, int carry)
         {
+            /*
+             1->3->5->7->9->11
+             1->1->6->8->10->12
+            */
 
             if (l1 == null && l2 == null && carry ==0)
                 return null;
@@ -825,6 +856,26 @@ namespace WindowsFormsApplication3
 
         private BFSNode GetInOrderSuccessorWithParentNode(BFSNode node)
         {
+            /*
+                                   10
+                                /      \
+                               /        \
+                              /          \
+                             /            \                           
+                            /              \
+                           5               20
+                         /  \             / \
+                        /    \           /   \  
+                       /      \         /     \
+                      3        8       15     22 
+                     / \      / \ 
+                    /   \    /   \
+                   1    4    6    9
+                    \
+                     \
+                      2
+            */
+
             BFSNode p = null;
             if (node != null)
             {                
@@ -859,6 +910,27 @@ namespace WindowsFormsApplication3
 
         private BFSNode GetInOrderSuccessorWithoutParentNode(BFSNode node, BFSNode root)
         {
+
+            /*
+                                   10
+                                /      \
+                               /        \
+                              /          \
+                             /            \                           
+                            /              \
+                           5               20
+                         /  \             / \
+                        /    \           /   \  
+                       /      \         /     \
+                      3        8       15     22 
+                     / \      / \ 
+                    /   \    /   \
+                   1    4    6    9
+                    \
+                     \
+                      2
+            */
+
             BFSNode p = null;            
             if (node != null)
             {
@@ -1202,7 +1274,7 @@ namespace WindowsFormsApplication3
         private void button17_Click(object sender, EventArgs e)
         {
 
-            //Time complexity is O(n^2) since finding min from Linklist has to be travesal once and removing is another traversal
+            //Time complexity is O(n) since finding min from Linklist has to be travesal once and removing is another traversal
             //1->5->4->10->110->112->3->123->24->3
             LinkList linkList = null;
             linkList = InsertLinkList(linkList, 1);
@@ -1226,6 +1298,7 @@ namespace WindowsFormsApplication3
             //1->5->4->10->110->112->3->123->24->3
             //5->4->10->110->112->3->123->24->3
 
+            //Finds min node
             while (r.next!=null)
             {
                 if (r.next.data < m.data)
@@ -1236,7 +1309,8 @@ namespace WindowsFormsApplication3
                 r = r.next;
             }
 
-            if (p == m)
+            
+            if (p == m) // -->This will ensure min value is present at the starting of the node
             {
                 linkList = m.next;
             }
@@ -1259,46 +1333,6 @@ namespace WindowsFormsApplication3
                 }
 
             }
-
-           // if (linkList == null)
-           //     return;
-
-           // LinkList smallest = linkList;            
-           // LinkList runner = linkList;
-           // LinkList prev = linkList;
-           // //5->4->10>110->112->3->123->24->3
-           // while (runner != null)
-           // {
-           //     if (runner.next != null && runner.next.data < smallest.data)
-           //     {
-           //         smallest = runner.next;
-           //         prev = runner;
-           //     }
-           //     runner = runner.next;                             
-           //}           
-
-           //while (prev == smallest || linkList.data == smallest.data)
-           //{
-           //     linkList = linkList.next;
-           //     prev = linkList;
-           //}
-
-           // LinkList current = prev.next;
-            
-           // while (current != null)
-           // {
-           //     if (current.data == smallest.data)
-           //     {
-           //         LinkList temp = current.next;
-           //         prev.next = temp;
-           //         current = current.next;
-           //     }
-           //     else
-           //     {
-           //         prev = current;
-           //         current = current.next;
-           //     }
-           // }
 
             datas.Append("\n\n");
             DisplayLinkList(linkList);
@@ -1519,6 +1553,12 @@ namespace WindowsFormsApplication3
 
         private int StringCompareForLinkList(LinkListCharacter a, LinkListCharacter b)
         {
+            /*
+                Less than zero strA precedes strB in the sort order.
+                Zero strA occurs in the same position as strB in the sort order.
+                Greater than zero strA follows strB in the sort order.
+            */
+
             int returnValue = 0;
 
             if (a == null || b == null)
@@ -1550,6 +1590,10 @@ namespace WindowsFormsApplication3
         {
             //Refer : http://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/
             //Time complexity : O(n)
+            /*
+              Input     :   1->2->3->4->5
+              Output    :   1->5->2->4->3
+            */
             LinkList linkList = null;            
             linkList = InsertLinkList(linkList, 1);
             linkList = InsertLinkList(linkList, 2);
@@ -1621,6 +1665,11 @@ namespace WindowsFormsApplication3
         private void button23_Click(object sender, EventArgs e)
         {
             //Refer : http://www.geeksforgeeks.org/how-to-sort-a-linked-list-that-is-sorted-alternating-ascending-and-descending-orders/
+            /*
+             Input List:   10->40->53->30->67->12->89
+             Output List:  10->12->30->43->53->67->89
+             */
+
             linkListNode = InsertLinkList(linkListNode, 10);
             linkListNode = InsertLinkList(linkListNode, 40);
             linkListNode = InsertLinkList(linkListNode, 53);
@@ -1866,7 +1915,7 @@ namespace WindowsFormsApplication3
         {
             //http://www.geeksforgeeks.org/select-a-random-node-from-a-singly-linked-list/
             //Time Complexity : O(n) where n is the number of nodes in the linked list
-
+            //1->3->5->7->9->11
             datas.Clear();
             LinkList LLNodeFirst = null;
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
@@ -1884,6 +1933,7 @@ namespace WindowsFormsApplication3
 
         private LinkList GetRandomListNode(LinkList linkList)
         {
+            //1->3->5->7->9->11
             LinkList list = linkList;
             LinkList dummy = null;
             LinkList result = linkList;
@@ -2680,7 +2730,7 @@ namespace WindowsFormsApplication3
             datas.Append("\n");
 
             LLNodeFirst.random = LLNodeFirst.next.next;
-            LLNodeFirst.next.next.random = LLNodeFirst.next.next.next.next.next.next;
+            LLNodeFirst.next.random = LLNodeFirst.next.next.next.next.next.next;
 
             // Time Complexity    :O(n)
             // Space Complexity   :O(n)            

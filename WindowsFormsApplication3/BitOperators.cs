@@ -15,8 +15,8 @@ namespace WindowsFormsApplication3
 
         /* Bitwise operations
          * 
-            	    1	0	0               1   0   0           1   0   0
-	                1	1	0               1   1   0           1   1   0
+            4	    1	0	0               1   0   0           1   0   0
+	        6       1	1	0               1   1   0           1   1   0
                     ----------              ---------           ----------
               Add   1	0	0           OR  1   1   0       XOR 0   1   0                                        
         */
@@ -27,21 +27,42 @@ namespace WindowsFormsApplication3
 
         private void btnCompute_XOR_for_the_given_number_Click(object sender, EventArgs e)
         {
+            /*
+                https://www.geeksforgeeks.org/calculate-xor-1-n/
+                input = 6
+                result = 1^2^3^4^5^6
+                 01 -->1
+                 10 -->2
+                ------------
+                 11
+                 11--->3
+                ------------
+                 000
+                 100---->4
+                ------------
+                 100
+                 101---->5
+               ------------
+                 001
+                 110---->6
+               ------------
+                  110
+             */
             int input = 6;
             int result = 0;
-            if (input % 4 == 0)
+            if (input % 3 == 0)
             {
                 result = input;
             }
-            else if (input%4 == 1)
+            else if (input%3 == 1)
             {
                 result = 1;
             }
-            else if (input%4 == 2)
+            else if (input%3 == 2)
             {
                 result = ++input;
             }
-            else if (input % 4 == 3)
+            else if (input % 3 == 3)
             {
                 result = 0;
             }

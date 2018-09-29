@@ -80,6 +80,11 @@ namespace WindowsFormsApplication3
 
         void MergeArrays(int[] arr1, int[] arr2)
         {
+            /*
+               arr1 = 1  2  3   4   5   6   7   0   0   0
+               arr2 = 3  9  10
+            */
+
             int arr1Length = arr1.Length - 1;
             int arr1LastFilledIndex = this.GetLastFilledArrayIndex(arr1);
             int arr2Length = arr2.Length - 1;
@@ -135,10 +140,7 @@ namespace WindowsFormsApplication3
 
             //Time Complexity is O(n)
             int[] buffer = new int[] { 1, 2, 3, 3, 3, 4, 4, 5, 5 };
-            //Array.Resize<int>(ref buffer, 12);
-
-            //insert = 2, i =3
-
+        
             int insert = 0;
             for (int i = 1; i < buffer.Length - 1; i++)
             {
@@ -175,62 +177,51 @@ namespace WindowsFormsApplication3
             int arr1Incr = 0; int arr2Incr = 0;
             List<int> unique = new List<int>();
 
-            int temp = 0;
-            while (true)
+            /*
+
+             Input 
+                  arr1   :   1   2   3   3   6   7  8   0   0   0 
+                  arr2   :   3   4   10
+
+            Output
+                arr1LastFilledIndex = 3, arr2Length = 0
+                arr1   :   1   2   3   3   0   4  6   7   8  10                           
+
+            */
+            
+            while (arr1LastFilledIndex >= 0 && arr2Length >= 0)
             {
-                if (arr1Incr <= arr1LastFilledIndex && arr2Incr <= arr2Length)
-                {
-                    if (arr1[arr1Incr] < arr2[arr2Incr])
+                    if (arr1[arr1LastFilledIndex] > arr2[arr2Length])
                     {
-                        arr1Incr++;
+                        arr1[arr1Length] = arr1[arr1LastFilledIndex];
+                        arr1LastFilledIndex--;
+
                     }
-                    else if (arr1[arr1Incr] == arr2[arr2Incr])
+                    else if (arr1[arr1LastFilledIndex] < arr2[arr2Length])
                     {
-                        arr1Incr++;
-                        arr2Incr++;
+                        arr1[arr1Length] = arr2[arr2Length];
+                        arr2Length--;
                     }
                     else
                     {
-                        temp = arr1[arr1Incr];
-                        arr1[arr1Incr] = arr2[arr2Incr];
-                        arr2[arr2Incr] = temp;
-                        arr1Incr++;
-
+                        arr1[arr1Length] = arr2[arr2Length];
+                        arr2Length--;
                     }
-                    unique.Add(arr1[arr1Incr - 1]);
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            //if (arr1Incr <= arr1LastFilledIndex && arr2Incr > arr2Length)
-            //{
-            //    while (arr1LastFilledIndex >= arr1Incr)
-            //    {
-            //        arr1[arr1Length] = arr1[arr1LastFilledIndex];
-            //        arr1LastFilledIndex--;
-            //    }
-            //    arr2Incr = 0;
-            //}
-
-            while (arr2Incr <= arr2Length)
-            {
-                if (!unique.Contains(arr2[arr2Incr]))
-                {
-                    arr1[arr1Incr] = arr2[arr2Incr];
-                    arr1Incr++;
-                }
-
-                arr2Incr++;
-            }
-
+                    arr1Length--;
+            }                            
         }
 
 
         private void Merge_Two_sorted_Arrays_with_out_3rd_Array_With_duplicate(object sender, EventArgs e)
         {
+            /*
+             
+                Input 
+                     arr1   :   1   2   3   3   6   7
+                     arr2   :   3   4   10
+              
+            */
+
             int[] arr1 = new int[10];
             arr1[0] = 1;
             arr1[1] = 2;
@@ -238,6 +229,7 @@ namespace WindowsFormsApplication3
             arr1[3] = 3;
             arr1[4] = 6;
             arr1[5] = 7;
+            arr1[6] = 8;
             //arr1[6] = 10;
             int[] arr2 = new int[3];
             arr2[0] = 3;
@@ -248,8 +240,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
             MergeArraysDuplicateValues(arr1, arr2);
-
-            //Merge(arr2, arr1);
+            
 
             MessageBox.Show($"After Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
@@ -408,8 +399,8 @@ namespace WindowsFormsApplication3
             //http://www.geeksforgeeks.org/majority-element/
             //int[] input = new int[] { 1, 2, 3, 4, 5, 6, 8, -20 }; // 8 items
             //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 }; // 9
-            int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }; // 8
-
+            //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }; // 8
+            int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 };
 
 
             int count = 1;
@@ -448,10 +439,11 @@ namespace WindowsFormsApplication3
 
         private void Find_the_Number_Occurring_Odd_Number_of_Times_Click(object sender, EventArgs e)
         {
-            //Time complexity : O(n)
-            //Space Complexity : O(1)
+            // https://www.geeksforgeeks.org/find-the-number-occurring-odd-number-of-times/
+            // Time complexity : O(n)
+            // Space Complexity : O(1)
 
-            int[] input = new int[] { 1, 2, 3, 2, 3, 1, 3 };
+            int[] input = new int[] { 1, 2, 3, 2, 3, 1 };
 
             int res = 0;
             for (int i = 0; i < input.Length; i++)
@@ -476,13 +468,30 @@ namespace WindowsFormsApplication3
         {
             // input  1, 2, 3, 4, 5, 6, 7
             int i, j, k, temp;
+            /* move i-th values of blocks 
+                 i = 0, j= 5, d = 6,  k = j + d = 0, temp = arr[i] = 1
+
+                         ---------------------------
+                         0     1   2   3   4   5   6
+                         ---------------------------
+                         1     2   3   4   5   6   7    
+                         3     2   3   4   5   6   7    i = 0, j= 0, d = 2,  k = j + d = 2, temp = arr[i] = 1
+                         3     2   5   4   5   6   7    i = 0, j= 2, d = 2,  k = j + d = 4, temp = arr[i] = 1
+                         3     2   5   4   7   6   7    i = 0, j= 4, d = 2,  k = j + d = 6, temp = arr[i] = 1
+                         3     2   5   4   7   6   2    i = 0, j= 6, d = 2,  k = j + d = 8 (8-7) = 1 , temp = arr[i] = 1                         
+                         3     4   5   4   7   6   2    i = 0, j= 1, d = 2,  k = j + d = 3 , temp = arr[i] = 1                         
+                         3     4   5   6   7   6   2    i = 0, j= 3, d = 2,  k = j + d = 5, temp = arr[i] = 1
+                         3     4   5   6   7   6   2    i = 0, j= 5, d = 2,  k = j + d = 7 (7-7 = 0, k = i break), temp = arr[i] = 1
+                         3     4   5   6   7   6   2    i = 0, j= 5, d = 2,  k = j + d = 7 (7-7 = 0, k = i break), temp = arr[i] = 1
+               */
             for (i = 0; i < this.GCD(d, n); i++)
             {
-                /* move i-th values of blocks */
+               
                 temp = arr[i];
                 j = i;
                 while (1 != 0)
                 {
+                    k = j + d;
                     k = j + d;
                     if (k >= n)
                         k = k - n;
@@ -499,10 +508,14 @@ namespace WindowsFormsApplication3
         private void Function_rotate_that_rotates_arr_of_size_n_by_d_elements_Click(object sender, EventArgs e)
         {
 
-            // Time complexity: O(n)
-            // Auxiliary Space: O(1)
-            // https://www.geeksforgeeks.org/?p=2398
-
+            /* Time complexity: O(n)
+               Auxiliary Space: O(1)
+               https://www.geeksforgeeks.org/?p=2398
+               Notes : Instead of getting GCD reverse the array from the below
+               Step 1   : Input.Length-1 to 0 
+               Step 2   : Input.Length-2 to Input.Length -1
+               Step 3   : 0 to Input.Length-1-2
+            */
             int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int d = 2;
             inputDisplayBuilder.Clear();
@@ -821,13 +834,16 @@ namespace WindowsFormsApplication3
                 int[] nums2 = new int[] { 1, 2, 3, 7 };                
             */
 
-            int[] nums1 = new int[] { 1, 2, 3, 4 };
-            int[] nums2 = new int[] { 0, 0,  };
+            //int[] nums1 = new int[] { 1, 2, 3, 4, 5 };
+            //int[] nums2 = new int[] { 0, 0,  };
+
+            int[] nums1 = new int[] { 2, 3, 4, 5 };
+            int[] nums2 = new int[] { 1, 2, };
 
             //1 2 3 3 5 6 7 
             //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
-            //MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
-            MessageBox.Show(this.findMedianSortedArraysGuruApproach(nums1, nums2).ToString());
+            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
+            //MessageBox.Show(this.findMedianSortedArraysGuruApproach(nums1, nums2).ToString());
 
         }
 
@@ -928,7 +944,8 @@ namespace WindowsFormsApplication3
             */
             int[] input1 = new int[] { 1, 2, 3, 4, 5 };
             int[] input2 = new int[] { 3, 5, 7, 9, 11 };
-            StringBuilder result = new StringBuilder();
+            StringBuilder intersection = new StringBuilder();
+            StringBuilder union = new StringBuilder();
             if (input1 != null && input1.Length > 0 && input2 != null && input2.Length > 0)
             {
                 int i = 0, j = 0;
@@ -936,24 +953,38 @@ namespace WindowsFormsApplication3
                 while (i < input1.Length && j < input2.Length)
                 {
                     if (input1[i] < input2[j])
-                    {
+                    {                        
+                        union.Append(input1[i] + " ");
                         i++;
                     }
                     else if (input1[i] > input2[j])
-                    {
+                    {                        
+                        union.Append(input2[i] + " ");
                         j++;
                     }
                     else
                     {
-                        result.Append(input1[i] + " ");
+                        intersection.Append(input1[i] + " ");
+                        union.Append(input2[j] + " ");
                         i++;
                         j++;
                     }
                 }
 
+                while (i < input1.Length)
+                {
+                    union.Append(input1[i] + " ");
+                    i++;
+                }
 
-                MessageBox.Show($"Interaction of two sorted arrays are {(result.Length > 0 ? result.ToString() : "none")}");
+                while (j < input2.Length)
+                {
+                    union.Append(input2[j] + " ");
+                    j++;
+                }
 
+                MessageBox.Show($"Interaction of two sorted arrays are {(intersection.Length > 0 ? intersection.ToString() : "none")} \n"+
+                                $"Union of two sorted arrays are {(union.Length > 0 ? union.ToString() : "none")}" );
             }
 
 
@@ -966,16 +997,14 @@ namespace WindowsFormsApplication3
              Time Complexity -
                                 Sorting using Merge sort would be O(m log m) + O(n log n) 
                                 Union and Intersect would be  O(m+n)
-                                Total Comlexity would be O(m log m) + O(m log n) + O(m+n)
+                                Total Comlexity would be O(m log m) + O(n log n) + O(m+n)
 
             http://www.geeksforgeeks.org/find-union-and-intersection-of-two-unsorted-arrays/
 
              */
             int[] input1 = new int[] { 7, 1, 5, 2, 3, 6 };
             int[] input2 = new int[] { 3, 8, 6, 20, 7 };
-
-
-
+            
 
         }
 
@@ -1039,6 +1068,22 @@ namespace WindowsFormsApplication3
         // Utility function to find ceiling of r in arr[l..h]
         int FindCeil(int[] arr, int r, int l, int h)
         {
+            /*
+             Given a sorted array and a value x, the ceiling of x is the smallest element in array greater than or equal to x, 
+             and the floor is the greatest element smaller than or equal to x. Assume than the array is sorted in non-decreasing order. 
+             Write efficient functions to find floor and ceiling of x.
+             For example, let the input array be {1, 2, 8, 10, 10, 12, 19}
+                    For x = 0:    floor doesn't exist in array,  ceil  = 1
+                    For x = 1:    floor  = 1,  ceil  = 1
+                    For x = 5:    floor  = 2,  ceil  = 8
+                    For x = 20:   floor  = 19,  ceil doesn't exist in array
+            
+            freq = 49, 0, 50 
+            prefix = 49, 49, 99
+            r = 30, l=0, h = 0
+            mid = 0
+            */
+
             int mid;
             while (l < h)
             {
@@ -1076,7 +1121,7 @@ namespace WindowsFormsApplication3
             // with value from 1 to this sum
             int r = random.Next(1, prefix[n - 1]); //(random.Next(1, prefix[n-1]) % prefix[n - 1]) +1;
 
-            // Find index of ceiling of r in prefix arrat
+            // Find index of ceiling of r in prefix array
             int indexc = FindCeil(prefix, r, 0, n - 1);
             return arr[indexc];
         }
@@ -1109,6 +1154,8 @@ namespace WindowsFormsApplication3
             /*
                 Time Complexity     : O(n)
                 Space Complexity    : Since we are not using any addition memory even for swapping.
+                input = 1   3   4   6   2    
+            firstMin = -1, secondMin = 1
             */
             int[] input = new int[] { 4, 3, 2, 1, 4, -1 };
             int firstMin = input[0];
@@ -1124,7 +1171,7 @@ namespace WindowsFormsApplication3
 
 
             for (int i = 2; i < input.Length; i++)
-            {
+            {       
                 if (secondMin > input[i] && firstMin > input[i]) //When firstMin and SecondMin values are greater than currentValue
                 {
                     secondMin = firstMin;
@@ -1142,6 +1189,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Arrange_all_zero_in_an_array_toward_right_Click(object sender, EventArgs e)
         {
+           
             /*
                 Time Complexity     : O(n)
                 Space Complexity    : Since we are not using any addition memory even for swapping.
@@ -1164,19 +1212,7 @@ namespace WindowsFormsApplication3
                            
                 result.Append($"Before swap input array :  {Display(input)} \n");                
                 for (int i = 1; i < input.Length; i++)
-                {
-                    //if (i + 1 < input.Length)
-                    //{
-                    //    if (input[i] == 0 && input[i + 1] != 0)
-                    //    {
-                    //        this.Swap(input, lastIndexOfZero, i + 1);
-                    //        lastIndexOfZero++;
-                    //    }
-                    //    else if (input[i]!=0 && input[i+1]==0)
-                    //    {
-                    //        lastIndexOfZero++;
-                    //    }
-                    //}
+                {                    
                     if (input[lastIndexOfZero] == 0 && input[i] != 0)
                     {
                         this.Swap(input, lastIndexOfZero, i);
@@ -1201,6 +1237,45 @@ namespace WindowsFormsApplication3
             array[i] = array[i] + array[j];
             array[j] = array[i] - array[j];
             array[i] = array[i] - array[j];
+        }
+
+        private void btn_Max_sub_series_sum_in_an_given_array_Click(object sender, EventArgs e)
+        {
+            //int[]  input = new int[] { -2, -3, 4, -1, -2, 1, 5, -3 };
+            int[] input = new int[] {31, -41, 26, 59, -53, 58, 97, -93, -23, 84};
+
+            int maxSum = 0;
+            int sum = 0;
+            int startIndex = 0;
+            int endIndex = 0;
+
+            if (input==null && input.Length > 0)
+            {
+                MessageBox.Show("Input array is empty");
+            }
+
+            for(int i = 0; i <input.Length; i++)
+            {
+                sum += input[i];
+                if (sum > maxSum)
+                {
+                    maxSum = sum;
+                    endIndex = i;
+                }
+
+                if (sum <= 0)
+                {
+                    maxSum = 0;
+                    sum = 0;
+                    if (i + 1 < input.Length)
+                    {
+                        startIndex = i + 1;
+                    }
+                    endIndex = 0;
+                }
+            }
+
+            MessageBox.Show($"Largest Subarray Sum in array is {maxSum.ToString()} for the starting index {startIndex.ToString()} and ending index {endIndex.ToString()}");
         }
     }
 }

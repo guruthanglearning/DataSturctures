@@ -75,11 +75,10 @@ namespace WindowsFormsApplication3
 
             DDLinkedList tempList = cacheStorage[key];
             tempList.Previous.Next = tempList.Next;
-            tempList.Next.Previous = tempList.Previous;
-            cacheStorage.Remove(key);
+            tempList.Next.Previous = tempList.Previous;            
             linkList.Next = new DDLinkedList() { Data = key, Previous = linkList };
             linkList = linkList.Next;
-            cacheStorage.Add(key, linkList);
+            cacheStorage[key] = linkList;
             return key;
         }
 
@@ -115,8 +114,7 @@ namespace WindowsFormsApplication3
                     startPointLinkList.Previous = null;
                     linkList.Next = new DDLinkedList() { Data = data, Previous = linkList };
                     linkList = linkList.Next;
-                    cacheStorage.Remove(key);
-                    cacheStorage.Add(data,linkList);
+                    cacheStorage[key]= linkList;
                 }                                                
             }            
             return data;

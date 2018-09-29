@@ -19,8 +19,8 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Traverse_a_graph_with_Depth_First_Search_Click(object sender, EventArgs e)
-        {
-              /*
+        {            
+            /*
                 A->B,C
                 B->A,C,D
                 C->B,D

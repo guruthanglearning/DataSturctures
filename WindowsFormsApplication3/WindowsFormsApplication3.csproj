@@ -144,6 +144,12 @@
     <Compile Include="Graphs.Designer.cs">
       <DependentUpon>Graphs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Integers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integers.Designer.cs">
+      <DependentUpon>Integers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphs.resx">
       <DependentUpon>Graphs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integers.resx">
+      <DependentUpon>Integers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interface.resx">
       <DependentUpon>Interface.cs</DependentUpon>
