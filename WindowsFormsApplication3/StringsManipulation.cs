@@ -76,7 +76,6 @@ namespace WindowsFormsApplication3
         {
             bool isTrue = true;
 
-            int checker = 0;
 
             //input =  abca
             /*
@@ -110,6 +109,7 @@ namespace WindowsFormsApplication3
 	            Result	            10						
             */
 
+            int checker = 0;
             for (int i = 0; i < str.Length; i++)
             {
                 int val = str[i] - 'a';

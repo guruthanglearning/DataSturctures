@@ -748,6 +748,7 @@ namespace WindowsFormsApplication3
             Insert(15, ref tree);
             Insert(22, ref tree);
             Insert(1, ref tree);
+            Insert(2, ref tree);
             //Insert(15, ref tree);
             //Insert(22, ref tree);
             string max = MaxDepthOfTheTree(tree).ToString();
@@ -829,12 +830,13 @@ namespace WindowsFormsApplication3
             InsertBFSNode(9, ref tree, tree);
             InsertBFSNode(2, ref tree, tree);
             InsertBFSNode(1, ref tree, tree);
+            InsertBFSNode(24, ref tree, tree);
 
-            BFSNode inputNode = tree.left.right.right;
-            //BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
-            //MessageBox.Show(node.data.ToString());
-            BFSNode node = GetInOrderSuccessorWithoutParentNode(inputNode, tree);
-            MessageBox.Show(node.data.ToString());
+            BFSNode inputNode = tree.right.right;
+            BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
+            MessageBox.Show($"With Parent Node {node.data.ToString()}");
+            node = GetInOrderSuccessorWithoutParentNode(inputNode, tree);
+            MessageBox.Show($"Without Parent Node {node.data.ToString()}");
 
             //BFSNode tree1 = null;
             //InsertBFSNode(50, ref tree1, tree1);
@@ -2409,7 +2411,7 @@ namespace WindowsFormsApplication3
                 List<NodeWithNext> nextNodes = new List<NodeWithNext>();
                 while (q.Count > 0)
                 {
-                    nextNodes.Add(q.Dequeue());                    
+                    nextNodes.Add(q.Dequeue());
                 }
 
                 NodeWithNext previous = null;
@@ -2424,7 +2426,7 @@ namespace WindowsFormsApplication3
                     {
                         previous = current;
                         current = n;
-                        previous.next = current;                        
+                        previous.next = current;
                         if (previous.left != null)
                         {
                             q.Enqueue(previous.left);
@@ -2451,8 +2453,6 @@ namespace WindowsFormsApplication3
                     break;
                 }
             }
-
-
         }
 
         private void InOrderWithNext(NodeWithNext node)
@@ -3132,6 +3132,103 @@ namespace WindowsFormsApplication3
 
             }
             
+        }
+
+        private void btn_Connect_Nodes_with_iterating_queue_data_into_list_Click(object sender, EventArgs e)
+        {
+
+            /*
+                                10
+                             /      \
+                            /        \
+                           /          \
+                          /            \                           
+                         /              \
+                        5               20
+                      /  \             / \
+                     /    \           /   \  
+                    /      \         /     \
+                   3        8       15     22 
+                  / \      / \ 
+                 /   \    /   \
+                1    4    6    9
+                 \
+                  \
+                   2
+            */
+
+
+            NodeWithNext tree = null;
+            InsertNodeWithNext(10, ref tree);
+            InsertNodeWithNext(5, ref tree);
+            InsertNodeWithNext(20, ref tree);
+            InsertNodeWithNext(3, ref tree);
+            InsertNodeWithNext(8, ref tree);
+            InsertNodeWithNext(6, ref tree);
+            InsertNodeWithNext(15, ref tree);
+            InsertNodeWithNext(22, ref tree);
+            InsertNodeWithNext(1, ref tree);
+            InsertNodeWithNext(2, ref tree);
+            InsertNodeWithNext(4, ref tree);
+            InsertNodeWithNext(9, ref tree);
+            datas.Clear();
+            InOrderWithNext(tree);
+            MessageBox.Show(datas.ToString());
+
+            Queue<NodeWithNext> q = new Queue<NodeWithNext>();
+            if (tree.left != null)
+            {
+                q.Enqueue(tree.left);
+            }
+
+            if (tree.right != null)
+            {
+                q.Enqueue(tree.right);
+            }
+
+            q.Enqueue(null);
+            NodeWithNext previous = null;
+            NodeWithNext current = null;
+
+          while (q.Count>0)
+            {
+                if (q.Peek() == null)
+                {
+                    if (current.left != null)
+                    {                      
+                        q.Enqueue(current.left);
+                    }
+
+                    if (current.right != null)
+                    {                       
+                        q.Enqueue(current.right);
+                    }
+                    q.Dequeue();
+                    q.Enqueue(null);
+                    current = null;
+                    previous = null;
+                }
+
+                if (current == null)
+                {
+                    current = q.Dequeue();
+                }
+                else
+                {
+                    previous = current;
+                    current = q.Dequeue();
+                    previous.next = current;
+                    if (previous.left != null)
+                    {                       
+                        q.Enqueue(previous.left);
+                    }
+
+                    if (previous.right != null)
+                    {                        
+                        q.Enqueue(previous.right);
+                    }                   
+                }                              
+            }
         }
     }
 
