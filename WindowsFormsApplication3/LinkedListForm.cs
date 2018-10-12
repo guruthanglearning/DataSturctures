@@ -1721,6 +1721,7 @@ namespace WindowsFormsApplication3
                     current = current.next;
                 }
             }
+
             asc.next = null;
             desc.next = null;
 
@@ -2734,10 +2735,13 @@ namespace WindowsFormsApplication3
 
             // Time Complexity    :O(n)
             // Space Complexity   :O(n)            
+
+            
             
             Dictionary <LinkList, LinkList> storage = new Dictionary<LinkList, LinkList>();
             LinkList original = LLNodeFirst;
             LinkList clone = null;
+            
             while (original != null)
             {
                 clone = new LinkList();
@@ -2761,6 +2765,7 @@ namespace WindowsFormsApplication3
                 }
                 original = original.next;
             }
+
             datas.Append("Cloned List \n");
             datas.Append("Time Complexity    :O(n) and Space Complexity   :O(n) \n\n");
             DisplayLinkList(storage[LLNodeFirst]);

@@ -98,5 +98,10 @@ namespace WindowsFormsApplication3
             }
 
         }
+
+        private void btn_Abstract_Class_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
