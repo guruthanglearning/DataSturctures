@@ -1663,7 +1663,7 @@ namespace WindowsFormsApplication3
                 result.Add(curr.Trim());
                 return;
             }
-
+          
             foreach (String s in pos[i])
             {
                 String combined = s + " " + curr;

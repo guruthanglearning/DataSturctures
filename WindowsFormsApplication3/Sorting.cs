@@ -28,34 +28,6 @@ namespace WindowsFormsApplication3
             return builder.ToString();   
         }
 
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-             
-            //http://quiz.geeksforgeeks.org/insertion-sort/
-            //Time Complexity : 
-            // Best case  : If array is in sorted order from small to big then time complexity is O(n) since no inversion 
-            // Worst case : If all element is less than towards its left element then each element has to slide towards its 
-            //              next position and inversion has to take place for n-1 elements where complexity is O(n^2)
-            //              If half array is sorted and half array is not in sorted order the complexity is still O(n^2) 
-            //Average case : O(n^2)
-            //Almost sorted means the last element is smaller which means all the elements has to inverse at one time which is O(n) complexity
-            int[] arr = new int[] {9,7,6,15,16,5,10,11 };
-            for(int i = 1; i< arr.Length; i++)
-            {
-                int j = i - 1;
-                int key = arr[i];
-                while (j>=0 && arr[j]> key)
-                {
-                    arr[j + 1] = arr[j];
-                    j--;
-                }
-                arr[j + 1] = key;
-            }
-            MessageBox.Show(this.Display(arr));
-        }
-
         private string Display(int[] arr)
         {
             StringBuilder builder = new StringBuilder();
@@ -220,7 +192,8 @@ namespace WindowsFormsApplication3
         {
             // https://en.wikipedia.org/wiki/Quicksort
 
-            int[] input = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            //int[] input = new int[] { 11, 23, 1, 4, 0, -1, 55, 20 };
+            int[] input = new int[] { 3,2,1};
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Before Sorting {DisplayResult(input)}");
             //Complexity              
@@ -268,7 +241,7 @@ namespace WindowsFormsApplication3
             
             // merge the resulting runs from array B[] into A[]
             TopDownMerge(B, iBegin, iMiddle, iEnd, A);
-        }
+        } 
 
         //  Left source half is A[ iBegin:iMiddle-1].
         // Right source half is A[iMiddle:iEnd-1   ].
@@ -294,10 +267,119 @@ namespace WindowsFormsApplication3
             }
         }
 
-          
+
+
+        
+        // Merges two subarrays of arr[]. 
+        // First subarray is arr[l..m] 
+        // Second subarray is arr[m+1..r] 
+        void merge(int[] arr, int l,
+                        int m, int r)
+        {
+
+            // Find sizes of two subarrays 
+            // to be merged 
+            int n1 = m - l + 1;
+            int n2 = r - m;
+
+            // Create temp arrays  
+            int[] L = new int[n1];
+            int[] R = new int[n2];
+
+            // Copy data to temp arrays 
+            int i, j;
+            for (i = 0; i < n1; ++i)
+                L[i] = arr[l + i];
+
+            for (j = 0; j < n2; ++j)
+                R[j] = arr[m + 1 + j];
+
+
+            // Merge the temp arrays  
+
+            // Initial indexes of first 
+            // and second subarrays 
+            i = 0;
+            j = 0;
+
+            // Initial index of merged 
+            // subarry array 
+            int k = l;
+            while (i < n1 && j < n2)
+            {
+                if (L[i] <= R[j])
+                {
+                    arr[k] = L[i];
+                    i++;
+                }
+
+                else
+                {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // Copy remaining elements  
+            // of L[] if any  
+            while (i < n1)
+            {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+
+            // Copy remaining elements 
+            // of R[] if any  
+            while (j < n2)
+            {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+
+        // Main function that sorts 
+        // arr[l..r] using merge() 
+        void sort(int[] arr, int l, int r)
+        {
+            if (l < r)
+            {
+                // Find the middle point 
+                int m = (l + r) / 2;
+
+                // Sort first and  
+                // second halves 
+                sort(arr, l, m);
+                sort(arr, m + 1, r);
+
+                // Merge the sorted halves 
+                merge(arr, l, m, r);
+            }
+        }
+
+
         private void button6_Click(object sender, EventArgs e)
         {
-            Merge_Sort_Top_down_implementation();
+            // Merge_Sort_Top_down_implementation();
+
+            //https://en.wikipedia.org/wiki/Merge_sort
+
+            // Worst -case performance O(n log n)
+            // Best -case performance O(n log n) typical, O(n) natural variant
+            // Average performance O(n log n)
+            // Worst -case space complexity  О(n) total, O(n) auxiliary
+
+
+            int[] input = { 12, 11, 13, 5, 6, 7 };
+            StringBuilder result = new StringBuilder();
+            result.AppendLine($"Top Down : Before Sorting {DisplayResult(input)} \n");         
+            sort(input, 0, input.Length - 1);
+            result.AppendLine($"Top Down : After Sorting {DisplayResult(input)}");
+            MessageBox.Show(result.ToString());
+
+
         }
 
         private int IParent(int count)
@@ -392,6 +474,56 @@ namespace WindowsFormsApplication3
             }
         }
 
+        public void SortNew(int[] arr)
+        {
+            int n = arr.Length;
+
+            // Build heap (rearrange array) 
+            for (int i = n / 2 - 1; i >= 0; i--)
+                HeapifyNew(arr, n, i);
+
+            // One by one extract an element from heap 
+            for (int i = n - 1; i >= 0; i--)
+            {
+                // Move current root to end 
+                int temp = arr[0];
+                arr[0] = arr[i];
+                arr[i] = temp;
+
+                // call max heapify on the reduced heap 
+                HeapifyNew(arr, i, 0);
+            }
+        }
+
+
+        // To heapify a subtree rooted with node i which is 
+        // an index in arr[]. n is size of heap 
+        void HeapifyNew(int[] arr, int n, int i)
+        {
+            int largest = i; // Initialize largest as root 
+            int l = 2 * i + 1; // left = 2*i + 1 
+            int r = 2 * i + 2; // right = 2*i + 2 
+
+            // If left child is larger than root 
+            if (l < n && arr[l] > arr[largest])
+                largest = l;
+
+            // If right child is larger than largest so far 
+            if (r < n && arr[r] > arr[largest])
+                largest = r;
+
+            // If largest is not root 
+            if (largest != i)
+            {
+                int swap = arr[i];
+                arr[i] = arr[largest];
+                arr[largest] = swap;
+
+                // Recursively heapify the affected sub-tree 
+                HeapifyNew(arr, n, largest);
+            }
+        }
+
         private void HeapSort_Click(object sender, EventArgs e)
         {
             //https://en.wikipedia.org/wiki/Heapsort
@@ -403,11 +535,12 @@ namespace WindowsFormsApplication3
             // Worst -case space complexity  O(1) auxiliary
 
             //11, 23, 1, 4, 0, -1, 55, 20 
-            int[] input = new int[] { 11, 23, 1};
+            int[] input = { 12, 11, 13, 5, 6, 7 };
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Before Sorting {DisplayResult(input)}");
 
-            this.HeapSortAlogrithm(input, input.Length);
+            //this.HeapSortAlogrithm(input, input.Length);
+            this.SortNew(input);
             result.AppendLine($"After Sorting {DisplayResult(input)}");
             MessageBox.Show(result.ToString());
         }
@@ -415,9 +548,9 @@ namespace WindowsFormsApplication3
         private void btn_Bubble_Sort_Click(object sender, EventArgs e)
         {
             /*
-            Time Complexity is O(n^2)
-            http://www.geeksforgeeks.org/bubble-sort/
-             */
+                Time Complexity is O(n^2)
+                http://www.geeksforgeeks.org/bubble-sort/
+            */
 
             int[] input = new int[] { 1,5, 4,2, 0, 12, 10 };
 
@@ -446,6 +579,32 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            //http://quiz.geeksforgeeks.org/insertion-sort/
+            //Time Complexity : 
+            // Best case  : If array is in sorted order from small to big then time complexity is O(n) since no inversion 
+            // Worst case : If all element is less than towards its left element then each element has to slide towards its 
+            //              next position and inversion has to take place for n-1 elements where complexity is O(n^2)
+            //              If half array is sorted and half array is not in sorted order the complexity is still O(n^2) 
+            //Average case : O(n^2)
+            //Almost sorted means the last element is smaller which means all the elements has to inverse at one time which is O(n) complexity
+            int[] arr = new int[] { 9, 7, 6, 15, 16, 5, 10, 11 };
+            for (int i = 1; i < arr.Length; i++)
+            {
+                int j = i - 1;
+                int key = arr[i];
+                while (j >= 0 && arr[j] > key)
+                {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+                arr[j + 1] = key;
+            }
+            MessageBox.Show(this.Display(arr));
         }
     }
 }

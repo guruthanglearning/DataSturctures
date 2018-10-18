@@ -65,5 +65,30 @@ namespace WindowsFormsApplication3
 
 
         }
+
+
+
+        private void btn_Overlapping_rectangles_Click(object sender, EventArgs e)
+        {
+            Point L1 = new Point() { X = 1, Y = 7 };
+            Point R1 = new Point() { X = 4, Y = 4 };
+            Point L2 = new Point() { X = 2, Y = 3 };
+            Point R2 = new Point() { X = 5, Y = 5 };
+            bool isRectangleOverlap = false;
+
+            if ((L2.X > L1.X && L2.X < R1.X && L2.Y > L1.Y && L2.Y < R1.Y) // 1st at the bottom left overlapping with 2nd top right
+                ||(R2.X < R1.X && R2.X > L1.X && R2.Y<R1.Y && R2.Y > L1.Y ) //  1st at the bottom right overlapping with 2nd at the top left
+                || (R1.X > L2.X && R1.X < R2.X && R1.Y > L2.Y && R1.Y < R2.Y ))// 1st at top left overlapping with 2nd at the bottom left
+            {
+                isRectangleOverlap = true;
+            }
+          
+            MessageBox.Show($"Rectangle is {(isRectangleOverlap ? "" : "not" )} overlapping"); 
+            
+
+
+        }
+
+        
     }
 }

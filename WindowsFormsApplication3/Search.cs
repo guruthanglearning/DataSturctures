@@ -29,7 +29,8 @@ namespace WindowsFormsApplication3
 
             int[] input = new int[] {1,2,3,4,5};
             int search = 3;
-            MessageBox.Show($"{search} is located in the {binarySearch(input,0, input.Length-1,search)} index of the array input");
+            MessageBox.Show($"{search} is located in the {binarySearch(input,0, input.Length-1,search)} index of the array input\n" + 
+                        $"{ search} is located in the { binarySearchIterative(input, 0, input.Length - 1, search)} index of the array input");
 
         }
 
@@ -57,6 +58,34 @@ namespace WindowsFormsApplication3
 
             return -1;
 
+        }
+
+        public int binarySearchIterative(int[] input, int left, int right, int search)
+        {
+            int result = -1;
+            int mid = 0;
+            while (right > 1)
+            {
+                mid = left + right / 2;
+
+                if (input[mid]==search)
+                {
+                    result = mid;
+                    break;
+                }
+
+                if (input[mid] > search)
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+
+            
+            return result;
         }
     }
 }
