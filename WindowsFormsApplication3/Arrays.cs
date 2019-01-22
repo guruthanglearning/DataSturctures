@@ -144,6 +144,12 @@ namespace WindowsFormsApplication3
             int insert = 0;
             for (int i = 1; i < buffer.Length - 1; i++)
             {
+                /*                    
+                    Index   :   0   1   2   3   4   5   6   7   8
+                    buffer  :   1   2   3   4   5   4   4   5   5
+                    i = 9   insert = 4
+                */
+
                 if (buffer[i] != buffer[insert])
                 {
                     insert++;
@@ -173,19 +179,17 @@ namespace WindowsFormsApplication3
         {
             int arr1Length = arr1.Length - 1;
             int arr1LastFilledIndex = this.GetLastFilledArrayIndex(arr1);
-            int arr2Length = arr2.Length - 1;
-            int arr1Incr = 0; int arr2Incr = 0;
-            List<int> unique = new List<int>();
+            int arr2Length = arr2.Length - 1;                        
 
             /*
 
-             Input 
-                  arr1   :   1   2   3   3   6   7  8   0   0   0 
-                  arr2   :   3   4   10
+             Input                  
+                  arr1   :   1   2   3   3   6   7   8   0   0   0    0
+                  arr2   :   3   3   4   10
 
             Output
-                arr1LastFilledIndex = 3, arr2Length = 0
-                arr1   :   1   2   3   3   0   4  6   7   8  10                           
+                arr1LastFilledIndex = 3, arr2Length = -1 arr1Length = -3
+                arr1   :   1   2   3   3   3    3   4  6   7   8   10                           
 
             */
             
@@ -217,12 +221,12 @@ namespace WindowsFormsApplication3
             /*
              
                 Input 
-                     arr1   :   1   2   3   3   6   7
-                     arr2   :   3   4   10
+                     arr1   :   1   2   3   3   6   7   8   0   0   0    0
+                     arr2   :   3   3   4   10
               
             */
 
-            int[] arr1 = new int[10];
+            int[] arr1 = new int[11];
             arr1[0] = 1;
             arr1[1] = 2;
             arr1[2] = 3;
@@ -231,10 +235,11 @@ namespace WindowsFormsApplication3
             arr1[5] = 7;
             arr1[6] = 8;
             //arr1[6] = 10;
-            int[] arr2 = new int[3];
+            int[] arr2 = new int[4];
             arr2[0] = 3;
-            arr2[1] = 4;
-            arr2[2] = 10; //Best Case O(n+m)
+            arr2[1] = 3;
+            arr2[2] = 4;
+            arr2[3] = 10; //Best Case O(n+m)
 
 
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
@@ -256,6 +261,15 @@ namespace WindowsFormsApplication3
             int sum = input[0];
             int reductionCost = 0;
             int incrementer = 1; 
+            /*
+                Index           :   0   1   2   3
+                Input           :   1   2   3   4
+                sum             :   10
+                incrementer     :   3
+                reductionCost   :   9
+             
+             */
+
             while (incrementer <= input.Length - 1)
             {
                 // incrementer = 3 , sum = 10, reductionCost = 9
@@ -314,6 +328,9 @@ namespace WindowsFormsApplication3
         {
             const int mask = 1;
             var binary = string.Empty;
+            /*
+                60 
+             */
             while (number > 0)
             {
                 // Logical AND the number and prepend it to the result string        
@@ -360,7 +377,10 @@ namespace WindowsFormsApplication3
         private int[,] FindPairsAndReturnArray(int[] input, int sum)
         {
 
-            // 1, 2, 10, 4, 6, 8, 8,-20
+            /*
+                Input   : 1, 2, 10, 4, 6, 8, 8, -20
+                Sum     : -16
+             */
             if (input == null || input.Length == 0)
             {
                 MessageBox.Show("Invalid Inputs");
@@ -400,13 +420,17 @@ namespace WindowsFormsApplication3
             //int[] input = new int[] { 1, 2, 3, 4, 5, 6, 8, -20 }; // 8 items
             //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 }; // 9
             //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }; // 8
-            int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 };
-
+            int[] input = new int[] { 3, 3, 4, 2, 1, 4, 4, 2, 4, 4 };
 
             int count = 1;
             int majorityIndex = 0;
             int maxOccurance = 1;
-
+            /*
+                count = 3;
+                majorityIndex = 4;
+                maxOccurance = 4; 
+                I = 8
+             */
             for (int i = 1; i < input.Length; i++)
             {
                 if (input[majorityIndex] == input[i])
@@ -443,7 +467,7 @@ namespace WindowsFormsApplication3
             // Time complexity : O(n)
             // Space Complexity : O(1)
 
-            int[] input = new int[] { 1, 2, 3, 2, 3, 1 };
+            int[] input = new int[] { 1, 2, 3, 2, 3, 1, 3 };
 
             int res = 0;
             for (int i = 0; i < input.Length; i++)
@@ -491,8 +515,7 @@ namespace WindowsFormsApplication3
                 j = i;
                 while (1 != 0)
                 {
-                    k = j + d;
-                    k = j + d;
+                    k = j + d;                    
                     if (k >= n)
                         k = k - n;
                     if (k == i)
@@ -675,12 +698,7 @@ namespace WindowsFormsApplication3
         public double findMedianSortedArrays(int[] A, int[] B)
         {
 
-            /*             
-                int[] nums1 = new int[] { 3, 4, 5, 6  }; --A
-                int[] nums2 = new int[] { 1,2, 3, 7 }; --B
-
-            */
-
+            
             int m = A.Length;
             int n = B.Length;
             if (m > n)
@@ -690,14 +708,20 @@ namespace WindowsFormsApplication3
                 int tmp = m; m = n; n = tmp;
             }
 
-
+            
             int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
             while (iMin <= iMax)
             {
-                //iMin = 0 Max = 3
 
-                int i = (iMin + iMax) / 2; // i = 1 
-                int j = halfLen - i;       // j = 3
+                /*                    
+                    int[] nums1 = new int[] { 2, 3, 4, 5 };
+                    int[] nums2 = new int[] { 1, 2, };
+                    Before swap m=4, n= 2
+                    After swap m=2 , n=4
+                    iMin = 2 Max = 2, halfLen = 3, i = 2, j = 1
+                */
+                int i = (iMin + iMax) / 2; 
+                int j = halfLen - i;       
 
                 if (i < iMax && B[j - 1] > A[i])
                 {
@@ -764,9 +788,10 @@ namespace WindowsFormsApplication3
             int[] A = new int[] { 1, 2, 3, 7 };        
             int[] B = new int[] { 4, 5 };                    
 
-            aInc                = 3
-            bInc                = 0
+            aInc                = 1
+            bInc                = 3
             currentInc          = 4
+            totalLength         = 8
 
             */
 
@@ -831,16 +856,20 @@ namespace WindowsFormsApplication3
                 int[] nums2 = new int[] { 1, 2, 3, 7 };
                 
                 int[] nums1 = new int[] { 3, 4, 5, 6 };
-                int[] nums2 = new int[] { 1, 2, 3, 7 };                
+                int[] nums2 = new int[] { 1, 2, 3, 7 };     
+                
+                int[] nums1 = new int[] { 1, 2, 3, 4, 5 };
+                int[] nums2 = new int[] { 0, 0, };
+
+                int[] nums1 = new int[] { 2, 3, 4, 5 };
+                int[] nums2 = new int[] { 1, 2, };
+
             */
 
-            //int[] nums1 = new int[] { 1, 2, 3, 4, 5 };
-            //int[] nums2 = new int[] { 0, 0,  };
 
             int[] nums1 = new int[] { 2, 3, 4, 5 };
             int[] nums2 = new int[] { 1, 2, };
 
-            //1 2 3 3 5 6 7 
             //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
             MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
             //MessageBox.Show(this.findMedianSortedArraysGuruApproach(nums1, nums2).ToString());
@@ -851,7 +880,7 @@ namespace WindowsFormsApplication3
         {
             /*
               Time Complexity is O(n)
-              Space Complexity is O(2 logn)
+              Space Complexity is O(2 log n)
             		            _____
 		                        |	|
 		                        |	|
@@ -1142,9 +1171,26 @@ namespace WindowsFormsApplication3
 
             // Let us generate 10 random numbers accroding to
             // given distribution
+            Dictionary<int, int> result = new Dictionary<int, int>();
+            int output = 0;
             for (int i = 0; i < 100; i++)
-                resultBuilder.Append(this.Get_Arbitrary_Probability_Distribution_Fashion(arr, freq, arr.Length) + " ");
+            {
 
+                output = this.Get_Arbitrary_Probability_Distribution_Fashion(arr, freq, arr.Length);
+                if (result.ContainsKey(output))
+                {
+                    result[output]++;
+                }
+                else
+                {
+                    result.Add(output, 1);
+                }
+                
+            }
+            foreach(var key in result.Keys)
+            {
+                   resultBuilder.Append($"{key} occurence {result[key]} \n");
+            }
             MessageBox.Show($"Random number generator in arbitrary probability distribution {resultBuilder.ToString()}");
 
         }
@@ -1191,7 +1237,8 @@ namespace WindowsFormsApplication3
         {
            
             /*
-                Time Complexity     : O(n)
+                Time Complexity     : O(n) - for 1 array, from our input we have list of arrays n being the # of items in single array and
+                                      m being the list of arrays so the Time complexity will be O(m*n)
                 Space Complexity    : Since we are not using any addition memory even for swapping.
              */
 
@@ -1243,7 +1290,10 @@ namespace WindowsFormsApplication3
         {
             //int[]  input = new int[] { -2, -3, 4, -1, -2, 1, 5, -3 };
             int[] input = new int[] {31, -41, 26, 59, -53, 58, 97, -93, -23, 84};
-
+            int[,] t =  new int[4, 2] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
+         
+            List<int> result = new List<int>() { 1,2};
+             
             int maxSum = 0;
             int sum = 0;
             int startIndex = 0;
@@ -1277,5 +1327,11 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show($"Largest Subarray Sum in array is {maxSum.ToString()} for the starting index {startIndex.ToString()} and ending index {endIndex.ToString()}");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

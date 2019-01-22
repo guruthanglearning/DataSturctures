@@ -63,9 +63,7 @@ namespace WindowsFormsApplication3
         Dictionary<string, DDLinkedList> cacheStorage = new Dictionary<string, DDLinkedList>();
         DDLinkedList linkList = null;
         DDLinkedList startPointLinkList = null;
-     
-        int size = 0;
-
+             
         public string Get(string key)
         {
             if (!cacheStorage.ContainsKey(key))
@@ -90,7 +88,7 @@ namespace WindowsFormsApplication3
                 throw new Exception("Invalid Input");
             }
 
-            if (size < 10 )
+            if (cacheStorage.Count < 10 )
             {                
                 if (linkList == null)
                 {
@@ -102,8 +100,7 @@ namespace WindowsFormsApplication3
                     linkList.Next = new DDLinkedList() { Data = data,Previous = linkList };
                     linkList = linkList.Next;
                 }                
-                cacheStorage.Add(data, linkList);
-                size++;                
+                cacheStorage.Add(data, linkList);                
             }
             else
             {

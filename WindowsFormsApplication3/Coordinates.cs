@@ -20,7 +20,7 @@ namespace WindowsFormsApplication3
         private void btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board_Click(object sender, EventArgs e)
         {
             int kr, kc, qr, qc = 0;
-            kr = 3; kc = 8;
+            kr = 3; kc = 7;
             qr = 0; qc = 3;
             bool kingIsThreadByQueen = false;
 

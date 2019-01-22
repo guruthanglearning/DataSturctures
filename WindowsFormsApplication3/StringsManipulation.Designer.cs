@@ -65,6 +65,7 @@
             this.btn_Evaluate_Reverse_Polish_Notation = new System.Windows.Forms.Button();
             this.btn_Isomorphic_Strings = new System.Windows.Forms.Button();
             this.btn_Word_Break_cats_and_dogs = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -461,11 +462,22 @@
             this.btn_Word_Break_cats_and_dogs.UseVisualStyleBackColor = true;
             this.btn_Word_Break_cats_and_dogs.Click += new System.EventHandler(this.btn_Word_Break_cats_and_dogs_Click);
             // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(914, 364);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(406, 35);
+            this.button18.TabIndex = 37;
+            this.button18.Text = "button18";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 779);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.btn_Word_Break_cats_and_dogs);
             this.Controls.Add(this.btn_Isomorphic_Strings);
             this.Controls.Add(this.btn_Evaluate_Reverse_Polish_Notation);
@@ -551,5 +563,6 @@
         private System.Windows.Forms.Button btn_Evaluate_Reverse_Polish_Notation;
         private System.Windows.Forms.Button btn_Isomorphic_Strings;
         private System.Windows.Forms.Button btn_Word_Break_cats_and_dogs;
+        private System.Windows.Forms.Button button18;
     }
 }

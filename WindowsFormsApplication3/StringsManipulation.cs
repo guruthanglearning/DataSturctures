@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.IO;
 namespace WindowsFormsApplication3
 {
     public partial class StringsManipulation : Form
@@ -1668,6 +1668,15 @@ namespace WindowsFormsApplication3
             {
                 String combined = s + " " + curr;
                 dfs(pos, result, combined, i - s.Length);
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            string directory = @"C:\Users\guthanga\Downloads\Rajalakshmi\New\";
+            foreach (string file in Directory.GetFiles(directory))
+            {
+                File.Move(file, directory + file.Substring(file.LastIndexOf(@"\") + 1).Replace("_"," "));
             }
         }
     }

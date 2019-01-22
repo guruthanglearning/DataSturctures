@@ -180,6 +180,18 @@
     <Compile Include="OopsConcepts.Designer.cs">
       <DependentUpon>OopsConcepts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Other\Questions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Other\Questions.Designer.cs">
+      <DependentUpon>Questions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\RetriveDocumentsInRange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Other\RetriveDocumentsInRange.Designer.cs">
+      <DependentUpon>RetriveDocumentsInRange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.cs">
@@ -255,6 +267,12 @@
     <EmbeddedResource Include="OopsConcepts.resx">
       <DependentUpon>OopsConcepts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Other\Questions.resx">
+      <DependentUpon>Questions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Other\RetriveDocumentsInRange.resx">
+      <DependentUpon>RetriveDocumentsInRange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -306,6 +324,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Documents.xml" />
     <Content Include="QuestionToSolve.txt" />
     <Content Include="TextFile1.txt" />
     <Content Include="XMLFile1.xml" />

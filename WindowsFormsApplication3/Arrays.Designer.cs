@@ -49,6 +49,7 @@
             this.btn_Sum_the_first_two_min_elements_from_the_given_array = new System.Windows.Forms.Button();
             this.btn_Arrange_all_zero_in_an_array_toward_right = new System.Windows.Forms.Button();
             this.btn_Max_sub_series_sum_in_an_given_array = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -102,7 +103,7 @@
             this.Array_Binary_digits_0_to_1.Name = "Array_Binary_digits_0_to_1";
             this.Array_Binary_digits_0_to_1.Size = new System.Drawing.Size(613, 38);
             this.Array_Binary_digits_0_to_1.TabIndex = 4;
-            this.Array_Binary_digits_0_to_1.Text = "Array Binary digits 0 to 1 sorting in O(n)";
+            this.Array_Binary_digits_0_to_1.Text = "Array Binary digits 0 to 1 sorting in O(n) (arrange 0 left 1 right)";
             this.Array_Binary_digits_0_to_1.UseVisualStyleBackColor = true;
             this.Array_Binary_digits_0_to_1.Click += new System.EventHandler(this.Array_Binary_digits_0_to_1_Click);
             // 
@@ -270,11 +271,22 @@
             this.btn_Max_sub_series_sum_in_an_given_array.UseVisualStyleBackColor = true;
             this.btn_Max_sub_series_sum_in_an_given_array.Click += new System.EventHandler(this.btn_Max_sub_series_sum_in_an_given_array_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(767, 143);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(297, 54);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_Max_sub_series_sum_in_an_given_array);
             this.Controls.Add(this.btn_Arrange_all_zero_in_an_array_toward_right);
             this.Controls.Add(this.btn_Sum_the_first_two_min_elements_from_the_given_array);
@@ -326,5 +338,6 @@
         private System.Windows.Forms.Button btn_Sum_the_first_two_min_elements_from_the_given_array;
         private System.Windows.Forms.Button btn_Arrange_all_zero_in_an_array_toward_right;
         private System.Windows.Forms.Button btn_Max_sub_series_sum_in_an_given_array;
+        private System.Windows.Forms.Button button3;
     }
 }

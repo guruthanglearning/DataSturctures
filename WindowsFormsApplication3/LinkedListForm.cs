@@ -172,8 +172,7 @@ namespace WindowsFormsApplication3
                 {
                     InsertBFSNode(data, ref tree.left, tree);
                 }
-            }
-            
+            }            
         }
 
 
@@ -738,7 +737,6 @@ namespace WindowsFormsApplication3
                \
                 2
         */
-
             Node tree = null;
             Insert(10, ref tree);
             Insert(5, ref tree);
@@ -772,6 +770,7 @@ namespace WindowsFormsApplication3
             {
                 return 0;
             }
+
             return 1 + Math.Min(MinDepthOfTheTree(node.left), MinDepthOfTheTree(node.right));
         }
 
@@ -2040,10 +2039,9 @@ namespace WindowsFormsApplication3
         private void button30_Click(object sender, EventArgs e)
         {
 
-            Test t = new Test() { i = 1, data = "outside method" };
-            FunctionTest(t);
-            MessageBox.Show(t.data);
-            
+            var ex = new Exception("testing");
+            MessageBox.Show(ex.ToString());
+
         }
 
         private void FunctionTest(Test t)

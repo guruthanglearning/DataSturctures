@@ -46,23 +46,44 @@ namespace WindowsFormsApplication3
                  001
                  110---->6
                ------------
-                  110
+                  111
+
+
+            result = 1^2^3^4^5^6 with AND operator
+                01 -->1
+                10 -->2
+                ------------
+                11
+                11--->3
+                ------------
+                110
+                100--->4
+                ------------
+                100
+                101--->5
+                ------------
+                100
+                110--->6
+                ------------
+                100--->4
+
+
              */
             int input = 6;
             int result = 0;
-            if (input % 3 == 0)
+            if ((input & 3) == 0)
             {
                 result = input;
             }
-            else if (input%3 == 1)
+            else if ((input & 3) == 1)
             {
                 result = 1;
             }
-            else if (input%3 == 2)
+            else if ((input & 3) == 2)
             {
-                result = ++input;
+                result = input++;
             }
-            else if (input % 3 == 3)
+            else if ((input & 3) ==3)
             {
                 result = 0;
             }
