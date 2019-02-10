@@ -756,6 +756,25 @@ namespace WindowsFormsApplication3
 
         private int MaxDepthOfTheTree(Node node)
         {
+            /*
+                             10
+                          /      \
+                         /        \
+                        /          \
+                       /            \                           
+                      /              \
+                     5               20
+                   /  \             / \
+                  /    \           /   \  
+                 /      \         /     \
+                3        8       15     22 
+               / \      / \ 
+              /   \    /   \
+             1    4    6    9
+              \
+               \
+                2
+        */
             if (node == null)
             {
                 return 0;
@@ -774,6 +793,29 @@ namespace WindowsFormsApplication3
             return 1 + Math.Min(MinDepthOfTheTree(node.left), MinDepthOfTheTree(node.right));
         }
 
+        private void InOrderTraversalToLinkList(Node node, ref LinkList runner, ref LinkList start)
+        {
+            if (node!=null)
+            {
+                InOrderTraversalToLinkList(node.left, ref runner, ref start);
+                if (runner == null)
+                {
+                    runner = new LinkList() { data = node.data };
+                    if (start == null)
+                    {
+                        start = runner;
+                    }                    
+                }
+                else
+                {
+                    runner.next = new LinkList() { data = node.data };
+                    runner = runner.next;
+                }
+                InOrderTraversalToLinkList(node.right, ref runner, ref start);
+            }
+        }
+
+
         private void button9_Click(object sender, EventArgs e)
         {
             Node tree = null;
@@ -783,10 +825,22 @@ namespace WindowsFormsApplication3
             Insert(3, ref tree);
             Insert(8, ref tree);
             Insert(15, ref tree);
-            Insert(22, ref tree);
+            Insert(22, ref tree);            
+            LinkList start = null;
+            LinkList runner = null;
+            if (tree != null)
+            {
+                this.InOrderTraversalToLinkList(tree, ref runner, ref start);
+            }
 
-            int level = 0;
-            
+            runner = start;
+            StringBuilder message = new StringBuilder();
+            while(runner!=null)
+            {
+                message.Append($"{runner.data.ToString()} ,");
+                runner = runner.next;
+            }
+            MessageBox.Show($"Tree to list is {message.ToString()}");
 
 
         }
@@ -829,7 +883,7 @@ namespace WindowsFormsApplication3
             InsertBFSNode(9, ref tree, tree);
             InsertBFSNode(2, ref tree, tree);
             InsertBFSNode(1, ref tree, tree);
-            InsertBFSNode(24, ref tree, tree);
+            //InsertBFSNode(24, ref tree, tree);
 
             BFSNode inputNode = tree.right.right;
             BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
@@ -891,6 +945,10 @@ namespace WindowsFormsApplication3
                     while (p != null && p.right == node)
                     {
                         node = p;
+                        if (p.parent == null)
+                        {
+                            break;
+                        }
                         p = p.parent;
                     }
 
@@ -902,6 +960,10 @@ namespace WindowsFormsApplication3
                             break;
                         }
                         node = p;
+                        if(node.parent == null)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -1469,7 +1531,9 @@ namespace WindowsFormsApplication3
             LinkList fast = linkList;
             LinkList slow = linkList;
             bool isCylic = false;
-            //4->3->5->1->0->11->2
+            //4->3->5->1->0->11->2--
+            //^                    |
+            //|____________________|
             while (fast != null && slow != null && fast.next != null && !isCylic)
             {
                 slow = slow.next;
@@ -2363,14 +2427,14 @@ namespace WindowsFormsApplication3
                            /          \
                           /            \                           
                          /              \
-                        5               20
+                        5-------------->20
                       /  \             / \
                      /    \           /   \  
                     /      \         /     \
-                   3        8       15     22 
+                   3------->8------>15----->22 
                   / \      / \ 
                  /   \    /   \
-                1    4    6    9
+                1---->4->6---->9
                  \
                   \
                    2
@@ -2770,6 +2834,18 @@ namespace WindowsFormsApplication3
 
             // Time Complexity    :O(n)
             // Space Complexity   :O(1)
+            /* 
+            Time Complexity    :O(n)
+            Space Complexity   :O(n)             
+            http://www.geeksforgeeks.org/clone-linked-list-next-arbit-pointer-set-2/
+
+           4----->3----->5----->1----->0----->11----->2
+           |      |      ^                            ^
+           |      |      |                            | 
+           |      |      |                            |
+           -------|-------                            |
+                  |------------------------------------ 
+            */
             datas.Append("Time Complexity    :O(n) and Space Complexity   :O(1) \n\n");
 
             original = LLNodeFirst;
@@ -3140,26 +3216,25 @@ namespace WindowsFormsApplication3
         private void btn_Connect_Nodes_with_iterating_queue_data_into_list_Click(object sender, EventArgs e)
         {
 
-            /*
-                                10
-                             /      \
-                            /        \
-                           /          \
-                          /            \                           
-                         /              \
-                        5               20
-                      /  \             / \
-                     /    \           /   \  
-                    /      \         /     \
-                   3        8       15     22 
-                  / \      / \ 
-                 /   \    /   \
-                1    4    6    9
-                 \
-                  \
-                   2
-            */
-
+                            /*
+                                             10
+                                          /      \
+                                         /        \
+                                        /          \
+                                       /            \                           
+                                      /              \
+                                     5 ------------->20
+                                   /  \             / \
+                                  /    \           /   \  
+                                 /      \         /     \
+                                3<-------8<------15<----22 
+                               / \      / \ 
+                              /   \    /   \
+                             1---->4->6---->9
+                              \
+                               \
+                                2
+                         */
 
             NodeWithNext tree = null;
             InsertNodeWithNext(10, ref tree);

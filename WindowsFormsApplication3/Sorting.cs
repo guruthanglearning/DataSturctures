@@ -89,6 +89,7 @@ namespace WindowsFormsApplication3
         private int Lomuto_partition_scheme(int[] input, int lower, int upper)
         {
             // original input 11, 23, 1, 4, 0, -1, 55, 20
+            // 3, 2, 1
             int returnValue = -1;
             if (input != null && input.Length > 0)
             {
@@ -312,7 +313,6 @@ namespace WindowsFormsApplication3
                     arr[k] = L[i];
                     i++;
                 }
-
                 else
                 {
                     arr[k] = R[j];
@@ -400,12 +400,13 @@ namespace WindowsFormsApplication3
 
         private void ShiftDown(int[]a, int start, int end)
         {
+            // 13 11, 12, 5, 6, 7 
+            // start = 0 end = 5, child = 5, root = 2, interchange = 2
             int root = start;
             int child = 0;
             int interChange = 0;
 
             while(this.ILeft(root) <= end) //do    (While the root has at least one child)
-
             {
                 child = this.ILeft(root); // (Left child of root)
                 interChange = root;       // (Keeps track of child to swap with)
@@ -438,6 +439,7 @@ namespace WindowsFormsApplication3
 
         public void Heapify(int[] a, int count)
         {
+            // 12, 11, 13, 5, 6, 7
             //(start is assigned the index in 'a' of the last parent node)
             //(the last element in a 0-based array is at index count-1; find the parent of that element)
             int start = this.IParent(count - 1);
@@ -464,6 +466,8 @@ namespace WindowsFormsApplication3
             int end = count - 1;
             while(end > 0)        
             {
+                // 7 11, 12, 5, 6, 13
+                // end = 4
                 //(a[0] is the root and largest value. The swap moves it in front of the sorted elements.)
                 this.Swap(a , end, 0);
                 //(the heap size is reduced by one)
@@ -535,12 +539,13 @@ namespace WindowsFormsApplication3
             // Worst -case space complexity  O(1) auxiliary
 
             //11, 23, 1, 4, 0, -1, 55, 20 
+            //12, 11, 13, 5, 6, 7
             int[] input = { 12, 11, 13, 5, 6, 7 };
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Before Sorting {DisplayResult(input)}");
 
-            //this.HeapSortAlogrithm(input, input.Length);
-            this.SortNew(input);
+            this.HeapSortAlogrithm(input, input.Length);
+            //this.SortNew(input);
             result.AppendLine($"After Sorting {DisplayResult(input)}");
             MessageBox.Show(result.ToString());
         }

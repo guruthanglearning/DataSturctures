@@ -196,10 +196,11 @@ namespace WindowsFormsApplication3
                     ++num_completed_t;
                     if (num_completed_t == num_unique_chars)
                     {
-                        if (i == textBox2.Text.Length - 1)
-                        {
-                            MessageBox.Show("Anagram.");
-                        }
+                        MessageBox.Show("Anagram.");
+                        //if (i == textBox2.Text.Length - 1)
+                        //{
+                        //    MessageBox.Show("Anagram.");
+                        //}
                     }
 
                 }
@@ -378,6 +379,7 @@ namespace WindowsFormsApplication3
 
             char[] data = textBox1.Text.ToCharArray();
             int tail = 1;
+            //abc
             for (int i = 1; i < data.Length; i++)
             {
 

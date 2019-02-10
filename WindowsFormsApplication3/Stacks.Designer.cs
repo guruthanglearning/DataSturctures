@@ -33,7 +33,7 @@
             // 
             // btn_Implement_Stack_as_a_queue
             // 
-            this.btn_Implement_Stack_as_a_queue.Location = new System.Drawing.Point(0, 12);
+            this.btn_Implement_Stack_as_a_queue.Location = new System.Drawing.Point(-4, 12);
             this.btn_Implement_Stack_as_a_queue.Name = "btn_Implement_Stack_as_a_queue";
             this.btn_Implement_Stack_as_a_queue.Size = new System.Drawing.Size(537, 34);
             this.btn_Implement_Stack_as_a_queue.TabIndex = 21;

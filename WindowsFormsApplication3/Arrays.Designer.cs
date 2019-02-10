@@ -49,7 +49,7 @@
             this.btn_Sum_the_first_two_min_elements_from_the_given_array = new System.Windows.Forms.Button();
             this.btn_Arrange_all_zero_in_an_array_toward_right = new System.Windows.Forms.Button();
             this.btn_Max_sub_series_sum_in_an_given_array = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Reduce_Array_After_removing_input_element = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -271,22 +271,22 @@
             this.btn_Max_sub_series_sum_in_an_given_array.UseVisualStyleBackColor = true;
             this.btn_Max_sub_series_sum_in_an_given_array.Click += new System.EventHandler(this.btn_Max_sub_series_sum_in_an_given_array_Click);
             // 
-            // button3
+            // btn_Reduce_Array_After_removing_input_element
             // 
-            this.button3.Location = new System.Drawing.Point(767, 143);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(297, 54);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_Reduce_Array_After_removing_input_element.Location = new System.Drawing.Point(767, 143);
+            this.btn_Reduce_Array_After_removing_input_element.Name = "btn_Reduce_Array_After_removing_input_element";
+            this.btn_Reduce_Array_After_removing_input_element.Size = new System.Drawing.Size(297, 54);
+            this.btn_Reduce_Array_After_removing_input_element.TabIndex = 21;
+            this.btn_Reduce_Array_After_removing_input_element.Text = "Reduce Array After removing input element";
+            this.btn_Reduce_Array_After_removing_input_element.UseVisualStyleBackColor = true;
+            this.btn_Reduce_Array_After_removing_input_element.Click += new System.EventHandler(this.btn_Reduce_Array_After_removing_input_element_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_Reduce_Array_After_removing_input_element);
             this.Controls.Add(this.btn_Max_sub_series_sum_in_an_given_array);
             this.Controls.Add(this.btn_Arrange_all_zero_in_an_array_toward_right);
             this.Controls.Add(this.btn_Sum_the_first_two_min_elements_from_the_given_array);
@@ -338,6 +338,6 @@
         private System.Windows.Forms.Button btn_Sum_the_first_two_min_elements_from_the_given_array;
         private System.Windows.Forms.Button btn_Arrange_all_zero_in_an_array_toward_right;
         private System.Windows.Forms.Button btn_Max_sub_series_sum_in_an_given_array;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Reduce_Array_After_removing_input_element;
     }
 }

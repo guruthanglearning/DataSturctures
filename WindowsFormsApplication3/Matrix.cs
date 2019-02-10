@@ -28,7 +28,7 @@ namespace WindowsFormsApplication3
         private void button1_Click(object sender, EventArgs e)
         {
             //http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
-            int[,] input = new int[,] { {10,20,30,40 }, { 15, 25, 35, 45 }, { 25, 29, 37, 48 }, { 32, 33, 39, 50 } };
+            int[,] input = new int[,] { { 10, 20, 30, 40 }, { 15, 25, 35, 45 }, { 25, 29, 37, 48 } , { 32, 33, 39, 50 } };
             int kthValue = kthSmallest(input, 4, 7);
             MessageBox.Show(kthValue.ToString());
 
@@ -120,25 +120,25 @@ namespace WindowsFormsApplication3
             int[,] matrix = new int[,] { 
                                             { -3, -2, -1, 1 },
                                             { -4, -3, -2, -1 }, 
-                                            {  4, 3, 2, 1 }
+                                            { -11, 4, 3, 2 }
                                         };
 
             int count = 0;
-            int i = 0; //starting row
-            int j = matrix.GetLength(0); //max columns
-            int n = matrix.GetUpperBound(0); // max rows
+            int startRow = 0; //starting row
+            int column = matrix.GetLength(0); //max columns
+            int row = matrix.GetUpperBound(0); // max rows
 
-            while (j >= 0 && i < n)
+            while (column >= 0 && startRow <= row)
             {
-                if (matrix[i, j] < 0)
+                if (matrix[startRow, column] < 0)
                 {
-                    count += (j + 1);
-                    j = matrix.GetLength(0);
-                    i++;
+                    count += (column + 1);
+                    column = matrix.GetLength(0);
+                    startRow++;
                 }
                 else
                 {
-                    j--;
+                    column--;
                 }
             }
 
@@ -149,7 +149,7 @@ namespace WindowsFormsApplication3
         private void btn_Find_the_largest_square_of_1_in_a_given_matrix_Click(object sender, EventArgs e)
         {
             /*
-               Time Complexity is O(n^2) 
+               Time Complexity is O(n*m) 
                Space Complexity is 4 X 4
 
             */
@@ -163,20 +163,20 @@ namespace WindowsFormsApplication3
 
             var cache = input;
             int result = 0;
-            for (int i = 1; i <= input.GetUpperBound(0); i++)
+            for (int row = 1; row <= input.GetUpperBound(0); row++)
             {
-                for (int j = 0; j <= input.GetUpperBound(0); j++)
+                for (int column = 0; column <= input.GetUpperBound(0); column++)
                 {
-                    if (i > 0 && j > 0)
+                    if (row > 0 && column > 0)
                     {
-                        if (input[i, j] > 0)
+                        if (input[row, column] > 0)
                         {
-                            cache[i, j] = 1 + Math.Min(Math.Min(cache[i, j - 1], cache[i - 1, j]), cache[i - 1, j - 1]);
+                            cache[row, column] = 1 + Math.Min(Math.Min(cache[row, column - 1], cache[row - 1, column]), cache[row - 1, column - 1]);
                         }
                     }
 
-                    if (cache[i, j] > result)
-                        result = cache[i, j];
+                    if (cache[row, column] > result)
+                        result = cache[row, column];
 
                 }
             } 

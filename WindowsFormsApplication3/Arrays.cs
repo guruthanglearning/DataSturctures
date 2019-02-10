@@ -1328,10 +1328,10 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Largest Subarray Sum in array is {maxSum.ToString()} for the starting index {startIndex.ToString()} and ending index {endIndex.ToString()}");
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_Reduce_Array_After_removing_input_element_Click(object sender, EventArgs e)
         {
-
+            int[] input = new int[] { 1, 3, 4, 6, 7, 10, 4, 9};
+            int removeElement = 4;
         }
-
     }
 }

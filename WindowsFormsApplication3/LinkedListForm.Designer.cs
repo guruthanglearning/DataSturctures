@@ -43,7 +43,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -234,17 +233,6 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(10, 578);
-            this.button15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(472, 35);
-            this.button15.TabIndex = 15;
-            this.button15.Text = "Arbitary Graph";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
             // button17
             // 
             this.button17.Location = new System.Drawing.Point(1227, 325);
@@ -429,7 +417,7 @@
             // 
             // ConnectNodes
             // 
-            this.ConnectNodes.Location = new System.Drawing.Point(13, 623);
+            this.ConnectNodes.Location = new System.Drawing.Point(13, 577);
             this.ConnectNodes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ConnectNodes.Name = "ConnectNodes";
             this.ConnectNodes.Size = new System.Drawing.Size(472, 39);
@@ -440,7 +428,7 @@
             // 
             // btnDistance_of_two_nodes_in_Binary_Search_Tree
             // 
-            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(10, 758);
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(10, 712);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Name = "btnDistance_of_two_nodes_in_Binary_Search_Tree";
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Size = new System.Drawing.Size(472, 46);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.TabIndex = 36;
@@ -450,7 +438,7 @@
             // 
             // btnBinary_Tree_Is_BST
             // 
-            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(10, 810);
+            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(10, 764);
             this.btnBinary_Tree_Is_BST.Name = "btnBinary_Tree_Is_BST";
             this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(472, 42);
             this.btnBinary_Tree_Is_BST.TabIndex = 37;
@@ -480,7 +468,7 @@
             // 
             // btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree
             // 
-            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(10, 863);
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(10, 817);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Name = "btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree";
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Size = new System.Drawing.Size(470, 48);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.TabIndex = 40;
@@ -490,7 +478,7 @@
             // 
             // btn_Build_Binary_Tree_for_the_given_arithmatic_expression
             // 
-            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(7, 917);
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(7, 871);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Name = "btn_Build_Binary_Tree_for_the_given_arithmatic_expression";
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Size = new System.Drawing.Size(472, 50);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.TabIndex = 41;
@@ -500,7 +488,7 @@
             // 
             // btn_Connect_Nodes_with_right_to_left_and_left_to_right
             // 
-            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Location = new System.Drawing.Point(13, 711);
+            this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Location = new System.Drawing.Point(13, 665);
             this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Name = "btn_Connect_Nodes_with_right_to_left_and_left_to_right";
             this.btn_Connect_Nodes_with_right_to_left_and_left_to_right.Size = new System.Drawing.Size(472, 39);
@@ -511,7 +499,7 @@
             // 
             // btn_Connect_Nodes_with_iterating_queue_data_into_list
             // 
-            this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Location = new System.Drawing.Point(13, 667);
+            this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Location = new System.Drawing.Point(13, 621);
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Name = "btn_Connect_Nodes_with_iterating_queue_data_into_list";
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Size = new System.Drawing.Size(466, 36);
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.TabIndex = 43;
@@ -550,7 +538,6 @@
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button17);
-            this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
@@ -592,7 +579,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button16;

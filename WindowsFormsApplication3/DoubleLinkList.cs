@@ -73,7 +73,9 @@ namespace WindowsFormsApplication3
             StringBuilder builder = new StringBuilder();
             DoubleLL first = node;
             DoubleLL second = node;
-
+            /*
+             1-->4-->3-->2
+            */
             while (second!=null && second.Next!=null)
             {
                 second = second.Next;

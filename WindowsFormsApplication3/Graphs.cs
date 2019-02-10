@@ -39,6 +39,7 @@ namespace WindowsFormsApplication3
             GraphNode f = new GraphNode() { data = "F", edges = new List<GraphNode>() };
 
             a.edges.Add(b);
+            a.edges.Add(c);
             b.edges.Add(a);
             b.edges.Add(c);
             b.edges.Add(d);
@@ -149,8 +150,14 @@ namespace WindowsFormsApplication3
             
             g->e->a->f->b->c->d
             
-
-
+                                             B                              D
+                                           /   \                            |
+                                          /     \                           |
+                                         A       F                          C
+                                        /         \
+                                       /           \
+                                      /             \
+                                     E---------------G                                 
             */
 
             Graph graph = new Graph() { Nodes = new Dictionary<string, GraphNode>() };
@@ -164,9 +171,9 @@ namespace WindowsFormsApplication3
             GraphNode g = new GraphNode() { data = "G", edges = new List<GraphNode>() };
 
             b.edges.Add(a);
-            a.edges.Add(ee);
-            ee.edges.Add(g);
             b.edges.Add(f);
+            a.edges.Add(ee);
+            ee.edges.Add(g);            
             f.edges.Add(g);
             d.edges.Add(c);
             
@@ -210,6 +217,18 @@ namespace WindowsFormsApplication3
 
         public void DepthFirstRecursiveForDependencies(List<string> visited, GraphNode edges)
         {
+            /*
+             
+                                             B                              D
+                                           /   \                            |
+                                          /     \                           |
+                                         A       F                          C
+                                        /         \
+                                       /           \
+                                      /             \
+                                     E---------------G                                
+             */
+
             if (edges != null)
             {
                 if (!visited.Contains(edges.data))
@@ -225,6 +244,18 @@ namespace WindowsFormsApplication3
 
         public void BreadthFirstRecursiveForDependencies(Stack<string> visited, Graph graph)
         {
+
+            /*
+             
+                                             B                              D
+                                           /   \                            |
+                                          /     \                           |
+                                         A       F                          C
+                                        /         \
+                                       /           \
+                                      /             \
+                                     E---------------G                                
+             */
             if (graph!= null)
             {
                 Stack s = new Stack();                
