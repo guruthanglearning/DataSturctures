@@ -256,7 +256,6 @@ namespace WindowsFormsApplication3
             {
                 for (int b = 0; b < n; b++)
                 {
-
                     builder.Append(matrix[a, b].ToString() + " , ");
                 }
                 builder.Append("\n");
@@ -269,11 +268,9 @@ namespace WindowsFormsApplication3
             {
                 first = layer;
                 last = n - 1 - layer;
-
                 for (int i = first; i < last; i++)
                 {
                     StringBuilder result = new StringBuilder();
-
                     offset = i - first;
                     top = matrix[first, i];
                     matrix[first, i] = matrix[last - offset, first];
@@ -624,23 +621,21 @@ namespace WindowsFormsApplication3
         private void button14_Click(object sender, EventArgs e)
         {
             StringBuilder data = new StringBuilder();
-            int[] arraydata = new int[] { 1, 2, 2, 1, 1, 1, 3, 4, 5, 5, 5 };
+            //int[] arraydata = new int[] { 1, 2, 2, 1, 1, 1, 3, 4, 5, 5, 5 };
+            int[] arraydata = new int[] { 1, 2, 3, 4, 5, 5};
             int start = 0;
             int end = start + 1;
             int length = arraydata.Length;
-
+            
             while (end < length)
             {
-
-                while (end < length && arraydata[start] == arraydata[end])
+                if (arraydata[start] != arraydata[end])                
                 {
-                    arraydata = Move(arraydata, length, end);
-                    length = arraydata.Length;
+                    arraydata[++start] = arraydata[end];                    
                 }
-                start = end;
-                end = start + 1;
-                length = arraydata.Length;
+                end++;
             }
+            Array.Resize<int>(ref arraydata, ++start);
 
             for (int i = 0; i < arraydata.Length; i++)
             {
