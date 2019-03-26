@@ -585,9 +585,10 @@ namespace WindowsFormsApplication3
 
         private void button17_Click(object sender, EventArgs e)
         {
-            var certStore = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-            certStore.Open(OpenFlags.ReadOnly);
-            var certCollection =  certStore.Certificates.Find(X509FindType.FindBySubjectName, "ots.ic3.com", true);
+            int[] a = new int[] { 4, 1, 3, 2 };
+            long bitFlags = a.ToList().Aggregate(0, (x, y) => x | (1 << (y - 1)));
+/*            (bitFlags == (1 << a.Length) - 1).Dump()*/;
+
 
 
         }

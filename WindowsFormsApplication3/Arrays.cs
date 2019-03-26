@@ -1330,8 +1330,51 @@ namespace WindowsFormsApplication3
 
         private void btn_Reduce_Array_After_removing_input_element_Click(object sender, EventArgs e)
         {
-            int[] input = new int[] { 1, 3, 4, 6, 7, 10, 4, 9};
+            //int[] input = new int[] { 1, 3, 4, 6, 7, 10, 4, 9};
+            //int[] input = new int[] { 1, 3, 4};
+            int[] input = new int[] { 1, 4, 3 };
+            //int[] input = new int[] { 4, 4 , 4};
+            //int[] input = new int[] { 4};
+            //int[] input = new int[] { };
+
             int removeElement = 4;
+            int index = -1;
+            int i = 0;
+            int arraySize = 0;
+            for (i = 0; i< input.Length; i++)
+            {                
+                if (index == -1 && input[i] == removeElement)
+                {
+                    index = i;
+                }
+                else if (index > 0 && input[i]!=removeElement)
+                {
+                    input[index] = input[i];
+                    index++;
+                }                
+            }
+
+            if (index > 0)            
+            {                
+              arraySize = index;                
+            }
+
+            Array.Resize(ref input, arraySize);
+
+            MessageBox.Show(string.Join(",", input));
+        }
+
+        private void btn_Find_all_the_integer_value_lies_in_a_array_till_N_Click(object sender, EventArgs e)
+        {
+            int[] input = new int[] { 1, 2, 3, 3 }; // new int[] { 1, 3, 4, 6, 7, 10, 4, 9 };
+            int x = 0;
+            for(int i = 0; i<input.Length; i++)
+            {
+                x |= 1 << (input[i] - 1);
+            }
+
+            MessageBox.Show($"All integers for the given input array is {(x == (1<<input.Length)-1 ? "present": "is not present")}");
+
         }
     }
 }

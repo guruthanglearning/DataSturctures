@@ -50,6 +50,7 @@
             this.btn_Arrange_all_zero_in_an_array_toward_right = new System.Windows.Forms.Button();
             this.btn_Max_sub_series_sum_in_an_given_array = new System.Windows.Forms.Button();
             this.btn_Reduce_Array_After_removing_input_element = new System.Windows.Forms.Button();
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -265,7 +266,7 @@
             // 
             this.btn_Max_sub_series_sum_in_an_given_array.Location = new System.Drawing.Point(634, 49);
             this.btn_Max_sub_series_sum_in_an_given_array.Name = "btn_Max_sub_series_sum_in_an_given_array";
-            this.btn_Max_sub_series_sum_in_an_given_array.Size = new System.Drawing.Size(595, 38);
+            this.btn_Max_sub_series_sum_in_an_given_array.Size = new System.Drawing.Size(603, 38);
             this.btn_Max_sub_series_sum_in_an_given_array.TabIndex = 20;
             this.btn_Max_sub_series_sum_in_an_given_array.Text = "Max sub series sum in an given array";
             this.btn_Max_sub_series_sum_in_an_given_array.UseVisualStyleBackColor = true;
@@ -273,19 +274,30 @@
             // 
             // btn_Reduce_Array_After_removing_input_element
             // 
-            this.btn_Reduce_Array_After_removing_input_element.Location = new System.Drawing.Point(767, 143);
+            this.btn_Reduce_Array_After_removing_input_element.Location = new System.Drawing.Point(634, 141);
             this.btn_Reduce_Array_After_removing_input_element.Name = "btn_Reduce_Array_After_removing_input_element";
-            this.btn_Reduce_Array_After_removing_input_element.Size = new System.Drawing.Size(297, 54);
+            this.btn_Reduce_Array_After_removing_input_element.Size = new System.Drawing.Size(603, 39);
             this.btn_Reduce_Array_After_removing_input_element.TabIndex = 21;
             this.btn_Reduce_Array_After_removing_input_element.Text = "Reduce Array After removing input element";
             this.btn_Reduce_Array_After_removing_input_element.UseVisualStyleBackColor = true;
             this.btn_Reduce_Array_After_removing_input_element.Click += new System.EventHandler(this.btn_Reduce_Array_After_removing_input_element_Click);
+            // 
+            // btn_Find_all_the_integer_value_lies_in_a_array_till_N
+            // 
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Location = new System.Drawing.Point(634, 93);
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Name = "btn_Find_all_the_integer_value_lies_in_a_array_till_N";
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Size = new System.Drawing.Size(603, 42);
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.TabIndex = 22;
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Text = "Find all the integer value lies in a array till N";
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.UseVisualStyleBackColor = true;
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Click += new System.EventHandler(this.btn_Find_all_the_integer_value_lies_in_a_array_till_N_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Find_all_the_integer_value_lies_in_a_array_till_N);
             this.Controls.Add(this.btn_Reduce_Array_After_removing_input_element);
             this.Controls.Add(this.btn_Max_sub_series_sum_in_an_given_array);
             this.Controls.Add(this.btn_Arrange_all_zero_in_an_array_toward_right);
@@ -339,5 +351,6 @@
         private System.Windows.Forms.Button btn_Arrange_all_zero_in_an_array_toward_right;
         private System.Windows.Forms.Button btn_Max_sub_series_sum_in_an_given_array;
         private System.Windows.Forms.Button btn_Reduce_Array_After_removing_input_element;
+        private System.Windows.Forms.Button btn_Find_all_the_integer_value_lies_in_a_array_till_N;
     }
 }

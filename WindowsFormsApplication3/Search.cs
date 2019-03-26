@@ -64,9 +64,9 @@ namespace WindowsFormsApplication3
         {
             int result = -1;
             int mid = 0;
-            while (right > 1)
+            while (left <= right)
             {
-                mid = left + right / 2;
+                mid = (left + right) / 2;
 
                 if (input[mid]==search)
                 {
@@ -86,6 +86,61 @@ namespace WindowsFormsApplication3
 
             
             return result;
+        }
+
+        private void btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists_Click(object sender, EventArgs e)
+        {
+            //int[] input = new int[] { 1, 2, 3, 4, 5, 6};
+            //int[] input = new int[] { 3, 4, 5, 6, 1, 2};
+            //int[] input = new int[] { 3, 4, 5, 6, 7, 1, 2 };
+            int[] input = { 5, 6, 7, 8, 9, 10, 1, 2, 3, 4 };
+            int search = 4;
+            int left = 0; int right = input.Length - 1;
+            int mid = 0;
+            int pivot = -1;
+            int result = -1;
+            if (input[left] > input[right])
+            {
+                while (left <= right)
+                {
+                    mid = (left + right) / 2;
+                    if (input[mid - 1] < input[mid] && input[mid] < input[mid + 1])
+                    {
+                        left = mid;
+                    }
+                    else if (input[mid - 1] > input[mid])
+                    {
+                        pivot = mid - 1;
+                        break;
+                    }
+                    else if (input[mid] > input[mid + 1])
+                    {
+                        pivot = mid;
+                        break;
+                    }
+                }
+                if (search >=input[0] && search <= input[pivot])
+                {
+                    left = 0;
+                    right = pivot;
+                }
+                else
+                {
+                    left = pivot + 1;
+                    right = input.Length - 1;
+                }
+            }
+
+
+            result = this.binarySearchIterative(input, left, right, search);
+            
+
+            MessageBox.Show($"Pivot for the given array {string.Join(",", input)} is {pivot.ToString()} \n" +
+                            $"Index of the given number {search.ToString()} in the array is {result.ToString()}");
+
+
+
+
         }
     }
 }

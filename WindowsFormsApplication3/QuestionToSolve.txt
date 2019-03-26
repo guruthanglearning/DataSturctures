@@ -5,4 +5,5 @@ target = 7 find the index of 1 in the given array , output should be -1
 target = 4 find the index of 1 in the given array , output should be 1
 
 2.) Concurrent read with the commited value and exculsive writes with locks
+3.) Given input of string abc, generate the permutation like abc, acb, bac, bca, cab,cba etc
 

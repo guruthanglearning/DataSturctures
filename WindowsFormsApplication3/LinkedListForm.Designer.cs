@@ -406,7 +406,7 @@
             // 
             // Check_whether_BST_contains_Dead_End_or_not
             // 
-            this.Check_whether_BST_contains_Dead_End_or_not.Location = new System.Drawing.Point(10, 525);
+            this.Check_whether_BST_contains_Dead_End_or_not.Location = new System.Drawing.Point(7, 525);
             this.Check_whether_BST_contains_Dead_End_or_not.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Check_whether_BST_contains_Dead_End_or_not.Name = "Check_whether_BST_contains_Dead_End_or_not";
             this.Check_whether_BST_contains_Dead_End_or_not.Size = new System.Drawing.Size(472, 42);

@@ -795,77 +795,92 @@ namespace WindowsFormsApplication3
 
         private void InOrderTraversalToLinkList(Node node, ref LinkList runner, ref LinkList start)
         {
-            if (node!=null)
-            {
-                InOrderTraversalToLinkList(node.left, ref runner, ref start);
-                if (runner == null)
-                {
-                    runner = new LinkList() { data = node.data };
-                    if (start == null)
-                    {
-                        start = runner;
-                    }                    
-                }
-                else
-                {
-                    runner.next = new LinkList() { data = node.data };
-                    runner = runner.next;
-                }
-                InOrderTraversalToLinkList(node.right, ref runner, ref start);
-            }
-        }
 
+            /*
+                                 10
+                              /      \
+                             /        \
+                            /          \
+                           /            \                           
+                          /              \
+                         5               20
+                       /  \             / \
+                      /    \           /   \  
+                     /      \         /     \
+                    3        8       15     22 
+            */
 
-        private void button9_Click(object sender, EventArgs e)
+        if (node!=null)
         {
-            Node tree = null;
-            Insert(10, ref tree);
-            Insert(5, ref tree);
-            Insert(20, ref tree);
-            Insert(3, ref tree);
-            Insert(8, ref tree);
-            Insert(15, ref tree);
-            Insert(22, ref tree);            
-            LinkList start = null;
-            LinkList runner = null;
-            if (tree != null)
+            InOrderTraversalToLinkList(node.left, ref runner, ref start);
+            if (runner == null)
             {
-                this.InOrderTraversalToLinkList(tree, ref runner, ref start);
+                runner = new LinkList() { data = node.data };
+                if (start == null)
+                {
+                    start = runner;
+                }                    
             }
-
-            runner = start;
-            StringBuilder message = new StringBuilder();
-            while(runner!=null)
+            else
             {
-                message.Append($"{runner.data.ToString()} ,");
+                runner.next = new LinkList() { data = node.data };
                 runner = runner.next;
             }
-            MessageBox.Show($"Tree to list is {message.ToString()}");
+            InOrderTraversalToLinkList(node.right, ref runner, ref start);
+        }
+    }
 
 
+    private void button9_Click(object sender, EventArgs e)
+    {
+        Node tree = null;
+        Insert(10, ref tree);
+        Insert(5, ref tree);
+        Insert(20, ref tree);
+        Insert(3, ref tree);
+        Insert(8, ref tree);
+        Insert(15, ref tree);
+        Insert(22, ref tree);            
+        LinkList start = null;
+        LinkList runner = null;
+        if (tree != null)
+        {
+            this.InOrderTraversalToLinkList(tree, ref runner, ref start);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        runner = start;
+        StringBuilder message = new StringBuilder();
+        while(runner!=null)
         {
-            /*
-                             10
-                          /      \
-                         /        \
-                        /          \
-                       /            \                           
-                      /              \
-                     5               20
-                   /  \             / \
-                  /    \           /   \  
-                 /      \         /     \
-                3        8       15     22 
-               / \      / \ 
-              /   \    /   \
-             1    4    6    9
-              \
-               \
-                2
-         */
+            message.Append($"{runner.data.ToString()} ,");
+            runner = runner.next;
+        }
+        MessageBox.Show($"Tree to list is {message.ToString()}");
+
+
+    }
+
+    private void button10_Click(object sender, EventArgs e)
+    {
+        /*
+                         10
+                      /      \
+                     /        \
+                    /          \
+                   /            \                           
+                  /              \
+                 5               20
+               /  \             / \
+              /    \           /   \  
+             /      \         /     \
+            3        8       15     22 
+           / \      / \ 
+          /   \    /   \
+         1    4    6    9
+          \
+           \
+            2
+     */
 
 
             //http://www.geeksforgeeks.org/inorder-successor-in-binary-search-tree/
@@ -1187,122 +1202,137 @@ namespace WindowsFormsApplication3
 
         private  Node treeToList(Node root)
         {
-            // base case: empty tree -> empty list
-            if (root == null) return (null);
 
-            // Recursively do the subtrees (leap of faith!)
-            Node aList = treeToList(root.left);
-            Node bList = treeToList(root.right);
-
-            // Make the single root node into a list length-1
-            // in preparation for the appending
-            //root.left = root;
-            //root.right = root;
-
-            // At this point we have three lists, and it's
-            // just a matter of appending them together
-            // in the right order (aList, root, bList)
-            aList = append(aList, root);
-            aList = append(aList, bList);
-
-            return (aList);
-        }
-
-        private Node append(Node a, Node b)
-        {
-            // if either is null, return the other
-            if (a == null) return (b);
-            if (b == null) return (a);
-
-            // find the last node in each using the .previous pointer
-            Node aLast = a.left;
-            Node bLast = b.right;
-
-            // join the two together to make it connected and circular
-            join(aLast, b);
-            join(bLast, a);
-
-            return (a);
-        }
-
-        private void join(Node a, Node b)
-        {
-            if (a!=null)
-            { 
-                a.right = b;
-            }
-            if (b!=null)
-            { 
-                b.left = a;
-            }
-        }
-
-
-        private void printTree(Node root)
-        {
-            if (root==null) return;
-            printTree(root.left);
-            datas.Append(root.data.ToString() + ",");
-            printTree(root.right);
-        }
-
-        private void LinkedListForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            LinkList LLNodeFirst = null;
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 0);
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 11);            
-            LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
-            DisplayLinkList(LLNodeFirst);
-            datas.Append("\n");
-            
-
-            LinkList node = null;
-
-            while (LLNodeFirst != null)
-            {
-                LinkList temp = LLNodeFirst.next;
-                LLNodeFirst.next = node;
-                node = LLNodeFirst;
-                LLNodeFirst = temp;
-            }
-
-            DisplayLinkList(node);
-            datas.Append("\n");
-            MessageBox.Show(datas.ToString());
-
-
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {            
             /*
-                                     10
-                                  /      \
-                                 /        \
-                                /          \
-                               /            \                           
-                              /              \
-                             5               20
-                           /  \             / \
-                          /    \           /   \  
-                         /      \         /     \
-                        3        8       15     22 
-                       / \      / \ 
-                      /   \    /   \
-                     1    4    6    9
-                      \
-                       \
-                        2
+                                 10
+                              /      \
+                             /        \
+                            /          \
+                           /            \                           
+                          /              \
+                         5               20
+                       /  \             / \
+                      /    \           /   \  
+                     /      \         /     \
+                    3        8       15     22 
             */
+
+        // base case: empty tree -> empty list
+        if (root == null) return (null);
+
+        // Recursively do the subtrees (leap of faith!)
+        Node aList = treeToList(root.left);
+        Node bList = treeToList(root.right);
+
+        // Make the single root node into a list length-1
+        // in preparation for the appending
+        //root.left = root;
+        //root.right = root;
+
+        // At this point we have three lists, and it's
+        // just a matter of appending them together
+        // in the right order (aList, root, bList)
+        aList = append(aList, root);
+        aList = append(aList, bList);
+
+        return (aList);
+    }
+
+    private Node append(Node a, Node b)
+    {
+        // if either is null, return the other
+        if (a == null) return (b);
+        if (b == null) return (a);
+
+        // find the last node in each using the .previous pointer
+        Node aLast = a.left;
+        Node bLast = b.right;
+
+        // join the two together to make it connected and circular
+        join(aLast, b);
+        join(bLast, a);
+
+        return (a);
+    }
+
+    private void join(Node a, Node b)
+    {
+        if (a!=null)
+        { 
+            a.right = b;
+        }
+        if (b!=null)
+        { 
+            b.left = a;
+        }
+    }
+
+
+    private void printTree(Node root)
+    {
+        if (root==null) return;
+        printTree(root.left);
+        datas.Append(root.data.ToString() + ",");
+        printTree(root.right);
+    }
+
+    private void LinkedListForm_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void button13_Click(object sender, EventArgs e)
+    {
+        LinkList LLNodeFirst = null;
+        LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
+        LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
+        LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+        LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
+        LLNodeFirst = InsertLinkList(LLNodeFirst, 0);
+        LLNodeFirst = InsertLinkList(LLNodeFirst, 11);            
+        LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
+        DisplayLinkList(LLNodeFirst);
+        datas.Append("\n");
+
+
+        LinkList node = null;
+
+        while (LLNodeFirst != null)
+        {
+            LinkList temp = LLNodeFirst.next;
+            LLNodeFirst.next = node;
+            node = LLNodeFirst;
+            LLNodeFirst = temp;
+        }
+
+        DisplayLinkList(node);
+        datas.Append("\n");
+        MessageBox.Show(datas.ToString());
+
+
+    }
+
+    private void button14_Click(object sender, EventArgs e)
+    {            
+        /*
+                                 10
+                              /      \
+                             /        \
+                            /          \
+                           /            \                           
+                          /              \
+                         5               20
+                       /  \             / \
+                      /    \           /   \  
+                     /      \         /     \
+                    3        8       15     22 
+                   / \      / \ 
+                  /   \    /   \
+                 1    4    6    9
+                  \
+                   \
+                    2
+        */
 
             Node tree = null;
             Insert(10, ref tree);
@@ -2282,7 +2312,7 @@ namespace WindowsFormsApplication3
             datas.Clear();            
             InOrder(tree);
 
-            int[] seq = new int[] {4, 5, 6 };
+            int[] seq = new int[] {4, 5, 8 };
 
             MessageBox.Show(isSequenceExists(tree, seq) ? string.Format("Sequence: {0} exists in tree :{1}", string.Join(",", seq), datas.ToString()) : string.Format("Sequence: {0} does not exists in tree: {1}", string.Join(",", seq), datas.ToString()));
 
