@@ -166,13 +166,8 @@ namespace WindowsFormsApplication3
                 insert++;
                 buffer[insert] = 0;
             }
-
-            StringBuilder builder = new StringBuilder();
-            foreach (int j in buffer)
-            {
-                builder.Append($"{j.ToString()},");
-            }
-            MessageBox.Show(builder.ToString());
+            
+            MessageBox.Show(string.Join(",",buffer));
         }
 
         public void MergeArraysDuplicateValues(int[] arr1, int[] arr2)
@@ -349,7 +344,7 @@ namespace WindowsFormsApplication3
 
         private string FindPairs(int[] input, int sum)
         {
-            // 1, 2, 10, 4, 6, 8, 8,-20
+            // 1, 2, 10, 4, 6, 8, 8,-20 sum = -16
             if (input == null || input.Length == 0)
             {
                 MessageBox.Show("Invalid Inputs");
@@ -480,12 +475,17 @@ namespace WindowsFormsApplication3
 
         private int GCD(int a, int b)
         {
+            /* 
+                a=2, b= 7
+                a=7, b= 2
+                a=2, b=1
+                a=1, b=0
+            */
             if (b == 0)
             {
                 return a;
             }
             return GCD(b, a % b);
-
         }
 
         private void leftRotate(int[] arr, int d, int n)
@@ -959,7 +959,7 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            string result = returnValue != null ? "Empyt" : returnValue.Value ? "Sorted" : "Not Sorted";
+            string result = returnValue != null ? "Empty" : returnValue.Value ? "Sorted" : "Not Sorted";
             MessageBox.Show($"Given array is {result}");
 
         }
@@ -1134,6 +1134,11 @@ namespace WindowsFormsApplication3
         private int Get_Arbitrary_Probability_Distribution_Fashion(int[] arr, int[] freq, int n)
         {
             // Create and fill prefix array
+
+            /*
+                int[] arr = new int[] { 1, 2, 3 };
+                int[] freq = new int[] { 49, 0, 50 };              
+             */
             int[] prefix = new int[n];
             prefix[0] = freq[0];
             for (int i = 1; i < n; i++)
@@ -1148,7 +1153,7 @@ namespace WindowsFormsApplication3
 
             // prefix[n-1] is sum of all frequencies. Generate a random number
             // with value from 1 to this sum
-            int r = random.Next(1, prefix[n - 1]); //(random.Next(1, prefix[n-1]) % prefix[n - 1]) +1;
+            int r =(random.Next(1, prefix[n-1]) % prefix[n - 1]) +1; // random.Next(1, prefix[n - 1]); 
 
             // Find index of ceiling of r in prefix array
             int indexc = FindCeil(prefix, r, 0, n - 1);
@@ -1203,7 +1208,8 @@ namespace WindowsFormsApplication3
                 input = 1   3   4   6   2    
             firstMin = -1, secondMin = 1
             */
-            int[] input = new int[] { 4, 3, 2, 1, 4, -1 };
+            //int[] input = new int[] { 4, 3, 2, 1, 4, -1 };
+            int[] input = new int[] { 3, 5, 4, 1, 4, -1 };
             int firstMin = input[0];
             int secondMin = input[1];
 

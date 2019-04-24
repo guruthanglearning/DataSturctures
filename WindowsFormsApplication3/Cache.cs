@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,24 +24,50 @@ namespace WindowsFormsApplication3
             /*
                 Time Complexity for adding an item to cache is O(1)
                 Time Complexity for getting an item from cache is O(1)
+                LRU -->Removes the least used item from the cache (delete from the starting of the double link list)
+                MRU -->Removes the most recently used item from the cache (delete from the end of the double link list)
             */
 
             LRUCacheWithDictionaryValueAsLinkedList cache = new LRUCacheWithDictionaryValueAsLinkedList();
-            cache.Put("A");
-            cache.Put("B");
-            cache.Put("C");
+            cache.Put("A", "A");
+            cache.Put("B", "B");
+            cache.Put("C", "C");
             cache.Get("B");
-            cache.Put("D");
-            cache.Put("E");
-            cache.Put("F");
-            cache.Put("G");
-            cache.Put("H");
-            cache.Put("I");
-            cache.Put("J");
-            cache.Put("K");
+            cache.Put("D", "D");
+            cache.Put("E", "E");
+            cache.Put("F", "F");
+            cache.Put("G", "G");
+            cache.Put("H", "H");
+            cache.Put("I", "I");
+            cache.Put("J", "J");
+            cache.Get("A");
+            cache.Put("K","K");
             MessageBox.Show($"Foward list \n{cache.DisplayForward()}\n\nBackward list \n{cache.DisplayBackward()}");
 
 
+        }
+
+        private void btn_Implement_Least_Frequently_Used_Cache_Click(object sender, EventArgs e)
+        {
+            LFU_LeastFrequentlyUsedCache cache = new LFU_LeastFrequentlyUsedCache();
+            cache.Put("A", "A");
+            cache.Put("B", "B");
+            cache.Put("C", "C");
+            cache.Get("B");
+            cache.Get("A");
+            cache.Get("C");
+            cache.Put("D", "D");
+            cache.Get("D");
+            cache.Put("E", "E");
+            cache.Get("E");
+            cache.Put("F", "F");
+            cache.Get("F");
+            cache.Get("E");
+        }
+
+        private void btn_Implement_LRU_using_List_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 
@@ -51,19 +78,18 @@ namespace WindowsFormsApplication3
         public DDLinkedList Previous;
     }
 
-    public interface ILRUCache
+    public interface ICache
     {
-        string Put(string data);
+        string Put(string dataKey, string data);
         string Get(string key);
     }
 
-
-    public class LRUCacheWithDictionaryValueAsLinkedList: ILRUCache
+    public class LRUCacheWithDictionaryValueAsLinkedList: ICache
     {
         Dictionary<string, DDLinkedList> cacheStorage = new Dictionary<string, DDLinkedList>();
         DDLinkedList linkList = null;
         DDLinkedList startPointLinkList = null;
-             
+
         public string Get(string key)
         {
             if (!cacheStorage.ContainsKey(key))
@@ -71,19 +97,40 @@ namespace WindowsFormsApplication3
                 throw new Exception("Invalid key");
             }
 
+
             DDLinkedList tempList = cacheStorage[key];
-            tempList.Previous.Next = tempList.Next;
-            tempList.Next.Previous = tempList.Previous;            
-            linkList.Next = new DDLinkedList() { Data = key, Previous = linkList };
-            linkList = linkList.Next;
-            cacheStorage[key] = linkList;
-            return key;
+            
+            if (linkList.Data == tempList.Data)
+            {
+                //This means retriving data is present at the end of the list
+                return tempList.Data;
+            }
+            else if (startPointLinkList.Data == tempList.Data)
+            {
+                //This means retriving data is present at the start of the list
+                startPointLinkList = startPointLinkList.Next;
+                startPointLinkList.Previous = null;
+                tempList.Next = null;
+                tempList.Previous = linkList;
+                linkList.Next = tempList;
+                linkList = linkList.Next;  
+            }
+            else
+            { 
+                tempList.Previous.Next = tempList.Next;
+                tempList.Next.Previous = tempList.Previous;
+                tempList.Next = null;
+                tempList.Previous = linkList;
+                linkList.Next = tempList;
+                linkList = linkList.Next;
+            }             
+            return linkList.Data;
         }
 
-        public string Put(string data)
+        public string Put(string dataKey, string data)
         {
 
-            if (string.IsNullOrWhiteSpace(data))
+            if (string.IsNullOrWhiteSpace(data) || string.IsNullOrWhiteSpace(dataKey))
             {
                 throw new Exception("Invalid Input");
             }
@@ -100,19 +147,22 @@ namespace WindowsFormsApplication3
                     linkList.Next = new DDLinkedList() { Data = data,Previous = linkList };
                     linkList = linkList.Next;
                 }                
-                cacheStorage.Add(data, linkList);                
+                cacheStorage.Add(dataKey, linkList);                
             }
             else
-            {
-                string key = startPointLinkList.Data;
-                if (cacheStorage.ContainsKey(key))
+            {                
+                if (!cacheStorage.ContainsKey(dataKey))
                 {                   
                     startPointLinkList = startPointLinkList.Next;
                     startPointLinkList.Previous = null;
                     linkList.Next = new DDLinkedList() { Data = data, Previous = linkList };
                     linkList = linkList.Next;
-                    cacheStorage[key]= linkList;
-                }                                                
+                    cacheStorage[dataKey]= linkList;
+                }   
+                else
+                {
+                    MessageBox.Show("The given key is already exists in the cache");
+                }
             }            
             return data;
         }
@@ -140,6 +190,89 @@ namespace WindowsFormsApplication3
                 traverse = traverse.Previous;
             }
             return result.ToString();
+        }
+    }
+
+    public class LFU_LeastFrequentlyUsedCache : ICache
+    {
+
+        Dictionary<string, string> Cache = new Dictionary<string, string>();
+        Dictionary<string, int> Frequency = new Dictionary<string, int>();
+        Dictionary<int, List<string>> FrequencyData = new Dictionary<int, List<string>>();
+        int min = 0;
+
+        public LFU_LeastFrequentlyUsedCache()
+        {
+            FrequencyData.Add(1, new List<string>());
+        }
+
+        public string Put(string dataKey, string data)
+        {
+
+            if (Cache.ContainsKey(dataKey))
+            {
+                Cache[dataKey] = data;
+                this.Get(dataKey);
+            }
+
+            if (Cache.Count >= 5)
+            {
+                string key = FrequencyData[min].First();
+                Frequency.Remove(key);
+                Cache.Remove(key);
+                FrequencyData[min].Remove(key);
+            }
+
+            Cache.Add(dataKey, data);
+            Frequency.Add(dataKey, 1);
+            FrequencyData[1].Add(dataKey);
+            min = 1;
+            return data;
+        }
+
+        public string Get(string dataKey)
+        {
+            if (Cache.ContainsKey(dataKey))
+            {
+                int countKey = Frequency[dataKey];
+                Frequency[dataKey]++;
+                FrequencyData[countKey].Remove(dataKey);
+
+                if (countKey == min && FrequencyData[countKey].Count == 0)
+                {
+                    min++;
+                }
+
+                if (!FrequencyData.ContainsKey(countKey + 1))
+                {
+                    FrequencyData.Add(countKey + 1, new List<string>());
+                }
+                FrequencyData[countKey + 1].Add(dataKey);
+                return Cache[dataKey];
+            }
+
+            throw new Exception("Invalid Key");
+        }
+
+    }
+
+
+    public class LRUCacheWithDictionary : ICache
+    {
+
+        ArrayList cache = new ArrayList();
+
+        public string Put(string dataKey, string data)
+        {
+            
+            
+
+            return string.Empty;
+        }
+
+        public string Get(string key)
+        {
+            return string.Empty;
         }
     }
 }

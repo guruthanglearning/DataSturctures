@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_Reverse_Integer = new System.Windows.Forms.Button();
+            this.btn_Check_the_given_integer_is_Plandrom = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -41,11 +42,22 @@
             this.btn_Reverse_Integer.UseVisualStyleBackColor = true;
             this.btn_Reverse_Integer.Click += new System.EventHandler(this.btn_Reverse_Integer_Click);
             // 
+            // btn_Check_the_given_integer_is_Plandrom
+            // 
+            this.btn_Check_the_given_integer_is_Plandrom.Location = new System.Drawing.Point(12, 61);
+            this.btn_Check_the_given_integer_is_Plandrom.Name = "btn_Check_the_given_integer_is_Plandrom";
+            this.btn_Check_the_given_integer_is_Plandrom.Size = new System.Drawing.Size(519, 42);
+            this.btn_Check_the_given_integer_is_Plandrom.TabIndex = 1;
+            this.btn_Check_the_given_integer_is_Plandrom.Text = "Check the given integer is Plandrom";
+            this.btn_Check_the_given_integer_is_Plandrom.UseVisualStyleBackColor = true;
+            this.btn_Check_the_given_integer_is_Plandrom.Click += new System.EventHandler(this.btn_Check_the_given_integer_is_Plandrom_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Check_the_given_integer_is_Plandrom);
             this.Controls.Add(this.btn_Reverse_Integer);
             this.Name = "Integers";
             this.Text = "Integers";
@@ -56,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Button btn_Reverse_Integer;
+        private System.Windows.Forms.Button btn_Check_the_given_integer_is_Plandrom;
     }
 }

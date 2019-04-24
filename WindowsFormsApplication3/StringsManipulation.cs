@@ -1087,31 +1087,110 @@ namespace WindowsFormsApplication3
 
         private void StringToInt_Click(object sender, EventArgs e)
         {
-            string input = textBox1.Text;
-            long result = 0;
-            char c;
-            
+            MessageBox.Show(this.MyAtoi("+-52").ToString());
+            List<string> inputs = new List<string>();
+            inputs.Add("+1");
+            inputs.Add("-+1");
+            inputs.Add("4193 with words");
+            inputs.Add("words and 987");
+            inputs.Add("   -42");
+            inputs.Add("42");
+            inputs.Add("-91283472332");
+            inputs.Add("      +0 123");
+            inputs.Add("2147483648");
+            inputs.Add("-   234");
+            inputs.Add("-2147483647");
 
-            for(int i = 0; i <input.Length; i++) 
+            StringBuilder outputs = new StringBuilder();
+            outputs.Append("Results \n");
+
+            int intValue = 0;
+            bool isNegative = false;
+            bool isResultAssigned = false;            
+            long result = 0;
+            int continousplusMinus = 0;
+
+            foreach (string str in inputs)
             {
-                c = input[i];
-                if (char.IsNumber(c))
+                intValue = 0;
+                isNegative = false;
+                isResultAssigned = false;
+                result = 0;
+                continousplusMinus = 0;
+
+                if (string.IsNullOrEmpty(str))
                 {
-                    if (result == 0)
+                    result = 0;
+                }
+
+                foreach (char c in str)
+                {
+                    if (continousplusMinus == 2)
                     {
-                        result = Convert.ToInt64(c.ToString());
+                        result = 0;
+                        break;
+                    }                    
+                    if (isResultAssigned && !(c >= 48 && c <= 57)) // ascii for 0 is 48 and 9 is 57
+                    {
+                        break;
+                    }
+                    else if (c == 32) // ascii value of ' ' is 32
+                    {
+                        if (isResultAssigned || continousplusMinus > 0)
+                        {
+                            break;
+                        }
+                    }
+                    else if (c == 43) // '+' is 43
+                    {
+                        if (isResultAssigned)
+                        {
+                            break;
+                        }
+                        continousplusMinus++;
+                    }
+                    else if (c == 45 && result == 0) //ascii code for '-' is 45
+                    {
+                        if (isResultAssigned)
+                        {
+                            break;
+                        }
+                        continousplusMinus++;
+                        isNegative = true;
+                    }
+                    else if (char.IsNumber(c))
+                    {
+                        isResultAssigned = true;
+                        intValue = Int32.Parse(c.ToString());
+                        if (result == 0)
+                        {
+                            result = intValue;
+                        }
+                        else
+                        {
+                            result = (result * 10) + intValue;
+                            if (result > int.MaxValue || result < int.MinValue)
+                            {
+                                result = isNegative ? int.MinValue : int.MaxValue;
+                                isNegative = false;
+                                break;
+                            }
+                        }
                     }
                     else
                     {
-                        result = (result * 10) + Convert.ToInt64(c.ToString());
+                        break;
                     }
                 }
-                else
+
+                if (isNegative)
                 {
-                    break;
-                }
+                    result = result * -1;
+                }                
+
+                outputs.Append($"{str} is {((int)result).ToString()} \n");
             }
-            MessageBox.Show(result.ToString());
+            MessageBox.Show(outputs.ToString());
 
         }
 
@@ -1428,7 +1507,7 @@ namespace WindowsFormsApplication3
             {                 
                 int i;
                 int pos = -1;
-                for(i = 1; i<input.Length; i++)
+                for(i = 1; i<input.Length; i++) //pwwkew i =5
                 {
                     pos = input.IndexOf(input[i],start, (i - start));
                     if (pos > -1)
@@ -1676,5 +1755,42 @@ namespace WindowsFormsApplication3
                 File.Move(file, directory + file.Substring(file.LastIndexOf(@"\") + 1).Replace("_"," "));
             }
         }
+
+        public int isValid(char c)
+        {
+            if (c == ' ') return -1;
+            else if (c >= '0' && c <= '9') return c - '0';
+            else if (c == '+') return -2;
+            else if (c == '-') return -3;
+            else return -4;
+        }
+        public int MyAtoi(string str)
+        {
+            int sign = 1;
+            Int64 value = 0;
+            bool hasValue = false;
+            if (string.IsNullOrEmpty(str)) return 0;
+
+            foreach (char c in str)
+            {
+                int v = isValid(c);
+                if (!hasValue && v == -1) continue;
+                else if (!hasValue && v == -2) { sign = 1; hasValue = true; }
+                else if (!hasValue && v == -3) { sign = -1; hasValue = true; }
+                else if (v == -4) break;
+                else if (v >= 0 && v <= 9)
+                {
+                    hasValue = true;
+                    value = value * 10 + v;
+                    if (sign == 1 && value > Int32.MaxValue) return Int32.MaxValue;
+                    else if (sign == -1 && value * sign < Int32.MinValue) return Int32.MinValue;
+
+                }
+                else break;
+            }
+
+            return (int)value * sign;
+        }
+
     }
 }
