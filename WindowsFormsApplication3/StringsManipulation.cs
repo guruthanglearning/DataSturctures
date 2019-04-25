@@ -1747,15 +1747,6 @@ namespace WindowsFormsApplication3
             }
         }
 
-        private void button18_Click(object sender, EventArgs e)
-        {
-            string directory = @"C:\Users\guthanga\Downloads\Rajalakshmi\New\";
-            foreach (string file in Directory.GetFiles(directory))
-            {
-                File.Move(file, directory + file.Substring(file.LastIndexOf(@"\") + 1).Replace("_"," "));
-            }
-        }
-
         public int isValid(char c)
         {
             if (c == ' ') return -1;
@@ -1792,5 +1783,41 @@ namespace WindowsFormsApplication3
             return (int)value * sign;
         }
 
+        private void btn_Zig_Zag_String_in_n_Rows_Click(object sender, EventArgs e)
+        {
+            string input = "PINALSIGYAHRPI";
+            int n = 4;
+            int row = 0;
+            string[] arr = new string[n];
+            bool down = true;
+            int spaceCounter = 0;
+            StringBuilder result = new StringBuilder();
+
+            foreach(char c in input)
+            {
+                arr[row]+= new string(' ', spaceCounter) +  c.ToString();
+                if (row == n -1)
+                {
+                    down = false;
+                    spaceCounter++;
+                }
+                else if (row==0)
+                {
+                    down = true;
+                    spaceCounter = 0;
+                }
+
+                if (down)
+                {
+                    row++;
+                }
+                else
+                {
+                    row--;
+                }
+            }
+
+            MessageBox.Show(string.Join("\n", arr));
+        }
     }
 }
