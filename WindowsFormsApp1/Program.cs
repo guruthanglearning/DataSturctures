@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApplication3.Other;
 
-namespace WindowsFormsApplication3
+namespace WindowsFormsApp1
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace WindowsFormsApplication3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Integers());
+            Application.Run(new Form1());
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.btn_Reverse_Integer = new System.Windows.Forms.Button();
             this.btn_Check_the_given_integer_is_Plandrom = new System.Windows.Forms.Button();
+            this.btn_Robbing_a_home_1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -52,11 +53,22 @@
             this.btn_Check_the_given_integer_is_Plandrom.UseVisualStyleBackColor = true;
             this.btn_Check_the_given_integer_is_Plandrom.Click += new System.EventHandler(this.btn_Check_the_given_integer_is_Plandrom_Click);
             // 
+            // btn_Robbing_a_home_1
+            // 
+            this.btn_Robbing_a_home_1.Location = new System.Drawing.Point(12, 109);
+            this.btn_Robbing_a_home_1.Name = "btn_Robbing_a_home_1";
+            this.btn_Robbing_a_home_1.Size = new System.Drawing.Size(519, 48);
+            this.btn_Robbing_a_home_1.TabIndex = 2;
+            this.btn_Robbing_a_home_1.Text = "Robbing a home 1";
+            this.btn_Robbing_a_home_1.UseVisualStyleBackColor = true;
+            this.btn_Robbing_a_home_1.Click += new System.EventHandler(this.btn_Robbing_a_home_1_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Robbing_a_home_1);
             this.Controls.Add(this.btn_Check_the_given_integer_is_Plandrom);
             this.Controls.Add(this.btn_Reverse_Integer);
             this.Name = "Integers";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button btn_Reverse_Integer;
         private System.Windows.Forms.Button btn_Check_the_given_integer_is_Plandrom;
+        private System.Windows.Forms.Button btn_Robbing_a_home_1;
     }
 }

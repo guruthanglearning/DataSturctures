@@ -50,6 +50,11 @@ namespace CapitalOne_Interview
             {
                 richTextBox1.Text = "No Records to process";
             }
-        }        
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

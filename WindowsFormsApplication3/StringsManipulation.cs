@@ -1271,7 +1271,7 @@ namespace WindowsFormsApplication3
 
         public int longestPalindromeSubstringEasy(string input)
         {
-
+            //GEEKSFORGEEKS
             int longest_substring = 1;
 
             int x, y;
@@ -1288,6 +1288,7 @@ namespace WindowsFormsApplication3
                     y++;
                     palindrome += 2;
                 }
+
                 longest_substring = Math.Max(longest_substring, palindrome);
 
                 x = i - 1;
@@ -1785,39 +1786,68 @@ namespace WindowsFormsApplication3
 
         private void btn_Zig_Zag_String_in_n_Rows_Click(object sender, EventArgs e)
         {
-            string input = "PINALSIGYAHRPI";
-            int n = 4;
-            int row = 0;
-            string[] arr = new string[n];
-            bool down = true;
-            int spaceCounter = 0;
+            /*
+                Input = "PAYPALISHIRING";
+                Output: "PINALSIGYAHRPI"
+                Explanation:
+                    P     I    N
+                    A   L S  I G
+                    Y A   H R
+                    P     I
+
+                Input = "PAYPALISHIRING"
+                Output= "PAHNAPLSIIGYIR"
+             */
+
+            Dictionary<string, int> inputs = new Dictionary<string, int>();
+            inputs.Add("PAYPALISHIRING", 4);
+            //inputs.Add("PAYPALISHIRING", 3);
+            inputs.Add("ABC",1);
             StringBuilder result = new StringBuilder();
+            foreach (string key in inputs.Keys)
+            {                
 
-            foreach(char c in input)
-            {
-                arr[row]+= new string(' ', spaceCounter) +  c.ToString();
-                if (row == n -1)
-                {
-                    down = false;
-                    spaceCounter++;
-                }
-                else if (row==0)
-                {
-                    down = true;
-                    spaceCounter = 0;
-                }
+                int numRows = inputs[key];
+                string s = key;
 
-                if (down)
+                if (numRows > 1)
                 {
-                    row++;
+                    int row = 0;
+                    string[] arr = new string[numRows];
+                    bool down = true;
+
+
+                    foreach (char c in s)
+                    {
+                        arr[row] += c.ToString();
+                        if (row == numRows - 1)
+                        {
+                            down = false;
+                        }
+                        else if (row == 0)
+                        {
+                            down = true;
+                        }
+
+                        if (down)
+                        {
+                            row++;
+                        }
+                        else
+                        {
+                            row--;
+                        }
+                    }
+                    result.AppendLine($"Zig Zag of {s} is {(string.Join("", arr))}");
                 }
                 else
                 {
-                    row--;
+                    result.AppendLine($"Zig Zag of {s} is {s}");
                 }
+                
             }
+            MessageBox.Show(result.ToString());
 
-            MessageBox.Show(string.Join("\n", arr));
         }
     }
 }
