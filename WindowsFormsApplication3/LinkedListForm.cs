@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication3
 {
- 
+
     public partial class LinkedListForm : Form
     {
         static int TWO_NODES_FOUND = 2;
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication3
             InitializeComponent();
         }
 
-   
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -57,7 +57,7 @@ namespace WindowsFormsApplication3
                           2
          */
 
-            Node tree = null;                    
+            Node tree = null;
             Insert(10, ref tree);
             Insert(5, ref tree);
             Insert(20, ref tree);
@@ -81,7 +81,7 @@ namespace WindowsFormsApplication3
             BFT(tree);
             MessageBox.Show(datas.ToString());
 
-           }
+        }
 
 
 
@@ -172,7 +172,7 @@ namespace WindowsFormsApplication3
                 {
                     InsertBFSNode(data, ref tree.left, tree);
                 }
-            }            
+            }
         }
 
 
@@ -191,7 +191,7 @@ namespace WindowsFormsApplication3
             if (node != null)
             {
                 datas.Append(node.data.ToString() + ",");
-                PreOrder(node.left);                
+                PreOrder(node.left);
                 PreOrder(node.right);
             }
         }
@@ -209,7 +209,7 @@ namespace WindowsFormsApplication3
         private void BFT(Node node)
         {
 
-            Queue<Node> queue = new Queue<Node>();            
+            Queue<Node> queue = new Queue<Node>();
             Node currentNode = null;
             datas.Append(node.data.ToString() + ",");
             queue.Enqueue(node);
@@ -226,21 +226,21 @@ namespace WindowsFormsApplication3
 
                 //This condition needed as queue will never be empty as we are always adding one element in the queue.      
                 if (currentNode == null) break;
-                
+
                 if (currentNode != null)
                 {
-                    
+
                     if (currentNode.left != null)
                     {
                         datas.Append(currentNode.left.data.ToString() + ",");
                         queue.Enqueue(currentNode.left);
                     }
-                    if (currentNode.right!= null)
+                    if (currentNode.right != null)
                     {
                         datas.Append(currentNode.right.data.ToString() + ",");
                         queue.Enqueue(currentNode.right);
                     }
-                }                
+                }
             }
 
         }
@@ -254,7 +254,7 @@ namespace WindowsFormsApplication3
             //int[] input = new Int32[11] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             //int[] input = new Int32[11] { -1, 10, 0, -2, 9, -3, 8, -4, 7, -5, 6 };
             //Capturing inputs
-            string[] result = textBox1.Text.Split(',');            
+            string[] result = textBox1.Text.Split(',');
             int[] input = new Int32[result.Length];
             int t;
             for (int k = 0; k < result.Length; k++)
@@ -267,11 +267,11 @@ namespace WindowsFormsApplication3
             //int[] input = new Int32[11] { -1, 10, 0, -2, 9, -3, 8, -4, 0, -5, 6 };
             int up = input.Length - 1;
             int down = 0;
-            
+
             while (down < up)
             {
-                t = 0;                
-                if (input[down] >= 0 && input[up] <= 0 )
+                t = 0;
+                if (input[down] >= 0 && input[up] <= 0)
                 {
                     t = input[down];
                     input[down] = input[up];
@@ -281,18 +281,18 @@ namespace WindowsFormsApplication3
                 }
                 else if (input[down] >= 0 && input[up] >= 0)
                 {
-                    up--;                    
-                }                
-                else 
+                    up--;
+                }
+                else
                 {
-                    down++;                    
-                }                               
+                    down++;
+                }
             }
 
             StringBuilder data = new StringBuilder();
             for (int j = 0; j < input.Length; j++)
             {
-                data.Append(input[j]+ ",");
+                data.Append(input[j] + ",");
             }
             MessageBox.Show(data.ToString());
 
@@ -356,32 +356,32 @@ namespace WindowsFormsApplication3
         private void button4_Click(object sender, EventArgs e)
         {
             BFSNode root = newNode(1);
-            root.parent      = null;
-            root.left         = newNode(2);
-            root.right        = newNode(3);
+            root.parent = null;
+            root.left = newNode(2);
+            root.right = newNode(3);
             root.left.parent = root;
-            root.right.parent = root;  
+            root.right.parent = root;
 
-            root.left.left  = newNode(4);
-            root.right.right = newNode(5); 
+            root.left.left = newNode(4);
+            root.right.right = newNode(5);
 
-            root.left.left.parent   = root.left;
-            root.right.right.parent  = root.right;
+            root.left.left.parent = root.left;
+            root.right.right.parent = root.right;
 
-             // printf("\n Level order successor of %d is: ", root->right->data);
-              printLevelOrderSuccessor(root.left);
+            // printf("\n Level order successor of %d is: ", root->right->data);
+            printLevelOrderSuccessor(root.left);
 
         }
 
-        
+
         void _print(BFSNode root, BFSNode temp, int level)
-        {             
-            if(root == null)
+        {
+            if (root == null)
                 return;
-            if(level == 1)
+            if (level == 1)
             {
                 /* If the given node is visited then print the current root */
-                if(visited == 1)
+                if (visited == 1)
                 {
                     MessageBox.Show(root.data.ToString());
                     visited = 0;
@@ -396,39 +396,39 @@ namespace WindowsFormsApplication3
             }
             else if (level > 1)
             {
-                _print(root.left, temp, level-1);
+                _print(root.left, temp, level - 1);
                 _print(root.right, temp, level - 1);
             }
         }
 
         void printLevelOrderSuccessor(BFSNode node)
         {
-           int level = 1;
-           BFSNode temp = node;
+            int level = 1;
+            BFSNode temp = node;
 
-           /* Find the level of the given node and root of the tree */
-           while(temp.parent != null)
-           {
-             temp = temp.parent;
-             level++;
-           }
-           _print(temp, node, level);
+            /* Find the level of the given node and root of the tree */
+            while (temp.parent != null)
+            {
+                temp = temp.parent;
+                level++;
+            }
+            _print(temp, node, level);
         }
 
         private BFSNode newNode(int data)
         {
             BFSNode node = new BFSNode();
-           node.data = data;
-           node.left = null;
-           node.right = null;
-           node.parent = null;
-           return(node);
+            node.data = data;
+            node.left = null;
+            node.right = null;
+            node.parent = null;
+            return (node);
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            LinkList LLNodeFirst= null;
+            LinkList LLNodeFirst = null;
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
@@ -437,8 +437,8 @@ namespace WindowsFormsApplication3
             LLNodeFirst = InsertLinkList(LLNodeFirst, 11);
             DisplayLinkList(LLNodeFirst);
             datas.Append("\n");
-                        
-            LinkList LLNodeSecond= null;
+
+            LinkList LLNodeSecond = null;
             LLNodeSecond = InsertLinkList(LLNodeSecond, 1);
             LLNodeSecond = InsertLinkList(LLNodeSecond, 2);
             LLNodeSecond = InsertLinkList(LLNodeSecond, 4);
@@ -450,7 +450,7 @@ namespace WindowsFormsApplication3
             DisplayLinkList(LLNodeSecond);
             datas.Append("\n");
 
-           
+
             DisplayLinkList(Merge(LLNodeSecond, LLNodeFirst));
             MessageBox.Show(datas.ToString());
         }
@@ -462,7 +462,7 @@ namespace WindowsFormsApplication3
                 LLNode = new LinkList();
                 LLNode.data = data;
                 LLNode.next = null;
-                
+
             }
             else
             {
@@ -492,12 +492,12 @@ namespace WindowsFormsApplication3
             {
                 datas.Append(Node.data.ToString() + ",");
                 DisplayLinkList(Node.next);
-            }            
+            }
         }
 
         private LinkList Merge(LinkList first, LinkList second)
         {
-            
+
             LinkList p = first;
             LinkList q = second;
             LinkList previous = new LinkList();
@@ -509,14 +509,14 @@ namespace WindowsFormsApplication3
                 {
                     previous.next = p;
                     p = p.next;
-                    q = q.next;                    
+                    q = q.next;
                 }
                 else if (p.data < q.data)
                 {
                     previous.next = p;
                     p = p.next;
                 }
-                else 
+                else
                 {
                     previous.next = q;
                     q = q.next;
@@ -524,11 +524,11 @@ namespace WindowsFormsApplication3
                 previous = previous.next;
             }
 
-            while (p!=null)
+            while (p != null)
             {
                 previous.next = p;
                 p = p.next;
-                previous  = previous.next;
+                previous = previous.next;
             }
 
             while (q != null)
@@ -538,13 +538,13 @@ namespace WindowsFormsApplication3
                 previous = previous.next;
             }
 
-            return returnList.next;           
+            return returnList.next;
 
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+
             LinkList LLNodeFirst = null;
             LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
@@ -555,7 +555,7 @@ namespace WindowsFormsApplication3
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
             datas.Clear();
-            DisplayLinkList(LLNodeFirst);            
+            DisplayLinkList(LLNodeFirst);
             MessageBox.Show(datas.ToString());
 
             LinkList current, previous, next_next;
@@ -616,26 +616,26 @@ namespace WindowsFormsApplication3
             visited.Add(LLNodeFirst.data);
             previous = LLNodeFirst;
             current = previous.next;
-            while (current!=null)
+            while (current != null)
             {
                 if (visited.Contains(current.data))
                 {
-                    previous.next = current.next;                    
+                    previous.next = current.next;
                 }
                 else
                 {
                     visited.Add(current.data);
                     previous = previous.next;
                 }
-                current = current.next;                
+                current = current.next;
             }
 
 
-            datas.Append("\n\n Time Complexity: O(n) Space Complexity : O(n)\n ");            
+            datas.Append("\n\n Time Complexity: O(n) Space Complexity : O(n)\n ");
             DisplayLinkList(LLNodeFirst);
             MessageBox.Show(datas.ToString());
 
-            
+
 
 
 
@@ -658,7 +658,7 @@ namespace WindowsFormsApplication3
             LLNodeFirst = InsertLinkList(LLNodeFirst, 11);
             DisplayLinkList(LLNodeFirst);
             datas.Append("\n\n");
-            
+
             LinkList LLNodeSecond = null;
             LLNodeSecond = InsertLinkList(LLNodeSecond, 1);
             LLNodeSecond = InsertLinkList(LLNodeSecond, 1);
@@ -685,7 +685,7 @@ namespace WindowsFormsApplication3
              1->1->6->8->10->12
             */
 
-            if (l1 == null && l2 == null && carry ==0)
+            if (l1 == null && l2 == null && carry == 0)
                 return null;
 
             LinkList result = new LinkList();
@@ -696,10 +696,10 @@ namespace WindowsFormsApplication3
             }
 
             int value = carry;
-            
-            if (l1!=null)
+
+            if (l1 != null)
                 value += l1.data;
-             
+
             if (l2 != null)
                 value += l2.data;
 
@@ -708,7 +708,7 @@ namespace WindowsFormsApplication3
 
             LinkList more = AddLinkList(11 == null ? null : l1.next,
                                         l2 == null ? null : l2.next,
-                                        value > 10 ? value/10 : 0);
+                                        value > 10 ? value / 10 : 0);
             result.next = more;
 
             return result;
@@ -750,8 +750,8 @@ namespace WindowsFormsApplication3
             //Insert(15, ref tree);
             //Insert(22, ref tree);
             string max = MaxDepthOfTheTree(tree).ToString();
-            string min = MinDepthOfTheTree(tree).ToString();    
-            MessageBox.Show("Max = " + max + " Min = " + min);           
+            string min = MinDepthOfTheTree(tree).ToString();
+            MessageBox.Show("Max = " + max + " Min = " + min);
         }
 
         private int MaxDepthOfTheTree(Node node)
@@ -810,83 +810,83 @@ namespace WindowsFormsApplication3
                     3        8       15     22 
             */
 
-        if (node!=null)
-        {
-            InOrderTraversalToLinkList(node.left, ref runner, ref start);
-            if (runner == null)
+            if (node != null)
             {
-                runner = new LinkList() { data = node.data };
-                if (start == null)
+                InOrderTraversalToLinkList(node.left, ref runner, ref start);
+                if (runner == null)
                 {
-                    start = runner;
-                }                    
+                    runner = new LinkList() { data = node.data };
+                    if (start == null)
+                    {
+                        start = runner;
+                    }
+                }
+                else
+                {
+                    runner.next = new LinkList() { data = node.data };
+                    runner = runner.next;
+                }
+                InOrderTraversalToLinkList(node.right, ref runner, ref start);
             }
-            else
+        }
+
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Node tree = null;
+            Insert(10, ref tree);
+            Insert(5, ref tree);
+            Insert(20, ref tree);
+            Insert(3, ref tree);
+            Insert(8, ref tree);
+            Insert(15, ref tree);
+            Insert(22, ref tree);
+            LinkList start = null;
+            LinkList runner = null;
+            if (tree != null)
             {
-                runner.next = new LinkList() { data = node.data };
+                this.InOrderTraversalToLinkList(tree, ref runner, ref start);
+            }
+
+            runner = start;
+            StringBuilder message = new StringBuilder();
+            while (runner != null)
+            {
+                message.Append($"{runner.data.ToString()} ,");
                 runner = runner.next;
             }
-            InOrderTraversalToLinkList(node.right, ref runner, ref start);
+            MessageBox.Show($"Tree to list is {message.ToString()}");
+
+
         }
-    }
 
-
-    private void button9_Click(object sender, EventArgs e)
-    {
-        Node tree = null;
-        Insert(10, ref tree);
-        Insert(5, ref tree);
-        Insert(20, ref tree);
-        Insert(3, ref tree);
-        Insert(8, ref tree);
-        Insert(15, ref tree);
-        Insert(22, ref tree);            
-        LinkList start = null;
-        LinkList runner = null;
-        if (tree != null)
+        private void button10_Click(object sender, EventArgs e)
         {
-            this.InOrderTraversalToLinkList(tree, ref runner, ref start);
-        }
-
-        runner = start;
-        StringBuilder message = new StringBuilder();
-        while(runner!=null)
-        {
-            message.Append($"{runner.data.ToString()} ,");
-            runner = runner.next;
-        }
-        MessageBox.Show($"Tree to list is {message.ToString()}");
-
-
-    }
-
-    private void button10_Click(object sender, EventArgs e)
-    {
-        /*
-                         10
-                      /      \
-                     /        \
-                    /          \
-                   /            \                           
-                  /              \
-                 5               20
-               /  \             / \
-              /    \           /   \  
-             /      \         /     \
-            3        8       15     22 
-           / \      / \ 
-          /   \    /   \
-         1    4    6    9
-          \
-           \
-            2
-     */
+            /*
+                             10
+                          /      \
+                         /        \
+                        /          \
+                       /            \                           
+                      /              \
+                     5               20
+                   /  \             / \
+                  /    \           /   \  
+                 /      \         /     \
+                3        8       15     22 
+               / \      / \ 
+              /   \    /   \
+             1    4    6    9
+              \
+               \
+                2
+         */
 
 
             //http://www.geeksforgeeks.org/inorder-successor-in-binary-search-tree/
             // Time Complexity: O(h) where h is height of tree.
             BFSNode tree = null;
-            InsertBFSNode(10, ref tree,tree);
+            InsertBFSNode(10, ref tree, tree);
             InsertBFSNode(5, ref tree, tree);
             InsertBFSNode(20, ref tree, tree);
             InsertBFSNode(3, ref tree, tree);
@@ -948,7 +948,7 @@ namespace WindowsFormsApplication3
 
             BFSNode p = null;
             if (node != null)
-            {                
+            {
                 if (node.right != null)
                 {
                     p = LeftMostChild(node.right);
@@ -975,7 +975,7 @@ namespace WindowsFormsApplication3
                             break;
                         }
                         node = p;
-                        if(node.parent == null)
+                        if (node.parent == null)
                         {
                             break;
                         }
@@ -1009,7 +1009,7 @@ namespace WindowsFormsApplication3
                       2
             */
 
-            BFSNode p = null;            
+            BFSNode p = null;
             if (node != null)
             {
                 if (node.right != null)
@@ -1019,28 +1019,28 @@ namespace WindowsFormsApplication3
                 else
                 {
                     BFSNode succ = null;
-                    while (root!=null)
-                    {                        
+                    while (root != null)
+                    {
                         if (node.data < root.data)
                         {
                             succ = root;
                             root = root.left;
                         }
-                        else if(node.data > root.data)
+                        else if (node.data > root.data)
                         {
                             if (succ == null)
                             {
                                 succ = root;
                             }
                             root = root.right;
-                          
+
                         }
                         else
                         {
-                            p=succ;
-                            break; 
+                            p = succ;
+                            break;
                         }
-                    }                    
+                    }
                 }
             }
             return p;
@@ -1050,13 +1050,13 @@ namespace WindowsFormsApplication3
             if (node == null)
                 return null;
 
-            while(node.left!=null)
+            while (node.left != null)
             {
                 node = node.left;
             }
             return node;
 
-         
+
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -1094,7 +1094,7 @@ namespace WindowsFormsApplication3
             Insert(4, ref tree);
             Insert(6, ref tree);
             Insert(9, ref tree);
-            Insert(1, ref tree);            
+            Insert(1, ref tree);
             //Node node = CommonAncestor(tree, tree.left.left.left, tree.left.right);
             Node node = CommonAncestorSimple(tree, tree.left.left.left, tree.right.left);
             MessageBox.Show(node.data.ToString());
@@ -1107,7 +1107,7 @@ namespace WindowsFormsApplication3
             Node parent = root;
             while (parent != null)
             {
-                if (parent.data > p.data && parent.data >q.data)
+                if (parent.data > p.data && parent.data > q.data)
                 {
                     parent = parent.left;
                 }
@@ -1126,13 +1126,13 @@ namespace WindowsFormsApplication3
 
         private Node CommonAncestor(Node root, Node p, Node q)
         {
-            if(q==p && (root.left ==q || root.right == q) )
+            if (q == p && (root.left == q || root.right == q))
             {
                 return root;
             }
 
-            int nodesFromLeft = covers(root.left,p,q);
-            if (nodesFromLeft == TWO_NODES_FOUND || p==q)
+            int nodesFromLeft = covers(root.left, p, q);
+            if (nodesFromLeft == TWO_NODES_FOUND || p == q)
             {
                 if (root.left == p || root.left == q)
                     return root.left;
@@ -1144,7 +1144,7 @@ namespace WindowsFormsApplication3
                 if (root == p)
                     return p;
                 else if (root == q)
-                    return q;                
+                    return q;
             }
 
             int nodesFromRight = covers(root.right, p, q);
@@ -1166,7 +1166,7 @@ namespace WindowsFormsApplication3
                 return root;
             else
                 return null;
-            
+
         }
 
         private int covers(Node root, Node p, Node q)
@@ -1181,7 +1181,7 @@ namespace WindowsFormsApplication3
             if (ret == TWO_NODES_FOUND)
                 return ret;
             return ret + covers(root.right, p, q);
-            
+
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -1196,11 +1196,11 @@ namespace WindowsFormsApplication3
             Insert(22, ref tree);
             treeToList(tree);
             printTree(tree);
-            
+
         }
 
 
-        private  Node treeToList(Node root)
+        private Node treeToList(Node root)
         {
 
             /*
@@ -1217,122 +1217,122 @@ namespace WindowsFormsApplication3
                     3        8       15     22 
             */
 
-        // base case: empty tree -> empty list
-        if (root == null) return (null);
+            // base case: empty tree -> empty list
+            if (root == null) return (null);
 
-        // Recursively do the subtrees (leap of faith!)
-        Node aList = treeToList(root.left);
-        Node bList = treeToList(root.right);
+            // Recursively do the subtrees (leap of faith!)
+            Node aList = treeToList(root.left);
+            Node bList = treeToList(root.right);
 
-        // Make the single root node into a list length-1
-        // in preparation for the appending
-        //root.left = root;
-        //root.right = root;
+            // Make the single root node into a list length-1
+            // in preparation for the appending
+            //root.left = root;
+            //root.right = root;
 
-        // At this point we have three lists, and it's
-        // just a matter of appending them together
-        // in the right order (aList, root, bList)
-        aList = append(aList, root);
-        aList = append(aList, bList);
+            // At this point we have three lists, and it's
+            // just a matter of appending them together
+            // in the right order (aList, root, bList)
+            aList = append(aList, root);
+            aList = append(aList, bList);
 
-        return (aList);
-    }
-
-    private Node append(Node a, Node b)
-    {
-        // if either is null, return the other
-        if (a == null) return (b);
-        if (b == null) return (a);
-
-        // find the last node in each using the .previous pointer
-        Node aLast = a.left;
-        Node bLast = b.right;
-
-        // join the two together to make it connected and circular
-        join(aLast, b);
-        join(bLast, a);
-
-        return (a);
-    }
-
-    private void join(Node a, Node b)
-    {
-        if (a!=null)
-        { 
-            a.right = b;
+            return (aList);
         }
-        if (b!=null)
-        { 
-            b.left = a;
-        }
-    }
 
-
-    private void printTree(Node root)
-    {
-        if (root==null) return;
-        printTree(root.left);
-        datas.Append(root.data.ToString() + ",");
-        printTree(root.right);
-    }
-
-    private void LinkedListForm_Load(object sender, EventArgs e)
-    {
-
-    }
-
-    private void button13_Click(object sender, EventArgs e)
-    {
-        LinkList LLNodeFirst = null;
-        LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
-        LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
-        LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
-        LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
-        LLNodeFirst = InsertLinkList(LLNodeFirst, 0);
-        LLNodeFirst = InsertLinkList(LLNodeFirst, 11);            
-        LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
-        DisplayLinkList(LLNodeFirst);
-        datas.Append("\n");
-
-
-        LinkList node = null;
-
-        while (LLNodeFirst != null)
+        private Node append(Node a, Node b)
         {
-            LinkList temp = LLNodeFirst.next;
-            LLNodeFirst.next = node;
-            node = LLNodeFirst;
-            LLNodeFirst = temp;
+            // if either is null, return the other
+            if (a == null) return (b);
+            if (b == null) return (a);
+
+            // find the last node in each using the .previous pointer
+            Node aLast = a.left;
+            Node bLast = b.right;
+
+            // join the two together to make it connected and circular
+            join(aLast, b);
+            join(bLast, a);
+
+            return (a);
         }
 
-        DisplayLinkList(node);
-        datas.Append("\n");
-        MessageBox.Show(datas.ToString());
+        private void join(Node a, Node b)
+        {
+            if (a != null)
+            {
+                a.right = b;
+            }
+            if (b != null)
+            {
+                b.left = a;
+            }
+        }
 
 
-    }
+        private void printTree(Node root)
+        {
+            if (root == null) return;
+            printTree(root.left);
+            datas.Append(root.data.ToString() + ",");
+            printTree(root.right);
+        }
 
-    private void button14_Click(object sender, EventArgs e)
-    {            
-        /*
-                                 10
-                              /      \
-                             /        \
-                            /          \
-                           /            \                           
-                          /              \
-                         5               20
-                       /  \             / \
-                      /    \           /   \  
-                     /      \         /     \
-                    3        8       15     22 
-                   / \      / \ 
-                  /   \    /   \
-                 1    4    6    9
-                  \
-                   \
-                    2
-        */
+        private void LinkedListForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            LinkList LLNodeFirst = null;
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 0);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 11);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
+            DisplayLinkList(LLNodeFirst);
+            datas.Append("\n");
+
+
+            LinkList node = null;
+
+            while (LLNodeFirst != null)
+            {
+                LinkList temp = LLNodeFirst.next;
+                LLNodeFirst.next = node;
+                node = LLNodeFirst;
+                LLNodeFirst = temp;
+            }
+
+            DisplayLinkList(node);
+            datas.Append("\n");
+            MessageBox.Show(datas.ToString());
+
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            /*
+                                     10
+                                  /      \
+                                 /        \
+                                /          \
+                               /            \                           
+                              /              \
+                             5               20
+                           /  \             / \
+                          /    \           /   \  
+                         /      \         /     \
+                        3        8       15     22 
+                       / \      / \ 
+                      /   \    /   \
+                     1    4    6    9
+                      \
+                       \
+                        2
+            */
 
             Node tree = null;
             Insert(10, ref tree);
@@ -1352,7 +1352,7 @@ namespace WindowsFormsApplication3
                 if (n.left != null)
                     q.Enqueue(n.left);
                 if (n.right != null)
-                    q.Enqueue(n.right);                
+                    q.Enqueue(n.right);
             }
 
             MessageBox.Show(datas.ToString());
@@ -1360,9 +1360,9 @@ namespace WindowsFormsApplication3
 
         private void button15_Click(object sender, EventArgs e)
         {
-            
+
         }
-    
+
 
         private void button17_Click(object sender, EventArgs e)
         {
@@ -1374,13 +1374,13 @@ namespace WindowsFormsApplication3
             linkList = InsertLinkList(linkList, 5);
             linkList = InsertLinkList(linkList, 4);
             linkList = InsertLinkList(linkList, 10);
-            linkList = InsertLinkList(linkList, 110);            
+            linkList = InsertLinkList(linkList, 110);
             linkList = InsertLinkList(linkList, 112);
             linkList = InsertLinkList(linkList, 3);
             linkList = InsertLinkList(linkList, 123);
             linkList = InsertLinkList(linkList, 24);
             linkList = InsertLinkList(linkList, 3);
-            
+
             datas.Clear();
             DisplayLinkList(linkList);
             MessageBox.Show(datas.ToString());
@@ -1392,7 +1392,7 @@ namespace WindowsFormsApplication3
             //5->4->10->110->112->3->123->24->3
 
             //Finds min node
-            while (r.next!=null)
+            while (r.next != null)
             {
                 if (r.next.data < m.data)
                 {
@@ -1402,7 +1402,7 @@ namespace WindowsFormsApplication3
                 r = r.next;
             }
 
-            
+
             if (p == m) // -->This will ensure min value is present at the starting of the node
             {
                 linkList = m.next;
@@ -1434,16 +1434,16 @@ namespace WindowsFormsApplication3
 
         }
 
-     
+
 
         private void button19_Click(object sender, EventArgs e)
         {
             LinkList LLNodeFirst = null;
-            LLNodeFirst = insertInOrder(LLNodeFirst, new LinkList() { data = 1 ,next =null });
+            LLNodeFirst = insertInOrder(LLNodeFirst, new LinkList() { data = 1, next = null });
             LLNodeFirst = insertInOrder(LLNodeFirst, new LinkList() { data = 3, next = null });
             LLNodeFirst = insertInOrder(LLNodeFirst, new LinkList() { data = 2, next = null });
             LLNodeFirst = insertInOrder(LLNodeFirst, new LinkList() { data = 4, next = null });
-            LLNodeFirst = insertInOrder(LLNodeFirst, new LinkList() { data = 5, next = null });            
+            LLNodeFirst = insertInOrder(LLNodeFirst, new LinkList() { data = 5, next = null });
             DisplayLinkList(LLNodeFirst);
             datas.Append("\n");
             MessageBox.Show(datas.ToString());
@@ -1453,7 +1453,7 @@ namespace WindowsFormsApplication3
         {
             if (head == null)
             {
-                return head = insert;                
+                return head = insert;
 
             }
 
@@ -1488,7 +1488,7 @@ namespace WindowsFormsApplication3
             }
 
             previous.next = insert;
-            
+
             return head;
         }
 
@@ -1515,16 +1515,16 @@ namespace WindowsFormsApplication3
             LinkList lead = linkList;
             LinkList chase = linkList;
 
-            for (int i = 0; i <3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (lead == null)
                 {
                     MessageBox.Show("Invalid nth location");
                 }
-                lead = lead.next;                
+                lead = lead.next;
             }
 
-            while (lead!= null)
+            while (lead != null)
             {
                 lead = lead.next;
                 chase = chase.next;
@@ -1535,7 +1535,7 @@ namespace WindowsFormsApplication3
 
         private void button20_Click(object sender, EventArgs e)
         {
-             LinkList linkList = null;
+            LinkList linkList = null;
             LinkList cyclicLinkList = null;
             linkList = InsertLinkList(linkList, 4);
             linkList = InsertLinkList(linkList, 3);
@@ -1550,13 +1550,13 @@ namespace WindowsFormsApplication3
 
             cyclicLinkList = linkList;
 
-            while (cyclicLinkList != null && cyclicLinkList.next!=null)
+            while (cyclicLinkList != null && cyclicLinkList.next != null)
             {
                 cyclicLinkList = cyclicLinkList.next;
             }
 
             cyclicLinkList.next = linkList;
-            
+
 
             LinkList fast = linkList;
             LinkList slow = linkList;
@@ -1571,7 +1571,7 @@ namespace WindowsFormsApplication3
 
                 if (slow == fast)
                 {
-                    isCylic = true;                    
+                    isCylic = true;
                 }
             }
 
@@ -1590,8 +1590,8 @@ namespace WindowsFormsApplication3
         {
             int a, b, x, y;
 
-            a = 1; b = 2; x = 3; y = 4;            
-            while(a!=x && b!=y)
+            a = 1; b = 2; x = 3; y = 4;
+            while (a != x && b != y)
             {
                 if (a > x)
                 {
@@ -1601,7 +1601,7 @@ namespace WindowsFormsApplication3
                 {
                     a--;
                 }
-                if (b>y)
+                if (b > y)
                 {
                     b++;
                 }
@@ -1620,7 +1620,7 @@ namespace WindowsFormsApplication3
             string1 = InsertLinkListForCharacter(string1, 'e');
             string1 = InsertLinkListForCharacter(string1, 'e');
             string1 = InsertLinkListForCharacter(string1, 'k');
-            string1 = InsertLinkListForCharacter(string1, 's');            
+            string1 = InsertLinkListForCharacter(string1, 's');
 
             LinkListCharacter string2 = null;
             string2 = InsertLinkListForCharacter(string2, 'g');
@@ -1661,7 +1661,7 @@ namespace WindowsFormsApplication3
                 return -1;
             }
 
-            while (a!=null && b!=null && a.data == b.data)
+            while (a != null && b != null && a.data == b.data)
             {
                 a = a.next;
                 b = b.next;
@@ -1689,15 +1689,15 @@ namespace WindowsFormsApplication3
               Input     :   1->2->3->4->5
               Output    :   1->5->2->4->3
             */
-            LinkList linkList = null;            
+            LinkList linkList = null;
             linkList = InsertLinkList(linkList, 1);
             linkList = InsertLinkList(linkList, 2);
             linkList = InsertLinkList(linkList, 3);
-            linkList = InsertLinkList(linkList, 4); 
+            linkList = InsertLinkList(linkList, 4);
             linkList = InsertLinkList(linkList, 5);
             DisplayLinkList(linkList);
             datas.Append("\n");
-            
+
             Rearrage(linkList);
             DisplayLinkList(linkList);
             datas.Append("\n");
@@ -1709,12 +1709,12 @@ namespace WindowsFormsApplication3
             //1->2->3->4->5
 
             LinkList slow = node;
-            LinkList fast = slow.next;            
+            LinkList fast = slow.next;
 
-            while (fast!=null && fast.next!=null)
+            while (fast != null && fast.next != null)
             {
                 slow = slow.next;
-                fast = fast.next.next;                    
+                fast = fast.next.next;
             }
 
             LinkList head1 = node;
@@ -1723,7 +1723,7 @@ namespace WindowsFormsApplication3
 
             //Reversing a link likst
             LinkList reverse = null;
-            while(head2!=null)
+            while (head2 != null)
             {
                 LinkList temp = head2.next;
                 head2.next = reverse;
@@ -1735,9 +1735,9 @@ namespace WindowsFormsApplication3
             node = new LinkList();
             LinkList curr = node;
 
-            while (head1!=null || head2!=null)
+            while (head1 != null || head2 != null)
             {
-                if (head1!=null)
+                if (head1 != null)
                 {
                     curr.next = head1;
                     curr = curr.next;
@@ -1773,7 +1773,7 @@ namespace WindowsFormsApplication3
             linkListNode = InsertLinkList(linkListNode, 12);
             linkListNode = InsertLinkList(linkListNode, 89);
             DisplayLinkList(linkListNode);
-            datas.Append("\n");            
+            datas.Append("\n");
             sort();
             DisplayLinkList(linkListNode);
             datas.Append("\n");
@@ -1787,10 +1787,10 @@ namespace WindowsFormsApplication3
             LinkList headB = new LinkList();
 
             //Split the link list
-            split(headA, headB);           
+            split(headA, headB);
 
             headB = Reverse(headB);
-            linkListNode =  MergeLinkList(headA, headB);
+            linkListNode = MergeLinkList(headA, headB);
         }
 
 
@@ -1800,7 +1800,7 @@ namespace WindowsFormsApplication3
             LinkList asc = headA;
             LinkList desc = headB;
             LinkList current = linkListNode;
-            
+
             while (current != null)
             {
                 asc.next = current;
@@ -1819,7 +1819,7 @@ namespace WindowsFormsApplication3
             desc.next = null;
 
             headA = headA.next;
-            headB= headB.next;
+            headB = headB.next;
 
         }
 
@@ -1830,7 +1830,7 @@ namespace WindowsFormsApplication3
             {
                 return headB;
             }
-                
+
             if (headB == null)
             {
                 return headA;
@@ -1853,23 +1853,23 @@ namespace WindowsFormsApplication3
         private LinkList Reverse(LinkList headB)
         {
             LinkList node = null;
-            while (headB!= null)
-            { 
+            while (headB != null)
+            {
                 LinkList temp = headB.next;
                 headB.next = node;
                 node = headB;
-                headB = temp;                
+                headB = temp;
             }
             return node;
         }
 
 
-      
+
 
         private void button24_Click(object sender, EventArgs e)
         {
             var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
-            
+
             if (regexItem.IsMatch(textBox1.Text))
             {
                 MessageBox.Show("Valid");
@@ -1892,31 +1892,31 @@ namespace WindowsFormsApplication3
             list = InsertLinkList(list, 5);
             list = InsertLinkList(list, 3);
 
-            LinkList  current, previous;            
+            LinkList current, previous;
             current = list;
             previous = current;
 
             int input = 4;
-                       
+
             while (current != null)
             {
                 if (list == current && current.data >= input)
-                {                    
+                {
                     list = current.next;
                 }
                 else if (current.data >= input)
                 {
-                    previous.next = current.next;                    
+                    previous.next = current.next;
                 }
                 else
                 {
-                    previous = current;                    
+                    previous = current;
                 }
                 current = current.next;
             }
 
             DisplayLinkList(list);
-            MessageBox.Show(datas.ToString());            
+            MessageBox.Show(datas.ToString());
         }
 
         private void button26_Click(object sender, EventArgs e)
@@ -1988,7 +1988,7 @@ namespace WindowsFormsApplication3
                 temp = null;
             }
             temp = null;
-            while (list1!=null)
+            while (list1 != null)
             {
                 temp = list1.next;
                 list1.next = result;
@@ -1996,13 +1996,13 @@ namespace WindowsFormsApplication3
                 list1 = temp;
             }
             temp = null;
-            while (list2!=null)
+            while (list2 != null)
             {
                 temp = list2.next;
                 list2.next = result;
                 result = list2;
                 list2 = temp;
-            }            
+            }
 
             return result;
         }
@@ -2022,7 +2022,7 @@ namespace WindowsFormsApplication3
             LLNodeFirst = InsertLinkList(LLNodeFirst, 11);
             DisplayLinkList(LLNodeFirst);
             datas.Append("\n");
-            DisplayLinkList(this.GetRandomListNode(LLNodeFirst));            
+            DisplayLinkList(this.GetRandomListNode(LLNodeFirst));
 
             MessageBox.Show(datas.ToString());
         }
@@ -2033,32 +2033,32 @@ namespace WindowsFormsApplication3
             LinkList list = linkList;
             LinkList dummy = null;
             LinkList result = linkList;
-            
+
             Random r = new Random();
-            for (int n=2; list!= null; n++)
+            for (int n = 2; list != null; n++)
             {
                 if (r.Next() % n == 0)
                 {
                     LinkList temp = list.next;
                     list.next = dummy;
                     result = list;
-                    list = temp;                    
+                    list = temp;
                 }
                 else
                 {
                     list = list.next;
                 }
             }
-             
+
             return result;
         }
 
         public static IEnumerable GetData(List<int> data)
-        {            
-            foreach(var d in data)
+        {
+            foreach (var d in data)
             {
-                if (d>50)
-                yield return d;
+                if (d > 50)
+                    yield return d;
             }
         }
 
@@ -2108,7 +2108,7 @@ namespace WindowsFormsApplication3
         {
             int[] data = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             datas.Clear();
-            Node tree = this.CreateBST(data, 0, data.Length-1);                                                
+            Node tree = this.CreateBST(data, 0, data.Length - 1);
             MessageBox.Show(datas.ToString());
         }
 
@@ -2120,10 +2120,10 @@ namespace WindowsFormsApplication3
                 return null;
             }
             int mid = (start + end) / 2;
-            datas.Append(data[mid].ToString() + ",") ;
+            datas.Append(data[mid].ToString() + ",");
             Node node = new Node();
             node.data = data[mid];
-            node.left = CreateBST(data, start, mid-1);
+            node.left = CreateBST(data, start, mid - 1);
             node.right = CreateBST(data, mid + 1, end);
             return node;
         }
@@ -2133,8 +2133,7 @@ namespace WindowsFormsApplication3
         private void button30_Click(object sender, EventArgs e)
         {
 
-            var ex = new Exception("testing");
-            MessageBox.Show(ex.ToString());
+
 
         }
 
@@ -2164,45 +2163,45 @@ namespace WindowsFormsApplication3
             for (int i = 0; i < blocks.Length; i++)
             {
                 //At any given time the symbols in the blocks list should contain one character 
-                    blockValue = blocks[i];
-                    if (blockValue == "X")
+                blockValue = blocks[i];
+                if (blockValue == "X")
+                {
+                    if (i - 1 >= 0)
                     {
-                        if (i - 1 >= 0)
+                        scores[currentScoreIndex] = ConvertToInt(blocks[currentScoreIndex - 1]) * 2;
+                        currentScoreIndex++;
+                    }
+                }
+                else if (blockValue == "+")
+                {
+                    if (i - 1 >= 0)
+                    {
+                        if (i - 2 >= 0)
                         {
-                            scores[currentScoreIndex] = ConvertToInt(blocks[currentScoreIndex - 1]) * 2;
+                            scores[currentScoreIndex] = scores[currentScoreIndex - 1] + scores[currentScoreIndex - 2];
+                            currentScoreIndex++;
+                        }
+                        else
+                        {
+                            scores[currentScoreIndex] = scores[currentScoreIndex - 1];
                             currentScoreIndex++;
                         }
                     }
-                    else if (blockValue == "+")
-                    {
-                        if (i - 1 >= 0)
-                        {
-                            if (i - 2 >= 0)
-                            {
-                                scores[currentScoreIndex] = scores[currentScoreIndex - 1] + scores[currentScoreIndex - 2];
-                                currentScoreIndex++;
-                            }
-                            else
-                            {
-                                scores[currentScoreIndex] = scores[currentScoreIndex - 1];
-                                currentScoreIndex++;
-                        }
-                        }
-                    }
-                    else if (blockValue == "Z")
-                    {
-                        if (i - 1 >= 0)
-                        {
-                            scores[currentScoreIndex - 1] = 0;
-                            currentScoreIndex--;
-                        }
-                    }
-                    else
-                    {
-                        scores[currentScoreIndex] = ConvertToInt(blocks[i]);
-                        currentScoreIndex++;
                 }
-                
+                else if (blockValue == "Z")
+                {
+                    if (i - 1 >= 0)
+                    {
+                        scores[currentScoreIndex - 1] = 0;
+                        currentScoreIndex--;
+                    }
+                }
+                else
+                {
+                    scores[currentScoreIndex] = ConvertToInt(blocks[i]);
+                    currentScoreIndex++;
+                }
+
             }
 
             for (int i = 0; i < scores.Length; i++)
@@ -2230,7 +2229,7 @@ namespace WindowsFormsApplication3
             return a => f(a, 4);
         }
 
-      
+
 
         static int Sum(int x, int y)
         {
@@ -2247,7 +2246,7 @@ namespace WindowsFormsApplication3
             }
 
             bool startingParam = false;
-            foreach(char c in line)
+            foreach (char c in line)
             {
                 if (!((c >= 97 && c <= 122) || c == 32 || c == 58))
                 {
@@ -2276,25 +2275,25 @@ namespace WindowsFormsApplication3
         {
             // http://www.geeksforgeeks.org/check-if-given-sorted-sub-sequence-exists-in-binary-search-tree/
 
-             /*
-                                 10
-                              /      \
-                             /        \
-                            /          \
-                           /            \                           
-                          /              \
-                         5               20
-                       /  \             / \
-                      /    \           /   \  
-                     /      \         /     \
-                    3        8       15     22 
-                   / \      / \ 
-                  /   \    /   \
-                 1    4    6    9
+            /*
+                                10
+                             /      \
+                            /        \
+                           /          \
+                          /            \                           
+                         /              \
+                        5               20
+                      /  \             / \
+                     /    \           /   \  
+                    /      \         /     \
+                   3        8       15     22 
+                  / \      / \ 
+                 /   \    /   \
+                1    4    6    9
+                 \
                   \
-                   \
-                    2
-             */
+                   2
+            */
 
             Node tree = null;
             Insert(10, ref tree);
@@ -2309,10 +2308,10 @@ namespace WindowsFormsApplication3
             Insert(2, ref tree);
             Insert(4, ref tree);
             Insert(9, ref tree);
-            datas.Clear();            
+            datas.Clear();
             InOrder(tree);
 
-            int[] seq = new int[] {4, 5, 8 };
+            int[] seq = new int[] { 4, 5, 8 };
 
             MessageBox.Show(isSequenceExists(tree, seq) ? string.Format("Sequence: {0} exists in tree :{1}", string.Join(",", seq), datas.ToString()) : string.Format("Sequence: {0} does not exists in tree: {1}", string.Join(",", seq), datas.ToString()));
 
@@ -2329,10 +2328,10 @@ namespace WindowsFormsApplication3
 
         }
 
-        private void GetInOrderNode (Node tree, int[] seq, ref int sequenceAvailIndex)
+        private void GetInOrderNode(Node tree, int[] seq, ref int sequenceAvailIndex)
         {
 
-            if (tree == null )
+            if (tree == null)
             {
                 return;
             }
@@ -2390,7 +2389,7 @@ namespace WindowsFormsApplication3
             Insert(8, ref tree);
             Insert(7, ref tree);
             Insert(10, ref tree);
-            Insert(2, ref tree);            
+            Insert(2, ref tree);
             Insert(9, ref tree);
             Insert(13, ref tree);
             //Insert(4, ref tree);
@@ -2402,19 +2401,19 @@ namespace WindowsFormsApplication3
             Node root = tree;
             List<int> treeNodes = new List<int>();
             List<int> leafNodes = new List<int>();
-            
+
             treeNodes.Add(0);
             this.TraverseAndInsertIntoHashSet(root, treeNodes, leafNodes);
 
             int leafNodeCount = leafNodes.Count;
             bool isDeadEnd = false;
-            for (int i = 0; i< leafNodeCount ; i++)
+            for (int i = 0; i < leafNodeCount; i++)
             {
                 if (
 
                         //treeNodes.Find(x=>x == leafNodes[i]+1) != treeNodes.Last() &&
                         //treeNodes.Find(x => x == leafNodes[i]-1) != treeNodes.Last()   
-                        treeNodes.Where(w=>w==leafNodes[i]+1 || w==leafNodes[i]-1).Count() > 0 
+                        treeNodes.Where(w => w == leafNodes[i] + 1 || w == leafNodes[i] - 1).Count() > 0
                    )
                 {
                     isDeadEnd = true;
@@ -2422,14 +2421,14 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            MessageBox.Show(isDeadEnd? "Tree is dead end" : "Tree is not dead end" );
+            MessageBox.Show(isDeadEnd ? "Tree is dead end" : "Tree is not dead end");
 
 
 
         }
 
 
-        private void TraverseAndInsertIntoHashSet(Node root, List<int> treeNodes, List<int> leafNodes )
+        private void TraverseAndInsertIntoHashSet(Node root, List<int> treeNodes, List<int> leafNodes)
         {
             if (root == null)
             {
@@ -2485,7 +2484,7 @@ namespace WindowsFormsApplication3
             InsertNodeWithNext(4, ref tree);
             InsertNodeWithNext(9, ref tree);
             datas.Clear();
-            InOrderWithNext(tree);            
+            InOrderWithNext(tree);
             MessageBox.Show(datas.ToString());
 
             Queue<NodeWithNext> q = new Queue<NodeWithNext>();
@@ -2509,7 +2508,7 @@ namespace WindowsFormsApplication3
 
                 NodeWithNext previous = null;
                 NodeWithNext current = null;
-                foreach(var n in nextNodes )
+                foreach (var n in nextNodes)
                 {
                     if (current == null)
                     {
@@ -2550,7 +2549,7 @@ namespace WindowsFormsApplication3
 
         private void InOrderWithNext(NodeWithNext node)
         {
-            if (node==null)
+            if (node == null)
             {
                 return;
             }
@@ -2611,7 +2610,7 @@ namespace WindowsFormsApplication3
                 distance2 = this.FindDistanceForElementInBinary_SearchTree(commonAccesstorNode, input2);
             }
 
-            MessageBox.Show($"The distance between {input1} and {input2} is {(distance1 > 0 && distance2>0 ? (distance1 + distance2).ToString() : "-1" )}");
+            MessageBox.Show($"The distance between {input1} and {input2} is {(distance1 > 0 && distance2 > 0 ? (distance1 + distance2).ToString() : "-1")}");
 
 
 
@@ -2645,24 +2644,24 @@ namespace WindowsFormsApplication3
                     break;
                 }
             }
-            
+
             return nodeExists ? distance : -1;
         }
 
         private Node GetCommonAncestor_Distance_of_two_nodes_in_Binary_Search_Tree(Node tree, int input1, int input2)
         {
-            if (tree==null)
+            if (tree == null)
             {
                 return null;
             }
 
-            while (tree!=null)
+            while (tree != null)
             {
                 if (tree.data > input1 && tree.data > input2)
                 {
                     tree = tree.left;
                 }
-                else if (tree.data<input1 && tree.data < input2)
+                else if (tree.data < input1 && tree.data < input2)
                 {
                     tree = tree.right;
                 }
@@ -2748,12 +2747,12 @@ namespace WindowsFormsApplication3
             InsertTreeNodeImproperly(2, ref tree);
             InsertTreeNodeImproperly(4, ref tree);
             InsertTreeNodeImproperly(9, ref tree);
-            datas.Clear();            
+            datas.Clear();
             InOrder(tree);
             MessageBox.Show($"\r\n InOrder Traversal:{datas.ToString()}");
-            MessageBox.Show($"Is valid BST {this.IsBSTUsingInOrderTravel(tree, null).ToString()}"  );            
+            MessageBox.Show($"Is valid BST {this.IsBSTUsingInOrderTravel(tree, null).ToString()}");
         }
-        
+
 
         private bool IsBSTUsingInOrderTravel(Node current, Node prev)
         {
@@ -2784,7 +2783,7 @@ namespace WindowsFormsApplication3
                     return false;
                 }
 
-                if (prev!=null && current.data <= prev.data)
+                if (prev != null && current.data <= prev.data)
                 {
                     return false;
                 }
@@ -2792,7 +2791,7 @@ namespace WindowsFormsApplication3
                 prev = current;
                 return IsBSTUsingInOrderTravel(current.right, prev);
             }
-            return true;            
+            return true;
         }
 
         private void btn_Clone_a_linked_list_with_next_and_random_pointer_Click(object sender, EventArgs e)
@@ -2828,12 +2827,12 @@ namespace WindowsFormsApplication3
             // Time Complexity    :O(n)
             // Space Complexity   :O(n)            
 
-            
-            
-            Dictionary <LinkList, LinkList> storage = new Dictionary<LinkList, LinkList>();
+
+
+            Dictionary<LinkList, LinkList> storage = new Dictionary<LinkList, LinkList>();
             LinkList original = LLNodeFirst;
             LinkList clone = null;
-            
+
             while (original != null)
             {
                 clone = new LinkList();
@@ -2844,15 +2843,15 @@ namespace WindowsFormsApplication3
 
             original = LLNodeFirst;
 
-            while (original!=null)
+            while (original != null)
             {
                 clone = storage[original];
-                if (original.next!=null)
-                { 
+                if (original.next != null)
+                {
                     clone.next = storage[original.next];
                 }
-                if (original.random!=null)
-                { 
+                if (original.random != null)
+                {
                     clone.random = storage[original.random];
                 }
                 original = original.next;
@@ -2880,17 +2879,17 @@ namespace WindowsFormsApplication3
 
             original = LLNodeFirst;
             clone = null;
-            while (original!=null)
+            while (original != null)
             {
                 LinkList temp = original.next;
                 clone = new LinkList() { data = original.data };
                 original.next = clone;
                 clone.next = temp;
-                original = temp;                
+                original = temp;
             }
 
             original = LLNodeFirst;
-            while (original!=null && original.next!=null)
+            while (original != null && original.next != null)
             {
                 if (original.random != null)
                 {
@@ -2903,7 +2902,7 @@ namespace WindowsFormsApplication3
             clone = LLNodeFirst.next;
             LinkList tempCloned = clone;
 
-            while (original!=null && clone!=null)
+            while (original != null && clone != null)
             {
                 original.next = original.next != null ? original.next.next : original.next;
                 clone.next = clone.next != null ? clone.next.next : clone.next;
@@ -2945,7 +2944,7 @@ namespace WindowsFormsApplication3
             datas.Append("Cloned List \n");
 
             LinkList original = LLNodeFirst;
-            LinkList clone = new LinkList();            
+            LinkList clone = new LinkList();
             LinkList temp = clone;
 
             while (original != null)
@@ -3023,15 +3022,15 @@ namespace WindowsFormsApplication3
 
                 level++;
 
-                while (count>0)
+                while (count > 0)
                 {
                     Node node = (Node)que.Dequeue();
                     if (node != null)
                     {
                         temp += node.data;
                     }
-                                         
-                    if (node.left!=null)
+
+                    if (node.left != null)
                     {
                         que.Enqueue(node.left);
                     }
@@ -3065,23 +3064,23 @@ namespace WindowsFormsApplication3
 
             if (string.IsNullOrWhiteSpace(input))
             {
-                MessageBox.Show("Expression is empty");               
+                MessageBox.Show("Expression is empty");
             }
 
             Stack expHolder = new Stack();
-            List<char> operators = new List<char>() {'+','-','/','*','^' };
-            NodeWithObjectData t=null;     
+            List<char> operators = new List<char>() { '+', '-', '/', '*', '^' };
+            NodeWithObjectData t = null;
 
             foreach (char c in input)
             {
                 if (c == '(' || c == ')')
                 {
-                    continue;   
-                }              
+                    continue;
+                }
                 if (!operators.Contains(c))
                 {
-                    t = new NodeWithObjectData() { data = c };                    
-                }               
+                    t = new NodeWithObjectData() { data = c };
+                }
                 else
                 {
                     t = new NodeWithObjectData() { data = c };
@@ -3097,7 +3096,7 @@ namespace WindowsFormsApplication3
                 }
                 expHolder.Push(t);
             }
-            
+
             var expressionBinaryTree = (NodeWithObjectData)expHolder.Pop();
             datas.Clear();
             this.InOrderTravel_NodeWithObjectData(expressionBinaryTree);
@@ -3105,11 +3104,11 @@ namespace WindowsFormsApplication3
         }
 
         private void InOrderTravel_NodeWithObjectData(NodeWithObjectData node)
-        {        
-            if (node!=null)
+        {
+            if (node != null)
             {
                 this.InOrderTravel_NodeWithObjectData(node.left);
-                datas.Append(node.data.ToString());            
+                datas.Append(node.data.ToString());
                 this.InOrderTravel_NodeWithObjectData(node.right);
             }
 
@@ -3164,19 +3163,19 @@ namespace WindowsFormsApplication3
             List<NodeWithNext> nodes = new List<NodeWithNext>();
 
             Queue<NodeWithNext> que = new Queue<NodeWithNext>();
-            if (tree.left!=null)
+            if (tree.left != null)
             {
                 que.Enqueue(tree.left);
             }
 
-            if (tree.right!= null)
+            if (tree.right != null)
             {
                 que.Enqueue(tree.right);
             }
 
             NodeWithNext current = null, previous = null;
             NodeWithNext node = null;
-            
+
             while (true)
             {
                 node = null;
@@ -3189,10 +3188,10 @@ namespace WindowsFormsApplication3
                     if (node != null)
                     {
                         nodes.Add(node);
-                    }                    
-                }                
+                    }
+                }
 
-                foreach(var n in nodes)
+                foreach (var n in nodes)
                 {
                     if (current == null)
                     {
@@ -3209,13 +3208,13 @@ namespace WindowsFormsApplication3
                         else
                         {
                             current.next = previous;
-                        }                                            
-                        if (previous.left!=null)
+                        }
+                        if (previous.left != null)
                         {
                             que.Enqueue(previous.left);
                         }
 
-                        if (previous.right!= null)
+                        if (previous.right != null)
                         {
                             que.Enqueue(previous.right);
                         }
@@ -3240,31 +3239,31 @@ namespace WindowsFormsApplication3
                 direction = !direction;
 
             }
-            
+
         }
 
         private void btn_Connect_Nodes_with_iterating_queue_data_into_list_Click(object sender, EventArgs e)
         {
 
-                            /*
-                                             10
-                                          /      \
-                                         /        \
-                                        /          \
-                                       /            \                           
-                                      /              \
-                                     5 ------------->20
-                                   /  \             / \
-                                  /    \           /   \  
-                                 /      \         /     \
-                                3<-------8<------15<----22 
-                               / \      / \ 
-                              /   \    /   \
-                             1---->4->6---->9
-                              \
-                               \
-                                2
-                         */
+            /*
+                             10
+                          /      \
+                         /        \
+                        /          \
+                       /            \                           
+                      /              \
+                     5 ------------->20
+                   /  \             / \
+                  /    \           /   \  
+                 /      \         /     \
+                3<-------8<------15<----22 
+               / \      / \ 
+              /   \    /   \
+             1---->4->6---->9
+              \
+               \
+                2
+         */
 
             NodeWithNext tree = null;
             InsertNodeWithNext(10, ref tree);
@@ -3298,17 +3297,17 @@ namespace WindowsFormsApplication3
             NodeWithNext previous = null;
             NodeWithNext current = null;
 
-          while (q.Count>0)
+            while (q.Count > 0)
             {
                 if (q.Peek() == null)
                 {
                     if (current.left != null)
-                    {                      
+                    {
                         q.Enqueue(current.left);
                     }
 
                     if (current.right != null)
-                    {                       
+                    {
                         q.Enqueue(current.right);
                     }
                     q.Dequeue();
@@ -3327,21 +3326,217 @@ namespace WindowsFormsApplication3
                     current = q.Dequeue();
                     previous.next = current;
                     if (previous.left != null)
-                    {                       
+                    {
                         q.Enqueue(previous.left);
                     }
 
                     if (previous.right != null)
-                    {                        
+                    {
                         q.Enqueue(previous.right);
-                    }                   
-                }                              
+                    }
+                }
             }
         }
+
+        private void btn_Robbing_a_home_3_Click(object sender, EventArgs e)
+        {
+
+            /*
+            The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." 
+            Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
+            Determine the maximum amount of money the thief can rob tonight without alerting the police. 
+            Input: [3,2,3,null,3,null,1]
+
+                                 3
+                                / \
+                               2   3
+                                \   \ 
+                                 3   1
+
+            Output: 7 
+            Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
+
+            Input: [3,4,5,1,3,null,1]
+
+                                 3
+                                / \
+                               4   5
+                              / \   \ 
+                             1   3   1
+
+                            Output: 9
+                            Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
+ 
+              
+             */
+            NodeWithNext root = new NodeWithNext();
+            //root.left.left.data = 1;
+            //root.left.right.data = 3;
+            //root.left.data = 4;
+            //root.right.right.data = 1;
+            //root.right.data= 5;
+            //root.data = 3;
+
+            //root.left.right.data = 3;
+            //root.left.data = 2;
+            //root.right.right.data = 1;
+            //root.right.data = 3;
+            //root.data = 3;
+
+
+            datas.Clear();
+            this.InOrderWithNext(root);
+            int[] returnValue = this.RobHouse(root);
+            MessageBox.Show($"Max value that is robbed by rollber is {(Math.Max(returnValue[0], returnValue[1]))} for the house {datas.ToString()}");
+
+        }
+
+        private int[] RobHouse(NodeWithNext node)
+        {
+            if (node == null)
+            {
+                return new int[2];
+            }
+            int[] left = RobHouse(node.left);
+            int[] right = RobHouse(node.right);
+
+            int[] current = new Int32[2];
+            current[0] = node.data + left[1] + right[1];
+            current[1] = Math.Max(left[0], left[1]) + Math.Max(right[0], right[1]);
+            return current;
+        }
+
+        private void btn_Merge_k_Sorted_LinkLists_Click(object sender, EventArgs e)
+        {
+            /*             
+                  1->4->5,
+                  1->3->4,
+                  2->6
+            */            
+            List<LinkList> lists = new List<LinkList>();
+            //LinkList LLNodeFirst = null;
+            //LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
+            //LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
+            //LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+            //lists.Add(LLNodeFirst);
+            //LinkList LLNodeFirst1 = null;
+            //LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 1);
+            //LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 3);
+            //LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 4);
+            //lists.Add(LLNodeFirst1);
+            //LinkList LLNodeFirst2 = null;
+            //LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 2);
+            //LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 6);
+            //lists.Add(LLNodeFirst2);
+
+            LinkList LLNodeFirst3 = null;
+            LLNodeFirst3 = InsertLinkList(LLNodeFirst3, 1);
+            LinkList LLNodeFirst4 = null;
+            LLNodeFirst4 = InsertLinkList(LLNodeFirst4, 0);
+            lists.Add(LLNodeFirst3);
+            lists.Add(LLNodeFirst4);
+
+            datas.Clear();
+
+            LinkList result = null;
+            
+            foreach (LinkList linkList in lists)
+            {
+                result = this.MergeLinkListWithoutExtraMemory(result, linkList);
+            }
+
+            
+            DisplayLinkList(result);
+            MessageBox.Show($"The result of merging two link list is {datas.ToString()}");
+
+
+        }
+
+        private LinkList MergeLinkListWithoutExtraMemory(LinkList linklist1, LinkList linklist2)
+        {
+
+
+            if (linklist1 == null && linklist2 == null)
+                return null;
+            else if (linklist1 == null)
+            {
+                return linklist2;
+            }                
+            else if (linklist2 == null)
+                return linklist1;
+
+            LinkList result = linklist1;
+
+            LinkList t1 = null;
+            LinkList t2 = null;
+            LinkList linkList1Previous = linklist1;
+            bool isLinkListMoveFirstTime = false;
+
+            while (linklist1!= null && linklist2!= null)
+            {
+                t1 = null;
+                t2 = null;
+
+                if (linklist1.data < linklist2.data)
+                {
+                    
+                    if (!isLinkListMoveFirstTime)
+                    {
+                        isLinkListMoveFirstTime = true;
+                    }
+
+                    if (isLinkListMoveFirstTime)
+                    {
+                        linkList1Previous = linklist1;
+                    }
+                    linklist1 = linklist1.next;
+                }
+                else if (linklist2.data < linklist1.data)
+                {
+
+                    if (linkList1Previous == linklist1)
+                    {
+                        t2 = linklist2.next;
+                        linklist2.next = linklist1;
+                        linklist1 = linklist2;
+                        linklist2 = t2;
+                        linkList1Previous = linklist1;
+                        result = linklist1;
+                    }
+                    else
+                    {
+
+                        t1 = linkList1Previous.next;
+                        t2 = linklist2.next;
+                        linklist2.next = null;
+                        linkList1Previous.next = linklist2;
+                        linkList1Previous = linkList1Previous.next;
+                        linkList1Previous.next = t1;
+                        linklist2 = t2;
+                    }
+                }
+                else if (linklist1.data == linklist2.data)
+                {
+                    t1 = linklist1.next;
+                    t2 = linklist2.next;
+                    linklist2.next = null;
+                    linklist1.next = linklist2;
+                    linklist1 = linklist1.next;
+                    linklist1.next = t1;
+                    linklist2 = t2;
+                }
+
+            }
+
+            if (linklist2!= null)
+            {
+                linkList1Previous.next = linklist2;
+            }
+
+            return result;
+        }
+
     }
-
-
-
 
     class Graph
     {

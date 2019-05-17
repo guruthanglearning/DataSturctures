@@ -621,79 +621,7 @@ namespace WindowsFormsApplication3
 
         }
 
-        public double FindMedianSortedArrayNew(int[] nums1, int[] nums2)
-        {
-
-            /*
-                int[] nums1 = new int[] {1 };
-                int[] nums2 = new int[] { 2, 3, 4};
-            */
-
-            if ((nums1 == null || nums1.Length == 0) && (nums2 == null || nums2.Length == 0))
-            {
-                return 0;
-            }
-
-            int m = nums1.Length;
-            int n = nums2.Length;
-            int total = m + n;
-            int mid = total / 2;
-            double median = 0;
-
-            if (total % 2 == 0)
-            {
-                if (m == n)
-                {
-                    median = (nums1[mid - 1] + nums2[mid - n]) / 2.0;
-                }
-                else if (m < n)
-                {
-                    if (m == 0)
-                    {
-                        median = (nums2[mid] + nums2[mid - 1]) / 2.0;
-                    }
-                    else if (mid > m)
-                    {
-                        median = (nums2[total - mid - 1] + nums2[total - n - 1]) / 2.0;
-                    }
-                }
-                else if (n < m)
-                {
-                    if (mid > n)
-                    {
-                        median = (nums1[mid] + nums1[mid - 1]) / 2.0;
-                    }
-                }
-            }
-            else
-            {
-                if (mid == 0)
-                {
-                    //Only 1 items is available in A or B arrays
-                    median = nums1.Length == 1 ? nums1[0] : nums2[0];
-                }
-                else
-                {
-                    if (m > n)
-                    {
-                        median = nums1[mid];
-                    }
-                    else if (m > 0 && n > m)
-                    {
-                        median = nums2[mid - 1];
-                    }
-                    else
-                    {
-                        median = nums2[mid];
-                    }
-
-                }
-            }
-
-            return median;
-
-
-        }
+       
 
         public double findMedianSortedArrays(int[] A, int[] B)
         {
@@ -717,9 +645,14 @@ namespace WindowsFormsApplication3
                     int[] nums1 = new int[] { 2, 3, 4, 5 };
                     int[] nums2 = new int[] { 1, 2, };
                     Before swap m=4, n= 2
+                    
                     After swap m=2 , n=4
-                    iMin = 2 Max = 2, halfLen = 3, i = 2, j = 1
+                    int[] nums1 = new int[] { 1, 2, };
+                    int[] nums2 = new int[] { 2, 3, 4, 5 };
+                    
+                    iMin = 0 Max = 2, halfLen = 3, i = 1, j = 2
                 */
+
                 int i = (iMin + iMax) / 2; 
                 int j = halfLen - i;       
 
@@ -734,11 +667,11 @@ namespace WindowsFormsApplication3
                 else
                 { // i is perfect
                     int maxLeft = 0;
-                    if (i == 0)
+                    if (i == 0) //When array is empty
                     {
                         maxLeft = B[j - 1];
                     }
-                    else if (j == 0)
+                    else if (j == 0) //When array is empty
                     {
                         maxLeft = A[i - 1];
                     }
@@ -752,11 +685,11 @@ namespace WindowsFormsApplication3
                     }
 
                     int minRight = 0;
-                    if (i == m)
+                    if (i == m) //When array is empty
                     {
                         minRight = B[j];
                     }
-                    else if (j == n)
+                    else if (j == n) //When array is empty
                     {
                         minRight = A[i];
                     }
@@ -769,74 +702,6 @@ namespace WindowsFormsApplication3
                 }
             }
             return 0.0;
-        }
-
-        private double findMedianSortedArraysGuruApproach(int[] A, int[] B)
-        {
-            int totalLength = A.Length + B.Length;
-            int currentInc = 1;
-            int aInc = 0;
-            int bInc = 0;
-            /*
-             
-            int[] A = new int[] { 3, 4, 5, 6 };
-            int[] B = new int[] { 1, 2, 3, 7 };  
-            
-            int[] A = new int[] { 1, 2, 3, 7 };        
-            int[] B = new int[] { 3, 4, 5, 6 };
-            
-            int[] A = new int[] { 1, 2, 3, 7 };        
-            int[] B = new int[] { 4, 5 };                    
-
-            aInc                = 1
-            bInc                = 3
-            currentInc          = 4
-            totalLength         = 8
-
-            */
-
-            while (true)
-            {
-                if (aInc < A.Length && bInc < B.Length)
-                {
-                    if (A[aInc] < B[bInc])
-                    {
-                        aInc++;
-                    }
-                    else if (A[aInc] > B[bInc])
-                    {
-                        bInc++;
-                    }
-                    else if (bInc < B.Length)
-                    {
-                        aInc++;
-                        bInc++;
-                    }
-
-                    currentInc++;
-
-                    if (currentInc == totalLength / 2)
-                    {
-                        if (aInc - 1 > -1 && bInc - 1 > -1 && A[aInc - 1] == B[bInc - 1])
-                        {
-                            if (A[aInc] < B[bInc])
-                            {
-                                return A[aInc - 1] + A[aInc] / 2;
-                            }
-                            else
-                            {
-                                return A[aInc - 1] + B[bInc] / 2;
-                            }
-                        }
-                        else
-                        {
-                            return A[aInc] + B[bInc] / 2;
-                        }
-                    }
-                }
-            }
-            return 0.0;
-
         }
 
         private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
@@ -867,12 +732,11 @@ namespace WindowsFormsApplication3
             */
 
 
-            int[] nums1 = new int[] { 2, 3, 4, 5 };
+            //int[] nums1 = new int[] { 2, 3, 4, 5 };
+            int[] nums1 = new int[] { };
             int[] nums2 = new int[] { 1, 2, };
-
-            //MessageBox.Show(this.FindMedianSortedArrayNew(nums1, nums2).ToString()); This will work when nums1 value are smaller thank nums2 array values
-            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
-            //MessageBox.Show(this.findMedianSortedArraysGuruApproach(nums1, nums2).ToString());
+            
+            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());            
 
         }
 
@@ -1381,6 +1245,101 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show($"All integers for the given input array is {(x == (1<<input.Length)-1 ? "present": "is not present")}");
 
+        }
+
+        private int RobHouse(int[] input, int start, int end)
+        {
+            int firstOld = 0;
+            int secondOld = 0;
+            int thirdOld = 0;
+
+            if (input != null && input.Length > 0 && (start < end))
+            {
+                if (input.Length == 1)
+                {
+                    return input[0];
+                }
+
+                firstOld = input[start];
+                secondOld = Math.Max(firstOld, (end - start) >= 2 ? input[start + 1] : secondOld);
+                if (end <= 2)
+                {
+                    thirdOld = Math.Max(firstOld, secondOld);
+                }
+
+                int i = 0;
+                for (i = start + 2; i < end; i++)
+                {
+                    thirdOld = Math.Max(input[i] + firstOld, secondOld);
+                    firstOld = secondOld;
+                    secondOld = thirdOld;
+                }
+            }
+            return thirdOld;
+        }
+
+        private void btn_Robbing_a_home_1_Click(object sender, EventArgs e)
+        {
+            /*
+            Time Complexity is O(N)
+            Space Complexity is O(1)              
+            */
+            int[][] inputs = new int[6][];
+            inputs[0] = new int[] { 6, 7, 1, 3, 8, 2, 4 };
+            inputs[1] = new int[] { 5, 3, 4, 11, 2 };
+            inputs[2] = new int[] { };
+            inputs[3] = new int[] { 0 };
+            inputs[4] = new int[] { 1 };
+            inputs[5] = new int[] { 0, 1 };
+
+            StringBuilder result = new StringBuilder();
+            int firstOld = 0;
+            int secondOld = 0;
+            int thirdOld = 0;
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"The max value robbed in this house { (input.Length == 0 ? "Empty" : string.Join(",", input))} is {RobHouse(input, 0, input.Length).ToString()}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Robbing_a_home_2_Click(object sender, EventArgs e)
+        {
+            /*
+               You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. 
+               All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, 
+               adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were 
+               broken into on the same night.
+
+               Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of 
+               money you can rob tonight without alerting the police.             
+
+               Time Complexity is O(N)
+               Space Complexity is O(1)
+           */
+            int[][] inputs = new int[7][];
+            inputs[0] = new int[] { 6, 7, 1, 3, 8, 2, 4 };
+            inputs[1] = new int[] { 5, 3, 4, 11, 2 };
+            inputs[2] = new int[] { };
+            inputs[3] = new int[] { 0 };
+            inputs[4] = new int[] { 1 };
+            inputs[5] = new int[] { 0, 1 };
+            inputs[6] = new int[] { 0, 0 };
+
+
+
+            StringBuilder result = new StringBuilder();
+            int zeroToN_1 = 0;
+            int oneToN = 0;
+            foreach (int[] nums in inputs)
+            {
+                zeroToN_1 = this.RobHouse(nums, 0, nums.Length - 1);
+                oneToN = this.RobHouse(nums, 1, nums.Length);
+                result.AppendLine($"The zeroToN_1 is {zeroToN_1.ToString()} and oneToN {oneToN.ToString()} value robbed in this house {(nums.Length == 0 ? "Empty" : string.Join(",", nums)) } is {(Math.Max(zeroToN_1, oneToN).ToString())}");
+            }
+
+            MessageBox.Show(result.ToString());
         }
     }
 }

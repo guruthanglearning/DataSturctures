@@ -84,41 +84,61 @@ namespace WindowsFormsApplication3
             }
 
             MessageBox.Show(result.ToString());
+        }
 
+        private void btn_Count_no_of_steps_can_be_climbed_for_the_given_N_Click(object sender, EventArgs e)
+        {
+            int n = 4;
+            int total = 0;
+            if (n == 0 || n == 1)
+            {
+                total = 1;
+            }
+            else
+            {
+                int f = 1;
+                int s = 1;             
+                for (int i = 2; i <= n; i++)
+                {
+                    total = 0;
+                    total = f + s;
+                    f = s;
+                    s = total;
+                }
+            }
 
+            MessageBox.Show($"There are {total.ToString()}  number of ways to climb for the given {n.ToString()} steps");
 
         }
 
-        private void btn_Robbing_a_home_1_Click(object sender, EventArgs e)
+        private int NumOfWaysToClimbSteps(int n, int[] x)
         {
-
-            /*
-             Time Complexity is O(N)
-             Space Complexity is O(1)              
-             */
-            int[][] inputs = new int[2][];
-            inputs[0] = new int[] { 6, 7, 1, 3, 8, 2, 4 };
-            inputs[1] = new int[] { 5, 3, 4, 11, 2 };
-            StringBuilder result = new StringBuilder();
-            int firstOld = 0;
-            int secondOld = 0;
-            int thirdOld = 0;
-            foreach (int[] input in inputs)
+            // x is nothing but the no of steps allowed to take
+            int totalNoOfWaysToClimbStep = 0;
+            int[] steps = new int[n + 1];
+            steps[0] = 1;
+            
+            for (int i = 1; i <= n; i++)
             {
-                firstOld = input[0];
-                secondOld = Math.Max(firstOld, input[1]);
-                int i = 0;
-                for (i = 2; i < input.Length; i++)
-                {                    
-                    thirdOld = Math.Max(input[i] + firstOld, secondOld);
-                    firstOld = secondOld;
-                    secondOld = thirdOld;
+                totalNoOfWaysToClimbStep = 0;
+                foreach (int j in x)
+                {
+                    if ((i-j) >= 0)
+                    {
+                        totalNoOfWaysToClimbStep += steps[i - j];
+                    }
                 }
-                //result.AppendLine($"The max value robbed in this house {string.Join(",", input)} is {dp[i-1].ToString()}");            
-                result.AppendLine($"The max value robbed in this house {string.Join(",", input)} is {thirdOld.ToString()}");
+                steps[i] = totalNoOfWaysToClimbStep;
             }
+            return steps[n];
+        }
 
-            MessageBox.Show(result.ToString());
+        private void btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase_Click(object sender, EventArgs e)
+        {
+            int n = 5;
+            int[] stairs = new int[3] { 1, 3, 5 };
+            MessageBox.Show($"There were {this.NumOfWaysToClimbSteps(n,stairs).ToString()} number of ways to climb {n.ToString()} stairs case for the given staircase {string.Join(",",stairs)} ");
         }
     }
 }
+

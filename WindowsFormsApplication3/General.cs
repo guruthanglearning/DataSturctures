@@ -19,10 +19,11 @@ namespace WindowsFormsApplication3
     public partial class General : Form
     {
         delegate string Del(string s);
-
+        
         public General()
         {
             InitializeComponent();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -585,15 +586,27 @@ namespace WindowsFormsApplication3
 
         private void button17_Click(object sender, EventArgs e)
         {
-            int[] a = new int[] { 4, 1, 3, 2 };
-            long bitFlags = a.ToList().Aggregate(0, (x, y) => x | (1 << (y - 1)));
-/*            (bitFlags == (1 << a.Length) - 1).Dump()*/;
+            //int[] a = new int[] { 4, 1, 3, 2 };
+            //long bitFlags = a.ToList().Aggregate(0, (x, y) => x | (1 << (y - 1)));
+
+
+            MessageBox.Show(TestingEnum.PartialFail.ToString());
+
+
 
 
 
         }
 
 
+        public  enum TestingEnum
+        {
+            None,
+            PartialReject,
+            PartialFail
+        }
+
+       
 
         public string URLDecode(string pszString)
         {

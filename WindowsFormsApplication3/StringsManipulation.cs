@@ -1849,5 +1849,96 @@ namespace WindowsFormsApplication3
             MessageBox.Show(result.ToString());
 
         }
+
+        private void btn_Regular_Expression_Matching_Click(object sender, EventArgs e)
+        {
+            /*
+             
+             Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
+
+                '.' Matches any single character.
+                '*' Matches zero or more of the preceding element.
+                The matching should cover the entire input string (not partial).
+
+                Note:
+
+                s could be empty and contains only lowercase letters a-z.
+                p could be empty and contains only lowercase letters a-z, and characters like . or *.
+                Example 1:
+
+                Input:
+                s = "aa"
+                p = "a"
+                Output: false
+                Explanation: "a" does not match the entire string "aa".
+                Example 2:
+
+                Input:
+                s = "aa"
+                p = "a*"
+                Output: true
+                Explanation: '*' means zero or more of the precedeng element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+                Example 3:
+
+                Input:
+                s = "ab"
+                p = ".*"
+                Output: true
+                Explanation: ".*" means "zero or more (*) of any character (.)".
+                Example 4:
+
+                Input:
+                s = "aab"
+                p = "c*a*b"
+                Output: true
+                Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore it matches "aab".
+                Example 5:
+
+                Input:
+                s = "mississippi"
+                p = "mis*is*p*."
+                Output: false 
+            */
+            StringBuilder result = new StringBuilder();
+            Dictionary<string, string> inputs = new Dictionary<string, string>();
+            inputs.Add("a", "aa");
+            inputs.Add("a*", "aa");
+
+            foreach(string key in inputs.Keys)
+            {
+                result.AppendLine($"For the given string {inputs[key]} and pattern{key} is {(this.IsMatch(inputs[key], key) ? " matching" : "not matching")}");
+            }
+
+
+            MessageBox.Show(result.ToString());
+            
+
+
+        }
+
+        private bool IsMatch(string s, string p)
+        {
+            if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(p))
+            {
+                return false;
+            }
+
+            /*
+                inputs.Add("a", "aa");
+                inputs.Add("a*", "aa");
+                inputs.Add(".*", "aa");
+                inputs.Add("c*a*b", "aab");
+                inputs.Add("mis*is*p*.", "mississippi");
+
+                mis *is * p*.
+                mis sis s ippi
+            */
+
+
+
+
+            return false;
+        }
+
     }
 }

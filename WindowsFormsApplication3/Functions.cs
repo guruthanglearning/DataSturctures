@@ -21,7 +21,7 @@ namespace WindowsFormsApplication3
         {
             int input = -1;
             int.TryParse(textBox1.Text, out input);
-            int i = SquareRootForWholeNumber(input, input <3 ? input : input/2); //Complexity is O(log n)
+            int i = 0; // SquareRootForWholeNumber(input, input <3 ? input : input/2); //Complexity is O(log n)
             decimal j = SquareRootInCalculator(input); //Complexity is O(10)
 
             MessageBox.Show($"Square root For Whole number {input.ToString()} is {i.ToString()} \n In Calculator {input.ToString()} is {j.ToString()} ");
@@ -29,7 +29,8 @@ namespace WindowsFormsApplication3
         
         private decimal SquareRootInCalculator(decimal t)
         {
-            //http://web.archive.org/web/20100330183043/http://nlindblad.org/2007/04/04/write-your-own-square-root-function
+        //http://web.archive.org/web/20100330183043/
+        //http://nlindblad.org/2007/04/04/write-your-own-square-root-function
             decimal r = t / 2;
             for (int i = 0; i< 10; i++ ) {
                 r = (r + (t / r)) / 2;

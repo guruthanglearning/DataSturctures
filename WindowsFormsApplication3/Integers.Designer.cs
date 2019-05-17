@@ -30,7 +30,8 @@
         {
             this.btn_Reverse_Integer = new System.Windows.Forms.Button();
             this.btn_Check_the_given_integer_is_Plandrom = new System.Windows.Forms.Button();
-            this.btn_Robbing_a_home_1 = new System.Windows.Forms.Button();
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N = new System.Windows.Forms.Button();
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -53,22 +54,33 @@
             this.btn_Check_the_given_integer_is_Plandrom.UseVisualStyleBackColor = true;
             this.btn_Check_the_given_integer_is_Plandrom.Click += new System.EventHandler(this.btn_Check_the_given_integer_is_Plandrom_Click);
             // 
-            // btn_Robbing_a_home_1
+            // btn_Count_no_of_steps_can_be_climbed_for_the_given_N
             // 
-            this.btn_Robbing_a_home_1.Location = new System.Drawing.Point(12, 109);
-            this.btn_Robbing_a_home_1.Name = "btn_Robbing_a_home_1";
-            this.btn_Robbing_a_home_1.Size = new System.Drawing.Size(519, 48);
-            this.btn_Robbing_a_home_1.TabIndex = 2;
-            this.btn_Robbing_a_home_1.Text = "Robbing a home 1";
-            this.btn_Robbing_a_home_1.UseVisualStyleBackColor = true;
-            this.btn_Robbing_a_home_1.Click += new System.EventHandler(this.btn_Robbing_a_home_1_Click);
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N.Location = new System.Drawing.Point(12, 109);
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N.Name = "btn_Count_no_of_steps_can_be_climbed_for_the_given_N";
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N.Size = new System.Drawing.Size(519, 46);
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N.TabIndex = 2;
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N.Text = "Count no of steps can be climbed for the given N";
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N.UseVisualStyleBackColor = true;
+            this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N.Click += new System.EventHandler(this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N_Click);
+            // 
+            // btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase
+            // 
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.Location = new System.Drawing.Point(12, 161);
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.Name = "btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase";
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.Size = new System.Drawing.Size(519, 46);
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.TabIndex = 3;
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.Text = "No of ways to climb N staircase for the give X staircase";
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.UseVisualStyleBackColor = true;
+            this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.Click += new System.EventHandler(this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase_Click);
             // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_Robbing_a_home_1);
+            this.Controls.Add(this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase);
+            this.Controls.Add(this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N);
             this.Controls.Add(this.btn_Check_the_given_integer_is_Plandrom);
             this.Controls.Add(this.btn_Reverse_Integer);
             this.Name = "Integers";
@@ -81,6 +93,7 @@
 
         private System.Windows.Forms.Button btn_Reverse_Integer;
         private System.Windows.Forms.Button btn_Check_the_given_integer_is_Plandrom;
-        private System.Windows.Forms.Button btn_Robbing_a_home_1;
+        private System.Windows.Forms.Button btn_Count_no_of_steps_can_be_climbed_for_the_given_N;
+        private System.Windows.Forms.Button btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase;
     }
 }

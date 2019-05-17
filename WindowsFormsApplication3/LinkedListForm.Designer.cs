@@ -69,6 +69,8 @@
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression = new System.Windows.Forms.Button();
             this.btn_Connect_Nodes_with_right_to_left_and_left_to_right = new System.Windows.Forms.Button();
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list = new System.Windows.Forms.Button();
+            this.btn_Robbing_a_home_3 = new System.Windows.Forms.Button();
+            this.btn_Merge_k_Sorted_LinkLists = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -279,7 +281,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(900, 82);
+            this.button18.Location = new System.Drawing.Point(731, 542);
             this.button18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(304, 35);
@@ -507,11 +509,33 @@
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.UseVisualStyleBackColor = true;
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Click += new System.EventHandler(this.btn_Connect_Nodes_with_iterating_queue_data_into_list_Click);
             // 
+            // btn_Robbing_a_home_3
+            // 
+            this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(12, 927);
+            this.btn_Robbing_a_home_3.Name = "btn_Robbing_a_home_3";
+            this.btn_Robbing_a_home_3.Size = new System.Drawing.Size(467, 50);
+            this.btn_Robbing_a_home_3.TabIndex = 44;
+            this.btn_Robbing_a_home_3.Text = "Robbing a home 3";
+            this.btn_Robbing_a_home_3.UseVisualStyleBackColor = true;
+            this.btn_Robbing_a_home_3.Click += new System.EventHandler(this.btn_Robbing_a_home_3_Click);
+            // 
+            // btn_Merge_k_Sorted_LinkLists
+            // 
+            this.btn_Merge_k_Sorted_LinkLists.Location = new System.Drawing.Point(878, 50);
+            this.btn_Merge_k_Sorted_LinkLists.Name = "btn_Merge_k_Sorted_LinkLists";
+            this.btn_Merge_k_Sorted_LinkLists.Size = new System.Drawing.Size(336, 39);
+            this.btn_Merge_k_Sorted_LinkLists.TabIndex = 45;
+            this.btn_Merge_k_Sorted_LinkLists.Text = "Merge k Sorted Link Lists";
+            this.btn_Merge_k_Sorted_LinkLists.UseVisualStyleBackColor = true;
+            this.btn_Merge_k_Sorted_LinkLists.Click += new System.EventHandler(this.btn_Merge_k_Sorted_LinkLists_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1028);
+            this.Controls.Add(this.btn_Merge_k_Sorted_LinkLists);
+            this.Controls.Add(this.btn_Robbing_a_home_3);
             this.Controls.Add(this.btn_Connect_Nodes_with_iterating_queue_data_into_list);
             this.Controls.Add(this.btn_Connect_Nodes_with_right_to_left_and_left_to_right);
             this.Controls.Add(this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression);
@@ -605,5 +629,7 @@
         private System.Windows.Forms.Button btn_Build_Binary_Tree_for_the_given_arithmatic_expression;
         private System.Windows.Forms.Button btn_Connect_Nodes_with_right_to_left_and_left_to_right;
         private System.Windows.Forms.Button btn_Connect_Nodes_with_iterating_queue_data_into_list;
+        private System.Windows.Forms.Button btn_Robbing_a_home_3;
+        private System.Windows.Forms.Button btn_Merge_k_Sorted_LinkLists;
     }
 }

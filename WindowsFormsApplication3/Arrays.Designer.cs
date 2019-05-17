@@ -51,6 +51,8 @@
             this.btn_Max_sub_series_sum_in_an_given_array = new System.Windows.Forms.Button();
             this.btn_Reduce_Array_After_removing_input_element = new System.Windows.Forms.Button();
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N = new System.Windows.Forms.Button();
+            this.btn_Robbing_a_home_2 = new System.Windows.Forms.Button();
+            this.btn_Robbing_a_home_1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -292,11 +294,33 @@
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.UseVisualStyleBackColor = true;
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Click += new System.EventHandler(this.btn_Find_all_the_integer_value_lies_in_a_array_till_N_Click);
             // 
+            // btn_Robbing_a_home_2
+            // 
+            this.btn_Robbing_a_home_2.Location = new System.Drawing.Point(634, 240);
+            this.btn_Robbing_a_home_2.Name = "btn_Robbing_a_home_2";
+            this.btn_Robbing_a_home_2.Size = new System.Drawing.Size(603, 45);
+            this.btn_Robbing_a_home_2.TabIndex = 24;
+            this.btn_Robbing_a_home_2.Text = "Robbing a home 2";
+            this.btn_Robbing_a_home_2.UseVisualStyleBackColor = true;
+            this.btn_Robbing_a_home_2.Click += new System.EventHandler(this.btn_Robbing_a_home_2_Click);
+            // 
+            // btn_Robbing_a_home_1
+            // 
+            this.btn_Robbing_a_home_1.Location = new System.Drawing.Point(634, 186);
+            this.btn_Robbing_a_home_1.Name = "btn_Robbing_a_home_1";
+            this.btn_Robbing_a_home_1.Size = new System.Drawing.Size(603, 48);
+            this.btn_Robbing_a_home_1.TabIndex = 23;
+            this.btn_Robbing_a_home_1.Text = "Robbing a home 1";
+            this.btn_Robbing_a_home_1.UseVisualStyleBackColor = true;
+            this.btn_Robbing_a_home_1.Click += new System.EventHandler(this.btn_Robbing_a_home_1_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Robbing_a_home_2);
+            this.Controls.Add(this.btn_Robbing_a_home_1);
             this.Controls.Add(this.btn_Find_all_the_integer_value_lies_in_a_array_till_N);
             this.Controls.Add(this.btn_Reduce_Array_After_removing_input_element);
             this.Controls.Add(this.btn_Max_sub_series_sum_in_an_given_array);
@@ -352,5 +376,7 @@
         private System.Windows.Forms.Button btn_Max_sub_series_sum_in_an_given_array;
         private System.Windows.Forms.Button btn_Reduce_Array_After_removing_input_element;
         private System.Windows.Forms.Button btn_Find_all_the_integer_value_lies_in_a_array_till_N;
+        private System.Windows.Forms.Button btn_Robbing_a_home_2;
+        private System.Windows.Forms.Button btn_Robbing_a_home_1;
     }
 }

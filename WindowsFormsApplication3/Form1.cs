@@ -143,6 +143,11 @@ namespace WindowsFormsApplication3
             MessageBox.Show("Completed");
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class Employee
