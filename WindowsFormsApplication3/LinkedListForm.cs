@@ -352,69 +352,7 @@ namespace WindowsFormsApplication3
                 MessageBox.Show(data.ToString());
             }
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            BFSNode root = newNode(1);
-            root.parent = null;
-            root.left = newNode(2);
-            root.right = newNode(3);
-            root.left.parent = root;
-            root.right.parent = root;
-
-            root.left.left = newNode(4);
-            root.right.right = newNode(5);
-
-            root.left.left.parent = root.left;
-            root.right.right.parent = root.right;
-
-            // printf("\n Level order successor of %d is: ", root->right->data);
-            printLevelOrderSuccessor(root.left);
-
-        }
-
-
-        void _print(BFSNode root, BFSNode temp, int level)
-        {
-            if (root == null)
-                return;
-            if (level == 1)
-            {
-                /* If the given node is visited then print the current root */
-                if (visited == 1)
-                {
-                    MessageBox.Show(root.data.ToString());
-                    visited = 0;
-                    return;
-                }
-                /* If the current root is same as given node then change the visited flag
-                so that current node is printed */
-                if (root == temp)
-                {
-                    visited = 1;
-                }
-            }
-            else if (level > 1)
-            {
-                _print(root.left, temp, level - 1);
-                _print(root.right, temp, level - 1);
-            }
-        }
-
-        void printLevelOrderSuccessor(BFSNode node)
-        {
-            int level = 1;
-            BFSNode temp = node;
-
-            /* Find the level of the given node and root of the tree */
-            while (temp.parent != null)
-            {
-                temp = temp.parent;
-                level++;
-            }
-            _print(temp, node, level);
-        }
-
+  
         private BFSNode newNode(int data)
         {
             BFSNode node = new BFSNode();
@@ -900,7 +838,7 @@ namespace WindowsFormsApplication3
             InsertBFSNode(1, ref tree, tree);
             //InsertBFSNode(24, ref tree, tree);
 
-            BFSNode inputNode = tree.right.right;
+            BFSNode inputNode = tree.right;
             BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
             MessageBox.Show($"With Parent Node {node.data.ToString()}");
             node = GetInOrderSuccessorWithoutParentNode(inputNode, tree);
@@ -1196,6 +1134,7 @@ namespace WindowsFormsApplication3
             Insert(22, ref tree);
             treeToList(tree);
             printTree(tree);
+
 
         }
 
@@ -2133,7 +2072,9 @@ namespace WindowsFormsApplication3
         private void button30_Click(object sender, EventArgs e)
         {
 
-
+            string input = Guid.NewGuid().ToString("N");
+        
+            MessageBox.Show($" {input} and its length {input.Length.ToString()}");
 
         }
 
@@ -3173,34 +3114,46 @@ namespace WindowsFormsApplication3
                 que.Enqueue(tree.right);
             }
 
+            que.Enqueue(null);
+
             NodeWithNext current = null, previous = null;
-            NodeWithNext node = null;
+            //NodeWithNext node = null;            
 
-            while (true)
+            while(que.Count > 0)
             {
-                node = null;
-                previous = null;
-                current = null;
-                nodes.Clear();
-                while (que.Count > 0)
-                {
-                    node = que.Dequeue();
-                    if (node != null)
-                    {
-                        nodes.Add(node);
-                    }
-                }
-
-                foreach (var n in nodes)
+                if (que.Peek() == null)
                 {
                     if (current == null)
                     {
-                        current = n;
+                        break;
+                    }
+
+                    if (current.left!=null)
+                    {
+                        que.Enqueue(current.left);
+                    }
+
+                    if (current.right!=null)
+                    {
+                        que.Enqueue(current.right);
+                    }
+
+                    que.Dequeue();
+                    que.Enqueue(null);
+                    current = null;
+                    previous = null;
+                    direction = !direction;
+                }
+                else
+                {
+                    if (current==null)
+                    {
+                        current = que.Dequeue();
                     }
                     else
                     {
                         previous = current;
-                        current = n;
+                        current = que.Dequeue();
                         if (direction)
                         {
                             previous.next = current;
@@ -3209,7 +3162,8 @@ namespace WindowsFormsApplication3
                         {
                             current.next = previous;
                         }
-                        if (previous.left != null)
+
+                        if (previous.left!=null)
                         {
                             que.Enqueue(previous.left);
                         }
@@ -3220,26 +3174,7 @@ namespace WindowsFormsApplication3
                         }
                     }
                 }
-
-                if (current.left != null)
-                {
-                    que.Enqueue(current.left);
-                }
-
-                if (current.right != null)
-                {
-                    que.Enqueue(current.right);
-                }
-
-                if (que.Count == 0)
-                {
-                    break;
-                }
-
-                direction = !direction;
-
             }
-
         }
 
         private void btn_Connect_Nodes_with_iterating_queue_data_into_list_Click(object sender, EventArgs e)
@@ -3256,7 +3191,7 @@ namespace WindowsFormsApplication3
                    /  \             / \
                   /    \           /   \  
                  /      \         /     \
-                3<-------8<------15<----22 
+                3------->8------>15---->22 
                / \      / \ 
               /   \    /   \
              1---->4->6---->9
@@ -3370,12 +3305,12 @@ namespace WindowsFormsApplication3
               
              */
             NodeWithNext root = new NodeWithNext();
-            //root.left.left.data = 1;
-            //root.left.right.data = 3;
-            //root.left.data = 4;
-            //root.right.right.data = 1;
-            //root.right.data= 5;
-            //root.data = 3;
+            root.left.left.data = 1;
+            root.left.right.data = 3;
+            root.left.data = 4;
+            root.right.right.data = 1;
+            root.right.data = 5;
+            root.data = 3;
 
             //root.left.right.data = 3;
             //root.left.data = 2;
@@ -3393,16 +3328,25 @@ namespace WindowsFormsApplication3
 
         private int[] RobHouse(NodeWithNext node)
         {
+
+            /*
+                                 3
+                                / \
+                               4   5
+                              / \   \ 
+                             1   3   1
+             */
+
             if (node == null)
             {
                 return new int[2];
             }
-            int[] left = RobHouse(node.left);
-            int[] right = RobHouse(node.right);
+            int[] left = RobHouse(node.left); 
+            int[] right = RobHouse(node.right); 
 
-            int[] current = new Int32[2];
-            current[0] = node.data + left[1] + right[1];
-            current[1] = Math.Max(left[0], left[1]) + Math.Max(right[0], right[1]);
+            int[] current = new Int32[2]; 
+            current[0] = node.data + left[1] + right[1]; 
+            current[1] = Math.Max(left[0], left[1]) + Math.Max(right[0], right[1]);  
             return current;
         }
 
@@ -3531,6 +3475,109 @@ namespace WindowsFormsApplication3
             if (linklist2!= null)
             {
                 linkList1Previous.next = linklist2;
+            }
+
+            return result;
+        }
+
+        private void btn_Searilzing_and_De_serialzing_Binary_Tree_Click(object sender, EventArgs e)
+        {            
+
+            Node root = new Node() { data = 1};
+            root.left = new Node() { data = 2 };
+            root.right = new Node() { data = 3 };
+            root.right.left = new Node() { data = 4 };
+            root.right.right= new Node() { data = 5 };
+
+            string result = this.Serialize(root);
+            this.DeSerialize(result);
+            MessageBox.Show($"Serialization of binary tree is {result}");
+
+
+        }
+
+
+        private Node DeSerialize(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return null;
+            }
+
+           string[] datas = input.Split(',');
+
+
+           Node tree = new Node() { data = int.Parse(datas[0])};
+           Queue<Node> queue= new Queue<Node>();
+           queue.Enqueue(tree);
+           //1,2,3,null,null,4,5
+           for(int i = 1; i< datas.Length -1; i++)
+           {
+                var parent = queue.Dequeue();
+                if (!string.IsNullOrEmpty(datas[i]))
+                {
+                    parent.left = new Node() { data = int.Parse(datas[i]) };
+                    queue.Enqueue(parent.left);
+                }
+                if (!string.IsNullOrEmpty(datas[++i]))
+                {
+                    parent.right = new Node() { data = int.Parse(datas[i]) };
+                    queue.Enqueue(parent.right);
+                }
+           }
+
+
+            return tree;
+
+        }
+
+        private string Serialize(Node root)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+
+            /*
+                            1
+                           / \
+                          2   3
+                             / \
+                            4   5
+
+               Output : [1,2,3,null,null,4,5]
+              
+             */
+
+            Queue<Node> que = new Queue<Node>();
+            que.Enqueue(root);
+            StringBuilder serializableString = new StringBuilder();
+            int lastValidIndex = 0;
+            string result;
+            while (que.Count != 0)
+            {
+                Node node = que.Dequeue();
+                if (node == null)
+                {
+                    serializableString.Append(",");
+                    lastValidIndex++;
+                }
+                else
+                {
+                    lastValidIndex = 0;
+                    serializableString.Append($"{node.data.ToString()},");
+                    que.Enqueue(node.left);
+                    que.Enqueue(node.right);
+                }                
+            }
+
+            if (lastValidIndex > 0)
+            {
+                result = serializableString.ToString().Substring(0, serializableString.Length - (lastValidIndex +1));
+            }
+            else
+            {
+                result = serializableString.ToString();
             }
 
             return result;

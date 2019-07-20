@@ -53,6 +53,9 @@
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N = new System.Windows.Forms.Button();
             this.btn_Robbing_a_home_2 = new System.Windows.Forms.Button();
             this.btn_Robbing_a_home_1 = new System.Windows.Forms.Button();
+            this.btn_Array_Puzzle_1 = new System.Windows.Forms.Button();
+            this.btn_Robbing_a_home_3 = new System.Windows.Forms.Button();
+            this.btn_Arrange_Char_Array_R_G_B_In_Place = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -300,7 +303,7 @@
             this.btn_Robbing_a_home_2.Name = "btn_Robbing_a_home_2";
             this.btn_Robbing_a_home_2.Size = new System.Drawing.Size(603, 45);
             this.btn_Robbing_a_home_2.TabIndex = 24;
-            this.btn_Robbing_a_home_2.Text = "Robbing a home 2";
+            this.btn_Robbing_a_home_2.Text = "Robbing a home 2 (In Circular array)";
             this.btn_Robbing_a_home_2.UseVisualStyleBackColor = true;
             this.btn_Robbing_a_home_2.Click += new System.EventHandler(this.btn_Robbing_a_home_2_Click);
             // 
@@ -314,11 +317,44 @@
             this.btn_Robbing_a_home_1.UseVisualStyleBackColor = true;
             this.btn_Robbing_a_home_1.Click += new System.EventHandler(this.btn_Robbing_a_home_1_Click);
             // 
+            // btn_Array_Puzzle_1
+            // 
+            this.btn_Array_Puzzle_1.Location = new System.Drawing.Point(634, 344);
+            this.btn_Array_Puzzle_1.Name = "btn_Array_Puzzle_1";
+            this.btn_Array_Puzzle_1.Size = new System.Drawing.Size(598, 40);
+            this.btn_Array_Puzzle_1.TabIndex = 25;
+            this.btn_Array_Puzzle_1.Text = "Array Puzzle 1";
+            this.btn_Array_Puzzle_1.UseVisualStyleBackColor = true;
+            this.btn_Array_Puzzle_1.Click += new System.EventHandler(this.btn_Array_Puzzle_1_Click);
+            // 
+            // btn_Robbing_a_home_3
+            // 
+            this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(634, 291);
+            this.btn_Robbing_a_home_3.Name = "btn_Robbing_a_home_3";
+            this.btn_Robbing_a_home_3.Size = new System.Drawing.Size(603, 45);
+            this.btn_Robbing_a_home_3.TabIndex = 26;
+            this.btn_Robbing_a_home_3.Text = "Robbing a home 3 (Binary Tree)";
+            this.btn_Robbing_a_home_3.UseVisualStyleBackColor = true;
+            this.btn_Robbing_a_home_3.Click += new System.EventHandler(this.btn_Robbing_a_home_3_Click);
+            // 
+            // btn_Arrange_Char_Array_R_G_B_In_Place
+            // 
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Location = new System.Drawing.Point(634, 390);
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Name = "btn_Arrange_Char_Array_R_G_B_In_Place";
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Size = new System.Drawing.Size(593, 45);
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.TabIndex = 27;
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Text = "Arrange Char Array R_G_B In Place";
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.UseVisualStyleBackColor = true;
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Click += new System.EventHandler(this.btn_Arrange_Char_Array_R_G_B_In_Place_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Arrange_Char_Array_R_G_B_In_Place);
+            this.Controls.Add(this.btn_Robbing_a_home_3);
+            this.Controls.Add(this.btn_Array_Puzzle_1);
             this.Controls.Add(this.btn_Robbing_a_home_2);
             this.Controls.Add(this.btn_Robbing_a_home_1);
             this.Controls.Add(this.btn_Find_all_the_integer_value_lies_in_a_array_till_N);
@@ -378,5 +414,8 @@
         private System.Windows.Forms.Button btn_Find_all_the_integer_value_lies_in_a_array_till_N;
         private System.Windows.Forms.Button btn_Robbing_a_home_2;
         private System.Windows.Forms.Button btn_Robbing_a_home_1;
+        private System.Windows.Forms.Button btn_Array_Puzzle_1;
+        private System.Windows.Forms.Button btn_Robbing_a_home_3;
+        private System.Windows.Forms.Button btn_Arrange_Char_Array_R_G_B_In_Place;
     }
 }

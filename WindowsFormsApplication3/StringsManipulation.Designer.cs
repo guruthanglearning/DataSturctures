@@ -66,7 +66,7 @@
             this.btn_Isomorphic_Strings = new System.Windows.Forms.Button();
             this.btn_Word_Break_cats_and_dogs = new System.Windows.Forms.Button();
             this.btn_Zig_Zag_String_in_n_Rows = new System.Windows.Forms.Button();
-            this.btn_Regular_Expression_Matching = new System.Windows.Forms.Button();
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -473,22 +473,22 @@
             this.btn_Zig_Zag_String_in_n_Rows.UseVisualStyleBackColor = true;
             this.btn_Zig_Zag_String_in_n_Rows.Click += new System.EventHandler(this.btn_Zig_Zag_String_in_n_Rows_Click);
             // 
-            // btn_Regular_Expression_Matching
+            // btn_Regular_Expression_Matching_With_Star_QuestionMark
             // 
-            this.btn_Regular_Expression_Matching.Location = new System.Drawing.Point(913, 406);
-            this.btn_Regular_Expression_Matching.Name = "btn_Regular_Expression_Matching";
-            this.btn_Regular_Expression_Matching.Size = new System.Drawing.Size(401, 38);
-            this.btn_Regular_Expression_Matching.TabIndex = 38;
-            this.btn_Regular_Expression_Matching.Text = "Regular Expression Matching";
-            this.btn_Regular_Expression_Matching.UseVisualStyleBackColor = true;
-            this.btn_Regular_Expression_Matching.Click += new System.EventHandler(this.btn_Regular_Expression_Matching_Click);
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Location = new System.Drawing.Point(913, 406);
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Name = "btn_Regular_Expression_Matching_With_Star_QuestionMark";
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Size = new System.Drawing.Size(401, 38);
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.TabIndex = 38;
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Text = "Regular Expression Matching With  * & ?";
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.UseVisualStyleBackColor = true;
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Click += new System.EventHandler(this.btn_Regular_Expression_Matching_Click);
             // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 779);
-            this.Controls.Add(this.btn_Regular_Expression_Matching);
+            this.Controls.Add(this.btn_Regular_Expression_Matching_With_Star_QuestionMark);
             this.Controls.Add(this.btn_Zig_Zag_String_in_n_Rows);
             this.Controls.Add(this.btn_Word_Break_cats_and_dogs);
             this.Controls.Add(this.btn_Isomorphic_Strings);
@@ -576,6 +576,6 @@
         private System.Windows.Forms.Button btn_Isomorphic_Strings;
         private System.Windows.Forms.Button btn_Word_Break_cats_and_dogs;
         private System.Windows.Forms.Button btn_Zig_Zag_String_in_n_Rows;
-        private System.Windows.Forms.Button btn_Regular_Expression_Matching;
+        private System.Windows.Forms.Button btn_Regular_Expression_Matching_With_Star_QuestionMark;
     }
 }

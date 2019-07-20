@@ -89,8 +89,6 @@ namespace WindowsFormsApplication3
             int arr1LastFilledIndex = this.GetLastFilledArrayIndex(arr1);
             int arr2Length = arr2.Length - 1;
 
-            
-
             while (true)
             {
                 if (arr2Length < 0)
@@ -265,17 +263,17 @@ namespace WindowsFormsApplication3
              
              */
 
-            while (incrementer <= input.Length - 1)
+            while (incrementer <= input.Length - 1) 
             {
                 // incrementer = 3 , sum = 10, reductionCost = 9
                 if (incrementer == 1)
                 {
-                    sum += input[incrementer];
+                    sum += input[incrementer]; 
                 }
                 else
                 {
-                    reductionCost += sum;
-                    sum += input[incrementer];
+                    reductionCost += sum; 
+                    sum += input[incrementer]; 
                 }
                 incrementer++;
             }
@@ -300,6 +298,7 @@ namespace WindowsFormsApplication3
             string before = Display(input);
             while (start < end)
             {
+                //s = 0 e = 9
                 if (input[start] == 0)
                 {
                     start++; 
@@ -356,10 +355,12 @@ namespace WindowsFormsApplication3
             for (int i = 0; i < input.Length; i++)
             {
                 temp = sum - input[i];
+
                 if (hashmap.Contains(temp))
                 {
                     builder.Append($"Pairs {temp},{input[i].ToString()}\n");
                 }
+
                 if (!hashmap.Contains(input[i]))
                 {
                     hashmap.Add(input[i]);
@@ -480,12 +481,22 @@ namespace WindowsFormsApplication3
                 a=7, b= 2
                 a=2, b=1
                 a=1, b=0
-            */
+            
             if (b == 0)
             {
                 return a;
             }
             return GCD(b, a % b);
+            */
+            int temp = 0;
+            while (b!=0)
+            {
+                temp = b;
+                b = a % b;
+                a = temp;
+            }
+
+            return a;
         }
 
         private void leftRotate(int[] arr, int d, int n)
@@ -508,23 +519,27 @@ namespace WindowsFormsApplication3
                          3     4   5   6   7   6   2    i = 0, j= 5, d = 2,  k = j + d = 7 (7-7 = 0, k = i break), temp = arr[i] = 1
                          3     4   5   6   7   6   2    i = 0, j= 5, d = 2,  k = j + d = 7 (7-7 = 0, k = i break), temp = arr[i] = 1
                */
-            for (i = 0; i < this.GCD(d, n); i++)
-            {
-               
-                temp = arr[i];
-                j = i;
-                while (1 != 0)
+
+                /* Instead of moving one by one, divide the array in different sets where number of sets is equal to GCD of n and d and move the elements within sets.             
+                   If GCD is 1 as is for the above example array(n = 7 and d = 2) */
+                int max = this.GCD(d, n);
+                for (i = 0; i < max; i++) 
                 {
-                    k = j + d;                    
-                    if (k >= n)
-                        k = k - n;
-                    if (k == i)
-                        break;
-                    arr[j] = arr[k];
-                    j = k;
+               
+                    temp = arr[i];
+                    j = i;
+                    while (1 != 0)
+                    {
+                        k = j + d;                    
+                        if (k >= n)
+                            k = k - n;
+                        if (k == i)
+                            break;
+                        arr[j] = arr[k];
+                        j = k;
+                    }
+                    arr[j] = temp;
                 }
-                arr[j] = temp;
-            }
         }
 
 
@@ -534,6 +549,8 @@ namespace WindowsFormsApplication3
             /* Time complexity: O(n)
                Auxiliary Space: O(1)
                https://www.geeksforgeeks.org/?p=2398
+               Input    : 1    2   3   4   5   6   7    Rotate by 2
+               Output   : 3    4   5   6   7   1   2
                Notes : Instead of getting GCD reverse the array from the below
                Step 1   : Input.Length-1 to 0 
                Step 2   : Input.Length-2 to Input.Length -1
@@ -625,8 +642,6 @@ namespace WindowsFormsApplication3
 
         public double findMedianSortedArrays(int[] A, int[] B)
         {
-
-            
             int m = A.Length;
             int n = B.Length;
             if (m > n)
@@ -651,6 +666,8 @@ namespace WindowsFormsApplication3
                     int[] nums2 = new int[] { 2, 3, 4, 5 };
                     
                     iMin = 0 Max = 2, halfLen = 3, i = 1, j = 2
+                    iMin = 1 (iMin +1) Max = 2, halfLen = 3, i = 1, j = 2
+                    iMin = 2 (iMin +1) Max = 2, halfLen = 3, i = 2, j = 1
                 */
 
                 int i = (iMin + iMax) / 2; 
@@ -665,7 +682,8 @@ namespace WindowsFormsApplication3
                     iMax = iMax - 1; // i is too big
                 }
                 else
-                { // i is perfect
+                {
+                    // i is perfect
                     int maxLeft = 0;
                     if (i == 0) //When array is empty
                     {
@@ -698,7 +716,7 @@ namespace WindowsFormsApplication3
                         minRight = Math.Min(B[j], A[i]);
                     }
 
-                    return (maxLeft + minRight) / 2.0; ;
+                    return (maxLeft + minRight) / 2.0;
                 }
             }
             return 0.0;
@@ -997,7 +1015,7 @@ namespace WindowsFormsApplication3
         // distribution array defined by freq[]. n is size of arrays.
         private int Get_Arbitrary_Probability_Distribution_Fashion(int[] arr, int[] freq, int n)
         {
-            // Create and fill prefix array
+            // Create and fill prefix arraywV730v(!W10x1106()
 
             /*
                 int[] arr = new int[] { 1, 2, 3 };
@@ -1010,10 +1028,13 @@ namespace WindowsFormsApplication3
                 prefix[i] = prefix[i - 1] + freq[i];
             }
 
+
             //https://msdn.microsoft.com/en-us/library/ctssatww(v=vs.110).aspx
             //By having different seed value to Random constructor which will leads to generate different set of random numbers for each run
             //Random random = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
-            Random random = new Random((int)DateTime.Now.Ticks);
+            //Random random = new Random((int)DateTime.Now.Ticks);
+            Random random = new Random();
+
 
             // prefix[n-1] is sum of all frequencies. Generate a random number
             // with value from 1 to this sum
@@ -1068,7 +1089,7 @@ namespace WindowsFormsApplication3
         {
             /*
                 Time Complexity     : O(n)
-                Space Complexity    : Since we are not using any addition memory even for swapping.
+                Space Complexity    : O(1)
                 input = 1   3   4   6   2    
             firstMin = -1, secondMin = 1
             */
@@ -1126,7 +1147,7 @@ namespace WindowsFormsApplication3
             {
                 lastIndexOfZero = 0;
                 var input = inputs[key];
-                           
+                
                 result.Append($"Before swap input array :  {Display(input)} \n");                
                 for (int i = 1; i < input.Length; i++)
                 {                    
@@ -1139,9 +1160,8 @@ namespace WindowsFormsApplication3
                     {
                         lastIndexOfZero++;
                     }
-
-
                 }
+
                 result.Append($"After swap input array: {Display(input)} \n");
             }
             
@@ -1202,12 +1222,13 @@ namespace WindowsFormsApplication3
         {
             //int[] input = new int[] { 1, 3, 4, 6, 7, 10, 4, 9};
             //int[] input = new int[] { 1, 3, 4};
-            int[] input = new int[] { 1, 4, 3 };
+            //int[] input = new int[] { 1, 4, 3 };
             //int[] input = new int[] { 4, 4 , 4};
             //int[] input = new int[] { 4};
             //int[] input = new int[] { };
-
-            int removeElement = 4;
+            //int[] input = new int[] { 3,2,2,3 }; //3
+            int[] input = new int[] {0,1,2,2,3,0,4,2};
+            int removeElement = 2;
             int index = -1;
             int i = 0;
             int arraySize = 0;
@@ -1217,7 +1238,7 @@ namespace WindowsFormsApplication3
                 {
                     index = i;
                 }
-                else if (index > 0 && input[i]!=removeElement)
+                else if (index >= 0 && input[i]!=removeElement)
                 {
                     input[index] = input[i];
                     index++;
@@ -1236,7 +1257,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_all_the_integer_value_lies_in_a_array_till_N_Click(object sender, EventArgs e)
         {
-            int[] input = new int[] { 1, 2, 3, 3 }; // new int[] { 1, 3, 4, 6, 7, 10, 4, 9 };
+            int[] input =  new int[] { 1, 3, 4, 6, 7, 10, 4, 9 }; //new int[] { 1, 2, 3, 3 }; //
             int x = 0;
             for(int i = 0; i<input.Length; i++)
             {
@@ -1260,7 +1281,8 @@ namespace WindowsFormsApplication3
                     return input[0];
                 }
 
-                firstOld = input[start];
+                // 6, 7, 1, 3, 8, 2, 4
+                firstOld = input[start];            
                 secondOld = Math.Max(firstOld, (end - start) >= 2 ? input[start + 1] : secondOld);
                 if (end <= 2)
                 {
@@ -1327,7 +1349,10 @@ namespace WindowsFormsApplication3
             inputs[5] = new int[] { 0, 1 };
             inputs[6] = new int[] { 0, 0 };
 
-
+            /*
+             Index  :   0   1   2   3   4   5   6
+             Input  :   6   7   1   3   8   2   4
+            */
 
             StringBuilder result = new StringBuilder();
             int zeroToN_1 = 0;
@@ -1338,6 +1363,140 @@ namespace WindowsFormsApplication3
                 oneToN = this.RobHouse(nums, 1, nums.Length);
                 result.AppendLine($"The zeroToN_1 is {zeroToN_1.ToString()} and oneToN {oneToN.ToString()} value robbed in this house {(nums.Length == 0 ? "Empty" : string.Join(",", nums)) } is {(Math.Max(zeroToN_1, oneToN).ToString())}");
             }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Array_Puzzle_1_Click(object sender, EventArgs e)
+        {
+            //https://www.geeksforgeeks.org/product-array-puzzle-set-2-o1-space/
+            StringBuilder result = new StringBuilder();
+            int[] input = new int[] {1, 2, 3, 4, 5 };
+            int n = input.Length;
+
+            int i, temp = 1;
+
+            /* Allocate memory for the product 
+            array */
+            int[] prod = new int[n];
+
+            /* Initialize the product array as 1 */
+            for (int j = 0; j < n; j++)
+                prod[j] = 1;
+
+            /* In this loop, temp variable contains 
+            product of elements on left side 
+            excluding arr[i] */
+            for (i = 0; i < n; i++)
+            {
+                /* 0 : 1  t : 1         input[0] = 1
+                   1 : 1  t : 2         input[1] = 2
+                   2 : 2  t : 6         input[2] = 3
+                   3 : 6  t : 24        input[3] = 4
+                   4 : 24 t : 120       input[4] = 5
+                */
+                prod[i] = temp;
+                temp *= input[i];
+            }
+
+            /* Initialize temp to 1 for product on  
+            right side */
+            temp = 1;
+
+            /* In this loop, temp variable contains 
+            product of elements on right side  
+            excluding arr[i] */
+            for (i = n - 1; i >= 0; i--)
+            {
+                /* 
+                    input
+                    0 : 1
+                    1 : 2
+                    2 : 3
+                    3 : 4
+                    4 : 5
+                
+
+                     p
+                     0 : 1  t : 1
+                     1 : 1  t : 2
+                     2 : 2  t : 6
+                     3 : 6  t : 24
+                     4 : 24 t : 120
+
+                     t : 1 
+                     4 : 24    t : 5  
+                     3 : 30    t : 20
+                     2 : 40    t : 60
+                     1 : 60    t : 120
+                     0 : 120   t : 120 
+               */
+
+                prod[i] *= temp;
+                temp *= input[i];
+            }
+
+            /* print the constructed prod array */
+            for (i = 0; i < n; i++)
+                result.Append(prod[i].ToString() + " ");
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Robbing_a_home_3_Click(object sender, EventArgs e)
+        {
+            //Refer LinkedListForm.cs;
+        }
+
+        private void btn_Arrange_Char_Array_R_G_B_In_Place_Click(object sender, EventArgs e)
+        {
+            char[] inputs = new char[] {'G','R','R','G','B','B', 'G' };
+
+            int l = 0;
+            int h = inputs.Length - 1;
+            int m = 0;
+            char t;
+            StringBuilder result = new StringBuilder();
+            result.Append("Input character array \nbefore arranging : " + string.Join(",", inputs));
+
+            while (m<=h) // l = 2, m = 5, h = 5
+            {
+
+                /*
+                        'G','R','R','G','B','B','G'
+                        'R','G','R','G','B','B','G'
+                        'R','R','G','G','B','B','G'
+                        'R','R','G','G','G','B','B'
+
+
+                 */
+                switch (inputs[m])
+                {
+                    case 'R':
+                        {
+                            t = inputs[m];
+                            inputs[m] = inputs[l];
+                            inputs[l] = t;
+                            l++;
+                            m++;
+                            break;
+                        }
+                    case 'G':
+                        {                           
+                            m++;
+                            break;
+                        }
+                    case 'B':
+                        {
+                            t = inputs[h];
+                            inputs[h] = inputs[m];
+                            inputs[m] = t;
+                            h--;
+                            break;
+                        }
+                }
+            }
+            result.Append("\nafter arranging : " + string.Join(",", inputs));
 
             MessageBox.Show(result.ToString());
         }

@@ -6,4 +6,10 @@ target = 4 find the index of 1 in the given array , output should be 1
 
 2.) Concurrent read with the commited value and exculsive writes with locks
 3.) Given input of string abc, generate the permutation like abc, acb, bac, bca, cab,cba etc
+4.) Example 1: Given nums = [3,2,2,3], val = 3,
+Your function should return length = 2, with the first two elements of nums being 2. It doesn't matter what you leave beyond the returned length.
+5.) Example 2: Given nums = [0,1,2,2,3,0,4,2], val = 2,
+Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.
+Note that the order of those five elements can be arbitrary.
+It doesn't matter what values are set beyond the returned length.
 
