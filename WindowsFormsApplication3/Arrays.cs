@@ -1515,7 +1515,7 @@ namespace WindowsFormsApplication3
             int missing = nums.Length;
             for (int i = 0; i < nums.Length; i++)
             {
-                if (nums[i] < 0)
+                if (nums[i] <= 0)
                 {
                     missing ^= i ^ 0;
                 }
