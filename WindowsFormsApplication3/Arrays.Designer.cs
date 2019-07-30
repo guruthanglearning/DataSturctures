@@ -56,6 +56,7 @@
             this.btn_Array_Puzzle_1 = new System.Windows.Forms.Button();
             this.btn_Robbing_a_home_3 = new System.Windows.Forms.Button();
             this.btn_Arrange_Char_Array_R_G_B_In_Place = new System.Windows.Forms.Button();
+            this.btn_Finding_Missing_Integer_from_the_given_array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -347,11 +348,22 @@
             this.btn_Arrange_Char_Array_R_G_B_In_Place.UseVisualStyleBackColor = true;
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Click += new System.EventHandler(this.btn_Arrange_Char_Array_R_G_B_In_Place_Click);
             // 
+            // btn_Finding_Missing_Integer_from_the_given_array
+            // 
+            this.btn_Finding_Missing_Integer_from_the_given_array.Location = new System.Drawing.Point(634, 441);
+            this.btn_Finding_Missing_Integer_from_the_given_array.Name = "btn_Finding_Missing_Integer_from_the_given_array";
+            this.btn_Finding_Missing_Integer_from_the_given_array.Size = new System.Drawing.Size(592, 41);
+            this.btn_Finding_Missing_Integer_from_the_given_array.TabIndex = 28;
+            this.btn_Finding_Missing_Integer_from_the_given_array.Text = "Finding Missing Integer from the given array";
+            this.btn_Finding_Missing_Integer_from_the_given_array.UseVisualStyleBackColor = true;
+            this.btn_Finding_Missing_Integer_from_the_given_array.Click += new System.EventHandler(this.btn_Finding_Missing_Integer_from_the_given_array_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Finding_Missing_Integer_from_the_given_array);
             this.Controls.Add(this.btn_Arrange_Char_Array_R_G_B_In_Place);
             this.Controls.Add(this.btn_Robbing_a_home_3);
             this.Controls.Add(this.btn_Array_Puzzle_1);
@@ -417,5 +429,6 @@
         private System.Windows.Forms.Button btn_Array_Puzzle_1;
         private System.Windows.Forms.Button btn_Robbing_a_home_3;
         private System.Windows.Forms.Button btn_Arrange_Char_Array_R_G_B_In_Place;
+        private System.Windows.Forms.Button btn_Finding_Missing_Integer_from_the_given_array;
     }
 }

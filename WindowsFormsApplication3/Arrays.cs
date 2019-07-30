@@ -1500,5 +1500,35 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
         }
+
+        private void btn_Finding_Missing_Integer_from_the_given_array_Click(object sender, EventArgs e)
+        {
+            /* This code will work only if you missing anyone number and if you have only one zero or one -negative number.
+             
+              Time Complexity is O(N) Linear time
+              Space Complexity is O(1)
+             */
+            int[] nums = new int[] { 5, 4, 3, 1, 0};
+
+
+
+            int missing = nums.Length;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] < 0)
+                {
+                    missing ^= i ^ 0;
+                }
+                else
+                {
+                    missing ^= i ^ nums[i];
+                }
+
+                
+            }
+            
+            MessageBox.Show($"Missing number is {missing.ToString()}");
+
+        }
     }
 }

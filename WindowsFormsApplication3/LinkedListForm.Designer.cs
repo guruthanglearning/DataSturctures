@@ -429,7 +429,7 @@
             // 
             // btnBinary_Tree_Is_BST
             // 
-            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(13, 678);
+            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(13, 681);
             this.btnBinary_Tree_Is_BST.Name = "btnBinary_Tree_Is_BST";
             this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(472, 42);
             this.btnBinary_Tree_Is_BST.TabIndex = 37;

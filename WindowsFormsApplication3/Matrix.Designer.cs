@@ -31,6 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix = new System.Windows.Forms.Button();
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix = new System.Windows.Forms.Button();
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -63,11 +64,22 @@
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.UseVisualStyleBackColor = true;
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Click += new System.EventHandler(this.btn_Find_the_largest_square_of_1_in_a_given_matrix_Click);
             // 
+            // btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table
+            // 
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Location = new System.Drawing.Point(2, 151);
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Name = "btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table";
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Size = new System.Drawing.Size(583, 39);
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.TabIndex = 21;
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Text = "Find No of times X occurance for NXN multiplication table";
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.UseVisualStyleBackColor = true;
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Click += new System.EventHandler(this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 425);
+            this.Controls.Add(this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table);
             this.Controls.Add(this.btn_Find_the_largest_square_of_1_in_a_given_matrix);
             this.Controls.Add(this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix);
             this.Controls.Add(this.button1);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix;
         private System.Windows.Forms.Button btn_Find_the_largest_square_of_1_in_a_given_matrix;
+        private System.Windows.Forms.Button btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table;
     }
 }

@@ -376,6 +376,11 @@ namespace WindowsFormsApplication3
             DisplayLinkList(LLNodeFirst);
             datas.Append("\n");
 
+            /*
+             1->3->5->7->9->11
+             1->2->4->6->8->10->12
+            */
+
             LinkList LLNodeSecond = null;
             LLNodeSecond = InsertLinkList(LLNodeSecond, 1);
             LLNodeSecond = InsertLinkList(LLNodeSecond, 2);
@@ -435,6 +440,10 @@ namespace WindowsFormsApplication3
 
         private LinkList Merge(LinkList first, LinkList second)
         {
+            /*
+             1->3->5->7->9->11
+             1->2->4->6->8->10->12
+            */
 
             LinkList p = first;
             LinkList q = second;
@@ -2073,7 +2082,15 @@ namespace WindowsFormsApplication3
         {
 
             string input = Guid.NewGuid().ToString("N");
-        
+
+            byte[] bytes = { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
+            Console.WriteLine("The byte array: ");
+            Console.WriteLine("   {0}\n", BitConverter.ToString(bytes));
+
+            // Convert the array to a base 64 string.
+            string s = Convert.ToBase64String(bytes);
+
+
             MessageBox.Show($" {input} and its length {input.Length.ToString()}");
 
         }
