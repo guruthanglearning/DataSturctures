@@ -71,6 +71,7 @@
             this.btn_Robbing_a_home_3 = new System.Windows.Forms.Button();
             this.btn_Merge_k_Sorted_LinkLists = new System.Windows.Forms.Button();
             this.btn_Searilzing_and_De_serialzing_Binary_Tree = new System.Windows.Forms.Button();
+            this.btn_Count_the_number_of_unival_subtrees = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -314,7 +315,7 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(1226, 788);
+            this.button24.Location = new System.Drawing.Point(731, 637);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(294, 35);
             this.button24.TabIndex = 26;
@@ -355,7 +356,7 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(1226, 835);
+            this.button28.Location = new System.Drawing.Point(1223, 788);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(303, 34);
             this.button28.TabIndex = 30;
@@ -439,7 +440,7 @@
             // 
             // btn_Clone_a_linked_list_with_next_and_random_pointer
             // 
-            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Location = new System.Drawing.Point(1226, 882);
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Location = new System.Drawing.Point(1223, 835);
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Name = "btn_Clone_a_linked_list_with_next_and_random_pointer";
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Size = new System.Drawing.Size(292, 59);
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.TabIndex = 38;
@@ -449,7 +450,7 @@
             // 
             // btn_Clone_a_linked_list_with_next_pointer
             // 
-            this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(1228, 956);
+            this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(1225, 909);
             this.btn_Clone_a_linked_list_with_next_pointer.Name = "btn_Clone_a_linked_list_with_next_pointer";
             this.btn_Clone_a_linked_list_with_next_pointer.Size = new System.Drawing.Size(290, 51);
             this.btn_Clone_a_linked_list_with_next_pointer.TabIndex = 39;
@@ -528,11 +529,22 @@
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.UseVisualStyleBackColor = true;
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.Click += new System.EventHandler(this.btn_Searilzing_and_De_serialzing_Binary_Tree_Click);
             // 
+            // btn_Count_the_number_of_unival_subtrees
+            // 
+            this.btn_Count_the_number_of_unival_subtrees.Location = new System.Drawing.Point(12, 943);
+            this.btn_Count_the_number_of_unival_subtrees.Name = "btn_Count_the_number_of_unival_subtrees";
+            this.btn_Count_the_number_of_unival_subtrees.Size = new System.Drawing.Size(471, 44);
+            this.btn_Count_the_number_of_unival_subtrees.TabIndex = 47;
+            this.btn_Count_the_number_of_unival_subtrees.Text = "Count the number of unival subtrees";
+            this.btn_Count_the_number_of_unival_subtrees.UseVisualStyleBackColor = true;
+            this.btn_Count_the_number_of_unival_subtrees.Click += new System.EventHandler(this.btn_Count_the_number_of_unival_subtrees_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1028);
+            this.Controls.Add(this.btn_Count_the_number_of_unival_subtrees);
             this.Controls.Add(this.btn_Searilzing_and_De_serialzing_Binary_Tree);
             this.Controls.Add(this.btn_Merge_k_Sorted_LinkLists);
             this.Controls.Add(this.btn_Robbing_a_home_3);
@@ -630,5 +642,6 @@
         private System.Windows.Forms.Button btn_Robbing_a_home_3;
         private System.Windows.Forms.Button btn_Merge_k_Sorted_LinkLists;
         private System.Windows.Forms.Button btn_Searilzing_and_De_serialzing_Binary_Tree;
+        private System.Windows.Forms.Button btn_Count_the_number_of_unival_subtrees;
     }
 }

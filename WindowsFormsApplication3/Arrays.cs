@@ -685,11 +685,11 @@ namespace WindowsFormsApplication3
                 {
                     // i is perfect
                     int maxLeft = 0;
-                    if (i == 0) //When array is empty
+                    if (i == 0) //When A array is empty
                     {
                         maxLeft = B[j - 1];
                     }
-                    else if (j == 0) //When array is empty
+                    else if (j == 0) //When B array is empty
                     {
                         maxLeft = A[i - 1];
                     }
@@ -703,11 +703,11 @@ namespace WindowsFormsApplication3
                     }
 
                     int minRight = 0;
-                    if (i == m) //When array is empty
+                    if (i == m) //When A array is empty
                     {
                         minRight = B[j];
                     }
-                    else if (j == n) //When array is empty
+                    else if (j == n) //When B array is empty
                     {
                         minRight = A[i];
                     }
@@ -1528,6 +1528,54 @@ namespace WindowsFormsApplication3
             }
             
             MessageBox.Show($"Missing number is {missing.ToString()}");
+
+        }
+
+        private void btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z_Click(object sender, EventArgs e)
+        {
+            /*
+                Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+                For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
+
+                Time Complexity  : O(n)
+                Space Complexity : O(1)
+            */
+
+            int[] input = new int[] { 1,2,3 };
+            
+            int first = 1;
+            int second = 1;
+            int third = 0;
+
+            if (input.Length > 0)
+            {
+                if (input.Length == 1)
+                {
+                    third = 1;
+                }
+
+                for(int i = 2; i<= input.Length; i++)
+                {
+
+                    if (input[i-1] > 0)
+                    {
+                        third = second;
+                    }
+
+                    if ((input[i-2]  == 1) || (input[i-2] == 2 && input[i - 1] < 7))
+                    {
+                        third += first;
+                        first = second;
+                        second = third;
+                    }
+                }
+
+                MessageBox.Show($"We can decode {third} times for the given int array { string.Join(",", input)}");
+
+
+
+
+            }
 
         }
     }

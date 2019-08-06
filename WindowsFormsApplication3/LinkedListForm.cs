@@ -1869,9 +1869,17 @@ namespace WindowsFormsApplication3
 
         private void button26_Click(object sender, EventArgs e)
         {
-            //http://www.geeksforgeeks.org/merge-two-sorted-linked-lists-such-that-merged-list-is-in-reverse-order/
-            //Time Complexity =  O(n+m) where n and m are the nodes in LinkList1 and LinkList2
-            //Space Complexity = O(1) since traversing element has to stored one at a time 
+            /* 
+                http://www.geeksforgeeks.org/merge-two-sorted-linked-lists-such-that-merged-list-is-in-reverse-order/
+                Time Complexity =  O(n+m) where n and m are the nodes in LinkList1 and LinkList2
+                Space Complexity = O(1) since traversing element has to stored one at a time 
+
+                Input:  a: 5->10->15->40
+                        b: 2->3->20 
+                Output: res: 40->20->15->10->5->3->2
+            */
+
+
             LinkList LLNodeFirst = null;
             LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
             LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
@@ -2081,17 +2089,20 @@ namespace WindowsFormsApplication3
         private void button30_Click(object sender, EventArgs e)
         {
 
-            string input = Guid.NewGuid().ToString("N");
 
-            byte[] bytes = { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
-            Console.WriteLine("The byte array: ");
-            Console.WriteLine("   {0}\n", BitConverter.ToString(bytes));
+
+
 
             // Convert the array to a base 64 string.
-            string s = Convert.ToBase64String(bytes);
+            //string m = "dfsdfsdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfdsf";
+            string s = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+            System.Text.RegularExpressions.Regex rgx = new Regex("[^a-zA-Z0-9]");
+            s = rgx.Replace(s, "");
 
 
-            MessageBox.Show($" {input} and its length {input.Length.ToString()}");
+
+
+             MessageBox.Show($"{s} length {s.Length.ToString()}");
 
         }
 
@@ -2784,8 +2795,6 @@ namespace WindowsFormsApplication3
 
             // Time Complexity    :O(n)
             // Space Complexity   :O(n)            
-
-
 
             Dictionary<LinkList, LinkList> storage = new Dictionary<LinkList, LinkList>();
             LinkList original = LLNodeFirst;
@@ -3600,6 +3609,69 @@ namespace WindowsFormsApplication3
             return result;
         }
 
+        private void btn_Count_the_number_of_unival_subtrees_Click(object sender, EventArgs e)
+        {
+            /*
+             A unival tree (which stands for "universal value") is a tree where all nodes under it have the same value.
+             Given the root to a binary tree, count the number of unival subtrees.
+
+             For example, the following tree has 5 unival subtrees:
+
+                                    0
+                                   / \
+                                  1   0
+                                     / \
+                                    1   0
+                                   / \
+                                  1   1
+             */
+
+            string msg = @"  
+                                    0
+                                   / \
+                                     0
+                                     / \
+                                    1   
+                                   / \
+                                  1   1";
+
+
+            Node root = new Node() { data = 0 };
+            //root.left = new Node() { data = 1 };
+            root.right = new Node() { data = 0 };
+            root.right.left = new Node() { data = 1 };
+            //root.right.right = new Node() { data = 0 };
+            root.right.left.left = new Node() { data = 1 };
+            root.right.left.right = new Node() { data = 1 };
+
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(root);
+            Node temp = null;
+            int counter = 0;
+            while(queue.Count >0)
+            {
+                temp = queue.Dequeue();
+                if (temp!=null)
+                {
+                    if ((temp.left != null && temp.right != null && temp.data == temp.left.data && temp.left.data == temp.right.data) ||
+                        (temp.left == null && temp.right==null))
+                    {
+                        counter++;
+                    }
+                }
+                
+                if (temp.left!=null)
+                {
+                    queue.Enqueue(temp.left);
+                }
+                if (temp.right != null)
+                {
+                    queue.Enqueue(temp.right);
+                }
+            }
+
+            MessageBox.Show($"Number of unival subtree in a given tree \n {msg} is \n {counter} ");
+        }
     }
 
     class Graph
