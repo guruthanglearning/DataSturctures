@@ -3672,6 +3672,104 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show($"Number of unival subtree in a given tree \n {msg} is \n {counter} ");
         }
+
+        private void btn_Find_the_Deepest_Node_in_a_Binary_Tree_Click(object sender, EventArgs e)
+        {
+
+         /*
+                                                   10
+                                                /      \
+                                               /        \
+                                              /          \
+                                             /            \                           
+                                            /              \
+                                           5               20
+                                         /  \             / \
+                                        /    \           /   \  
+                                       /      \         /     \
+                                      3        8       15     22 
+                                     / \      / \ 
+                                    /   \    /   \
+                                   1    4    6    9
+                                    \
+                                     \
+                                      2
+         */
+
+            Node tree = null;
+            Insert(10, ref tree);
+            Insert(5, ref tree);
+            Insert(20, ref tree);
+            Insert(3, ref tree);
+            Insert(8, ref tree);
+            Insert(6, ref tree);
+            Insert(15, ref tree);
+            Insert(22, ref tree);
+            Insert(1, ref tree);
+            Insert(2, ref tree);
+            Insert(4, ref tree);
+            Insert(9, ref tree);
+
+            
+            int maxLevel = -1;
+
+            Node result = this.FindDeepestNode(tree, -1, ref maxLevel);
+            MessageBox.Show($"Deepest node in a given binary tree is {result.data.ToString()}");
+
+        }
+
+        public Node FindDeepestNode(Node root, int level, ref int maxLevel)
+        {
+
+            /*
+                                                      10
+                                                   /      \
+                                                  /        \
+                                                 /          \
+                                                /            \                           
+                                               /              \
+                                              5               20
+                                            /  \             / \
+                                           /    \           /   \  
+                                          /      \         /     \
+                                         3        8       15     22 
+                                        / \      / \ 
+                                       /   \    /   \
+                                      1    4    6    9
+                                       \
+                                        \
+                                         2
+            */
+            Node result = null;
+            Node temp = null;
+            if (root == null)
+            {
+                return null;
+            }
+
+            ++level;
+            temp = this.FindDeepestNode(root.left, level, ref maxLevel);
+            if (level > maxLevel && temp == null)
+            {
+                maxLevel = level;
+                result = root;
+            }
+            else if (temp!=null)
+            {
+                result = temp;
+            }
+
+
+            temp = this.FindDeepestNode(root.right, level, ref maxLevel);
+            if (temp != null)
+            {
+                result = temp;
+            }
+
+            return result;
+
+        }
+
     }
 
     class Graph
@@ -3680,7 +3778,7 @@ namespace WindowsFormsApplication3
         public List<Graph> next;
     }
 
-    class Node
+    public class Node
     {
         public int data;
         public Node right;

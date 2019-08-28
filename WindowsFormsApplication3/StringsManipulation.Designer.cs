@@ -67,6 +67,8 @@
             this.btn_Word_Break_cats_and_dogs = new System.Windows.Forms.Button();
             this.btn_Zig_Zag_String_in_n_Rows = new System.Windows.Forms.Button();
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark = new System.Windows.Forms.Button();
+            this.btn_Implement_Auto_Complete = new System.Windows.Forms.Button();
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -396,7 +398,7 @@
             // 
             this.btn_First_Non_Occuring_Character.Location = new System.Drawing.Point(910, 102);
             this.btn_First_Non_Occuring_Character.Name = "btn_First_Non_Occuring_Character";
-            this.btn_First_Non_Occuring_Character.Size = new System.Drawing.Size(412, 35);
+            this.btn_First_Non_Occuring_Character.Size = new System.Drawing.Size(464, 35);
             this.btn_First_Non_Occuring_Character.TabIndex = 30;
             this.btn_First_Non_Occuring_Character.Text = "First Non Occuring Character";
             this.btn_First_Non_Occuring_Character.UseVisualStyleBackColor = true;
@@ -406,7 +408,7 @@
             // 
             this.btn_Find_max_space_substring_with_in_a_string_.Location = new System.Drawing.Point(910, 148);
             this.btn_Find_max_space_substring_with_in_a_string_.Name = "btn_Find_max_space_substring_with_in_a_string_";
-            this.btn_Find_max_space_substring_with_in_a_string_.Size = new System.Drawing.Size(412, 31);
+            this.btn_Find_max_space_substring_with_in_a_string_.Size = new System.Drawing.Size(464, 31);
             this.btn_Find_max_space_substring_with_in_a_string_.TabIndex = 31;
             this.btn_Find_max_space_substring_with_in_a_string_.Text = "Find max space substring with in a string ";
             this.btn_Find_max_space_substring_with_in_a_string_.UseVisualStyleBackColor = true;
@@ -427,7 +429,7 @@
             // 
             this.btn_Reverse_the_string_word_by_word.Location = new System.Drawing.Point(909, 185);
             this.btn_Reverse_the_string_word_by_word.Name = "btn_Reverse_the_string_word_by_word";
-            this.btn_Reverse_the_string_word_by_word.Size = new System.Drawing.Size(413, 34);
+            this.btn_Reverse_the_string_word_by_word.Size = new System.Drawing.Size(465, 34);
             this.btn_Reverse_the_string_word_by_word.TabIndex = 33;
             this.btn_Reverse_the_string_word_by_word.Text = "Reverse the string word by word";
             this.btn_Reverse_the_string_word_by_word.UseVisualStyleBackColor = true;
@@ -437,7 +439,7 @@
             // 
             this.btn_Evaluate_Reverse_Polish_Notation.Location = new System.Drawing.Point(909, 232);
             this.btn_Evaluate_Reverse_Polish_Notation.Name = "btn_Evaluate_Reverse_Polish_Notation";
-            this.btn_Evaluate_Reverse_Polish_Notation.Size = new System.Drawing.Size(413, 37);
+            this.btn_Evaluate_Reverse_Polish_Notation.Size = new System.Drawing.Size(465, 37);
             this.btn_Evaluate_Reverse_Polish_Notation.TabIndex = 34;
             this.btn_Evaluate_Reverse_Polish_Notation.Text = "Evaluate Reverse Polish Notation";
             this.btn_Evaluate_Reverse_Polish_Notation.UseVisualStyleBackColor = true;
@@ -447,7 +449,7 @@
             // 
             this.btn_Isomorphic_Strings.Location = new System.Drawing.Point(914, 278);
             this.btn_Isomorphic_Strings.Name = "btn_Isomorphic_Strings";
-            this.btn_Isomorphic_Strings.Size = new System.Drawing.Size(408, 34);
+            this.btn_Isomorphic_Strings.Size = new System.Drawing.Size(460, 34);
             this.btn_Isomorphic_Strings.TabIndex = 35;
             this.btn_Isomorphic_Strings.Text = "Isomorphic Strings";
             this.btn_Isomorphic_Strings.UseVisualStyleBackColor = true;
@@ -457,7 +459,7 @@
             // 
             this.btn_Word_Break_cats_and_dogs.Location = new System.Drawing.Point(913, 323);
             this.btn_Word_Break_cats_and_dogs.Name = "btn_Word_Break_cats_and_dogs";
-            this.btn_Word_Break_cats_and_dogs.Size = new System.Drawing.Size(408, 31);
+            this.btn_Word_Break_cats_and_dogs.Size = new System.Drawing.Size(460, 31);
             this.btn_Word_Break_cats_and_dogs.TabIndex = 36;
             this.btn_Word_Break_cats_and_dogs.Text = "Word Break - catsanddays with \"cats\", \"dogs\", \"and\", \"cat\", \"cats\"";
             this.btn_Word_Break_cats_and_dogs.UseVisualStyleBackColor = true;
@@ -467,7 +469,7 @@
             // 
             this.btn_Zig_Zag_String_in_n_Rows.Location = new System.Drawing.Point(914, 364);
             this.btn_Zig_Zag_String_in_n_Rows.Name = "btn_Zig_Zag_String_in_n_Rows";
-            this.btn_Zig_Zag_String_in_n_Rows.Size = new System.Drawing.Size(406, 35);
+            this.btn_Zig_Zag_String_in_n_Rows.Size = new System.Drawing.Size(458, 35);
             this.btn_Zig_Zag_String_in_n_Rows.TabIndex = 37;
             this.btn_Zig_Zag_String_in_n_Rows.Text = "Zig-Zag String in n Rows";
             this.btn_Zig_Zag_String_in_n_Rows.UseVisualStyleBackColor = true;
@@ -477,17 +479,39 @@
             // 
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Location = new System.Drawing.Point(913, 406);
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Name = "btn_Regular_Expression_Matching_With_Star_QuestionMark";
-            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Size = new System.Drawing.Size(401, 38);
+            this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Size = new System.Drawing.Size(459, 38);
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark.TabIndex = 38;
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Text = "Regular Expression Matching With  * & ?";
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark.UseVisualStyleBackColor = true;
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark.Click += new System.EventHandler(this.btn_Regular_Expression_Matching_Click);
             // 
+            // btn_Implement_Auto_Complete
+            // 
+            this.btn_Implement_Auto_Complete.Location = new System.Drawing.Point(913, 449);
+            this.btn_Implement_Auto_Complete.Name = "btn_Implement_Auto_Complete";
+            this.btn_Implement_Auto_Complete.Size = new System.Drawing.Size(455, 37);
+            this.btn_Implement_Auto_Complete.TabIndex = 39;
+            this.btn_Implement_Auto_Complete.Text = "Implement Auto Complete";
+            this.btn_Implement_Auto_Complete.UseVisualStyleBackColor = true;
+            this.btn_Implement_Auto_Complete.Click += new System.EventHandler(this.btn_Implement_Auto_Complete_Click);
+            // 
+            // btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string
+            // 
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.Location = new System.Drawing.Point(913, 494);
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.Name = "btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string";
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.Size = new System.Drawing.Size(455, 49);
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.TabIndex = 40;
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.Text = "Find the longest substring with k unique characters in a given string";
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.UseVisualStyleBackColor = true;
+            this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.Click += new System.EventHandler(this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1334, 779);
+            this.ClientSize = new System.Drawing.Size(1720, 779);
+            this.Controls.Add(this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string);
+            this.Controls.Add(this.btn_Implement_Auto_Complete);
             this.Controls.Add(this.btn_Regular_Expression_Matching_With_Star_QuestionMark);
             this.Controls.Add(this.btn_Zig_Zag_String_in_n_Rows);
             this.Controls.Add(this.btn_Word_Break_cats_and_dogs);
@@ -577,5 +601,7 @@
         private System.Windows.Forms.Button btn_Word_Break_cats_and_dogs;
         private System.Windows.Forms.Button btn_Zig_Zag_String_in_n_Rows;
         private System.Windows.Forms.Button btn_Regular_Expression_Matching_With_Star_QuestionMark;
+        private System.Windows.Forms.Button btn_Implement_Auto_Complete;
+        private System.Windows.Forms.Button btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string;
     }
 }

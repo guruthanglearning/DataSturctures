@@ -122,7 +122,7 @@ namespace WindowsFormsApplication3
                                             { -4, -3, -2, -1 }, 
                                             { -11, 4, 3, 2 }
                                         };
-
+            
             int count = 0;
             int startRow = 0; //starting row
             int column = matrix.GetLength(0); //max columns
@@ -150,7 +150,7 @@ namespace WindowsFormsApplication3
         {
             /*
                Time Complexity is O(n*m) 
-               Space Complexity is 4 X 4
+               Space Complexity is  O(n*m) 
 
             */
 
@@ -203,7 +203,7 @@ namespace WindowsFormsApplication3
              */
 
             int input = 6;
-            int x = 39;
+            int x = 12;
             int result = 0;
 
             if (input > 0 && x > 0)

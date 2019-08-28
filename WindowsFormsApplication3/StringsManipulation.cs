@@ -15,6 +15,7 @@ namespace WindowsFormsApplication3
         private int elementLevel = -1;
         private int numberOfElements;
         private int[] permutationValue = new int[0];
+        private static int atoz = 126;
 
         private char[] inputSet;
         public char[] InputSet
@@ -487,7 +488,7 @@ namespace WindowsFormsApplication3
 
             builder.Append("\n \n");
 
-            int left = 0, right = columnSize, top = 0, down = rowSize, i, j;            
+            int left = 0, right = columnSize, top = 0, down = rowSize, i, j;
             while (true)
             {
 
@@ -495,7 +496,7 @@ namespace WindowsFormsApplication3
                 {
                     builder.Append(matrix[top, j].ToString() + " , ");
                 }
-                
+
                 top++;
                 if (left > right - 1 || top > down - 1)
                 {
@@ -607,11 +608,11 @@ namespace WindowsFormsApplication3
                     break;
                 }
 
-                if (incr%10 > 0)
+                if (incr % 10 > 0)
                 {
                     data.Append(incr.ToString() + ",");
                 }
-               
+
             }
 
             MessageBox.Show(data.ToString());
@@ -622,16 +623,16 @@ namespace WindowsFormsApplication3
         {
             StringBuilder data = new StringBuilder();
             //int[] arraydata = new int[] { 1, 2, 2, 1, 1, 1, 3, 4, 5, 5, 5 };
-            int[] arraydata = new int[] { 1, 2, 3, 4, 5, 5};
+            int[] arraydata = new int[] { 1, 2, 3, 4, 5, 5 };
             int start = 0;
             int end = start + 1;
             int length = arraydata.Length;
-            
+
             while (end < length)
             {
-                if (arraydata[start] != arraydata[end])                
+                if (arraydata[start] != arraydata[end])
                 {
-                    arraydata[++start] = arraydata[end];                    
+                    arraydata[++start] = arraydata[end];
                 }
                 end++;
             }
@@ -717,7 +718,7 @@ namespace WindowsFormsApplication3
 
         private void button16_Click(object sender, EventArgs e)
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 4, 3 };            
+            int[] array = new int[] { 1, 2, 3, 4, 5, 4, 3 };
             StringBuilder result = new StringBuilder();
             int checker = 0;
 
@@ -725,13 +726,13 @@ namespace WindowsFormsApplication3
             {
                 int val = array[i];
 
-                if ((checker & (1<<val)) > 0)
+                if ((checker & (1 << val)) > 0)
                 {
                     result.Append(array[i].ToString() + ",");
                 }
-                checker |= (1 << val);              
+                checker |= (1 << val);
             }
-           
+
             MessageBox.Show($"Duplicate element in array is {result}");
 
 
@@ -863,7 +864,7 @@ namespace WindowsFormsApplication3
 
 
         // Given a list of m words, I’d like to query for the nth most frequent word(s). (e.g. Given 1000 words, tell me 
-       
+
 
         private void btnLength_Of_Longest_Substring_Without_Repeating_Characters_Click(object sender, EventArgs e)
         {
@@ -884,7 +885,7 @@ namespace WindowsFormsApplication3
 
         public int lengthOfLongestSubstring(String s)
         {
-           
+
             int n = s.Length, ans = 0;
             //using dictionary
 
@@ -908,9 +909,9 @@ namespace WindowsFormsApplication3
             {
                 if (index.ContainsKey(s[j]))
                 {
-                    i = Math.Max(index[s[j]],i);
+                    i = Math.Max(index[s[j]], i);
                 }
-                
+
                 ans = Math.Max(ans, j - i + 1);
                 index[s[j]] = j + 1;
             }
@@ -1062,13 +1063,13 @@ namespace WindowsFormsApplication3
                 return null;
             }
 
-            Dictionary<string, int> wordCount = new Dictionary<string, int>();            
-            string maxword = string.Empty;                        
+            Dictionary<string, int> wordCount = new Dictionary<string, int>();
+            string maxword = string.Empty;
             foreach (string word in words)
             {
                 if (wordCount.ContainsKey(word))
                 {
-                    wordCount[word]++;                    
+                    wordCount[word]++;
                 }
                 else
                 {
@@ -1106,7 +1107,7 @@ namespace WindowsFormsApplication3
 
             int intValue = 0;
             bool isNegative = false;
-            bool isResultAssigned = false;            
+            bool isResultAssigned = false;
             long result = 0;
             int continousplusMinus = 0;
 
@@ -1129,7 +1130,7 @@ namespace WindowsFormsApplication3
                     {
                         result = 0;
                         break;
-                    }                    
+                    }
                     if (isResultAssigned && !(c >= 48 && c <= 57)) // ascii for 0 is 48 and 9 is 57
                     {
                         break;
@@ -1186,7 +1187,7 @@ namespace WindowsFormsApplication3
                 if (isNegative)
                 {
                     result = result * -1;
-                }                
+                }
 
                 outputs.Append($"{str} is {((int)result).ToString()} \n");
             }
@@ -1214,7 +1215,7 @@ namespace WindowsFormsApplication3
                     current = 1;
                 }
                 else
-                {                    
+                {
                     if (current < 0)
                     {
                         current *= -1;
@@ -1225,20 +1226,20 @@ namespace WindowsFormsApplication3
                     previous = current;
                     current = current + temp;
                     if (isNegativeInput)
-                    {                            
-                        if (i %2 == 0)
+                    {
+                        if (i % 2 == 0)
                         {
                             current *= -1;
                         }
                     }
                 }
             }
-            
+
 
             MessageBox.Show($"Fibonacci Series of {textBox1.Text} : {current.ToString()}");
         }
 
-        private int GetPalindromes(string input, int start, int end )
+        private int GetPalindromes(string input, int start, int end)
         {
             // Base Case 1: If there is only 1 character
             if (start == end)
@@ -1266,7 +1267,7 @@ namespace WindowsFormsApplication3
             //http://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/
             // Time Complexity : O(n^2)
             string input = "GEEKSFORGEEKS";
-            MessageBox.Show($"Max Palondrom sequence {this.GetPalindromes(input,0, input.Length-1)}");
+            MessageBox.Show($"Max Palondrom sequence {this.GetPalindromes(input, 0, input.Length - 1)}");
         }
 
         public int longestPalindromeSubstringEasy(string input)
@@ -1276,7 +1277,7 @@ namespace WindowsFormsApplication3
 
             int x, y;
             int palindrome;
-            
+
             for (int i = 0; i < input.Length; i++)
             {
                 x = i;
@@ -1358,13 +1359,13 @@ namespace WindowsFormsApplication3
                     }
                 }
             }
-            MessageBox.Show(previousCharIndex >=0 ? $"Homogenous continous character is {input[previousCharIndex].ToString()} and count is {previousCharCount.ToString()}" : "No character exists in continous homogenous.");            
+            MessageBox.Show(previousCharIndex >= 0 ? $"Homogenous continous character is {input[previousCharIndex].ToString()} and count is {previousCharCount.ToString()}" : "No character exists in continous homogenous.");
         }
 
         private Dictionary<char, int> GetCharIndexesInAGivenString(string input)
         {
             var result = new Dictionary<char, int>();
-            for(int i = 0; i<input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
 
                 if (!result.ContainsKey(input[i]))
@@ -1381,15 +1382,15 @@ namespace WindowsFormsApplication3
 
         private void btn_First_Recurring_character_Click(object sender, EventArgs e)
         {
-             /*
-               Time Complexity is O(n)
-               Space Complexity is O(1)
-             */
+            /*
+              Time Complexity is O(n)
+              Space Complexity is O(1)
+            */
 
             //string input = "ABCDEFBACBAC";
             string input = "DBCAAB";
             var result = this.GetCharIndexesInAGivenString(input);
-            
+
             foreach (char c in input)
             {
                 if (result[c] == -1)
@@ -1400,7 +1401,7 @@ namespace WindowsFormsApplication3
             }
 
 
-            
+
         }
 
         private void btn_First_Non_Occuring_Character_Click(object sender, EventArgs e)
@@ -1416,8 +1417,8 @@ namespace WindowsFormsApplication3
             foreach (char c in input)
             {
                 if (result[c] != -1)
-                {                    
-                    if (index == -1 && result[c] ==0)
+                {
+                    if (index == -1 && result[c] == 0)
                     {
                         index = 0;
                     }
@@ -1448,7 +1449,7 @@ namespace WindowsFormsApplication3
             }
             /* "ab  tf   xy j1234" */
             int previous = 0;
-            int current = 0;            
+            int current = 0;
             for (int i = 0; i < input.Length; i++)
             {
                 if (input[i] == ' ')
@@ -1493,26 +1494,26 @@ namespace WindowsFormsApplication3
             // string input = " ";
             // string input = "    ";
             // string input = "au";
-             //string input = "   a u";
+            //string input = "   a u";
             //string input = "dvdf";
             //string input = "pwwkew";
-            string input = textBox1.Text;           
-            int start = 0;            
+            string input = textBox1.Text;
+            int start = 0;
             string previousString = string.Empty;
 
-            if (input.Length <= 1 )
+            if (input.Length <= 1)
             {
                 previousString = input;
             }
             else
-            {                 
+            {
                 int i;
                 int pos = -1;
-                for(i = 1; i<input.Length; i++) //pwwkew i =5
+                for (i = 1; i < input.Length; i++) //pwwkew i =5
                 {
-                    pos = input.IndexOf(input[i],start, (i - start));
+                    pos = input.IndexOf(input[i], start, (i - start));
                     if (pos > -1)
-                    {                       
+                    {
                         if (previousString.Length < input.Substring(start, i - start).Length)
                         {
                             previousString = input.Substring(start, i - start);
@@ -1524,9 +1525,9 @@ namespace WindowsFormsApplication3
                 if (previousString.Length < input.Substring(start, i - start).Length)
                 {
                     previousString = input.Substring(start, i - start);
-                }              
+                }
             }
-           
+
             MessageBox.Show($"Longest Substring of an given string {input}  is {previousString}");
 
         }
@@ -1583,14 +1584,14 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    switch(c)
+                    switch (c)
                     {
                         case '+':
-                        {
-                            result = int.Parse(expressions.Pop()) + int.Parse(expressions.Pop());
+                            {
+                                result = int.Parse(expressions.Pop()) + int.Parse(expressions.Pop());
                                 expressions.Push(result.ToString());
-                           break;
-                        }
+                                break;
+                            }
                         case '-':
                             {
                                 result = int.Parse(expressions.Pop()) - int.Parse(expressions.Pop());
@@ -1633,31 +1634,31 @@ namespace WindowsFormsApplication3
             char char1;
             char char2;
             bool isIsomorphic = true;
-            
+
             if (!(string.IsNullOrEmpty(input1) || string.IsNullOrEmpty(input2) || input1.Length != input2.Length))
-            {                
-                for (int i = 0; i < input1.Length; i ++)
+            {
+                for (int i = 0; i < input1.Length; i++)
                 {
                     char1 = input1[i];
                     char2 = input2[i];
-                   if (storage.ContainsKey(char1))
-                   {
+                    if (storage.ContainsKey(char1))
+                    {
                         if (storage[char1] != char2)
                         {
                             isIsomorphic = false;
                             break;
                         }
                     }
-                   else
+                    else
                     {
                         if (storage.ContainsValue(char2))
                         {
                             isIsomorphic = false;
-                        }                       
+                        }
                         storage[char1] = char2;
                     }
                 }
-             }
+            }
             else
             {
                 isIsomorphic = false;
@@ -1693,11 +1694,11 @@ namespace WindowsFormsApplication3
             List<string>[] pos = new List<string>[input.Length];
             pos[0] = new List<string>();
             string subString = string.Empty;
-            for(int i = 0; i<input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
-                for(int j=i+1;j<input.Length; j++)
+                for (int j = i + 1; j < input.Length; j++)
                 {
-                    subString = input.Substring(i,  (j-i)+1);
+                    subString = input.Substring(i, (j - i) + 1);
                     if (dictionary.Contains(subString))
                     {
                         if (pos[j] == null)
@@ -1712,17 +1713,17 @@ namespace WindowsFormsApplication3
                     }
                 }
             }
-            
-            if (pos[input.Length-1] == null)
+
+            if (pos[input.Length - 1] == null)
             {
                 MessageBox.Show($"No sentence avialable for this input {input} ");
             }
             else
             {
                 List<string> result = new List<string>();
-                dfs(pos, result, "", input.Length-1);
+                dfs(pos, result, "", input.Length - 1);
                 StringBuilder outputs = new StringBuilder();
-                foreach(string str in result)
+                foreach (string str in result)
                 {
                     outputs.Append(str + "\n");
                 }
@@ -1730,7 +1731,7 @@ namespace WindowsFormsApplication3
                 MessageBox.Show($"The list of words from the given input {input} is \n {outputs.ToString()}");
             }
 
-            
+
         }
 
         public void dfs(List<String>[] pos, List<String> result, String curr, int i)
@@ -1740,7 +1741,7 @@ namespace WindowsFormsApplication3
                 result.Add(curr.Trim());
                 return;
             }
-          
+
             foreach (String s in pos[i])
             {
                 String combined = s + " " + curr;
@@ -1802,10 +1803,10 @@ namespace WindowsFormsApplication3
             Dictionary<string, int> inputs = new Dictionary<string, int>();
             inputs.Add("PAYPALISHIRING", 4);
             //inputs.Add("PAYPALISHIRING", 3);
-            inputs.Add("ABC",1);
+            inputs.Add("ABC", 1);
             StringBuilder result = new StringBuilder();
             foreach (string key in inputs.Keys)
-            {                
+            {
 
                 int numRows = inputs[key];
                 string s = key;
@@ -1844,7 +1845,7 @@ namespace WindowsFormsApplication3
                 {
                     result.AppendLine($"Zig Zag of {s} is {s}");
                 }
-                
+
             }
             MessageBox.Show(result.ToString());
 
@@ -1922,7 +1923,7 @@ namespace WindowsFormsApplication3
 
 
             MessageBox.Show(result.ToString());
-            
+
 
 
         }
@@ -1946,15 +1947,15 @@ namespace WindowsFormsApplication3
             */
 
             bool[][] lookup = new bool[s.Length][];
-            for(int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
                 lookup[i] = new bool[p.Length];
             }
 
 
-            for(int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                for( int j = 0; j < p.Length; j++)
+                for (int j = 0; j < p.Length; j++)
                 {
                     if (p[j] == '*')
                     {
@@ -1970,7 +1971,7 @@ namespace WindowsFormsApplication3
                     else if (p[j] == '.' || p[j] == s[i])
                     {
                         lookup[i][j] = true;
-                    }                    
+                    }
                     else
                     {
                         lookup[i][j] = false;
@@ -2015,8 +2016,8 @@ namespace WindowsFormsApplication3
             //{
             //    dp[i] = new bool[p.Length + 1];
             //}
-            
-          
+
+
             //for (int i = s.Length; i >= 0; i--)
             //{
             //    for (int j = p.Length - 1; j >= 0; j--)
@@ -2035,8 +2036,148 @@ namespace WindowsFormsApplication3
             //    }
             //}
             //return dp[0][0];
-            
+
         }
 
+        private void btn_Implement_Auto_Complete_Click(object sender, EventArgs e)
+        {
+            /*
+                https://www.geeksforgeeks.org/trie-insert-and-search/
+                Time Complexity : 
+                    Insert      : O(n) where n is string length
+                    Space       : O(126 * n) where 126 is the 
+             */
+            string[] inputs = new string[] { "the", "there", "their", "them", "target" };
+
+            Trie root = new Trie();
+
+            foreach (string input in inputs)
+            {
+                this.InsertIntoTrie(root, input);
+            }
+
+            MessageBox.Show($"The below are the autocomplete strings {this.Search(root, "the")}   \n\n for the given strings \n\n{string.Join("\n", inputs)}");
+
+        }
+
+        private bool IsLastNode(Trie root)
+        {
+            for (int i = 0; i < atoz; i++)
+            {
+                if (root != null && root.Data[i] != null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private string Search(Trie root, string search)
+        {
+            Trie temp = root;
+            if (string.IsNullOrEmpty(search) || root == null)
+                return null;
+
+            List<string> result = new List<string>();
+
+            foreach (char c in search)
+            {
+                if (temp.Data[c]!=null)
+                {
+                    temp = temp.Data[c];
+                }                                
+            }            
+
+            this.SearchString(temp, search, result);
+            return "\n" + string.Join("\n", result);
+
+        }
+
+        private void SearchString(Trie root, string currentPrefix, List<String> output)
+        {
+            if (root==null || string.IsNullOrEmpty(currentPrefix) || output == null)
+            {
+                return;
+            }
+
+            if (root.IsLastWord)
+            {
+                output.Add(currentPrefix);
+            }
+
+            if (this.IsLastNode(root))
+            {
+                return;
+            }
+
+            for(int i = 0; i < atoz; i++)
+            {
+                if (root.Data[i]!=null)
+                {                    
+                    SearchString(root.Data[i], currentPrefix+ (char)i, output);
+                }                
+            }
+
+        }
+
+
+
+        private void InsertIntoTrie(Trie root , string stringData)
+        {
+            if (string.IsNullOrEmpty(stringData))
+                return;
+
+            Trie tempRoot = root;
+
+            if (tempRoot == null)
+            {
+                tempRoot = new Trie();                                
+            }
+            foreach(char c in stringData)
+            {
+                if (tempRoot.Data[c]==null)
+                {
+                    tempRoot.Data[c]  = new Trie();                    
+                }
+                tempRoot = tempRoot.Data[c];
+            }
+
+            tempRoot.IsLastWord = true;
+        }
+
+        class Trie
+        {
+            public Trie[] Data = new Trie[atoz];
+            public bool IsLastWord = false;
+        }
+
+        private void btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string_Click(object sender, EventArgs e)
+        {
+            /*
+             Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
+             For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".
+             https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
+
+            "aabbcc", k = 1
+            Max substring can be any one from {"aa" , "bb" , "cc"}.
+
+            "aabbcc", k = 2
+            Max substring can be any one from {"aabb" , "bbcc"}.
+
+            "aabbcc", k = 3
+            There are substrings with exactly 3 unique characters
+            {"aabbcc" , "abbcc" , "aabbc" , "abbc" }
+            Max is "aabbcc" with length 6.
+
+            "aaabbb", k = 3
+            There are only two unique characters, thus show error message. 
+
+             */
+            List<string> inputs = new List<string>();
+            inputs.Add("aabbcc");
+           // foreach(char c)
+            
+
+        }
     }
 }

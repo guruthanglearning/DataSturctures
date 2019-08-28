@@ -66,5 +66,23 @@ namespace WindowsFormsApplication3
             return returnValue;
 
         }
+
+        private void btn_Create_Job_Schedule_which_runs_function_for_a_given_milliseconds_Click(object sender, EventArgs e)
+        {
+            /*
+              Implement a job scheduler which takes in a function f and an integer n, and calls f after n milliseconds.
+             */             
+            System.Timers.Timer timer = new System.Timers.Timer(2);
+            timer.Elapsed += Print;
+            timer.Start();
+            timer.AutoReset = true;
+
+
+        }
+
+        private static void Print(Object source, System.Timers.ElapsedEventArgs s)
+        {
+            MessageBox.Show(DateTime.Now.ToString());
+        }
     }
 }

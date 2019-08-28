@@ -281,9 +281,6 @@
     <EmbeddedResource Include="Other\RetriveDocumentsInRange.resx">
       <DependentUpon>RetriveDocumentsInRange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pairs.resx">
-      <DependentUpon>Pairs.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

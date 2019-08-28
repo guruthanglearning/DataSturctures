@@ -68,7 +68,7 @@ namespace WindowsFormsApplication3
 
                     while (processedInput != 0)
                     {
-                        lead = processedInput / divisor;
+                        lead = processedInput / divisor; //121
                         trail = processedInput % 10;
                         if (lead != trail)
                         {
@@ -88,6 +88,18 @@ namespace WindowsFormsApplication3
 
         private void btn_Count_no_of_steps_can_be_climbed_for_the_given_N_Click(object sender, EventArgs e)
         {
+            /*
+             https://www.geeksforgeeks.org/count-ways-reach-nth-stair/
+             https://www.youtube.com/watch?v=5o-kdjv7FD0&t=125s
+             
+             0,1,2,3,4
+             0,1,2,4
+             0,1,3,4
+             0,2,3,4
+             0,2,4             
+
+             */
+
             int n = 4;
             int total = 0;
             if (n == 0 || n == 1)
@@ -100,6 +112,13 @@ namespace WindowsFormsApplication3
                 int s = 1;             
                 for (int i = 2; i <= n; i++)
                 {
+                    /*
+                        f=1     s=2     total = 0
+                        i=2     f=1     s=1     total = 2
+                        i=3     f=1     s=2     total = 3
+                        i=4     f=2     s=3     total = 5
+                     */
+
                     total = 0;
                     total = f + s;
                     f = s;
@@ -113,7 +132,20 @@ namespace WindowsFormsApplication3
 
         private int NumOfWaysToClimbSteps(int n, int[] x)
         {
-            // x is nothing but the no of steps allowed to take
+            /* x is nothing but the no of steps allowed to take
+             
+                int n = 5;
+                int[] stairs = new int[3] { 1, 3, 5 };
+              
+                steps[0]= 1  totalNoOfWaysToClimbStep = 0
+                steps[1]= 1  i = 1 totalNoOfWaysToClimbStep = 1
+                steps[2]= 1  i = 2 totalNoOfWaysToClimbStep = 1
+                steps[3]= 2  i = 3 totalNoOfWaysToClimbStep = 2
+                steps[4]= 3  i = 4 totalNoOfWaysToClimbStep = 3
+                steps[5]= 5  i = 5 totalNoOfWaysToClimbStep = 5
+                
+             */
+
             int totalNoOfWaysToClimbStep = 0;
             int[] steps = new int[n + 1];
             steps[0] = 1;
@@ -130,13 +162,23 @@ namespace WindowsFormsApplication3
                 }
                 steps[i] = totalNoOfWaysToClimbStep;
             }
+
             return steps[n];
         }
 
         private void btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase_Click(object sender, EventArgs e)
         {
-            int n = 5;
-            int[] stairs = new int[3] { 1, 3, 5 };
+            int n = 5; //n stairs
+            int[] stairs = new int[3] { 1, 3, 5 }; // # of stairs
+
+            /* 
+              The below are the steps can be taken
+                 0,1,3,5                 
+                 0,1,5
+                 0,3,5
+                 0,5
+             */
+
             MessageBox.Show($"There were {this.NumOfWaysToClimbSteps(n,stairs).ToString()} number of ways to climb {n.ToString()} stairs case for the given staircase {string.Join(",",stairs)} ");
         }
     }

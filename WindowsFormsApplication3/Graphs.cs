@@ -29,6 +29,7 @@ namespace WindowsFormsApplication3
                 F->E
              */
 
+
             Graph graph = new Graph() { Nodes = new Dictionary<string, GraphNode>()};
 
             GraphNode a = new GraphNode() { data = "A", edges = new List<GraphNode>() };
@@ -92,6 +93,15 @@ namespace WindowsFormsApplication3
         
         public void DepthFirstRecursive(List<string> visited, GraphNode edges)
         {
+            /*
+               A->B,C
+               B->A,C,D
+               C->B,D
+               D->B,C
+               E->F
+               F->E                                                                                          
+            */
+
             if (edges != null)
             {                
                 if (!visited.Contains(edges.data))
@@ -108,6 +118,15 @@ namespace WindowsFormsApplication3
 
         public void BreadthFirstRecursive(List<string> visited, Graph graph)
         {
+            /*
+             A->B,C
+             B->A,C,D
+             C->B,D
+             D->B,C
+             E->F
+             F->E                                                                                          
+          */
+
             if (graph != null)
             {                    
                     Queue<GraphNode> queue = new Queue<GraphNode>();
@@ -226,7 +245,15 @@ namespace WindowsFormsApplication3
                                         /         \
                                        /           \
                                       /             \
-                                     E---------------G                                
+                                     E---------------G  
+                                     
+               A->B
+               F->B
+               E->A
+               C->D                              
+               G->E
+               G->F
+
              */
 
             if (edges != null)

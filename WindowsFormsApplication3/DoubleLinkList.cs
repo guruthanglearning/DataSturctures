@@ -332,6 +332,29 @@ namespace WindowsFormsApplication3
 
         private void ConvertBSTToDoubleLinkedList(ref DoubleLL previous, Node root,ref DoubleLL tempPointer,  ref DoubleLL doubleLinkedList)
         {
+                /*
+                https://www.geeksforgeeks.org/convert-given-binary-tree-doubly-linked-list-set-3/
+                                          10
+                                       /      \
+                                      /        \
+                                     /          \
+                                    /            \                           
+                                   /              \
+                                  5               20
+                                /  \             / \
+                               /    \           /   \  
+                              /      \         /     \
+                             3        8       15     22 
+                            / \      / \ 
+                           /   \    /   \
+                          1    4    6    9
+                           \
+                            \
+                             2
+
+               1   2   3   4   5   6   8   9   10  15  20  22
+            */
+
             if (root  != null)
             {
                 ConvertBSTToDoubleLinkedList(ref previous, root.left, ref tempPointer, ref doubleLinkedList);

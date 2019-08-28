@@ -72,6 +72,7 @@
             this.btn_Merge_k_Sorted_LinkLists = new System.Windows.Forms.Button();
             this.btn_Searilzing_and_De_serialzing_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Count_the_number_of_unival_subtrees = new System.Windows.Forms.Button();
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -87,10 +88,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(519, 91);
+            this.button2.Location = new System.Drawing.Point(492, 91);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(304, 35);
+            this.button2.Size = new System.Drawing.Size(379, 35);
             this.button2.TabIndex = 1;
             this.button2.Text = "+ve and -ve arragement  with While";
             this.button2.UseVisualStyleBackColor = true;
@@ -98,10 +99,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(519, 47);
+            this.button3.Location = new System.Drawing.Point(492, 54);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(304, 35);
+            this.button3.Size = new System.Drawing.Size(379, 35);
             this.button3.TabIndex = 2;
             this.button3.Text = "+ve and -ve arragement O(n2)";
             this.button3.UseVisualStyleBackColor = true;
@@ -150,7 +151,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(13, 123);
+            this.button8.Location = new System.Drawing.Point(13, 128);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(472, 35);
@@ -216,7 +217,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(13, 83);
+            this.button14.Location = new System.Drawing.Point(13, 89);
             this.button14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(472, 35);
@@ -539,11 +540,22 @@
             this.btn_Count_the_number_of_unival_subtrees.UseVisualStyleBackColor = true;
             this.btn_Count_the_number_of_unival_subtrees.Click += new System.EventHandler(this.btn_Count_the_number_of_unival_subtrees_Click);
             // 
+            // btn_Find_the_Deepest_Node_in_a_Binary_Tree
+            // 
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Location = new System.Drawing.Point(492, 134);
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Name = "btn_Find_the_Deepest_Node_in_a_Binary_Tree";
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Size = new System.Drawing.Size(379, 47);
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.TabIndex = 48;
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Text = "Find the Deepest Node in a Binary Tree";
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.UseVisualStyleBackColor = true;
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Click += new System.EventHandler(this.btn_Find_the_Deepest_Node_in_a_Binary_Tree_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1557, 1028);
+            this.ClientSize = new System.Drawing.Size(1557, 1038);
+            this.Controls.Add(this.btn_Find_the_Deepest_Node_in_a_Binary_Tree);
             this.Controls.Add(this.btn_Count_the_number_of_unival_subtrees);
             this.Controls.Add(this.btn_Searilzing_and_De_serialzing_Binary_Tree);
             this.Controls.Add(this.btn_Merge_k_Sorted_LinkLists);
@@ -643,5 +655,6 @@
         private System.Windows.Forms.Button btn_Merge_k_Sorted_LinkLists;
         private System.Windows.Forms.Button btn_Searilzing_and_De_serialzing_Binary_Tree;
         private System.Windows.Forms.Button btn_Count_the_number_of_unival_subtrees;
+        private System.Windows.Forms.Button btn_Find_the_Deepest_Node_in_a_Binary_Tree;
     }
 }

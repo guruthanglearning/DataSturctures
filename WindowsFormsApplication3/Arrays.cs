@@ -1178,11 +1178,12 @@ namespace WindowsFormsApplication3
 
         private void btn_Max_sub_series_sum_in_an_given_array_Click(object sender, EventArgs e)
         {
-            //int[]  input = new int[] { -2, -3, 4, -1, -2, 1, 5, -3 };
+            /*int[]  input = new int[] { -2, -3, 4, -1, -2, 1, 5, -3 };
+             Input: [-2,1,-3,4,-1,2,1,-5,4],
+             */
             int[] input = new int[] {31, -41, 26, 59, -53, 58, 97, -93, -23, 84};
-            int[,] t =  new int[4, 2] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
-         
-            List<int> result = new List<int>() { 1,2};
+            
+                     
              
             int maxSum = 0;
             int sum = 0;
@@ -1270,6 +1271,19 @@ namespace WindowsFormsApplication3
 
         private int RobHouse(int[] input, int start, int end)
         {
+
+            /*
+                int[][] inputs = new int[8][];
+                inputs[0] = new int[] { 6, 7, 1, 3, 8, 2, 4 };
+                inputs[1] = new int[] { 5, 3, 4, 11, 2 };
+                inputs[2] = new int[] { };
+                inputs[3] = new int[] { 0 };
+                inputs[4] = new int[] { 1 };
+                inputs[5] = new int[] { 0, 1 };
+                inputs[6] = new int[] { 2, 4, 6, 2, 5 };
+                inputs[7] = new int[] { 5, 1, 1, 5 };
+             */
+
             int firstOld = 0;
             int secondOld = 0;
             int thirdOld = 0;
@@ -1287,6 +1301,7 @@ namespace WindowsFormsApplication3
                 if (end <= 2)
                 {
                     thirdOld = Math.Max(firstOld, secondOld);
+                    return thirdOld;
                 }
 
                 int i = 0;
@@ -1306,13 +1321,15 @@ namespace WindowsFormsApplication3
             Time Complexity is O(N)
             Space Complexity is O(1)              
             */
-            int[][] inputs = new int[6][];
+            int[][] inputs = new int[8][];
             inputs[0] = new int[] { 6, 7, 1, 3, 8, 2, 4 };
             inputs[1] = new int[] { 5, 3, 4, 11, 2 };
             inputs[2] = new int[] { };
             inputs[3] = new int[] { 0 };
             inputs[4] = new int[] { 1 };
             inputs[5] = new int[] { 0, 1 };
+            inputs[6] = new int[] { 2, 4, 6, 2, 5 };
+            inputs[7] = new int[] { 5, 1, 1, 5 };
 
             StringBuilder result = new StringBuilder();
             int firstOld = 0;
@@ -1371,7 +1388,7 @@ namespace WindowsFormsApplication3
         {
             //https://www.geeksforgeeks.org/product-array-puzzle-set-2-o1-space/
             StringBuilder result = new StringBuilder();
-            int[] input = new int[] {1, 2, 3, 4, 5 };
+            int[] input = new int[] { 1, 2, 3, 4, 5 };
             int n = input.Length;
 
             int i, temp = 1;
@@ -1415,7 +1432,7 @@ namespace WindowsFormsApplication3
                     2 : 3
                     3 : 4
                     4 : 5
-                
+
 
                      p
                      0 : 1  t : 1
@@ -1441,6 +1458,20 @@ namespace WindowsFormsApplication3
                 result.Append(prod[i].ToString() + " ");
 
             MessageBox.Show(result.ToString());
+
+            //double EPS = 1e-9;
+            //double sum = 0;
+            //for (int i = 0; i < n; i++)
+            //    sum += Math.Log10(input[i]);
+
+            //// output product for each  
+            //// index anti log to find 
+            //// original product value 
+            //for (int i = 0; i < n; i++)
+            //    result.Append((int)EPS + (Math.Pow(10.00,
+            //                   sum - Math.Log10(input[i]))) + " ");
+
+            //MessageBox.Show(result.ToString());
         }
 
         private void btn_Robbing_a_home_3_Click(object sender, EventArgs e)
@@ -1459,7 +1490,7 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             result.Append("Input character array \nbefore arranging : " + string.Join(",", inputs));
 
-            while (m<=h) // l = 2, m = 5, h = 5
+            while (m<=h) // l = 2, m = 4, h = 4
             {
 
                 /*
@@ -1509,10 +1540,8 @@ namespace WindowsFormsApplication3
               Space Complexity is O(1)
              */
             int[] nums = new int[] { 5, 4, 3, 1, 0};
-
-
-
             int missing = nums.Length;
+
             for (int i = 0; i < nums.Length; i++)
             {
                 if (nums[i] <= 0)
@@ -1576,6 +1605,37 @@ namespace WindowsFormsApplication3
 
 
             }
+
+        }
+
+        private void btn_Length_Of_The_Longest_Increasing_Subsequence_Click(object sender, EventArgs e)
+        {
+            /*
+             Given an array of numbers, find the length of the longest increasing subsequence in the array. The subsequence does not necessarily have to be contiguous.
+             For example, given the array [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15], the longest increasing subsequence has length 6: it is 0, 2, 6, 9, 11, 15.
+
+             Time Complexity  : O(nlogn) -->Binary Search complexity is Log n and we are doing this for n items
+             Space Complexity : O(n)     -->Worst case scenario we are storing n items in the new memory.
+             */
+            int[] inputs = new int[] { 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15 };
+
+            int[] dp = new int[inputs.Length];
+            int len = 0;
+            foreach (int input in inputs)
+            {
+                int i = Array.BinarySearch(dp, 0, len, input);
+                if (i < 0)
+                {
+                    i = -(i + 1);
+                }
+                dp[i] = input;
+                if (i == len)
+                {
+                    len++;
+                }
+            }
+
+            MessageBox.Show($"Length of the longest increasing subquence of a given array {string.Join(",", inputs)} is {len}");
 
         }
     }

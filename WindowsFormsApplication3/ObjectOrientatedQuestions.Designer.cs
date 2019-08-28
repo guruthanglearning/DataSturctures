@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_Record_Max_population_for_an_year = new System.Windows.Forms.Button();
+            this.btn_Calculate_Tax_Bracket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Record_Max_population_for_an_year
@@ -41,11 +42,22 @@
             this.btn_Record_Max_population_for_an_year.UseVisualStyleBackColor = true;
             this.btn_Record_Max_population_for_an_year.Click += new System.EventHandler(this.btn_Record_Max_population_for_an_year_Click);
             // 
+            // btn_Calculate_Tax_Bracket
+            // 
+            this.btn_Calculate_Tax_Bracket.Location = new System.Drawing.Point(12, 59);
+            this.btn_Calculate_Tax_Bracket.Name = "btn_Calculate_Tax_Bracket";
+            this.btn_Calculate_Tax_Bracket.Size = new System.Drawing.Size(556, 40);
+            this.btn_Calculate_Tax_Bracket.TabIndex = 1;
+            this.btn_Calculate_Tax_Bracket.Text = "Calculate Tax Bracket";
+            this.btn_Calculate_Tax_Bracket.UseVisualStyleBackColor = true;
+            this.btn_Calculate_Tax_Bracket.Click += new System.EventHandler(this.btn_Calculate_Tax_Bracket_Click);
+            // 
             // ObjectOrientatedQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Calculate_Tax_Bracket);
             this.Controls.Add(this.btn_Record_Max_population_for_an_year);
             this.Name = "ObjectOrientatedQuestions";
             this.Text = "ObjectOrientatedQuestions";
@@ -56,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Button btn_Record_Max_population_for_an_year;
+        private System.Windows.Forms.Button btn_Calculate_Tax_Bracket;
     }
 }

@@ -58,6 +58,7 @@
             this.btn_Arrange_Char_Array_R_G_B_In_Place = new System.Windows.Forms.Button();
             this.btn_Finding_Missing_Integer_from_the_given_array = new System.Windows.Forms.Button();
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z = new System.Windows.Forms.Button();
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -369,11 +370,22 @@
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.UseVisualStyleBackColor = true;
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Click += new System.EventHandler(this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z_Click);
             // 
+            // btn_Length_Of_The_Longest_Increasing_Subsequence
+            // 
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(635, 533);
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Name = "btn_Length_Of_The_Longest_Increasing_Subsequence";
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(592, 46);
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.TabIndex = 30;
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Text = "Length Of The Longest Increasing Subsequence";
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.UseVisualStyleBackColor = true;
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Click += new System.EventHandler(this.btn_Length_Of_The_Longest_Increasing_Subsequence_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Length_Of_The_Longest_Increasing_Subsequence);
             this.Controls.Add(this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z);
             this.Controls.Add(this.btn_Finding_Missing_Integer_from_the_given_array);
             this.Controls.Add(this.btn_Arrange_Char_Array_R_G_B_In_Place);
@@ -443,5 +455,6 @@
         private System.Windows.Forms.Button btn_Arrange_Char_Array_R_G_B_In_Place;
         private System.Windows.Forms.Button btn_Finding_Missing_Integer_from_the_given_array;
         private System.Windows.Forms.Button btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z;
+        private System.Windows.Forms.Button btn_Length_Of_The_Longest_Increasing_Subsequence;
     }
 }

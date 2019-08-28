@@ -103,5 +103,49 @@ namespace WindowsFormsApplication3
         {
 
         }
+
+        private void btn_Calculate_Tax_Bracket_Click(object sender, EventArgs e)
+        {
+            decimal salary = 15000.00M;
+            decimal taxAmount = 0.00M;
+            List<TaxBracket> taxBrackets = this.GetTaxBrackets();
+
+            foreach(TaxBracket tb in taxBrackets)
+            {
+                if (salary > tb.MinBracket)
+                {
+                    if (salary < tb.MaxBracket)
+                    {
+                        taxAmount += (salary - tb.MinBracket) * tb.Rate;
+                    }
+                    else
+                    {
+                        taxAmount += tb.Rate * (tb.MaxBracket - tb.MinBracket);
+                    }
+                }
+            }
+
+            MessageBox.Show($"Tax amount is {taxAmount.ToString()}  for the salary {salary.ToString()}");
+
+
+        }
+
+        private List<TaxBracket> GetTaxBrackets()
+        {
+            List<TaxBracket> taxBrackets = new List<TaxBracket>();
+            taxBrackets.Add(new TaxBracket() { MinBracket = 0, MaxBracket = 10000, Rate = 0.10M });
+            taxBrackets.Add(new TaxBracket() { MinBracket = 10000, MaxBracket = 20000, Rate = 0.20M });
+            taxBrackets.Add(new TaxBracket() { MinBracket = 20000, MaxBracket = 100000000000, Rate = 0.30M });
+            return taxBrackets;
+
+        }
+
+        class TaxBracket
+        {
+            public decimal MinBracket { get; set; }
+            public decimal MaxBracket { get; set; }
+            public decimal Rate { get; set; }
+
+        }
     }
 }
