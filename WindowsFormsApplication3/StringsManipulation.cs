@@ -2082,11 +2082,11 @@ namespace WindowsFormsApplication3
 
             foreach (char c in search)
             {
-                if (temp.Data[c]!=null)
+                if (temp.Data[c] != null)
                 {
                     temp = temp.Data[c];
-                }                                
-            }            
+                }
+            }
 
             this.SearchString(temp, search, result);
             return "\n" + string.Join("\n", result);
@@ -2095,7 +2095,7 @@ namespace WindowsFormsApplication3
 
         private void SearchString(Trie root, string currentPrefix, List<String> output)
         {
-            if (root==null || string.IsNullOrEmpty(currentPrefix) || output == null)
+            if (root == null || string.IsNullOrEmpty(currentPrefix) || output == null)
             {
                 return;
             }
@@ -2110,19 +2110,19 @@ namespace WindowsFormsApplication3
                 return;
             }
 
-            for(int i = 0; i < atoz; i++)
+            for (int i = 0; i < atoz; i++)
             {
-                if (root.Data[i]!=null)
-                {                    
-                    SearchString(root.Data[i], currentPrefix+ (char)i, output);
-                }                
+                if (root.Data[i] != null)
+                {
+                    SearchString(root.Data[i], currentPrefix + (char)i, output);
+                }
             }
 
         }
 
 
 
-        private void InsertIntoTrie(Trie root , string stringData)
+        private void InsertIntoTrie(Trie root, string stringData)
         {
             if (string.IsNullOrEmpty(stringData))
                 return;
@@ -2131,13 +2131,13 @@ namespace WindowsFormsApplication3
 
             if (tempRoot == null)
             {
-                tempRoot = new Trie();                                
+                tempRoot = new Trie();
             }
-            foreach(char c in stringData)
+            foreach (char c in stringData)
             {
-                if (tempRoot.Data[c]==null)
+                if (tempRoot.Data[c] == null)
                 {
-                    tempRoot.Data[c]  = new Trie();                    
+                    tempRoot.Data[c] = new Trie();
                 }
                 tempRoot = tempRoot.Data[c];
             }
@@ -2153,6 +2153,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string_Click(object sender, EventArgs e)
         {
+
             /*
              Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
              For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".
@@ -2173,11 +2174,117 @@ namespace WindowsFormsApplication3
             There are only two unique characters, thus show error message. 
 
              */
-            List<string> inputs = new List<string>();
-            inputs.Add("aabbcc");
-           // foreach(char c)
-            
+            List<StringWithUniqueNCharacter> inputs = new List<StringWithUniqueNCharacter>();
+            StringBuilder result = new StringBuilder();
+            inputs.Add(new StringWithUniqueNCharacter() { Input = "aabbcc", UniqueCharacterCount = 1 });
+            const int alphaBetSize = 256;
+
+            foreach (StringWithUniqueNCharacter input in inputs)
+            {
+                string str = input.Input;
+                int uniqueVal = input.UniqueCharacterCount;
+                int[] count = new int[alphaBetSize];
+                int val = 0;
+                foreach (char c in str)
+                {
+                    count[c]++;
+                    val++;
+                }
+
+                if (val < uniqueVal)
+                {
+                    result.Append($"There is no sufficient unique {uniqueVal} for the given string {str} \n");
+                    continue;
+                }
+
+                count = new int[alphaBetSize];
+                count[str[0]]++;
+                int curr_start = 0, curr_end = 0, windowSize = 1, windowStart = 0;
+
+                for (int i = 1; i < str.Length; i++)
+                {
+                    count[str[i]]++;
+                    curr_end++;
+
+                    if (!(this.IsMoreUniqueCharacterPresent(count, uniqueVal, alphaBetSize)))
+                    {
+                        count[str[curr_start]]--;
+                        curr_start++;
+                    }
+
+                    if ((curr_end-curr_start +1) > (windowSize))
+                    {
+                        windowSize = curr_end - curr_start + 1;
+                        windowStart = curr_start;
+                    }
+
+                }
+
+                result.Append($"Length of the long substring is {(windowSize - windowStart)}  for this {str.Substring(windowStart, windowSize)} with {uniqueVal}  unique value from the given string {str} \n");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private bool IsMoreUniqueCharacterPresent(int[] count, int uniqueVal, int alphaBetSize)
+        {
+            int val = 0;
+            for (int i = 0; i < alphaBetSize; i++)
+            {
+                if (count[i] > 0)
+                    val++;
+            }
+
+            return uniqueVal >= val;
+        }
+
+        public class StringWithUniqueNCharacter
+        {
+            public string Input;
+            public int UniqueCharacterCount;
+        }
+
+        private void btn_Look_and_say_sequence_Click(object sender, EventArgs e)
+        {
+            int n = 4;
+            string result = string.Empty;
+            if (n == 1)
+            {
+                result = "1";
+            }
+            if(n==2)
+            {
+                result = "11";
+            }
+            result= "11";
+            for (int i=3; i<=n;i++)
+            {
+                
+                int counter = 1;
+                result += "$";
+                string temp = string.Empty;
+
+                for(int j = 1; j<result.Length; j++)
+                {
+                    if (result[j] != result[j - 1])
+                    {
+                        temp += counter ;
+                        temp += result[j - 1];
+                    }
+                    else
+                    {
+                        counter++;
+                    }
+                }
+                result = temp;                
+            }
+
+            MessageBox.Show($"Look and easy sequence for the given number {n} is {result} ");
+
 
         }
     }
 }
+
+        
+   

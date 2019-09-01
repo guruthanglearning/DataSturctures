@@ -88,8 +88,57 @@ namespace WindowsFormsApplication3
         /// <returns></returns>
         private int Lomuto_partition_scheme(int[] input, int lower, int upper)
         {
-            // original input 11, 23, 1, 4, 0, -1, 55, 20
-            // 3, 2, 1
+            /* original input 11, 23, 1, 4, 0, -1, 55, 20
+               3, 2, 1
+
+              Iteration 1: When lower = 0; Upper = 7 Pivot = 20, i =-1
+              j = 0  i = 0  Input : 11, 23, 1, 4, 0, -1, 55, 20
+              j = 1  i = 0  Input : 11, 23, 1, 4, 0, -1, 55, 20
+              j = 2  i = 1  Input : 11, 1, 23, 4, 0, -1, 55, 20
+              j = 3  i = 2  Input : 11, 4, 23, 1, 0, -1, 55, 20
+              j = 4  i = 3  Input : 11, 4, 23, 0, 1, -1, 55, 20
+              j = 5  i = 4  Input : 11, 4, 23, 0, -1, 1, 55, 20
+              j = 6  i = 4  Input : 11, 4, 23, 0, -1, 1, 55, 20
+              End Swap i+1(5) to upper = 7
+                            Input : 11, 4, 23, 0, -1, 20, 55, 1 
+
+              
+              Iteration 1.1: When lower = 0; Upper = 4 Pivot = -1, i =-1    quickSort_Lomuto_partition_scheme(input, lower, i - 1);
+              j = 0  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
+              j = 1  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
+              j = 2  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
+              j = 3  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
+              End Swap i+1(0) to upper = 4
+                            Input : -1, 4, 23, 0, 11, 20, 55, 1
+
+             Iteration 1.1.1 : When lower = 0; Upper = -1 Pivot = -1, i =-1 quickSort_Lomuto_partition_scheme(input, lower, i - 1); no operation due to lower < upper goes back to 1.1
+                               Input : -1, 4, 23, 0, 11, 20, 55, 1
+            
+             Iteration 1.1.2 : When lower = 1; Upper = 4  Pivot = 11, i = 1 quickSort_Lomuto_partition_scheme(input, i + 1, upper ); 
+                               Input : -1, 4, 23, 0, 11, 20, 55, 1
+              j = 1 i = 1 Input : -1, 4, 23, 0, 11, 20, 55, 1
+              j = 2 i = 1 Input : -1, 4, 23, 0, 11, 20, 55, 1
+              j = 3 i = 1 Input : -1, 0, 23, 4, 11, 20, 55, 1
+              End Swap i+1(2) to upper = 4
+                            Input : -1, 0, 11, 4, 23, 20, 55, 1
+              
+            Iteration 1.1.2.1 : When lower = 1; Upper = 1  Pivot = 0, i = 0 quickSort_Lomuto_partition_scheme(input, lower, i-1 ); 
+                          Input :  -1, 0, 11, 4, 23, 20, 55, 1
+                
+             j =  
+                    
+              
+                  
+
+
+
+
+             Iteration 1.2: When lower = ; Upper = 4 Pivot = -1, i =-1    quickSort_Lomuto_partition_scheme(input, i - 1, upper);
+             j = 0  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
+           
+
+
+            */
             int returnValue = -1;
             if (input != null && input.Length > 0)
             {
@@ -201,6 +250,7 @@ namespace WindowsFormsApplication3
             //Best Case     : O(n log n) if arrays are not sorted or partially sorted or sub list array have equal elements between left and right
             //Average Case  : O(n log n) 
             //Worst Case    : O(n^2) if the arrays are fully sorted 
+            //Space         : O(log n)
             quickSort_Hoares_partition_scheme(input, 0, input.Length - 1);
             result.AppendLine($"After Sorting {DisplayResult(input)}");
             MessageBox.Show(result.ToString());            
@@ -277,11 +327,14 @@ namespace WindowsFormsApplication3
         void merge(int[] arr, int l,
                         int m, int r)
         {
+            /*  12, 11, 13, 5, 6, 7  - 5
+                l = 0 m = 1 r = 2
+            */
 
             // Find sizes of two subarrays 
             // to be merged 
-            int n1 = m - l + 1;
-            int n2 = r - m;
+            int n1 = m - l + 1; 
+            int n2 = r - m; 
 
             // Create temp arrays  
             int[] L = new int[n1];
@@ -344,6 +397,13 @@ namespace WindowsFormsApplication3
         // arr[l..r] using merge() 
         void sort(int[] arr, int l, int r)
         {
+            /* 12, 11, 13, 5, 6, 7  - 5
+              l = 0 r = 5 m = 2
+              l = 0 r = 2 m = 1 
+              l = 0 r = 1 m = 0
+              l = 1 r = 1 m = 0
+
+             */
             if (l < r)
             {
                 // Find the middle point 
@@ -371,7 +431,6 @@ namespace WindowsFormsApplication3
             // Average performance O(n log n)
             // Worst -case space complexity  О(n) total, O(n) auxiliary
 
-
             int[] input = { 12, 11, 13, 5, 6, 7 };
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Top Down : Before Sorting {DisplayResult(input)} \n");         
@@ -390,18 +449,20 @@ namespace WindowsFormsApplication3
 
         private int ILeft(int count)
         {
-            return ((2* count) + 1);
+            return ((2* count));
         }
 
         private int IRight(int count)
         {
-            return ((2 * count) + 2);
+            return ((2 * count) + 1);
         }
 
         private void ShiftDown(int[]a, int start, int end)
         {
-            // 13 11, 12, 5, 6, 7 
-            // start = 0 end = 5, child = 5, root = 2, interchange = 2
+            /*  12, 11, 13, 5, 6, 7
+                start = 0 end = 5, child = 1 root = 0, interchange = 0  13, 11, 12, 5, 6, 7
+
+            */
             int root = start;
             int child = 0;
             int interChange = 0;
@@ -437,7 +498,7 @@ namespace WindowsFormsApplication3
         }
 
 
-        public void Heapify(int[] a, int count)
+        public void Heapify(int[] a , int count)
         {
             // 12, 11, 13, 5, 6, 7
             //(start is assigned the index in 'a' of the last parent node)
@@ -530,8 +591,11 @@ namespace WindowsFormsApplication3
 
         private void HeapSort_Click(object sender, EventArgs e)
         {
-            //https://en.wikipedia.org/wiki/Heapsort
-            //http://www.geeksforgeeks.org/heap-sort/
+            /*
+             https://en.wikipedia.org/wiki/Heapsort
+             http://www.geeksforgeeks.org/heap-sort/
+             https://youtu.be/HqPJF2L5h9U
+             */
 
             // Worst -case performance O(n log n)
             // Best -case performance O(n) 

@@ -69,6 +69,7 @@
             this.btn_Regular_Expression_Matching_With_Star_QuestionMark = new System.Windows.Forms.Button();
             this.btn_Implement_Auto_Complete = new System.Windows.Forms.Button();
             this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string = new System.Windows.Forms.Button();
+            this.btn_Look_and_say_sequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -505,11 +506,22 @@
             this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.UseVisualStyleBackColor = true;
             this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string.Click += new System.EventHandler(this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string_Click);
             // 
+            // btn_Look_and_say_sequence
+            // 
+            this.btn_Look_and_say_sequence.Location = new System.Drawing.Point(913, 551);
+            this.btn_Look_and_say_sequence.Name = "btn_Look_and_say_sequence";
+            this.btn_Look_and_say_sequence.Size = new System.Drawing.Size(460, 34);
+            this.btn_Look_and_say_sequence.TabIndex = 41;
+            this.btn_Look_and_say_sequence.Text = " Look and say sequence";
+            this.btn_Look_and_say_sequence.UseVisualStyleBackColor = true;
+            this.btn_Look_and_say_sequence.Click += new System.EventHandler(this.btn_Look_and_say_sequence_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1720, 779);
+            this.Controls.Add(this.btn_Look_and_say_sequence);
             this.Controls.Add(this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string);
             this.Controls.Add(this.btn_Implement_Auto_Complete);
             this.Controls.Add(this.btn_Regular_Expression_Matching_With_Star_QuestionMark);
@@ -603,5 +615,6 @@
         private System.Windows.Forms.Button btn_Regular_Expression_Matching_With_Star_QuestionMark;
         private System.Windows.Forms.Button btn_Implement_Auto_Complete;
         private System.Windows.Forms.Button btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string;
+        private System.Windows.Forms.Button btn_Look_and_say_sequence;
     }
 }
