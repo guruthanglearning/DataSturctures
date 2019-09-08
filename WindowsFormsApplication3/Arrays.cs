@@ -1551,9 +1551,7 @@ namespace WindowsFormsApplication3
                 else
                 {
                     missing ^= i ^ nums[i];
-                }
-
-                
+                }                
             }
             
             MessageBox.Show($"Missing number is {missing.ToString()}");
@@ -1637,6 +1635,197 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show($"Length of the longest increasing subquence of a given array {string.Join(",", inputs)} is {len}");
 
+        }
+
+        private void btn_Validate_Email_and_Count_Valid_Emails_Click(object sender, EventArgs e)
+        {
+            /*
+                Every email consists of a local name and a domain name, separated by the @ sign.
+                For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name.
+                Besides lowercase letters, these emails may contain '.'s or '+'s.
+                If you add periods ('.') between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, "alice.z@leetcode.com" and "alicez@leetcode.com" forward to the same email address.  (Note that this rule does not apply for domain names.)
+                If you add a plus ('+') in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered, for example m.y+name@email.com will be forwarded to my@email.com.  (Again, this rule does not apply for domain names.)
+                It is possible to use both of these rules at the same time.
+                Given a list of emails, we send one email to each address in the list.  How many different addresses actually receive mails? 
+
+                Example 1:
+
+                Input: ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+                Output: 2
+                Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually receive mails 
+
+                Note:
+                1 <= emails[i].length <= 100
+                1 <= emails.length <= 100
+                Each emails[i] contains exactly one '@' character.
+                All local and domain names are non-empty.
+                Local names do not start with a '+' character.
+
+             */
+
+            string[] emails = new string[] {"fg.r.u.uzj+o.pw@kziczvh.com", "r.cyo.g+d.h+b.ja@tgsg.z.com", "fg.r.u.uzj+o.f.d@kziczvh.com",
+                                            "r.cyo.g+ng.r.iq@tgsg.z.com", "fg.r.u.uzj+lp.k@kziczvh.com", "r.cyo.g+n.h.e+n.g@tgsg.z.com",
+                                            "fg.r.u.uzj+k+p.j@kziczvh.com", "fg.r.u.uzj+w.y+b@kziczvh.com", "r.cyo.g+x+d.c+f.t@tgsg.z.com",
+                                             "r.cyo.g+x+t.y.l.i@tgsg.z.com", "r.cyo.g+brxxi@tgsg.z.com", "r.cyo.g+z+dr.k.u@tgsg.z.com",
+                                            "r.cyo.g+d+l.c.n+g@tgsg.z.com", "fg.r.u.uzj+vq.o@kziczvh.com", "fg.r.u.uzj+uzq@kziczvh.com",
+                                            "fg.r.u.uzj+mvz@kziczvh.com", "fg.r.u.uzj+taj@kziczvh.com", "fg.r.u.uzj+fek@kziczvh.com"};
+            int result = 0;
+            foreach (string email in emails)
+            {
+                if (IsValidEmail(email))
+                {
+                    result++;
+                }
+            }
+
+            MessageBox.Show($"There are {result} valid emails for the given emails \n {string.Join("\n", emails)}");
+
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            int index = email.IndexOf('@');
+            int counter = 0;
+
+            while (index > 0)
+            {
+                index = email.IndexOf('.', index + 1);
+                if (index > 0)
+                {
+                    counter++;
+                }
+                
+                if (counter > 1)
+                {
+                    break;
+                }                
+            }
+
+            return counter == 1;
+        }
+
+        private void btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n_Click(object sender, EventArgs e)
+        {
+
+
+
+            /*
+                Given an array of 2n integers, your task is to group these integers into n pairs of integer, 
+                say (a1, b1), (a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.
+
+                Example 1:
+                Input: [1,4,3,2]
+
+                Output: 4
+                Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
+                Note:
+                n is a positive integer, which is in the range of [1, 10000].
+                All the integers in the array will be in the range of [-10000, 10000].
+
+
+                n = 3, values in array is will : [1,4,3,2,5,6]
+                No of pairs is 3 since n =3.
+                {1,4}{3,2},{5,6}, so min all the pairs will be 1,2,5 which has the sum of 8 
+
+                After sorting the array 1, 2, 3, 4, 5, 6, the pairs will be {1,2}{3,4}{5,6}, 
+                so min of all the pairs will be 1,3,5 which has the sum of 9 which has the largest value.
+              
+             */
+
+            List<Array2n> inputs = new List<Array2n>();
+            inputs.Add(new Array2n(){N = 3, Data=new int[] {4, 5, 6, 1, 2, 3 } });
+            
+            StringBuilder result = new StringBuilder();
+            string output = string.Empty;
+            foreach(Array2n input in inputs)
+            {
+                output = string.Join(" ", input.Data);
+                Array.Sort(input.Data);
+                int sum = 0;
+                for(int i = 0; i< input.Data.Length; i+=2)
+                {
+                    sum += input.Data[i];
+                }
+
+                MessageBox.Show($"Max sum is {sum} for the given input array is {output} \n");
+            }
+            
+
+        }
+
+        public class Array2n
+        {
+            public int N;
+            public int[] Data;
+
+            public Array2n()
+            {
+                Data = new int[2*N];
+            }
+        }
+
+        private void btn_Maximize_Distance_to_Closest_Person_Click(object sender, EventArgs e)
+        {
+            /*
+                In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty. 
+                There is at least one empty seat, and at least one person sitting.
+                Alex wants to sit in the seat such that the distance between him and the closest person to him is maximized. 
+                Return that maximum distance to closest person.
+
+                Example 1:
+
+                Input: [1,0,0,0,1,0,1]
+                Output: 2
+                Explanation: 
+                If Alex sits in the second open seat (seats[2]), then the closest person has distance 2.
+                If Alex sits in any other open seat, the closest person has distance 1.
+                Thus, the maximum distance to the closest person is 2.
+                Example 2:
+
+                Input: [1,0,0,0]
+                Output: 3
+                Explanation: 
+                If Alex sits in the last seat, the closest person is 3 seats away.
+                This is the maximum distance possible, so the answer is 3.
+                Note:
+
+                1 <= seats.length <= 20000
+                seats contains only 0s or 1s, at least one 0, and at least one 1.
+
+             */
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 0, 0, 0, 1, 0, 1 });
+            inputs.Add(new int[] { 1, 0, 0, 0});
+            StringBuilder result = new StringBuilder();
+            result.Append("The max distance for the given input arrays are\n");
+            foreach (int[] input in inputs)
+            {
+                int distance = 0;
+                int front = 0;
+                int previous = -1;
+                
+                for(int i = 0; i<input.Length; i++)
+                {
+                    if (input[i] == 1)
+                    {
+                        previous = i;
+                    }
+                    else
+                    {
+                        while(front <input.Length && (input[front] == 0 || front< i))
+                        {
+                            front++;
+                        }
+
+                        int left = previous == -1 ? input.Length : i - previous;
+                        int right = front == input.Length ? input.Length : front - i;
+                        distance = Math.Max(distance, Math.Min(left, right));
+                    }
+                }
+
+                result.Append($"{string.Join(" ", input)} is {distance} \n");
+            }
+            MessageBox.Show(result.ToString());
         }
     }
 }

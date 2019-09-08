@@ -32,6 +32,7 @@
             this.btn_Check_the_given_integer_is_Plandrom = new System.Windows.Forms.Button();
             this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N = new System.Windows.Forms.Button();
             this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase = new System.Windows.Forms.Button();
+            this.btn_Rotated_Digits = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -74,11 +75,22 @@
             this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.UseVisualStyleBackColor = true;
             this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase.Click += new System.EventHandler(this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase_Click);
             // 
+            // btn_Rotated_Digits
+            // 
+            this.btn_Rotated_Digits.Location = new System.Drawing.Point(12, 213);
+            this.btn_Rotated_Digits.Name = "btn_Rotated_Digits";
+            this.btn_Rotated_Digits.Size = new System.Drawing.Size(519, 43);
+            this.btn_Rotated_Digits.TabIndex = 4;
+            this.btn_Rotated_Digits.Text = "Rotated Digits";
+            this.btn_Rotated_Digits.UseVisualStyleBackColor = true;
+            this.btn_Rotated_Digits.Click += new System.EventHandler(this.btn_Rotated_Digits_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Rotated_Digits);
             this.Controls.Add(this.btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase);
             this.Controls.Add(this.btn_Count_no_of_steps_can_be_climbed_for_the_given_N);
             this.Controls.Add(this.btn_Check_the_given_integer_is_Plandrom);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Button btn_Check_the_given_integer_is_Plandrom;
         private System.Windows.Forms.Button btn_Count_no_of_steps_can_be_climbed_for_the_given_N;
         private System.Windows.Forms.Button btn_No_of_ways_to_climb_N_staircase_for_the_give_X_staircase;
+        private System.Windows.Forms.Button btn_Rotated_Digits;
     }
 }

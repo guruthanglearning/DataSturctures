@@ -135,8 +135,14 @@ namespace WindowsFormsApplication3
                 throw new Exception("Invalid Input");
             }
 
+            if (cacheStorage.ContainsKey(dataKey))
+            {
+                throw new Exception("Key already present");
+            }
+
             if (cacheStorage.Count < 10 )
-            {                
+            {    
+                
                 if (linkList == null)
                 {
                     linkList = new DDLinkedList() { Data = data }; 
@@ -151,18 +157,11 @@ namespace WindowsFormsApplication3
             }
             else
             {                
-                if (!cacheStorage.ContainsKey(dataKey))
-                {                   
                     startPointLinkList = startPointLinkList.Next;
                     startPointLinkList.Previous = null;
                     linkList.Next = new DDLinkedList() { Data = data, Previous = linkList };
                     linkList = linkList.Next;
-                    cacheStorage[dataKey]= linkList;
-                }   
-                else
-                {
-                    MessageBox.Show("The given key is already exists in the cache");
-                }
+                    cacheStorage[dataKey]= linkList;            
             }            
             return data;
         }
@@ -210,8 +209,7 @@ namespace WindowsFormsApplication3
         {
 
             if (Cache.ContainsKey(dataKey))
-            {
-                Cache[dataKey] = data;
+            {            
                 this.Get(dataKey);
             }
 
@@ -228,6 +226,7 @@ namespace WindowsFormsApplication3
             FrequencyData[1].Add(dataKey);
             min = 1;
             return data;
+           
         }
 
         public string Get(string dataKey)

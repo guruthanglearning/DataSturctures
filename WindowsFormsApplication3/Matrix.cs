@@ -28,7 +28,10 @@ namespace WindowsFormsApplication3
         private void button1_Click(object sender, EventArgs e)
         {
             //http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
-            int[,] input = new int[,] { { 10, 20, 30, 40 }, { 15, 25, 35, 45 }, { 25, 29, 37, 48 } , { 32, 33, 39, 50 } };
+            int[,] input = new int[,] { { 10, 20, 30, 40 }, 
+                                        { 15, 25, 35, 45 },
+                                        { 25, 29, 37, 48 } ,
+                                        { 32, 33, 39, 50 } };
             int kthValue = kthSmallest(input, 4, 7);
             MessageBox.Show(kthValue.ToString());
 
@@ -37,26 +40,33 @@ namespace WindowsFormsApplication3
         }
 
         // A utility function to swap two HeapNode items.
-        void swap(HeapNode x, HeapNode y)
+        void swap(HeapNode[] harr, int i , int j)
         {
-            int  z = x.value;
-            x.value = y.value;
-            y.value = z;
+            HeapNode temp = harr[i];
+            harr[i] = harr[j];
+            harr[j]= temp;            
         }
 
 
         void minHeapify(HeapNode[] harr, int i, int heap_size)
         {
-            int l = i * 2 + 1;
-            int r = i * 2 + 2;
+            /* i = 1; 
+                20, 15, 25, 32
+                l = 3
+                r = 4
+                s = 1
+                hs = 4
+            */
+            int l = (i * 2)+1 ; 
+            int r = (i * 2) +2;
             int smallest = i;
             if (l < heap_size && harr[l].value < harr[i].value)
                 smallest = l;
             if (r < heap_size && harr[r].value < harr[smallest].value)
                 smallest = r;
             if (smallest != i)
-            {
-                swap(harr[i], harr[smallest]);
+            {                
+                swap(harr,i, smallest);
                 minHeapify(harr, smallest, heap_size);
             }
         }
@@ -76,29 +86,36 @@ namespace WindowsFormsApplication3
         {
             // k must be greater than 0 and smaller than n*n
             if (k <= 0 || k > n * n)
-                return int.MaxValue;
+                return -1;
 
             // Create a min heap of elements from first row of 2D array
             HeapNode[] harr = new HeapNode[n];
             for (int i = 0; i < n; i++)
             {
-                harr[i] = new HeapNode{ value = mat[0,i], row = 0, column = i };
+                harr[i] = new HeapNode{ value = mat[i,0], row = i, column = 0 };
             }
             buildHeap(harr, n);
 
             HeapNode hr = new HeapNode();
             for (int i = 0; i < k; i++)
             {
+                /*
+                    { 10, 20, 30, 40 }, 
+                    { 15, 25, 35, 45 },
+                    { 25, 29, 37, 48 } ,
+                    { 32, 33, 39, 50 }
+                 */
+
                 // Get current heap root
                 hr = harr[0];
 
                 // Get next value from column of root's value. If the
                 // value stored at root was last value in its column,
                 // then assign INFINITE as next value
-                int nextval = (hr.row < (n - 1)) ? mat[hr.row + 1,hr.column] : int.MaxValue;
+                int nextval = (hr.column < (n - 1)) ? mat[hr.row ,hr.column+1] : int.MaxValue;
 
                 // Update heap root with next value
-                harr[0] = new HeapNode{value= nextval, row= (hr.row) + 1, column = hr.column};
+                harr[0] = new HeapNode{value= nextval, row= (hr.row) , column = hr.column + 1};
 
                 // Heapify root
                 minHeapify(harr, 0, n);

@@ -3770,6 +3770,57 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves_Click(object sender, EventArgs e)
+        {
+            /*
+             Given a binary tree, return all paths from the root to leaves.
+                For example, given the tree:
+
+                   1
+                  / \
+                 2   3
+                    / \
+                   4   5
+                Return [[1, 2], [1, 3, 4], [1, 3, 5]].
+             */
+            Node root = new Node() { data = 1 };
+            root.left = new Node() { data = 2 };
+            root.right= new Node() { data = 3 };
+            root.right.right = new Node() { data = 5 };
+            root.right.left= new Node() { data = 4 };
+            List<string> result = new List<string>();
+            this.GetAllPathFromRootToLeaves(root, result, string.Empty);
+            MessageBox.Show($"All Path from root to leaves are below \n {string.Join("\n", result)}");
+
+
+
+
+        }
+
+        private void GetAllPathFromRootToLeaves(Node root, List<string> result, string paths)
+        {
+
+            if (root==null)
+            {
+                return ;
+            }
+
+            if (root.left!=null)
+            {
+                GetAllPathFromRootToLeaves(root.left, result,  $"{paths} {(string.IsNullOrEmpty(paths)? "": ",")} {root.data}");
+            }          
+
+            if (root.right!= null)
+            {
+                GetAllPathFromRootToLeaves(root.right, result, $"{paths} {(string.IsNullOrEmpty(paths) ? "" : ",")} {root.data}");
+            }
+
+            if (root.left == null && root.right==null)
+            {
+                result.Add($"{paths} {(string.IsNullOrEmpty(paths) ? "" : ",")} {root.data}");
+            }
+        }
+
     }
 
     class Graph

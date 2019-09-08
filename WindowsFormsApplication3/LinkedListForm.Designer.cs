@@ -73,6 +73,7 @@
             this.btn_Searilzing_and_De_serialzing_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Count_the_number_of_unival_subtrees = new System.Windows.Forms.Button();
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree = new System.Windows.Forms.Button();
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -550,11 +551,22 @@
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.UseVisualStyleBackColor = true;
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Click += new System.EventHandler(this.btn_Find_the_Deepest_Node_in_a_Binary_Tree_Click);
             // 
+            // btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves
+            // 
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Location = new System.Drawing.Point(492, 187);
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Name = "btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves";
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Size = new System.Drawing.Size(369, 60);
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.TabIndex = 49;
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Text = "Given Binary tree, return all paths from the root to leaves";
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.UseVisualStyleBackColor = true;
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Click += new System.EventHandler(this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1038);
+            this.Controls.Add(this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves);
             this.Controls.Add(this.btn_Find_the_Deepest_Node_in_a_Binary_Tree);
             this.Controls.Add(this.btn_Count_the_number_of_unival_subtrees);
             this.Controls.Add(this.btn_Searilzing_and_De_serialzing_Binary_Tree);
@@ -656,5 +668,6 @@
         private System.Windows.Forms.Button btn_Searilzing_and_De_serialzing_Binary_Tree;
         private System.Windows.Forms.Button btn_Count_the_number_of_unival_subtrees;
         private System.Windows.Forms.Button btn_Find_the_Deepest_Node_in_a_Binary_Tree;
+        private System.Windows.Forms.Button btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves;
     }
 }

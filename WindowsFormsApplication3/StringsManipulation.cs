@@ -111,7 +111,7 @@ namespace WindowsFormsApplication3
             */
 
             int checker = 0;
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < str.Length; i++) //abca
             {
                 int val = str[i] - 'a';
 
@@ -125,7 +125,7 @@ namespace WindowsFormsApplication3
                 }
             }
 
-
+           
 
             return isTrue;
         }
@@ -2176,7 +2176,7 @@ namespace WindowsFormsApplication3
              */
             List<StringWithUniqueNCharacter> inputs = new List<StringWithUniqueNCharacter>();
             StringBuilder result = new StringBuilder();
-            inputs.Add(new StringWithUniqueNCharacter() { Input = "aabbcc", UniqueCharacterCount = 1 });
+            inputs.Add(new StringWithUniqueNCharacter() { Input = "aabbcc", UniqueCharacterCount = 2 });
             const int alphaBetSize = 256;
 
             foreach (StringWithUniqueNCharacter input in inputs)
@@ -2201,10 +2201,10 @@ namespace WindowsFormsApplication3
                 count[str[0]]++;
                 int curr_start = 0, curr_end = 0, windowSize = 1, windowStart = 0;
 
-                for (int i = 1; i < str.Length; i++)
+                for (int i = 1; i < str.Length; i++)//4
                 {
-                    count[str[i]]++;
-                    curr_end++;
+                    count[str[i]]++;  //a= 0, b= 2, c=2
+                    curr_end++; //5 wsize = 4, cs=2
 
                     if (!(this.IsMoreUniqueCharacterPresent(count, uniqueVal, alphaBetSize)))
                     {

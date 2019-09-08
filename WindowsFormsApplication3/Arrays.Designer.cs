@@ -59,6 +59,9 @@
             this.btn_Finding_Missing_Integer_from_the_given_array = new System.Windows.Forms.Button();
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z = new System.Windows.Forms.Button();
             this.btn_Length_Of_The_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
+            this.btn_Validate_Email_and_Count_Valid_Emails = new System.Windows.Forms.Button();
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n = new System.Windows.Forms.Button();
+            this.btn_Maximize_Distance_to_Closest_Person = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -324,7 +327,7 @@
             // 
             this.btn_Array_Puzzle_1.Location = new System.Drawing.Point(634, 344);
             this.btn_Array_Puzzle_1.Name = "btn_Array_Puzzle_1";
-            this.btn_Array_Puzzle_1.Size = new System.Drawing.Size(598, 40);
+            this.btn_Array_Puzzle_1.Size = new System.Drawing.Size(606, 40);
             this.btn_Array_Puzzle_1.TabIndex = 25;
             this.btn_Array_Puzzle_1.Text = "Array Puzzle 1";
             this.btn_Array_Puzzle_1.UseVisualStyleBackColor = true;
@@ -344,7 +347,7 @@
             // 
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Location = new System.Drawing.Point(634, 390);
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Name = "btn_Arrange_Char_Array_R_G_B_In_Place";
-            this.btn_Arrange_Char_Array_R_G_B_In_Place.Size = new System.Drawing.Size(593, 45);
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Size = new System.Drawing.Size(601, 45);
             this.btn_Arrange_Char_Array_R_G_B_In_Place.TabIndex = 27;
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Text = "Arrange Char Array R_G_B In Place";
             this.btn_Arrange_Char_Array_R_G_B_In_Place.UseVisualStyleBackColor = true;
@@ -354,7 +357,7 @@
             // 
             this.btn_Finding_Missing_Integer_from_the_given_array.Location = new System.Drawing.Point(634, 441);
             this.btn_Finding_Missing_Integer_from_the_given_array.Name = "btn_Finding_Missing_Integer_from_the_given_array";
-            this.btn_Finding_Missing_Integer_from_the_given_array.Size = new System.Drawing.Size(592, 41);
+            this.btn_Finding_Missing_Integer_from_the_given_array.Size = new System.Drawing.Size(600, 41);
             this.btn_Finding_Missing_Integer_from_the_given_array.TabIndex = 28;
             this.btn_Finding_Missing_Integer_from_the_given_array.Text = "Finding Missing Integer from the given array";
             this.btn_Finding_Missing_Integer_from_the_given_array.UseVisualStyleBackColor = true;
@@ -364,7 +367,7 @@
             // 
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Location = new System.Drawing.Point(635, 488);
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Name = "btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z";
-            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Size = new System.Drawing.Size(597, 39);
+            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Size = new System.Drawing.Size(602, 39);
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.TabIndex = 29;
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Text = "No of ways to Encode for the given int array based on A-Z";
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.UseVisualStyleBackColor = true;
@@ -374,17 +377,50 @@
             // 
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(635, 533);
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Name = "btn_Length_Of_The_Longest_Increasing_Subsequence";
-            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(592, 46);
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(600, 46);
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.TabIndex = 30;
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Text = "Length Of The Longest Increasing Subsequence";
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.UseVisualStyleBackColor = true;
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Click += new System.EventHandler(this.btn_Length_Of_The_Longest_Increasing_Subsequence_Click);
+            // 
+            // btn_Validate_Email_and_Count_Valid_Emails
+            // 
+            this.btn_Validate_Email_and_Count_Valid_Emails.Location = new System.Drawing.Point(634, 584);
+            this.btn_Validate_Email_and_Count_Valid_Emails.Name = "btn_Validate_Email_and_Count_Valid_Emails";
+            this.btn_Validate_Email_and_Count_Valid_Emails.Size = new System.Drawing.Size(603, 36);
+            this.btn_Validate_Email_and_Count_Valid_Emails.TabIndex = 31;
+            this.btn_Validate_Email_and_Count_Valid_Emails.Text = "Validate Email and Count Valid Emails";
+            this.btn_Validate_Email_and_Count_Valid_Emails.UseVisualStyleBackColor = true;
+            this.btn_Validate_Email_and_Count_Valid_Emails.Click += new System.EventHandler(this.btn_Validate_Email_and_Count_Valid_Emails_Click);
+            // 
+            // btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n
+            // 
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Location = new System.Drawing.Point(635, 624);
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Name = "btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n";
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Size = new System.Drawing.Size(600, 44);
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.TabIndex = 32;
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Text = "Given array of 2n integers which makes max sum of min of ai bi for all i to n";
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.UseVisualStyleBackColor = true;
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Click += new System.EventHandler(this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n_Click);
+            // 
+            // btn_Maximize_Distance_to_Closest_Person
+            // 
+            this.btn_Maximize_Distance_to_Closest_Person.Location = new System.Drawing.Point(637, 674);
+            this.btn_Maximize_Distance_to_Closest_Person.Name = "btn_Maximize_Distance_to_Closest_Person";
+            this.btn_Maximize_Distance_to_Closest_Person.Size = new System.Drawing.Size(596, 36);
+            this.btn_Maximize_Distance_to_Closest_Person.TabIndex = 33;
+            this.btn_Maximize_Distance_to_Closest_Person.Text = "Maximize Distance to Closest Person";
+            this.btn_Maximize_Distance_to_Closest_Person.UseVisualStyleBackColor = true;
+            this.btn_Maximize_Distance_to_Closest_Person.Click += new System.EventHandler(this.btn_Maximize_Distance_to_Closest_Person_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Maximize_Distance_to_Closest_Person);
+            this.Controls.Add(this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n);
+            this.Controls.Add(this.btn_Validate_Email_and_Count_Valid_Emails);
             this.Controls.Add(this.btn_Length_Of_The_Longest_Increasing_Subsequence);
             this.Controls.Add(this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z);
             this.Controls.Add(this.btn_Finding_Missing_Integer_from_the_given_array);
@@ -456,5 +492,8 @@
         private System.Windows.Forms.Button btn_Finding_Missing_Integer_from_the_given_array;
         private System.Windows.Forms.Button btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z;
         private System.Windows.Forms.Button btn_Length_Of_The_Longest_Increasing_Subsequence;
+        private System.Windows.Forms.Button btn_Validate_Email_and_Count_Valid_Emails;
+        private System.Windows.Forms.Button btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n;
+        private System.Windows.Forms.Button btn_Maximize_Distance_to_Closest_Person;
     }
 }
