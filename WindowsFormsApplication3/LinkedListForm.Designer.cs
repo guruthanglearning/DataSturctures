@@ -74,6 +74,7 @@
             this.btn_Count_the_number_of_unival_subtrees = new System.Windows.Forms.Button();
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves = new System.Windows.Forms.Button();
+            this.btn_Distribute_coin_in_a_binary_tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -555,17 +556,28 @@
             // 
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Location = new System.Drawing.Point(492, 187);
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Name = "btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves";
-            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Size = new System.Drawing.Size(369, 60);
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Size = new System.Drawing.Size(378, 60);
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.TabIndex = 49;
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Text = "Given Binary tree, return all paths from the root to leaves";
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.UseVisualStyleBackColor = true;
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Click += new System.EventHandler(this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves_Click);
+            // 
+            // btn_Distribute_coin_in_a_binary_tree
+            // 
+            this.btn_Distribute_coin_in_a_binary_tree.Location = new System.Drawing.Point(492, 253);
+            this.btn_Distribute_coin_in_a_binary_tree.Name = "btn_Distribute_coin_in_a_binary_tree";
+            this.btn_Distribute_coin_in_a_binary_tree.Size = new System.Drawing.Size(378, 39);
+            this.btn_Distribute_coin_in_a_binary_tree.TabIndex = 50;
+            this.btn_Distribute_coin_in_a_binary_tree.Text = "Distribute coin in a binary tree";
+            this.btn_Distribute_coin_in_a_binary_tree.UseVisualStyleBackColor = true;
+            this.btn_Distribute_coin_in_a_binary_tree.Click += new System.EventHandler(this.btn_Distribute_coin_in_a_binary_tree_Click);
             // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1038);
+            this.Controls.Add(this.btn_Distribute_coin_in_a_binary_tree);
             this.Controls.Add(this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves);
             this.Controls.Add(this.btn_Find_the_Deepest_Node_in_a_Binary_Tree);
             this.Controls.Add(this.btn_Count_the_number_of_unival_subtrees);
@@ -669,5 +681,6 @@
         private System.Windows.Forms.Button btn_Count_the_number_of_unival_subtrees;
         private System.Windows.Forms.Button btn_Find_the_Deepest_Node_in_a_Binary_Tree;
         private System.Windows.Forms.Button btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves;
+        private System.Windows.Forms.Button btn_Distribute_coin_in_a_binary_tree;
     }
 }

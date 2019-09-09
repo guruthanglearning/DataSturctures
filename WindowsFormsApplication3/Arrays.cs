@@ -1307,9 +1307,9 @@ namespace WindowsFormsApplication3
                 int i = 0;
                 for (i = start + 2; i < end; i++)
                 {
-                    thirdOld = Math.Max(input[i] + firstOld, secondOld);
-                    firstOld = secondOld;
-                    secondOld = thirdOld;
+                    thirdOld = Math.Max(input[i] + firstOld, secondOld); //21
+                    firstOld = secondOld; 
+                    secondOld = thirdOld;  
                 }
             }
             return thirdOld;
