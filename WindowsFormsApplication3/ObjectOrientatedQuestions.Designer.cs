@@ -30,6 +30,8 @@
         {
             this.btn_Record_Max_population_for_an_year = new System.Windows.Forms.Button();
             this.btn_Calculate_Tax_Bracket = new System.Windows.Forms.Button();
+            this.btn_Garden_with_flower_type = new System.Windows.Forms.Button();
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Record_Max_population_for_an_year
@@ -52,11 +54,33 @@
             this.btn_Calculate_Tax_Bracket.UseVisualStyleBackColor = true;
             this.btn_Calculate_Tax_Bracket.Click += new System.EventHandler(this.btn_Calculate_Tax_Bracket_Click);
             // 
+            // btn_Garden_with_flower_type
+            // 
+            this.btn_Garden_with_flower_type.Location = new System.Drawing.Point(12, 105);
+            this.btn_Garden_with_flower_type.Name = "btn_Garden_with_flower_type";
+            this.btn_Garden_with_flower_type.Size = new System.Drawing.Size(556, 39);
+            this.btn_Garden_with_flower_type.TabIndex = 36;
+            this.btn_Garden_with_flower_type.Text = "Garden with Flower Type";
+            this.btn_Garden_with_flower_type.UseVisualStyleBackColor = true;
+            this.btn_Garden_with_flower_type.Click += new System.EventHandler(this.btn_Garden_with_flower_type_Click);
+            // 
+            // btn_Find_Min_Conference_room_for_the_given_meeting_times
+            // 
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times.Location = new System.Drawing.Point(12, 150);
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times.Name = "btn_Find_Min_Conference_room_for_the_given_meeting_times";
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times.Size = new System.Drawing.Size(556, 38);
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times.TabIndex = 37;
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times.Text = "Find Min Conference room for the given meeting times";
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times.UseVisualStyleBackColor = true;
+            this.btn_Find_Min_Conference_room_for_the_given_meeting_times.Click += new System.EventHandler(this.btn_Find_Min_Conference_room_for_the_given_meeting_times_Click);
+            // 
             // ObjectOrientatedQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Find_Min_Conference_room_for_the_given_meeting_times);
+            this.Controls.Add(this.btn_Garden_with_flower_type);
             this.Controls.Add(this.btn_Calculate_Tax_Bracket);
             this.Controls.Add(this.btn_Record_Max_population_for_an_year);
             this.Name = "ObjectOrientatedQuestions";
@@ -69,5 +93,7 @@
 
         private System.Windows.Forms.Button btn_Record_Max_population_for_an_year;
         private System.Windows.Forms.Button btn_Calculate_Tax_Bracket;
+        private System.Windows.Forms.Button btn_Garden_with_flower_type;
+        private System.Windows.Forms.Button btn_Find_Min_Conference_room_for_the_given_meeting_times;
     }
 }

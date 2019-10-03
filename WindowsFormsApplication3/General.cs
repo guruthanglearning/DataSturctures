@@ -586,11 +586,15 @@ namespace WindowsFormsApplication3
 
         private void button17_Click(object sender, EventArgs e)
         {
-            //int[] a = new int[] { 4, 1, 3, 2 };
-            //long bitFlags = a.ToList().Aggregate(0, (x, y) => x | (1 << (y - 1)));
+            int[] a = new int[] { 4, 1, 3, 2 };
 
+            StringBuilder result = new StringBuilder();
 
-            MessageBox.Show(TestingEnum.PartialFail.ToString());
+            foreach(int i in a )
+            {
+                result.Append($"{i}");
+            }
+            
 
 
 

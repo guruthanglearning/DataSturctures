@@ -1,51 +1,42 @@
 ﻿1.) Concurrent read with the commited value and exculsive writes with locks
-2.) Given input of string abc, generate the permutation like abc, acb, bac, bca, cab,cba etc
-3.) Example 1: Given nums = [3,2,2,3], val = 3,
+2.) Example 1: Given nums = [3,2,2,3], val = 3,
 Your function should return length = 2, with the first two elements of nums being 2. It doesn't matter what you leave beyond the returned length.
-4.) Example 2: Given nums = [0,1,2,2,3,0,4,2], val = 2,
+3.) Example 2: Given nums = [0,1,2,2,3,0,4,2], val = 2,
 Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.
 Note that the order of those five elements can be arbitrary.
 It doesn't matter what values are set beyond the returned length.
 
-5.)In a row of trees, the i-th tree produces fruit with type tree[i].
+4.)You have a set of tiles, where each tile has one letter tiles[i] printed on it.  
+Return the number of possible non-empty sequences of letters you can make.
 
-You start at any tree of your choice, then repeatedly perform the following steps:
-
-Add one piece of fruit from this tree to your baskets.  If you cannot, stop.
-Move to the next tree to the right of the current tree.  If there is no tree to the right, stop.
-Note that you do not have any choice after the initial choice of starting tree: you must perform step 1, then step 2, then back to step 1, 
-then step 2, and so on until you stop.
-
-You have two baskets, and each basket can carry any quantity of fruit, but you want each basket to only carry one type of fruit each.
-
-What is the total amount of fruit you can collect with this procedure?
 
 Example 1:
 
-Input: [1,2,1]
-Output: 3
-Explanation: We can collect [1,2,1].
+Input: "AAB"
+Output: 8
+Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
 Example 2:
 
-Input: [0,1,2,2]
-Output: 3
-Explanation: We can collect [1,2,2].
-If we started at the first tree, we would only collect [0, 1].
-Example 3:
-
-Input: [1,2,3,2,2]
-Output: 4
-Explanation: We can collect [2,3,2,2].
-If we started at the first tree, we would only collect [1, 2].
-Example 4:
-
-Input: [3,3,3,1,2,1,1,2,3,3,4]
-Output: 5
-Explanation: We can collect [1,2,1,1,2].
-If we started at the first tree or the eighth tree, we would only collect 4 fruits.
+Input: "AAABBC"
+Output: 188
  
 
 Note:
 
-1 <= tree.length <= 40000
-0 <= tree[i] < tree.length
+1 <= tiles.length <= 7
+tiles consists of uppercase English letters.
+
+5.) Given an array of integer find the peak. There will not be an duplicate value in the array
+Input = [4,5,6,7,9, 10, 1, 2, 3] Peak is 10
+Input = [4,5,6,7,9, 10, 1] Peak is 10
+Input = [-3, -2, -1, 1, 2, 3, 0] Peak is 10
+
+6.) Given an multidimensional array find the number of cluster in it
+https://www.geeksforgeeks.org/find-number-of-islands/
+
+
+
+
+
+
+

@@ -62,6 +62,10 @@
             this.btn_Validate_Email_and_Count_Valid_Emails = new System.Windows.Forms.Button();
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n = new System.Windows.Forms.Button();
             this.btn_Maximize_Distance_to_Closest_Person = new System.Windows.Forms.Button();
+            this.btn_Garden_No_Adjacent = new System.Windows.Forms.Button();
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots = new System.Windows.Forms.Button();
+            this.btn_Find_Peak_in_an_integer_array = new System.Windows.Forms.Button();
+            this.btn_Search_Insert_Position = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -413,11 +417,57 @@
             this.btn_Maximize_Distance_to_Closest_Person.UseVisualStyleBackColor = true;
             this.btn_Maximize_Distance_to_Closest_Person.Click += new System.EventHandler(this.btn_Maximize_Distance_to_Closest_Person_Click);
             // 
+            // btn_Garden_No_Adjacent
+            // 
+            this.btn_Garden_No_Adjacent.Location = new System.Drawing.Point(639, 718);
+            this.btn_Garden_No_Adjacent.Name = "btn_Garden_No_Adjacent";
+            this.btn_Garden_No_Adjacent.Size = new System.Drawing.Size(596, 38);
+            this.btn_Garden_No_Adjacent.TabIndex = 34;
+            this.btn_Garden_No_Adjacent.Text = "Garden No Adjacent";
+            this.btn_Garden_No_Adjacent.UseVisualStyleBackColor = true;
+            this.btn_Garden_No_Adjacent.Click += new System.EventHandler(this.btn_Garden_No_Adjacent_Click);
+            // 
+            // btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots
+            // 
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Location = new System.Drawing.Point(637, 762);
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Name = "btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_s" +
+    "lots";
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Size = new System.Drawing.Size(594, 33);
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.TabIndex = 35;
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Text = "Given a list of tasks to run with cooldown interval find min number of time slots" +
+    " ";
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.UseVisualStyleBackColor = true;
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Click += new System.EventHandler(this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots_Click);
+            // 
+            // btn_Find_Peak_in_an_integer_array
+            // 
+            this.btn_Find_Peak_in_an_integer_array.Location = new System.Drawing.Point(639, 801);
+            this.btn_Find_Peak_in_an_integer_array.Name = "btn_Find_Peak_in_an_integer_array";
+            this.btn_Find_Peak_in_an_integer_array.Size = new System.Drawing.Size(591, 44);
+            this.btn_Find_Peak_in_an_integer_array.TabIndex = 36;
+            this.btn_Find_Peak_in_an_integer_array.Text = "Find Peak in an integer array";
+            this.btn_Find_Peak_in_an_integer_array.UseVisualStyleBackColor = true;
+            this.btn_Find_Peak_in_an_integer_array.Click += new System.EventHandler(this.btn_Find_Peak_in_an_integer_array_Click);
+            // 
+            // btn_Search_Insert_Position
+            // 
+            this.btn_Search_Insert_Position.Location = new System.Drawing.Point(637, 851);
+            this.btn_Search_Insert_Position.Name = "btn_Search_Insert_Position";
+            this.btn_Search_Insert_Position.Size = new System.Drawing.Size(591, 37);
+            this.btn_Search_Insert_Position.TabIndex = 37;
+            this.btn_Search_Insert_Position.Text = "Search Insert Position";
+            this.btn_Search_Insert_Position.UseVisualStyleBackColor = true;
+            this.btn_Search_Insert_Position.Click += new System.EventHandler(this.btn_Search_Insert_Position_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Search_Insert_Position);
+            this.Controls.Add(this.btn_Find_Peak_in_an_integer_array);
+            this.Controls.Add(this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots);
+            this.Controls.Add(this.btn_Garden_No_Adjacent);
             this.Controls.Add(this.btn_Maximize_Distance_to_Closest_Person);
             this.Controls.Add(this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n);
             this.Controls.Add(this.btn_Validate_Email_and_Count_Valid_Emails);
@@ -495,5 +545,9 @@
         private System.Windows.Forms.Button btn_Validate_Email_and_Count_Valid_Emails;
         private System.Windows.Forms.Button btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n;
         private System.Windows.Forms.Button btn_Maximize_Distance_to_Closest_Person;
+        private System.Windows.Forms.Button btn_Garden_No_Adjacent;
+        private System.Windows.Forms.Button btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots;
+        private System.Windows.Forms.Button btn_Find_Peak_in_an_integer_array;
+        private System.Windows.Forms.Button btn_Search_Insert_Position;
     }
 }

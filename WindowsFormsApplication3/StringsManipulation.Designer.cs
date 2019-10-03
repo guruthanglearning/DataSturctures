@@ -70,6 +70,10 @@
             this.btn_Implement_Auto_Complete = new System.Windows.Forms.Button();
             this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string = new System.Windows.Forms.Button();
             this.btn_Look_and_say_sequence = new System.Windows.Forms.Button();
+            this.btn_Permutation_of_a_string = new System.Windows.Forms.Button();
+            this.btn_Longest_Common_Prefix = new System.Windows.Forms.Button();
+            this.btn_Valid_Parentheses = new System.Windows.Forms.Button();
+            this.btn_Implement_strStr = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -171,7 +175,7 @@
             this.button8.Location = new System.Drawing.Point(20, 237);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(444, 35);
+            this.button8.Size = new System.Drawing.Size(437, 35);
             this.button8.TabIndex = 9;
             this.button8.Text = "Remove duplicate characters Without additional  Constant";
             this.button8.UseVisualStyleBackColor = true;
@@ -508,7 +512,7 @@
             // 
             // btn_Look_and_say_sequence
             // 
-            this.btn_Look_and_say_sequence.Location = new System.Drawing.Point(913, 551);
+            this.btn_Look_and_say_sequence.Location = new System.Drawing.Point(913, 549);
             this.btn_Look_and_say_sequence.Name = "btn_Look_and_say_sequence";
             this.btn_Look_and_say_sequence.Size = new System.Drawing.Size(460, 34);
             this.btn_Look_and_say_sequence.TabIndex = 41;
@@ -516,11 +520,55 @@
             this.btn_Look_and_say_sequence.UseVisualStyleBackColor = true;
             this.btn_Look_and_say_sequence.Click += new System.EventHandler(this.btn_Look_and_say_sequence_Click);
             // 
+            // btn_Permutation_of_a_string
+            // 
+            this.btn_Permutation_of_a_string.Location = new System.Drawing.Point(914, 589);
+            this.btn_Permutation_of_a_string.Name = "btn_Permutation_of_a_string";
+            this.btn_Permutation_of_a_string.Size = new System.Drawing.Size(457, 33);
+            this.btn_Permutation_of_a_string.TabIndex = 42;
+            this.btn_Permutation_of_a_string.Text = "Permutation of a string";
+            this.btn_Permutation_of_a_string.UseVisualStyleBackColor = true;
+            this.btn_Permutation_of_a_string.Click += new System.EventHandler(this.btn_Permutation_of_a_string_Click);
+            // 
+            // btn_Longest_Common_Prefix
+            // 
+            this.btn_Longest_Common_Prefix.Location = new System.Drawing.Point(916, 628);
+            this.btn_Longest_Common_Prefix.Name = "btn_Longest_Common_Prefix";
+            this.btn_Longest_Common_Prefix.Size = new System.Drawing.Size(458, 37);
+            this.btn_Longest_Common_Prefix.TabIndex = 43;
+            this.btn_Longest_Common_Prefix.Text = "Longest Common Prefix";
+            this.btn_Longest_Common_Prefix.UseVisualStyleBackColor = true;
+            this.btn_Longest_Common_Prefix.Click += new System.EventHandler(this.btn_Longest_Common_Prefix_Click);
+            // 
+            // btn_Valid_Parentheses
+            // 
+            this.btn_Valid_Parentheses.Location = new System.Drawing.Point(916, 671);
+            this.btn_Valid_Parentheses.Name = "btn_Valid_Parentheses";
+            this.btn_Valid_Parentheses.Size = new System.Drawing.Size(456, 45);
+            this.btn_Valid_Parentheses.TabIndex = 44;
+            this.btn_Valid_Parentheses.Text = "Valid Parentheses";
+            this.btn_Valid_Parentheses.UseVisualStyleBackColor = true;
+            this.btn_Valid_Parentheses.Click += new System.EventHandler(this.btn_Valid_Parentheses_Click);
+            // 
+            // btn_Implement_strStr
+            // 
+            this.btn_Implement_strStr.Location = new System.Drawing.Point(917, 725);
+            this.btn_Implement_strStr.Name = "btn_Implement_strStr";
+            this.btn_Implement_strStr.Size = new System.Drawing.Size(453, 35);
+            this.btn_Implement_strStr.TabIndex = 45;
+            this.btn_Implement_strStr.Text = "Implement IndexOf";
+            this.btn_Implement_strStr.UseVisualStyleBackColor = true;
+            this.btn_Implement_strStr.Click += new System.EventHandler(this.btn_Implement_strStr_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1720, 779);
+            this.Controls.Add(this.btn_Implement_strStr);
+            this.Controls.Add(this.btn_Valid_Parentheses);
+            this.Controls.Add(this.btn_Longest_Common_Prefix);
+            this.Controls.Add(this.btn_Permutation_of_a_string);
             this.Controls.Add(this.btn_Look_and_say_sequence);
             this.Controls.Add(this.btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string);
             this.Controls.Add(this.btn_Implement_Auto_Complete);
@@ -616,5 +664,9 @@
         private System.Windows.Forms.Button btn_Implement_Auto_Complete;
         private System.Windows.Forms.Button btn_Find_the_longest_substring_with_k_unique_characters_in_a_given_string;
         private System.Windows.Forms.Button btn_Look_and_say_sequence;
+        private System.Windows.Forms.Button btn_Permutation_of_a_string;
+        private System.Windows.Forms.Button btn_Longest_Common_Prefix;
+        private System.Windows.Forms.Button btn_Valid_Parentheses;
+        private System.Windows.Forms.Button btn_Implement_strStr;
     }
 }

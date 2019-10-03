@@ -88,56 +88,7 @@ namespace WindowsFormsApplication3
         /// <returns></returns>
         private int Lomuto_partition_scheme(int[] input, int lower, int upper)
         {
-            /* original input 11, 23, 1, 4, 0, -1, 55, 20
-               3, 2, 1
-
-              Iteration 1: When lower = 0; Upper = 7 Pivot = 20, i =-1
-              j = 0  i = 0  Input : 11, 23, 1, 4, 0, -1, 55, 20
-              j = 1  i = 0  Input : 11, 23, 1, 4, 0, -1, 55, 20
-              j = 2  i = 1  Input : 11, 1, 23, 4, 0, -1, 55, 20
-              j = 3  i = 2  Input : 11, 4, 23, 1, 0, -1, 55, 20
-              j = 4  i = 3  Input : 11, 4, 23, 0, 1, -1, 55, 20
-              j = 5  i = 4  Input : 11, 4, 23, 0, -1, 1, 55, 20
-              j = 6  i = 4  Input : 11, 4, 23, 0, -1, 1, 55, 20
-              End Swap i+1(5) to upper = 7
-                            Input : 11, 4, 23, 0, -1, 20, 55, 1 
-
-              
-              Iteration 1.1: When lower = 0; Upper = 4 Pivot = -1, i =-1    quickSort_Lomuto_partition_scheme(input, lower, i - 1);
-              j = 0  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
-              j = 1  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
-              j = 2  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
-              j = 3  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
-              End Swap i+1(0) to upper = 4
-                            Input : -1, 4, 23, 0, 11, 20, 55, 1
-
-             Iteration 1.1.1 : When lower = 0; Upper = -1 Pivot = -1, i =-1 quickSort_Lomuto_partition_scheme(input, lower, i - 1); no operation due to lower < upper goes back to 1.1
-                               Input : -1, 4, 23, 0, 11, 20, 55, 1
-            
-             Iteration 1.1.2 : When lower = 1; Upper = 4  Pivot = 11, i = 1 quickSort_Lomuto_partition_scheme(input, i + 1, upper ); 
-                               Input : -1, 4, 23, 0, 11, 20, 55, 1
-              j = 1 i = 1 Input : -1, 4, 23, 0, 11, 20, 55, 1
-              j = 2 i = 1 Input : -1, 4, 23, 0, 11, 20, 55, 1
-              j = 3 i = 1 Input : -1, 0, 23, 4, 11, 20, 55, 1
-              End Swap i+1(2) to upper = 4
-                            Input : -1, 0, 11, 4, 23, 20, 55, 1
-              
-            Iteration 1.1.2.1 : When lower = 1; Upper = 1  Pivot = 0, i = 0 quickSort_Lomuto_partition_scheme(input, lower, i-1 ); 
-                          Input :  -1, 0, 11, 4, 23, 20, 55, 1
-                
-             j =  
-                    
-              
-                  
-
-
-
-
-             Iteration 1.2: When lower = ; Upper = 4 Pivot = -1, i =-1    quickSort_Lomuto_partition_scheme(input, i - 1, upper);
-             j = 0  i = -1  Input : 11, 4, 23, 0, -1, 20, 55, 1
-           
-
-
+            /* original input 11, 23, 1, 4, 0, -1, 55, 20               
             */
             int returnValue = -1;
             if (input != null && input.Length > 0)

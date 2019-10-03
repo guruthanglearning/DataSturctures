@@ -158,6 +158,7 @@ namespace WindowsFormsApplication3
                     }
                 }
             }
+            Array.Resize(ref buffer, insert);
 
             while (insert < buffer.Length - 1)
             {
@@ -323,7 +324,12 @@ namespace WindowsFormsApplication3
             const int mask = 1;
             var binary = string.Empty;
             /*
-                60 
+                60 ->30->15->7->3->
+                     0  ->0->1->1->1->1
+                     111100
+
+            
+
              */
             while (number > 0)
             {
@@ -662,7 +668,7 @@ namespace WindowsFormsApplication3
                     Before swap m=4, n= 2
                     
                     After swap m=2 , n=4
-                    int[] nums1 = new int[] { 1, 2, };
+                    int[] nums1 = new int[] { 1, 2, };   1 2 2 3 4 5
                     int[] nums2 = new int[] { 2, 3, 4, 5 };
                     
                     iMin = 0 Max = 2, halfLen = 3, i = 1, j = 2
@@ -1295,9 +1301,10 @@ namespace WindowsFormsApplication3
                     return input[0];
                 }
 
+                
                 // 6, 7, 1, 3, 8, 2, 4
-                firstOld = input[start];            
-                secondOld = Math.Max(firstOld, (end - start) >= 2 ? input[start + 1] : secondOld);
+                firstOld = input[start];            //6
+                secondOld = Math.Max(firstOld, (end - start) >= 2 ? input[start + 1] : secondOld); //7
                 if (end <= 2)
                 {
                     thirdOld = Math.Max(firstOld, secondOld);
@@ -1307,9 +1314,9 @@ namespace WindowsFormsApplication3
                 int i = 0;
                 for (i = start + 2; i < end; i++)
                 {
-                    thirdOld = Math.Max(input[i] + firstOld, secondOld); //21
+                    thirdOld = Math.Max(input[i] + firstOld, secondOld);
                     firstOld = secondOld; 
-                    secondOld = thirdOld;  
+                    secondOld = thirdOld; 
                 }
             }
             return thirdOld;
@@ -1332,9 +1339,7 @@ namespace WindowsFormsApplication3
             inputs[7] = new int[] { 5, 1, 1, 5 };
 
             StringBuilder result = new StringBuilder();
-            int firstOld = 0;
-            int secondOld = 0;
-            int thirdOld = 0;
+   
             foreach (int[] input in inputs)
             {
                 result.AppendLine($"The max value robbed in this house { (input.Length == 0 ? "Empty" : string.Join(",", input))} is {RobHouse(input, 0, input.Length).ToString()}");
@@ -1386,7 +1391,22 @@ namespace WindowsFormsApplication3
 
         private void btn_Array_Puzzle_1_Click(object sender, EventArgs e)
         {
-            //https://www.geeksforgeeks.org/product-array-puzzle-set-2-o1-space/
+            /* https://www.geeksforgeeks.org/product-array-puzzle-set-2-o1-space/
+             
+            Given an array arr[] of n integers, construct a Product Array prod[] (of same size) such that prod[i] is equal to the product of all the 
+            elements of arr[] except arr[i]. Solve it without division operator and in O(n).
+
+            Example:
+
+            Input : arr[] = {10, 3, 5, 6, 2}
+            Output : prod[] = {180, 600, 360, 300, 900}
+
+            Time Complexity     :   O(n)   
+            Space Complexity    :   O(n)
+
+             */
+
+
             StringBuilder result = new StringBuilder();
             int[] input = new int[] { 1, 2, 3, 4, 5 };
             int n = input.Length;
@@ -1568,7 +1588,7 @@ namespace WindowsFormsApplication3
                 Space Complexity : O(1)
             */
 
-            int[] input = new int[] { 1,2,3 };
+            int[] input = new int[] { 1,2,3,9 };
             
             int first = 1;
             int second = 1;
@@ -1583,24 +1603,22 @@ namespace WindowsFormsApplication3
 
                 for(int i = 2; i<= input.Length; i++)
                 {
+                    //i = 4
 
                     if (input[i-1] > 0)
                     {
-                        third = second;
+                        third = second; // 3
                     }
 
                     if ((input[i-2]  == 1) || (input[i-2] == 2 && input[i - 1] < 7))
                     {
-                        third += first;
-                        first = second;
-                        second = third;
+                        third += first; //3
+                        first = second; //2
+                        second = third; //3
                     }
                 }
 
                 MessageBox.Show($"We can decode {third} times for the given int array { string.Join(",", input)}");
-
-
-
 
             }
 
@@ -1609,8 +1627,10 @@ namespace WindowsFormsApplication3
         private void btn_Length_Of_The_Longest_Increasing_Subsequence_Click(object sender, EventArgs e)
         {
             /*
-             Given an array of numbers, find the length of the longest increasing subsequence in the array. The subsequence does not necessarily have to be contiguous.
-             For example, given the array [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15], the longest increasing subsequence has length 6: it is 0, 2, 6, 9, 11, 15.
+             Given an array of numbers, find the length of the longest increasing subsequence in the array. 
+             The subsequence does not necessarily have to be contiguous.
+             For example, given the array [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15], the longest increasing 
+             subsequence has length 6: it is 0, 2, 6, 9, 11, 15.
 
              Time Complexity  : O(nlogn) -->Binary Search complexity is Log n and we are doing this for n items
              Space Complexity : O(n)     -->Worst case scenario we are storing n items in the new memory.
@@ -1621,6 +1641,7 @@ namespace WindowsFormsApplication3
             int len = 0;
             foreach (int input in inputs)
             {
+                //https://www.geeksforgeeks.org/how-to-use-array-binarysearch-method-in-c-sharp-set-1/#3rd
                 int i = Array.BinarySearch(dp, 0, len, input);
                 if (i < 0)
                 {
@@ -1733,8 +1754,9 @@ namespace WindowsFormsApplication3
              */
 
             List<Array2n> inputs = new List<Array2n>();
-            inputs.Add(new Array2n(){N = 3, Data=new int[] {4, 5, 6, 1, 2, 3 } });
-            
+            inputs.Add(new Array2n(){N = 2, Data=new int[] {4, 1, 2, 3 } }); // 1,2,3,4,5,6 = 9
+            inputs.Add(new Array2n() { N = 3, Data = new int[] { 4, 5, 6, 1, 2, 3 } }); // 1,2,3,4,5,6 = 9
+
             StringBuilder result = new StringBuilder();
             string output = string.Empty;
             foreach(Array2n input in inputs)
@@ -1826,6 +1848,424 @@ namespace WindowsFormsApplication3
                 result.Append($"{string.Join(" ", input)} is {distance} \n");
             }
             MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Garden_No_Adjacent_Click(object sender, EventArgs e)
+        {
+
+            /*
+                This problem is equalvent to find the longest subarray with 2 distinct values in it https://leetcode.com/problems/fruit-into-baskets/discuss/170745/C++JavaPython-Longest-Subarray-With-2-Elements
+
+                In a row of trees, the i-th tree produces fruit with type tree[i].
+                You start at any tree of your choice, then repeatedly perform the following steps:
+
+                Add one piece of fruit from this tree to your baskets.  If you cannot, stop.
+                Move to the next tree to the right of the current tree.  If there is no tree to the right, stop.
+                Note that you do not have any choice after the initial choice of starting tree: you must perform step 1, then step 2, then back to step 1, 
+                then step 2, and so on until you stop.
+
+                You have two baskets, and each basket can carry any quantity of fruit, but you want each basket to only carry one type of fruit each.
+
+                What is the total amount of fruit you can collect with this procedure?
+
+                Example 1:
+
+                Input: [1,2,1]
+                Output: 3
+                Explanation: We can collect [1,2,1].
+                Example 2:
+
+                Input: [0,1,2,2]
+                Output: 3
+                Explanation: We can collect [1,2,2].
+                If we started at the first tree, we would only collect [0, 1].
+                Example 3:
+
+                Input: [1,2,3,2,2]
+                Output: 4
+                Explanation: We can collect [2,3,2,2].
+                If we started at the first tree, we would only collect [1, 2].
+                Example 4:
+
+                Input: [3,3,3,1,2,1,1,2,3,3,4]
+                Output: 5
+                Explanation: We can collect [1,2,1,1,2].
+                If we started at the first tree or the eighth tree, we would only collect 4 fruits.
+ 
+
+                Note:
+
+                1 <= tree.length <= 40000
+                0 <= tree[i] < tree.length
+
+                
+             */
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 2, 1 });
+            inputs.Add(new int[] { 0, 1, 2, 2 });
+            inputs.Add(new int[] { 1, 2, 3, 2, 2 });
+            inputs.Add(new int[] { 3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4 });
+            StringBuilder result = new StringBuilder();
+            int last = 0;
+            int secondLast = 0;
+            int lastMax = 0;
+            int secondLastMax = 0;
+            int final = 0;
+            int currentValue = 0;
+            foreach (int[] input in inputs)
+            {
+
+                /*
+                    Last = 0 SecondLast = 0      LastMax = 0        SecondLastMax = 0       Final = 0
+                 
+                    I       Current Value       Last    SecondLast      LastMax         SecondLastMax       Final  
+                    ==============================================================================================
+                    0           1                 1         1              0                 1              0
+                    1           2                 2         1              1                 2              2
+                    2           1                 3         2              2                 1              3
+                    
+                 */
+                currentValue = 0;
+                last = 0; 
+                secondLast = 0;
+                lastMax = 0;              
+                secondLastMax = 0;
+                final = 0; //
+                for (int i =0; i <input.Length; i++)
+                {
+                    currentValue = input[i];
+                    lastMax = currentValue == last || currentValue == secondLast ? lastMax + 1 : secondLastMax + 1;
+                    secondLastMax = currentValue == secondLast ? secondLastMax + 1 : 1;
+
+                    if (currentValue!=secondLast)
+                    {
+                        last = secondLast;
+                        secondLast = currentValue;
+                    }
+
+                    final = Math.Max(final, lastMax);
+                }
+
+                result.Append($"Longest subarray is {final} for the array {string.Join(" ", input)} \n");
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Garden_with_flower_type_Click(object sender, EventArgs e)
+        {
+            /*
+                You have N gardens, labelled 1 to N.  In each garden, you want to plant one of 4 types of flowers. 
+                paths[i] = [x, y] describes the existence of a bidirectional path from garden x to garden y.
+                Also, there is no garden that has more than 3 paths coming into or leaving it.
+                Your task is to choose a flower type for each garden such that, for any two gardens connected by a path, they have different types of flowers.
+                Return any such a choice as an array answer, where answer[i] is the type of flower planted in the (i+1)-th garden.  
+                The flower types are denoted 1, 2, 3, or 4.  It is guaranteed an answer exists.
+
+                Example 1:
+
+                Input: N = 3, paths = [[1,2],[2,3],[3,1]]
+                Output: [1,2,3]
+                Example 2:
+
+                Input: N = 4, paths = [[1,2],[3,4]]
+                Output: [1,2,1,2]
+                Example 3:
+
+                Input: N = 4, paths = [[1,2],[2,3],[3,4],[4,1],[1,3],[2,4]]
+                Output: [1,2,3,4]
+
+                Note:
+
+                1 <= N <= 10000
+                0 <= paths.size <= 20000
+                No garden has 4 or more paths coming into or leaving it.
+                It is guaranteed an answer exists.
+
+                Complexity: 
+                Time O(N) with O(paths) = O(1.5N)
+                Space O(N)
+             */
+
+            List<Gardens> inputs = new List<Gardens>();
+            
+            inputs.Add(new Gardens
+            {
+                GardensCordinates = new List<GardensCordinates>() {
+                                                                        new GardensCordinates() {X= 1, Y=2 },
+                                                                        new GardensCordinates() {X= 2, Y=3 },
+                                                                        new GardensCordinates() {X= 3, Y=1 }
+                                                                  },
+                NoOfGardens= 3
+            });
+
+            inputs.Add(new Gardens
+            {
+                GardensCordinates = new List<GardensCordinates>() {
+                                                                        new GardensCordinates() {X= 1, Y=2 },
+                                                                        new GardensCordinates() {X= 3, Y=4 }
+                                                                        
+                                                                  },
+                NoOfGardens = 4
+            });
+            inputs.Add(new Gardens
+            {
+                GardensCordinates = new List<GardensCordinates>() {
+                                                                        new GardensCordinates() {X= 1, Y=2 },
+                                                                        new GardensCordinates() {X= 2, Y=3 },
+                                                                        new GardensCordinates() {X= 3, Y=4 },
+                                                                        new GardensCordinates() {X= 4, Y=1 },
+                                                                        new GardensCordinates() {X= 1, Y=3 },
+                                                                        new GardensCordinates() {X= 2, Y=4 }
+                                                                  },
+                NoOfGardens = 4
+            });
+
+            StringBuilder result = new StringBuilder();
+
+            foreach(var input in inputs)
+            {
+                int[] flowerTypeForGarden = Enumerable.Repeat(1, input.NoOfGardens).ToArray<int>();
+                bool proceed = true;
+                int min = 0;
+                int max = 0;
+
+                while (proceed)
+                {
+                    proceed = false;
+                    foreach (GardensCordinates cord in input.GardensCordinates)
+                    {
+                        min = Math.Min(cord.X, cord.Y);
+                        max = Math.Max(cord.X, cord.Y);
+
+                        if (flowerTypeForGarden[min - 1] == flowerTypeForGarden[max - 1])
+                        {
+                            proceed = true;
+                            flowerTypeForGarden[max - 1] = flowerTypeForGarden[max - 1] == 4 ? 1 : flowerTypeForGarden[max - 1] + 1;
+                        }
+                    }
+
+                }
+
+                result.Append($"The Garden with different flower types are {string.Join(" ", flowerTypeForGarden)} \n");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public class Gardens
+        {
+            public List<GardensCordinates> GardensCordinates;
+            public int NoOfGardens;
+        }
+
+        public class GardensCordinates
+        {
+            public int X;
+            public int Y;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a list of input tasks to run, and the cooldown interval, output the minimum number of time slots required to run them. 
+	            Tasks: 1, 1, 2, 1, 2 
+	            Recovery interval (cooldown): 2 
+	            Output: 8 (order is 1 _ _ 1 2 _ 1 2 ) 
+
+	            Task 1,2,3,1,2,3
+	            Recovery interval (cooldown): = 3
+	            Output: 7 (order is 1 2 3 _ 1 2 3 )                
+
+                Time Complexity     : O(n)
+                Space Complexity    : O(n)
+             */
+             
+            List<TaskCoolDown> tasks = new List<TaskCoolDown>();
+            tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 1, 2, 1, 2 }, Cooldown = 2 });
+            tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 2, 3, 1, 2, 3 }, Cooldown = 3 });
+            StringBuilder message = new StringBuilder();
+
+            foreach(var task in tasks)
+            {
+                /*  
+                    1, 1, 2, 1, 2               2
+                    1--1,2-1,2
+                   
+                    Dictionary
+                    1- 6
+                    2-0                    
+                 */
+
+                Dictionary<int, int> taskEntry = new Dictionary<int, int>();
+                int result = 0; 
+                int taskIndex = 0;
+                int last = 0; 
+                while (taskIndex < task.Task.Length)
+                {
+                    if (!taskEntry.ContainsKey(task.Task[taskIndex]))
+                    {
+                        taskEntry[task.Task[taskIndex]] = result;
+                        taskIndex++;
+                    }
+                    else
+                    {
+                        last = taskEntry[task.Task[taskIndex]];
+                        if ((result - last) > task.Cooldown)
+                        {
+                            taskEntry[task.Task[taskIndex]] = result;
+                            taskIndex++;
+                        }
+                    }
+                    result++;
+                }
+
+                message.Append($"The minimum number of time slots required to run is {result} to run {string.Join(" " , task.Task)} \n ");
+                
+            }
+            MessageBox.Show(message.ToString());
+
+        }
+
+        public class TaskCoolDown
+        {
+            public int[] Task;
+            public int Cooldown;
+        }
+
+        private void btn_Find_Peak_in_an_integer_array_Click(object sender, EventArgs e)
+        {
+
+            /*                
+                Time Complexity  : O(log N)
+                Space Complexity : Constant space O(1)
+            */
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 2, 3, 4, 5, 6, 7, 8, 10, 9 }); // 7
+            inputs.Add(new int[] { -4, -3, -2, -1, 1, 2, 3, 0 }); // 7
+            inputs.Add(new int[] { 9, 10, 1, 2, 3 }); // 1
+            inputs.Add(new int[] { 1 }); // -1
+            inputs.Add(new int[] { 1, 2 }); // -1
+            inputs.Add(new int[] { 2, 1 }); // 1
+            inputs.Add(new int[] {}); // -1
+            inputs.Add(new int[] { 1, 2, 3, 1 }); // 2
+            inputs.Add(new int[] { 1, 2, 1, 3, 5, 6, 4 }); // 5
+
+            StringBuilder result = new StringBuilder();
+            foreach(int[] input in inputs)
+            {
+                int l = 0;
+                int r = input.Length - 1;
+                int m = -1;
+
+                if (input.Length == 0 || input.Length == 1)
+                {
+                    result.Append($"The peak index is -1 for the given int array {string.Join(" ", input)} \n");
+                    continue;
+                }
+
+                while (l< r)
+                {
+                    m = (l + r) / 2;
+
+                    if (m==0)
+                    {
+                        if (input[l]>input[r])
+                        {
+                            m = l;
+                        }
+                        else
+                        {
+                            m = -1;
+                        }
+                        break;
+                    }
+                    else if (input[m-1] < input[m] && input[m] > input[m + 1])
+                    {
+                        break;
+                    }
+                    else if (input[l] < input[m])
+                    {
+                        l = m + 1;
+                    }
+                    else 
+                    {
+                        r = m;                        
+                    }
+                }
+
+                result.Append($"The peak index is {m} for the given int array {string.Join(" ", input)} \n");
+            }
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Search_Insert_Position_Click(object sender, EventArgs e)
+        {
+
+            /*                
+                Time Complexity  : O(log N)
+                Space Complexity : Constant space O(1)
+            */
+
+            List<SearchInsertPosition> inputs = new List<SearchInsertPosition>();
+            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 5 });
+            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 2 });
+            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 7 });
+            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 0 });
+            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 1 });
+            inputs.Add(new SearchInsertPosition() { input = new int[] { 1 }, find = 1 });
+            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 2 }, find = 2 });
+
+            StringBuilder result = new StringBuilder();
+            foreach (var sip in inputs)
+            {                
+                result.Append($"The search insert index is {this.FindSearchInsert(sip.input, sip.find)} for the given int array {string.Join(" ", sip.input)} for given search {sip.find}  \n");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private int FindSearchInsert(int[] input, int find)
+        {            
+            int l = 0;
+            int r = input.Length - 1;
+            int m = -1;
+
+            while (l <= r)
+            {
+                m = (l + r) / 2;
+
+                if (input[m] == find)
+                {
+                    return m;
+                }
+                else if (input[m] < find)
+                {
+                    l = m + 1;
+                }
+                else
+                {
+                    r = m - 1;
+                }
+            }
+            return r + 1;
+        }
+
+        public class SearchInsertPosition
+        {
+            public int[] input;
+            public int find;
         }
     }
 }

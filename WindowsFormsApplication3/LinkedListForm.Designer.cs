@@ -75,6 +75,7 @@
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves = new System.Windows.Forms.Button();
             this.btn_Distribute_coin_in_a_binary_tree = new System.Windows.Forms.Button();
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -274,7 +275,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(731, 542);
+            this.button18.Location = new System.Drawing.Point(496, 578);
             this.button18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(304, 35);
@@ -318,7 +319,7 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(731, 637);
+            this.button24.Location = new System.Drawing.Point(496, 673);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(294, 35);
             this.button24.TabIndex = 26;
@@ -379,7 +380,7 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(731, 587);
+            this.button30.Location = new System.Drawing.Point(496, 623);
             this.button30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(304, 35);
@@ -572,11 +573,22 @@
             this.btn_Distribute_coin_in_a_binary_tree.UseVisualStyleBackColor = true;
             this.btn_Distribute_coin_in_a_binary_tree.Click += new System.EventHandler(this.btn_Distribute_coin_in_a_binary_tree_Click);
             // 
+            // btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order
+            // 
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Location = new System.Drawing.Point(878, 98);
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Name = "btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order";
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Size = new System.Drawing.Size(332, 65);
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.TabIndex = 51;
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Text = "Sum of two Linked list and get the linklist of the sum in reverse order";
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.UseVisualStyleBackColor = true;
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Click += new System.EventHandler(this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1557, 1038);
+            this.Controls.Add(this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order);
             this.Controls.Add(this.btn_Distribute_coin_in_a_binary_tree);
             this.Controls.Add(this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves);
             this.Controls.Add(this.btn_Find_the_Deepest_Node_in_a_Binary_Tree);
@@ -682,5 +694,6 @@
         private System.Windows.Forms.Button btn_Find_the_Deepest_Node_in_a_Binary_Tree;
         private System.Windows.Forms.Button btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves;
         private System.Windows.Forms.Button btn_Distribute_coin_in_a_binary_tree;
+        private System.Windows.Forms.Button btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order;
     }
 }

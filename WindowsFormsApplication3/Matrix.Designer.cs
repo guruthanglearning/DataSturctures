@@ -32,6 +32,7 @@
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix = new System.Windows.Forms.Button();
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix = new System.Windows.Forms.Button();
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table = new System.Windows.Forms.Button();
+            this.btn_Find_no_of_island_for_the_given_matrix = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -74,11 +75,22 @@
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.UseVisualStyleBackColor = true;
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Click += new System.EventHandler(this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table_Click);
             // 
+            // btn_Find_no_of_island_for_the_given_matrix
+            // 
+            this.btn_Find_no_of_island_for_the_given_matrix.Location = new System.Drawing.Point(2, 196);
+            this.btn_Find_no_of_island_for_the_given_matrix.Name = "btn_Find_no_of_island_for_the_given_matrix";
+            this.btn_Find_no_of_island_for_the_given_matrix.Size = new System.Drawing.Size(583, 35);
+            this.btn_Find_no_of_island_for_the_given_matrix.TabIndex = 22;
+            this.btn_Find_no_of_island_for_the_given_matrix.Text = "Find no of island for the given matrix";
+            this.btn_Find_no_of_island_for_the_given_matrix.UseVisualStyleBackColor = true;
+            this.btn_Find_no_of_island_for_the_given_matrix.Click += new System.EventHandler(this.btn_Find_no_of_island_for_the_given_matrix_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 425);
+            this.Controls.Add(this.btn_Find_no_of_island_for_the_given_matrix);
             this.Controls.Add(this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table);
             this.Controls.Add(this.btn_Find_the_largest_square_of_1_in_a_given_matrix);
             this.Controls.Add(this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Button btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix;
         private System.Windows.Forms.Button btn_Find_the_largest_square_of_1_in_a_given_matrix;
         private System.Windows.Forms.Button btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table;
+        private System.Windows.Forms.Button btn_Find_no_of_island_for_the_given_matrix;
     }
 }

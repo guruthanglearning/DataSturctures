@@ -57,8 +57,8 @@ namespace WindowsFormsApplication3
                 s = 1
                 hs = 4
             */
-            int l = (i * 2)+1 ; 
-            int r = (i * 2) +2;
+            int l = (i * 2); 
+            int r = (i * 2)+1;
             int smallest = i;
             if (l < heap_size && harr[l].value < harr[i].value)
                 smallest = l;
@@ -238,5 +238,107 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"There are {result.ToString()} occurance of {x.ToString()} for the given {input.ToString() } X {input.ToString() } matrix");
 
         }
+
+        private void btn_Find_no_of_island_for_the_given_matrix_Click(object sender, EventArgs e)
+        {
+
+            /*
+                https://www.ideserve.co.in/learn/number-of-clusters-of-1s
+                Given a 2D matrix of 0s and 1s, find total number of clusters formed by elements with value 1.  
+                For example, in the below shown 2D matrix there are total three such clusters.
+
+                            {1, 0, 1, 0, 1},
+                            {1, 1, 0, 0, 0},
+                            {0, 1, 0, 1, 1},
+
+                Time Complexity     : O(R*C) where R is the number of rows and C is the number of columns 
+                Space Complexity    : O(R*C) where R is the number of rows and C is the number of columns 
+             */
+
+            int[,] input = new int[,] {
+                                            { 1, 0, 1, 0, 1},
+                                            { 1, 1, 0, 0, 0},
+                                            { 0, 1, 0, 1, 1}
+                                       };
+
+            bool[,] visited = new bool[3,5] ;
+            
+
+            int[] offSet = new int[] { -1, 0, 1 };
+
+            int islandCounter = 0;
+            for (int i = 0; i < input.GetUpperBound(0)+1; i++)
+            {
+                for (int j = 0; j < input.GetUpperBound(1)+1; j++)
+                {
+                    if (input[i, j] == 1 && !visited[i, j])
+                    {
+                        islandCounter++;
+                        DoDFSLookUp(input, i, j, visited, offSet);
+                    }
+                }
+            }
+
+            MessageBox.Show($"There are {islandCounter} island for the given 2D matrix \n{(this.Print2DMatrix(input))}");
+        }
+
+        private void DoDFSLookUp(int[,] input, int row, int column, bool[,] visited, int[] offSet)
+        {
+
+            if (visited[row,column])
+            {
+                return;
+            }
+
+            visited[row, column] = true;
+
+            int xOffSet = 0;
+            int yOffSet = 0;
+            for (int i = 0; i < offSet.Length; i++)
+            {
+                xOffSet = offSet[i];
+
+                for(int j = 0; j<offSet.Length; j++)
+                {
+                    yOffSet = offSet[j];
+
+                    if (xOffSet == 0 && yOffSet == 0)
+                        continue;
+
+                    if (this.IsNeighbourExists(input, row + xOffSet, column + yOffSet))
+                    {
+                        this.DoDFSLookUp(input, row + xOffSet, column + yOffSet, visited, offSet);
+                    }
+                }
+            }
+        }
+
+        private bool IsNeighbourExists(int[,] input, int row, int column)
+        {
+
+            if (row>=0 && row < input.GetUpperBound(0)+1 && column>=0 && column < input.GetUpperBound(1)+1)
+            {
+                if (input[row, column] == 1)
+                    return true;
+            }
+            return false;
+        }
+
+        private string Print2DMatrix(int[,] input)
+        {
+            StringBuilder result = new StringBuilder();
+            
+            for(int row =0; row < input.GetUpperBound(0) + 1; row++)
+            {
+                for (int column = 0; column < input.GetUpperBound(1) +1; column++)
+                {
+                    result.Append($"{input[row, column]} \t");
+                }
+                result.Append("\n");
+            }
+            return result.ToString();
+        }
+
+        
     }
 }

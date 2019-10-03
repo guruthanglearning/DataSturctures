@@ -16,6 +16,7 @@ namespace WindowsFormsApplication3
         private int numberOfElements;
         private int[] permutationValue = new int[0];
         private static int atoz = 126;
+        private int counter = 0;
 
         private char[] inputSet;
         public char[] InputSet
@@ -374,10 +375,10 @@ namespace WindowsFormsApplication3
             {
                 MessageBox.Show("Empty string");
             }
-
+            //abca tail = 3 i =3
             char[] data = textBox1.Text.ToCharArray();
             int tail = 1;
-            //abc
+            
             for (int i = 1; i < data.Length; i++)
             {
 
@@ -1029,8 +1030,8 @@ namespace WindowsFormsApplication3
             {
                 if (_romanMap.ContainsKey(c))
                 {
-                    var crtValue = _romanMap[c];
-                    totalValue += crtValue;
+                    var crtValue = _romanMap[c]; //C
+                    totalValue += crtValue; //4010
                     if (prevValue != 0 && prevValue < crtValue)
                     {
                         if ((prevValue == 1 && (crtValue == 5 || crtValue == 10)) ||
@@ -1040,7 +1041,7 @@ namespace WindowsFormsApplication3
                             totalValue -= 2 * prevValue;
                         }
                     }
-                    prevValue = crtValue;
+                    prevValue = crtValue; //X
                 }
             }
             MessageBox.Show(totalValue.ToString());
@@ -2283,6 +2284,299 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void btn_Permutation_of_a_string_Click(object sender, EventArgs e)
+        {
+            /*
+                Time Complexity     : O(n * n!) 
+                Space Complexity    : O(26)
+                https://www.geeksforgeeks.org/time-complexity-permutations-string/
+             */
+            List<string> inputs = new List<string>();
+            inputs.Add("abc");
+            inputs.Add("geek");
+            StringBuilder result = new StringBuilder();
+            foreach(var input in inputs)
+            {
+                result.Append($"The permutation for the given string {input} is {string.Join(" ", this.GetPermuationOfGivenString(input,string.Empty))} \n");
+            }
+            
+            MessageBox.Show(result.ToString() + $"\n called {counter}");
+        }
+
+        private List<string> GetPermuationOfGivenString(string input,string currentString)
+        {
+            List<string> result = new List<string>();
+            if (input.Length == 0)
+            {
+                result.Add(currentString);
+                return result;
+            }
+
+            bool[] vistedChar = new bool[26];            
+            char currentChar;
+
+            for(int i = 0; i<input.Length; i++)
+            {
+                currentChar = input[i];
+                               
+                if (vistedChar[currentChar - 'a'] == false)
+                {
+                    result.AddRange(this.GetPermuationOfGivenString(input.Substring(0, i) + input.Substring(i+1), currentString + currentChar));
+                }
+                vistedChar[currentChar - 'a'] = true;
+            }            
+
+            return result;
+        }
+
+        private void btn_Longest_Common_Prefix_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Time Complexity     : O(n*l) where n is the number of items in the list and l is the length of item within each item
+                Space Complexity    : O(1) constant space
+              
+                Write a function to find the longest common prefix string amongst an array of strings.
+                If there is no common prefix, return an empty string "".
+                
+                Example 1:           
+                Input: ["flower","flow","flight"]
+                Output: "fl"
+                Example 2:
+
+                Input: ["dog","racecar","car"]
+                Output: ""
+                Explanation: There is no common prefix among the input strings.
+                Note:
+
+                All given inputs are in lowercase letters a-z 
+             
+             */
+
+            string[] strs = new string[] { "flower", "flow", "flight" };
+
+                     
+
+            int minLength = this.GetMinLength(strs);
+            int index = 0;
+            bool proceed = true;
+
+            while (index < minLength && proceed)
+            {
+                for (int i = 0; i < strs.Length - 1; i++)
+                {
+                    if (strs[i][index] != strs[i + 1][index])
+                    {
+                        proceed = false;
+                        break;
+                    }
+                }
+
+                if (proceed)
+                {
+                    index++;
+                }
+
+            }
+
+            MessageBox.Show($"The longest common prefix for the given input strings {string.Join(" ",strs)} is { strs[0].Substring(0,index)}");
+
+        }
+
+        public int GetMinLength(string[] strs)
+        {
+            int minLength = strs[0].Length;
+
+            for (int i = 1; i < strs.Length; i++)
+            {
+                minLength = Math.Min(minLength, strs[i].Length);
+            }
+            return minLength;
+        }
+
+        private void btn_Valid_Parentheses_Click(object sender, EventArgs e)
+        {
+            /*
+              
+                Time Complexity : O(n) where n is the length of the character in the string
+                Space Complexity : O(n) worst case we will be storing all the character is the stack if the input is (((((((
+
+                Given a string containing just the characters '(', ')', '{', '}', '[' and ']',
+                determine if the input string is valid.
+                An input string is valid if:
+                Open brackets must be closed by the same type of brackets.
+                Open brackets must be closed in the correct order.
+                Note that an empty string is also considered valid.
+
+                Example 1:
+                Input: "()"
+                Output: true
+                Example 2:
+
+                Input: "()[]{}"
+                Output: true
+                Example 3:
+
+                Input: "(]"
+                Output: false
+                Example 4:
+
+                Input: "([)]"
+                Output: false
+                Example 5:
+
+                Input: "{[]}"
+                Output: true 
+             
+             */
+            List<string> inputs = new List<string>();
+            inputs.Add("()");
+            inputs.Add("()[]{}");
+            inputs.Add("(]");
+            inputs.Add("([)]");
+            inputs.Add("{[]}");
+            StringBuilder result = new StringBuilder();
+            foreach(string input in inputs)
+            {               
+               result.Append($"The given input string {input} is {(this.IsValidWithBraces(input) ? " valid" : " is not valid")} \n");               
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public bool IsValidWithBraces(string s)
+        {
+
+            if (s == string.Empty)
+            {
+                return true;
+            }
+
+            if (s.Length == 0 || s.Length == 1)
+            {
+                return false;
+            }
+
+
+            Dictionary<char, char> cd = new Dictionary<char, char>();
+            cd.Add(')', '(');
+            cd.Add('}', '{');
+            cd.Add(']', '[');
+            Stack<char> stack = new Stack<char>();
+            foreach (char c in s)
+            {
+                if (!cd.ContainsKey(c))
+                {
+                    stack.Push(c);
+                }
+                else
+                {
+                    if (stack.Count > 0 && stack.Peek() == cd[c])
+                    {
+                        stack.Pop();
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return stack.Count == 0;
+        }
+
+        private void btn_Implement_strStr_Click(object sender, EventArgs e)
+        {
+            /*
+                Implement strStr().
+
+                Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+                Example 1:
+
+                Input: haystack = "hello", needle = "ll"
+                Output: 2
+                Example 2:
+
+                Input: haystack = "aaaaa", needle = "bba"
+                Output: -1
+                Clarification:
+
+                What should we return when needle is an empty string? This is a great question to ask during an interview.
+
+                For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf(). 
+
+                Time Complexity : O(m+m) // where m is the length of the haystack and n is the length of the needle
+
+
+
+             */
+
+            List<IndexOf> inputs = new List<IndexOf>();
+            inputs.Add(new IndexOf() { input = "mississippi", findIndex = "pi" });     //9
+            inputs.Add(new IndexOf() { input = "mississippi", findIndex = "issip" });  //4
+            inputs.Add(new IndexOf() { input = "mississippi", findIndex = "issipi" }); //-1
+            inputs.Add(new IndexOf() { input = "hello", findIndex = "ll" });           //2
+            inputs.Add(new IndexOf() { input = "aaaaa", findIndex = "bb" });           // -1
+            inputs.Add(new IndexOf() { input = "", findIndex = "" });           // -1
+            StringBuilder result = new StringBuilder();
+            foreach(IndexOf input in inputs)
+            {
+                result.Append($"The index is {this.FindIndexOf(input.input, input.findIndex)} for the given string {input.input} to find index of {input.findIndex} \n");
+            }
+
+            MessageBox.Show(result.ToString());
+
+            
+
+
+        }
+
+        private int FindIndexOf(string input, string findIndex)
+        {
+
+            if (findIndex == null || input == null || input.Length < findIndex.Length)
+            {
+                return -1;
+            }
+
+            //  input = "mississippi", findIndex = "issipi" 
+            if (findIndex.Length == 0) return 0;
+            int index = -1;
+            for (int i = 0, j = 0; i < input.Length; i++) // i = 7 j = 0 index =10
+            {                
+                if (input[i] == findIndex[j])
+                {
+                    if (index == -1)
+                    {
+                        index = i;
+                    }
+                    j++;
+                    if (j == findIndex.Length) return index;
+                }
+                else
+                {
+                    if (index != -1)
+                    {
+                        i = index;
+                    }
+
+                    j = 0;
+                    index = -1;
+                }
+            }
+            return -1;
+            
+        }
+
+        public class IndexOf
+        {
+            public string input;
+            public string findIndex;
+
+        }
+
     }
 }
 

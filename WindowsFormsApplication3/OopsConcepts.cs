@@ -44,17 +44,64 @@ namespace WindowsFormsApplication3
 
         }
 
-        abstract class AbstractClassCreatingInstance
+
+        public class BaseClassForAbstractClass
         {
+            public void BaseClassForAbstractClass_Method1()
+            {
+                MessageBox.Show("BaseClassForAbstractClass_Method1");
+            }
+        }
+
+       public abstract class AbstractClassCreatingInstance : BaseClassForAbstractClass
+        {
+            private int test = 0;
             public AbstractClassCreatingInstance()
             {
 
             }
+
+
+            public abstract void AbstractClassCreatingInstance_Method1();
+
+            public virtual void AbstractClassCreatingInstance_Method2()
+            {
+                
+                MessageBox.Show("Abstract class AbstractClassCreatingInstance_Method2");                
+            }
+
+            public void AbstractClassCreatingInstance_Method3()
+            {
+                MessageBox.Show("AbstractClassCreatingInstance_Method3");
+            }
+        }
+
+        public class DerivedClassForAbstractClassWhichInsertNormalClass: AbstractClassCreatingInstance
+        {            
+            public DerivedClassForAbstractClassWhichInsertNormalClass()
+            {
+
+            }
+
+            public override void AbstractClassCreatingInstance_Method1()
+            {
+                MessageBox.Show("DerivedClassForAbstractClassWhichInsertNormalClass.AbstractClassCreatingInstance_Method1");
+            }
+
+            public void AbstractClassCreatingInstance_Method3()
+            {
+                MessageBox.Show("DerivedClassForAbstractClassWhichInsertNormalClass.AbstractClassCreatingInstance_Method3");
+            }
+
         }
 
         private void btn_Abstract_Class_Click(object sender, EventArgs e)
         {
-            AbstractClassCreatingInstance[] i = new AbstractClassCreatingInstance[10];
+            //AbstractClassCreatingInstance[] i = new AbstractClassCreatingInstance[10];
+            DerivedClassForAbstractClassWhichInsertNormalClass t = new DerivedClassForAbstractClassWhichInsertNormalClass();
+            t.BaseClassForAbstractClass_Method1();
+            t.AbstractClassCreatingInstance_Method1();
+            t.AbstractClassCreatingInstance_Method3();
         }
     }
 }

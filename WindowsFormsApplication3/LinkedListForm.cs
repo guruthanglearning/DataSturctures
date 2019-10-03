@@ -438,6 +438,18 @@ namespace WindowsFormsApplication3
             }
         }
 
+        private string GetLinkListData(LinkList linkList)
+        {
+            StringBuilder result = new StringBuilder();
+            while (linkList!=null)
+            {
+                result.Append($" {linkList.data} ");
+                linkList = linkList.next;
+            }
+
+            return result.ToString();
+        }
+
         private LinkList Merge(LinkList first, LinkList second)
         {
             /*
@@ -3361,6 +3373,12 @@ namespace WindowsFormsApplication3
                                4   5
                               / \   \ 
                              1   3   1
+
+            4 -> L : 1,0 R -> 3,0 -> 4,4
+            5 -> L : 0,0 R-> 1, 0 -->5,1
+            3 -> 3 + 4 + 1 = 8 
+                         5+4=9 
+
              */
 
             if (node == null)
@@ -3857,6 +3875,87 @@ namespace WindowsFormsApplication3
             return root.data - 1 + left + right;
         }
 
+        private void btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Time Complexity     : O(N+M) where n is the length of the List 1 and m is the length of the list 2
+                Space Complexity    : O(N) where n is the length of the addition of list 1 and list 2
+
+                Let's represent an integer in a linked list format by having each node represent a digit in the number. The nodes make up the number in reversed order.
+                For example, the following linked list:
+
+                1 -> 2 -> 3 -> 4 -> 5
+                is the number 54321.
+
+                Given two linked lists in this format, return their sum in the same linked list format.
+
+                For example, given
+
+                9 -> 9
+                5 -> 2 ->1
+                return 124 (99 + 25) as: 124
+
+                4 -> 2 -> 1
+            */
+
+
+            LinkList LLNodeFirst1 = null;
+            LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 9);
+            LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 9);
+                       
+            LinkList LLNodeFirst2 = null;
+            LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 5);
+            LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 2);
+            LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 1);
+
+            int sum = this.GetIntDataFromListInTheReverseOrder(LLNodeFirst1) + this.GetIntDataFromListInTheReverseOrder(LLNodeFirst2);
+
+            int reminder = 0;
+            int quotent = sum;
+            LinkList start = null;
+            LinkList temp = null;
+            
+            while (quotent > 0)
+            {
+                reminder = quotent % 10;                
+                if (start == null)
+                {
+                    start = new LinkList() { data = reminder }; //4
+                    temp = start;
+                }
+                else
+                {                                         
+                    temp.next = new LinkList() { data = reminder};
+                    temp = temp.next;
+                }
+                
+                quotent /= 10;
+            }
+
+            MessageBox.Show($"Sum of the given link list \n {this.GetLinkListData(LLNodeFirst1)} \n {this.GetLinkListData(LLNodeFirst2)}  \n is {sum} and " +
+                            $"corresponding link list in the reverse order is \n {this.GetLinkListData(start)}");
+        }
+
+        private int GetIntDataFromListInTheReverseOrder(LinkList linkList)
+        {
+
+            if (linkList!= null)
+            {
+                int pow = 0;
+                int result = 0;
+                while(linkList!=null)
+                {
+                    result = result + (linkList.data * (int)Math.Pow(10.00, pow));
+                    linkList = linkList.next;
+                    pow++;
+                }
+                return result;
+
+            }
+            return 0;
+
+        }
     }
 
     class Graph

@@ -141,7 +141,7 @@ namespace WindowsFormsApplication3
                 int mid = 0;
                 while(left <= right)
                 {
-                    // m = 7 l = 5 r= 9
+                    // m =7  l = 5 r= 9
                     mid = (left + right) / 2;
                     if (input[mid] < input[mid + 1] && input[mid - 1] < input[mid] && input[left] < input[mid])
                     {
