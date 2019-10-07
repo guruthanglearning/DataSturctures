@@ -1187,42 +1187,64 @@ namespace WindowsFormsApplication3
             /*int[]  input = new int[] { -2, -3, 4, -1, -2, 1, 5, -3 };
              Input: [-2,1,-3,4,-1,2,1,-5,4],
              */
-            int[] input = new int[] {31, -41, 26, 59, -53, 58, 97, -93, -23, 84};
-            
-                     
-             
-            int maxSum = 0;
-            int sum = 0;
-            int startIndex = 0;
-            int endIndex = 0;
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 31, -41, 26, 59, -53, 58, 97, -93, -23, 84 });
+            inputs.Add(new int[] { -2, -1 });
+            inputs.Add(new int[] { });
+            inputs.Add(new int[] { 4, -1, 2 });
+            inputs.Add(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 });
 
-            if (input==null && input.Length > 0)
-            {
-                MessageBox.Show("Input array is empty");
-            }
+            StringBuilder result = new StringBuilder();
 
-            for(int i = 0; i <input.Length; i++)
+            foreach (int[] input in inputs)
             {
-                sum += input[i];
-                if (sum > maxSum)
+                int maxSum = int.MinValue;
+                int sum = 0;
+                int startIndex = 0;
+                int endIndex = 0;
+
+                if (input == null || input.Length == 0)
                 {
-                    maxSum = sum;
-                    endIndex = i;
+                    result.Append("Input array is empty \n");
+                    continue;
                 }
 
-                if (sum <= 0)
+                for (int i = 0; i < input.Length; i++)
                 {
-                    maxSum = 0;
-                    sum = 0;
-                    if (i + 1 < input.Length)
+                    sum += input[i];
+
+                    if (sum < input[i])
                     {
-                        startIndex = i + 1;
+                        sum = input[i];
+                        startIndex = i;
                     }
-                    endIndex = 0;
-                }
-            }
 
-            MessageBox.Show($"Largest Subarray Sum in array is {maxSum.ToString()} for the starting index {startIndex.ToString()} and ending index {endIndex.ToString()}");
+                    if (sum > maxSum)
+                    {
+                        maxSum = sum;
+                        endIndex = i;
+                    }
+
+                    //if (sum > maxSum)
+                    //{
+                    //    maxSum = sum;
+                    //    endIndex = i;
+                    //}
+
+                    //if (sum <= 0)
+                    //{
+                    //    maxSum = 0;
+                    //    sum = 0;
+                    //    if (i + 1 < input.Length)
+                    //    {
+                    //        startIndex = i + 1;
+                    //    }
+                    //    endIndex = 0;
+                    //}
+                }
+                result.Append($"Largest Subarray Sum in array is {maxSum.ToString()} for the given array {string.Join(" ", input)} starting index {startIndex.ToString()} and ending index {endIndex.ToString()} \n");
+            }      
+            MessageBox.Show(result.ToString());
         }
 
         private void btn_Reduce_Array_After_removing_input_element_Click(object sender, EventArgs e)
@@ -2213,7 +2235,28 @@ namespace WindowsFormsApplication3
         private void btn_Search_Insert_Position_Click(object sender, EventArgs e)
         {
 
-            /*                
+            /*     
+                Given a sorted array and a target value, return the index if the target is found. 
+                If not, return the index where it would be if it were inserted in order.
+                You may assume no duplicates in the array.
+
+                Example 1:
+
+                Input: [1,3,5,6], 5
+                Output: 2
+                Example 2:
+
+                Input: [1,3,5,6], 2
+                Output: 1
+                Example 3:
+
+                Input: [1,3,5,6], 7
+                Output: 4
+                Example 4:
+
+                Input: [1,3,5,6], 0
+                Output: 0 
+
                 Time Complexity  : O(log N)
                 Space Complexity : Constant space O(1)
             */
@@ -2226,6 +2269,8 @@ namespace WindowsFormsApplication3
             inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 1 });
             inputs.Add(new SearchInsertPosition() { input = new int[] { 1 }, find = 1 });
             inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 2 }, find = 2 });
+
+            
 
             StringBuilder result = new StringBuilder();
             foreach (var sip in inputs)
@@ -2266,6 +2311,186 @@ namespace WindowsFormsApplication3
         {
             public int[] input;
             public int find;
+        }
+
+        private void btn_Find_the_two_elements_that_appear_only_once_Click(object sender, EventArgs e)
+        {
+            /*                
+                Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.
+
+                Example:
+                Input:  [1,2,1,3,2,5]
+                Output: [3,5]
+                Note:
+
+                The order of the result is not important. So in the above example, [5, 3] is also correct.
+                Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
+                https://leetcode.com/problems/single-number-iii/discuss/390157/Python-2-line-and-O(1)-space-solutions-with-explanation
+            
+            */
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[8] { 2, 4, 6, 8, 10, 2, 6, 8 });
+
+            foreach(var input in inputs)
+            {
+                int xor = 0;
+                int y = 0;
+                for (int i = 0; i < input.Length; i++)
+                {
+                    xor ^= input[i];
+                }
+
+                y = xor & -xor;
+                int val = 0;
+                for(int i = 0; i < input.Length; i++)
+                {
+                    val = val ^(y & input[i]);
+                }
+
+                result.AppendLine($"Two unique values are {val} and {val ^ xor} for the given array {string.Join(" ", input)}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+            
+            
+
+
+        }
+
+        private void btn_Plus_One_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+                The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+                You may assume the integer does not contain any leading zero, except the number 0 itself.
+
+                Example 1:
+
+                Input: [1,2,3]
+                Output: [1,2,4]
+                Explanation: The array represents the integer 123.
+                Example 2:
+
+                Input: [4,3,2,1]
+                Output: [4,3,2,2]
+                Explanation: The array represents the integer 4321. 
+
+             */
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[3] {1, 2, 3 });
+            inputs.Add(new int[4] { 9, 9, 9, 9 });
+            inputs.Add(new int[4] { 8, 9, 9, 9 });
+            foreach (var input in inputs)
+            {
+
+                if (input.Length == 0)
+                {
+                    result.AppendLine("Input array is empty");
+                    continue;
+                }
+                int reminder = 0;
+
+                for (int i = input.Length - 1; i >= 0; i--)
+                {
+
+                    input[i] += (i == input.Length - 1 ? 1 : reminder);
+                    reminder = 0;
+
+                    if (input[i] == 10)
+                    {
+                        input[i] = 0;
+                        reminder = 1;
+                    }
+                    else
+                    {
+                        reminder = 0;
+                        break;
+                    }
+                }
+
+                if (reminder > 0)
+                {
+                    int[] reminderArray = new int[input.Length + 1];
+                    Array.Copy(input, 0, reminderArray, 1, input.Length);
+                    reminderArray[0] = reminder;
+                    result.AppendLine($"Plus one of the array is {string.Join(" ", reminderArray)}");
+                }
+                else
+                {
+                    result.AppendLine($"Plus one of the array is {string.Join(" ", input)}");
+                }
+                
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Min_Max_Sum_Click(object sender, EventArgs e)
+        {
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[5] { 1, 3, 5, 7, 9 });
+            inputs.Add(new int[4] { 1, 2, 3, 4 });
+            inputs.Add(new int[4] { 8, 9, 9, 9 });
+            inputs.Add(new int[] { });
+            foreach (var input in inputs)
+            {
+                int len = input.Length;
+                if (len == 0)
+                {
+                    result.AppendLine("Input array is empty");
+                    continue;
+                }
+
+                long min = 0;
+                long max = 0;
+                long sum = 0;
+                int val = 0;
+
+                if (len == 1)
+                {
+                    result.AppendLine($"Min is {input[0]} Max is {input[0]} for the given array {string.Join(" ", input)}");
+                    continue;
+                }
+                else
+                {
+                    if (input[0] > input[1])
+                    {
+                        min = input[1];
+                        max = input[0];
+                    }
+                    else
+                    {
+                        min = input[0];
+                        max = input[1];
+                    }
+
+                    sum = min + max;
+                }
+
+
+                for (int i = 2; i < input.Length; i++)
+                {
+                    val = input[i];
+                    sum += val;
+                    if (val < min)
+                    {
+                        min = val;
+                    }
+                    else if (val > max)
+                    {
+                        max = val;
+                    }
+                }
+
+                result.AppendLine($"Min is {sum - max} Max is {sum - min} for the given array {string.Join(" ", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
         }
     }
 }

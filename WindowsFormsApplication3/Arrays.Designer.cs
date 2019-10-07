@@ -66,6 +66,9 @@
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots = new System.Windows.Forms.Button();
             this.btn_Find_Peak_in_an_integer_array = new System.Windows.Forms.Button();
             this.btn_Search_Insert_Position = new System.Windows.Forms.Button();
+            this.btn_Find_the_two_elements_that_appear_only_once = new System.Windows.Forms.Button();
+            this.btn_Plus_One = new System.Windows.Forms.Button();
+            this.btn_Min_Max_Sum = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -459,11 +462,44 @@
             this.btn_Search_Insert_Position.UseVisualStyleBackColor = true;
             this.btn_Search_Insert_Position.Click += new System.EventHandler(this.btn_Search_Insert_Position_Click);
             // 
+            // btn_Find_the_two_elements_that_appear_only_once
+            // 
+            this.btn_Find_the_two_elements_that_appear_only_once.Location = new System.Drawing.Point(639, 894);
+            this.btn_Find_the_two_elements_that_appear_only_once.Name = "btn_Find_the_two_elements_that_appear_only_once";
+            this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(596, 37);
+            this.btn_Find_the_two_elements_that_appear_only_once.TabIndex = 38;
+            this.btn_Find_the_two_elements_that_appear_only_once.Text = "Find the two elements that appear only once";
+            this.btn_Find_the_two_elements_that_appear_only_once.UseVisualStyleBackColor = true;
+            this.btn_Find_the_two_elements_that_appear_only_once.Click += new System.EventHandler(this.btn_Find_the_two_elements_that_appear_only_once_Click);
+            // 
+            // btn_Plus_One
+            // 
+            this.btn_Plus_One.Location = new System.Drawing.Point(13, 917);
+            this.btn_Plus_One.Name = "btn_Plus_One";
+            this.btn_Plus_One.Size = new System.Drawing.Size(607, 34);
+            this.btn_Plus_One.TabIndex = 39;
+            this.btn_Plus_One.Text = "Plus One";
+            this.btn_Plus_One.UseVisualStyleBackColor = true;
+            this.btn_Plus_One.Click += new System.EventHandler(this.btn_Plus_One_Click);
+            // 
+            // btn_Min_Max_Sum
+            // 
+            this.btn_Min_Max_Sum.Location = new System.Drawing.Point(642, 937);
+            this.btn_Min_Max_Sum.Name = "btn_Min_Max_Sum";
+            this.btn_Min_Max_Sum.Size = new System.Drawing.Size(595, 42);
+            this.btn_Min_Max_Sum.TabIndex = 40;
+            this.btn_Min_Max_Sum.Text = "Min Max Sum";
+            this.btn_Min_Max_Sum.UseVisualStyleBackColor = true;
+            this.btn_Min_Max_Sum.Click += new System.EventHandler(this.btn_Min_Max_Sum_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Min_Max_Sum);
+            this.Controls.Add(this.btn_Plus_One);
+            this.Controls.Add(this.btn_Find_the_two_elements_that_appear_only_once);
             this.Controls.Add(this.btn_Search_Insert_Position);
             this.Controls.Add(this.btn_Find_Peak_in_an_integer_array);
             this.Controls.Add(this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots);
@@ -549,5 +585,8 @@
         private System.Windows.Forms.Button btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots;
         private System.Windows.Forms.Button btn_Find_Peak_in_an_integer_array;
         private System.Windows.Forms.Button btn_Search_Insert_Position;
+        private System.Windows.Forms.Button btn_Find_the_two_elements_that_appear_only_once;
+        private System.Windows.Forms.Button btn_Plus_One;
+        private System.Windows.Forms.Button btn_Min_Max_Sum;
     }
 }

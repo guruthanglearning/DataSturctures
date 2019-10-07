@@ -2577,6 +2577,56 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Length_of_Last_Word_Click(object sender, EventArgs e)
+        {
+            /*
+                 Time Complexity : O(n) where n is the length of the last word
+             */
+
+            List<string> inputs = new List<string>();
+            inputs.Add("Hello World");
+            inputs.Add("Hello");
+            inputs.Add(" World");
+            inputs.Add("World ");
+            inputs.Add("          ");
+            inputs.Add("d");
+            inputs.Add("e ");
+            inputs.Add(null);
+
+            StringBuilder result = new StringBuilder();
+
+            int[] t = new int[inputs.Count]; 
+
+            foreach(string s in inputs)
+            {
+                if (s == null)
+                {
+                    result.AppendLine($"String is null");
+                    continue;
+                }
+
+                string input = s.Trim();
+
+                if (input.Length == 0)
+                {
+                    result.AppendLine($"Max length is 0 for the last word in this given string {s}");
+                }
+                else
+                {
+                    int i = input.Length - 1;
+
+                    for (; i >= 0; i--)
+                    {
+                        if (input[i] == ' ')
+                        {
+                            break;
+                        }
+                    }
+                    result.AppendLine($"Max length is {input.Length - (i +1)} for the last word in this given string {s}");
+                }
+            }
+            MessageBox.Show(result.ToString());
+        }
     }
 }
 

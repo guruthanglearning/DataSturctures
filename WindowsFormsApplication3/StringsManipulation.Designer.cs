@@ -74,6 +74,7 @@
             this.btn_Longest_Common_Prefix = new System.Windows.Forms.Button();
             this.btn_Valid_Parentheses = new System.Windows.Forms.Button();
             this.btn_Implement_strStr = new System.Windows.Forms.Button();
+            this.btn_Length_of_Last_Word = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -560,11 +561,22 @@
             this.btn_Implement_strStr.UseVisualStyleBackColor = true;
             this.btn_Implement_strStr.Click += new System.EventHandler(this.btn_Implement_strStr_Click);
             // 
+            // btn_Length_of_Last_Word
+            // 
+            this.btn_Length_of_Last_Word.Location = new System.Drawing.Point(1385, 100);
+            this.btn_Length_of_Last_Word.Name = "btn_Length_of_Last_Word";
+            this.btn_Length_of_Last_Word.Size = new System.Drawing.Size(323, 37);
+            this.btn_Length_of_Last_Word.TabIndex = 46;
+            this.btn_Length_of_Last_Word.Text = "Length of Last Word";
+            this.btn_Length_of_Last_Word.UseVisualStyleBackColor = true;
+            this.btn_Length_of_Last_Word.Click += new System.EventHandler(this.btn_Length_of_Last_Word_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1720, 779);
+            this.Controls.Add(this.btn_Length_of_Last_Word);
             this.Controls.Add(this.btn_Implement_strStr);
             this.Controls.Add(this.btn_Valid_Parentheses);
             this.Controls.Add(this.btn_Longest_Common_Prefix);
@@ -668,5 +680,6 @@
         private System.Windows.Forms.Button btn_Longest_Common_Prefix;
         private System.Windows.Forms.Button btn_Valid_Parentheses;
         private System.Windows.Forms.Button btn_Implement_strStr;
+        private System.Windows.Forms.Button btn_Length_of_Last_Word;
     }
 }

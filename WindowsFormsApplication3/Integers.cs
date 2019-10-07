@@ -45,7 +45,7 @@ namespace WindowsFormsApplication3
         {
             List<int> inputs = new List<int>() {121, -121, 10 };
             StringBuilder result = new StringBuilder();
-
+            
             foreach (int x in inputs)
             {
                 int divisor = 1;
