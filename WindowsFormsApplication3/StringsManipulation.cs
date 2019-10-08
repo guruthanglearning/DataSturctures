@@ -2627,6 +2627,109 @@ namespace WindowsFormsApplication3
             }
             MessageBox.Show(result.ToString());
         }
+
+        private void btn_Add_Binary_Click(object sender, EventArgs e)
+        {
+
+            /*
+                Given two binary strings, return their sum (also a binary string).
+                The input strings are both non-empty and contains only characters 1 or 0.
+
+                Example 1:
+                Input: a = "11", b = "1"
+                Output: "100"
+                
+                Example 2:
+                Input: a = "1010", b = "1011"
+                Output: "10101"
+                    
+                Time Complexity : O(n+m) where n is the length of the input 1 and m is the length of the input 2
+                Space Complexity : O(l) where l is the length of the result 
+            
+             */
+
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
+            inputs.Add(new AddBinaryInputs() { inputA = "11", inputB = "0" });
+            inputs.Add(new AddBinaryInputs() { inputA = "11" });
+            inputs.Add(new AddBinaryInputs() { inputB = "11" });
+            inputs.Add(new AddBinaryInputs() { });
+            inputs.Add(new AddBinaryInputs() { inputA = "1111",inputB = "111" });
+
+            StringBuilder result = new StringBuilder();
+        
+            foreach(var input in inputs)
+            {
+                int al = 0;
+                int bl = 0;
+                int sum = 0;
+                int carry = 0;
+
+                StringBuilder binarySum = new StringBuilder();
+
+                if (string.IsNullOrEmpty(input.inputA))
+                {
+                    result.AppendLine($"Adding two binary {(input.inputA == null ? "A NULL" : input.inputA)} and {(input.inputB == null ? "B NULL" : input.inputB)}  is {(input.inputB == null ? "NULL" : input.inputB)}");
+                    continue;
+                }
+                else if (string.IsNullOrEmpty(input.inputB))
+                {                    
+                    result.AppendLine($"Adding two binary {(input.inputA == null ? "A NULL" : input.inputA)} and {(input.inputB == null ? "B NULL" : input.inputB)}  is {(input.inputA == null ? "NULL" : input.inputA)}");
+                    continue;
+                }
+
+                input.inputA = input.inputA.Trim();
+                input.inputB = input.inputB.Trim();
+
+                al = input.inputA.Length -1 ;
+                bl = input.inputB.Length -1 ;
+
+                while(al >= 0 && bl >= 0)
+                {
+                    sum = carry;
+                    sum += (input.inputA[al] - '0');
+                    sum += (input.inputB[bl] - '0');
+                    carry = sum / 2;
+                    binarySum.Insert(0, sum % 2);
+                    al--;
+                    bl--;
+                }
+
+                while (al >= 0 )
+                {
+                    sum = carry;
+                    sum += (input.inputA[al] - '0');                 
+                    carry = sum / 2;
+                    binarySum.Insert(0, sum % 2);
+                    al--;                    
+                }
+
+                while (bl >= 0)
+                {
+                    sum = carry;
+                    sum += (input.inputB[bl] - '0');
+                    carry = sum / 2;
+                    binarySum.Insert(0, sum % 2);
+                    bl--;
+                }
+
+                if (carry > 0)
+                {
+                    binarySum.Insert(0, carry);
+                }
+
+                result.AppendLine($"Adding two binary {input.inputA} and {input.inputB}  is {binarySum.ToString()}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public class AddBinaryInputs
+        {
+            public string inputA;
+            public string inputB;
+        }
     }
 }
 

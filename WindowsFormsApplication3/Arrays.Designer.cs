@@ -69,6 +69,7 @@
             this.btn_Find_the_two_elements_that_appear_only_once = new System.Windows.Forms.Button();
             this.btn_Plus_One = new System.Windows.Forms.Button();
             this.btn_Min_Max_Sum = new System.Windows.Forms.Button();
+            this.btn_Array_partition_based_on_Pivot = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -76,7 +77,7 @@
             this.button1.Location = new System.Drawing.Point(3, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(613, 34);
+            this.button1.Size = new System.Drawing.Size(496, 34);
             this.button1.TabIndex = 0;
             this.button1.Text = "Merge Two sorted Arrays with out 3rd Array (no duplicate)";
             this.button1.UseVisualStyleBackColor = true;
@@ -87,7 +88,7 @@
             this.Remove_duplicate_element_in_array.Location = new System.Drawing.Point(3, 82);
             this.Remove_duplicate_element_in_array.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Remove_duplicate_element_in_array.Name = "Remove_duplicate_element_in_array";
-            this.Remove_duplicate_element_in_array.Size = new System.Drawing.Size(613, 34);
+            this.Remove_duplicate_element_in_array.Size = new System.Drawing.Size(496, 34);
             this.Remove_duplicate_element_in_array.TabIndex = 1;
             this.Remove_duplicate_element_in_array.Text = "Remove duplicate element in an sorted array";
             this.Remove_duplicate_element_in_array.UseVisualStyleBackColor = true;
@@ -98,7 +99,7 @@
             this.button2.Location = new System.Drawing.Point(3, 46);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(613, 34);
+            this.button2.Size = new System.Drawing.Size(496, 34);
             this.button2.TabIndex = 2;
             this.button2.Text = "Merge Two sorted Arrays with out 3rd Array With duplicate";
             this.button2.UseVisualStyleBackColor = true;
@@ -106,10 +107,10 @@
             // 
             // Array_Reduction_Cost
             // 
-            this.Array_Reduction_Cost.Location = new System.Drawing.Point(3, 126);
+            this.Array_Reduction_Cost.Location = new System.Drawing.Point(3, 121);
             this.Array_Reduction_Cost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Array_Reduction_Cost.Name = "Array_Reduction_Cost";
-            this.Array_Reduction_Cost.Size = new System.Drawing.Size(613, 38);
+            this.Array_Reduction_Cost.Size = new System.Drawing.Size(496, 38);
             this.Array_Reduction_Cost.TabIndex = 3;
             this.Array_Reduction_Cost.Text = "Array Reduction Cost";
             this.Array_Reduction_Cost.UseVisualStyleBackColor = true;
@@ -117,10 +118,10 @@
             // 
             // Array_Binary_digits_0_to_1
             // 
-            this.Array_Binary_digits_0_to_1.Location = new System.Drawing.Point(3, 179);
+            this.Array_Binary_digits_0_to_1.Location = new System.Drawing.Point(3, 161);
             this.Array_Binary_digits_0_to_1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Array_Binary_digits_0_to_1.Name = "Array_Binary_digits_0_to_1";
-            this.Array_Binary_digits_0_to_1.Size = new System.Drawing.Size(613, 38);
+            this.Array_Binary_digits_0_to_1.Size = new System.Drawing.Size(496, 38);
             this.Array_Binary_digits_0_to_1.TabIndex = 4;
             this.Array_Binary_digits_0_to_1.Text = "Array Binary digits 0 to 1 sorting in O(n) (arrange 0 left 1 right)";
             this.Array_Binary_digits_0_to_1.UseVisualStyleBackColor = true;
@@ -128,10 +129,10 @@
             // 
             // Sort_int_array_through_binary_digits_based_on_1
             // 
-            this.Sort_int_array_through_binary_digits_based_on_1.Location = new System.Drawing.Point(9, 222);
+            this.Sort_int_array_through_binary_digits_based_on_1.Location = new System.Drawing.Point(9, 204);
             this.Sort_int_array_through_binary_digits_based_on_1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Sort_int_array_through_binary_digits_based_on_1.Name = "Sort_int_array_through_binary_digits_based_on_1";
-            this.Sort_int_array_through_binary_digits_based_on_1.Size = new System.Drawing.Size(608, 38);
+            this.Sort_int_array_through_binary_digits_based_on_1.Size = new System.Drawing.Size(491, 38);
             this.Sort_int_array_through_binary_digits_based_on_1.TabIndex = 5;
             this.Sort_int_array_through_binary_digits_based_on_1.Text = "Sort int array through binary digits based on 1";
             this.Sort_int_array_through_binary_digits_based_on_1.UseVisualStyleBackColor = true;
@@ -139,10 +140,10 @@
             // 
             // Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x
             // 
-            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Location = new System.Drawing.Point(12, 267);
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Location = new System.Drawing.Point(12, 249);
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Name = "Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x";
-            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Size = new System.Drawing.Size(608, 35);
+            this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Size = new System.Drawing.Size(491, 35);
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.TabIndex = 6;
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.Text = "Given an array and a number x check for pair in Array with sum as x";
             this.Given_an_array_and_a_number_x_check_for_pair_in_Array_with_sum_as_x.UseVisualStyleBackColor = true;
@@ -150,10 +151,10 @@
             // 
             // MajorityElement
             // 
-            this.MajorityElement.Location = new System.Drawing.Point(9, 311);
+            this.MajorityElement.Location = new System.Drawing.Point(9, 293);
             this.MajorityElement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MajorityElement.Name = "MajorityElement";
-            this.MajorityElement.Size = new System.Drawing.Size(608, 39);
+            this.MajorityElement.Size = new System.Drawing.Size(491, 39);
             this.MajorityElement.TabIndex = 7;
             this.MajorityElement.Text = "Majority Element";
             this.MajorityElement.UseVisualStyleBackColor = true;
@@ -161,10 +162,10 @@
             // 
             // Find_the_Number_Occurring_Odd_Number_of_Times
             // 
-            this.Find_the_Number_Occurring_Odd_Number_of_Times.Location = new System.Drawing.Point(9, 358);
+            this.Find_the_Number_Occurring_Odd_Number_of_Times.Location = new System.Drawing.Point(9, 340);
             this.Find_the_Number_Occurring_Odd_Number_of_Times.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Find_the_Number_Occurring_Odd_Number_of_Times.Name = "Find_the_Number_Occurring_Odd_Number_of_Times";
-            this.Find_the_Number_Occurring_Odd_Number_of_Times.Size = new System.Drawing.Size(608, 44);
+            this.Find_the_Number_Occurring_Odd_Number_of_Times.Size = new System.Drawing.Size(491, 44);
             this.Find_the_Number_Occurring_Odd_Number_of_Times.TabIndex = 8;
             this.Find_the_Number_Occurring_Odd_Number_of_Times.Text = "Find the Number Occurring Odd Number of Times";
             this.Find_the_Number_Occurring_Odd_Number_of_Times.UseVisualStyleBackColor = true;
@@ -172,9 +173,9 @@
             // 
             // Function_rotate_that_rotates_arr_of_size_n_by_d_elements
             // 
-            this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Location = new System.Drawing.Point(9, 409);
+            this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Location = new System.Drawing.Point(9, 391);
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Name = "Function_rotate_that_rotates_arr_of_size_n_by_d_elements";
-            this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Size = new System.Drawing.Size(608, 50);
+            this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Size = new System.Drawing.Size(491, 50);
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.TabIndex = 9;
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Text = "Function rotate(ar[], d, n) that rotates arr[] of size n by d elements";
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.UseVisualStyleBackColor = true;
@@ -182,9 +183,9 @@
             // 
             // btn_Block_swap_algorithm_for_array_rotation
             // 
-            this.btn_Block_swap_algorithm_for_array_rotation.Location = new System.Drawing.Point(9, 465);
+            this.btn_Block_swap_algorithm_for_array_rotation.Location = new System.Drawing.Point(9, 447);
             this.btn_Block_swap_algorithm_for_array_rotation.Name = "btn_Block_swap_algorithm_for_array_rotation";
-            this.btn_Block_swap_algorithm_for_array_rotation.Size = new System.Drawing.Size(608, 49);
+            this.btn_Block_swap_algorithm_for_array_rotation.Size = new System.Drawing.Size(491, 49);
             this.btn_Block_swap_algorithm_for_array_rotation.TabIndex = 10;
             this.btn_Block_swap_algorithm_for_array_rotation.Text = "Block swap algorithm for array rotation";
             this.btn_Block_swap_algorithm_for_array_rotation.UseVisualStyleBackColor = true;
@@ -192,9 +193,9 @@
             // 
             // btn_Median_of_Two_sorted_arrays
             // 
-            this.btn_Median_of_Two_sorted_arrays.Location = new System.Drawing.Point(12, 520);
+            this.btn_Median_of_Two_sorted_arrays.Location = new System.Drawing.Point(12, 502);
             this.btn_Median_of_Two_sorted_arrays.Name = "btn_Median_of_Two_sorted_arrays";
-            this.btn_Median_of_Two_sorted_arrays.Size = new System.Drawing.Size(605, 48);
+            this.btn_Median_of_Two_sorted_arrays.Size = new System.Drawing.Size(488, 48);
             this.btn_Median_of_Two_sorted_arrays.TabIndex = 11;
             this.btn_Median_of_Two_sorted_arrays.Text = "Median of Two sorted arrays";
             this.btn_Median_of_Two_sorted_arrays.UseVisualStyleBackColor = true;
@@ -202,9 +203,9 @@
             // 
             // btn_Maximum_Rectangular_Area_in_Histogram
             // 
-            this.btn_Maximum_Rectangular_Area_in_Histogram.Location = new System.Drawing.Point(12, 574);
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Location = new System.Drawing.Point(12, 556);
             this.btn_Maximum_Rectangular_Area_in_Histogram.Name = "btn_Maximum_Rectangular_Area_in_Histogram";
-            this.btn_Maximum_Rectangular_Area_in_Histogram.Size = new System.Drawing.Size(605, 46);
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Size = new System.Drawing.Size(488, 46);
             this.btn_Maximum_Rectangular_Area_in_Histogram.TabIndex = 12;
             this.btn_Maximum_Rectangular_Area_in_Histogram.Text = "Maximum Rectangular Area in Histogram";
             this.btn_Maximum_Rectangular_Area_in_Histogram.UseVisualStyleBackColor = true;
@@ -212,9 +213,9 @@
             // 
             // btn_Check_Given_Array_Is_Sorted_Or_Not
             // 
-            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Location = new System.Drawing.Point(12, 626);
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Location = new System.Drawing.Point(12, 608);
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.Name = "btn_Check_Given_Array_Is_Sorted_Or_Not";
-            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Size = new System.Drawing.Size(604, 42);
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Size = new System.Drawing.Size(487, 42);
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.TabIndex = 13;
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.Text = "Check Given Array is sorted or not";
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.UseVisualStyleBackColor = true;
@@ -222,9 +223,9 @@
             // 
             // btn_Union_and_Intersection_of_two_sorted_arrays
             // 
-            this.btn_Union_and_Intersection_of_two_sorted_arrays.Location = new System.Drawing.Point(12, 674);
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Location = new System.Drawing.Point(12, 656);
             this.btn_Union_and_Intersection_of_two_sorted_arrays.Name = "btn_Union_and_Intersection_of_two_sorted_arrays";
-            this.btn_Union_and_Intersection_of_two_sorted_arrays.Size = new System.Drawing.Size(605, 46);
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Size = new System.Drawing.Size(488, 46);
             this.btn_Union_and_Intersection_of_two_sorted_arrays.TabIndex = 14;
             this.btn_Union_and_Intersection_of_two_sorted_arrays.Text = "Union and Intersection of two sorted arrays";
             this.btn_Union_and_Intersection_of_two_sorted_arrays.UseVisualStyleBackColor = true;
@@ -232,9 +233,9 @@
             // 
             // btn_Find_Union_and_Intersection_of_two_unsorted_arrays
             // 
-            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Location = new System.Drawing.Point(13, 726);
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Location = new System.Drawing.Point(13, 708);
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Name = "btn_Find_Union_and_Intersection_of_two_unsorted_arrays";
-            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Size = new System.Drawing.Size(604, 43);
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Size = new System.Drawing.Size(487, 43);
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.TabIndex = 15;
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Text = "Find Union and Intersection of two unsorted arrays";
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.UseVisualStyleBackColor = true;
@@ -242,9 +243,9 @@
             // 
             // btn_Merge_Overlapping_Intervals
             // 
-            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(13, 775);
+            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(13, 757);
             this.btn_Merge_Overlapping_Intervals.Name = "btn_Merge_Overlapping_Intervals";
-            this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(604, 40);
+            this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(487, 40);
             this.btn_Merge_Overlapping_Intervals.TabIndex = 16;
             this.btn_Merge_Overlapping_Intervals.Text = "Merge Overlapping Intervals";
             this.btn_Merge_Overlapping_Intervals.UseVisualStyleBackColor = true;
@@ -252,9 +253,9 @@
             // 
             // btn_Random_number_generator_in_arbitrary_probability_distribution_fashion
             // 
-            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(13, 821);
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(13, 803);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Name = "btn_Random_number_generator_in_arbitrary_probability_distribution_fashion";
-            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Size = new System.Drawing.Size(604, 43);
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Size = new System.Drawing.Size(487, 43);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.TabIndex = 17;
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Text = "Random number generator in arbitrary probability distribution fashion";
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.UseVisualStyleBackColor = true;
@@ -262,9 +263,9 @@
             // 
             // btn_Sum_the_first_two_min_elements_from_the_given_array
             // 
-            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(13, 870);
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(13, 852);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Name = "btn_Sum_the_first_two_min_elements_from_the_given_array";
-            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Size = new System.Drawing.Size(604, 41);
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Size = new System.Drawing.Size(487, 41);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.TabIndex = 18;
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Text = "Sum the first two min elements from the given array";
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.UseVisualStyleBackColor = true;
@@ -272,9 +273,9 @@
             // 
             // btn_Arrange_all_zero_in_an_array_toward_right
             // 
-            this.btn_Arrange_all_zero_in_an_array_toward_right.Location = new System.Drawing.Point(634, 2);
+            this.btn_Arrange_all_zero_in_an_array_toward_right.Location = new System.Drawing.Point(503, 3);
             this.btn_Arrange_all_zero_in_an_array_toward_right.Name = "btn_Arrange_all_zero_in_an_array_toward_right";
-            this.btn_Arrange_all_zero_in_an_array_toward_right.Size = new System.Drawing.Size(603, 41);
+            this.btn_Arrange_all_zero_in_an_array_toward_right.Size = new System.Drawing.Size(486, 41);
             this.btn_Arrange_all_zero_in_an_array_toward_right.TabIndex = 19;
             this.btn_Arrange_all_zero_in_an_array_toward_right.Text = "Arrange all zero in an array toward right";
             this.btn_Arrange_all_zero_in_an_array_toward_right.UseVisualStyleBackColor = true;
@@ -282,9 +283,9 @@
             // 
             // btn_Max_sub_series_sum_in_an_given_array
             // 
-            this.btn_Max_sub_series_sum_in_an_given_array.Location = new System.Drawing.Point(634, 49);
+            this.btn_Max_sub_series_sum_in_an_given_array.Location = new System.Drawing.Point(503, 50);
             this.btn_Max_sub_series_sum_in_an_given_array.Name = "btn_Max_sub_series_sum_in_an_given_array";
-            this.btn_Max_sub_series_sum_in_an_given_array.Size = new System.Drawing.Size(603, 38);
+            this.btn_Max_sub_series_sum_in_an_given_array.Size = new System.Drawing.Size(486, 38);
             this.btn_Max_sub_series_sum_in_an_given_array.TabIndex = 20;
             this.btn_Max_sub_series_sum_in_an_given_array.Text = "Max sub series sum in an given array";
             this.btn_Max_sub_series_sum_in_an_given_array.UseVisualStyleBackColor = true;
@@ -292,9 +293,9 @@
             // 
             // btn_Reduce_Array_After_removing_input_element
             // 
-            this.btn_Reduce_Array_After_removing_input_element.Location = new System.Drawing.Point(634, 141);
+            this.btn_Reduce_Array_After_removing_input_element.Location = new System.Drawing.Point(503, 142);
             this.btn_Reduce_Array_After_removing_input_element.Name = "btn_Reduce_Array_After_removing_input_element";
-            this.btn_Reduce_Array_After_removing_input_element.Size = new System.Drawing.Size(603, 39);
+            this.btn_Reduce_Array_After_removing_input_element.Size = new System.Drawing.Size(486, 39);
             this.btn_Reduce_Array_After_removing_input_element.TabIndex = 21;
             this.btn_Reduce_Array_After_removing_input_element.Text = "Reduce Array After removing input element";
             this.btn_Reduce_Array_After_removing_input_element.UseVisualStyleBackColor = true;
@@ -302,9 +303,9 @@
             // 
             // btn_Find_all_the_integer_value_lies_in_a_array_till_N
             // 
-            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Location = new System.Drawing.Point(634, 93);
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Location = new System.Drawing.Point(503, 94);
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Name = "btn_Find_all_the_integer_value_lies_in_a_array_till_N";
-            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Size = new System.Drawing.Size(603, 42);
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Size = new System.Drawing.Size(486, 42);
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.TabIndex = 22;
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Text = "Find all the integer value lies in a array till N";
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.UseVisualStyleBackColor = true;
@@ -312,9 +313,9 @@
             // 
             // btn_Robbing_a_home_2
             // 
-            this.btn_Robbing_a_home_2.Location = new System.Drawing.Point(634, 240);
+            this.btn_Robbing_a_home_2.Location = new System.Drawing.Point(503, 241);
             this.btn_Robbing_a_home_2.Name = "btn_Robbing_a_home_2";
-            this.btn_Robbing_a_home_2.Size = new System.Drawing.Size(603, 45);
+            this.btn_Robbing_a_home_2.Size = new System.Drawing.Size(486, 45);
             this.btn_Robbing_a_home_2.TabIndex = 24;
             this.btn_Robbing_a_home_2.Text = "Robbing a home 2 (In Circular array)";
             this.btn_Robbing_a_home_2.UseVisualStyleBackColor = true;
@@ -322,9 +323,9 @@
             // 
             // btn_Robbing_a_home_1
             // 
-            this.btn_Robbing_a_home_1.Location = new System.Drawing.Point(634, 186);
+            this.btn_Robbing_a_home_1.Location = new System.Drawing.Point(503, 187);
             this.btn_Robbing_a_home_1.Name = "btn_Robbing_a_home_1";
-            this.btn_Robbing_a_home_1.Size = new System.Drawing.Size(603, 48);
+            this.btn_Robbing_a_home_1.Size = new System.Drawing.Size(486, 48);
             this.btn_Robbing_a_home_1.TabIndex = 23;
             this.btn_Robbing_a_home_1.Text = "Robbing a home 1";
             this.btn_Robbing_a_home_1.UseVisualStyleBackColor = true;
@@ -332,9 +333,9 @@
             // 
             // btn_Array_Puzzle_1
             // 
-            this.btn_Array_Puzzle_1.Location = new System.Drawing.Point(634, 344);
+            this.btn_Array_Puzzle_1.Location = new System.Drawing.Point(503, 345);
             this.btn_Array_Puzzle_1.Name = "btn_Array_Puzzle_1";
-            this.btn_Array_Puzzle_1.Size = new System.Drawing.Size(606, 40);
+            this.btn_Array_Puzzle_1.Size = new System.Drawing.Size(489, 40);
             this.btn_Array_Puzzle_1.TabIndex = 25;
             this.btn_Array_Puzzle_1.Text = "Array Puzzle 1";
             this.btn_Array_Puzzle_1.UseVisualStyleBackColor = true;
@@ -342,9 +343,9 @@
             // 
             // btn_Robbing_a_home_3
             // 
-            this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(634, 291);
+            this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(503, 292);
             this.btn_Robbing_a_home_3.Name = "btn_Robbing_a_home_3";
-            this.btn_Robbing_a_home_3.Size = new System.Drawing.Size(603, 45);
+            this.btn_Robbing_a_home_3.Size = new System.Drawing.Size(486, 45);
             this.btn_Robbing_a_home_3.TabIndex = 26;
             this.btn_Robbing_a_home_3.Text = "Robbing a home 3 (Binary Tree)";
             this.btn_Robbing_a_home_3.UseVisualStyleBackColor = true;
@@ -352,9 +353,9 @@
             // 
             // btn_Arrange_Char_Array_R_G_B_In_Place
             // 
-            this.btn_Arrange_Char_Array_R_G_B_In_Place.Location = new System.Drawing.Point(634, 390);
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Location = new System.Drawing.Point(503, 391);
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Name = "btn_Arrange_Char_Array_R_G_B_In_Place";
-            this.btn_Arrange_Char_Array_R_G_B_In_Place.Size = new System.Drawing.Size(601, 45);
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Size = new System.Drawing.Size(484, 45);
             this.btn_Arrange_Char_Array_R_G_B_In_Place.TabIndex = 27;
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Text = "Arrange Char Array R_G_B In Place";
             this.btn_Arrange_Char_Array_R_G_B_In_Place.UseVisualStyleBackColor = true;
@@ -362,9 +363,9 @@
             // 
             // btn_Finding_Missing_Integer_from_the_given_array
             // 
-            this.btn_Finding_Missing_Integer_from_the_given_array.Location = new System.Drawing.Point(634, 441);
+            this.btn_Finding_Missing_Integer_from_the_given_array.Location = new System.Drawing.Point(503, 442);
             this.btn_Finding_Missing_Integer_from_the_given_array.Name = "btn_Finding_Missing_Integer_from_the_given_array";
-            this.btn_Finding_Missing_Integer_from_the_given_array.Size = new System.Drawing.Size(600, 41);
+            this.btn_Finding_Missing_Integer_from_the_given_array.Size = new System.Drawing.Size(483, 41);
             this.btn_Finding_Missing_Integer_from_the_given_array.TabIndex = 28;
             this.btn_Finding_Missing_Integer_from_the_given_array.Text = "Finding Missing Integer from the given array";
             this.btn_Finding_Missing_Integer_from_the_given_array.UseVisualStyleBackColor = true;
@@ -372,9 +373,9 @@
             // 
             // btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z
             // 
-            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Location = new System.Drawing.Point(635, 488);
+            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Location = new System.Drawing.Point(504, 489);
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Name = "btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z";
-            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Size = new System.Drawing.Size(602, 39);
+            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Size = new System.Drawing.Size(485, 39);
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.TabIndex = 29;
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Text = "No of ways to Encode for the given int array based on A-Z";
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.UseVisualStyleBackColor = true;
@@ -382,9 +383,9 @@
             // 
             // btn_Length_Of_The_Longest_Increasing_Subsequence
             // 
-            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(635, 533);
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(504, 534);
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Name = "btn_Length_Of_The_Longest_Increasing_Subsequence";
-            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(600, 46);
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(483, 46);
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.TabIndex = 30;
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Text = "Length Of The Longest Increasing Subsequence";
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.UseVisualStyleBackColor = true;
@@ -392,9 +393,9 @@
             // 
             // btn_Validate_Email_and_Count_Valid_Emails
             // 
-            this.btn_Validate_Email_and_Count_Valid_Emails.Location = new System.Drawing.Point(634, 584);
+            this.btn_Validate_Email_and_Count_Valid_Emails.Location = new System.Drawing.Point(503, 585);
             this.btn_Validate_Email_and_Count_Valid_Emails.Name = "btn_Validate_Email_and_Count_Valid_Emails";
-            this.btn_Validate_Email_and_Count_Valid_Emails.Size = new System.Drawing.Size(603, 36);
+            this.btn_Validate_Email_and_Count_Valid_Emails.Size = new System.Drawing.Size(486, 36);
             this.btn_Validate_Email_and_Count_Valid_Emails.TabIndex = 31;
             this.btn_Validate_Email_and_Count_Valid_Emails.Text = "Validate Email and Count Valid Emails";
             this.btn_Validate_Email_and_Count_Valid_Emails.UseVisualStyleBackColor = true;
@@ -402,9 +403,9 @@
             // 
             // btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n
             // 
-            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Location = new System.Drawing.Point(635, 624);
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Location = new System.Drawing.Point(504, 625);
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Name = "btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n";
-            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Size = new System.Drawing.Size(600, 44);
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Size = new System.Drawing.Size(483, 44);
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.TabIndex = 32;
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Text = "Given array of 2n integers which makes max sum of min of ai bi for all i to n";
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.UseVisualStyleBackColor = true;
@@ -412,9 +413,9 @@
             // 
             // btn_Maximize_Distance_to_Closest_Person
             // 
-            this.btn_Maximize_Distance_to_Closest_Person.Location = new System.Drawing.Point(637, 674);
+            this.btn_Maximize_Distance_to_Closest_Person.Location = new System.Drawing.Point(506, 675);
             this.btn_Maximize_Distance_to_Closest_Person.Name = "btn_Maximize_Distance_to_Closest_Person";
-            this.btn_Maximize_Distance_to_Closest_Person.Size = new System.Drawing.Size(596, 36);
+            this.btn_Maximize_Distance_to_Closest_Person.Size = new System.Drawing.Size(479, 36);
             this.btn_Maximize_Distance_to_Closest_Person.TabIndex = 33;
             this.btn_Maximize_Distance_to_Closest_Person.Text = "Maximize Distance to Closest Person";
             this.btn_Maximize_Distance_to_Closest_Person.UseVisualStyleBackColor = true;
@@ -422,9 +423,9 @@
             // 
             // btn_Garden_No_Adjacent
             // 
-            this.btn_Garden_No_Adjacent.Location = new System.Drawing.Point(639, 718);
+            this.btn_Garden_No_Adjacent.Location = new System.Drawing.Point(508, 719);
             this.btn_Garden_No_Adjacent.Name = "btn_Garden_No_Adjacent";
-            this.btn_Garden_No_Adjacent.Size = new System.Drawing.Size(596, 38);
+            this.btn_Garden_No_Adjacent.Size = new System.Drawing.Size(479, 38);
             this.btn_Garden_No_Adjacent.TabIndex = 34;
             this.btn_Garden_No_Adjacent.Text = "Garden No Adjacent";
             this.btn_Garden_No_Adjacent.UseVisualStyleBackColor = true;
@@ -432,10 +433,10 @@
             // 
             // btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots
             // 
-            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Location = new System.Drawing.Point(637, 762);
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Location = new System.Drawing.Point(506, 763);
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Name = "btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_s" +
     "lots";
-            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Size = new System.Drawing.Size(594, 33);
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Size = new System.Drawing.Size(477, 33);
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.TabIndex = 35;
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Text = "Given a list of tasks to run with cooldown interval find min number of time slots" +
     " ";
@@ -444,9 +445,9 @@
             // 
             // btn_Find_Peak_in_an_integer_array
             // 
-            this.btn_Find_Peak_in_an_integer_array.Location = new System.Drawing.Point(639, 801);
+            this.btn_Find_Peak_in_an_integer_array.Location = new System.Drawing.Point(508, 802);
             this.btn_Find_Peak_in_an_integer_array.Name = "btn_Find_Peak_in_an_integer_array";
-            this.btn_Find_Peak_in_an_integer_array.Size = new System.Drawing.Size(591, 44);
+            this.btn_Find_Peak_in_an_integer_array.Size = new System.Drawing.Size(474, 44);
             this.btn_Find_Peak_in_an_integer_array.TabIndex = 36;
             this.btn_Find_Peak_in_an_integer_array.Text = "Find Peak in an integer array";
             this.btn_Find_Peak_in_an_integer_array.UseVisualStyleBackColor = true;
@@ -454,9 +455,9 @@
             // 
             // btn_Search_Insert_Position
             // 
-            this.btn_Search_Insert_Position.Location = new System.Drawing.Point(637, 851);
+            this.btn_Search_Insert_Position.Location = new System.Drawing.Point(506, 852);
             this.btn_Search_Insert_Position.Name = "btn_Search_Insert_Position";
-            this.btn_Search_Insert_Position.Size = new System.Drawing.Size(591, 37);
+            this.btn_Search_Insert_Position.Size = new System.Drawing.Size(474, 37);
             this.btn_Search_Insert_Position.TabIndex = 37;
             this.btn_Search_Insert_Position.Text = "Search Insert Position";
             this.btn_Search_Insert_Position.UseVisualStyleBackColor = true;
@@ -464,9 +465,9 @@
             // 
             // btn_Find_the_two_elements_that_appear_only_once
             // 
-            this.btn_Find_the_two_elements_that_appear_only_once.Location = new System.Drawing.Point(639, 894);
+            this.btn_Find_the_two_elements_that_appear_only_once.Location = new System.Drawing.Point(508, 895);
             this.btn_Find_the_two_elements_that_appear_only_once.Name = "btn_Find_the_two_elements_that_appear_only_once";
-            this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(596, 37);
+            this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(484, 37);
             this.btn_Find_the_two_elements_that_appear_only_once.TabIndex = 38;
             this.btn_Find_the_two_elements_that_appear_only_once.Text = "Find the two elements that appear only once";
             this.btn_Find_the_two_elements_that_appear_only_once.UseVisualStyleBackColor = true;
@@ -474,9 +475,9 @@
             // 
             // btn_Plus_One
             // 
-            this.btn_Plus_One.Location = new System.Drawing.Point(13, 917);
+            this.btn_Plus_One.Location = new System.Drawing.Point(13, 899);
             this.btn_Plus_One.Name = "btn_Plus_One";
-            this.btn_Plus_One.Size = new System.Drawing.Size(607, 34);
+            this.btn_Plus_One.Size = new System.Drawing.Size(490, 34);
             this.btn_Plus_One.TabIndex = 39;
             this.btn_Plus_One.Text = "Plus One";
             this.btn_Plus_One.UseVisualStyleBackColor = true;
@@ -484,19 +485,30 @@
             // 
             // btn_Min_Max_Sum
             // 
-            this.btn_Min_Max_Sum.Location = new System.Drawing.Point(642, 937);
+            this.btn_Min_Max_Sum.Location = new System.Drawing.Point(511, 938);
             this.btn_Min_Max_Sum.Name = "btn_Min_Max_Sum";
-            this.btn_Min_Max_Sum.Size = new System.Drawing.Size(595, 42);
+            this.btn_Min_Max_Sum.Size = new System.Drawing.Size(478, 42);
             this.btn_Min_Max_Sum.TabIndex = 40;
             this.btn_Min_Max_Sum.Text = "Min Max Sum";
             this.btn_Min_Max_Sum.UseVisualStyleBackColor = true;
             this.btn_Min_Max_Sum.Click += new System.EventHandler(this.btn_Min_Max_Sum_Click);
+            // 
+            // btn_Array_partition_based_on_Pivot
+            // 
+            this.btn_Array_partition_based_on_Pivot.Location = new System.Drawing.Point(10, 938);
+            this.btn_Array_partition_based_on_Pivot.Name = "btn_Array_partition_based_on_Pivot";
+            this.btn_Array_partition_based_on_Pivot.Size = new System.Drawing.Size(490, 41);
+            this.btn_Array_partition_based_on_Pivot.TabIndex = 41;
+            this.btn_Array_partition_based_on_Pivot.Text = "Array partition based on Pivot";
+            this.btn_Array_partition_based_on_Pivot.UseVisualStyleBackColor = true;
+            this.btn_Array_partition_based_on_Pivot.Click += new System.EventHandler(this.btn_Array_partition_based_on_Pivot_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Array_partition_based_on_Pivot);
             this.Controls.Add(this.btn_Min_Max_Sum);
             this.Controls.Add(this.btn_Plus_One);
             this.Controls.Add(this.btn_Find_the_two_elements_that_appear_only_once);
@@ -588,5 +600,6 @@
         private System.Windows.Forms.Button btn_Find_the_two_elements_that_appear_only_once;
         private System.Windows.Forms.Button btn_Plus_One;
         private System.Windows.Forms.Button btn_Min_Max_Sum;
+        private System.Windows.Forms.Button btn_Array_partition_based_on_Pivot;
     }
 }

@@ -2261,14 +2261,14 @@ namespace WindowsFormsApplication3
                 Space Complexity : Constant space O(1)
             */
 
-            List<SearchInsertPosition> inputs = new List<SearchInsertPosition>();
-            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 5 });
-            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 2 });
-            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 7 });
-            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 0 });
-            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 3, 5, 6 }, find = 1 });
-            inputs.Add(new SearchInsertPosition() { input = new int[] { 1 }, find = 1 });
-            inputs.Add(new SearchInsertPosition() { input = new int[] { 1, 2 }, find = 2 });
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 5, 6 }, find = 5 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 5, 6 }, find = 2 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 5, 6 }, find = 7 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 5, 6 }, find = 0 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 5, 6 }, find = 1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1 }, find = 1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2 }, find = 2 });
 
             
 
@@ -2307,11 +2307,7 @@ namespace WindowsFormsApplication3
             return r + 1;
         }
 
-        public class SearchInsertPosition
-        {
-            public int[] input;
-            public int find;
-        }
+        
 
         private void btn_Find_the_two_elements_that_appear_only_once_Click(object sender, EventArgs e)
         {
@@ -2491,6 +2487,91 @@ namespace WindowsFormsApplication3
             }
 
             MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Array_partition_based_on_Pivot_Click(object sender, EventArgs e)
+        {
+            /*             
+                Given a pivot x, and a list lst, partition the list into three parts.
+
+                The first part contains all elements in lst that are less than x
+                The second part contains all elements in lst that are equal to x
+                The third part contains all elements in lst that are larger than x
+                Ordering within a part can be arbitrary.
+
+                For example, given x = 10 and lst = [9, 12, 3, 5, 14, 10, 10], one partition 
+                may be [9, 3, 5, 10, 10, 12, 14]. 
+
+                Time Complexity  : O(n)
+                Space Complexity : Constanct space            
+             */
+
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue(){input = new int[] { 9, 12, 3, 5, 14, 10, 10 }, find = 10 });
+            inputs.Add(new ArrayAndValue() { input = new int[] {}, find = 10 });
+            inputs.Add(new ArrayAndValue() { input = new int[] {-1, -3, -4 , 0, 1, 2 }, find = -1 });
+
+            StringBuilder result = new StringBuilder();
+
+            int l = 0;
+            int m = 0;
+            int h = 0;
+            int temp = 0;
+            string initialArray;
+            foreach(var arrayAndValue in inputs)
+            {
+                int[] input = arrayAndValue.input;
+                if (input.Length == 0)
+                {
+                    result.AppendLine("Array is empty");
+                    continue;
+                }
+
+                initialArray = string.Join(" ", input);
+
+                l = 0;
+                m = 0;
+                h = input.Length - 1;
+                temp = 0;
+
+                while (m <= h)
+                {
+                    if (input[m] < arrayAndValue.find)
+                    {
+                        temp = input[l];
+                        input[l] = input[m];
+                        input[m] = temp;
+                        l++;
+                        m++;
+                    }
+                    else if (input[m] == arrayAndValue.find)
+                    {
+                        m++;
+                    }
+                    else
+                    {
+                        temp = input[h];
+                        input[h] = input[m];
+                        input[m] = temp;
+                        h--;
+                    }
+                }
+
+                result.AppendLine($"Partition of the array is {string.Join(" ", input)} for the given array {initialArray} ");
+            }
+
+            MessageBox.Show(result.ToString());
+                
+          
+        }
+
+       
+        
+
+        public class ArrayAndValue
+        {
+            public int[] input;
+            public int find;
         }
     }
 }

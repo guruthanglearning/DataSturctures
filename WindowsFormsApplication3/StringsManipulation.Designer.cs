@@ -75,6 +75,7 @@
             this.btn_Valid_Parentheses = new System.Windows.Forms.Button();
             this.btn_Implement_strStr = new System.Windows.Forms.Button();
             this.btn_Length_of_Last_Word = new System.Windows.Forms.Button();
+            this.btn_Add_Binary = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -571,11 +572,22 @@
             this.btn_Length_of_Last_Word.UseVisualStyleBackColor = true;
             this.btn_Length_of_Last_Word.Click += new System.EventHandler(this.btn_Length_of_Last_Word_Click);
             // 
+            // btn_Add_Binary
+            // 
+            this.btn_Add_Binary.Location = new System.Drawing.Point(1385, 143);
+            this.btn_Add_Binary.Name = "btn_Add_Binary";
+            this.btn_Add_Binary.Size = new System.Drawing.Size(323, 37);
+            this.btn_Add_Binary.TabIndex = 47;
+            this.btn_Add_Binary.Text = "Add Binary";
+            this.btn_Add_Binary.UseVisualStyleBackColor = true;
+            this.btn_Add_Binary.Click += new System.EventHandler(this.btn_Add_Binary_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1720, 779);
+            this.Controls.Add(this.btn_Add_Binary);
             this.Controls.Add(this.btn_Length_of_Last_Word);
             this.Controls.Add(this.btn_Implement_strStr);
             this.Controls.Add(this.btn_Valid_Parentheses);
@@ -681,5 +693,6 @@
         private System.Windows.Forms.Button btn_Valid_Parentheses;
         private System.Windows.Forms.Button btn_Implement_strStr;
         private System.Windows.Forms.Button btn_Length_of_Last_Word;
+        private System.Windows.Forms.Button btn_Add_Binary;
     }
 }
