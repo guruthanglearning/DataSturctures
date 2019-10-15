@@ -70,6 +70,7 @@
             this.btn_Plus_One = new System.Windows.Forms.Button();
             this.btn_Min_Max_Sum = new System.Windows.Forms.Button();
             this.btn_Array_partition_based_on_Pivot = new System.Windows.Forms.Button();
+            this.btn_Blow_out_tallest_candles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -183,7 +184,7 @@
             // 
             // btn_Block_swap_algorithm_for_array_rotation
             // 
-            this.btn_Block_swap_algorithm_for_array_rotation.Location = new System.Drawing.Point(9, 447);
+            this.btn_Block_swap_algorithm_for_array_rotation.Location = new System.Drawing.Point(12, 447);
             this.btn_Block_swap_algorithm_for_array_rotation.Name = "btn_Block_swap_algorithm_for_array_rotation";
             this.btn_Block_swap_algorithm_for_array_rotation.Size = new System.Drawing.Size(491, 49);
             this.btn_Block_swap_algorithm_for_array_rotation.TabIndex = 10;
@@ -243,7 +244,7 @@
             // 
             // btn_Merge_Overlapping_Intervals
             // 
-            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(13, 757);
+            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(3, 759);
             this.btn_Merge_Overlapping_Intervals.Name = "btn_Merge_Overlapping_Intervals";
             this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(487, 40);
             this.btn_Merge_Overlapping_Intervals.TabIndex = 16;
@@ -467,7 +468,7 @@
             // 
             this.btn_Find_the_two_elements_that_appear_only_once.Location = new System.Drawing.Point(508, 895);
             this.btn_Find_the_two_elements_that_appear_only_once.Name = "btn_Find_the_two_elements_that_appear_only_once";
-            this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(484, 37);
+            this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(463, 37);
             this.btn_Find_the_two_elements_that_appear_only_once.TabIndex = 38;
             this.btn_Find_the_two_elements_that_appear_only_once.Text = "Find the two elements that appear only once";
             this.btn_Find_the_two_elements_that_appear_only_once.UseVisualStyleBackColor = true;
@@ -487,7 +488,7 @@
             // 
             this.btn_Min_Max_Sum.Location = new System.Drawing.Point(511, 938);
             this.btn_Min_Max_Sum.Name = "btn_Min_Max_Sum";
-            this.btn_Min_Max_Sum.Size = new System.Drawing.Size(478, 42);
+            this.btn_Min_Max_Sum.Size = new System.Drawing.Size(457, 42);
             this.btn_Min_Max_Sum.TabIndex = 40;
             this.btn_Min_Max_Sum.Text = "Min Max Sum";
             this.btn_Min_Max_Sum.UseVisualStyleBackColor = true;
@@ -503,11 +504,22 @@
             this.btn_Array_partition_based_on_Pivot.UseVisualStyleBackColor = true;
             this.btn_Array_partition_based_on_Pivot.Click += new System.EventHandler(this.btn_Array_partition_based_on_Pivot_Click);
             // 
+            // btn_Blow_out_tallest_candles
+            // 
+            this.btn_Blow_out_tallest_candles.Location = new System.Drawing.Point(995, 4);
+            this.btn_Blow_out_tallest_candles.Name = "btn_Blow_out_tallest_candles";
+            this.btn_Blow_out_tallest_candles.Size = new System.Drawing.Size(360, 40);
+            this.btn_Blow_out_tallest_candles.TabIndex = 42;
+            this.btn_Blow_out_tallest_candles.Text = "Blow out tallest  candles ";
+            this.btn_Blow_out_tallest_candles.UseVisualStyleBackColor = true;
+            this.btn_Blow_out_tallest_candles.Click += new System.EventHandler(this.btn_Blow_out_tallest_candles_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Blow_out_tallest_candles);
             this.Controls.Add(this.btn_Array_partition_based_on_Pivot);
             this.Controls.Add(this.btn_Min_Max_Sum);
             this.Controls.Add(this.btn_Plus_One);
@@ -601,5 +613,6 @@
         private System.Windows.Forms.Button btn_Plus_One;
         private System.Windows.Forms.Button btn_Min_Max_Sum;
         private System.Windows.Forms.Button btn_Array_partition_based_on_Pivot;
+        private System.Windows.Forms.Button btn_Blow_out_tallest_candles;
     }
 }

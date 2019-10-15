@@ -739,6 +739,47 @@ namespace WindowsFormsApplication3
                 return 0;
             }
             return 1 + Math.Max(MaxDepthOfTheTree(node.left), MaxDepthOfTheTree(node.right));
+
+            /* Iterative approach
+               if (root == null)
+                {
+                    return 0;
+                }
+        
+                Queue<TreeNode> q = new Queue<TreeNode>();
+                q.Enqueue(root);
+                q.Enqueue(null);
+        
+                int counter = 0;
+        
+                TreeNode t = null;
+        
+                while (q.Peek() != null)
+                {
+        
+                    while (q.Peek() != null)
+                    {
+                         t = q.Dequeue();
+                         if (t.left != null)
+                         {
+                             q.Enqueue(t.left);
+                         }
+                
+                         if (t.right != null)
+                         {
+                             q.Enqueue(t.right);
+                         }                
+                    }
+                    q.Dequeue();
+                    q.Enqueue(null);
+            
+                    counter++;            
+                }
+        
+        
+                return counter;
+             */
+
         }
 
 
@@ -3955,6 +3996,47 @@ namespace WindowsFormsApplication3
             }
             return 0;
 
+        }
+
+        private void btn_Remove_Item_from_sorted_Linked_List_Click(object sender, EventArgs e)
+        {
+            /*
+                Time Complexity : O(N) where N is the list of node 
+                Space Complexity: O(1) constanct space
+             */
+
+            LinkList LLNodeFirst = null;
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 2);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 3);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+            LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
+            datas.Clear();
+            DisplayLinkList(LLNodeFirst);
+
+            LinkList p = LLNodeFirst;
+            LinkList c = p.next;
+
+            while (c != null)
+            {
+                if (p.data == c.data)
+                {
+                    p.next = c.next;
+                    c = p.next;
+                }
+                else
+                {
+                    p = p.next;
+                    c = c.next;
+                }
+            }
+
+            datas.AppendLine();
+            DisplayLinkList(LLNodeFirst);
+            MessageBox.Show(datas.ToString());
         }
     }
 

@@ -76,6 +76,7 @@
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves = new System.Windows.Forms.Button();
             this.btn_Distribute_coin_in_a_binary_tree = new System.Windows.Forms.Button();
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order = new System.Windows.Forms.Button();
+            this.btn_Remove_Item_from_sorted_Linked_List = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -121,7 +122,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1226, 526);
+            this.button5.Location = new System.Drawing.Point(1226, 563);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(304, 35);
@@ -137,13 +138,13 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(304, 35);
             this.button6.TabIndex = 6;
-            this.button6.Text = "Remove Dup Item in Linked List";
+            this.button6.Text = "Remove Dup Item in Unsorted Linked List";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1227, 126);
+            this.button7.Location = new System.Drawing.Point(1227, 168);
             this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(304, 35);
@@ -231,7 +232,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(1227, 325);
+            this.button17.Location = new System.Drawing.Point(1227, 362);
             this.button17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(304, 35);
@@ -242,7 +243,7 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(1227, 171);
+            this.button19.Location = new System.Drawing.Point(1227, 208);
             this.button19.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(304, 35);
@@ -253,7 +254,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(1227, 209);
+            this.button16.Location = new System.Drawing.Point(1227, 246);
             this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(304, 62);
@@ -264,7 +265,7 @@
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(1227, 280);
+            this.button20.Location = new System.Drawing.Point(1227, 317);
             this.button20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(304, 35);
@@ -286,7 +287,7 @@
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(1227, 369);
+            this.button21.Location = new System.Drawing.Point(1227, 406);
             this.button21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(304, 35);
@@ -297,7 +298,7 @@
             // 
             // button22
             // 
-            this.button22.Location = new System.Drawing.Point(1227, 414);
+            this.button22.Location = new System.Drawing.Point(1227, 451);
             this.button22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(304, 35);
@@ -308,7 +309,7 @@
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(1226, 458);
+            this.button23.Location = new System.Drawing.Point(1226, 495);
             this.button23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(304, 57);
@@ -329,7 +330,7 @@
             // 
             // button25
             // 
-            this.button25.Location = new System.Drawing.Point(1226, 702);
+            this.button25.Location = new System.Drawing.Point(1226, 739);
             this.button25.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(304, 78);
@@ -340,7 +341,7 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(1226, 568);
+            this.button26.Location = new System.Drawing.Point(1226, 605);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(300, 54);
             this.button26.TabIndex = 28;
@@ -350,7 +351,7 @@
             // 
             // button27
             // 
-            this.button27.Location = new System.Drawing.Point(1228, 634);
+            this.button27.Location = new System.Drawing.Point(1228, 671);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(291, 52);
             this.button27.TabIndex = 29;
@@ -360,7 +361,7 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(1223, 788);
+            this.button28.Location = new System.Drawing.Point(1223, 825);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(303, 34);
             this.button28.TabIndex = 30;
@@ -444,7 +445,7 @@
             // 
             // btn_Clone_a_linked_list_with_next_and_random_pointer
             // 
-            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Location = new System.Drawing.Point(1223, 835);
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Location = new System.Drawing.Point(1223, 872);
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Name = "btn_Clone_a_linked_list_with_next_and_random_pointer";
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Size = new System.Drawing.Size(292, 59);
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.TabIndex = 38;
@@ -454,7 +455,7 @@
             // 
             // btn_Clone_a_linked_list_with_next_pointer
             // 
-            this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(1225, 909);
+            this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(1225, 946);
             this.btn_Clone_a_linked_list_with_next_pointer.Name = "btn_Clone_a_linked_list_with_next_pointer";
             this.btn_Clone_a_linked_list_with_next_pointer.Size = new System.Drawing.Size(290, 51);
             this.btn_Clone_a_linked_list_with_next_pointer.TabIndex = 39;
@@ -583,11 +584,22 @@
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.UseVisualStyleBackColor = true;
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Click += new System.EventHandler(this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order_Click);
             // 
+            // btn_Remove_Item_from_sorted_Linked_List
+            // 
+            this.btn_Remove_Item_from_sorted_Linked_List.Location = new System.Drawing.Point(1226, 124);
+            this.btn_Remove_Item_from_sorted_Linked_List.Name = "btn_Remove_Item_from_sorted_Linked_List";
+            this.btn_Remove_Item_from_sorted_Linked_List.Size = new System.Drawing.Size(298, 39);
+            this.btn_Remove_Item_from_sorted_Linked_List.TabIndex = 52;
+            this.btn_Remove_Item_from_sorted_Linked_List.Text = "Remove Item from sorted Linked List";
+            this.btn_Remove_Item_from_sorted_Linked_List.UseVisualStyleBackColor = true;
+            this.btn_Remove_Item_from_sorted_Linked_List.Click += new System.EventHandler(this.btn_Remove_Item_from_sorted_Linked_List_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1557, 1038);
+            this.ClientSize = new System.Drawing.Size(1559, 1028);
+            this.Controls.Add(this.btn_Remove_Item_from_sorted_Linked_List);
             this.Controls.Add(this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order);
             this.Controls.Add(this.btn_Distribute_coin_in_a_binary_tree);
             this.Controls.Add(this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves);
@@ -695,5 +707,6 @@
         private System.Windows.Forms.Button btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves;
         private System.Windows.Forms.Button btn_Distribute_coin_in_a_binary_tree;
         private System.Windows.Forms.Button btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order;
+        private System.Windows.Forms.Button btn_Remove_Item_from_sorted_Linked_List;
     }
 }

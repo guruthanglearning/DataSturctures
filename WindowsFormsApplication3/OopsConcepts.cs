@@ -56,7 +56,7 @@ namespace WindowsFormsApplication3
        public abstract class AbstractClassCreatingInstance : BaseClassForAbstractClass
         {
             private int test = 0;
-            public AbstractClassCreatingInstance()
+            protected AbstractClassCreatingInstance()
             {
 
             }
@@ -80,7 +80,7 @@ namespace WindowsFormsApplication3
         {            
             public DerivedClassForAbstractClassWhichInsertNormalClass()
             {
-
+               
             }
 
             public override void AbstractClassCreatingInstance_Method1()
@@ -102,6 +102,49 @@ namespace WindowsFormsApplication3
             t.BaseClassForAbstractClass_Method1();
             t.AbstractClassCreatingInstance_Method1();
             t.AbstractClassCreatingInstance_Method3();
+
+            StaticMemberTest test = new StaticMemberTest();
+            
         }
+
+        public class BaseProtected
+        {
+            protected int count;
+        }
+
+        public class DerivedProtected : BaseProtected
+        {
+            public int Test()
+            {
+                return this.count = 0;
+            }
+        }
+
+
+        public class StaticMemberTest
+        {
+            public const int TestingConstanct = 1234;
+            public static int Test1;
+            public static int Test2;
+            public int Test3;
+
+            public int Test()
+            {
+
+                return Test1;
+            }
+
+            public static int StaticTestFunction()
+            {
+                return Test2;
+            }
+
+            public static int StaticTestFunction(int t)
+            {
+                return t;
+            }
+
+        }
+
     }
 }

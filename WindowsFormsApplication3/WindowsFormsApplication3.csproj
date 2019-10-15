@@ -226,6 +226,12 @@
     <Compile Include="StringsManipulation.Designer.cs">
       <DependentUpon>StringsManipulation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trees.Designer.cs">
+      <DependentUpon>Trees.cs</DependentUpon>
+    </Compile>
     <Compile Include="UnitTestMocks\MockMessageHandler.cs" />
     <EmbeddedResource Include="Arrays.resx">
       <DependentUpon>Arrays.cs</DependentUpon>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StringsManipulation.resx">
       <DependentUpon>StringsManipulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trees.resx">
+      <DependentUpon>Trees.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="NoteBook\Book1.xlsx" />

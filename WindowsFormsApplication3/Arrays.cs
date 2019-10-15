@@ -55,19 +55,24 @@ namespace WindowsFormsApplication3
             //arr2[1] = 5;
             //arr2[2] = 6;//Worst Case O(n+m)
 
-            int[] arr1 = new int[10];
-            arr1[0] = 1;
-            arr1[1] = 2;
-            arr1[2] = 3;
-            arr1[3] = 4;
-            arr1[4] = 5;
-            arr1[5] = 6;
-            arr1[6] = 7;
-            int[] arr2 = new int[3];
-            arr2[0] = 3;
-            arr2[1] = 9;
-            arr2[2] = 10; //Best Case O(n+m)
+            //int[] arr1 = new int[10];
+            //arr1[0] = 1;
+            //arr1[1] = 2;
+            //arr1[2] = 3;
+            //arr1[3] = 4;
+            //arr1[4] = 5;
+            //arr1[5] = 6;
+            //arr1[6] = 7;
+            //int[] arr2 = new int[3];
+            //arr2[0] = 3;
+            //arr2[1] = 9;
+            //arr2[2] = 10; //Best Case O(n+m)
 
+            int[] arr1 = new int[1];
+            arr1[0] = 0;
+
+            int[] arr2 = new int[1];
+            arr2[0] = 1;
 
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
@@ -138,14 +143,14 @@ namespace WindowsFormsApplication3
 
             //Time Complexity is O(n)
             int[] buffer = new int[] { 1, 2, 3, 3, 3, 4, 4, 5, 5 };
-        
+
             int insert = 0;
             for (int i = 1; i < buffer.Length - 1; i++)
             {
                 /*                    
                     Index   :   0   1   2   3   4   5   6   7   8
                     buffer  :   1   2   3   4   5   4   4   5   5
-                    i = 9   insert = 4
+                    i = 8   insert = 4
                 */
 
                 if (buffer[i] != buffer[insert])
@@ -158,22 +163,22 @@ namespace WindowsFormsApplication3
                     }
                 }
             }
-            Array.Resize(ref buffer, insert);
+            Array.Resize(ref buffer, insert + 1);
 
             while (insert < buffer.Length - 1)
             {
                 insert++;
                 buffer[insert] = 0;
             }
-            
-            MessageBox.Show(string.Join(",",buffer));
+
+            MessageBox.Show(string.Join(",", buffer));
         }
 
         public void MergeArraysDuplicateValues(int[] arr1, int[] arr2)
         {
             int arr1Length = arr1.Length - 1;
             int arr1LastFilledIndex = this.GetLastFilledArrayIndex(arr1);
-            int arr2Length = arr2.Length - 1;                        
+            int arr2Length = arr2.Length - 1;
 
             /*
 
@@ -186,27 +191,27 @@ namespace WindowsFormsApplication3
                 arr1   :   1   2   3   3   3    3   4  6   7   8   10                           
 
             */
-            
+
             while (arr1LastFilledIndex >= 0 && arr2Length >= 0)
             {
-                    if (arr1[arr1LastFilledIndex] > arr2[arr2Length])
-                    {
-                        arr1[arr1Length] = arr1[arr1LastFilledIndex];
-                        arr1LastFilledIndex--;
+                if (arr1[arr1LastFilledIndex] > arr2[arr2Length])
+                {
+                    arr1[arr1Length] = arr1[arr1LastFilledIndex];
+                    arr1LastFilledIndex--;
 
-                    }
-                    else if (arr1[arr1LastFilledIndex] < arr2[arr2Length])
-                    {
-                        arr1[arr1Length] = arr2[arr2Length];
-                        arr2Length--;
-                    }
-                    else
-                    {
-                        arr1[arr1Length] = arr2[arr2Length];
-                        arr2Length--;
-                    }
-                    arr1Length--;
-            }                            
+                }
+                else if (arr1[arr1LastFilledIndex] < arr2[arr2Length])
+                {
+                    arr1[arr1Length] = arr2[arr2Length];
+                    arr2Length--;
+                }
+                else
+                {
+                    arr1[arr1Length] = arr2[arr2Length];
+                    arr2Length--;
+                }
+                arr1Length--;
+            }
         }
 
 
@@ -239,7 +244,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
             MergeArraysDuplicateValues(arr1, arr2);
-            
+
 
             MessageBox.Show($"After Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
@@ -254,27 +259,27 @@ namespace WindowsFormsApplication3
             }
             int sum = input[0];
             int reductionCost = 0;
-            int incrementer = 1; 
+            int incrementer = 1;
             /*
                 Index           :   0   1   2   3
                 Input           :   1   2   3   4
                 sum             :   10
                 incrementer     :   3
-                reductionCost   :   9
-             
+                reductionCost   :   19
+
              */
 
-            while (incrementer <= input.Length - 1) 
+            while (incrementer <= input.Length - 1)
             {
                 // incrementer = 3 , sum = 10, reductionCost = 9
                 if (incrementer == 1)
                 {
-                    sum += input[incrementer]; 
+                    sum += input[incrementer];
                 }
                 else
                 {
-                    reductionCost += sum; 
-                    sum += input[incrementer]; 
+                    reductionCost += sum;
+                    sum += input[incrementer];
                 }
                 incrementer++;
             }
@@ -302,11 +307,11 @@ namespace WindowsFormsApplication3
                 //s = 0 e = 9
                 if (input[start] == 0)
                 {
-                    start++; 
+                    start++;
                 }
                 else if (input[end] == 1)
                 {
-                    end--; 
+                    end--;
                 }
                 else
                 {
@@ -327,13 +332,23 @@ namespace WindowsFormsApplication3
                 60 ->30->15->7->3->
                      0  ->0->1->1->1->1
                      111100
-
-            
-
              */
+
             while (number > 0)
             {
                 // Logical AND the number and prepend it to the result string        
+                /*
+                    2|60
+                    2|30 - 0
+                    2|15 - 0
+                    2|7  - 1
+                    2|3  - 1
+                    1|1
+
+
+                 */
+
+
                 binary = (number & mask) + binary;
                 number = number >> 1;
             }
@@ -429,9 +444,9 @@ namespace WindowsFormsApplication3
             int maxOccurance = 1;
             /*
                 count = 3;
-                majorityIndex = 4;
+                majorityIndex = 5;
                 maxOccurance = 4; 
-                I = 8
+                I = 10
              */
             for (int i = 1; i < input.Length; i++)
             {
@@ -470,11 +485,17 @@ namespace WindowsFormsApplication3
             // Space Complexity : O(1)
 
             int[] input = new int[] { 1, 2, 3, 2, 3, 1, 3 };
-
+            /*
+                01 
+                10
+                ---
+                11
+             */
             int res = 0;
             for (int i = 0; i < input.Length; i++)
             {
                 res = res ^ input[i];
+
             }
 
             MessageBox.Show($"Odd Number {res.ToString()}");
@@ -495,7 +516,7 @@ namespace WindowsFormsApplication3
             return GCD(b, a % b);
             */
             int temp = 0;
-            while (b!=0)
+            while (b != 0)
             {
                 temp = b;
                 b = a % b;
@@ -526,26 +547,26 @@ namespace WindowsFormsApplication3
                          3     4   5   6   7   6   2    i = 0, j= 5, d = 2,  k = j + d = 7 (7-7 = 0, k = i break), temp = arr[i] = 1
                */
 
-                /* Instead of moving one by one, divide the array in different sets where number of sets is equal to GCD of n and d and move the elements within sets.             
-                   If GCD is 1 as is for the above example array(n = 7 and d = 2) */
-                int max = this.GCD(d, n);
-                for (i = 0; i < max; i++) 
+            /* Instead of moving one by one, divide the array in different sets where number of sets is equal to GCD of n and d and move the elements within sets.             
+               If GCD is 1 as is for the above example array(n = 7 and d = 2) */
+            int max = this.GCD(d, n);
+            for (i = 0; i < max; i++)
+            {
+
+                temp = arr[i];
+                j = i;
+                while (1 != 0)
                 {
-               
-                    temp = arr[i];
-                    j = i;
-                    while (1 != 0)
-                    {
-                        k = j + d;                    
-                        if (k >= n)
-                            k = k - n;
-                        if (k == i)
-                            break;
-                        arr[j] = arr[k];
-                        j = k;
-                    }
-                    arr[j] = temp;
+                    k = j + d;
+                    if (k >= n)
+                        k = k - n;
+                    if (k == i)
+                        break;
+                    arr[j] = arr[k];
+                    j = k;
                 }
+                arr[j] = temp;
+            }
         }
 
 
@@ -644,24 +665,22 @@ namespace WindowsFormsApplication3
 
         }
 
-       
+
 
         public double findMedianSortedArrays(int[] A, int[] B)
         {
             int m = A.Length;
             int n = B.Length;
             if (m > n)
-            { 
+            {
                 // to ensure m<=n. Always maching array A is smalles array
                 int[] temp = A; A = B; B = temp;
                 int tmp = m; m = n; n = tmp;
             }
 
-            
             int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
             while (iMin <= iMax)
             {
-
                 /*                    
                     int[] nums1 = new int[] { 2, 3, 4, 5 };
                     int[] nums2 = new int[] { 1, 2, };
@@ -676,8 +695,8 @@ namespace WindowsFormsApplication3
                     iMin = 2 (iMin +1) Max = 2, halfLen = 3, i = 2, j = 1
                 */
 
-                int i = (iMin + iMax) / 2; 
-                int j = halfLen - i;       
+                int i = (iMin + iMax) / 2;
+                int j = halfLen - i;
 
                 if (i < iMax && B[j - 1] > A[i])
                 {
@@ -759,8 +778,8 @@ namespace WindowsFormsApplication3
             //int[] nums1 = new int[] { 2, 3, 4, 5 };
             int[] nums1 = new int[] { };
             int[] nums2 = new int[] { 1, 2, };
-            
-            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());            
+
+            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
 
         }
 
@@ -870,12 +889,12 @@ namespace WindowsFormsApplication3
                 while (i < input1.Length && j < input2.Length)
                 {
                     if (input1[i] < input2[j])
-                    {                        
+                    {
                         union.Append(input1[i] + " ");
                         i++;
                     }
                     else if (input1[i] > input2[j])
-                    {                        
+                    {
                         union.Append(input2[i] + " ");
                         j++;
                     }
@@ -900,8 +919,8 @@ namespace WindowsFormsApplication3
                     j++;
                 }
 
-                MessageBox.Show($"Interaction of two sorted arrays are {(intersection.Length > 0 ? intersection.ToString() : "none")} \n"+
-                                $"Union of two sorted arrays are {(union.Length > 0 ? union.ToString() : "none")}" );
+                MessageBox.Show($"Interaction of two sorted arrays are {(intersection.Length > 0 ? intersection.ToString() : "none")} \n" +
+                                $"Union of two sorted arrays are {(union.Length > 0 ? union.ToString() : "none")}");
             }
 
 
@@ -921,7 +940,7 @@ namespace WindowsFormsApplication3
              */
             int[] input1 = new int[] { 7, 1, 5, 2, 3, 6 };
             int[] input2 = new int[] { 3, 8, 6, 20, 7 };
-            
+
 
         }
 
@@ -1044,7 +1063,7 @@ namespace WindowsFormsApplication3
 
             // prefix[n-1] is sum of all frequencies. Generate a random number
             // with value from 1 to this sum
-            int r =(random.Next(1, prefix[n-1]) % prefix[n - 1]) +1; // random.Next(1, prefix[n - 1]); 
+            int r = (random.Next(1, prefix[n - 1]) % prefix[n - 1]) + 1; // random.Next(1, prefix[n - 1]); 
 
             // Find index of ceiling of r in prefix array
             int indexc = FindCeil(prefix, r, 0, n - 1);
@@ -1081,11 +1100,11 @@ namespace WindowsFormsApplication3
                 {
                     result.Add(output, 1);
                 }
-                
+
             }
-            foreach(var key in result.Keys)
+            foreach (var key in result.Keys)
             {
-                   resultBuilder.Append($"{key} occurence {result[key]} \n");
+                resultBuilder.Append($"{key} occurence {result[key]} \n");
             }
             MessageBox.Show($"Random number generator in arbitrary probability distribution {resultBuilder.ToString()}");
 
@@ -1114,7 +1133,7 @@ namespace WindowsFormsApplication3
 
 
             for (int i = 2; i < input.Length; i++)
-            {       
+            {
                 if (secondMin > input[i] && firstMin > input[i]) //When firstMin and SecondMin values are greater than currentValue
                 {
                     secondMin = firstMin;
@@ -1132,7 +1151,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Arrange_all_zero_in_an_array_toward_right_Click(object sender, EventArgs e)
         {
-           
+
             /*
                 Time Complexity     : O(n) - for 1 array, from our input we have list of arrays n being the # of items in single array and
                                       m being the list of arrays so the Time complexity will be O(m*n)
@@ -1153,10 +1172,10 @@ namespace WindowsFormsApplication3
             {
                 lastIndexOfZero = 0;
                 var input = inputs[key];
-                
-                result.Append($"Before swap input array :  {Display(input)} \n");                
+
+                result.Append($"Before swap input array :  {Display(input)} \n");
                 for (int i = 1; i < input.Length; i++)
-                {                    
+                {
                     if (input[lastIndexOfZero] == 0 && input[i] != 0)
                     {
                         this.Swap(input, lastIndexOfZero, i);
@@ -1170,7 +1189,7 @@ namespace WindowsFormsApplication3
 
                 result.Append($"After swap input array: {Display(input)} \n");
             }
-            
+
 
             MessageBox.Show(result.ToString());
         }
@@ -1243,7 +1262,7 @@ namespace WindowsFormsApplication3
                     //}
                 }
                 result.Append($"Largest Subarray Sum in array is {maxSum.ToString()} for the given array {string.Join(" ", input)} starting index {startIndex.ToString()} and ending index {endIndex.ToString()} \n");
-            }      
+            }
             MessageBox.Show(result.ToString());
         }
 
@@ -1256,27 +1275,27 @@ namespace WindowsFormsApplication3
             //int[] input = new int[] { 4};
             //int[] input = new int[] { };
             //int[] input = new int[] { 3,2,2,3 }; //3
-            int[] input = new int[] {0,1,2,2,3,0,4,2};
+            int[] input = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
             int removeElement = 2;
             int index = -1;
             int i = 0;
             int arraySize = 0;
-            for (i = 0; i< input.Length; i++)
-            {                
+            for (i = 0; i < input.Length; i++)
+            {
                 if (index == -1 && input[i] == removeElement)
                 {
                     index = i;
                 }
-                else if (index >= 0 && input[i]!=removeElement)
+                else if (index >= 0 && input[i] != removeElement)
                 {
                     input[index] = input[i];
                     index++;
-                }                
+                }
             }
 
-            if (index > 0)            
-            {                
-              arraySize = index;                
+            if (index > 0)
+            {
+                arraySize = index;
             }
 
             Array.Resize(ref input, arraySize);
@@ -1286,14 +1305,14 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_all_the_integer_value_lies_in_a_array_till_N_Click(object sender, EventArgs e)
         {
-            int[] input =  new int[] { 1, 3, 4, 6, 7, 10, 4, 9 }; //new int[] { 1, 2, 3, 3 }; //
+            int[] input = new int[] { 1, 2, 3, 4 }; //new int[] { 1, 2, 3, 3 }; //
             int x = 0;
-            for(int i = 0; i<input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
-                x |= 1 << (input[i] - 1);
+                x |= 1 << (input[i] - 1); //
             }
 
-            MessageBox.Show($"All integers for the given input array is {(x == (1<<input.Length)-1 ? "present": "is not present")}");
+            MessageBox.Show($"All integers for the given input array is {(x == (1 << input.Length) - 1 ? "present" : "is not present")}");
 
         }
 
@@ -1323,7 +1342,7 @@ namespace WindowsFormsApplication3
                     return input[0];
                 }
 
-                
+
                 // 6, 7, 1, 3, 8, 2, 4
                 firstOld = input[start];            //6
                 secondOld = Math.Max(firstOld, (end - start) >= 2 ? input[start + 1] : secondOld); //7
@@ -1334,11 +1353,11 @@ namespace WindowsFormsApplication3
                 }
 
                 int i = 0;
-                for (i = start + 2; i < end; i++)
+                for (i =  2; i < end; i++) // 6
                 {
-                    thirdOld = Math.Max(input[i] + firstOld, secondOld);
-                    firstOld = secondOld; 
-                    secondOld = thirdOld; 
+                    thirdOld = Math.Max(input[i] + firstOld, secondOld); //
+                    firstOld = secondOld; //12
+                    secondOld = thirdOld; //15
                 }
             }
             return thirdOld;
@@ -1361,7 +1380,7 @@ namespace WindowsFormsApplication3
             inputs[7] = new int[] { 5, 1, 1, 5 };
 
             StringBuilder result = new StringBuilder();
-   
+
             foreach (int[] input in inputs)
             {
                 result.AppendLine($"The max value robbed in this house { (input.Length == 0 ? "Empty" : string.Join(",", input))} is {RobHouse(input, 0, input.Length).ToString()}");
@@ -1523,7 +1542,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Arrange_Char_Array_R_G_B_In_Place_Click(object sender, EventArgs e)
         {
-            char[] inputs = new char[] {'G','R','R','G','B','B', 'G' };
+            char[] inputs = new char[] { 'G', 'R', 'R', 'G', 'B', 'B', 'G' };
 
             int l = 0;
             int h = inputs.Length - 1;
@@ -1532,7 +1551,7 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             result.Append("Input character array \nbefore arranging : " + string.Join(",", inputs));
 
-            while (m<=h) // l = 2, m = 4, h = 4
+            while (m <= h) // l = 2, m = 4, h = 4
             {
 
                 /*
@@ -1555,7 +1574,7 @@ namespace WindowsFormsApplication3
                             break;
                         }
                     case 'G':
-                        {                           
+                        {
                             m++;
                             break;
                         }
@@ -1580,8 +1599,49 @@ namespace WindowsFormsApplication3
              
               Time Complexity is O(N) Linear time
               Space Complexity is O(1)
+
+
              */
-            int[] nums = new int[] { 5, 4, 3, 1, 0};
+
+            //Wrong solution revit
+
+            StringBuilder result = new StringBuilder();
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] {  1, 2, 3, 0, 4 }); // 0 
+            inputs.Add(new int[] {  1, 2, 0, 4, 5 }); //3
+            inputs.Add(new int[] { 4, 3, 0, 2,1}); // 0
+            inputs.Add(new int[] { 3, 4, 0, 7,2,1,6}); //5
+            inputs.Add(new int[] {}); // 0
+
+            foreach (int[] input in inputs)
+            {
+                int missing = 0;
+                if (input.Length == 0)
+                {
+                    result.AppendLine("Input array is empty");
+                    continue;
+                }
+
+                for (int i = 0; i < input.Length; i++)
+                {
+                    if (input[i] <= 0)
+                    {
+                        missing ^= i ^ 0;
+                    }
+                    else
+                    {
+                        missing ^= i ^ input[i];
+                    }
+                }
+
+                result.AppendLine($"Missing number is {missing} for the given array {string.Join(" ", input)}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+            /*int[] nums = new int[] { 1,2,3,5 };
             int missing = nums.Length;
 
             for (int i = 0; i < nums.Length; i++)
@@ -1593,10 +1653,11 @@ namespace WindowsFormsApplication3
                 else
                 {
                     missing ^= i ^ nums[i];
-                }                
+                }
             }
-            
+
             MessageBox.Show($"Missing number is {missing.ToString()}");
+            */
 
         }
 
@@ -1610,8 +1671,8 @@ namespace WindowsFormsApplication3
                 Space Complexity : O(1)
             */
 
-            int[] input = new int[] { 1,2,3,9 };
-            
+            int[] input = new int[] { 1, 2, 3, 9 };
+
             int first = 1;
             int second = 1;
             int third = 0;
@@ -1623,16 +1684,16 @@ namespace WindowsFormsApplication3
                     third = 1;
                 }
 
-                for(int i = 2; i<= input.Length; i++)
+                for (int i = 2; i <= input.Length; i++)
                 {
                     //i = 4
 
-                    if (input[i-1] > 0)
+                    if (input[i - 1] > 0)
                     {
                         third = second; // 3
                     }
 
-                    if ((input[i-2]  == 1) || (input[i-2] == 2 && input[i - 1] < 7))
+                    if ((input[i - 2] == 1) || (input[i - 2] == 2 && input[i - 1] < 7))
                     {
                         third += first; //3
                         first = second; //2
@@ -1686,8 +1747,10 @@ namespace WindowsFormsApplication3
                 Every email consists of a local name and a domain name, separated by the @ sign.
                 For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name.
                 Besides lowercase letters, these emails may contain '.'s or '+'s.
-                If you add periods ('.') between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, "alice.z@leetcode.com" and "alicez@leetcode.com" forward to the same email address.  (Note that this rule does not apply for domain names.)
-                If you add a plus ('+') in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered, for example m.y+name@email.com will be forwarded to my@email.com.  (Again, this rule does not apply for domain names.)
+                If you add periods ('.') between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  
+                For example, "alice.z@leetcode.com" and "alicez@leetcode.com" forward to the same email address.  (Note that this rule does not apply for domain names.)
+                If you add a plus ('+') in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered, 
+                for example m.y+name@email.com will be forwarded to my@email.com.  (Again, this rule does not apply for domain names.)
                 It is possible to use both of these rules at the same time.
                 Given a list of emails, we send one email to each address in the list.  How many different addresses actually receive mails? 
 
@@ -1713,15 +1776,22 @@ namespace WindowsFormsApplication3
                                             "r.cyo.g+d+l.c.n+g@tgsg.z.com", "fg.r.u.uzj+vq.o@kziczvh.com", "fg.r.u.uzj+uzq@kziczvh.com",
                                             "fg.r.u.uzj+mvz@kziczvh.com", "fg.r.u.uzj+taj@kziczvh.com", "fg.r.u.uzj+fek@kziczvh.com"};
             int result = 0;
+            StringBuilder msg = new StringBuilder();
             foreach (string email in emails)
             {
                 if (IsValidEmail(email))
                 {
                     result++;
+                    msg.AppendLine($"This email {email} is valid");
                 }
+                else
+                {
+                    msg.AppendLine($"This email {email} is not valid");
+                }
+
             }
 
-            MessageBox.Show($"There are {result} valid emails for the given emails \n {string.Join("\n", emails)}");
+            MessageBox.Show($"There are {result} valid emails\n {msg.ToString()}");
 
         }
 
@@ -1737,11 +1807,11 @@ namespace WindowsFormsApplication3
                 {
                     counter++;
                 }
-                
+
                 if (counter > 1)
                 {
                     break;
-                }                
+                }
             }
 
             return counter == 1;
@@ -1773,27 +1843,30 @@ namespace WindowsFormsApplication3
                 After sorting the array 1, 2, 3, 4, 5, 6, the pairs will be {1,2}{3,4}{5,6}, 
                 so min of all the pairs will be 1,3,5 which has the sum of 9 which has the largest value.
               
+                Time Complexity : O(nlogn)
+                Space Complexity : O(1) 
+
              */
 
             List<Array2n> inputs = new List<Array2n>();
-            inputs.Add(new Array2n(){N = 2, Data=new int[] {4, 1, 2, 3 } }); // 1,2,3,4,5,6 = 9
+            inputs.Add(new Array2n() { N = 2, Data = new int[] { 4, 1, 2, 3 } }); // 1,2,3,4,5,6 = 9
             inputs.Add(new Array2n() { N = 3, Data = new int[] { 4, 5, 6, 1, 2, 3 } }); // 1,2,3,4,5,6 = 9
 
             StringBuilder result = new StringBuilder();
             string output = string.Empty;
-            foreach(Array2n input in inputs)
+            foreach (Array2n input in inputs)
             {
                 output = string.Join(" ", input.Data);
                 Array.Sort(input.Data);
                 int sum = 0;
-                for(int i = 0; i< input.Data.Length; i+=2)
+                for (int i = 0; i < input.Data.Length; i += 2)
                 {
                     sum += input.Data[i];
                 }
 
                 MessageBox.Show($"Max sum is {sum} for the given input array is {output} \n");
             }
-            
+
 
         }
 
@@ -1804,7 +1877,7 @@ namespace WindowsFormsApplication3
 
             public Array2n()
             {
-                Data = new int[2*N];
+                Data = new int[2 * N];
             }
         }
 
@@ -1839,7 +1912,7 @@ namespace WindowsFormsApplication3
              */
             List<int[]> inputs = new List<int[]>();
             inputs.Add(new int[] { 1, 0, 0, 0, 1, 0, 1 });
-            inputs.Add(new int[] { 1, 0, 0, 0});
+            inputs.Add(new int[] { 1, 0, 0, 0 });
             StringBuilder result = new StringBuilder();
             result.Append("The max distance for the given input arrays are\n");
             foreach (int[] input in inputs)
@@ -1847,8 +1920,8 @@ namespace WindowsFormsApplication3
                 int distance = 0;
                 int front = 0;
                 int previous = -1;
-                
-                for(int i = 0; i<input.Length; i++)
+
+                for (int i = 0; i < input.Length; i++)
                 {
                     if (input[i] == 1)
                     {
@@ -1856,7 +1929,7 @@ namespace WindowsFormsApplication3
                     }
                     else
                     {
-                        while(front <input.Length && (input[front] == 0 || front< i))
+                        while (front < input.Length && (input[front] == 0 || front < i))
                         {
                             front++;
                         }
@@ -1948,18 +2021,18 @@ namespace WindowsFormsApplication3
                     
                  */
                 currentValue = 0;
-                last = 0; 
+                last = 0;
                 secondLast = 0;
-                lastMax = 0;              
+                lastMax = 0;
                 secondLastMax = 0;
                 final = 0; //
-                for (int i =0; i <input.Length; i++)
+                for (int i = 0; i < input.Length; i++)
                 {
                     currentValue = input[i];
                     lastMax = currentValue == last || currentValue == secondLast ? lastMax + 1 : secondLastMax + 1;
                     secondLastMax = currentValue == secondLast ? secondLastMax + 1 : 1;
 
-                    if (currentValue!=secondLast)
+                    if (currentValue != secondLast)
                     {
                         last = secondLast;
                         secondLast = currentValue;
@@ -2011,7 +2084,7 @@ namespace WindowsFormsApplication3
              */
 
             List<Gardens> inputs = new List<Gardens>();
-            
+
             inputs.Add(new Gardens
             {
                 GardensCordinates = new List<GardensCordinates>() {
@@ -2019,7 +2092,7 @@ namespace WindowsFormsApplication3
                                                                         new GardensCordinates() {X= 2, Y=3 },
                                                                         new GardensCordinates() {X= 3, Y=1 }
                                                                   },
-                NoOfGardens= 3
+                NoOfGardens = 3
             });
 
             inputs.Add(new Gardens
@@ -2027,7 +2100,7 @@ namespace WindowsFormsApplication3
                 GardensCordinates = new List<GardensCordinates>() {
                                                                         new GardensCordinates() {X= 1, Y=2 },
                                                                         new GardensCordinates() {X= 3, Y=4 }
-                                                                        
+
                                                                   },
                 NoOfGardens = 4
             });
@@ -2046,7 +2119,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
 
-            foreach(var input in inputs)
+            foreach (var input in inputs)
             {
                 int[] flowerTypeForGarden = Enumerable.Repeat(1, input.NoOfGardens).ToArray<int>();
                 bool proceed = true;
@@ -2110,13 +2183,13 @@ namespace WindowsFormsApplication3
                 Time Complexity     : O(n)
                 Space Complexity    : O(n)
              */
-             
+
             List<TaskCoolDown> tasks = new List<TaskCoolDown>();
-            tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 1, 2, 1, 2 }, Cooldown = 2 });
-            tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 2, 3, 1, 2, 3 }, Cooldown = 3 });
+            tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 1, 2, 1, 2 }, Cooldown = 2 }); // 1--12-12
+            tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 2, 3, 1, 2, 3 }, Cooldown = 3 }); // 123-123
             StringBuilder message = new StringBuilder();
 
-            foreach(var task in tasks)
+            foreach (var task in tasks)
             {
                 /*  
                     1, 1, 2, 1, 2               2
@@ -2128,9 +2201,9 @@ namespace WindowsFormsApplication3
                  */
 
                 Dictionary<int, int> taskEntry = new Dictionary<int, int>();
-                int result = 0; 
+                int result = 0;
                 int taskIndex = 0;
-                int last = 0; 
+                int last = 0;
                 while (taskIndex < task.Task.Length)
                 {
                     if (!taskEntry.ContainsKey(task.Task[taskIndex]))
@@ -2140,7 +2213,8 @@ namespace WindowsFormsApplication3
                     }
                     else
                     {
-                        last = taskEntry[task.Task[taskIndex]];
+                        // result = 8 taskIndex = 5
+                        last = taskEntry[task.Task[taskIndex]]; // 1 --> 6, 2 -->7
                         if ((result - last) > task.Cooldown)
                         {
                             taskEntry[task.Task[taskIndex]] = result;
@@ -2150,8 +2224,8 @@ namespace WindowsFormsApplication3
                     result++;
                 }
 
-                message.Append($"The minimum number of time slots required to run is {result} to run {string.Join(" " , task.Task)} \n ");
-                
+                message.Append($"The minimum number of time slots required to run is {result} to run {string.Join(" ", task.Task)} \n ");
+
             }
             MessageBox.Show(message.ToString());
 
@@ -2178,12 +2252,12 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 1 }); // -1
             inputs.Add(new int[] { 1, 2 }); // -1
             inputs.Add(new int[] { 2, 1 }); // 1
-            inputs.Add(new int[] {}); // -1
+            inputs.Add(new int[] { }); // -1
             inputs.Add(new int[] { 1, 2, 3, 1 }); // 2
             inputs.Add(new int[] { 1, 2, 1, 3, 5, 6, 4 }); // 5
 
             StringBuilder result = new StringBuilder();
-            foreach(int[] input in inputs)
+            foreach (int[] input in inputs)
             {
                 int l = 0;
                 int r = input.Length - 1;
@@ -2195,13 +2269,13 @@ namespace WindowsFormsApplication3
                     continue;
                 }
 
-                while (l< r)
+                while (l < r)
                 {
                     m = (l + r) / 2;
 
-                    if (m==0)
+                    if (m == 0)
                     {
-                        if (input[l]>input[r])
+                        if (input[l] > input[r])
                         {
                             m = l;
                         }
@@ -2211,7 +2285,7 @@ namespace WindowsFormsApplication3
                         }
                         break;
                     }
-                    else if (input[m-1] < input[m] && input[m] > input[m + 1])
+                    else if (input[m - 1] < input[m] && input[m] > input[m + 1])
                     {
                         break;
                     }
@@ -2219,9 +2293,9 @@ namespace WindowsFormsApplication3
                     {
                         l = m + 1;
                     }
-                    else 
+                    else
                     {
-                        r = m;                        
+                        r = m;
                     }
                 }
 
@@ -2270,11 +2344,11 @@ namespace WindowsFormsApplication3
             inputs.Add(new ArrayAndValue() { input = new int[] { 1 }, find = 1 });
             inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2 }, find = 2 });
 
-            
+
 
             StringBuilder result = new StringBuilder();
             foreach (var sip in inputs)
-            {                
+            {
                 result.Append($"The search insert index is {this.FindSearchInsert(sip.input, sip.find)} for the given int array {string.Join(" ", sip.input)} for given search {sip.find}  \n");
             }
 
@@ -2282,7 +2356,7 @@ namespace WindowsFormsApplication3
         }
 
         private int FindSearchInsert(int[] input, int find)
-        {            
+        {
             int l = 0;
             int r = input.Length - 1;
             int m = -1;
@@ -2307,11 +2381,14 @@ namespace WindowsFormsApplication3
             return r + 1;
         }
 
-        
+
 
         private void btn_Find_the_two_elements_that_appear_only_once_Click(object sender, EventArgs e)
         {
             /*                
+             
+                NEED TO COMPLETE
+
                 Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.
 
                 Example:
@@ -2328,7 +2405,7 @@ namespace WindowsFormsApplication3
             List<int[]> inputs = new List<int[]>();
             inputs.Add(new int[8] { 2, 4, 6, 8, 10, 2, 6, 8 });
 
-            foreach(var input in inputs)
+            foreach (var input in inputs)
             {
                 int xor = 0;
                 int y = 0;
@@ -2339,9 +2416,9 @@ namespace WindowsFormsApplication3
 
                 y = xor & -xor;
                 int val = 0;
-                for(int i = 0; i < input.Length; i++)
+                for (int i = 0; i < input.Length; i++)
                 {
-                    val = val ^(y & input[i]);
+                    val = val ^ (y & input[i]);
                 }
 
                 result.AppendLine($"Two unique values are {val} and {val ^ xor} for the given array {string.Join(" ", input)}");
@@ -2349,8 +2426,8 @@ namespace WindowsFormsApplication3
             }
 
             MessageBox.Show(result.ToString());
-            
-            
+
+
 
 
         }
@@ -2376,7 +2453,7 @@ namespace WindowsFormsApplication3
              */
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
-            inputs.Add(new int[3] {1, 2, 3 });
+            inputs.Add(new int[3] { 1, 2, 3 });
             inputs.Add(new int[4] { 9, 9, 9, 9 });
             inputs.Add(new int[4] { 8, 9, 9, 9 });
             foreach (var input in inputs)
@@ -2418,7 +2495,7 @@ namespace WindowsFormsApplication3
                 {
                     result.AppendLine($"Plus one of the array is {string.Join(" ", input)}");
                 }
-                
+
 
             }
 
@@ -2507,9 +2584,9 @@ namespace WindowsFormsApplication3
              */
 
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();
-            inputs.Add(new ArrayAndValue(){input = new int[] { 9, 12, 3, 5, 14, 10, 10 }, find = 10 });
-            inputs.Add(new ArrayAndValue() { input = new int[] {}, find = 10 });
-            inputs.Add(new ArrayAndValue() { input = new int[] {-1, -3, -4 , 0, 1, 2 }, find = -1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 9, 12, 3, 5, 14, 10, 10 }, find = 10 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { }, find = 10 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { -1, -3, -4, 0, 1, 2 }, find = -1 });
 
             StringBuilder result = new StringBuilder();
 
@@ -2518,7 +2595,7 @@ namespace WindowsFormsApplication3
             int h = 0;
             int temp = 0;
             string initialArray;
-            foreach(var arrayAndValue in inputs)
+            foreach (var arrayAndValue in inputs)
             {
                 int[] input = arrayAndValue.input;
                 if (input.Length == 0)
@@ -2561,17 +2638,97 @@ namespace WindowsFormsApplication3
             }
 
             MessageBox.Show(result.ToString());
-                
-          
+
+
         }
 
-       
-        
+
+
 
         public class ArrayAndValue
         {
             public int[] input;
             public int find;
         }
+
+        private void btn_Blow_out_tallest_candles_Click(object sender, EventArgs e)
+        {
+            /*             
+                You are in charge of the cake for your niece's birthday and have decided the cake will have one candle for each year of her total age. 
+                When she blows out the candles, she’ll only be able to blow out the tallest ones. Your task is to find out how many candles she can successfully blow out.
+
+                For example, if your niece is turning 4 years old, and the cake will have  candles of height 4, 4, 1, 3, she will be able to blow out  candles successfully, 
+                since the tallest candles are of height  and there are  such candles.
+
+                Function Description
+
+                Complete the function birthdayCakeCandles in the editor below. It must return an integer representing the number of candles she can blow out.
+
+                birthdayCakeCandles has the following parameter(s):
+
+                ar: an array of integers representing candle heights
+                Input Format
+
+                The first line contains a single integer, n , denoting the number of candles on the cake.
+                The second line contains  space-separated integers, where each integer i describes the height of candle  i.
+
+                Constraints
+
+                Output Format
+
+                Return the number of candles that can be blown out on a new line.
+
+                Sample Input 0
+
+                4
+                3 2 1 3
+                Sample Output 0
+
+                2
+                Explanation 0
+
+                We have one candle of height 1, one candle of height 2, and two candles of height 3. Your niece only blows out the tallest candles, meaning the candles where height = 3. Because there are 2 such candles, 
+                we print 2 on a new line.
+
+                Time Complexity : O(n) where n is the length of the input array
+                Space Complexity: Constanct space                
+            */
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 3, 1, 2, 3 });
+            inputs.Add(new int[] { 18, 90, 90, 13, 90, 75, 90, 8, 90, 43 });
+            inputs.Add(new int[] { 82, 49, 82, 82, 41, 82, 15, 63, 38, 25 });
+            inputs.Add(new int[] { 44, 53, 31, 27, 77, 60, 66, 77, 26, 36 });
+            
+            StringBuilder result = new StringBuilder();
+            int maxCandle = 0;
+            int maxCandleCount = 0;
+
+            foreach (var input in inputs)
+            {
+                maxCandle = input[0];
+                maxCandleCount = 1;
+
+                for (int i = 1; i < input.Length; i++)
+                {
+
+                    if (input[i] > maxCandle)
+                    {
+                        maxCandle = input[i];
+                        maxCandleCount = 1;
+                    }
+                    else if (input[i] == maxCandle)
+                    {
+                        maxCandleCount++;
+                    }
+
+                }
+                result.AppendLine($"Candle height is { maxCandle } and count is {maxCandleCount} for the given height of candles {string.Join(" ", input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
     }
 }

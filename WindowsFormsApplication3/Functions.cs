@@ -19,12 +19,46 @@ namespace WindowsFormsApplication3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int input = -1;
-            int.TryParse(textBox1.Text, out input);
-            int i = 0; // SquareRootForWholeNumber(input, input <3 ? input : input/2); //Complexity is O(log n)
-            decimal j = SquareRootInCalculator(input); //Complexity is O(10)
+            /*
+                Implement int sqrt(int x).
+                Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+                Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.
 
-            MessageBox.Show($"Square root For Whole number {input.ToString()} is {i.ToString()} \n In Calculator {input.ToString()} is {j.ToString()} ");
+                Example 1:
+
+                Input: 4
+                Output: 2
+                Example 2:
+
+                Input: 8
+                Output: 2
+                Explanation: The square root of 8 is 2.82842..., and since the decimal part is truncated, 2 is returned.
+                
+                Time Complexity     : O(log n)
+                Space Complexity    : O(1)
+                
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int> inputs = new List<int>();
+            inputs.Add(4);
+            inputs.Add(8);
+            inputs.Add(11);
+            inputs.Add(int.MaxValue);
+
+            foreach (int input in inputs)
+            {
+                result.AppendLine($"Square root For Whole number {input.ToString()} is {SquareRootForWholeNumber(input)}");
+                    
+            }
+            
+        
+            //decimal j = SquareRootInCalculator(input); //Complexity is O(10)
+
+
+
+            MessageBox.Show(result.ToString());
         }
         
         private decimal SquareRootInCalculator(decimal t)
@@ -39,32 +73,41 @@ namespace WindowsFormsApplication3
 
         }
 
-        private int SquareRootForWholeNumber(int inputValue, int mid, int previous = 0)
-        {
-            int returnValue = -1;
-            if (inputValue <=1)
+        private long SquareRootForWholeNumber(int inputValue)
+        {            
+            if (inputValue == 0 || inputValue == 1)
             {
                 return inputValue;
             }
- 
 
-            if (mid * mid == inputValue)
+            int l = 0;
+            int r = inputValue;
+            int m = 0;
+            
+
+            while (l <= r)
             {
-                return mid;
-            }
-            else
-            {
-                if ((mid * mid) > inputValue)
+                m =   l + (r - l) / 2;
+                
+                if (m == 0)
                 {
-                    returnValue = SquareRootForWholeNumber(inputValue, mid / 2, mid);
+                    break;
+                }
+
+                if (m == (inputValue/m))
+                {
+                    return m;
+                }
+                else if ( m < (inputValue / m))
+                {
+                    l = m + 1;                    
                 }
                 else
                 {
-                    returnValue = SquareRootForWholeNumber(inputValue, (mid + previous) / 2, previous);
+                    r = m - 1;
                 }
-            }            
-            return returnValue;
-
+            }
+            return r;
         }
 
         private void btn_Create_Job_Schedule_which_runs_function_for_a_given_milliseconds_Click(object sender, EventArgs e)

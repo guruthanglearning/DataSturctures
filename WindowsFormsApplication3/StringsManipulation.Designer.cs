@@ -76,6 +76,7 @@
             this.btn_Implement_strStr = new System.Windows.Forms.Button();
             this.btn_Length_of_Last_Word = new System.Windows.Forms.Button();
             this.btn_Add_Binary = new System.Windows.Forms.Button();
+            this.btn_Convert_12hour_Time_to_24_hour_time = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -582,11 +583,22 @@
             this.btn_Add_Binary.UseVisualStyleBackColor = true;
             this.btn_Add_Binary.Click += new System.EventHandler(this.btn_Add_Binary_Click);
             // 
+            // btn_Convert_12hour_Time_to_24_hour_time
+            // 
+            this.btn_Convert_12hour_Time_to_24_hour_time.Location = new System.Drawing.Point(1385, 185);
+            this.btn_Convert_12hour_Time_to_24_hour_time.Name = "btn_Convert_12hour_Time_to_24_hour_time";
+            this.btn_Convert_12hour_Time_to_24_hour_time.Size = new System.Drawing.Size(323, 31);
+            this.btn_Convert_12hour_Time_to_24_hour_time.TabIndex = 48;
+            this.btn_Convert_12hour_Time_to_24_hour_time.Text = "Convert 12 hour Time to 24 hour time";
+            this.btn_Convert_12hour_Time_to_24_hour_time.UseVisualStyleBackColor = true;
+            this.btn_Convert_12hour_Time_to_24_hour_time.Click += new System.EventHandler(this.btn_Convert_12hour_Time_to_24_hour_time_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1720, 779);
+            this.ClientSize = new System.Drawing.Size(2234, 779);
+            this.Controls.Add(this.btn_Convert_12hour_Time_to_24_hour_time);
             this.Controls.Add(this.btn_Add_Binary);
             this.Controls.Add(this.btn_Length_of_Last_Word);
             this.Controls.Add(this.btn_Implement_strStr);
@@ -694,5 +706,6 @@
         private System.Windows.Forms.Button btn_Implement_strStr;
         private System.Windows.Forms.Button btn_Length_of_Last_Word;
         private System.Windows.Forms.Button btn_Add_Binary;
+        private System.Windows.Forms.Button btn_Convert_12hour_Time_to_24_hour_time;
     }
 }

@@ -26,13 +26,8 @@ Note:
 1 <= tiles.length <= 7
 tiles consists of uppercase English letters.
 
-5.) Given an array of integer find the peak. There will not be an duplicate value in the array
-Input = [4,5,6,7,9, 10, 1, 2, 3] Peak is 10
-Input = [4,5,6,7,9, 10, 1] Peak is 10
-Input = [-3, -2, -1, 1, 2, 3, 0] Peak is 10
-
-6.) Given an multidimensional array find the number of cluster in it
-https://www.geeksforgeeks.org/find-number-of-islands/
+5.) Given an integer array find the max median for K iterations
+For example : 1 , 2, 5, 3, 5 K = 2 Max median = 5
 
 
 

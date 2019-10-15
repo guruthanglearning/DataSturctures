@@ -2723,12 +2723,78 @@ namespace WindowsFormsApplication3
             MessageBox.Show(result.ToString());
 
 
+            
+
         }
 
         public class AddBinaryInputs
         {
             public string inputA;
             public string inputB;
+        }
+
+        private void btn_Convert_12hour_Time_to_24_hour_time_Click(object sender, EventArgs e)
+        {
+            List<string> inputs = new List<string>();
+            inputs.Add("07:05:45PM");
+            inputs.Add("12:40:22AM");
+            inputs.Add("06:40:03AM");
+            inputs.Add("12:05:39AM");
+            inputs.Add("12:45:54PM");
+            inputs.Add("02:34:50PM");
+            inputs.Add("04:59:59AM");
+            inputs.Add("04:59:59PM");
+            inputs.Add("12:00:00AM");
+            inputs.Add("11:59:59PM");
+
+            StringBuilder result = new StringBuilder();
+            StringBuilder timeFormat = new StringBuilder();
+            string amPm;
+            string strtime;
+            int time = 0;
+            string[] timeData;
+            foreach (string s in inputs)
+            {
+                
+                timeData = s.Split(':');
+                timeFormat.Clear();
+
+                if (string.IsNullOrEmpty(s) || timeData.Length != 3)
+                {
+                    result.AppendLine($"Not a valid date {(string.IsNullOrEmpty(s) ? "NULL OR EMPTY" : s)}");
+                }
+
+                amPm = timeData[2].Substring(2, 2);
+                strtime = timeData[0];
+                time = 0;
+
+                if (!(amPm == "PM" || amPm == "AM"))
+                {
+                    result.AppendLine($"Not a valid date {s}");
+                }
+
+                time = Convert.ToInt32(strtime);
+
+                if (time < 0 && time > 24)
+                {
+                    result.AppendLine($"Not a valid date {s}");
+                }
+
+                if (amPm == "PM")
+                {
+                    timeFormat.Append($"{(time == 12 ? time : (time + 12)).ToString()}");
+                }
+                else
+                {
+                    timeFormat.Append($"{(time == 12 ? "00" : time.ToString("00"))}");
+                }
+
+                timeFormat.Append($":{timeData[1]}:{timeData[2].Substring(0, 2)}");
+                result.AppendLine($"24 hour format is {timeFormat.ToString()} for the given date {s}");  
+            }
+
+            MessageBox.Show(result.ToString());
+
         }
     }
 }
