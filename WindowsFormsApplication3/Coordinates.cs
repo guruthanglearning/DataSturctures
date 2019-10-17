@@ -70,6 +70,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Overlapping_rectangles_Click(object sender, EventArgs e)
         {
+
+            
             Point L1 = new Point() { X = 1, Y = 7 };
             Point R1 = new Point() { X = 4, Y = 4 };
             Point L2 = new Point() { X = 2, Y = 3 };
@@ -89,6 +91,55 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Kangoro_Problem_Click(object sender, EventArgs e)
+        {
+            /*
+             https://www.hackerrank.com/challenges/kangaroo/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+             https://www.youtube.com/watch?v=52R2pLDjUBw&feature=youtu.be 
+             https://www.youtube.com/watch?v=EvDkXTmUjGs -- See as an alternative approach;
+
+             Time Complexity : O(1) constant time
+             Space Complexity: O(1) constant space
+
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<KangaruPoints> inputs = new List<KangaruPoints>();
+            inputs.Add(new KangaruPoints() { Point1 = new Point(0, 3), Point2 = new Point(4, 2) });
+            inputs.Add(new KangaruPoints() { Point1 = new Point(0, 2), Point2 = new Point(5, 3) });
+            foreach(var input in inputs)
+            {
+                result.AppendLine($"Kangaru 1 X1,V1 :[{input.Point1.X.ToString()},{input.Point1.Y.ToString()}] Kangaru 2 X2,V2 :[{input.Point2.X.ToString()},{input.Point2.Y.ToString()}] is { (this.IsKangaruMeet(input.Point1, input.Point2) ? "meeting" : "not meeting" )}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+
+        private bool IsKangaruMeet(Point p1, Point p2)
+        {
+            int reminder = 0;
+            if (p1.Y > p2.Y)
+            {
+                reminder = (p2.X - p1.X) % (p1.Y - p2.Y);
+
+                if (reminder == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public class KangaruPoints
+        {
+            public Point Point1;
+            public Point Point2;
+        }
         
     }
 }

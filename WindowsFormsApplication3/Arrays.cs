@@ -1884,8 +1884,8 @@ namespace WindowsFormsApplication3
         private void btn_Maximize_Distance_to_Closest_Person_Click(object sender, EventArgs e)
         {
             /*
-                In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty. 
-                There is at least one empty seat, and at least one person sitting.
+                In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the 
+                seat is empty. There is at least one empty seat, and at least one person sitting.
                 Alex wants to sit in the seat such that the distance between him and the closest person to him is maximized. 
                 Return that maximum distance to closest person.
 
@@ -1920,7 +1920,8 @@ namespace WindowsFormsApplication3
                 int distance = 0;
                 int front = 0;
                 int previous = -1;
-
+                int left = 0;
+                int right = 0;
                 for (int i = 0; i < input.Length; i++)
                 {
                     if (input[i] == 1)
@@ -1929,13 +1930,14 @@ namespace WindowsFormsApplication3
                     }
                     else
                     {
+                        // i = 3 front = 7
                         while (front < input.Length && (input[front] == 0 || front < i))
                         {
-                            front++;
+                            front++; //  i = 1
                         }
 
-                        int left = previous == -1 ? input.Length : i - previous;
-                        int right = front == input.Length ? input.Length : front - i;
+                        left = previous == -1 ? input.Length : i - previous;
+                        right = front == input.Length ? input.Length : front - i;
                         distance = Math.Max(distance, Math.Min(left, right));
                     }
                 }
@@ -2010,14 +2012,14 @@ namespace WindowsFormsApplication3
             foreach (int[] input in inputs)
             {
 
-                /*
+                /*  1   2   1
                     Last = 0 SecondLast = 0      LastMax = 0        SecondLastMax = 0       Final = 0
                  
                     I       Current Value       Last    SecondLast      LastMax         SecondLastMax       Final  
                     ==============================================================================================
-                    0           1                 1         1              0                 1              0
-                    1           2                 2         1              1                 2              2
-                    2           1                 3         2              2                 1              3
+                    0           1                 0         1              1                 1              1
+                    1           2                 1         2              2                 1              2
+                    2           1                 2         1              3                 1              3
                     
                  */
                 currentValue = 0;
@@ -2360,7 +2362,6 @@ namespace WindowsFormsApplication3
             int l = 0;
             int r = input.Length - 1;
             int m = -1;
-
             while (l <= r)
             {
                 m = (l + r) / 2;

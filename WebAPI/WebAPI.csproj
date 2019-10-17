@@ -204,9 +204,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3732</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1807/</IISUrl>
+          <IISUrl>http://localhost/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:1807/api/Engagements/100</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost/api/Engagements/100</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

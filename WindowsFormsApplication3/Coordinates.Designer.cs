@@ -31,13 +31,14 @@
             this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board = new System.Windows.Forms.Button();
             this.N_Queens_Backtracking_Algorithm = new System.Windows.Forms.Button();
             this.btn_Overlapping_rectangles = new System.Windows.Forms.Button();
+            this.btn_Kangoro_Problem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board
             // 
             this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board.Location = new System.Drawing.Point(2, 12);
             this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board.Name = "btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board";
-            this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board.Size = new System.Drawing.Size(832, 47);
+            this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board.Size = new System.Drawing.Size(443, 47);
             this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board.TabIndex = 0;
             this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board.Text = "Find a king is threatened by queen in a cheese board";
             this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board.UseVisualStyleBackColor = true;
@@ -47,7 +48,7 @@
             // 
             this.N_Queens_Backtracking_Algorithm.Location = new System.Drawing.Point(2, 64);
             this.N_Queens_Backtracking_Algorithm.Name = "N_Queens_Backtracking_Algorithm";
-            this.N_Queens_Backtracking_Algorithm.Size = new System.Drawing.Size(831, 43);
+            this.N_Queens_Backtracking_Algorithm.Size = new System.Drawing.Size(442, 43);
             this.N_Queens_Backtracking_Algorithm.TabIndex = 1;
             this.N_Queens_Backtracking_Algorithm.Text = "N-Queens Backtracking Algorithm";
             this.N_Queens_Backtracking_Algorithm.UseVisualStyleBackColor = true;
@@ -57,17 +58,28 @@
             // 
             this.btn_Overlapping_rectangles.Location = new System.Drawing.Point(2, 115);
             this.btn_Overlapping_rectangles.Name = "btn_Overlapping_rectangles";
-            this.btn_Overlapping_rectangles.Size = new System.Drawing.Size(830, 42);
+            this.btn_Overlapping_rectangles.Size = new System.Drawing.Size(441, 42);
             this.btn_Overlapping_rectangles.TabIndex = 2;
             this.btn_Overlapping_rectangles.Text = "Overlapping rectangles";
             this.btn_Overlapping_rectangles.UseVisualStyleBackColor = true;
             this.btn_Overlapping_rectangles.Click += new System.EventHandler(this.btn_Overlapping_rectangles_Click);
+            // 
+            // btn_Kangoro_Problem
+            // 
+            this.btn_Kangoro_Problem.Location = new System.Drawing.Point(2, 163);
+            this.btn_Kangoro_Problem.Name = "btn_Kangoro_Problem";
+            this.btn_Kangoro_Problem.Size = new System.Drawing.Size(443, 42);
+            this.btn_Kangoro_Problem.TabIndex = 3;
+            this.btn_Kangoro_Problem.Text = "Kangaro Problem";
+            this.btn_Kangoro_Problem.UseVisualStyleBackColor = true;
+            this.btn_Kangoro_Problem.Click += new System.EventHandler(this.btn_Kangoro_Problem_Click);
             // 
             // Coordinates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 501);
+            this.Controls.Add(this.btn_Kangoro_Problem);
             this.Controls.Add(this.btn_Overlapping_rectangles);
             this.Controls.Add(this.N_Queens_Backtracking_Algorithm);
             this.Controls.Add(this.btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button btn_Find_a_king_is_threatened_by_queen_in_a_cheese_board;
         private System.Windows.Forms.Button N_Queens_Backtracking_Algorithm;
         private System.Windows.Forms.Button btn_Overlapping_rectangles;
+        private System.Windows.Forms.Button btn_Kangoro_Problem;
     }
 }

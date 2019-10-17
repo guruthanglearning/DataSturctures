@@ -162,8 +162,7 @@ namespace WindowsFormsApplication3
                     temp.Previous = node;
                 }
                 else if (node.Data > data)
-                {
-                    
+                {                    
                     temp.Next = node;
                     node.Previous = temp;
                     node = temp;

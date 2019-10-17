@@ -103,6 +103,7 @@ namespace WindowsFormsApplication3
             t.AbstractClassCreatingInstance_Method1();
             t.AbstractClassCreatingInstance_Method3();
 
+
             StaticMemberTest test = new StaticMemberTest();
             
         }

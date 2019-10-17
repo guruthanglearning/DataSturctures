@@ -341,5 +341,119 @@ namespace WindowsFormsApplication3
             return true;
 
         }
+
+        private void btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
+                For example:
+                Given binary tree [3,9,20,null,null,15,7],
+                    3
+                   / \
+                  9  20
+                    /  \
+                   15   7
+                return its bottom-up level order traversal as:
+                [
+                  [15,7],
+                  [9,20],
+                  [3]
+                ]
+
+                Time Complexity :  O(n) where n is the list of nodes in the tree
+                Space Complexity : O(n) where n is the list of nodes in the tree
+             */
+
+            List<Node> inputs = new List<Node>();
+            StringBuilder result = new StringBuilder();
+
+            Node p1 = new Node() { data = 3 };
+            p1.left = new Node() { data = 9 };
+            p1.right = new Node() { data = 20 };
+            p1.right.left = new Node() { data= 15 };
+            p1.right.right = new Node() { data = 7 };
+            inputs.Add(p1);
+            
+            IList<IList<int>> datas = null;
+            StringBuilder inResult = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+
+                result.AppendLine($"The bottom up traversal for this binary tree {(this.TreeTraverse(input))} is");
+                datas = this.LevelOrderBottom(input);
+
+                foreach(IList<int> data in datas)
+                {
+                    inResult.Clear();
+                    inResult.Append("[");
+                    foreach (int i in data)
+                    {
+                        inResult.Append($"{i.ToString()},");
+                    }
+                    inResult.Append("]");
+                    result.Append($"\n{inResult.ToString()}");
+                }                
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public IList<IList<int>> LevelOrderBottom(Node root)
+        {
+
+            if (root == null)
+            {
+                return new List<IList<int>>();
+            }
+
+            Stack<List<int>> s = new Stack<List<int>>();
+            Queue<Node> q = new Queue<Node>();
+            IList<IList<int>> result = new List<IList<int>>();
+            List<int> t = new List<int>();
+            Node tNode = null;
+
+            q.Enqueue(root);
+            q.Enqueue(null);
+
+            while (q.Count > 0)
+            {
+                tNode = q.Dequeue();
+
+                if (tNode == null)
+                {
+                    if (t.Count == 0)
+                    {
+                        break;
+                    }
+                    s.Push(new List<int>(t));
+                    q.Enqueue(null);
+                    t.Clear();
+                }
+                else
+                {
+                    if (tNode.left != null)
+                    {
+                        q.Enqueue(tNode.left);
+                    }
+
+                    if (tNode.right != null)
+                    {
+                        q.Enqueue(tNode.right);
+                    }
+                    t.Add(tNode.data);
+
+                }
+            }
+
+            while (s.Count > 0)
+            {
+                result.Add(s.Pop());
+            }
+
+            return result;
+        }
+
     }
 }

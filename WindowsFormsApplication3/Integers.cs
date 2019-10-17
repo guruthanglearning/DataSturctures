@@ -36,8 +36,6 @@ namespace WindowsFormsApplication3
                 }
             }
 
-          
-            
             MessageBox.Show($"Reverse Integer for {input.ToString()} is {reverseInput.ToString()}");
         }
 
