@@ -597,7 +597,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2234, 779);
+            this.ClientSize = new System.Drawing.Size(1912, 779);
             this.Controls.Add(this.btn_Convert_12hour_Time_to_24_hour_time);
             this.Controls.Add(this.btn_Add_Binary);
             this.Controls.Add(this.btn_Length_of_Last_Word);

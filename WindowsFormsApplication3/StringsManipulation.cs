@@ -249,9 +249,15 @@ namespace WindowsFormsApplication3
 
         private void button6_Click(object sender, EventArgs e)
         {
-            int[,] matrix = new int[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
+            int[,] matrix = new int[,] {                 
+                                            { 1, 2, 3, 4 }, 
+                                            { 5, 6, 7, 8 }, 
+                                            { 9, 10, 11, 12 }, 
+                                            { 13, 14, 15, 16 }
+                                      };
+
             int offset, first, last, top, n;
-            n = matrix.GetUpperBound(0) + 1;
+            n = matrix.GetLength(0);
             StringBuilder builder = new StringBuilder();
 
             for (int a = 0; a < n; a++)
@@ -272,7 +278,7 @@ namespace WindowsFormsApplication3
                 last = n - 1 - layer;
                 for (int i = first; i < last; i++)
                 {
-                    StringBuilder result = new StringBuilder();
+                    //StringBuilder result = new StringBuilder();
                     offset = i - first;
                     top = matrix[first, i];
                     matrix[first, i] = matrix[last - offset, first];
@@ -280,16 +286,16 @@ namespace WindowsFormsApplication3
                     matrix[last, last - offset] = matrix[i, last];
                     matrix[i, last] = top;
 
-                    for (int a = 0; a < n; a++)
-                    {
-                        for (int b = 0; b < n; b++)
-                        {
+                    //for (int a = 0; a < n; a++)
+                    //{
+                    //    for (int b = 0; b < n; b++)
+                    //    {
 
-                            result.Append(matrix[a, b].ToString() + " , ");
-                        }
-                        result.Append("\n");
-                    }
-                    MessageBox.Show(result.ToString());
+                    //        result.Append(matrix[a, b].ToString() + " , ");
+                    //    }
+                    //    result.Append("\n");
+                    //}
+                    //MessageBox.Show(result.ToString());
                 }
             }
 
@@ -313,8 +319,8 @@ namespace WindowsFormsApplication3
             //int[,] matrix = new int[,] { { 0, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
             int[,] matrix = new int[,] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 } };
             int rowSize, columnSize;
-            rowSize = matrix.GetUpperBound(0) + 1;
-            columnSize = matrix.GetLength(0);
+            rowSize = matrix.GetLength(0);
+            columnSize = matrix.GetLength(1);
             int[] row = new Int32[rowSize];
             int[] column = new Int32[columnSize];
             StringBuilder builder = new StringBuilder();
@@ -451,8 +457,8 @@ namespace WindowsFormsApplication3
             {
                 if (sentenace[i] == ' ')
                 {
-                    start = i + 1;
-                    if (end - 1 != i)
+                    start = i + 1; 
+                    if (end != i)
                     {
                         datas.Append(sentenace.Substring(start, (end - start) + 1) + " ");
                         countCharacters++;
@@ -472,10 +478,10 @@ namespace WindowsFormsApplication3
         {
             int[,] matrix = new int[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
             int rowSize, columnSize, n;
-            rowSize = matrix.GetUpperBound(0) + 1;
-            columnSize = matrix.GetLength(0);
+            rowSize = matrix.GetLength(0);
+            columnSize = matrix.GetLength(1);
             StringBuilder builder = new StringBuilder();
-            n = matrix.GetUpperBound(0) + 1;
+            n = matrix.GetLength(0);
 
             for (int a = 0; a < n; a++)
             {
@@ -553,7 +559,7 @@ namespace WindowsFormsApplication3
             columnSize = matrix.GetLength(0);
 
             StringBuilder builder = new StringBuilder();
-            n = matrix.GetUpperBound(0) + 1;
+            n = matrix.GetLength(0);
 
             for (int a = 0; a < n; a++)
             {
@@ -575,45 +581,45 @@ namespace WindowsFormsApplication3
 
         private void button13_Click(object sender, EventArgs e)
         {
+
+            /* 
+                Time Complexity :O(n)
+
+             */
             int maxNumbers = 20;
-            int incr = 0;
+            int incr = 1;
             int result = incr;
             StringBuilder data = new StringBuilder();
 
-            while (incr <= maxNumbers)
-            {
-                if (result > 10 && result % 10 != 0)
-                {
-                    result = result / 10;
-                }
-                else if (result > 0 && result < 10 && result != 10)
-                {
-                    data.Append(incr.ToString() + ",");
-                    incr++;
-                    result = incr;
-                }
-                else
-                {
-                    incr++;
-                    result = incr;
-                }
-            }
+            //while (incr <= maxNumbers)
+            //{
+            //    if (result > 10 && result % 10 != 0)
+            //    {
+            //        result = result / 10;
+            //    }
+            //    else if (result > 0 && result < 10 && result != 10)
+            //    {
+            //        data.Append(incr.ToString() + ",");
+            //        incr++;
+            //        result = incr;
+            //    }
+            //    else
+            //    {
+            //        incr++;
+            //        result = incr;
+            //    }
+            //}
 
             data.Append("\nSimple approach: \n ");
-            incr = 0;
+            incr = 1;
             while (incr <= maxNumbers)
             {
-                incr++;
-                if (incr > maxNumbers)
-                {
-                    break;
-                }
-
+             
                 if (incr % 10 > 0)
                 {
                     data.Append(incr.ToString() + ",");
                 }
-
+                incr++;
             }
 
             MessageBox.Show(data.ToString());
@@ -623,8 +629,8 @@ namespace WindowsFormsApplication3
         private void button14_Click(object sender, EventArgs e)
         {
             StringBuilder data = new StringBuilder();
-            //int[] arraydata = new int[] { 1, 2, 2, 1, 1, 1, 3, 4, 5, 5, 5 };
-            int[] arraydata = new int[] { 1, 2, 3, 4, 5, 5 };
+            int[] arraydata = new int[] { 1, 2, 2, 1, 1, 1, 3, 4, 5, 5, 5 };
+            //int[] arraydata = new int[] { 1, 2, 3, 4, 5, 5 };
             int start = 0;
             int end = start + 1;
             int length = arraydata.Length;
@@ -903,8 +909,15 @@ namespace WindowsFormsApplication3
             //}
 
 
-            // Time Complexity  : O(n)
-            // Space Complexity : O(min(m,n)) where m is the input character in the dictionary and n is the total input character set
+            /* 
+             Time Complexity  : O(n)
+             Space Complexity : O(min(m,n)) where m is the input character in the dictionary and n is the total input 
+             character set
+             
+             Input = pwwkew
+
+             */
+            n = s.Length; ans = 0;
             Dictionary<char, int> index = new Dictionary<char, int>();
             for (int j = 0, i = 0; j < n; j++)
             {
@@ -1089,7 +1102,7 @@ namespace WindowsFormsApplication3
 
         private void StringToInt_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this.MyAtoi("+-52").ToString());
+            MessageBox.Show(this.MyAtoi("52").ToString());
             List<string> inputs = new List<string>();
             inputs.Add("+1");
             inputs.Add("-+1");
@@ -1199,6 +1212,14 @@ namespace WindowsFormsApplication3
         private void FibonociSeries_Click(object sender, EventArgs e)
         {
             //https://en.wikipedia.org/wiki/Fibonacci_number
+            /* 
+               If we look the bidirectional sequence of Fibonacci series for -ve values, -ve's are present for the even numbers like Fib(-2) Fib(-4) Fib (-6)
+               so just multiply with - for the fib when n is even number.
+
+                    F−8	F−7	F−6	F−5	F−4	F−3	F−2	F−1	F0	F1	F2	F3	F4	F5	F6	F7	F8
+                    −21	13	−8	5	−3	2	−1	1	0	1	1	2	3	5	8	13	21
+             
+            */
             int input = int.Parse(textBox1.Text);
 
             bool isNegativeInput = !(input > 0);
@@ -1310,14 +1331,14 @@ namespace WindowsFormsApplication3
         private void Longest_Palondrome_in_a_given_string_O_Off_N_Click(object sender, EventArgs e)
         {
             //Time Complexity : O(n)
-            string input = "abaab";
+            string input = "This is madam malayalam";
             MessageBox.Show(this.longestPalindromeSubstringEasy(input).ToString());
         }
 
         private void btn_Find_index_of_homogenous_continous_charcter_Click(object sender, EventArgs e)
         {
-            // string input = "AAAABBCBBBDEEEEEFFFF";
-            string input = "DBCAAB";
+            string input = "AAAABBCBBBDEEEEEFFFF";
+            //string input = "DBCAAB";
             //string input = "ABCCDEF";
             int previousCharCount = 0;
             int previousCharIndex = -1;
@@ -1385,7 +1406,7 @@ namespace WindowsFormsApplication3
         {
             /*
               Time Complexity is O(n)
-              Space Complexity is O(1)
+              Space Complexity is O(n)
             */
 
             //string input = "ABCDEFBACBAC";
@@ -1409,7 +1430,7 @@ namespace WindowsFormsApplication3
         {
             /*
                Time Complexity is O(n)
-               Space Complexity is O(1)
+               Space Complexity is O(n)
              */
 
             string input = "DBCAAB";
@@ -1640,8 +1661,13 @@ namespace WindowsFormsApplication3
             {
                 for (int i = 0; i < input1.Length; i++)
                 {
-                    char1 = input1[i];
-                    char2 = input2[i];
+                    /* 
+                       I = 2
+                       a --> e
+                       d --> g
+                    */
+                    char1 = input1[i]; // add
+                    char2 = input2[i]; // egh
                     if (storage.ContainsKey(char1))
                     {
                         if (storage[char1] != char2)
@@ -1802,9 +1828,10 @@ namespace WindowsFormsApplication3
              */
 
             Dictionary<string, int> inputs = new Dictionary<string, int>();
-            inputs.Add("PAYPALISHIRING", 4);
-            //inputs.Add("PAYPALISHIRING", 3);
-            inputs.Add("ABC", 1);
+            //inputs.Add("PAYPALISHIRING", 4);
+            //inputs.Add("PAYPALISHIRING1", 3);
+            //inputs.Add("ABC", 1);
+            inputs.Add("PAYPALISH", 4);
             StringBuilder result = new StringBuilder();
             foreach (string key in inputs.Keys)
             {
@@ -2177,7 +2204,7 @@ namespace WindowsFormsApplication3
              */
             List<StringWithUniqueNCharacter> inputs = new List<StringWithUniqueNCharacter>();
             StringBuilder result = new StringBuilder();
-            inputs.Add(new StringWithUniqueNCharacter() { Input = "aabbcc", UniqueCharacterCount = 2 });
+            inputs.Add(new StringWithUniqueNCharacter() { Input = "aabbccd", UniqueCharacterCount = 3 });
             const int alphaBetSize = 256;
 
             foreach (StringWithUniqueNCharacter input in inputs)
@@ -2201,22 +2228,22 @@ namespace WindowsFormsApplication3
                 count = new int[alphaBetSize];
                 count[str[0]]++;
                 int curr_start = 0, curr_end = 0, windowSize = 1, windowStart = 0;
-
+                //aabbccd  uniqueval = 3
                 for (int i = 1; i < str.Length; i++)//4
                 {
-                    count[str[i]]++;  //a= 0, b= 2, c=2
-                    curr_end++; //5 wsize = 4, cs=2
+                    count[str[i]]++;  // a= 1, b= 2, c=2 d= 1
+                    curr_end++; // 6
 
                     if (!(this.IsMoreUniqueCharacterPresent(count, uniqueVal, alphaBetSize)))
                     {
                         count[str[curr_start]]--;
-                        curr_start++;
+                        curr_start++; //1
                     }
 
                     if ((curr_end-curr_start +1) > (windowSize))
                     {
-                        windowSize = curr_end - curr_start + 1;
-                        windowStart = curr_start;
+                        windowSize = curr_end - curr_start + 1; //6
+                        windowStart = curr_start; //0
                     }
 
                 }

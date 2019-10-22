@@ -23,6 +23,7 @@ namespace WindowsFormsApplication3
             // instaniate from Notify class then Notify method does not become available.
             INotify n = new Notify();
             n.Notify();
+
         }
     }
 

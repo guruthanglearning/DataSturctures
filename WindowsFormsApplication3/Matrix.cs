@@ -50,10 +50,11 @@ namespace WindowsFormsApplication3
 
         void minHeapify(HeapNode[] harr, int i, int heap_size)
         {
-            /* i = 1; 
-                20, 15, 25, 32
-                l = 3
-                r = 4
+            /* 
+                10, 15, 25, 32
+                i = 1;                 
+                l = 2
+                r = 3
                 s = 1
                 hs = 4
             */
@@ -99,7 +100,7 @@ namespace WindowsFormsApplication3
             HeapNode hr = new HeapNode();
             for (int i = 0; i < k; i++)
             {
-                /*
+                /*  
                     { 10, 20, 30, 40 }, 
                     { 15, 25, 35, 45 },
                     { 25, 29, 37, 48 } ,
@@ -142,15 +143,15 @@ namespace WindowsFormsApplication3
             
             int count = 0;
             int startRow = 0; //starting row
-            int column = matrix.GetLength(0); //max columns
-            int row = matrix.GetUpperBound(0); // max rows
+            int column = matrix.GetLength(1)-1; //max columns
+            int row = matrix.GetLength(0)-1; // max rows
 
             while (column >= 0 && startRow <= row)
             {
                 if (matrix[startRow, column] < 0)
                 {
                     count += (column + 1);
-                    column = matrix.GetLength(0);
+                    column = matrix.GetLength(1)-1;
                     startRow++;
                 }
                 else
@@ -180,9 +181,9 @@ namespace WindowsFormsApplication3
 
             var cache = input;
             int result = 0;
-            for (int row = 1; row <= input.GetUpperBound(0); row++)
+            for (int row = 1; row < input.GetLength(0); row++)
             {
-                for (int column = 0; column <= input.GetUpperBound(0); column++)
+                for (int column = 0; column < input.GetLength(1); column++)
                 {
                     if (row > 0 && column > 0)
                     {
@@ -207,9 +208,12 @@ namespace WindowsFormsApplication3
             /*
                Time Complexity  = O(n)
                             
-                Suppose you have a multiplication table that is N by N. That is, a 2D array where the value at the i-th row and j-th column is (i + 1) * (j + 1) (if 0-indexed) or i * j (if 1-indexed).
-                Given integers N and X, write a function that returns the number of times X appears as a value in an N by N multiplication table.
-                For example, given N = 6 and X = 12, you should return 4, since the multiplication table looks like this:
+                Suppose you have a multiplication table that is N by N. That is, a 2D array where the value at the 
+                i-th row and j-th column is (i + 1) * (j + 1) (if 0-indexed) or i * j (if 1-indexed).
+                Given integers N and X, write a function that returns the number of times X appears as a value in an
+                N by N multiplication table.
+                For example, given N = 6 and X = 12, you should return 4, since the multiplication table looks like 
+                this:
                 | 1 | 2 | 3 | 4 | 5 | 6 |
                 | 2 | 4 | 6 | 8 | 10 | 12 |
                 | 3 | 6 | 9 | 12 | 15 | 18 |
@@ -261,15 +265,15 @@ namespace WindowsFormsApplication3
                                             { 0, 1, 0, 1, 1}
                                        };
 
-            bool[,] visited = new bool[3,5] ;
+            bool[,] visited = new bool[input.GetLength(0), input.GetLength(1)] ;
             
 
             int[] offSet = new int[] { -1, 0, 1 };
 
             int islandCounter = 0;
-            for (int i = 0; i < input.GetUpperBound(0)+1; i++)
+            for (int i = 0; i < input.GetLength(0); i++)
             {
-                for (int j = 0; j < input.GetUpperBound(1)+1; j++)
+                for (int j = 0; j < input.GetLength(1); j++)
                 {
                     if (input[i, j] == 1 && !visited[i, j])
                     {
@@ -316,7 +320,7 @@ namespace WindowsFormsApplication3
         private bool IsNeighbourExists(int[,] input, int row, int column)
         {
 
-            if (row>=0 && row < input.GetUpperBound(0)+1 && column>=0 && column < input.GetUpperBound(1)+1)
+            if (row>=0 && row < input.GetLength(0) && column>=0 && column < input.GetLength(1))
             {
                 if (input[row, column] == 1)
                     return true;

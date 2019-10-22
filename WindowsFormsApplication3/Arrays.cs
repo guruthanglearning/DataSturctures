@@ -437,8 +437,8 @@ namespace WindowsFormsApplication3
             //int[] input = new int[] { 1, 2, 3, 4, 5, 6, 8, -20 }; // 8 items
             //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 }; // 9
             //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }; // 8
-            int[] input = new int[] { 3, 3, 4, 2, 1, 4, 4, 2, 4, 4 };
-
+            //int[] input = new int[] { 3, 3, 4, 2, 1, 4, 4, 2, 4, 4 };
+            int[] input = new int[] { 1, 2, 1, 1, 3, 4, 0 };
             int count = 1;
             int majorityIndex = 0;
             int maxOccurance = 1;
@@ -2729,6 +2729,88 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
 
+        }
+
+        private void btn_Between_Sets_Click(object sender, EventArgs e)
+        {
+            /*
+              https://www.hackerrank.com/challenges/between-two-sets/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+              https://www.hackerrank.com/challenges/between-two-sets/forum
+
+                1. find the LCM of all the integers of array A.
+                2. find the GCD of all the integers of array B.
+                3. Count the number of multiples of LCM that evenly divides the GCD.
+
+              Time Complexity : O(nlogn)
+              */
+
+            StringBuilder result = new StringBuilder();
+            List<TwoArrayInputs> inputs = new List<TwoArrayInputs>();
+            inputs.Add(new TwoArrayInputs() {a = new int[] { 2, 4 }, b= new int[] { 16, 32, 96 } }); //3
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 3, 4 }, b = new int[] { 24, 48 } }); //2
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 100, 99, 98, 97, 96, 95, 94, 93, 92, 91 }, b = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } }); //0
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 2 }, b = new int[] { 20, 30, 12 } }); //1
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 1}, b = new int[] { 100} }); //1
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 3,9,6 }, b = new int[] { 36, 72 } }); //2       
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 1 }, b = new int[] { 100 } }); //9
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 51 }, b = new int[] { 50 } }); //0
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 3, 6 }, b = new int[] { 42, 84 } }); //2
+
+            int lcm = 0;
+            int gcd = 0;
+            int counter = 0;
+            foreach(var input in inputs)
+            {
+                counter = 0;
+                lcm = this.LCMForArray(input.a);
+                gcd = this.GCDForArray(input.b);
+
+                for (int i = lcm, j = 2; i <= gcd; i = j * lcm, j++)
+                {
+                    if ((gcd % i) == 0)
+                    {
+                        counter++;
+                    }
+                }
+
+                result.AppendLine($"There are {counter} number of integers available between the two arrays a = {string.Join(" ", input.a)} and array b = {string.Join(" ", input.b)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int GCDForArray(int[] input)
+        {
+            int result = 0;
+            result = input[0];
+            for(int i = 1; i <input.Length; i++)
+            {
+                result = this.GCD(result, input[i]);
+            }
+            return result;
+        }
+
+        public int LCMForArray(int[] input)
+        {
+            int result = 0;
+            result = input[0];
+            for (int i = 1; i < input.Length; i++)
+            {
+                result =  (result * input[i])/this.GCD(result, input[i]);
+            }
+            return result;
+        }
+
+        public class TwoArrayInputs
+        {
+            public int[] a;
+            public int[] b;
+        }
+
+        private int LCM(int a, int b)
+        {
+            return (a * b) / this.GCD(a, b);
         }
 
     }

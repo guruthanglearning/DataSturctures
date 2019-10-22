@@ -71,6 +71,7 @@
             this.btn_Min_Max_Sum = new System.Windows.Forms.Button();
             this.btn_Array_partition_based_on_Pivot = new System.Windows.Forms.Button();
             this.btn_Blow_out_tallest_candles = new System.Windows.Forms.Button();
+            this.btn_Between_Sets = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -514,11 +515,22 @@
             this.btn_Blow_out_tallest_candles.UseVisualStyleBackColor = true;
             this.btn_Blow_out_tallest_candles.Click += new System.EventHandler(this.btn_Blow_out_tallest_candles_Click);
             // 
+            // btn_Between_Sets
+            // 
+            this.btn_Between_Sets.Location = new System.Drawing.Point(999, 53);
+            this.btn_Between_Sets.Name = "btn_Between_Sets";
+            this.btn_Between_Sets.Size = new System.Drawing.Size(353, 37);
+            this.btn_Between_Sets.TabIndex = 43;
+            this.btn_Between_Sets.Text = "Betwen Sets";
+            this.btn_Between_Sets.UseVisualStyleBackColor = true;
+            this.btn_Between_Sets.Click += new System.EventHandler(this.btn_Between_Sets_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Between_Sets);
             this.Controls.Add(this.btn_Blow_out_tallest_candles);
             this.Controls.Add(this.btn_Array_partition_based_on_Pivot);
             this.Controls.Add(this.btn_Min_Max_Sum);
@@ -614,5 +626,6 @@
         private System.Windows.Forms.Button btn_Min_Max_Sum;
         private System.Windows.Forms.Button btn_Array_partition_based_on_Pivot;
         private System.Windows.Forms.Button btn_Blow_out_tallest_candles;
+        private System.Windows.Forms.Button btn_Between_Sets;
     }
 }

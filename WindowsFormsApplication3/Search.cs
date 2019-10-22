@@ -133,28 +133,59 @@ namespace WindowsFormsApplication3
 
         }
 
-        private int FindPivot (int[] input, int left, int right)
+        private int FindPivot (int[] input, int l, int r)
         {
             // 5, 6, 7, 8, 9, 10, 1, 2, 3, 4 
-            if (input.Length > 0 && left <= right)
-            {
-                int mid = 0;
-                while(left <= right)
-                {
-                    // m =7  l = 5 r= 9
-                    mid = (left + right) / 2;
-                    if (input[mid] < input[mid + 1] && input[mid - 1] < input[mid] && input[left] < input[mid])
-                    {
-                        left = mid + 1;
-                    }
-                    else if (input[left] > input[left +1])
-                    {
-                        return left;
-                    }
-                }
+            //if (input.Length > 0 && left <= right)
+            //{
+            //    int mid = 0;
+            //    while(left <= right)
+            //    {
+            //        // m =7  l = 5 r= 9
+            //        mid = (left + right) / 2;
+            //        if (input[mid] < input[mid + 1] && input[mid - 1] < input[mid] && input[left] < input[mid])
+            //        {
+            //            left = mid + 1;
+            //        }
+            //        else if (input[left] > input[left +1])
+            //        {
+            //            return left;
+            //        }
+            //    }
 
+            //}
+            //return -1;
+            int m = 0;
+            while (l < r)
+            {
+                m = (l + r) / 2;
+
+                if (m == 0)
+                {
+                    if (input[l] > input[r])
+                    {
+                        m = l;
+                    }
+                    else
+                    {
+                        m = -1;
+                    }
+                    break;
+                }
+                else if (input[m - 1] < input[m] && input[m] > input[m + 1])
+                {
+                    break;
+                }
+                else if (input[l] < input[m])
+                {
+                    l = m + 1;
+                }
+                else
+                {
+                    r = m;
+                }
             }
-            return -1;
+            return m;;
 
 
         }

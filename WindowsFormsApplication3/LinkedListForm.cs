@@ -900,7 +900,7 @@ namespace WindowsFormsApplication3
             InsertBFSNode(1, ref tree, tree);
             //InsertBFSNode(24, ref tree, tree);
 
-            BFSNode inputNode = tree.right;
+            BFSNode inputNode = tree.right.right;
             BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
             MessageBox.Show($"With Parent Node {node.data.ToString()}");
             node = GetInOrderSuccessorWithoutParentNode(inputNode, tree);
