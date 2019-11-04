@@ -72,6 +72,10 @@
             this.btn_Array_partition_based_on_Pivot = new System.Windows.Forms.Button();
             this.btn_Blow_out_tallest_candles = new System.Windows.Forms.Button();
             this.btn_Between_Sets = new System.Windows.Forms.Button();
+            this.btn_Breaking_the_records = new System.Windows.Forms.Button();
+            this.btn_BirthDay_Chocolate = new System.Windows.Forms.Button();
+            this.btn_Is_Exit_point_exit_for_Maze = new System.Windows.Forms.Button();
+            this.btn_Divsible_Sum_Pairs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -525,11 +529,55 @@
             this.btn_Between_Sets.UseVisualStyleBackColor = true;
             this.btn_Between_Sets.Click += new System.EventHandler(this.btn_Between_Sets_Click);
             // 
+            // btn_Breaking_the_records
+            // 
+            this.btn_Breaking_the_records.Location = new System.Drawing.Point(995, 96);
+            this.btn_Breaking_the_records.Name = "btn_Breaking_the_records";
+            this.btn_Breaking_the_records.Size = new System.Drawing.Size(360, 40);
+            this.btn_Breaking_the_records.TabIndex = 44;
+            this.btn_Breaking_the_records.Text = "Breaking the records";
+            this.btn_Breaking_the_records.UseVisualStyleBackColor = true;
+            this.btn_Breaking_the_records.Click += new System.EventHandler(this.btn_Breaking_the_records_Click);
+            // 
+            // btn_BirthDay_Chocolate
+            // 
+            this.btn_BirthDay_Chocolate.Location = new System.Drawing.Point(995, 141);
+            this.btn_BirthDay_Chocolate.Name = "btn_BirthDay_Chocolate";
+            this.btn_BirthDay_Chocolate.Size = new System.Drawing.Size(355, 40);
+            this.btn_BirthDay_Chocolate.TabIndex = 45;
+            this.btn_BirthDay_Chocolate.Text = "BirthDay Chocolate";
+            this.btn_BirthDay_Chocolate.UseVisualStyleBackColor = true;
+            this.btn_BirthDay_Chocolate.Click += new System.EventHandler(this.btn_BirthDay_Chocolate_Click);
+            // 
+            // btn_Is_Exit_point_exit_for_Maze
+            // 
+            this.btn_Is_Exit_point_exit_for_Maze.Location = new System.Drawing.Point(999, 185);
+            this.btn_Is_Exit_point_exit_for_Maze.Name = "btn_Is_Exit_point_exit_for_Maze";
+            this.btn_Is_Exit_point_exit_for_Maze.Size = new System.Drawing.Size(350, 38);
+            this.btn_Is_Exit_point_exit_for_Maze.TabIndex = 46;
+            this.btn_Is_Exit_point_exit_for_Maze.Text = "Is Exit point exit for Maze";
+            this.btn_Is_Exit_point_exit_for_Maze.UseVisualStyleBackColor = true;
+            this.btn_Is_Exit_point_exit_for_Maze.Click += new System.EventHandler(this.btn_Is_Exit_point_exit_for_Maze_Click);
+            // 
+            // btn_Divsible_Sum_Pairs
+            // 
+            this.btn_Divsible_Sum_Pairs.Location = new System.Drawing.Point(999, 230);
+            this.btn_Divsible_Sum_Pairs.Name = "btn_Divsible_Sum_Pairs";
+            this.btn_Divsible_Sum_Pairs.Size = new System.Drawing.Size(356, 39);
+            this.btn_Divsible_Sum_Pairs.TabIndex = 47;
+            this.btn_Divsible_Sum_Pairs.Text = "Divsible Sum Pairs";
+            this.btn_Divsible_Sum_Pairs.UseVisualStyleBackColor = true;
+            this.btn_Divsible_Sum_Pairs.Click += new System.EventHandler(this.btn_Divsible_Sum_Pairs_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Divsible_Sum_Pairs);
+            this.Controls.Add(this.btn_Is_Exit_point_exit_for_Maze);
+            this.Controls.Add(this.btn_BirthDay_Chocolate);
+            this.Controls.Add(this.btn_Breaking_the_records);
             this.Controls.Add(this.btn_Between_Sets);
             this.Controls.Add(this.btn_Blow_out_tallest_candles);
             this.Controls.Add(this.btn_Array_partition_based_on_Pivot);
@@ -627,5 +675,9 @@
         private System.Windows.Forms.Button btn_Array_partition_based_on_Pivot;
         private System.Windows.Forms.Button btn_Blow_out_tallest_candles;
         private System.Windows.Forms.Button btn_Between_Sets;
+        private System.Windows.Forms.Button btn_Breaking_the_records;
+        private System.Windows.Forms.Button btn_BirthDay_Chocolate;
+        private System.Windows.Forms.Button btn_Is_Exit_point_exit_for_Maze;
+        private System.Windows.Forms.Button btn_Divsible_Sum_Pairs;
     }
 }

@@ -33,6 +33,7 @@
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix = new System.Windows.Forms.Button();
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table = new System.Windows.Forms.Button();
             this.btn_Find_no_of_island_for_the_given_matrix = new System.Windows.Forms.Button();
+            this.btn_Find_Exit_for_Maze = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -85,11 +86,22 @@
             this.btn_Find_no_of_island_for_the_given_matrix.UseVisualStyleBackColor = true;
             this.btn_Find_no_of_island_for_the_given_matrix.Click += new System.EventHandler(this.btn_Find_no_of_island_for_the_given_matrix_Click);
             // 
+            // btn_Find_Exit_for_Maze
+            // 
+            this.btn_Find_Exit_for_Maze.Location = new System.Drawing.Point(2, 237);
+            this.btn_Find_Exit_for_Maze.Name = "btn_Find_Exit_for_Maze";
+            this.btn_Find_Exit_for_Maze.Size = new System.Drawing.Size(583, 42);
+            this.btn_Find_Exit_for_Maze.TabIndex = 23;
+            this.btn_Find_Exit_for_Maze.Text = "Find Exit for Maze";
+            this.btn_Find_Exit_for_Maze.UseVisualStyleBackColor = true;
+            this.btn_Find_Exit_for_Maze.Click += new System.EventHandler(this.btn_Find_Exit_for_Maze_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 425);
+            this.Controls.Add(this.btn_Find_Exit_for_Maze);
             this.Controls.Add(this.btn_Find_no_of_island_for_the_given_matrix);
             this.Controls.Add(this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table);
             this.Controls.Add(this.btn_Find_the_largest_square_of_1_in_a_given_matrix);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button btn_Find_the_largest_square_of_1_in_a_given_matrix;
         private System.Windows.Forms.Button btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table;
         private System.Windows.Forms.Button btn_Find_no_of_island_for_the_given_matrix;
+        private System.Windows.Forms.Button btn_Find_Exit_for_Maze;
     }
 }

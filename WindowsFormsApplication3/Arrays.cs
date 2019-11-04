@@ -2813,5 +2813,193 @@ namespace WindowsFormsApplication3
             return (a * b) / this.GCD(a, b);
         }
 
+        private void btn_Breaking_the_records_Click(object sender, EventArgs e)
+        {
+            /*
+                
+                Maria plays college basketball and wants to go pro. Each season she maintains a record of her
+                play. She tabulates the number of times she breaks her season record for most points and 
+                least points in a game. Points scored in the first game establish her record for the season,
+                and she begins counting from there. For example, assume her scores for the season are 
+                represented in the array . Scores are in the same order as the games played. She would 
+                tabulate her results as follows:
+
+                    Count
+                    Game  Score  Minimum  Maximum   Min Max
+                     0      12     12       12       0   0
+                     1      24     12       24       0   1
+                     2      10     10       24       1   1
+                     3      24     10       24       1   1
+
+                Given Maria's scores for a season, find and print the number of times she breaks her 
+                records for most and least points scored during the season. 
+
+                https://www.hackerrank.com/challenges/breaking-best-and-worst-records/problem?h_r=next-challenge&h_v=zen
+            
+                Time Complexity  : O(n)
+                Space Complexity : Constact space.
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 10, 5, 20, 20, 4, 5, 2, 25, 1 });
+            inputs.Add(new int[] { 3, 4, 21, 36, 10, 28, 35, 5, 24, 42 });
+            inputs.Add(new int[] { 17, 45, 41, 60, 17, 41, 76, 43, 51, 40, 89, 92, 34, 6, 64, 7, 37, 81, 32, 50 });
+            inputs.Add(new int[] { 100, 45, 41, 60, 17, 41, 45, 43, 100, 40, 89, 92, 34, 6, 64, 7, 37, 81, 32, 50 });
+            inputs.Add(new int[] { 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
+                                   503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
+                                   503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
+                                   503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
+                                   503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
+                                   503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
+                                   503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
+                                   503, 503 });
+
+            foreach (int[] input in inputs)
+            {
+                int[] returnRes = new int[2];
+                if (input.Length > 0)
+                {
+                    int minS = input[0];
+                    int maxS = minS;
+
+                    for(int i = 0; i < input.Length; i++)
+                    {
+                        if (input[i] < minS)
+                        {
+                            minS = input[i];
+                            returnRes[1]++;
+                        }
+                        else if (input[i] > maxS)
+                        {
+                            maxS = input[i];
+                            returnRes[0]++;
+                        }
+                    }
+
+                }
+                result.AppendLine($"Max score : {returnRes[0]} and Min score {returnRes[1]} for this game {(string.Join(" ", input))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        private void btn_BirthDay_Chocolate_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                https://www.hackerrank.com/challenges/the-birthday-bar/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+                Time Complexity  : O(n)
+                Space Complexity : Constact time
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<BirthDayChocolate> inputs = new List<BirthDayChocolate>();
+            inputs.Add(new BirthDayChocolate() {ChocolateBoxNumber = new int[] { 1, 2, 1, 3, 2 } ,Birthday = 3, BirthMonth = 2 });
+            inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 1, 1, 1, 1, 1 }, Birthday = 3, BirthMonth = 2 });
+            inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 4, 1 }, Birthday = 1, BirthMonth = 1 });
+            inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 4, 5, 4, 2, 4, 5, 2, 3, 2, 1, 1, 5, 4 }, Birthday = 15, BirthMonth = 4 });
+            inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 2, 2, 2, 1, 3, 2, 2, 3, 3, 1, 4, 1, 3, 2, 2, 1, 2, 2, 4, 2, 2, 3, 5, 3, 4, 3, 2, 1, 4, 5, 4 }, Birthday = 10, BirthMonth = 4 });
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"No of ways cholocates are divided is {this.FindNumberOfBirthdayChocolateCanbeDivide(input.ChocolateBoxNumber, input.Birthday, input.BirthMonth)} for the given array {(string.Join(" ", input.ChocolateBoxNumber))}  birthday {input.Birthday} birthmonth {input.BirthMonth}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public class BirthDayChocolate
+        {
+            public int[] ChocolateBoxNumber;
+            public int Birthday;
+            public int BirthMonth;
+        }
+
+        public int FindNumberOfBirthdayChocolateCanbeDivide(int[] s, int d, int m)
+        {
+
+            if (s.Length == 0)
+            {
+                return 0;
+            }
+
+            int result = 0;
+            int counter = 0;
+            int sum = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                counter++;
+                sum += s[i];
+
+                if (counter == m)
+                {
+                    if (sum == d)
+                    {
+                        result++;
+                    }
+
+                    counter--;
+                    sum -= s[i - (m - 1)];
+                }
+            }
+
+            return result;
+
+        }
+
+        private void btn_Is_Exit_point_exit_for_Maze_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Divsible_Sum_Pairs_Click(object sender, EventArgs e)
+        {
+
+            /*
+                Refered : https://www.geeksforgeeks.org/count-pairs-in-array-whose-sum-is-divisible-by-k/
+                https://www.hackerrank.com/challenges/divisible-sum-pairs/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+                Time Complexity : O(N)
+                Space Complexity : O(1)
+            */
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 2, 6, 1 }, find = 4 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 2, 6, 1, 2 }, find = 3 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 5, 9, 10, 7, 4 }, find = 2 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 29, 97, 52, 86, 27, 89, 77, 19, 99, 96 }, find = 3 });
+
+
+            foreach (var input in inputs)
+            {
+                int[] inArray = input.input;
+                int[] fr = new int[input.find];
+                int k = input.find;
+                int sum = 0;
+                for(int i = 0; i < inArray.Length; i++)
+                {
+                    fr[inArray[i] % k]++; 
+                }
+
+                sum = fr[0] * ((fr[0] - 1) / 2);
+
+                for(int i = 1; i < k /2 && i != k/2; i++)
+                {
+                    sum += fr[i] * (fr[k - 1]);
+                }
+
+                if (k % 2 == 0)
+                    sum += ((fr[k / 2] * (fr[k / 2] - 1)) / 2);
+
+                result.AppendLine($"There are {sum} pairs which are divisible by {k} from the given array {string.Join(" ", inArray)}");
+
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
     }
 }

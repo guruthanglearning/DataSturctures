@@ -733,30 +733,29 @@ namespace WindowsFormsApplication3
               \
                \
                 2
-        */
+
             if (node == null)
             {
                 return 0;
             }
             return 1 + Math.Max(MaxDepthOfTheTree(node.left), MaxDepthOfTheTree(node.right));
-
-            /* Iterative approach
-               if (root == null)
+                    */
+            /* Iterative approach */
+               if (node == null)
                 {
                     return 0;
                 }
         
-                Queue<TreeNode> q = new Queue<TreeNode>();
-                q.Enqueue(root);
+                Queue<Node> q = new Queue< Node>();
+                q.Enqueue(node);
                 q.Enqueue(null);
         
                 int counter = 0;
         
-                TreeNode t = null;
+                Node t = null;
         
                 while (q.Peek() != null)
-                {
-        
+                {        
                     while (q.Peek() != null)
                     {
                          t = q.Dequeue();
@@ -778,19 +777,79 @@ namespace WindowsFormsApplication3
         
         
                 return counter;
-             */
+             
 
         }
 
 
         private int MinDepthOfTheTree(Node node)
         {
+
+            if (node == null)
+            {
+                return 0;
+            }
+
+
+            Node temp;
+            Queue<Node> q = new Queue<Node>();
+
+            int max = 0;
+            int min = 0;
+
+            q.Enqueue(node);
+            q.Enqueue(null);
+
+
+            while (q.Count > 0)
+            {
+                temp = q.Dequeue();
+
+                if (temp == null)
+                {
+                    if (min == 0)
+                    {
+                        min = 1;
+                        max = 1;
+                    }
+                    else
+                    {
+                        min = max;
+                        max++;
+                    }
+
+                    if (q.Count == 0)
+                    {
+                        break;
+                    }
+
+                    q.Enqueue(null);
+                }
+                else
+                {
+                    if (temp.left != null)
+                    {
+                        q.Enqueue(temp.left);
+                    }
+
+                    if (temp.right != null)
+                    {
+                        q.Enqueue(temp.right);
+                    }
+                }
+            }
+
+            return min;
+
+            /*
+
             if (node == null)
             {
                 return 0;
             }
 
             return 1 + Math.Min(MinDepthOfTheTree(node.left), MinDepthOfTheTree(node.right));
+            */
         }
 
         private void InOrderTraversalToLinkList(Node node, ref LinkList runner, ref LinkList start)
@@ -958,27 +1017,20 @@ namespace WindowsFormsApplication3
                     //right side traversal
                     p = node.parent;
                     while (p != null && p.right == node)
-                    {
+                    {                                     
                         node = p;
-                        if (p.parent == null)
-                        {
-                            break;
-                        }
                         p = p.parent;
                     }
 
                     //left side traversal
+                    
                     while ((p = node.parent) != null)
                     {
-                        if (node == p.left)
+                        if (p.left == node)
                         {
                             break;
                         }
                         node = p;
-                        if (node.parent == null)
-                        {
-                            break;
-                        }
                     }
                 }
             }
@@ -988,6 +1040,7 @@ namespace WindowsFormsApplication3
 
         private BFSNode GetInOrderSuccessorWithoutParentNode(BFSNode node, BFSNode root)
         {
+            int[] n = new int[2];
 
             /*
                                    10
@@ -1390,7 +1443,7 @@ namespace WindowsFormsApplication3
             LinkList p = linkList;
             LinkList m = linkList;
             //1->5->4->10->110->112->3->123->24->3
-            //5->4->10->110->112->3->123->24->3
+            //5->3->10->110->112->3->123->24->3
 
             //Finds min node
             while (r.next != null)
@@ -1708,6 +1761,7 @@ namespace WindowsFormsApplication3
         private LinkList Rearrage(LinkList node)
         {
             //1->2->3->4->5
+            //1->5->2->4->3
 
             LinkList slow = node;
             LinkList fast = slow.next;
@@ -2942,11 +2996,7 @@ namespace WindowsFormsApplication3
             Time Complexity    :O(n)            
             
            4----->3----->5----->1----->0----->11----->2
-           |      |      ^                            ^
-           |      |      |                            | 
-           |      |      |                            |
-           -------|-------                            |
-                  |------------------------------------ 
+           
             */
 
             LinkList LLNodeFirst = null;
@@ -3080,8 +3130,7 @@ namespace WindowsFormsApplication3
             //input = "a+b*c*d+e";
             //Given post fix binary tree expression, build binary tree expression and out the
             //result in infix expression
-            string input = "x1+y3xm*++/";
-
+            string input = "x1+y3xm*++/";       
             if (string.IsNullOrWhiteSpace(input))
             {
                 MessageBox.Show("Expression is empty");
@@ -3090,7 +3139,6 @@ namespace WindowsFormsApplication3
             Stack expHolder = new Stack();
             List<char> operators = new List<char>() { '+', '-', '/', '*', '^' };
             NodeWithObjectData t = null;
-
             foreach (char c in input)
             {
                 if (c == '(' || c == ')')

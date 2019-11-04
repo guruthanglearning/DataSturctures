@@ -77,6 +77,7 @@
             this.btn_Length_of_Last_Word = new System.Windows.Forms.Button();
             this.btn_Add_Binary = new System.Windows.Forms.Button();
             this.btn_Convert_12hour_Time_to_24_hour_time = new System.Windows.Forms.Button();
+            this.btn_Partial_String_Search = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -593,11 +594,22 @@
             this.btn_Convert_12hour_Time_to_24_hour_time.UseVisualStyleBackColor = true;
             this.btn_Convert_12hour_Time_to_24_hour_time.Click += new System.EventHandler(this.btn_Convert_12hour_Time_to_24_hour_time_Click);
             // 
+            // btn_Partial_String_Search
+            // 
+            this.btn_Partial_String_Search.Location = new System.Drawing.Point(1385, 222);
+            this.btn_Partial_String_Search.Name = "btn_Partial_String_Search";
+            this.btn_Partial_String_Search.Size = new System.Drawing.Size(319, 38);
+            this.btn_Partial_String_Search.TabIndex = 49;
+            this.btn_Partial_String_Search.Text = "Partial String Search";
+            this.btn_Partial_String_Search.UseVisualStyleBackColor = true;
+            this.btn_Partial_String_Search.Click += new System.EventHandler(this.btn_Partial_String_Search_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 779);
+            this.Controls.Add(this.btn_Partial_String_Search);
             this.Controls.Add(this.btn_Convert_12hour_Time_to_24_hour_time);
             this.Controls.Add(this.btn_Add_Binary);
             this.Controls.Add(this.btn_Length_of_Last_Word);
@@ -707,5 +719,6 @@
         private System.Windows.Forms.Button btn_Length_of_Last_Word;
         private System.Windows.Forms.Button btn_Add_Binary;
         private System.Windows.Forms.Button btn_Convert_12hour_Time_to_24_hour_time;
+        private System.Windows.Forms.Button btn_Partial_String_Search;
     }
 }

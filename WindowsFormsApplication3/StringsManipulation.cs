@@ -2161,6 +2161,7 @@ namespace WindowsFormsApplication3
             {
                 tempRoot = new Trie();
             }
+
             foreach (char c in stringData)
             {
                 if (tempRoot.Data[c] == null)
@@ -2205,6 +2206,7 @@ namespace WindowsFormsApplication3
             List<StringWithUniqueNCharacter> inputs = new List<StringWithUniqueNCharacter>();
             StringBuilder result = new StringBuilder();
             inputs.Add(new StringWithUniqueNCharacter() { Input = "aabbccd", UniqueCharacterCount = 3 });
+
             const int alphaBetSize = 256;
 
             foreach (StringWithUniqueNCharacter input in inputs)
@@ -2212,22 +2214,15 @@ namespace WindowsFormsApplication3
                 string str = input.Input;
                 int uniqueVal = input.UniqueCharacterCount;
                 int[] count = new int[alphaBetSize];
-                int val = 0;
-                foreach (char c in str)
-                {
-                    count[c]++;
-                    val++;
-                }
-
-                if (val < uniqueVal)
+                
+                if (str.Length < uniqueVal)
                 {
                     result.Append($"There is no sufficient unique {uniqueVal} for the given string {str} \n");
                     continue;
                 }
 
-                count = new int[alphaBetSize];
                 count[str[0]]++;
-                int curr_start = 0, curr_end = 0, windowSize = 1, windowStart = 0;
+                int curr_start = 0, curr_end = 0, windowSize = 1, windowStart = 0; 
                 //aabbccd  uniqueval = 3
                 for (int i = 1; i < str.Length; i++)//4
                 {
@@ -2349,6 +2344,9 @@ namespace WindowsFormsApplication3
                                
                 if (vistedChar[currentChar - 'a'] == false)
                 {
+                    /*
+                        String.Substring(0,0) will be empty
+                    */
                     result.AddRange(this.GetPermuationOfGivenString(input.Substring(0, i) + input.Substring(i+1), currentString + currentChar));
                 }
                 vistedChar[currentChar - 'a'] = true;
@@ -2485,7 +2483,7 @@ namespace WindowsFormsApplication3
                 return false;
             }
 
-
+            //{[]}
             Dictionary<char, char> cd = new Dictionary<char, char>();
             cd.Add(')', '(');
             cd.Add('}', '{');
@@ -2512,9 +2510,11 @@ namespace WindowsFormsApplication3
 
             return stack.Count == 0;
         }
-
+        
         private void btn_Implement_strStr_Click(object sender, EventArgs e)
         {
+            
+
             /*
                 Implement strStr().
 
@@ -2531,22 +2531,19 @@ namespace WindowsFormsApplication3
                 Clarification:
 
                 What should we return when needle is an empty string? This is a great question to ask during an interview.
-
-                For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf(). 
-
-                Time Complexity : O(m+m) // where m is the length of the haystack and n is the length of the needle
-
-
+                For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's 
+                strstr() and Java's indexOf(). Time Complexity : O(m+m) // where m is the length of the haystack and n is the 
+                length of the needle
 
              */
 
             List<IndexOf> inputs = new List<IndexOf>();
-            inputs.Add(new IndexOf() { input = "mississippi", findIndex = "pi" });     //9
-            inputs.Add(new IndexOf() { input = "mississippi", findIndex = "issip" });  //4
+            //inputs.Add(new IndexOf() { input = "mississippi", findIndex = "pi" });     //9
+            //inputs.Add(new IndexOf() { input = "mississippi", findIndex = "issip" });  //4
             inputs.Add(new IndexOf() { input = "mississippi", findIndex = "issipi" }); //-1
-            inputs.Add(new IndexOf() { input = "hello", findIndex = "ll" });           //2
-            inputs.Add(new IndexOf() { input = "aaaaa", findIndex = "bb" });           // -1
-            inputs.Add(new IndexOf() { input = "", findIndex = "" });           // -1
+            //inputs.Add(new IndexOf() { input = "hello", findIndex = "ll" });           //2
+            //inputs.Add(new IndexOf() { input = "aaaaa", findIndex = "bb" });           // -1
+            //inputs.Add(new IndexOf() { input = "", findIndex = "" });           // -1
             StringBuilder result = new StringBuilder();
             foreach(IndexOf input in inputs)
             {
@@ -2568,10 +2565,10 @@ namespace WindowsFormsApplication3
                 return -1;
             }
 
-            //  input = "mississippi", findIndex = "issipi" 
+            //  input = "mississippi", findIndex = "issipi"  i = 5 index = 1 j = 4
             if (findIndex.Length == 0) return 0;
             int index = -1;
-            for (int i = 0, j = 0; i < input.Length; i++) // i = 7 j = 0 index =10
+            for (int i = 0, j = 0; i < input.Length; i++ )
             {                
                 if (input[i] == findIndex[j])
                 {
@@ -2822,6 +2819,83 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
 
+        }
+
+        private void btn_Partial_String_Search_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            MessageBox.Show($"print i {i}");
+
+            /* 
+             
+                Note : I have considered case senstivity in my solution if in case we don't want to consider case senstivity we can use ToLower function and 
+                       pass the data to IsStringMatch function                       
+                Time Complexity  : O(mnp) where n is the length of each word in words collection and pattern match has to be done for 
+                                   m words in the words collection.       
+                                   p is the length of the pattern string
+                Space Complexity : O(1) constant space.
+             */
+
+            List<string> words = new List<string>();
+            words.Add("ABNCD");
+            words.Add("NABCD");
+            words.Add("ABCDN");
+            words.Add("can");
+            words.Add("nnnnn");
+
+            StringBuilder result = new StringBuilder();
+            //string crossWordPattern = "can"; //Match
+            //string crossWordPattern = "__N__"; //Match
+            //string crossWordPattern = "_N__"; // No Match
+            //string crossWordPattern = "__n__"; // No Match
+            string crossWordPattern = "_____"; // Match
+
+
+            if (string.IsNullOrEmpty(crossWordPattern))
+            {
+                MessageBox.Show($"Invalid Pattern");
+            }
+            else if (words.Count == 0)
+            {
+                MessageBox.Show($"There is no words in the dictionary to match the Pattern");
+            }
+            else
+            {
+                foreach (var word in words)
+                {
+                    if (IsStringMatch(word, crossWordPattern))
+                    {
+                        result.AppendLine(word);
+                    }
+                }
+
+                MessageBox.Show($"{(result.Length == 0 ? "There is no string matching" : "The below are the string that matches") } this { crossWordPattern } pattern \n{result}");
+            }
+        }
+
+        private bool IsStringMatch(string input, string pattern)
+        {
+            if (input.Length == pattern.Length)
+            {
+                char c;
+                int i = 0;
+
+                while (i < input.Length)
+                {
+                    c = pattern[i];
+
+                    if (!(c == '_' || c == input[i]))
+                    {
+                        return false;
+                    }
+
+                    i++;
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -309,16 +309,96 @@ namespace WindowsFormsApplication3
             }
         }
 
-        public class Graph
-        {
-            public Dictionary<string, GraphNode> Nodes;
-        }
-
-
         public class GraphNode
         {
             public string data;
             public List<GraphNode> edges;
         }
+
+
+        public class Graph
+        {
+            public Dictionary<string, GraphNode> Nodes;
+        }
+
+        public class GraphWeight
+        {
+            public string Data;
+            public List<Edge> Edges;
+
+            public GraphWeight()
+            {
+                Edges = new List<Edge>();
+            }
+        }
+
+        public class Edge
+        {
+            public GraphWeight Node;
+            public int Weight;
+        }
+
+        private void btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight_Click(object sender, EventArgs e)
+        {
+            GraphWeight A = new GraphWeight() { Data = "A" };
+            GraphWeight B = new GraphWeight() { Data = "B" };
+            GraphWeight C = new GraphWeight() { Data = "C" };
+            GraphWeight D = new GraphWeight() { Data = "D" };
+            GraphWeight E = new GraphWeight() { Data = "E" };
+            GraphWeight F = new GraphWeight() { Data = "F" };
+            GraphWeight G = new GraphWeight() { Data = "G" };
+            GraphWeight H = new GraphWeight() { Data = "H" };
+            GraphWeight M = new GraphWeight() { Data = "M" };
+
+            A.Edges.Add(new Edge() {Node = B, Weight = 1 });
+            A.Edges.Add(new Edge() { Node = C, Weight = 2 });
+            A.Edges.Add(new Edge() { Node = D, Weight = 3 });
+
+            B.Edges.Add(new Edge() { Node = G, Weight = 8 });
+
+            C.Edges.Add(new Edge() { Node = E, Weight = 4 });
+            E.Edges.Add(new Edge() { Node = F, Weight = 5 });
+            F.Edges.Add(new Edge() { Node = G, Weight = 6 });
+            G.Edges.Add(new Edge() { Node = H, Weight = 7 });
+            G.Edges.Add(new Edge() { Node = M, Weight = 10 });
+
+            Dictionary<string, string> nodeWeight = new Dictionary<string, string>();
+            StringBuilder result = new StringBuilder();
+            nodeWeight.Add(A.Data, "0");
+
+            TraverseGraphForEdges(A, nodeWeight, 0);
+
+            foreach (string key in nodeWeight.Keys)
+            {
+                result.AppendLine($"{key} \t: {nodeWeight[key]}");
+            }
+
+            MessageBox.Show($"Node path is \n {result.ToString()}");
+
+        }
+
+        public void TraverseGraphForEdges(GraphWeight node, Dictionary<string, string> result, int sum)
+        {
+            
+            if (node != null)
+            {
+                foreach(var edge in node.Edges)
+                {
+                    ;
+                    if (!result.ContainsKey(edge.Node.Data))
+                    {
+                        result.Add(edge.Node.Data, (sum + edge.Weight).ToString());
+                    }
+                    else
+                    {
+                        result[edge.Node.Data] += $", {(sum + edge.Weight).ToString()}";
+                    }
+
+                    TraverseGraphForEdges(edge.Node, result, sum + edge.Weight);
+                }
+            }
+        }
+
+
     }
 }

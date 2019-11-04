@@ -343,6 +343,75 @@ namespace WindowsFormsApplication3
             return result.ToString();
         }
 
-        
+        private void btn_Find_Exit_for_Maze_Click(object sender, EventArgs e)
+        {
+            int[,] maze = new int[, ]
+            {
+                {1, 1, 1, 1 },
+                {1, 1, 0, 1 },
+                {1, 0, 1, 1 },
+                {1, 1, 0, 1 },
+                {1, 1, 1, 1 }
+            };
+
+            bool[,] visited = new bool[maze.GetLength(0), maze.GetLength(1)];
+
+            StringBuilder result = new StringBuilder();
+
+            for(int i = 0;  i < maze.GetLength(0); i++)
+            {
+                for (int j = 0; j < maze.GetLength(1); j++)
+                {
+                    result.Append($"{maze[i,j]}\t");
+                }
+                result.AppendLine();
+            }
+
+            MessageBox.Show($"Path for the maze {(this.DFSMaze(maze,3,2,visited) ? "" :" does not ")} exists");
+        }
+
+        private bool DFSMaze(int[,] input, int r, int c, bool[,] visited)
+        {
+            bool returnValue = false;
+            if ((r == 0 || r == input.GetLength(0) - 1 || c == 0 || c == input.GetLength(0) - 1) && input[r,c] == 0)
+            {
+                return true;
+            }
+
+            visited[r , c] = true;
+
+            int[] offset = new int[] { -1, 0, 1 };
+
+            for(int i = 0; i < offset.Length; i++)
+            {
+                for (int j = 0; j < offset.Length; j++)
+                {
+                    if ((i == 1 && j == 1) || (visited[r + offset[i], c + offset[j]]))
+                    {
+                        continue;
+                    }
+                    
+                    if (IsWayExists(input, r + offset[i], c + offset[j]))
+                    {
+                        returnValue =  DFSMaze(input, r + offset[i], c + offset[j], visited);
+                        if (returnValue)
+                            return returnValue;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsWayExists(int[,] input, int r, int c)
+        {
+            if (r >=0 && r < input.GetLength(0) && c >=0 && c < input.GetLength(1) && input[r,c] == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
     }
 }
