@@ -161,7 +161,7 @@ namespace WindowsFormsApplication3
                     node.Next = temp;
                     temp.Previous = node;
                 }
-                else if (node.Data > data)
+                else 
                 {                    
                     temp.Next = node;
                     node.Previous = temp;
@@ -321,15 +321,14 @@ namespace WindowsFormsApplication3
             InsertNodeIntoBSTTree(ref root, 6);
             InsertNodeIntoBSTTree(ref root, 9);
             InsertNodeIntoBSTTree(ref root, 2);
-
-            DoubleLL dDLinkedList = null;
-            DoubleLL tempPointer = null;
-            DoubleLL previousPointer = null;
-            ConvertBSTToDoubleLinkedList(ref previousPointer, root, ref tempPointer, ref dDLinkedList);
-            MessageBox.Show($"Forward :{ PrintForward(ref dDLinkedList) } \nBackward :{PrintBackward(ref dDLinkedList)}");            
+            
+            DoubleLL runner = null;
+            ConvertBSTToDoubleLinkedList(root, ref runner);
+            PrintBackward(ref runner);
+            MessageBox.Show($"Forward :{ PrintForward(ref runner) } \nBackward :{PrintBackward(ref runner)}");            
         }
 
-        private void ConvertBSTToDoubleLinkedList(ref DoubleLL previous, Node root,ref DoubleLL tempPointer,  ref DoubleLL doubleLinkedList)
+        private void ConvertBSTToDoubleLinkedList(Node root,ref DoubleLL runner)
         {
                 /*
                 https://www.geeksforgeeks.org/convert-given-binary-tree-doubly-linked-list-set-3/
@@ -356,27 +355,20 @@ namespace WindowsFormsApplication3
 
             if (root  != null)
             {
-                ConvertBSTToDoubleLinkedList(ref previous, root.left, ref tempPointer, ref doubleLinkedList);
+                ConvertBSTToDoubleLinkedList(root.left, ref runner);
 
-                if (tempPointer == null)
+                if (runner == null)
                 {
-                    tempPointer = new DoubleLL() { Data = root.data};
-                    doubleLinkedList = tempPointer;
+                    runner = new DoubleLL() { Data = root.data};                    
                 }
                 else
                 {
-                    tempPointer.Next = new DoubleLL { Data = root.data};
-                    tempPointer.Next.Previous = previous;
-                    tempPointer = tempPointer.Next;
-                }
+                    runner.Next = new DoubleLL { Data = root.data, Previous = runner};                    
+                    runner = runner.Next;
+                }                
 
-                previous = tempPointer;
-
-                ConvertBSTToDoubleLinkedList(ref previous, root.right, ref tempPointer, ref  doubleLinkedList);
-
+                ConvertBSTToDoubleLinkedList(root.right, ref runner);
             }
-
-
         }
 
         private void InsertNodeIntoBSTTree(ref Node root, int data)

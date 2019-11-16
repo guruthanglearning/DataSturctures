@@ -116,8 +116,7 @@ namespace WindowsFormsApplication3
                         i=3     f=1     s=2     total = 3
                         i=4     f=2     s=3     total = 5
                      */
-
-                    total = 0;
+        
                     total = f + s;
                     f = s;
                     s = total;
@@ -282,6 +281,222 @@ namespace WindowsFormsApplication3
 
 
 
+
+        }
+
+        private void btn_Generate_Pascal_Triangle_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+
+                In Pascal's triangle, each number is the sum of the two numbers directly above it.
+
+                Example:
+
+                Input: 5
+                Output:
+                [
+                     [1],
+                    [1,1],
+                   [1,2,1],
+                  [1,3,3,1],
+                 [1,4,6,4,1]
+                ] 
+
+            Time Complexity :  O(n) where is 
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<IList<int>> datas = this.GeneratePascalTriange(6);
+            foreach(var data in datas)
+            {
+                result.AppendLine($"{string.Join(" ", data)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        private List<IList<int>> GeneratePascalTriange(int numRows)
+        {
+            if (numRows == 0)
+            {
+                return null;
+            }
+
+            List<IList<int>> result = new List<IList<int>>();
+            List<int> datas = new List<int>();
+
+            for (int i = 1; i <= numRows; i++)
+            {
+                datas.Clear();
+                if (i == 1)
+                {
+                    datas.Add(1);
+                }
+                else if (i == 2)
+                {
+                    datas.Add(1);
+                    datas.Add(1);
+                }
+                else
+                {
+                    datas.Add(1);
+                    var t = result.Last();
+                    for (int j = 0; j < t.Count - 1; j++)
+                    {
+                        datas.Add(t[j] + t[j + 1]);
+                    }
+
+                    datas.Add(1);
+                }
+
+                result.Add(new List<int>(datas));
+            }
+
+            return result;
+        }
+
+        private void btn_Generate_Pascal_Triangle_2_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
+                Note that the row index starts from 0. 
+                Example:
+
+                Input: 3
+                Output: [1,3,3,1]
+                Follow up:
+
+                Could you optimize your algorithm to use only O(k) extra space?
+
+                Time Complexity  : O(nk) where n is the number of generation of pascal triangle and k is the number of item in a generation
+                Space Complexity : O(k) where k is the number in particular row generation;
+
+             */
+
+
+            int row = 4;
+            IList<int> result = this.GetPascalTriangleRow(row);            
+            MessageBox.Show($"The pascal row value is {string.Join(" ", result)} for the row {row}");
+
+        }
+
+        public IList<int> GetPascalTriangleRow(int rowIndex)
+        {
+            List<int> result = new List<int>();
+            if (rowIndex < 0)
+            {
+                return result;
+            }
+
+            Queue<int> q = new Queue<int>();
+            int i = 0;
+
+            while (i <= rowIndex)
+            {
+                if (i == 0)
+                {
+                    q.Enqueue(1);
+                }
+
+                if (i == 1)
+                {
+                    q.Enqueue(1);
+                }
+
+                if (i > 1)
+                {
+
+                    int qc = q.Count;
+                    int j = 0;
+                    int c = 0;
+                    int p = 0;
+                    q.Enqueue(1);
+
+                    while (j < qc)
+                    {
+                        if (p == 0 && c == 0)
+                        {
+                            c = q.Dequeue();
+                        }
+                        else
+                        {
+                            p = c;
+                            c = q.Dequeue();
+                            q.Enqueue(p + c);
+                        }
+
+                        j++;
+                    }
+                    q.Enqueue(1);
+                }
+
+                i++;
+            }
+
+            result.AddRange(q);
+            return result;
+        }
+
+        private void btn_Day_of_the_Programmer_Click(object sender, EventArgs e)
+        {
+            /*
+                Leap Years are any year that can be exactly divided by 4 (such as 2016, 2020, 2024, etc)
+                except if it can be exactly divided by 100, then it isn't (such as 2100, 2200, etc)
+                except if it can be exactly divided by 400, then it is (such as 2000, 2400)
+
+                2020 is divisible by 4 and not divisible by 100
+
+                2020 IS a Leap Year 
+
+
+             */
+            StringBuilder result = new StringBuilder();
+            List<int> years = new List<int>();
+            //years.Add(2100); //13.09.2100
+            //years.Add(2016); //12.09.2016
+            //years.Add(1700); //12.09.1700
+            years.Add(1800); //12.09.2016
+            foreach (int year in years)
+            {
+                result.AppendLine($"256th day for the year {year} is {(this.DayOfProgrammer(year))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        private string DayOfProgrammer(int year)
+        {
+            /*
+                https://www.hackerrank.com/challenges/day-of-the-programmer/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen             
+                In the Julian calendar, leap years are divisible by ; in the Gregorian calendar, leap years are either of the following:
+                Divisible by 400.
+                Divisible by 4 and not divisible by 100.
+             */
+
+            string result = string.Empty;
+            if (year <= 0)
+            {
+                return null;
+            }
+
+            int day = 256 - 243;
+
+            bool isLeapYear = (year < 1918 && year % 4 == 0) || ((year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)));
+            if (year == 1918)
+            {
+                day += 13;
+            }
+            else
+            {
+                day = (isLeapYear ? day - 1 : day);
+            }
+
+            result = new DateTime(year, 8, 31).AddDays(day).ToString("dd.MM.yyyy");
+
+            return result;
 
         }
 

@@ -384,7 +384,7 @@ namespace WindowsFormsApplication3
             {
                 foreach(var edge in node.Edges)
                 {
-                    ;
+                    
                     if (!result.ContainsKey(edge.Node.Data))
                     {
                         result.Add(edge.Node.Data, (sum + edge.Weight).ToString());

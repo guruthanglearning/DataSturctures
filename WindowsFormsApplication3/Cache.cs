@@ -32,7 +32,7 @@ namespace WindowsFormsApplication3
             cache.Put("A", "A");
             cache.Put("B", "B");
             cache.Put("C", "C");
-            cache.Get("B");
+            //cache.Get("B");
             cache.Put("D", "D");
             cache.Put("E", "E");
             cache.Put("F", "F");
@@ -53,9 +53,10 @@ namespace WindowsFormsApplication3
             cache.Put("A", "A");
             cache.Put("B", "B");
             cache.Put("C", "C");
-            cache.Get("B");
-            cache.Get("A");
-            cache.Get("C");
+            cache.Put("A", "A");
+            //cache.Get("B");
+            //cache.Get("A");
+            //cache.Get("C");
             cache.Put("D", "D");
             cache.Get("D");
             cache.Put("E", "E");
@@ -87,7 +88,7 @@ namespace WindowsFormsApplication3
     public class LRUCacheWithDictionaryValueAsLinkedList: ICache
     {
         Dictionary<string, DDLinkedList> cacheStorage = new Dictionary<string, DDLinkedList>();
-        DDLinkedList linkList = null;
+        DDLinkedList runner = null;
         DDLinkedList startPointLinkList = null;
 
         public string Get(string key)
@@ -100,7 +101,7 @@ namespace WindowsFormsApplication3
 
             DDLinkedList tempList = cacheStorage[key];
             
-            if (linkList.Data == tempList.Data)
+            if (runner.Data == tempList.Data)
             {
                 //This means retriving data is present at the end of the list
                 return tempList.Data;
@@ -111,20 +112,20 @@ namespace WindowsFormsApplication3
                 startPointLinkList = startPointLinkList.Next;
                 startPointLinkList.Previous = null;
                 tempList.Next = null;
-                tempList.Previous = linkList;
-                linkList.Next = tempList;
-                linkList = linkList.Next;  
+                tempList.Previous = runner;
+                runner.Next = tempList;
+                runner = runner.Next;  
             }
             else
             { 
                 tempList.Previous.Next = tempList.Next;
                 tempList.Next.Previous = tempList.Previous;
                 tempList.Next = null;
-                tempList.Previous = linkList;
-                linkList.Next = tempList;
-                linkList = linkList.Next;
+                tempList.Previous = runner;
+                runner.Next = tempList;
+                runner = runner.Next;
             }             
-            return linkList.Data;
+            return runner.Data;
         }
 
         public string Put(string dataKey, string data)
@@ -140,28 +141,29 @@ namespace WindowsFormsApplication3
                 throw new Exception("Key already present");
             }
 
-            if (cacheStorage.Count < 10 )
+            if (cacheStorage.Count < 5 )
             {    
                 
-                if (linkList == null)
+                if (runner == null)
                 {
-                    linkList = new DDLinkedList() { Data = data }; 
-                    startPointLinkList = linkList;                 
+                    runner = new DDLinkedList() { Data = data }; 
+                    startPointLinkList = runner;                 
                 }
                 else
                 {
-                    linkList.Next = new DDLinkedList() { Data = data,Previous = linkList };
-                    linkList = linkList.Next;
+                    runner.Next = new DDLinkedList() { Data = data,Previous = runner };
+                    runner = runner.Next;
                 }                
-                cacheStorage.Add(dataKey, linkList);                
+                cacheStorage.Add(dataKey, runner);                
             }
             else
-            {                
+            {
+                    cacheStorage.Remove(cacheStorage.First().Key);
                     startPointLinkList = startPointLinkList.Next;
                     startPointLinkList.Previous = null;
-                    linkList.Next = new DDLinkedList() { Data = data, Previous = linkList };
-                    linkList = linkList.Next;
-                    cacheStorage[dataKey]= linkList;            
+                    runner.Next = new DDLinkedList() { Data = data, Previous = runner };
+                    runner = runner.Next;
+                    cacheStorage[dataKey]= runner;            
             }            
             return data;
         }
@@ -182,7 +184,7 @@ namespace WindowsFormsApplication3
         public string DisplayBackward()
         {
             StringBuilder result = new StringBuilder();
-            DDLinkedList traverse = linkList;
+            DDLinkedList traverse = runner;
             while (traverse != null)
             {
                 result.Append($"Key = {traverse.Data} Value = {traverse.Data} \n");
@@ -210,7 +212,7 @@ namespace WindowsFormsApplication3
 
             if (Cache.ContainsKey(dataKey))
             {            
-                this.Get(dataKey);
+                return this.Get(dataKey);
             }
 
             if (Cache.Count >= 5)

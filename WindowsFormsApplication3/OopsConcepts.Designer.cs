@@ -30,6 +30,8 @@
         {
             this.btn_Protected_Access_Specifier = new System.Windows.Forms.Button();
             this.btn_Abstract_Class = new System.Windows.Forms.Button();
+            this.btn_Static_Constructor_in_Sealed_Class = new System.Windows.Forms.Button();
+            this.btn_Shallow_Copy_vs_Deep_Copy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Protected_Access_Specifier
@@ -52,11 +54,33 @@
             this.btn_Abstract_Class.UseVisualStyleBackColor = true;
             this.btn_Abstract_Class.Click += new System.EventHandler(this.btn_Abstract_Class_Click);
             // 
+            // btn_Static_Constructor_in_Sealed_Class
+            // 
+            this.btn_Static_Constructor_in_Sealed_Class.Location = new System.Drawing.Point(12, 106);
+            this.btn_Static_Constructor_in_Sealed_Class.Name = "btn_Static_Constructor_in_Sealed_Class";
+            this.btn_Static_Constructor_in_Sealed_Class.Size = new System.Drawing.Size(512, 48);
+            this.btn_Static_Constructor_in_Sealed_Class.TabIndex = 2;
+            this.btn_Static_Constructor_in_Sealed_Class.Text = "Static Constructor in Sealed Class";
+            this.btn_Static_Constructor_in_Sealed_Class.UseVisualStyleBackColor = true;
+            this.btn_Static_Constructor_in_Sealed_Class.Click += new System.EventHandler(this.btn_Static_Constructor_in_Sealed_Class_Click);
+            // 
+            // btn_Shallow_Copy_vs_Deep_Copy
+            // 
+            this.btn_Shallow_Copy_vs_Deep_Copy.Location = new System.Drawing.Point(12, 160);
+            this.btn_Shallow_Copy_vs_Deep_Copy.Name = "btn_Shallow_Copy_vs_Deep_Copy";
+            this.btn_Shallow_Copy_vs_Deep_Copy.Size = new System.Drawing.Size(512, 48);
+            this.btn_Shallow_Copy_vs_Deep_Copy.TabIndex = 3;
+            this.btn_Shallow_Copy_vs_Deep_Copy.Text = "Shallow Copy vs Deep Copy";
+            this.btn_Shallow_Copy_vs_Deep_Copy.UseVisualStyleBackColor = true;
+            this.btn_Shallow_Copy_vs_Deep_Copy.Click += new System.EventHandler(this.btn_Shallow_Copy_vs_Deep_Copy_Click);
+            // 
             // OopsConcepts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Shallow_Copy_vs_Deep_Copy);
+            this.Controls.Add(this.btn_Static_Constructor_in_Sealed_Class);
             this.Controls.Add(this.btn_Abstract_Class);
             this.Controls.Add(this.btn_Protected_Access_Specifier);
             this.Name = "OopsConcepts";
@@ -69,5 +93,7 @@
 
         private System.Windows.Forms.Button btn_Protected_Access_Specifier;
         private System.Windows.Forms.Button btn_Abstract_Class;
+        private System.Windows.Forms.Button btn_Static_Constructor_in_Sealed_Class;
+        private System.Windows.Forms.Button btn_Shallow_Copy_vs_Deep_Copy;
     }
 }

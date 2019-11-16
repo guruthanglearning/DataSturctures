@@ -102,6 +102,20 @@ namespace WindowsFormsApplication3
              Space Complexity: O(1) constant space
 
              
+             velocity = distance /time  (v= d/t) since we don't have time we have jump so v=d/j  so d = v*j 
+
+              K1 = x1+v1 * j 
+              K2 = x2+v2 * j
+
+              x1 + v1*j = x2 + v2*j
+              x1 + v1j = x2 + v2j
+            
+              v1j-v2j = x2-x1
+              j(v1-v2) = (x2-x1)
+              j = (x2-x1)/(v1-v2) we need to find j is the integer or not and we can identify by checking 
+              (x2-x1) % (v1-v2) should be 0  K1.V1 > K2.V2 since K1 starts first than K2.
+            
+             
              */
 
             StringBuilder result = new StringBuilder();
