@@ -183,16 +183,14 @@ namespace WindowsFormsApplication3
             int result = 0;
             for (int row = 1; row < input.GetLength(0); row++)
             {
-                for (int column = 0; column < input.GetLength(1); column++)
+                for (int column =1; column < input.GetLength(1); column++)
                 {
-                    if (row > 0 && column > 0)
+                   
+                    if (input[row, column] > 0)
                     {
-                        if (input[row, column] > 0)
-                        {
-                            cache[row, column] = 1 + Math.Min(Math.Min(cache[row, column - 1], cache[row - 1, column]), cache[row - 1, column - 1]);
-                        }
+                        cache[row, column] = 1 + Math.Min(Math.Min(cache[row, column - 1], cache[row - 1, column]), cache[row - 1, column - 1]);
                     }
-
+                   
                     if (cache[row, column] > result)
                         result = cache[row, column];
 
@@ -248,6 +246,7 @@ namespace WindowsFormsApplication3
 
             /*
                 https://www.ideserve.co.in/learn/number-of-clusters-of-1s
+                https://www.geeksforgeeks.org/islands-in-a-graph-using-bfs/
                 Given a 2D matrix of 0s and 1s, find total number of clusters formed by elements with value 1.  
                 For example, in the below shown 2D matrix there are total three such clusters.
 
@@ -265,30 +264,105 @@ namespace WindowsFormsApplication3
                                             { 0, 1, 0, 1, 1}
                                        };
 
-            bool[,] visited = new bool[input.GetLength(0), input.GetLength(1)] ;
-            
+            bool[,] visitedDFS = new bool[input.GetLength(0), input.GetLength(1)] ;
+            bool[,] visitedBFS = new bool[input.GetLength(0), input.GetLength(1)];
+
 
             int[] offSet = new int[] { -1, 0, 1 };
 
-            int islandCounter = 0;
+            int islandCounterDFS = 0;
+            int islandCounterBFS = 0;
             for (int i = 0; i < input.GetLength(0); i++)
             {
                 for (int j = 0; j < input.GetLength(1); j++)
                 {
-                    if (input[i, j] == 1 && !visited[i, j])
+                    if (input[i, j] == 1 && !visitedDFS[i, j])
                     {
-                        islandCounter++;
-                        DoDFSLookUp(input, i, j, visited, offSet);
+                        islandCounterDFS++;
+                        DoDFSLookUpUsingStack(input, i, j, visitedDFS);
                     }
                 }
             }
 
-            MessageBox.Show($"There are {islandCounter} island for the given 2D matrix \n{(this.Print2DMatrix(input))}");
+            for (int i = 0; i < input.GetLength(0); i++)
+            {
+                for (int j = 0; j < input.GetLength(1); j++)
+                {
+                    if (input[i, j] == 1 && !visitedBFS[i, j])
+                    {
+                        islandCounterBFS++;
+                        DoBFSLookUp(input, i, j, visitedBFS);
+                    }
+                }
+            }
+
+            MessageBox.Show($"There are \n {islandCounterDFS} island via DFS \n {islandCounterBFS} island in BFS \n{(this.Print2DMatrix(input))}");
         }
 
-        private void DoDFSLookUp(int[,] input, int row, int column, bool[,] visited, int[] offSet)
+        private void DoBFSLookUp(int[,] input, int row, int column, bool[,] visited)
+        {
+            Queue<Point> q = new Queue<Point>();           
+            q.Enqueue(new Point() {X = row, Y = column });
+            int[] offSet = new int[] { -1, 0, 1 };
+            visited[row, column] = true;
+
+            while (q.Count > 0)
+            {
+                Point p = q.Dequeue();
+              
+                for (int i = 0; i < offSet.Length; i++)
+                {
+                    for (int j = 0; j < offSet.Length; j++)
+                    {
+                        if (i == 1 && j == 1)
+                        {
+                            continue;
+                        }
+
+                        if (IsNeighbourExists(input, p.X + offSet[i], p.Y + offSet[j], visited))
+                        {
+                            visited[p.X + offSet[i], p.Y + offSet[j]] = true;
+                            q.Enqueue(new Point() { X = p.X + offSet[i], Y = p.Y + offSet[j]});
+                        }                        
+                    }
+                }
+            }
+        }
+
+        private void DoDFSLookUpUsingStack(int[,] input, int row, int column, bool[,] visited)
+        {
+            int[] offSet = new int[] { -1, 0, 1 };
+            Stack<Point> s = new Stack<Point>();
+            s.Push(new Point() { X = row, Y = column });
+            visited[row, column] = true;
+
+            while (s.Count > 0)
+            {
+                Point p = s.Pop();
+                
+                for(int i = 0; i < offSet.Length; i++)
+                {
+                    for (int j = 0; j < offSet.Length; j++)
+                    {
+                        if (i == 1 && j == 1)
+                        {
+                            continue;
+                        }
+
+                        if (IsNeighbourExists(input, p.X + offSet[i], p.Y + offSet[j],visited))
+                        {
+                            visited[p.X + offSet[i], p.Y + offSet[j]] = true;
+                            s.Push(new Point() { X = p.X + offSet[i], Y = p.Y + offSet[j] });
+                        }
+                    }
+                }                
+            }
+        }
+
+       private void DoDFSLookUp(int[,] input, int row, int column, bool[,] visited)
         {
 
+            int[] offSet = new int[] {-1, 0, 1 };
             if (visited[row,column])
             {
                 return;
@@ -296,33 +370,29 @@ namespace WindowsFormsApplication3
 
             visited[row, column] = true;
 
-            int xOffSet = 0;
-            int yOffSet = 0;
             for (int i = 0; i < offSet.Length; i++)
             {
-                xOffSet = offSet[i];
-
                 for(int j = 0; j<offSet.Length; j++)
                 {
-                    yOffSet = offSet[j];
-
-                    if (xOffSet == 0 && yOffSet == 0)
-                        continue;
-
-                    if (this.IsNeighbourExists(input, row + xOffSet, column + yOffSet))
+                    if (i == 1 && j == 1)
                     {
-                        this.DoDFSLookUp(input, row + xOffSet, column + yOffSet, visited, offSet);
+                        continue;
+                    }
+
+                    if (this.IsNeighbourExists(input, row + offSet[i], column + offSet[j], visited))
+                    {
+                        this.DoDFSLookUp(input, row + offSet[i], column + offSet[j], visited);
                     }
                 }
             }
         }
 
-        private bool IsNeighbourExists(int[,] input, int row, int column)
+        private bool IsNeighbourExists(int[,] input, int row, int column, bool[,] visited)
         {
 
             if (row>=0 && row < input.GetLength(0) && column>=0 && column < input.GetLength(1))
             {
-                if (input[row, column] == 1)
+                if (input[row, column] == 1 && !visited[row, column])
                     return true;
             }
             return false;
@@ -351,7 +421,7 @@ namespace WindowsFormsApplication3
                 {1, 1, 0, 1 },
                 {1, 0, 1, 1 },
                 {1, 1, 0, 1 },
-                {1, 1, 1, 1 }
+                {1, 0, 1, 1 }
             };
 
             bool[,] visited = new bool[maze.GetLength(0), maze.GetLength(1)];
@@ -371,31 +441,41 @@ namespace WindowsFormsApplication3
         }
 
         private bool DFSMaze(int[,] input, int r, int c, bool[,] visited)
-        {
-            bool returnValue = false;
-            if ((r == 0 || r == input.GetLength(0) - 1 || c == 0 || c == input.GetLength(0) - 1) && input[r,c] == 0)
-            {
-                return true;
-            }
+        {            
+            
+            Stack<Point> s = new Stack<Point>();
+            s.Push(new Point() { X = r, Y = c });
 
             visited[r , c] = true;
 
             int[] offset = new int[] { -1, 0, 1 };
 
-            for(int i = 0; i < offset.Length; i++)
+            while (s.Count > 0)
             {
-                for (int j = 0; j < offset.Length; j++)
+                Point p = s.Pop();
+                visited[p.X, p.Y] = true;
+                if (IsMazeFoundExists(input, p.X, p.Y))
                 {
-                    if ((i == 1 && j == 1) || (visited[r + offset[i], c + offset[j]]))
+                    return true;
+                }
+
+                for (int i = 0; i < offset.Length; i++)
+                {
+                    for (int j = 0; j < offset.Length; j++)
                     {
-                        continue;
-                    }
-                    
-                    if (IsWayExists(input, r + offset[i], c + offset[j]))
-                    {
-                        returnValue =  DFSMaze(input, r + offset[i], c + offset[j], visited);
-                        if (returnValue)
-                            return returnValue;
+                        if (i == 1 && j == 1)
+                        {
+                            continue;
+                        }
+
+                        if (IsMazeWayExists(input, p.X + offset[i], p.Y + offset[j],visited))
+                        {
+                            visited[p.X + offset[i], p.Y + offset[j]] = true;
+                            s.Push(new Point() { X = p.X + offset[i], Y = p.Y + offset[j] });
+                        //    returnValue = DFSMaze(input, r + offset[i], c + offset[j], visited);
+                        //    if (returnValue)
+                        //        return returnValue;
+                        }
                     }
                 }
             }
@@ -403,9 +483,18 @@ namespace WindowsFormsApplication3
             return false;
         }
 
-        private bool IsWayExists(int[,] input, int r, int c)
+        private bool IsMazeFoundExists(int[,] input, int r, int c)
         {
-            if (r >=0 && r < input.GetLength(0) && c >=0 && c < input.GetLength(1) && input[r,c] == 0)
+            if ((r == 0 || r == input.GetLength(0) - 1 || c == 0 || c == input.GetLength(0) - 1) && input[r, c] == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsMazeWayExists(int[,] input, int r, int c,  bool[,] visited)
+        {
+            if (r >=0 && r < input.GetLength(0) && c >=0 && c < input.GetLength(1) && input[r,c] == 0 && !visited[r,c])
             {
                 return true;
             }
