@@ -76,6 +76,9 @@
             this.btn_BirthDay_Chocolate = new System.Windows.Forms.Button();
             this.btn_Divsible_Sum_Pairs = new System.Windows.Forms.Button();
             this.btn_Migratory_Birds = new System.Windows.Forms.Button();
+            this.btn_Best_Time_to_Buy_and_Sell_Stock = new System.Windows.Forms.Button();
+            this.btn_Socks_Merchant = new System.Windows.Forms.Button();
+            this.btn_Steps_To_Make_0_from_binary = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -249,7 +252,7 @@
             // 
             // btn_Merge_Overlapping_Intervals
             // 
-            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(3, 759);
+            this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(12, 756);
             this.btn_Merge_Overlapping_Intervals.Name = "btn_Merge_Overlapping_Intervals";
             this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(487, 40);
             this.btn_Merge_Overlapping_Intervals.TabIndex = 16;
@@ -511,7 +514,7 @@
             // 
             // btn_Blow_out_tallest_candles
             // 
-            this.btn_Blow_out_tallest_candles.Location = new System.Drawing.Point(995, 4);
+            this.btn_Blow_out_tallest_candles.Location = new System.Drawing.Point(997, 4);
             this.btn_Blow_out_tallest_candles.Name = "btn_Blow_out_tallest_candles";
             this.btn_Blow_out_tallest_candles.Size = new System.Drawing.Size(360, 40);
             this.btn_Blow_out_tallest_candles.TabIndex = 42;
@@ -521,7 +524,7 @@
             // 
             // btn_Between_Sets
             // 
-            this.btn_Between_Sets.Location = new System.Drawing.Point(999, 53);
+            this.btn_Between_Sets.Location = new System.Drawing.Point(999, 48);
             this.btn_Between_Sets.Name = "btn_Between_Sets";
             this.btn_Between_Sets.Size = new System.Drawing.Size(353, 37);
             this.btn_Between_Sets.TabIndex = 43;
@@ -531,9 +534,9 @@
             // 
             // btn_Breaking_the_records
             // 
-            this.btn_Breaking_the_records.Location = new System.Drawing.Point(995, 96);
+            this.btn_Breaking_the_records.Location = new System.Drawing.Point(999, 89);
             this.btn_Breaking_the_records.Name = "btn_Breaking_the_records";
-            this.btn_Breaking_the_records.Size = new System.Drawing.Size(360, 40);
+            this.btn_Breaking_the_records.Size = new System.Drawing.Size(356, 40);
             this.btn_Breaking_the_records.TabIndex = 44;
             this.btn_Breaking_the_records.Text = "Breaking the records";
             this.btn_Breaking_the_records.UseVisualStyleBackColor = true;
@@ -541,7 +544,7 @@
             // 
             // btn_BirthDay_Chocolate
             // 
-            this.btn_BirthDay_Chocolate.Location = new System.Drawing.Point(995, 141);
+            this.btn_BirthDay_Chocolate.Location = new System.Drawing.Point(999, 134);
             this.btn_BirthDay_Chocolate.Name = "btn_BirthDay_Chocolate";
             this.btn_BirthDay_Chocolate.Size = new System.Drawing.Size(355, 40);
             this.btn_BirthDay_Chocolate.TabIndex = 45;
@@ -551,7 +554,7 @@
             // 
             // btn_Divsible_Sum_Pairs
             // 
-            this.btn_Divsible_Sum_Pairs.Location = new System.Drawing.Point(995, 187);
+            this.btn_Divsible_Sum_Pairs.Location = new System.Drawing.Point(999, 180);
             this.btn_Divsible_Sum_Pairs.Name = "btn_Divsible_Sum_Pairs";
             this.btn_Divsible_Sum_Pairs.Size = new System.Drawing.Size(353, 39);
             this.btn_Divsible_Sum_Pairs.TabIndex = 47;
@@ -561,7 +564,7 @@
             // 
             // btn_Migratory_Birds
             // 
-            this.btn_Migratory_Birds.Location = new System.Drawing.Point(995, 232);
+            this.btn_Migratory_Birds.Location = new System.Drawing.Point(999, 225);
             this.btn_Migratory_Birds.Name = "btn_Migratory_Birds";
             this.btn_Migratory_Birds.Size = new System.Drawing.Size(357, 39);
             this.btn_Migratory_Birds.TabIndex = 48;
@@ -569,11 +572,44 @@
             this.btn_Migratory_Birds.UseVisualStyleBackColor = true;
             this.btn_Migratory_Birds.Click += new System.EventHandler(this.btn_Migratory_Birds_Click);
             // 
+            // btn_Best_Time_to_Buy_and_Sell_Stock
+            // 
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.Location = new System.Drawing.Point(999, 270);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.Name = "btn_Best_Time_to_Buy_and_Sell_Stock";
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.Size = new System.Drawing.Size(357, 37);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.TabIndex = 49;
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.Text = "Best Time to Buy and Sell Stock";
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.UseVisualStyleBackColor = true;
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.Click += new System.EventHandler(this.btn_Best_Time_to_Buy_and_Sell_Stock_Click);
+            // 
+            // btn_Socks_Merchant
+            // 
+            this.btn_Socks_Merchant.Location = new System.Drawing.Point(995, 313);
+            this.btn_Socks_Merchant.Name = "btn_Socks_Merchant";
+            this.btn_Socks_Merchant.Size = new System.Drawing.Size(362, 33);
+            this.btn_Socks_Merchant.TabIndex = 50;
+            this.btn_Socks_Merchant.Text = "Socks Merchant";
+            this.btn_Socks_Merchant.UseVisualStyleBackColor = true;
+            this.btn_Socks_Merchant.Click += new System.EventHandler(this.btn_Socks_Merchant_Click);
+            // 
+            // btn_Steps_To_Make_0_from_binary
+            // 
+            this.btn_Steps_To_Make_0_from_binary.Location = new System.Drawing.Point(997, 352);
+            this.btn_Steps_To_Make_0_from_binary.Name = "btn_Steps_To_Make_0_from_binary";
+            this.btn_Steps_To_Make_0_from_binary.Size = new System.Drawing.Size(358, 37);
+            this.btn_Steps_To_Make_0_from_binary.TabIndex = 51;
+            this.btn_Steps_To_Make_0_from_binary.Text = "Steps To Make 0 from binary ";
+            this.btn_Steps_To_Make_0_from_binary.UseVisualStyleBackColor = true;
+            this.btn_Steps_To_Make_0_from_binary.Click += new System.EventHandler(this.btn_Steps_To_Make_0_from_binary_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Steps_To_Make_0_from_binary);
+            this.Controls.Add(this.btn_Socks_Merchant);
+            this.Controls.Add(this.btn_Best_Time_to_Buy_and_Sell_Stock);
             this.Controls.Add(this.btn_Migratory_Birds);
             this.Controls.Add(this.btn_Divsible_Sum_Pairs);
             this.Controls.Add(this.btn_BirthDay_Chocolate);
@@ -679,5 +715,8 @@
         private System.Windows.Forms.Button btn_BirthDay_Chocolate;
         private System.Windows.Forms.Button btn_Divsible_Sum_Pairs;
         private System.Windows.Forms.Button btn_Migratory_Birds;
+        private System.Windows.Forms.Button btn_Best_Time_to_Buy_and_Sell_Stock;
+        private System.Windows.Forms.Button btn_Socks_Merchant;
+        private System.Windows.Forms.Button btn_Steps_To_Make_0_from_binary;
     }
 }

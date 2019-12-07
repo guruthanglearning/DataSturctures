@@ -34,6 +34,7 @@
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table = new System.Windows.Forms.Button();
             this.btn_Find_no_of_island_for_the_given_matrix = new System.Windows.Forms.Button();
             this.btn_Find_Exit_for_Maze = new System.Windows.Forms.Button();
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -96,11 +97,22 @@
             this.btn_Find_Exit_for_Maze.UseVisualStyleBackColor = true;
             this.btn_Find_Exit_for_Maze.Click += new System.EventHandler(this.btn_Find_Exit_for_Maze_Click);
             // 
+            // btn_Navigate_from_North_West_to_South_East_of_the_building
+            // 
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Location = new System.Drawing.Point(2, 285);
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Name = "btn_Navigate_from_North_West_to_South_East_of_the_building";
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Size = new System.Drawing.Size(583, 38);
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.TabIndex = 24;
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Text = "Navigate from North West to South East of the building";
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.UseVisualStyleBackColor = true;
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Click += new System.EventHandler(this.btn_Navigate_from_North_West_to_South_East_of_the_building_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 425);
+            this.Controls.Add(this.btn_Navigate_from_North_West_to_South_East_of_the_building);
             this.Controls.Add(this.btn_Find_Exit_for_Maze);
             this.Controls.Add(this.btn_Find_no_of_island_for_the_given_matrix);
             this.Controls.Add(this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.Button btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table;
         private System.Windows.Forms.Button btn_Find_no_of_island_for_the_given_matrix;
         private System.Windows.Forms.Button btn_Find_Exit_for_Maze;
+        private System.Windows.Forms.Button btn_Navigate_from_North_West_to_South_East_of_the_building;
     }
 }

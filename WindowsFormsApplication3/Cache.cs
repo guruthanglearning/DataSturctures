@@ -40,7 +40,7 @@ namespace WindowsFormsApplication3
             cache.Put("H", "H");
             cache.Put("I", "I");
             cache.Put("J", "J");
-            cache.Get("A");
+            cache.Get("G");
             cache.Put("K","K");
             MessageBox.Show($"Foward list \n{cache.DisplayForward()}\n\nBackward list \n{cache.DisplayBackward()}");
 
@@ -49,6 +49,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Implement_Least_Frequently_Used_Cache_Click(object sender, EventArgs e)
         {
+            
             LFU_LeastFrequentlyUsedCache cache = new LFU_LeastFrequentlyUsedCache();
             cache.Put("A", "A");
             cache.Put("B", "B");
@@ -114,7 +115,7 @@ namespace WindowsFormsApplication3
                 tempList.Next = null;
                 tempList.Previous = runner;
                 runner.Next = tempList;
-                runner = runner.Next;  
+                runner = runner.Next;
             }
             else
             { 
@@ -158,7 +159,7 @@ namespace WindowsFormsApplication3
             }
             else
             {
-                    cacheStorage.Remove(cacheStorage.First().Key);
+                    cacheStorage.Remove(startPointLinkList.Data);
                     startPointLinkList = startPointLinkList.Next;
                     startPointLinkList.Previous = null;
                     runner.Next = new DDLinkedList() { Data = data, Previous = runner };

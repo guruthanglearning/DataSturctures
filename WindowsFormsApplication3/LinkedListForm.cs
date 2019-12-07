@@ -708,12 +708,42 @@ namespace WindowsFormsApplication3
             Insert(2, ref tree);
             //Insert(15, ref tree);
             //Insert(22, ref tree);
-            string max = MaxDepthOfTheTree(tree).ToString();
-            string min = MinDepthOfTheTree(tree).ToString();
-            MessageBox.Show("Max = " + max + " Min = " + min);
+            string max = $"Max Depth Recursive = {MaxDepthOfTheTree(tree)} Max Depth Iterative = {MaxDepthOfTheTreeWithIterative(tree)}";
+            string min = $"Min Depth Recursive = {MinDepthOfTheTree(tree)} Mix Depth Iterative = {MinDepthOfTheTreeIterative(tree)}";
+            MessageBox.Show($"{max}\n {min}");
         }
 
         private int MaxDepthOfTheTree(Node node)
+        {
+            /*
+                                 10
+                              /      \
+                             /        \
+                            /          \
+                           /            \                           
+                          /              \
+                         5               20
+                       /  \             / \
+                      /    \           /   \  
+                     /      \         /     \
+                    3        8       15     22 
+                   / \      / \ 
+                  /   \    /   \
+                 1    4    6    9
+                  \
+                   \
+                    2
+            */
+
+            if (node == null)
+            {
+                return 0;
+            }
+            return 1 + Math.Max(MaxDepthOfTheTree(node.left), MaxDepthOfTheTree(node.right));
+                
+        }
+
+        private int MaxDepthOfTheTreeWithIterative(Node node)
         {
             /*
                              10
@@ -733,14 +763,8 @@ namespace WindowsFormsApplication3
               \
                \
                 2
-
-            if (node == null)
-            {
-                return 0;
-            }
-            return 1 + Math.Max(MaxDepthOfTheTree(node.left), MaxDepthOfTheTree(node.right));
-                    */
-            /* Iterative approach */
+                 
+            Iterative approach */
                if (node == null)
                 {
                     return 0;
@@ -774,23 +798,33 @@ namespace WindowsFormsApplication3
             
                     counter++;            
                 }
-        
-        
+                
                 return counter;
              
-
         }
 
-
-        private int MinDepthOfTheTree(Node node)
+        private int MinDepthOfTheTreeIterative(Node node)
         {
-
-            if (node == null)
-            {
-                return 0;
-            }
-
-
+                    /*
+                                     10
+                                  /      \
+                                 /        \
+                                /          \
+                               /            \                           
+                              /              \
+                             5               20
+                           /  \             / \
+                          /    \           /   \  
+                         /      \         /     \
+                        3        8       15     22 
+                       / \      / \ 
+                      /   \    /   \
+                     1    4    6    9
+                      \
+                       \
+                        2
+                */
+            
             Node temp;
             Queue<Node> q = new Queue<Node>();
 
@@ -841,15 +875,43 @@ namespace WindowsFormsApplication3
 
             return min;
 
-            /*
+        }
 
+        private int MinDepthOfTheTree(Node node)
+        {
+
+            /*
+                                   10
+                                /      \
+                               /        \
+                              /          \
+                             /            \                           
+                            /              \
+                           5               20
+                         /  \             / \
+                        /    \           /   \  
+                       /      \         /     \
+                      3        8       15     22 
+                     / \      / \ 
+                    /   \    /   \
+                   1    4    6    9
+                    \
+                     \
+                      2
+              */
+
+            if (node == null)
+            {
+                return 0;
+            }            
+            
             if (node == null)
             {
                 return 0;
             }
 
             return 1 + Math.Min(MinDepthOfTheTree(node.left), MinDepthOfTheTree(node.right));
-            */
+
         }
 
         private void InOrderTraversalToLinkList(Node node, ref LinkList runner, ref LinkList start)
@@ -959,7 +1021,7 @@ namespace WindowsFormsApplication3
             InsertBFSNode(1, ref tree, tree);
             //InsertBFSNode(24, ref tree, tree);
 
-            BFSNode inputNode = tree.right.right;
+            BFSNode inputNode = tree.right.left;
             BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
             MessageBox.Show($"With Parent Node {node.data.ToString()}");
             node = GetInOrderSuccessorWithoutParentNode(inputNode, tree);
@@ -1019,6 +1081,11 @@ namespace WindowsFormsApplication3
                     while (p != null && p.right == node)
                     {                                     
                         node = p;
+                        if (p.parent == null)
+                        {
+                            break;
+                        }
+
                         p = p.parent;
                     }
 
@@ -1031,6 +1098,10 @@ namespace WindowsFormsApplication3
                             break;
                         }
                         node = p;
+                        if (node.parent == null)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -1086,7 +1157,6 @@ namespace WindowsFormsApplication3
                                 succ = root;
                             }
                             root = root.right;
-
                         }
                         else
                         {
@@ -1729,8 +1799,6 @@ namespace WindowsFormsApplication3
 
             if (a == null && b != null)
                 return -1;
-
-
 
             return returnValue;
         }
@@ -2839,7 +2907,7 @@ namespace WindowsFormsApplication3
                                      /          \
                                     /            \                           
                                    /              \
-                                  20               5
+                                 20                5
                                 /  \              / \
                                /    \            /   \  
                               /      \          /     \
@@ -3819,9 +3887,54 @@ namespace WindowsFormsApplication3
 
             
             int maxLevel = -1;
+            int maxLevelQ = -1;
 
             Node result = this.FindDeepestNode(tree, -1, ref maxLevel);
-            MessageBox.Show($"Deepest node in a given binary tree is {result.data.ToString()}");
+            MessageBox.Show($"Deepest node in a given binary tree is \nWith Recurression {result.data.ToString()} with maxlevel {maxLevel} \nWith Queue {this.FindDeepestNodeWithQueue(tree, ref maxLevelQ).data} with maxlevel {maxLevelQ}");
+
+        }
+
+        public Node FindDeepestNodeWithQueue(Node root, ref int maxLevel)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+
+            Queue<Node> q = new Queue<Node>();
+            q.Enqueue(root);
+            q.Enqueue(null);
+            Node current = null;
+
+            while(q.Count > 0)
+            {
+                
+                if (q.Peek() == null)
+                {
+                    maxLevel++;
+                    q.Dequeue();
+                    if (q.Count == 0)
+                    {
+                        break;
+                    }
+                    q.Enqueue(null);
+                }
+                else
+                {
+
+                    current = q.Dequeue();
+                    if (current.left != null)
+                    {
+                        q.Enqueue(current.left);
+                    }
+
+                    if (current.right != null)
+                    {
+                        q.Enqueue(current.right);
+                    }
+                }
+            }
+            return current;
 
         }
 
@@ -3957,11 +4070,23 @@ namespace WindowsFormsApplication3
 
         private int Distribute(Node root, ref int numOfSteps)
         {
+            /*
+                    
+                                1
+                            /       \
+                           /         \
+                          0           0
+                           \
+                            \
+                             3
+             */
+
+
             if (root == null) return 0;
-            int left = this.Distribute(root.left, ref numOfSteps);
-            int right = this.Distribute(root.right, ref numOfSteps);
-            numOfSteps+= Math.Abs(left) + Math.Abs(right);
-            return root.data - 1 + left + right;
+            int left = this.Distribute(root.left, ref numOfSteps); // 1
+            int right = this.Distribute(root.right, ref numOfSteps); //-1
+            numOfSteps+= Math.Abs(left) + Math.Abs(right); //2
+            return root.data - 1 + left + right; //
         }
 
         private void btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order_Click(object sender, EventArgs e)

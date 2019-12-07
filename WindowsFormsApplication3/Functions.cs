@@ -42,9 +42,9 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<int> inputs = new List<int>();
-            inputs.Add(4);
-            inputs.Add(8);
-            inputs.Add(11);
+            //inputs.Add(4);
+            //inputs.Add(8);
+            //inputs.Add(11);
             inputs.Add(int.MaxValue);
 
             foreach (int input in inputs)
@@ -87,7 +87,7 @@ namespace WindowsFormsApplication3
 
             while (l <= r)
             {
-                m =   l + ((r - l) / 2);
+                m =   (l + r) / 2;
                 
                 if (m == 0)
                 {

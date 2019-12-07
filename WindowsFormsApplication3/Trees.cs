@@ -410,6 +410,14 @@ namespace WindowsFormsApplication3
 
         public IList<IList<int>> LevelOrderBottom(Node root)
         {
+             /*
+              
+                        3
+                       / \
+                      9  20
+                        /  \
+                       15   7
+             */
 
             if (root == null)
             {
@@ -592,6 +600,23 @@ namespace WindowsFormsApplication3
 
         public int IsBalancedBinaryTree(Node root)
         {
+            /*
+                            3  --Return True
+                           / \
+                          9  20
+                            /  \
+                           15   7    
+                           
+                           1 --Return False
+                          / \
+                         2   2
+                        / \
+                       3   3
+                      / \
+                     4   4
+                                            
+            */
+
             if (root == null)
             {
                 return 0;
@@ -764,6 +789,17 @@ namespace WindowsFormsApplication3
 
         private bool PathSum(Node node, int sum)
         {
+            /*
+                              5
+                             / \
+                            4   8
+                           /   / \
+                          11  13  4
+                         /  \      \
+                        7    2      1
+                return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22. 
+
+            */
             if (node == null)
             {
                 return false;

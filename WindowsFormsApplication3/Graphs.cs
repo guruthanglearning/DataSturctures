@@ -387,11 +387,11 @@ namespace WindowsFormsApplication3
                     
                     if (!result.ContainsKey(edge.Node.Data))
                     {
-                        result.Add(edge.Node.Data, (sum + edge.Weight).ToString());
+                        result.Add(edge.Node.Data, $"{(sum + edge.Weight)}");
                     }
                     else
                     {
-                        result[edge.Node.Data] += $", {(sum + edge.Weight).ToString()}";
+                        result[edge.Node.Data] += $", {(sum + edge.Weight)}";
                     }
 
                     TraverseGraphForEdges(edge.Node, result, sum + edge.Weight);

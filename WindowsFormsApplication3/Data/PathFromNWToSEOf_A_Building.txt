@@ -1,0 +1,133 @@
+﻿Test Data 1  : All the doors are closed in all the rooms,so no path
+Building building = new Building(4, 4);
+building.InsertRoom(0, 0, new Room() { Name = "00"});
+building.InsertRoom(0, 1, new Room() { Name = "01"});
+building.InsertRoom(0, 2, new Room() { Name = "02" });
+building.InsertRoom(0, 3, new Room() { Name = "03" });
+
+building.InsertRoom(1, 0, new Room() { Name = "10" });
+building.InsertRoom(1, 1, new Room() { Name = "11" });
+building.InsertRoom(1, 2, new Room() { Name = "12" });
+building.InsertRoom(1, 3, new Room() { Name = "13" });
+
+building.InsertRoom(2, 0, new Room() { Name = "20" });
+building.InsertRoom(2, 1, new Room() { Name = "21" });
+building.InsertRoom(2, 2, new Room() { Name = "22" });
+building.InsertRoom(2, 3, new Room() { Name = "23" });
+
+building.InsertRoom(3, 0, new Room() { Name = "30" });
+building.InsertRoom(3, 1, new Room() { Name = "31" });
+building.InsertRoom(3, 2, new Room() { Name = "32" });
+building.InsertRoom(3, 3, new Room() { Name = "33" });
+
+------------------------------------------------------------------------------------------------------------------------------------
+Test Data 2  : Only North Doors is opened in 0,0 location in matrix which leads to outside the building hence no path
+Building building = new Building(4, 4);
+building.InsertRoom(0, 0, new Room() { Name = "00"});
+building.InsertRoom(0, 1, new Room() { Name = "01"});
+building.InsertRoom(0, 2, new Room() { Name = "02" });
+building.InsertRoom(0, 3, new Room() { Name = "03" });
+
+building.InsertRoom(1, 0, new Room() { Name = "10" });
+building.InsertRoom(1, 1, new Room() { Name = "11" });
+building.InsertRoom(1, 2, new Room() { Name = "12" });
+building.InsertRoom(1, 3, new Room() { Name = "13" });
+
+building.InsertRoom(2, 0, new Room() { Name = "20" });
+building.InsertRoom(2, 1, new Room() { Name = "21" });
+building.InsertRoom(2, 2, new Room() { Name = "22" });
+building.InsertRoom(2, 3, new Room() { Name = "23" });
+
+building.InsertRoom(3, 0, new Room() { Name = "30" });
+building.InsertRoom(3, 1, new Room() { Name = "31" });
+building.InsertRoom(3, 2, new Room() { Name = "32" });
+building.InsertRoom(3, 3, new Room() { Name = "33" });
+
+------------------------------------------------------------------------------------------------------------------------------------
+Test Data 3 : starting from 0,0 (Exit East)-->0,1(Enter:West, Exit: South)-->1,1(Enter: North, Exit: East)-->1,1(Enter: West, Exit: North)
+										    -->0,2(Enter: South, Exit: East)-->0,3(Enter:West, Exit: South)-->1,3(Enter: North, Exit: South)
+											-->2,3(Enter: North, Exit: South)
+											-->3,3(Enter: North, At this location we have reached South East of the building and path exists)
+Building building = new Building(4, 4);
+building.InsertRoom(0, 0, new Room() { Name = "00", EastDoor = true});
+building.InsertRoom(0, 1, new Room() { Name = "01", WestDoor = true,SouthDoor = true});
+building.InsertRoom(0, 2, new Room() { Name = "02", SouthDoor = true,EastDoor =true });
+building.InsertRoom(0, 3, new Room() { Name = "03", WestDoor = true, SouthDoor = true });
+
+building.InsertRoom(1, 0, new Room() { Name = "10" });
+building.InsertRoom(1, 1, new Room() { Name = "11", NorthDoor = true,EastDoor = true });
+building.InsertRoom(1, 2, new Room() { Name = "12", WestDoor= true, NorthDoor = true });
+building.InsertRoom(1, 3, new Room() { Name = "13", NorthDoor= true, SouthDoor = true });
+
+building.InsertRoom(2, 0, new Room() { Name = "20" });
+building.InsertRoom(2, 1, new Room() { Name = "21" });
+building.InsertRoom(2, 2, new Room() { Name = "22" });
+building.InsertRoom(2, 3, new Room() { Name = "23", NorthDoor = true, SouthDoor = true });
+
+building.InsertRoom(3, 0, new Room() { Name = "30" });
+building.InsertRoom(3, 1, new Room() { Name = "31" });
+building.InsertRoom(3, 2, new Room() { Name = "32" });
+building.InsertRoom(3, 3, new Room() { Name = "33", NorthDoor = true });
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Test Data 4 : starting from 0,0 (Exit East)-->0,1(Enter:West, Exit: South)-->1,1(Enter: North, Exit: East)-->1,1(Enter: West, Exit: North)
+										    -->0,2(Enter: South, Exit: East)-->0,3(Enter:West, Exit: South)-->1,3(Enter: North, Exit: South)
+											-->2,3(Enter: North, Exit: South, West) //South exit enter into the que first, hence path is found at 3, 3
+											-->3,3(Enter: North, At this location we have reached South East of the building and path exists)
+
+Building building = new Building(4, 4);
+building.InsertRoom(0, 0, new Room() { Name = "00", EastDoor = true});
+building.InsertRoom(0, 1, new Room() { Name = "01", WestDoor = true,SouthDoor = true});
+building.InsertRoom(0, 2, new Room() { Name = "02", SouthDoor = true,EastDoor =true });
+building.InsertRoom(0, 3, new Room() { Name = "03", WestDoor = true, SouthDoor = true });
+
+building.InsertRoom(1, 0, new Room() { Name = "10" });
+building.InsertRoom(1, 1, new Room() { Name = "11", NorthDoor = true,EastDoor = true });
+building.InsertRoom(1, 2, new Room() { Name = "12", WestDoor= true, NorthDoor = true });
+building.InsertRoom(1, 3, new Room() { Name = "13", NorthDoor= true, SouthDoor = true });
+
+building.InsertRoom(2, 0, new Room() { Name = "20" });
+building.InsertRoom(2, 1, new Room() { Name = "21" });
+building.InsertRoom(2, 2, new Room() { Name = "22", EastDoor = true });
+building.InsertRoom(2, 3, new Room() { Name = "23", NorthDoor = true, WestDoor = true, SouthDoor = true  });
+
+building.InsertRoom(3, 0, new Room() { Name = "30" });
+building.InsertRoom(3, 1, new Room() { Name = "31" });
+building.InsertRoom(3, 2, new Room() { Name = "32" });
+building.InsertRoom(3, 3, new Room() { Name = "33", NorthDoor = true });
+
+------------------------------------------------------------------------------------------------------------------------------------
+Test Data 5 : Multiple doors open in a room scenario 
+				0,0			--> South, West doors are opened
+				0,1 .. 0,2  --> West,East, South doors are opened
+				0,3			--> West, South doors are opened
+				1,0		    --> North, South, East doors are opened  
+				1,1 .. 1,3  --> All doors are opened except East door
+				2,0		    --> North, South, East doors are opened  
+				2,1 .. 2,3  --> All doors are opened except
+				3,0			--> North, East Doors are opened
+				3,1 .. 3,2  --> All the doors are opened except southdoors
+				3,3		    -->West and North doors are opened
+				--> Path exists
+			
+ Building building = new Building(4, 4);
+            building.InsertRoom(0, 0, new Room() { Name = "00", SouthDoor = true, EastDoor = true});
+            building.InsertRoom(0, 1, new Room() { Name = "01", WestDoor = true,SouthDoor = true, EastDoor = true});
+            building.InsertRoom(0, 2, new Room() { Name = "02", WestDoor = true, SouthDoor = true, EastDoor = true });
+            building.InsertRoom(0, 3, new Room() { Name = "03", WestDoor = true, SouthDoor = true});
+
+            building.InsertRoom(1, 0, new Room() { Name = "10", NorthDoor = true, SouthDoor = true, EastDoor = true });
+            building.InsertRoom(1, 1, new Room() { Name = "11", NorthDoor = true,SouthDoor= true, WestDoor= true, EastDoor = true });
+            building.InsertRoom(1, 2, new Room() { Name = "12", NorthDoor = true, SouthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(1, 3, new Room() { Name = "13", NorthDoor = true, SouthDoor = true, WestDoor = true});
+
+            building.InsertRoom(2, 0, new Room() { Name = "20", NorthDoor = true, SouthDoor = true, EastDoor = true });
+            building.InsertRoom(2, 1, new Room() { Name = "21", NorthDoor = true, SouthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(2, 2, new Room() { Name = "22", NorthDoor = true, SouthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(2, 3, new Room() { Name = "23", NorthDoor = true, WestDoor = true, SouthDoor = true  });
+
+            building.InsertRoom(3, 0, new Room() { Name = "30", NorthDoor = true, EastDoor = true });
+            building.InsertRoom(3, 1, new Room() { Name = "31",  NorthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(3, 2, new Room() { Name = "32", NorthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(3, 3, new Room() { Name = "33", NorthDoor = true, WestDoor = true});

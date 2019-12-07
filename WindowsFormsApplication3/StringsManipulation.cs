@@ -916,6 +916,8 @@ namespace WindowsFormsApplication3
              
              Input = pwwkew
 
+             abcac
+
              */
             n = s.Length; ans = 0;
             Dictionary<char, int> index = new Dictionary<char, int>();
@@ -2350,7 +2352,7 @@ namespace WindowsFormsApplication3
                     result.AddRange(this.GetPermuationOfGivenString(input.Substring(0, i) + input.Substring(i+1), currentString + currentChar));
                 }
                 vistedChar[currentChar - 'a'] = true;
-            }            
+            }
 
             return result;
         }
@@ -2565,7 +2567,7 @@ namespace WindowsFormsApplication3
                 return -1;
             }
 
-            //  input = "mississippi", findIndex = "issipi"  i = 5 index = 1 j = 4
+            //  input = "mississippi", findIndex = "issipi"  i = 1 index = 1 j = 1
             if (findIndex.Length == 0) return 0;
             int index = -1;
             for (int i = 0, j = 0; i < input.Length; i++ )
@@ -2574,9 +2576,9 @@ namespace WindowsFormsApplication3
                 {
                     if (index == -1)
                     {
-                        index = i;
+                        index = i; 
                     }
-                    j++;
+                    j++; 
                     if (j == findIndex.Length) return index;
                 }
                 else
@@ -2823,9 +2825,6 @@ namespace WindowsFormsApplication3
 
         private void btn_Partial_String_Search_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            MessageBox.Show($"print i {i}");
-
             /* 
              
                 Note : I have considered case senstivity in my solution if in case we don't want to consider case senstivity we can use ToLower function and 

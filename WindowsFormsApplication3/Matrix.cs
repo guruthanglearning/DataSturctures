@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication3
 {
+    
     public partial class Matrix : Form
     {
         struct HeapNode
@@ -19,7 +20,7 @@ namespace WindowsFormsApplication3
             public int column;
         }
 
-
+    
         public Matrix()
         {
             InitializeComponent();
@@ -485,7 +486,7 @@ namespace WindowsFormsApplication3
 
         private bool IsMazeFoundExists(int[,] input, int r, int c)
         {
-            if ((r == 0 || r == input.GetLength(0) - 1 || c == 0 || c == input.GetLength(0) - 1) && input[r, c] == 0)
+            if ((r == 0 || r == input.GetLength(0) - 1 || c == 0 || c == input.GetLength(0) - 1) && input[r, c] == 1)
             {
                 return true;
             }
@@ -494,13 +495,180 @@ namespace WindowsFormsApplication3
 
         private bool IsMazeWayExists(int[,] input, int r, int c,  bool[,] visited)
         {
-            if (r >=0 && r < input.GetLength(0) && c >=0 && c < input.GetLength(1) && input[r,c] == 0 && !visited[r,c])
+            if (r >=0 && r < input.GetLength(0) && c >=0 && c < input.GetLength(1) && input[r,c] == 1 && !visited[r,c])
             {
                 return true;
             }
             return false;
         }
 
+        private void btn_Navigate_from_North_West_to_South_East_of_the_building_Click(object sender, EventArgs e)
+        {
+            /*
+             
+            Building is a grid of n*m rooms each room has a door on each of the four walls a door is either 
+            open or closed given a configuration of each door being open or close, starting from north-west 
+            corner of the building, figure out if there is a way to reach the south-east 
 
+                Time Complexity : O(N*M)
+                Space Complexity: O(log N)  
+                
+            Refer : Additional test data in WindowsFormsApplication3\Data\PathFromNWToSEOf_A_Building.txt
+             */
+
+
+            Building building = new Building(4, 4);
+            building.InsertRoom(0, 0, new Room() { Name = "00", SouthDoor = true, EastDoor = true});
+            building.InsertRoom(0, 1, new Room() { Name = "01", WestDoor = true,SouthDoor = true, EastDoor = true});
+            building.InsertRoom(0, 2, new Room() { Name = "02", WestDoor = true, SouthDoor = true, EastDoor = true });
+            building.InsertRoom(0, 3, new Room() { Name = "03", WestDoor = true, SouthDoor = true});
+
+            building.InsertRoom(1, 0, new Room() { Name = "10", NorthDoor = true, SouthDoor = true, EastDoor = true });
+            building.InsertRoom(1, 1, new Room() { Name = "11", NorthDoor = true,SouthDoor= true, WestDoor= true, EastDoor = true });
+            building.InsertRoom(1, 2, new Room() { Name = "12", NorthDoor = true, SouthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(1, 3, new Room() { Name = "13", NorthDoor = true, SouthDoor = true, WestDoor = true});
+
+            building.InsertRoom(2, 0, new Room() { Name = "20", NorthDoor = true, SouthDoor = true, EastDoor = true });
+            building.InsertRoom(2, 1, new Room() { Name = "21", NorthDoor = true, SouthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(2, 2, new Room() { Name = "22", NorthDoor = true, SouthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(2, 3, new Room() { Name = "23", NorthDoor = true, WestDoor = true, SouthDoor = true  });
+
+            building.InsertRoom(3, 0, new Room() { Name = "30", NorthDoor = true, EastDoor = true });
+            building.InsertRoom(3, 1, new Room() { Name = "31",  NorthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(3, 2, new Room() { Name = "32", NorthDoor = true, WestDoor = true, EastDoor = true });
+            building.InsertRoom(3, 3, new Room() { Name = "33", NorthDoor = true, WestDoor = true});
+            
+            Console.WriteLine($"Path {(building.IsPathExists() ? "" : "does not") } exists from North West to South East of the building");
+
+
+        }
+
+        public class Room
+        {
+            public string Name;
+            public bool NorthDoor;
+            public bool SouthDoor;
+            public bool WestDoor;
+            public bool EastDoor;
+        }
+
+        public class Building
+        {
+            Room[,] rooms;
+
+            public Building(int row, int column)
+            {
+                rooms = new Room[row, column];
+            }
+
+            /// <summary>
+            /// Adding room into the building
+            /// </summary>
+            /// <param name="row"></param>
+            /// <param name="column"></param>
+            /// <param name="room"></param>
+            public void InsertRoom(int row, int column, Room room)
+            {
+                if (row >= 0 && row < rooms.GetLength(0) && column >= 0 && column < rooms.GetLength(1))
+                {
+                    rooms[row, column] = room;
+                }
+            }
+
+
+            /// <summary>
+            /// This Method checks for the path existenance from NorthWest to South East of the building 
+            /// </summary>
+            /// <returns></returns>
+            public bool IsPathExists()
+            {
+
+                if (rooms == null && rooms[0, 0] == null)
+                {
+                    throw new Exception("North West room is null in the building hence can't able to traverse");
+                }
+
+                // Traversing through Breadth First Algorithm. I have used Point class here to capture Row and Colum 
+                // of the building rooms. I would have also used custom class by having row and column as an property but its going to be similar
+                // to point class hence used Point class here.
+                Queue<Point> que = new Queue<Point>();
+                que.Enqueue(new Point() { X = 0, Y = 0 });
+
+                int r = 0; int c = 0;
+
+                int rLength = rooms.GetLength(0); //Gets row length of the multidimensional array
+                int cLength = rooms.GetLength(1); //Gets column length of the multidimensional array
+
+                bool[,] visited = new bool[rLength, cLength];
+                Room room;
+                Point rowColum;
+                while (que.Count > 0)
+                {
+                    rowColum = que.Dequeue();
+                    r = rowColum.X; c = rowColum.Y;
+                    room = rooms[r, c];
+
+                    if (!visited[r, c])
+                    {
+                        if ((r == 0 && room.NorthDoor) ||
+                                (r == rLength - 1 && room.SouthDoor) ||
+                                (c == 0 && room.WestDoor) ||
+                                (c == cLength - 1 && room.EastDoor)
+                            ) // I have code like If any door is opened that leads outside of the building then no path exists from NW to SE
+                        {
+                            return false;
+                        }
+                        else if (r == rLength - 1 && c == cLength - 1)
+                        {
+                            return true; //This determines there is path from NW to SE of the building
+                        }
+                        visited[r, c] = true;
+                        this.FindPathToNextRoom(r, c, room, que, visited);
+
+                    }
+                }
+                return false;
+            }
+
+
+            /// <summary>
+            /// Traverse and finds the path to the next room
+            /// </summary>
+            /// <param name="r"></param>
+            /// <param name="c"></param>
+            /// <param name="room"></param>
+            /// <param name="que"></param>
+            private void FindPathToNextRoom(int r, int c, Room room, Queue<Point> que, bool[,] visited)
+            {
+
+                if (room == null || rooms == null || que == null)
+                {
+                    return;
+                }
+
+                int rLength = rooms.GetLength(0);
+                int cLength = rooms.GetLength(1);
+
+                if (room.NorthDoor && r - 1 >= 0 && r - 1 < rLength && rooms[r - 1, c].SouthDoor && !visited[r - 1, c])
+                {
+                    que.Enqueue(new Point() { X = r - 1, Y = c });
+                }
+
+                if (room.SouthDoor && r + 1 >= 0 && r + 1 < rLength && rooms[r + 1, c].NorthDoor && !visited[r + 1, c])
+                {
+                    que.Enqueue(new Point() { X = r + 1, Y = c });
+                }
+
+                if (room.WestDoor && c - 1 >= 0 && c - 1 < cLength && rooms[r, c - 1].EastDoor && !visited[r, c - 1])
+                {
+                    que.Enqueue(new Point() { X = r, Y = c - 1 });
+                }
+
+                if (room.EastDoor && c + 1 >= 0 && c + 1 < cLength && rooms[r, c + 1].WestDoor && !visited[r, c + 1])
+                {
+                    que.Enqueue(new Point() { X = r, Y = c + 1 });
+                }
+            }
+        }
     }
 }

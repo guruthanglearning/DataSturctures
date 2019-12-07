@@ -165,11 +165,7 @@ namespace WindowsFormsApplication3
             }
             Array.Resize(ref buffer, insert + 1);
 
-            while (insert < buffer.Length - 1)
-            {
-                insert++;
-                buffer[insert] = 0;
-            }
+    
 
             MessageBox.Show(string.Join(",", buffer));
         }
@@ -325,8 +321,7 @@ namespace WindowsFormsApplication3
         }
 
         public string IntToBinaryString(int number)
-        {
-            const int mask = 1;
+        { 
             var binary = string.Empty;
             /*
                 60 ->30->15->7->3->
@@ -344,12 +339,8 @@ namespace WindowsFormsApplication3
                     2|7  - 1
                     2|3  - 1
                     1|1
-
-
                  */
-
-
-                binary = (number & mask) + binary;
+                binary = (number & 1) + binary;
                 number = number >> 1;
             }
 
@@ -532,7 +523,6 @@ namespace WindowsFormsApplication3
             int i, j, k, temp;
             /* move i-th values of blocks 
                  i = 0, j= 5, d = 6,  k = j + d = 0, temp = arr[i] = 1
-
                          ---------------------------
                          0     1   2   3   4   5   6
                          ---------------------------
@@ -546,13 +536,11 @@ namespace WindowsFormsApplication3
                          3     4   5   6   7   6   2    i = 0, j= 5, d = 2,  k = j + d = 7 (7-7 = 0, k = i break), temp = arr[i] = 1
                          3     4   5   6   7   6   2    i = 0, j= 5, d = 2,  k = j + d = 7 (7-7 = 0, k = i break), temp = arr[i] = 1
                */
-
             /* Instead of moving one by one, divide the array in different sets where number of sets is equal to GCD of n and d and move the elements within sets.             
                If GCD is 1 as is for the above example array(n = 7 and d = 2) */
             int max = this.GCD(d, n);
             for (i = 0; i < max; i++)
             {
-
                 temp = arr[i];
                 j = i;
                 while (1 != 0)
@@ -722,6 +710,7 @@ namespace WindowsFormsApplication3
                     {
                         maxLeft = Math.Max(A[i - 1], B[j - 1]);
                     }
+
                     if ((m + n) % 2 == 1)
                     {
                         return maxLeft;
@@ -772,12 +761,18 @@ namespace WindowsFormsApplication3
                 int[] nums1 = new int[] { 2, 3, 4, 5 };
                 int[] nums2 = new int[] { 1, 2, };
 
+                int[] nums1 = new int[] { 2, 3, 4, 5 };
+                int[] nums2 = new int[] { };
+
+                int[] nums1 = new int[] { };
+                int[] nums2 = new int[] { 1, 2, };
+
+
             */
 
-
-            //int[] nums1 = new int[] { 2, 3, 4, 5 };
-            int[] nums1 = new int[] { };
+            int[] nums1 = new int[] { 2, 3, 4, 5 };
             int[] nums2 = new int[] { 1, 2, };
+
 
             MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
 
@@ -799,9 +794,7 @@ namespace WindowsFormsApplication3
                         |___|___|___|___|____|
                     His   1   2	  4	  2	   1
                     Pos   0   1   2   3    4
-            */
-
-
+            */            
             int[] heights = new int[] { 1, 2, 4, 2, 1 };
             int tempPos = 0;
             int tempHist = 0;
@@ -1002,7 +995,7 @@ namespace WindowsFormsApplication3
         }
 
         // Utility function to find ceiling of r in arr[l..h]
-        int FindCeil(int[] arr, int r, int l, int h)
+        int FindCeil(int[] arr, int r)
         {
             /*
              Given a sorted array and a value x, the ceiling of x is the smallest element in array greater than or equal to x, 
@@ -1019,7 +1012,7 @@ namespace WindowsFormsApplication3
             r = 30, l=0, h = 0
             mid = 0
             */
-
+            int l = 0, h = arr.Length - 1;
             int mid;
             while (l < h)
             {
@@ -1066,7 +1059,7 @@ namespace WindowsFormsApplication3
             int r = (random.Next(1, prefix[n - 1]) % prefix[n - 1]) + 1; // random.Next(1, prefix[n - 1]); 
 
             // Find index of ceiling of r in prefix array
-            int indexc = FindCeil(prefix, r, 0, n - 1);
+            int indexc = FindCeil(prefix, r);
             return arr[indexc];
         }
 
@@ -1277,11 +1270,11 @@ namespace WindowsFormsApplication3
             //int[] input = new int[] { 4};
             //int[] input = new int[] { };
             //int[] input = new int[] { 3,2,2,3 }; //3
-            int[] input = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+            //int[] input = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+            int[] input = new int[] { 0, 1, 3,4,5,6 };
             int removeElement = 2;
             int index = -1;
             int i = 0;
-            int arraySize = 0;
             for (i = 0; i < input.Length; i++)
             {
                 // index = 5 i = 7
@@ -1298,10 +1291,10 @@ namespace WindowsFormsApplication3
 
             if (index > 0)
             {
-                arraySize = index;
+                Array.Resize(ref input, index);
             }
 
-            Array.Resize(ref input, arraySize);
+
 
             MessageBox.Show(string.Join(",", input));
         }
@@ -1403,7 +1396,7 @@ namespace WindowsFormsApplication3
                Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of 
                money you can rob tonight without alerting the police.             
 
-               Time Complexity is O(N)
+               Time Complexity is O(N)   
                Space Complexity is O(1)
            */
             int[][] inputs = new int[7][];
@@ -1435,13 +1428,6 @@ namespace WindowsFormsApplication3
 
         private void btn_Array_Puzzle_1_Click(object sender, EventArgs e)
         {
-
-            Queue<int> q = new Queue<int>();
-            List<int> l = new List<int>();
-
-            q.Enqueue(1);
-            q.Enqueue(2);
-            l.AddRange(q);
 
             /* https://www.geeksforgeeks.org/product-array-puzzle-set-2-o1-space/
              
@@ -1501,7 +1487,6 @@ namespace WindowsFormsApplication3
                     2 : 3
                     3 : 4
                     4 : 5
-
 
                      p
                      0 : 1  t : 1
@@ -1611,7 +1596,7 @@ namespace WindowsFormsApplication3
 
              */
 
-            //Wrong solution revit
+            //Wrong solution revisit
 
             StringBuilder result = new StringBuilder();
 
@@ -1936,7 +1921,7 @@ namespace WindowsFormsApplication3
                 int right = 0;
                 for (int i = 0; i < input.Length; i++) 
                 {
-                    // i = 6 previous = 4 front = 6 distance = 2 left = 1 right = 6
+                    // i = 5 previous = 4 front = 6 distance = 2 left = 1 right = 1
                     if (input[i] == 1)
                     {
                         previous = i; 
@@ -2282,6 +2267,7 @@ namespace WindowsFormsApplication3
                     result.Append($"The peak index is -1 for the given int array {string.Join(" ", input)} \n");
                     continue;
                 }
+
                 //-4, -3, -2, -1, 1, 2, 3, 0  
                 while (l < r)
                 {
@@ -2402,7 +2388,8 @@ namespace WindowsFormsApplication3
              
                 NEED TO COMPLETE
 
-                Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.
+                Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. 
+                Find the two elements that appear only once.
 
                 Example:
                 Input:  [1,2,1,3,2,5]
@@ -2766,7 +2753,7 @@ namespace WindowsFormsApplication3
 
                 1. find the LCM of all the integers of array A.
                 2. find the GCD of all the integers of array B.
-                3. Count the number of multiples of LCM that evenly divides the GCD.
+                3. Count the number of multiples (ie 2) of LCM that evenly divides the GCD.
 
               Time Complexity : O(nlogn)
               */
@@ -2993,12 +2980,14 @@ namespace WindowsFormsApplication3
 
             /*
                 Refered : https://www.geeksforgeeks.org/count-pairs-in-array-whose-sum-is-divisible-by-k/
+                https://www.geeksforgeeks.org/count-number-of-pairs-in-array-having-sum-divisible-by-k-set-2/
                 https://www.hackerrank.com/challenges/divisible-sum-pairs/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
                 Time Complexity : O(N)
                 Space Complexity : O(1)
             */
             StringBuilder result = new StringBuilder();
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 2, 1, 7, 5, 3 }, find = 4 });
             inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 2, 6, 1 }, find = 4 });
             inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 2, 6, 1, 2 }, find = 3 });
             inputs.Add(new ArrayAndValue() { input = new int[] { 5, 9, 10, 7, 4 }, find = 2 });
@@ -3011,21 +3000,22 @@ namespace WindowsFormsApplication3
                 int[] fr = new int[input.find];
                 int k = input.find;
                 int sum = 0;
-                for(int i = 0; i < inArray.Length; i++)
+                int r = 0;
+                for (int i = 0; i < inArray.Length; i++)
                 {
-                    fr[inArray[i] % k]++; 
+                    r = inArray[i] % k;
+                    if (r != 0)
+                    {
+                        sum += fr[k - r];                        
+                    }
+                    else
+                    {
+                        sum += fr[0];
+                    }
+
+                    fr[r]++;
+
                 }
-
-                sum = fr[0] * ((fr[0] - 1) / 2);
-
-                for(int i = 1; i < k /2 && i != k/2; i++)
-                {
-                    sum += fr[i] * (fr[k - 1]);
-                }
-
-                if (k % 2 == 0)
-                    sum += ((fr[k / 2] * (fr[k / 2] - 1)) / 2);
-
                 result.AppendLine($"There are {sum} pairs which are divisible by {k} from the given array {string.Join(" ", inArray)}");
 
 
@@ -3102,6 +3092,261 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Best_Time_to_Buy_and_Sell_Stock_Click(object sender, EventArgs e)
+        {
+            /*
+                Say you have an array for which the ith element is the price of a given stock on day i.
 
+                If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+
+                Note that you cannot sell a stock before you buy one.
+
+                Example 1:
+
+                Input: [7,1,5,3,6,4]
+                Output: 5
+                Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+                             Not 7-1 = 6, as selling price needs to be larger than buying price.
+                Example 2:
+
+                Input: [7,6,4,3,1]
+                Output: 0
+                Explanation: In this case, no transaction is done, i.e. max profit = 0.
+
+                Time Complexity : O(n)
+                Space Complexity: Constact space;
+
+            */
+
+            StringBuilder builder = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] {7, 1, 5, 3, 6, 4 }); //5
+            inputs.Add(new int[] { 3, 2, 6, 5, 0, 3 }); //4
+            inputs.Add(new int[] { 2, 4, 1 }); //2
+            inputs.Add(new int[] { 1, 2 }); //1
+            inputs.Add(new int[] { 7, 6, 4, 3, 1 }); //0
+
+            foreach(int[] input in inputs)
+            {
+                builder.AppendLine($"The max stock price is {this.MaxProfit(input)} for the given input {(string.Join(" ", input))}");
+            }
+
+            MessageBox.Show(builder.ToString());
+    }
+
+        private int MaxProfit(int[] prices)
+        {
+            if (prices.Length == 0 || prices.Length == 1)
+            {
+                return 0;
+            }
+
+
+            int pmax = 0;
+            int pmin = 0;
+            int p = 0;
+            int c = 0;
+            int min = prices[0];
+            int max = min;
+
+            for (int i = 1; i < prices.Length; i++)
+            {
+
+                if (prices[i] < min)
+                {
+                    if ((pmax - pmin) < (max - min))
+                    {
+                        pmax = max;
+                        pmin = min;
+                    }
+                    min = prices[i];
+                    max = min;
+                }
+                else if (prices[i] > max)
+                {
+                    max = prices[i];
+                }
+            }
+
+            p = pmax - pmin;
+            c = max - min;
+
+            return p > c ? p : c;
+        }
+
+        private void btn_Socks_Merchant_Click(object sender, EventArgs e)
+        {
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 10, 20, 20, 10, 10, 30, 50, 10, 20 });
+            inputs.Add(new int[] { 6, 5, 2, 3, 5, 2, 2, 1, 1, 5, 1, 3, 3, 3, 5 });
+            inputs.Add(new int[] { 4, 5, 5, 5, 6, 6, 4, 1, 4, 4, 3, 6, 6, 3, 6, 1, 4, 5, 5, 5 });
+ 
+
+            foreach(var input in inputs)
+            {
+                result.AppendLine($"There are {this.sockMerchant(input)} pairs available for the given input {string.Join(" ", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int sockMerchant( int[] ar)
+        {
+            int n = ar.Length;
+            if (n == 0 || n == 1)
+            {
+                return 0;
+            }
+
+            HashSet<int> dic = new HashSet<int>();
+            int counter = 0;
+
+            foreach (int i in ar)
+            {
+                if (dic.Contains(i))
+                {
+                    counter++;
+                    dic.Remove(i);
+                }
+                else
+                {
+                    dic.Add(i);
+                }
+            }
+
+            return counter;
+
+        }
+
+        private void btn_Steps_To_Make_0_from_binary_Click(object sender, EventArgs e)
+        {
+
+            /*
+            9.)A non-negative integer variable V is given. There are two actions available that modify its value: 
+                • if V is odd, subtract 1 from it; 
+                • if V is even, divide it by 2. 
+
+                These actions are performed until the value of V becomes 0.
+                For example, if V initially contains value 28, it will become 0 after seven steps: 7
+                • V contains value 28, which is even: divide by 2 and obtain 14; 
+                • V contains value 14, which is even: divide by 2 and obtain 7; 
+                • V contains value 7, which is odd: subtract 1 and obtain 6; 
+                • V contains value 6, which is even: divide by 2 and obtain 3; 
+                • V contains value 3, which is odd: subtract 1 and obtain 2; 
+                • V contains value 2, which is even: divide by 2 and obtain 1; 
+                • V contains value 1, which is odd: subtract 1 and obtain 0. 
+
+                Write a function: 
+                class Solution 
+                { 
+	                public int solution(string S)
+	                {
+	                }
+                } 
+                that, given a zero-indexed string S consisting of N characters containing a binary representation of the initial value of variable V, 
+                returns the number of steps after which the value o V will become 0, as described above. 
+
+                For example, given string S = "011100" the function should return 7, because string S represents the number 28 and 28 becomes 0 after seven steps, 
+                as explained above. 
+                Write an efficient algorithm for the following assumptions: 
+                • N is an integer within the range [1..1,000,000]; 
+                • string S consists only of the characters "0" and/or "1"; 
+                • the binary representation is big-endian, i.e. the first character of string S corresponds to the most significant bit;
+                • the binary representation may contain leading zeros. 
+ 
+
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("011100"); //28  and 7 steps to make it 0
+            inputs.Add(""); //0 steps 
+            inputs.Add("1111111111111111111111111111111‬"); //int.MaxValue 
+            inputs.Add("10000000000000000000000000000000"); //int.MaxValue + 1 and 0 steps 
+            inputs.Add("‭1111111111111111111111111111111110000000000000000000000000000000‬"); //int.MinValue and 0 steps
+
+            int steps = 0;
+            int val = 0;
+            foreach(string input in inputs)
+            {
+                steps = 0;
+                val = 0;                
+                if (!string.IsNullOrEmpty(input) && input.Length > 0 && input.Length <= 32)
+                {
+                    val = this.ConvertBinaryToInt(input);
+                    if (val > 0)
+                    {
+                        steps = this.solution(val);
+                    }
+                }
+                result.AppendLine($"There are {steps} to make 0 for the given binary input {input} and its integer is {val}");
+                
+            }
+
+
+            
+            MessageBox.Show(result.ToString());
+        }
+
+
+        private int ConvertBinaryToInt(string input)
+        {
+            long result = 0 ;
+            if (string.IsNullOrEmpty(input))
+            {
+                return -1;
+            }
+
+            int power = 0;
+            int counter = input.Length -1;
+            int val = 0;
+            long twoPowerValue = 0;
+            while(counter >= 0)
+            {
+                val = input[counter] - '0';
+                if (!(val >=0 && val < 2))
+                {
+                    return -1;
+                }
+
+                twoPowerValue = (long)Math.Pow(2.0, power);
+
+                if (twoPowerValue > int.MaxValue)
+                {
+                    result = -1;
+                    break;
+                }
+
+                result += (val * (int)twoPowerValue);                
+                power++;
+                counter--;
+            }
+            
+            return (int)result;
+        }
+
+        private int solution(int input)
+        {
+            int step = 0;
+                    
+            int val = input;
+            while (val != 0)
+            {
+                if ((val %2) == 1)
+                {
+                    val--;
+                }
+                else
+                {
+                    val = val / 2;
+                }
+                step++;
+            }                
+            
+            return step;
+        }
     }
 }
