@@ -36,6 +36,8 @@ namespace WindowsFormsApplication3
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Stack t = new Stack();
+            
 
             /*
                                        10
@@ -827,8 +829,7 @@ namespace WindowsFormsApplication3
             
             Node temp;
             Queue<Node> q = new Queue<Node>();
-
-            int max = 0;
+            
             int min = 0;
 
             q.Enqueue(node);
@@ -840,23 +841,13 @@ namespace WindowsFormsApplication3
                 temp = q.Dequeue();
 
                 if (temp == null)
-                {
-                    if (min == 0)
-                    {
-                        min = 1;
-                        max = 1;
-                    }
-                    else
-                    {
-                        min = max;
-                        max++;
-                    }
-
+                {                    
                     if (q.Count == 0)
                     {
                         break;
                     }
 
+                    min++;
                     q.Enqueue(null);
                 }
                 else
@@ -870,6 +861,12 @@ namespace WindowsFormsApplication3
                     {
                         q.Enqueue(temp.right);
                     }
+                        
+                    if (temp.left == null && temp.right == null)
+                    {
+                        min++;
+                        break;
+                    }                
                 }
             }
 
@@ -1001,6 +998,17 @@ namespace WindowsFormsApplication3
               \
                \
                 2
+
+            The Algorithm is divided into two cases on the basis of right subtree of the input node being empty or not.
+
+            Input: node, root // node is the node whose Inorder successor is needed.
+            output: succ // succ is Inorder successor of node.
+
+            1) If right subtree of node is not NULL, then succ lies in right subtree. Do following.
+            Go to right subtree and return the node with minimum key value in right subtree.
+            2) If right sbtree of node is NULL, then succ is one of the ancestors. Do following.
+            Travel up using the parent pointer until you see a node which is left child of it’s parent. The parent of such a node is the succ.
+
          */
 
 
@@ -2250,6 +2258,7 @@ namespace WindowsFormsApplication3
             {
                 return null;
             }
+
             int mid = (start + end) / 2;
             datas.Append(data[mid].ToString() + ",");
             Node node = new Node();
@@ -2263,9 +2272,6 @@ namespace WindowsFormsApplication3
 
         private void button30_Click(object sender, EventArgs e)
         {
-
-
-
 
 
             // Convert the array to a base 64 string.
@@ -2566,9 +2572,6 @@ namespace WindowsFormsApplication3
             }
 
             MessageBox.Show(isDeadEnd ? "Tree is dead end" : "Tree is not dead end");
-
-
-
         }
 
 

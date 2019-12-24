@@ -124,7 +124,11 @@ namespace WindowsFormsApplication3
              C->B,D
              D->B,C
              E->F
-             F->E                                                                                          
+             F->E                         
+            
+            Graph --> A
+                      E
+                      F
           */
 
             if (graph != null)
@@ -155,7 +159,9 @@ namespace WindowsFormsApplication3
         
         private void btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node_Click(object sender, EventArgs e)
         {
-            /* Job B has to start after Job A completes
+            /* 
+            
+            Job B has to start after Job A completes
                A->B
                F->B
                E->A
@@ -340,6 +346,24 @@ namespace WindowsFormsApplication3
 
         private void btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight_Click(object sender, EventArgs e)
         {
+
+            /*
+                						A
+                                     /  |  \
+					                /	|	\
+				                   1	2	 3
+				                  /		|	  \
+				                 B		C	   D
+				                /		|
+			                   8		4
+			                  /			|
+			                 G---6------F
+		                   /   \
+		                  7		10
+		                 /		 \
+		                H 		  M 
+             
+             */
             GraphWeight A = new GraphWeight() { Data = "A" };
             GraphWeight B = new GraphWeight() { Data = "B" };
             GraphWeight C = new GraphWeight() { Data = "C" };

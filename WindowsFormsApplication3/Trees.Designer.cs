@@ -35,6 +35,7 @@
             this.btn_Check_Tree_is_Balanced = new System.Windows.Forms.Button();
             this.btn_Find_longest_Path_in_a_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Path_Sum = new System.Windows.Forms.Button();
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -107,11 +108,22 @@
             this.btn_Path_Sum.UseVisualStyleBackColor = true;
             this.btn_Path_Sum.Click += new System.EventHandler(this.btn_Path_Sum_Click);
             // 
+            // btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input
+            // 
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Location = new System.Drawing.Point(12, 334);
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Name = "btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input";
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Size = new System.Drawing.Size(303, 52);
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.TabIndex = 7;
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Text = "Remove Node from Binary Tree if Node is Less than the given input";
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.UseVisualStyleBackColor = true;
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Click += new System.EventHandler(this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input);
             this.Controls.Add(this.btn_Path_Sum);
             this.Controls.Add(this.btn_Find_longest_Path_in_a_Binary_Tree);
             this.Controls.Add(this.btn_Check_Tree_is_Balanced);
@@ -134,5 +146,6 @@
         private System.Windows.Forms.Button btn_Check_Tree_is_Balanced;
         private System.Windows.Forms.Button btn_Find_longest_Path_in_a_Binary_Tree;
         private System.Windows.Forms.Button btn_Path_Sum;
+        private System.Windows.Forms.Button btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input;
     }
 }

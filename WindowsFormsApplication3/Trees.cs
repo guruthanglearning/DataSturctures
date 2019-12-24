@@ -840,5 +840,73 @@ namespace WindowsFormsApplication3
             return false;
         }
 
+        private void btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input_Click(object sender, EventArgs e)
+        {
+            /*
+            
+            Given a binary tree and an integer value 12 delete the nodes which are smaller than the given integer value 12.
+            For example 6 will be deleted 4 is not deleted since 20 which is child on 4 which smaller than given integer value 
+            should not be deleted.
+
+						    10
+					   /         \  
+                      /			  \
+					 4			  15	
+					/ \			 /	
+                   /   \		/
+				  6    20     1
+	
+
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            Node root = this.CreateBinaryTreeFromArray(new int?[] {10,4,15,6,20,1});
+            result.AppendLine("Before Deleting");
+            result.AppendLine(this.TreeTraverse(root));
+
+            this.RemoveNodeFromBinaryTreeLesserThanTheGivenValue(root, 12);
+
+            result.AppendLine("\nAfter Deleting");
+            result.AppendLine(this.TreeTraverse(root));
+
+
+        }
+
+
+        private void RemoveNodeFromBinaryTreeLesserThanTheGivenValue(Node root, int val)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            Stack<Node> s = new Stack<Node>();
+            Node current = root;
+
+            while(current!= null || s.Count > 0)
+            {
+
+                while (current != null)
+                {
+                    s.Push(current);
+                    current = current.left;
+                }
+
+                current = s.Pop();
+
+                if (current != null)
+                {
+                    if (current.left == null && current.right == null && current.data <= val)
+                    {
+                        current = null;
+                    }
+                    else
+                    {
+                        current = current.right;
+                    }
+                }
+            }
+        }
     }
 }

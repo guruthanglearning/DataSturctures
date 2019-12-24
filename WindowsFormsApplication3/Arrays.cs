@@ -2984,6 +2984,19 @@ namespace WindowsFormsApplication3
                 https://www.hackerrank.com/challenges/divisible-sum-pairs/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
                 Time Complexity : O(N)
                 Space Complexity : O(1)
+
+                Approach: In the previous post, an approach using hashing is discussed. In this article, 
+                another approach using hashing is discussed. The idea is to traverse the array, find (arr[i] % k) and 
+                keep track of these values in the hash.
+
+                The stepwise algorithm is:
+                
+                Find x = arr[i] % k.
+                This array element can be paired with array elements having mod value k-x. This count of array elements
+                is stored in hash. So add that count to answer.
+                Increment count for x in hash.
+                In case value of x is zero, then it can be paired only with elements having 0 mod value.
+
             */
             StringBuilder result = new StringBuilder();
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();

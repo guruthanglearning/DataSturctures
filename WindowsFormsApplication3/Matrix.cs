@@ -438,12 +438,18 @@ namespace WindowsFormsApplication3
                 result.AppendLine();
             }
 
-            MessageBox.Show($"Path for the maze {(this.DFSMaze(maze,3,2,visited) ? "" :" does not ")} exists");
+            MessageBox.Show($"Path for the maze {(this.DFSMaze(maze,0,3,visited) ? "" :" does not ")} exists");
         }
 
         private bool DFSMaze(int[,] input, int r, int c, bool[,] visited)
         {            
             
+            if (!this.IsMazeWayExists(input,r,c, visited))
+            {
+                return false;
+            }
+            
+
             Stack<Point> s = new Stack<Point>();
             s.Push(new Point() { X = r, Y = c });
 

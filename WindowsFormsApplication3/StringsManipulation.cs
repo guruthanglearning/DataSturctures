@@ -2317,15 +2317,16 @@ namespace WindowsFormsApplication3
                 https://www.geeksforgeeks.org/time-complexity-permutations-string/
              */
             List<string> inputs = new List<string>();
-            inputs.Add("abc");
-            inputs.Add("geek");
+            //inputs.Add("abc");
+            //inputs.Add("geek");
+            inputs.Add("aab");
             StringBuilder result = new StringBuilder();
             foreach(var input in inputs)
             {
                 result.Append($"The permutation for the given string {input} is {string.Join(" ", this.GetPermuationOfGivenString(input,string.Empty))} \n");
             }
             
-            MessageBox.Show(result.ToString() + $"\n called {counter}");
+            MessageBox.Show(result.ToString());
         }
 
         private List<string> GetPermuationOfGivenString(string input,string currentString)

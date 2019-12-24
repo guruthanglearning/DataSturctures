@@ -564,7 +564,7 @@
             // 
             // btn_Migratory_Birds
             // 
-            this.btn_Migratory_Birds.Location = new System.Drawing.Point(999, 225);
+            this.btn_Migratory_Birds.Location = new System.Drawing.Point(998, 225);
             this.btn_Migratory_Birds.Name = "btn_Migratory_Birds";
             this.btn_Migratory_Birds.Size = new System.Drawing.Size(357, 39);
             this.btn_Migratory_Birds.TabIndex = 48;

@@ -140,6 +140,9 @@ namespace WindowsFormsApplication3
                 steps[3]= 2  i = 3 totalNoOfWaysToClimbStep = 2
                 steps[4]= 3  i = 4 totalNoOfWaysToClimbStep = 3
                 steps[5]= 5  i = 5 totalNoOfWaysToClimbStep = 5
+
+               Time Complexity : O(N*m)
+               Space Complexity : O(N)
                 
              */
 
@@ -223,7 +226,7 @@ namespace WindowsFormsApplication3
             int rotateNumber = 0;
             int temp = 0;
             int pow = 0;
-            while(n > 0)
+            while(n > 0) //n = 255
             {
                 reminder = n % 10;
                 temp = this.GetRotateNumber(reminder);
@@ -471,7 +474,8 @@ namespace WindowsFormsApplication3
         {
             /*
                 https://www.hackerrank.com/challenges/day-of-the-programmer/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen             
-                In the Julian calendar, leap years are divisible by ; in the Gregorian calendar, leap years are either of the following:
+                In the Julian calendar, leap years are divisible by 4 ; in the Gregorian calendar, 
+                leap years are either of the following:
                 Divisible by 400.
                 Divisible by 4 and not divisible by 100.
              */
