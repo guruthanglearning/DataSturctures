@@ -528,6 +528,7 @@ namespace WindowsFormsApplication3
 
         private void ShiftUp(int[] input, int i)
         {
+            //20, 19, 15, 18, 17, 10, 12, 29
             if (i >= 0)
             {
                 int p = i / 2;

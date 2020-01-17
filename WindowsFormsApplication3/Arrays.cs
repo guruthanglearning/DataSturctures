@@ -20,6 +20,8 @@ namespace WindowsFormsApplication3
         }
 
         StringBuilder inputDisplayBuilder = new StringBuilder();
+        private int max;
+
         public Arrays()
         {
             InitializeComponent();
@@ -1921,7 +1923,8 @@ namespace WindowsFormsApplication3
                 int right = 0;
                 for (int i = 0; i < input.Length; i++) 
                 {
-                    // i = 5 previous = 4 front = 6 distance = 2 left = 1 right = 1
+                    //1, 0, 0, 0, 1, 0, 1
+                    // i = 6 previous = 6 front = 6 distance = 2 left = 1 right = 1
                     if (input[i] == 1)
                     {
                         previous = i; 
@@ -1955,10 +1958,11 @@ namespace WindowsFormsApplication3
 
                 Add one piece of fruit from this tree to your baskets.  If you cannot, stop.
                 Move to the next tree to the right of the current tree.  If there is no tree to the right, stop.
-                Note that you do not have any choice after the initial choice of starting tree: you must perform step 1, then step 2, then back to step 1, 
-                then step 2, and so on until you stop.
+                Note that you do not have any choice after the initial choice of starting tree: you must perform step 1, 
+                then step 2, then back to step 1, then step 2, and so on until you stop.
 
-                You have two baskets, and each basket can carry any quantity of fruit, but you want each basket to only carry one type of fruit each.
+                You have two baskets, and each basket can carry any quantity of fruit, but you want each basket to only 
+                carry one type of fruit each.
 
                 What is the total amount of fruit you can collect with this procedure?
 
@@ -2002,8 +2006,8 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             int last = 0;
             int secondLast = 0;
-            int lastMax = 0;
-            int secondLastMax = 0;
+            int Max = 0;
+            int secondMax = 0;
             int final = 0;
             int currentValue = 0;
             foreach (int[] input in inputs)
@@ -2022,14 +2026,14 @@ namespace WindowsFormsApplication3
                 currentValue = 0;
                 last = 0;
                 secondLast = 0;
-                lastMax = 0;
-                secondLastMax = 0;
+                max = 0;
+                secondMax = 0;
                 final = 0; //
                 for (int i = 0; i < input.Length; i++)
                 {
                     currentValue = input[i];
-                    lastMax = currentValue == last || currentValue == secondLast ? lastMax + 1 : secondLastMax + 1;
-                    secondLastMax = currentValue == secondLast ? secondLastMax + 1 : 1;
+                    max = currentValue == last || currentValue == secondLast ? max + 1 : secondMax + 1;
+                    secondMax = currentValue == secondLast ? secondMax + 1 : 1;
 
                     if (currentValue != secondLast)
                     {
@@ -2037,7 +2041,7 @@ namespace WindowsFormsApplication3
                         secondLast = currentValue;
                     }
 
-                    final = Math.Max(final, lastMax);
+                    final = Math.Max(final, max);
                 }
 
                 result.Append($"Longest subarray is {final} for the array {string.Join(" ", input)} \n");
@@ -2380,14 +2384,10 @@ namespace WindowsFormsApplication3
             return r + 1;
         }
 
-
-
         private void btn_Find_the_two_elements_that_appear_only_once_Click(object sender, EventArgs e)
         {
-            /*                
-             
-                NEED TO COMPLETE
-
+            /*                             
+               
                 Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. 
                 Find the two elements that appear only once.
 
@@ -2400,10 +2400,24 @@ namespace WindowsFormsApplication3
                 Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
                 https://leetcode.com/problems/single-number-iii/discuss/390157/Python-2-line-and-O(1)-space-solutions-with-explanation
             
+
+                Let us see an example. arr[] = {2, 4, 7, 9, 2, 4}
+                1) Get the XOR of all the elements.
+                     xor = 2^4^7^9^2^4 = 14 (1110)
+                2) Get a number which has only one set bit of the xor.   
+                   Since we can easily get the rightmost set bit, let us use it.
+                     set_bit_no = xor & ~(xor-1) = (1110) & ~(1101) = 0010
+                   Now set_bit_no will have only set as rightmost set bit of xor.
+                3) Now divide the elements in two sets and do xor of         
+                   elements in each set and we get the non-repeating 
+                   elements 7 and 9. Please see the implementation for this step.
+
             */
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
             inputs.Add(new int[8] { 2, 4, 6, 8, 10, 2, 6, 8 });
+            inputs.Add(new int[6] { 2, 4, 7, 9, 2, 4 });
+            inputs.Add(new int[8] { 19,20,21,21,20,19,18,17});
 
             foreach (var input in inputs)
             {
@@ -2425,14 +2439,22 @@ namespace WindowsFormsApplication3
                     becomes 2
                  */
 
-                y = xor & -xor; 
-                int val = 0;
+                int set_bit_no = xor & ~(xor - 1);
+                int x = 0; y = 0;
                 for (int i = 0; i < input.Length; i++)
                 {
-                    val = val ^ (y & input[i]);
+                    if ((input[i] & set_bit_no) > 0)
+                    {
+                        x = x ^ input[i];
+                    }
+                    else
+                    {
+                        y = y ^ input[i];
+                    }
+                    
                 }
 
-                result.AppendLine($"Two unique values are {val} and {val ^ xor} for the given array {string.Join(" ", input)}");
+                result.AppendLine($"Two unique values are {x} and {y} for the given array {string.Join(" ", input)}");
 
             }
 
@@ -2795,9 +2817,8 @@ namespace WindowsFormsApplication3
         }
 
         public int GCDForArray(int[] input)
-        {
-            int result = 0;
-            result = input[0];
+        {            
+            int result = input[0];
             for(int i = 1; i <input.Length; i++)
             {
                 result = this.GCD(result, input[i]);
@@ -2806,9 +2827,8 @@ namespace WindowsFormsApplication3
         }
 
         public int LCMForArray(int[] input)
-        {
-            int result = 0;
-            result = input[0];
+        {         
+            int result = input[0];
             for (int i = 1; i < input.Length; i++)
             {
                 result =  (result * input[i])/this.GCD(result, input[i]);
@@ -2869,7 +2889,7 @@ namespace WindowsFormsApplication3
                                    503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503, 503,
                                    503, 503 });
 
-            foreach (int[] input in inputs)
+            foreach (int[] input in inputs) // 10, 5, 20, 20, 4, 5, 2, 25, 1
             {
                 int[] returnRes = new int[2];
                 if (input.Length > 0)
@@ -3110,7 +3130,8 @@ namespace WindowsFormsApplication3
             /*
                 Say you have an array for which the ith element is the price of a given stock on day i.
 
-                If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+                If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), 
+                design an algorithm to find the maximum profit.
 
                 Note that you cannot sell a stock before you buy one.
 
@@ -3127,9 +3148,11 @@ namespace WindowsFormsApplication3
                 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
                 Time Complexity : O(n)
-                Space Complexity: Constact space;
+                Space Complexity: Constant space;
 
             */
+
+            
 
             StringBuilder builder = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
@@ -3154,7 +3177,6 @@ namespace WindowsFormsApplication3
                 return 0;
             }
 
-
             int pmax = 0;
             int pmin = 0;
             int p = 0;
@@ -3162,6 +3184,7 @@ namespace WindowsFormsApplication3
             int min = prices[0];
             int max = min;
 
+            // 7, 1, 5, 3, 6, 4
             for (int i = 1; i < prices.Length; i++)
             {
 
@@ -3189,6 +3212,13 @@ namespace WindowsFormsApplication3
 
         private void btn_Socks_Merchant_Click(object sender, EventArgs e)
         {
+
+            /*            
+                https://www.hackerrank.com/challenges/sock-merchant/problem
+                Time Complexity  : O(N)
+                Space Complexity : O(N)
+
+             */
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
             inputs.Add(new int[] { 10, 20, 20, 10, 10, 30, 50, 10, 20 });
@@ -3198,13 +3228,14 @@ namespace WindowsFormsApplication3
 
             foreach(var input in inputs)
             {
-                result.AppendLine($"There are {this.sockMerchant(input)} pairs available for the given input {string.Join(" ", input)}");
+                result.AppendLine($"There are  {this.sockMerchant(input)} pairs available for the given input {string.Join(" ", input)}");
+
             }
 
             MessageBox.Show(result.ToString());
 
         }
-
+   
         public int sockMerchant( int[] ar)
         {
             int n = ar.Length;
@@ -3218,7 +3249,7 @@ namespace WindowsFormsApplication3
 
             foreach (int i in ar)
             {
-                if (dic.Contains(i))
+                if (dic.Contains(i))  // Hashset.Contains is O(1) 
                 {
                     counter++;
                     dic.Remove(i);
@@ -3235,7 +3266,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Steps_To_Make_0_from_binary_Click(object sender, EventArgs e)
         {
-
+            //int.Parse("10",System.Globalization.NumberStyles.Number)
             /*
             9.)A non-negative integer variable V is given. There are two actions available that modify its value: 
                 • if V is odd, subtract 1 from it; 
@@ -3275,11 +3306,12 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<string> inputs = new List<string>();
+            long temp = int.MaxValue;
             inputs.Add("011100"); //28  and 7 steps to make it 0
             inputs.Add(""); //0 steps 
-            inputs.Add("1111111111111111111111111111111‬"); //int.MaxValue 
-            inputs.Add("10000000000000000000000000000000"); //int.MaxValue + 1 and 0 steps 
-            inputs.Add("‭1111111111111111111111111111111110000000000000000000000000000000‬"); //int.MinValue and 0 steps
+            inputs.Add(Convert.ToString(int.MaxValue,2)); //int.MaxValue             
+            inputs.Add(Convert.ToString(temp + 1, 2)); //int.MaxValue + 1 and 0 steps 
+            inputs.Add(Convert.ToString(int.MinValue, 2)); //int.MinValue and 0 steps
 
             int steps = 0;
             int val = 0;
@@ -3298,21 +3330,18 @@ namespace WindowsFormsApplication3
                 result.AppendLine($"There are {steps} to make 0 for the given binary input {input} and its integer is {val}");
                 
             }
-
-
             
             MessageBox.Show(result.ToString());
         }
 
 
         private int ConvertBinaryToInt(string input)
-        {
+        {            
             long result = 0 ;
             if (string.IsNullOrEmpty(input))
             {
                 return -1;
-            }
-
+            }            
             int power = 0;
             int counter = input.Length -1;
             int val = 0;
@@ -3360,6 +3389,77 @@ namespace WindowsFormsApplication3
             }                
             
             return step;
+        }
+
+        private void btn_Best_Time_to_Buy_and_Sell_Stock_II_Click(object sender, EventArgs e)
+        {
+            /*
+             Say you have an array for which the ith element is the price of a given stock on day i.
+
+            Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+
+            Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+
+            Example 1:
+
+            Input: [7,1,5,3,6,4]
+            Output: 7
+            Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+                         Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+            Example 2:
+
+            Input: [1,2,3,4,5]
+            Output: 4
+            Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+                         Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+                         engaging multiple transactions at the same time. You must sell before buying again.
+            Example 3:
+
+            Input: [7,6,4,3,1]
+            Output: 0
+            Explanation: In this case, no transaction is done, i.e. max profit = 0.
+              
+
+            Time Complexity : O(N) where N is the list of items in the given array
+            Space Complexity: Constanct space
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] {7, 1, 5, 3, 6, 4 }); //7
+            inputs.Add(new int[] { 1, 2, 3, 4, 5 });   //4
+            inputs.Add(new int[] { 7, 6, 4, 3, 1 });   //0
+      
+            foreach(int[] input in inputs)
+            {
+                result.AppendLine($"Max for profit is {this.MaxProfit_2(input)} for the given input {(string.Join(" ", input))}");
+            }
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int MaxProfit_2(int[] prices)
+        {
+            if (prices.Length == 0)
+            {
+                return 0;
+            }
+
+            int profit = 0;
+            int bought = prices[0];
+            int sell = 0;
+            for (int i = 1; i < prices.Length; i++)
+            {
+                if (prices[i] > bought)
+                {
+                    profit += (prices[i] - bought);
+                }
+                bought = prices[i];
+            }
+
+            return profit;
         }
     }
 }

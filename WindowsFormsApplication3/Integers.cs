@@ -504,6 +504,49 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Drawing_Book_Click(object sender, EventArgs e)
+        {
+            /*
+                https://www.hackerrank.com/challenges/drawing-book/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+                Time Complexity : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Point> inputs = new List<Point>();
+            inputs.Add(new Point() {X = 6, Y = 5 });
+            inputs.Add(new Point() {X = 6, Y = 6 });
+            inputs.Add(new Point() {X = 100, Y = 60});
+            inputs.Add(new Point() {X = 100, Y = 30 });
+            inputs.Add(new Point() {X = 83246, Y = 78132 });            
+            foreach (Point input in inputs)
+            {
+                int n = input.X;
+                int m = n;
+                int p = input.Y;
+                int minFlip = 0;
+                if (n == 0 || p == 0 || p > n || n == p)
+                {
+                    minFlip = 0;
+                }
+                else
+                {
+                    if (m % 2 == 0)
+                    {
+                        m++;
+                    }
+
+                    minFlip = Math.Min(p / 2, (m - p) / 2);
+                }
+
+                result.AppendLine($"Min flip for {p} page in total pages {n} is  {minFlip} ");
+            }
+
+            MessageBox.Show(result.ToString());
+            
+
+
+        }
     }
 }
 

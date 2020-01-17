@@ -42,9 +42,9 @@ namespace WindowsFormsApplication3
 
             DoubleLL node = null;
             node = this.InsertDoubleLL(node, 1);
+            node = this.InsertDoubleLL(node, 4);
             node = this.InsertDoubleLL(node, 2);
             node = this.InsertDoubleLL(node, 3);
-            node = this.InsertDoubleLL(node, 4);
 
             MessageBox.Show(string.Format("Forward: {0} \nBackward: {1}", this.PrintForward(ref node), this.PrintBackward(ref node)));
             
@@ -268,12 +268,11 @@ namespace WindowsFormsApplication3
                         previous.Next = null;
                         current = null;
                     }
-                }                
-                else
-                {
-                    current = current.Next;
-                    previous = previous.Next;
                 }
+
+                current = current.Next;
+                previous = previous.Next;
+                
 
             }
 

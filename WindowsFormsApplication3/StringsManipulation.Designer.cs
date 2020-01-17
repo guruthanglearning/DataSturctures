@@ -78,6 +78,8 @@
             this.btn_Add_Binary = new System.Windows.Forms.Button();
             this.btn_Convert_12hour_Time_to_24_hour_time = new System.Windows.Forms.Button();
             this.btn_Partial_String_Search = new System.Windows.Forms.Button();
+            this.btn_Shortest_Standardized_Path = new System.Windows.Forms.Button();
+            this.btn_Valid_Palindrome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -604,11 +606,33 @@
             this.btn_Partial_String_Search.UseVisualStyleBackColor = true;
             this.btn_Partial_String_Search.Click += new System.EventHandler(this.btn_Partial_String_Search_Click);
             // 
+            // btn_Shortest_Standardized_Path
+            // 
+            this.btn_Shortest_Standardized_Path.Location = new System.Drawing.Point(1385, 265);
+            this.btn_Shortest_Standardized_Path.Name = "btn_Shortest_Standardized_Path";
+            this.btn_Shortest_Standardized_Path.Size = new System.Drawing.Size(318, 30);
+            this.btn_Shortest_Standardized_Path.TabIndex = 50;
+            this.btn_Shortest_Standardized_Path.Text = "Shortest Standardized Path";
+            this.btn_Shortest_Standardized_Path.UseVisualStyleBackColor = true;
+            this.btn_Shortest_Standardized_Path.Click += new System.EventHandler(this.btn_Shortest_Standardized_Path_Click);
+            // 
+            // btn_Valid_Palindrome
+            // 
+            this.btn_Valid_Palindrome.Location = new System.Drawing.Point(1388, 301);
+            this.btn_Valid_Palindrome.Name = "btn_Valid_Palindrome";
+            this.btn_Valid_Palindrome.Size = new System.Drawing.Size(320, 38);
+            this.btn_Valid_Palindrome.TabIndex = 51;
+            this.btn_Valid_Palindrome.Text = "Valid Palindrome";
+            this.btn_Valid_Palindrome.UseVisualStyleBackColor = true;
+            this.btn_Valid_Palindrome.Click += new System.EventHandler(this.btn_Valid_Palindrome_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 779);
+            this.Controls.Add(this.btn_Valid_Palindrome);
+            this.Controls.Add(this.btn_Shortest_Standardized_Path);
             this.Controls.Add(this.btn_Partial_String_Search);
             this.Controls.Add(this.btn_Convert_12hour_Time_to_24_hour_time);
             this.Controls.Add(this.btn_Add_Binary);
@@ -720,5 +744,7 @@
         private System.Windows.Forms.Button btn_Add_Binary;
         private System.Windows.Forms.Button btn_Convert_12hour_Time_to_24_hour_time;
         private System.Windows.Forms.Button btn_Partial_String_Search;
+        private System.Windows.Forms.Button btn_Shortest_Standardized_Path;
+        private System.Windows.Forms.Button btn_Valid_Palindrome;
     }
 }

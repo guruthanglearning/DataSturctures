@@ -28,7 +28,13 @@ namespace WindowsFormsApplication3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
+            /*
+                http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
+                Time Complexity : O(n + kLogn) where building min heap takes O(n) where n is the dimension of the array. 
+                                  k is the smallest value and finding in the heap takes log N complexity
+                Space Complexity : O(n) where is n is the dimension and storing n value in the heap
+            */
+
             int[,] input = new int[,] { { 10, 20, 30, 40 }, 
                                         { 15, 25, 35, 45 },
                                         { 25, 29, 37, 48 } ,

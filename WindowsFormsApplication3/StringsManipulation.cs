@@ -2897,6 +2897,143 @@ namespace WindowsFormsApplication3
 
             return false;
         }
+
+        private void btn_Shortest_Standardized_Path_Click(object sender, EventArgs e)
+        {
+            /*             
+                Here's your coding interview problem for today. This problem was asked by Quora.
+                Given an absolute pathname that may have . or .. as part of it, return the shortest standardized path.
+                For example, given "/usr/bin/../bin/./scripts/../", return "/usr/bin/".
+
+                Time Complexity : O(L) where L is the length of the string
+                Space Complexity : O(log L) 
+             */
+
+            List<string> inputs = new List<string>();
+            inputs.Add("/usr/bin/../bin/./scripts/../"); ///usr/bin/
+            inputs.Add("/home/"); // /home
+            inputs.Add("/a/./b/../../c/"); // /c
+            inputs.Add("/a/.."); // /            
+            inputs.Add("/../../../../../a"); // /a
+            inputs.Add("/a/./b/./c/./d/"); // /a/b/c/d
+            inputs.Add("/a/../.././../../"); // /
+            inputs.Add("/a//b//c//////d"); // /a/b/c/d
+
+            Stack<string> stack = new Stack<string>();
+            StringBuilder temp = new StringBuilder();
+            StringBuilder result = new StringBuilder();
+
+            foreach(string str in inputs)
+            {
+                stack.Clear();
+                temp.Clear();                
+                foreach(string istr in str.Split('/'))
+                {
+                    if (string.IsNullOrEmpty(istr) ||  istr == "." )
+                    {
+                        continue;
+                    }
+                    else if (istr == "..")
+                    {
+                        if (stack.Count > 0)
+                        {
+                            stack.Pop();
+                        }
+                    }
+                    else
+                    {
+                        stack.Push(istr);
+                    }
+                }
+
+                if (stack.Count == 0)
+                {
+                    temp.Insert(0, "/");
+                }
+                else
+                {
+                    while (stack.Count > 0)
+                    {
+                        temp.Insert(0, "/" + stack.Pop());
+                    }
+                }
+
+                result.AppendLine($"Shortest Standardized path for this path {str} is {temp.ToString()}");
+            }
+            MessageBox.Show(result.ToString());
+        }
+
+        private void btn_Valid_Palindrome_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+                Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+                Example 1:
+
+                Input: "A man, a plan, a canal: Panama"
+                Output: true
+                Example 2:
+
+                Input: "race a car"
+                Output: false
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            //inputs.Add("A man, a plan, a canal: Panama");
+            //inputs.Add("race a car");
+            //inputs.Add("0P");
+            inputs.Add(",M 9y\"yj\"j9 M,");
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"The given string is {(this.IsPalindrome(input) ? "" : "not")} Plandrome");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public bool IsPalindrome(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return true;
+            }
+
+            string input = s.ToLower();
+            int start = 0;
+            int end = s.Length - 1;
+            char sc;
+            char ec;
+
+            while (start < end)
+            {
+                sc = input[start];
+                ec = input[end];
+                if (!((sc >= 97 && sc <= 122) || (sc >= 48 && sc <= 57)))
+                {
+                    start++;
+                }
+                else if (!((ec >= 97 && ec <= 122) || (ec >= 48 && ec <= 57)))
+                {
+                    end--;
+                }
+                else if (sc != ec)
+                {
+                    return false;
+                }
+                else
+                {
+                    start++;
+                    end--;
+                }
+
+            }
+
+            return true;
+        }
     }
 }
 

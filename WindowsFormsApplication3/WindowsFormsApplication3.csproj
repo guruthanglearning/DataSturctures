@@ -110,6 +110,12 @@
     <Compile Include="DesignPatterns.Designer.cs">
       <DependentUpon>DesignPatterns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Designs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designs.Designer.cs">
+      <DependentUpon>Designs.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoubleLinkList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DesignPatterns.resx">
       <DependentUpon>DesignPatterns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designs.resx">
+      <DependentUpon>Designs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DoubleLinkList.resx">
       <DependentUpon>DoubleLinkList.cs</DependentUpon>

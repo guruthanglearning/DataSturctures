@@ -36,6 +36,7 @@
             this.btn_Generate_Pascal_Triangle = new System.Windows.Forms.Button();
             this.btn_Generate_Pascal_Triangle_2 = new System.Windows.Forms.Button();
             this.btn_Day_of_the_Programmer = new System.Windows.Forms.Button();
+            this.btn_Drawing_Book = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -118,11 +119,22 @@
             this.btn_Day_of_the_Programmer.UseVisualStyleBackColor = true;
             this.btn_Day_of_the_Programmer.Click += new System.EventHandler(this.btn_Day_of_the_Programmer_Click);
             // 
+            // btn_Drawing_Book
+            // 
+            this.btn_Drawing_Book.Location = new System.Drawing.Point(12, 405);
+            this.btn_Drawing_Book.Name = "btn_Drawing_Book";
+            this.btn_Drawing_Book.Size = new System.Drawing.Size(401, 39);
+            this.btn_Drawing_Book.TabIndex = 8;
+            this.btn_Drawing_Book.Text = "Drawing Book";
+            this.btn_Drawing_Book.UseVisualStyleBackColor = true;
+            this.btn_Drawing_Book.Click += new System.EventHandler(this.btn_Drawing_Book_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1178, 695);
+            this.Controls.Add(this.btn_Drawing_Book);
             this.Controls.Add(this.btn_Day_of_the_Programmer);
             this.Controls.Add(this.btn_Generate_Pascal_Triangle_2);
             this.Controls.Add(this.btn_Generate_Pascal_Triangle);
@@ -147,5 +159,6 @@
         private System.Windows.Forms.Button btn_Generate_Pascal_Triangle;
         private System.Windows.Forms.Button btn_Generate_Pascal_Triangle_2;
         private System.Windows.Forms.Button btn_Day_of_the_Programmer;
+        private System.Windows.Forms.Button btn_Drawing_Book;
     }
 }

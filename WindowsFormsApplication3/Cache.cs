@@ -50,6 +50,8 @@ namespace WindowsFormsApplication3
         private void btn_Implement_Least_Frequently_Used_Cache_Click(object sender, EventArgs e)
         {
             
+
+
             LFU_LeastFrequentlyUsedCache cache = new LFU_LeastFrequentlyUsedCache();
             cache.Put("A", "A");
             cache.Put("B", "B");

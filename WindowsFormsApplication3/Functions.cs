@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace WindowsFormsApplication3
 {
@@ -119,7 +120,7 @@ namespace WindowsFormsApplication3
             timer.Elapsed += Print;
             timer.Start();
             timer.AutoReset = true;
-
+            
 
         }
 

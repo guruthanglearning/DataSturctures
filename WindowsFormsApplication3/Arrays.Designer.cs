@@ -79,6 +79,7 @@
             this.btn_Best_Time_to_Buy_and_Sell_Stock = new System.Windows.Forms.Button();
             this.btn_Socks_Merchant = new System.Windows.Forms.Button();
             this.btn_Steps_To_Make_0_from_binary = new System.Windows.Forms.Button();
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -584,7 +585,7 @@
             // 
             // btn_Socks_Merchant
             // 
-            this.btn_Socks_Merchant.Location = new System.Drawing.Point(995, 313);
+            this.btn_Socks_Merchant.Location = new System.Drawing.Point(998, 351);
             this.btn_Socks_Merchant.Name = "btn_Socks_Merchant";
             this.btn_Socks_Merchant.Size = new System.Drawing.Size(362, 33);
             this.btn_Socks_Merchant.TabIndex = 50;
@@ -594,7 +595,7 @@
             // 
             // btn_Steps_To_Make_0_from_binary
             // 
-            this.btn_Steps_To_Make_0_from_binary.Location = new System.Drawing.Point(997, 352);
+            this.btn_Steps_To_Make_0_from_binary.Location = new System.Drawing.Point(1000, 390);
             this.btn_Steps_To_Make_0_from_binary.Name = "btn_Steps_To_Make_0_from_binary";
             this.btn_Steps_To_Make_0_from_binary.Size = new System.Drawing.Size(358, 37);
             this.btn_Steps_To_Make_0_from_binary.TabIndex = 51;
@@ -602,11 +603,22 @@
             this.btn_Steps_To_Make_0_from_binary.UseVisualStyleBackColor = true;
             this.btn_Steps_To_Make_0_from_binary.Click += new System.EventHandler(this.btn_Steps_To_Make_0_from_binary_Click);
             // 
+            // btn_Best_Time_to_Buy_and_Sell_Stock_II
+            // 
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Location = new System.Drawing.Point(1001, 308);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Name = "btn_Best_Time_to_Buy_and_Sell_Stock_II";
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Size = new System.Drawing.Size(359, 37);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.TabIndex = 52;
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Text = "Best Time to Buy and Sell Stock II";
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.UseVisualStyleBackColor = true;
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Click += new System.EventHandler(this.btn_Best_Time_to_Buy_and_Sell_Stock_II_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Best_Time_to_Buy_and_Sell_Stock_II);
             this.Controls.Add(this.btn_Steps_To_Make_0_from_binary);
             this.Controls.Add(this.btn_Socks_Merchant);
             this.Controls.Add(this.btn_Best_Time_to_Buy_and_Sell_Stock);
@@ -718,5 +730,6 @@
         private System.Windows.Forms.Button btn_Best_Time_to_Buy_and_Sell_Stock;
         private System.Windows.Forms.Button btn_Socks_Merchant;
         private System.Windows.Forms.Button btn_Steps_To_Make_0_from_binary;
+        private System.Windows.Forms.Button btn_Best_Time_to_Buy_and_Sell_Stock_II;
     }
 }
