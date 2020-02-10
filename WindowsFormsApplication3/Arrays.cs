@@ -554,7 +554,7 @@ namespace WindowsFormsApplication3
                         break;
                     arr[j] = arr[k];
                     j = k;
-                }
+                }   
                 arr[j] = temp;
             }
         }
@@ -1148,7 +1148,7 @@ namespace WindowsFormsApplication3
         {
 
             /*
-                Time Complexity     : O(n) - for 1 array, from our input we have list of arrays n being the # of items in single array and
+                Time Complexity     : O(n) - for 1st array, from our input we have list of arrays, n being the # of items in single array and
                                       m being the list of arrays so the Time complexity will be O(m*n)
                 Space Complexity    : Since we are not using any addition memory even for swapping.
              */
@@ -1163,24 +1163,44 @@ namespace WindowsFormsApplication3
             int lastIndexOfZero = 0;
             StringBuilder result = new StringBuilder();
 
+
             foreach (int key in inputs.Keys)
             {
                 lastIndexOfZero = 0;
                 var input = inputs[key];
 
                 result.Append($"Before swap input array :  {Display(input)} \n");
-                for (int i = 1; i < input.Length; i++)
+                int l = 0;
+                int r = input.Length - 1;
+                while(l<= r)
                 {
-                    if (input[lastIndexOfZero] == 0 && input[i] != 0)
+                    if (input[l] == 0)
                     {
-                        this.Swap(input, lastIndexOfZero, i);
-                        lastIndexOfZero++;
+                        l++;
                     }
-                    else if (input[lastIndexOfZero] != 0)
+                    else if (input[l]>0 && input[r] == 0)
                     {
-                        lastIndexOfZero++;
+                        Swap(input, l, r);
                     }
+                    else
+                    {
+                        r--;
+                    }                    
                 }
+
+
+                //for (int i = 1; i < input.Length; i++)
+                //{
+                //    if (input[lastIndexOfZero] == 0 && input[i] != 0)
+                //    {
+                //        this.Swap(input, lastIndexOfZero, i);
+                //        lastIndexOfZero++;
+                //    }
+                //    else if (input[lastIndexOfZero] != 0)
+                //    {
+                //        lastIndexOfZero++;
+                //    }
+                //}
 
                 result.Append($"After swap input array: {Display(input)} \n");
             }
@@ -1303,7 +1323,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_all_the_integer_value_lies_in_a_array_till_N_Click(object sender, EventArgs e)
         {
-            int[] input = new int[] { 1, 2, 3, 4 }; //new int[] { 1, 2, 3, 3 }; //
+            int[] input = new int[] { 4, 2, 1, 3 }; //new int[] { 1, 2, 3, 3 }; //
             int x = 0;
             for (int i = 0; i < input.Length; i++)
             {
@@ -1343,7 +1363,7 @@ namespace WindowsFormsApplication3
 
                 // 6, 7, 1, 3, 8, 2, 4
                 firstOld = input[start];            //6
-                secondOld = Math.Max(firstOld, (end - start) >= 2 ? input[start + 1] : secondOld); //7
+                secondOld =  input[start + 1]; //7
                 if (end <= 2)
                 {
                     thirdOld = Math.Max(firstOld, secondOld);
@@ -1433,8 +1453,9 @@ namespace WindowsFormsApplication3
 
             /* https://www.geeksforgeeks.org/product-array-puzzle-set-2-o1-space/
              
-            Given an array arr[] of n integers, construct a Product Array prod[] (of same size) such that prod[i] is equal to the product of all the 
-            elements of arr[] except arr[i]. Solve it without division operator and in O(n).
+            Given an array arr[] of n integers, construct a Product Array prod[] (of same size) such that prod[i] is 
+            equal to the product of all the elements of arr[] except arr[i]. Solve it without division 
+            operator and in O(n).
 
             Example:
 
@@ -1533,6 +1554,8 @@ namespace WindowsFormsApplication3
         private void btn_Robbing_a_home_3_Click(object sender, EventArgs e)
         {
             //Refer LinkedListForm.cs;
+            LinkedListForm form = new LinkedListForm();
+            form.btn_Robbing_a_home_3_Click(sender, e);
         }
 
         private void btn_Arrange_Char_Array_R_G_B_In_Place_Click(object sender, EventArgs e)
@@ -1590,7 +1613,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Finding_Missing_Integer_from_the_given_array_Click(object sender, EventArgs e)
         {
-            /* This code will work only if you missing anyone number and if you have only one zero or one -negative number.
+            /* This code will work only if you missing anyone number and if you have only one zero or 
+             * one -negative number.
              
               Time Complexity is O(N) Linear time
               Space Complexity is O(1)
@@ -1603,11 +1627,11 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
 
             List<int[]> inputs = new List<int[]>();
-            inputs.Add(new int[] {  1, 2, 3, 0, 4 }); // 0 
-            inputs.Add(new int[] {  1, 2, 0, 4, 5 }); //3
-            inputs.Add(new int[] { 4, 3, 0, 2,1}); // 0
-            inputs.Add(new int[] { 3, 4, 0, 7,2,1,6}); //5
-            inputs.Add(new int[] {}); // 0
+            inputs.Add(new int[] { 1, 2, 3, 0, 4 }); // 0 
+            inputs.Add(new int[] { 1, 2, 0, 4, 5 }); //3
+            inputs.Add(new int[] { 4, 3, 0, 2, 1 }); // 0
+            inputs.Add(new int[] { 3, 4, 0, 7, 2, 1, 6 }); //5
+            inputs.Add(new int[] { }); // 0
 
             foreach (int[] input in inputs)
             {
@@ -2469,8 +2493,9 @@ namespace WindowsFormsApplication3
         {
             /*
                 Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
-                The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
-                You may assume the integer does not contain any leading zero, except the number 0 itself.
+                The digits are stored such that the most significant digit is at the head of the list, and each element 
+                in the array contain a single digit. You may assume the integer does not contain any leading zero, 
+                except the number 0 itself.
 
                 Example 1:
 
@@ -2801,7 +2826,7 @@ namespace WindowsFormsApplication3
                 lcm = this.LCMForArray(input.a);
                 gcd = this.GCDForArray(input.b);
 
-                for (int i = lcm, j = 2; i <= gcd; i = j * lcm, j++)
+                for (int i = lcm, j = 2; i <= gcd; i += lcm, j++)
                 {
                     if ((gcd % i) == 0)
                     {
@@ -3130,7 +3155,8 @@ namespace WindowsFormsApplication3
             /*
                 Say you have an array for which the ith element is the price of a given stock on day i.
 
-                If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), 
+                If you were only permitted to complete at most one transaction 
+                (i.e., buy one and sell one share of the stock), 
                 design an algorithm to find the maximum profit.
 
                 Note that you cannot sell a stock before you buy one.
@@ -3336,17 +3362,17 @@ namespace WindowsFormsApplication3
 
 
         private int ConvertBinaryToInt(string input)
-        {            
-            long result = 0 ;
+        {                        
             if (string.IsNullOrEmpty(input))
             {
                 return -1;
             }            
-            int power = 0;
+            long power = 1;
             int counter = input.Length -1;
             int val = 0;
-            long twoPowerValue = 0;
-            while(counter >= 0)
+            long result = 0;
+
+            while (counter >= 0)
             {
                 val = input[counter] - '0';
                 if (!(val >=0 && val < 2))
@@ -3354,16 +3380,15 @@ namespace WindowsFormsApplication3
                     return -1;
                 }
 
-                twoPowerValue = (long)Math.Pow(2.0, power);
+                result += (val * power);                
+                power = power * 2;
 
-                if (twoPowerValue > int.MaxValue)
+                if (result >int.MaxValue || power > int.MaxValue)
                 {
                     result = -1;
                     break;
                 }
 
-                result += (val * (int)twoPowerValue);                
-                power++;
                 counter--;
             }
             
@@ -3396,9 +3421,11 @@ namespace WindowsFormsApplication3
             /*
              Say you have an array for which the ith element is the price of a given stock on day i.
 
-            Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+            Design an algorithm to find the maximum profit. You may complete as many transactions as you like 
+            (i.e., buy one and sell one share of the stock multiple times).
 
-            Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+            Note: You may not engage in multiple transactions at the same time 
+            (i.e., you must sell the stock before you buy again).
 
             Example 1:
 
@@ -3461,5 +3488,174 @@ namespace WindowsFormsApplication3
 
             return profit;
         }
+
+        private void btn_Container_With_Most_Water_Click(object sender, EventArgs e)
+        {
+            /*
+                https://leetcode.com/problems/container-with-most-water/
+                Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two 
+                endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+                Note: You may not slant the container and n is at least 2.
+
+
+                The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+                Example:
+
+                Input: [1,8,6,2,5,4,8,3,7]
+                Output: 49
+             
+                Time Complexity : O(n) where n is the number of values in array
+                Space Complexity: O(1) constant space
+             */
+
+            int[] a = null;
+            List<int[]> inputs = new List<int[]>();
+            StringBuilder builder = new StringBuilder();
+            inputs.Add(new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 });
+            inputs.Add(new int[] { 2, 3, 4, 5, 18, 17, 6 });
+            inputs.Add(new int[] { 1, 2, 1 });
+            inputs.Add(new int[] { 1, 1 });
+
+            foreach (int[] input in inputs)
+            {
+                builder.AppendLine($"The max area is {(this.MaxArea(input))} for the given input {(string.Join(" ", input))}");
+            }
+
+            MessageBox.Show(builder.ToString());
+
+        }
+
+        public int MaxArea(int[] height)
+        {
+            if (height == null || height.Length == 0)
+            {
+                return 0;
+            }
+
+            int max = 0;
+            int l = height.Length - 1;
+
+            for (int i = 0; i < l;)
+            {
+                max = Math.Max(max, Math.Min(height[i], height[l]) * (l - i));
+
+                if (height[i] < height[l])
+                {
+                    i++;
+                }
+                else
+                {
+                    l--;
+                }
+            }
+            return max;
+        }
+
+        private void btn_Merge_Overlapping_Intervals_with_DSets_Click(object sender, EventArgs e)
+        {
+
+            /*
+                 Time Complexity  : (M + N) where M is the number of internals in List A and N is the number of internals in List B
+                 Space Complexity : O(M+N) 
+             */
+
+            List<IntervalRange> a = new List<IntervalRange>();
+            //a.Add(new IntervalRange() { Start = 0, End = 3 });
+            //a.Add(new IntervalRange() { Start = 2, End = 3 });
+            //a.Add(new IntervalRange() { Start = 5, End = 12 });
+            //a.Add(new IntervalRange() { Start = 13, End = 15 });
+
+            List<IntervalRange> b =  new List<IntervalRange>();
+            b.Add(new IntervalRange() { Start = 1, End = 3 });
+            b.Add(new IntervalRange() { Start = 5, End = 7 });
+            b.Add(new IntervalRange() { Start = 7, End = 14 });
+
+            List<IntervalRange> res = MergeIntervals(a, b);
+
+            foreach(IntervalRange i in res)
+            {
+                Console.WriteLine($"{i.Start},{i.End}");
+            }
+
+        }
+
+        public class IntervalRange
+        {
+            public int Start;
+            public int End;
+        }
+
+        public List<IntervalRange> MergeIntervals(List<IntervalRange> a, List<IntervalRange> b)
+        {
+            List<IntervalRange> res = null;
+
+            if ((a == null || a.Count == 0) && (b == null || b.Count == 0))
+            {
+                return null;
+            }
+          
+            Stack<IntervalRange> stack = new Stack<IntervalRange>();
+            int length = a == null ? 0 : a.Count;
+            length = Math.Max(length, (b == null ? 0 : b.Count));
+
+            int i = 0;
+
+            while (i < length)
+            {
+                if (i < a.Count)
+                {
+                    Merge(stack, a[i]);
+                }
+
+                if (i < b.Count)
+                {
+                    Merge(stack, b[i]);
+                }
+
+                i++;
+            }
+
+            if (stack.Count > 0)
+            {
+                res = new List<IntervalRange>();
+                while (stack.Count > 0)
+                {
+                    res.Insert(0, stack.Pop());
+                }
+            }
+
+            return res;
+
+        }
+
+        private void Merge(Stack<IntervalRange> s, IntervalRange interval)
+        {
+         
+            if (s != null & interval != null)
+            {
+                if (s.Count == 0)
+                {
+                    s.Push(interval);
+                }
+                else
+                {
+                    IntervalRange temp = s.Peek();
+                    if (temp.End < interval.Start)
+                    {
+                        s.Push(interval);
+                    }
+                    else if (temp.End <= interval.End)
+                    {
+                        interval.Start = Math.Min(temp.Start, interval.Start);
+                        s.Pop();
+                        s.Push(interval);
+                    }
+                }
+            }
+        }
+
+
+
     }
 }

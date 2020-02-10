@@ -35,6 +35,7 @@
             this.btn_Find_no_of_island_for_the_given_matrix = new System.Windows.Forms.Button();
             this.btn_Find_Exit_for_Maze = new System.Windows.Forms.Button();
             this.btn_Navigate_from_North_West_to_South_East_of_the_building = new System.Windows.Forms.Button();
+            this.btn_2D_Array_DS = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -107,11 +108,22 @@
             this.btn_Navigate_from_North_West_to_South_East_of_the_building.UseVisualStyleBackColor = true;
             this.btn_Navigate_from_North_West_to_South_East_of_the_building.Click += new System.EventHandler(this.btn_Navigate_from_North_West_to_South_East_of_the_building_Click);
             // 
+            // btn_2D_Array_DS
+            // 
+            this.btn_2D_Array_DS.Location = new System.Drawing.Point(2, 329);
+            this.btn_2D_Array_DS.Name = "btn_2D_Array_DS";
+            this.btn_2D_Array_DS.Size = new System.Drawing.Size(583, 34);
+            this.btn_2D_Array_DS.TabIndex = 25;
+            this.btn_2D_Array_DS.Text = "2D Array - DS";
+            this.btn_2D_Array_DS.UseVisualStyleBackColor = true;
+            this.btn_2D_Array_DS.Click += new System.EventHandler(this.btn_2D_Array_DS_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 425);
+            this.Controls.Add(this.btn_2D_Array_DS);
             this.Controls.Add(this.btn_Navigate_from_North_West_to_South_East_of_the_building);
             this.Controls.Add(this.btn_Find_Exit_for_Maze);
             this.Controls.Add(this.btn_Find_no_of_island_for_the_given_matrix);
@@ -121,6 +133,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Matrix";
             this.Text = "Matrix";
+            this.Load += new System.EventHandler(this.Matrix_Load);
             this.ResumeLayout(false);
 
         }
@@ -134,5 +147,6 @@
         private System.Windows.Forms.Button btn_Find_no_of_island_for_the_given_matrix;
         private System.Windows.Forms.Button btn_Find_Exit_for_Maze;
         private System.Windows.Forms.Button btn_Navigate_from_North_West_to_South_East_of_the_building;
+        private System.Windows.Forms.Button btn_2D_Array_DS;
     }
 }

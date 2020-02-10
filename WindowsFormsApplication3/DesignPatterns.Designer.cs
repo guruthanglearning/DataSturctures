@@ -45,7 +45,7 @@
             // 
             // btn_Private_Methods_In_Abstract_Class
             // 
-            this.btn_Private_Methods_In_Abstract_Class.Location = new System.Drawing.Point(1186, 24);
+            this.btn_Private_Methods_In_Abstract_Class.Location = new System.Drawing.Point(955, 53);
             this.btn_Private_Methods_In_Abstract_Class.Name = "btn_Private_Methods_In_Abstract_Class";
             this.btn_Private_Methods_In_Abstract_Class.Size = new System.Drawing.Size(274, 49);
             this.btn_Private_Methods_In_Abstract_Class.TabIndex = 1;

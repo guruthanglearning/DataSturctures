@@ -80,6 +80,8 @@
             this.btn_Partial_String_Search = new System.Windows.Forms.Button();
             this.btn_Shortest_Standardized_Path = new System.Windows.Forms.Button();
             this.btn_Valid_Palindrome = new System.Windows.Forms.Button();
+            this.btn_Longest_Palindromic_Substring = new System.Windows.Forms.Button();
+            this.btn_Integer_to_Roman = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -156,7 +158,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(482, 102);
+            this.button6.Location = new System.Drawing.Point(482, 61);
             this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(420, 35);
@@ -167,7 +169,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(482, 145);
+            this.button7.Location = new System.Drawing.Point(482, 104);
             this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(420, 35);
@@ -211,7 +213,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(482, 189);
+            this.button11.Location = new System.Drawing.Point(482, 148);
             this.button11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(420, 35);
@@ -222,7 +224,7 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(482, 234);
+            this.button12.Location = new System.Drawing.Point(482, 193);
             this.button12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(420, 35);
@@ -233,7 +235,7 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(482, 326);
+            this.button13.Location = new System.Drawing.Point(482, 285);
             this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(420, 35);
@@ -244,7 +246,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(482, 371);
+            this.button14.Location = new System.Drawing.Point(482, 330);
             this.button14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(420, 35);
@@ -266,7 +268,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(482, 281);
+            this.button16.Location = new System.Drawing.Point(482, 240);
             this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(420, 35);
@@ -288,7 +290,7 @@
             // 
             // btnLongest_Substring_Without_Repeating_Characters
             // 
-            this.btnLongest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(482, 645);
+            this.btnLongest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(482, 674);
             this.btnLongest_Substring_Without_Repeating_Characters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLongest_Substring_Without_Repeating_Characters.Name = "btnLongest_Substring_Without_Repeating_Characters";
             this.btnLongest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(412, 35);
@@ -299,7 +301,7 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(482, 412);
+            this.button19.Location = new System.Drawing.Point(482, 371);
             this.button19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(420, 49);
@@ -365,10 +367,10 @@
             // 
             // Longest_Palondrome_in_a_given_string
             // 
-            this.Longest_Palondrome_in_a_given_string.Location = new System.Drawing.Point(482, 554);
+            this.Longest_Palondrome_in_a_given_string.Location = new System.Drawing.Point(482, 549);
             this.Longest_Palondrome_in_a_given_string.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Longest_Palondrome_in_a_given_string.Name = "Longest_Palondrome_in_a_given_string";
-            this.Longest_Palondrome_in_a_given_string.Size = new System.Drawing.Size(414, 31);
+            this.Longest_Palondrome_in_a_given_string.Size = new System.Drawing.Size(420, 31);
             this.Longest_Palondrome_in_a_given_string.TabIndex = 26;
             this.Longest_Palondrome_in_a_given_string.Text = "Longest Palondrome in a given string O(n^2)";
             this.Longest_Palondrome_in_a_given_string.UseVisualStyleBackColor = true;
@@ -376,12 +378,12 @@
             // 
             // Longest_Palondrome_in_a_given_string_O_Off_N
             // 
-            this.Longest_Palondrome_in_a_given_string_O_Off_N.Location = new System.Drawing.Point(486, 598);
+            this.Longest_Palondrome_in_a_given_string_O_Off_N.Location = new System.Drawing.Point(482, 584);
             this.Longest_Palondrome_in_a_given_string_O_Off_N.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Longest_Palondrome_in_a_given_string_O_Off_N.Name = "Longest_Palondrome_in_a_given_string_O_Off_N";
-            this.Longest_Palondrome_in_a_given_string_O_Off_N.Size = new System.Drawing.Size(408, 39);
+            this.Longest_Palondrome_in_a_given_string_O_Off_N.Size = new System.Drawing.Size(420, 34);
             this.Longest_Palondrome_in_a_given_string_O_Off_N.TabIndex = 27;
-            this.Longest_Palondrome_in_a_given_string_O_Off_N.Text = "Longest Palondrome in a given string O(n)";
+            this.Longest_Palondrome_in_a_given_string_O_Off_N.Text = "Longest Palondrome in a given string O(n^2)";
             this.Longest_Palondrome_in_a_given_string_O_Off_N.UseVisualStyleBackColor = true;
             this.Longest_Palondrome_in_a_given_string_O_Off_N.Click += new System.EventHandler(this.Longest_Palondrome_in_a_given_string_O_Off_N_Click);
             // 
@@ -397,7 +399,7 @@
             // 
             // btn_First_Recurring_character
             // 
-            this.btn_First_Recurring_character.Location = new System.Drawing.Point(482, 732);
+            this.btn_First_Recurring_character.Location = new System.Drawing.Point(20, 730);
             this.btn_First_Recurring_character.Name = "btn_First_Recurring_character";
             this.btn_First_Recurring_character.Size = new System.Drawing.Size(412, 35);
             this.btn_First_Recurring_character.TabIndex = 29;
@@ -427,7 +429,7 @@
             // 
             // btn_Longest_Substring_Without_Repeating_Characters
             // 
-            this.btn_Longest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(484, 687);
+            this.btn_Longest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(484, 715);
             this.btn_Longest_Substring_Without_Repeating_Characters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Longest_Substring_Without_Repeating_Characters.Name = "btn_Longest_Substring_Without_Repeating_Characters";
             this.btn_Longest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(412, 35);
@@ -626,11 +628,33 @@
             this.btn_Valid_Palindrome.UseVisualStyleBackColor = true;
             this.btn_Valid_Palindrome.Click += new System.EventHandler(this.btn_Valid_Palindrome_Click);
             // 
+            // btn_Longest_Palindromic_Substring
+            // 
+            this.btn_Longest_Palindromic_Substring.Location = new System.Drawing.Point(481, 625);
+            this.btn_Longest_Palindromic_Substring.Name = "btn_Longest_Palindromic_Substring";
+            this.btn_Longest_Palindromic_Substring.Size = new System.Drawing.Size(413, 40);
+            this.btn_Longest_Palindromic_Substring.TabIndex = 52;
+            this.btn_Longest_Palindromic_Substring.Text = "Longest Palindromic Substring";
+            this.btn_Longest_Palindromic_Substring.UseVisualStyleBackColor = true;
+            this.btn_Longest_Palindromic_Substring.Click += new System.EventHandler(this.btn_Longest_Palindromic_Substring_Click);
+            // 
+            // btn_Integer_to_Roman
+            // 
+            this.btn_Integer_to_Roman.Location = new System.Drawing.Point(484, 426);
+            this.btn_Integer_to_Roman.Name = "btn_Integer_to_Roman";
+            this.btn_Integer_to_Roman.Size = new System.Drawing.Size(417, 34);
+            this.btn_Integer_to_Roman.TabIndex = 53;
+            this.btn_Integer_to_Roman.Text = "Integer to Roman";
+            this.btn_Integer_to_Roman.UseVisualStyleBackColor = true;
+            this.btn_Integer_to_Roman.Click += new System.EventHandler(this.btn_Integer_to_Roman_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 779);
+            this.Controls.Add(this.btn_Integer_to_Roman);
+            this.Controls.Add(this.btn_Longest_Palindromic_Substring);
             this.Controls.Add(this.btn_Valid_Palindrome);
             this.Controls.Add(this.btn_Shortest_Standardized_Path);
             this.Controls.Add(this.btn_Partial_String_Search);
@@ -746,5 +770,7 @@
         private System.Windows.Forms.Button btn_Partial_String_Search;
         private System.Windows.Forms.Button btn_Shortest_Standardized_Path;
         private System.Windows.Forms.Button btn_Valid_Palindrome;
+        private System.Windows.Forms.Button btn_Longest_Palindromic_Substring;
+        private System.Windows.Forms.Button btn_Integer_to_Roman;
     }
 }

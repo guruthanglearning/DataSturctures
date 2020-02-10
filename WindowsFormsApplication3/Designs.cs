@@ -48,7 +48,7 @@ namespace WindowsFormsApplication3
         void UnSubscribe();
     }
 
-    public class Timer : ITimer
+    public class Timer : ITime
     {
         Thread t = null;
         Thread t1 = null;

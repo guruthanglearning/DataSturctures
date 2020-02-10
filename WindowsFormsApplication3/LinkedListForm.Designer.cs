@@ -77,6 +77,7 @@
             this.btn_Distribute_coin_in_a_binary_tree = new System.Windows.Forms.Button();
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order = new System.Windows.Forms.Button();
             this.btn_Remove_Item_from_sorted_Linked_List = new System.Windows.Forms.Button();
+            this.btn_Arrange_Even_And_Odd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -594,11 +595,22 @@
             this.btn_Remove_Item_from_sorted_Linked_List.UseVisualStyleBackColor = true;
             this.btn_Remove_Item_from_sorted_Linked_List.Click += new System.EventHandler(this.btn_Remove_Item_from_sorted_Linked_List_Click);
             // 
+            // btn_Arrange_Even_And_Odd
+            // 
+            this.btn_Arrange_Even_And_Odd.Location = new System.Drawing.Point(876, 169);
+            this.btn_Arrange_Even_And_Odd.Name = "btn_Arrange_Even_And_Odd";
+            this.btn_Arrange_Even_And_Odd.Size = new System.Drawing.Size(337, 34);
+            this.btn_Arrange_Even_And_Odd.TabIndex = 53;
+            this.btn_Arrange_Even_And_Odd.Text = "Arrange Even And Odd";
+            this.btn_Arrange_Even_And_Odd.UseVisualStyleBackColor = true;
+            this.btn_Arrange_Even_And_Odd.Click += new System.EventHandler(this.btn_Arrange_Even_And_Odd_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1559, 1028);
+            this.Controls.Add(this.btn_Arrange_Even_And_Odd);
             this.Controls.Add(this.btn_Remove_Item_from_sorted_Linked_List);
             this.Controls.Add(this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order);
             this.Controls.Add(this.btn_Distribute_coin_in_a_binary_tree);
@@ -708,5 +720,6 @@
         private System.Windows.Forms.Button btn_Distribute_coin_in_a_binary_tree;
         private System.Windows.Forms.Button btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order;
         private System.Windows.Forms.Button btn_Remove_Item_from_sorted_Linked_List;
+        private System.Windows.Forms.Button btn_Arrange_Even_And_Odd;
     }
 }

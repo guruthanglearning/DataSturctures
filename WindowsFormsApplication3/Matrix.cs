@@ -516,6 +516,9 @@ namespace WindowsFormsApplication3
 
         private void btn_Navigate_from_North_West_to_South_East_of_the_building_Click(object sender, EventArgs e)
         {
+            int[,] m = new int[3, 3];
+            m = null;
+            
             /*
              
             Building is a grid of n*m rooms each room has a door on each of the four walls a door is either 
@@ -681,6 +684,144 @@ namespace WindowsFormsApplication3
                     que.Enqueue(new Point() { X = r, Y = c + 1 });
                 }
             }
+        }
+
+        private void Matrix_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_2D_Array_DS_Click(object sender, EventArgs e)
+        {
+            /*   
+                https://www.hackerrank.com/challenges/2d-array/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
+             
+                Time Complexity : O(N*M) where N and M are the length of the jagged arrays
+                Space Complexity: Constant time
+           */
+
+            StringBuilder result = new StringBuilder();
+            List<int[][]> inputs = new List<int[][]>();
+            /*
+            int[][] input = new int[6][]; // 19
+            input[0] = new int[] { 1, 1, 1, 0, 0, 0 };
+            input[1] = new int[] { 0, 1, 0, 0, 0, 0 };
+            input[2] = new int[] { 1,1, 1, 0, 0, 0 };
+            input[3] = new int[] { 0, 0, 2, 4, 4, 0 };
+            input[4] = new int[] { 0, 0, 0, 2, 0, 0 };
+            input[5] = new int[] { 0, 0, 1, 2, 4, 0 };
+            inputs.Add(input);
+
+            int[][] input1 = new int[6][]; // 13
+            input1[0] = new int[] { 1, 1, 1, 0, 0, 0 };
+            input1[1] = new int[] { 0, 1, 0, 0, 0, 0 };
+            input1[2] = new int[] { 1, 1, 1, 0, 0, 0 };
+            input1[3] = new int[] { 0, 9, 2, -4, -4, 0 };
+            input1[4] = new int[] { 0, 0, 0, -2, 0, 0 };
+            input1[5] = new int[] { 0, 0, -1, -2, -4, 0 };
+            inputs.Add(input1);
+
+            int[][] input2 = new int[6][]; //28
+            input2[0] = new int[] { -9, -9, -9, 1, 1, 1 };
+            input2[1] = new int[] { 0, -9, 0, 4, 3, 2 };
+            input2[2] = new int[] { -9, -9, -9, 1, 2, 3 };
+            input2[3] = new int[] { 0, 0, 8, 6, 6, 0 };
+            input2[4] = new int[] { 0, 0, 0, -2, 0, 0 };
+            input2[5] = new int[] { 0, 0, 1, 2, 4, 0 };
+            inputs.Add(input2);
+            */
+
+            int[][] input3 = new int[6][]; //-19
+            input3[0] = new int[] { 0, -4, -6, 0, -7, -6 };
+            input3[1] = new int[] { -1, -2, -6, -8, -3, -1 };
+            input3[2] = new int[] { -8, -4, -2, -8, -8, -6 };
+            input3[3] = new int[] {-3,-1,-2,-5,-7,-4};
+            input3[4] = new int[] { -3, -5, -3, -6, -6, -6 };
+            input3[5] = new int[] { -3, -6, 0, -8, -6, -7 };
+            inputs.Add(input3);
+            
+
+            int[][] input4 = new int[6][]; //0
+            input4[0] = new int[] { -1, 1, -1, 0, 0, 0 };
+            input4[1] = new int[] { 0, -1, 0, 0, 0, 0 };
+            input4[2] = new int[] { -1, -1, -1, 0, 0, 0 };
+            input4[3] = new int[] { 0, -9, 2, -4, -4, 0 };
+            input4[4] = new int[] { -7, 0, 0, -2, 0, 0 };
+            input4[5] = new int[] { 0, 0, -1, -2, -4, 0 };
+            inputs.Add(input4);
+
+            foreach (int[][] inp in inputs)
+            {
+                result.AppendLine($"Max sum of the given matrix \n {(this.DisplayJaggedArrays(inp))} is {(this.HourglassSum(inp))} \n\n");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        private string DisplayJaggedArrays(int[][] input)
+        {
+
+            StringBuilder result = new StringBuilder();
+
+            foreach(int[] data in input )
+            {
+                foreach(int d in data)
+                {
+                    result.Append($"{d} \t");
+                }
+                result.AppendLine();
+            }
+
+            return result.ToString();
+        }
+
+        private int HourglassSum(int[][] arr)
+        {
+
+            if (arr == null)
+            {
+                return 0;
+            }
+
+            int max = int.MinValue;
+            int sum = 0;
+            for (int r = 0; r < arr.Length - 2; r++)
+            {
+                for (int c = 0; c < arr[r].Length - 2; c++)
+                {
+                    sum = SumMatrix(arr, r, c);                        
+                    max = Math.Max(max, sum);
+                   
+                }
+            }
+
+            return max;
+        }
+
+        private int SumMatrix(int[][] input, int r, int c)
+        {
+            if (input == null )
+            {
+                return 0;
+            }
+
+            int sum = 0;
+            for (int i = r; i <= r + 2; i++)
+            {
+                if (r + 1 == i)
+                {
+                    continue;
+                }
+
+                for (int j = c; j <= c + 2; j++)
+                {
+                    sum += input[i][j];
+                }
+            }
+
+            sum += input[r + 1][c + 1];
+            return sum;
         }
     }
 }

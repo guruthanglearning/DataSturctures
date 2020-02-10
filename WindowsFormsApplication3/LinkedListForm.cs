@@ -3471,7 +3471,7 @@ namespace WindowsFormsApplication3
             }
         }
 
-        private void btn_Robbing_a_home_3_Click(object sender, EventArgs e)
+        public void btn_Robbing_a_home_3_Click(object sender, EventArgs e)
         {
 
             /*
@@ -4213,6 +4213,62 @@ namespace WindowsFormsApplication3
             datas.AppendLine();
             DisplayLinkList(LLNodeFirst);
             MessageBox.Show(datas.ToString());
+        }
+
+        private void btn_Arrange_Even_And_Odd_Click(object sender, EventArgs e)
+        {
+            //Refer : http://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/
+            //Time complexity : O(n)
+            /*
+              Input     :   1->2->3->4->5
+              Output    :   1->3->2->5->4
+            */
+            LinkList linkList = null;
+            linkList = InsertLinkList(linkList, 1);
+            linkList = InsertLinkList(linkList, 2);
+            linkList = InsertLinkList(linkList, 3);
+            linkList = InsertLinkList(linkList, 4);
+            linkList = InsertLinkList(linkList, 5);
+            linkList = InsertLinkList(linkList, 6);
+            linkList = InsertLinkList(linkList, 7);
+            linkList = InsertLinkList(linkList, 8);
+            linkList = InsertLinkList(linkList, 9);
+            linkList = InsertLinkList(linkList, 10);
+            datas.Append("Before Arrange \n");
+            DisplayLinkList(linkList);
+            datas.Append("\nAfter Arrange \n");
+            this.RearrangeEventOdd(linkList);
+            DisplayLinkList(linkList);
+            MessageBox.Show(datas.ToString());
+
+        }
+
+
+        private void RearrangeEventOdd(LinkList linkList)
+        {
+            if (linkList == null)
+            {
+                return;
+            }
+
+
+            LinkList pointer = linkList;            
+            LinkList even= linkList.next;
+            LinkList odd = even != null ? even.next : null;
+            LinkList t;
+            // 1->2->3->4->5
+
+            while (odd != null && even !=null )
+            {
+                t = odd.next;
+                odd.next = null;                
+                pointer.next = odd;
+                odd.next = even;
+                even.next = t;
+                pointer = even;
+                even = even.next;
+                odd = even != null ? even.next : null;                
+            }
         }
     }
 

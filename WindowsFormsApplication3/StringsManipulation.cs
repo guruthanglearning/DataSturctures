@@ -126,7 +126,7 @@ namespace WindowsFormsApplication3
                 }
             }
 
-           
+
 
             return isTrue;
         }
@@ -249,10 +249,10 @@ namespace WindowsFormsApplication3
 
         private void button6_Click(object sender, EventArgs e)
         {
-            int[,] matrix = new int[,] {                 
-                                            { 1, 2, 3, 4 }, 
-                                            { 5, 6, 7, 8 }, 
-                                            { 9, 10, 11, 12 }, 
+            int[,] matrix = new int[,] {
+                                            { 1, 2, 3, 4 },
+                                            { 5, 6, 7, 8 },
+                                            { 9, 10, 11, 12 },
                                             { 13, 14, 15, 16 }
                                       };
 
@@ -384,7 +384,7 @@ namespace WindowsFormsApplication3
             //abca tail = 3 i =3
             char[] data = textBox1.Text.ToCharArray();
             int tail = 1;
-            
+
             for (int i = 1; i < data.Length; i++)
             {
 
@@ -457,7 +457,7 @@ namespace WindowsFormsApplication3
             {
                 if (sentenace[i] == ' ')
                 {
-                    start = i + 1; 
+                    start = i + 1;
                     if (end != i)
                     {
                         datas.Append(sentenace.Substring(start, (end - start) + 1) + " ");
@@ -614,7 +614,7 @@ namespace WindowsFormsApplication3
             incr = 1;
             while (incr <= maxNumbers)
             {
-             
+
                 if (incr % 10 > 0)
                 {
                     data.Append(incr.ToString() + ",");
@@ -1294,6 +1294,14 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Max Palondrom sequence {this.GetPalindromes(input, 0, input.Length - 1)}");
         }
 
+
+        private void Longest_Palondrome_in_a_given_string_O_Off_N_Click(object sender, EventArgs e)
+        {
+            //Time Complexity : O(n^2)
+            string input = "This is madam malayalam";
+            MessageBox.Show(this.longestPalindromeSubstringEasy(input).ToString());
+        }
+
         public int longestPalindromeSubstringEasy(string input)
         {
             //GEEKSFORGEEKS
@@ -1330,12 +1338,6 @@ namespace WindowsFormsApplication3
             return longest_substring;
         }
 
-        private void Longest_Palondrome_in_a_given_string_O_Off_N_Click(object sender, EventArgs e)
-        {
-            //Time Complexity : O(n)
-            string input = "This is madam malayalam";
-            MessageBox.Show(this.longestPalindromeSubstringEasy(input).ToString());
-        }
 
         private void btn_Find_index_of_homogenous_continous_charcter_Click(object sender, EventArgs e)
         {
@@ -2216,7 +2218,7 @@ namespace WindowsFormsApplication3
                 string str = input.Input;
                 int uniqueVal = input.UniqueCharacterCount;
                 int[] count = new int[alphaBetSize];
-                
+
                 if (str.Length < uniqueVal)
                 {
                     result.Append($"There is no sufficient unique {uniqueVal} for the given string {str} \n");
@@ -2224,7 +2226,7 @@ namespace WindowsFormsApplication3
                 }
 
                 count[str[0]]++;
-                int curr_start = 0, curr_end = 0, windowSize = 1, windowStart = 0; 
+                int curr_start = 0, curr_end = 0, windowSize = 1, windowStart = 0;
                 //aabbccd  uniqueval = 3
                 for (int i = 1; i < str.Length; i++)//4
                 {
@@ -2237,7 +2239,7 @@ namespace WindowsFormsApplication3
                         curr_start++; //1
                     }
 
-                    if ((curr_end-curr_start +1) > (windowSize))
+                    if ((curr_end - curr_start + 1) > (windowSize))
                     {
                         windowSize = curr_end - curr_start + 1; //6
                         windowStart = curr_start; //0
@@ -2277,23 +2279,23 @@ namespace WindowsFormsApplication3
             {
                 result = "1";
             }
-            if(n==2)
+            if (n == 2)
             {
                 result = "11";
             }
-            result= "11";
-            for (int i=3; i<=n;i++)
+            result = "11";
+            for (int i = 3; i <= n; i++)
             {
-                
+
                 int counter = 1;
                 result += "$";
                 string temp = string.Empty;
 
-                for(int j = 1; j<result.Length; j++)
+                for (int j = 1; j < result.Length; j++)
                 {
                     if (result[j] != result[j - 1])
                     {
-                        temp += counter ;
+                        temp += counter;
                         temp += result[j - 1];
                     }
                     else
@@ -2301,7 +2303,7 @@ namespace WindowsFormsApplication3
                         counter++;
                     }
                 }
-                result = temp;                
+                result = temp;
             }
 
             MessageBox.Show($"Look and easy sequence for the given number {n} is {result} ");
@@ -2321,15 +2323,15 @@ namespace WindowsFormsApplication3
             //inputs.Add("geek");
             inputs.Add("aab");
             StringBuilder result = new StringBuilder();
-            foreach(var input in inputs)
+            foreach (var input in inputs)
             {
-                result.Append($"The permutation for the given string {input} is {string.Join(" ", this.GetPermuationOfGivenString(input,string.Empty))} \n");
+                result.Append($"The permutation for the given string {input} is {string.Join(" ", this.GetPermuationOfGivenString(input, string.Empty))} \n");
             }
-            
+
             MessageBox.Show(result.ToString());
         }
 
-        private List<string> GetPermuationOfGivenString(string input,string currentString)
+        private List<string> GetPermuationOfGivenString(string input, string currentString)
         {
             List<string> result = new List<string>();
             if (input.Length == 0)
@@ -2338,19 +2340,19 @@ namespace WindowsFormsApplication3
                 return result;
             }
 
-            bool[] vistedChar = new bool[26];            
+            bool[] vistedChar = new bool[26];
             char currentChar;
 
-            for(int i = 0; i<input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 currentChar = input[i];
-                               
+
                 if (vistedChar[currentChar - 'a'] == false)
                 {
                     /*
                         String.Substring(0,0) will be empty
                     */
-                    result.AddRange(this.GetPermuationOfGivenString(input.Substring(0, i) + input.Substring(i+1), currentString + currentChar));
+                    result.AddRange(this.GetPermuationOfGivenString(input.Substring(0, i) + input.Substring(i + 1), currentString + currentChar));
                 }
                 vistedChar[currentChar - 'a'] = true;
             }
@@ -2384,7 +2386,7 @@ namespace WindowsFormsApplication3
 
             string[] strs = new string[] { "flower", "flow", "flight" };
 
-                     
+
 
             int minLength = this.GetMinLength(strs);
             int index = 0;
@@ -2408,7 +2410,7 @@ namespace WindowsFormsApplication3
 
             }
 
-            MessageBox.Show($"The longest common prefix for the given input strings {string.Join(" ",strs)} is { strs[0].Substring(0,index)}");
+            MessageBox.Show($"The longest common prefix for the given input strings {string.Join(" ", strs)} is { strs[0].Substring(0, index)}");
 
         }
 
@@ -2465,9 +2467,9 @@ namespace WindowsFormsApplication3
             inputs.Add("([)]");
             inputs.Add("{[]}");
             StringBuilder result = new StringBuilder();
-            foreach(string input in inputs)
-            {               
-               result.Append($"The given input string {input} is {(this.IsValidWithBraces(input) ? " valid" : " is not valid")} \n");               
+            foreach (string input in inputs)
+            {
+                result.Append($"The given input string {input} is {(this.IsValidWithBraces(input) ? " valid" : " is not valid")} \n");
             }
 
             MessageBox.Show(result.ToString());
@@ -2513,10 +2515,10 @@ namespace WindowsFormsApplication3
 
             return stack.Count == 0;
         }
-        
+
         private void btn_Implement_strStr_Click(object sender, EventArgs e)
         {
-            
+
 
             /*
                 Implement strStr().
@@ -2548,14 +2550,14 @@ namespace WindowsFormsApplication3
             //inputs.Add(new IndexOf() { input = "aaaaa", findIndex = "bb" });           // -1
             //inputs.Add(new IndexOf() { input = "", findIndex = "" });           // -1
             StringBuilder result = new StringBuilder();
-            foreach(IndexOf input in inputs)
+            foreach (IndexOf input in inputs)
             {
                 result.Append($"The index is {this.FindIndexOf(input.input, input.findIndex)} for the given string {input.input} to find index of {input.findIndex} \n");
             }
 
             MessageBox.Show(result.ToString());
 
-            
+
 
 
         }
@@ -2571,15 +2573,15 @@ namespace WindowsFormsApplication3
             //  input = "mississippi", findIndex = "issipi"  i = 1 index = 1 j = 1
             if (findIndex.Length == 0) return 0;
             int index = -1;
-            for (int i = 0, j = 0; i < input.Length; i++ )
-            {                
+            for (int i = 0, j = 0; i < input.Length; i++)
+            {
                 if (input[i] == findIndex[j])
                 {
                     if (index == -1)
                     {
-                        index = i; 
+                        index = i;
                     }
-                    j++; 
+                    j++;
                     if (j == findIndex.Length) return index;
                 }
                 else
@@ -2594,7 +2596,7 @@ namespace WindowsFormsApplication3
                 }
             }
             return -1;
-            
+
         }
 
         public class IndexOf
@@ -2622,9 +2624,9 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
 
-            int[] t = new int[inputs.Count]; 
+            int[] t = new int[inputs.Count];
 
-            foreach(string s in inputs)
+            foreach (string s in inputs)
             {
                 if (s == null)
                 {
@@ -2649,7 +2651,7 @@ namespace WindowsFormsApplication3
                             break;
                         }
                     }
-                    result.AppendLine($"Max length is {input.Length - (i +1)} for the last word in this given string {s}");
+                    result.AppendLine($"Max length is {input.Length - (i + 1)} for the last word in this given string {s}");
                 }
             }
             MessageBox.Show(result.ToString());
@@ -2680,11 +2682,11 @@ namespace WindowsFormsApplication3
             inputs.Add(new AddBinaryInputs() { inputA = "11" });
             inputs.Add(new AddBinaryInputs() { inputB = "11" });
             inputs.Add(new AddBinaryInputs() { });
-            inputs.Add(new AddBinaryInputs() { inputA = "1111",inputB = "111" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1111", inputB = "111" });
 
             StringBuilder result = new StringBuilder();
-        
-            foreach(var input in inputs)
+
+            foreach (var input in inputs)
             {
                 int al = 0;
                 int bl = 0;
@@ -2699,7 +2701,7 @@ namespace WindowsFormsApplication3
                     continue;
                 }
                 else if (string.IsNullOrEmpty(input.inputB))
-                {                    
+                {
                     result.AppendLine($"Adding two binary {(input.inputA == null ? "A NULL" : input.inputA)} and {(input.inputB == null ? "B NULL" : input.inputB)}  is {(input.inputA == null ? "NULL" : input.inputA)}");
                     continue;
                 }
@@ -2707,10 +2709,10 @@ namespace WindowsFormsApplication3
                 input.inputA = input.inputA.Trim();
                 input.inputB = input.inputB.Trim();
 
-                al = input.inputA.Length -1 ;
-                bl = input.inputB.Length -1 ;
+                al = input.inputA.Length - 1;
+                bl = input.inputB.Length - 1;
 
-                while(al >= 0 && bl >= 0)
+                while (al >= 0 && bl >= 0)
                 {
                     sum = carry;
                     sum += (input.inputA[al] - '0');
@@ -2721,13 +2723,13 @@ namespace WindowsFormsApplication3
                     bl--;
                 }
 
-                while (al >= 0 )
+                while (al >= 0)
                 {
                     sum = carry;
-                    sum += (input.inputA[al] - '0');                 
+                    sum += (input.inputA[al] - '0');
                     carry = sum / 2;
                     binarySum.Insert(0, sum % 2);
-                    al--;                    
+                    al--;
                 }
 
                 while (bl >= 0)
@@ -2750,7 +2752,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show(result.ToString());
 
 
-            
+
 
         }
 
@@ -2782,7 +2784,7 @@ namespace WindowsFormsApplication3
             string[] timeData;
             foreach (string s in inputs)
             {
-                
+
                 timeData = s.Split(':');
                 timeFormat.Clear();
 
@@ -2817,7 +2819,7 @@ namespace WindowsFormsApplication3
                 }
 
                 timeFormat.Append($":{timeData[1]}:{timeData[2].Substring(0, 2)}");
-                result.AppendLine($"24 hour format is {timeFormat.ToString()} for the given date {s}");  
+                result.AppendLine($"24 hour format is {timeFormat.ToString()} for the given date {s}");
             }
 
             MessageBox.Show(result.ToString());
@@ -2923,13 +2925,13 @@ namespace WindowsFormsApplication3
             StringBuilder temp = new StringBuilder();
             StringBuilder result = new StringBuilder();
 
-            foreach(string str in inputs)
+            foreach (string str in inputs)
             {
                 stack.Clear();
-                temp.Clear();                
-                foreach(string istr in str.Split('/'))
+                temp.Clear();
+                foreach (string istr in str.Split('/'))
                 {
-                    if (string.IsNullOrEmpty(istr) ||  istr == "." )
+                    if (string.IsNullOrEmpty(istr) || istr == ".")
                     {
                         continue;
                     }
@@ -3033,6 +3035,232 @@ namespace WindowsFormsApplication3
             }
 
             return true;
+        }
+
+        private void btn_Longest_Palindromic_Substring_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+                Example 1:
+
+                Input: "babad"
+                Output: "bab"
+                Note: "aba" is also a valid answer.
+                Example 2:
+
+                Input: "cbbd"
+                Output: "bb"
+             */
+
+            List<string> inputs = new List<string>();
+            StringBuilder result = new StringBuilder();
+            inputs.Add("babad");
+            inputs.Add("cbbd");
+            inputs.Add(null);
+            inputs.Add("GEEKSFORGEEKS");
+            inputs.Add("This is madam malayalam");
+            inputs.Add("m");
+            string tempResult = string.Empty;
+            foreach (string input in inputs)
+            {
+                tempResult = this.LongestPalindromicSubstring(input);
+                result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input) } is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult) }");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        private string LongestPalindromicSubstring(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                return s;
+            }
+
+
+            int j = 0;
+            int k = 0;
+            int start = 0;
+            int length = 1;
+            int tempLength = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                tempLength = 0;
+                j = i;
+                k = i + 1;
+
+
+                while (j >= 0 && j < s.Length && k >= 0 && k < s.Length && s[j] == s[k])
+                {
+                    j--;
+                    k++;
+                    tempLength += 2;
+                }
+
+                if (tempLength > length)
+                {
+                    length = Math.Max(tempLength, length);
+                    start = j + 1;
+                }
+
+                j = i - 1;
+                k = i + 1;
+                tempLength = 1;
+                while (j >= 0 && j < s.Length && k >= 0 && k < s.Length && s[j] == s[k])
+                {
+                    j--;
+                    k++;
+                    tempLength += 2;
+                }
+
+                if (tempLength > length)
+                {
+                    length = Math.Max(tempLength, length);
+                    start = j + 1;
+                }
+            }
+
+            return s.Substring(start, length);
+        }
+
+        private void btn_Integer_to_Roman_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                    Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+                    Symbol       Value
+                    I             1
+                    V             5
+                    X             10
+                    L             50
+                    C             100
+                    D             500
+                    M             1000
+                    For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+
+                    Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+                    I can be placed before V (5) and X (10) to make 4 and 9. 
+                    X can be placed before L (50) and C (100) to make 40 and 90. 
+                    C can be placed before D (500) and M (1000) to make 400 and 900.
+                    Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
+
+                    Example 1:
+
+                    Input: 3
+                    Output: "III"
+                    Example 2:
+
+                    Input: 4
+                    Output: "IV"
+                    Example 3:
+
+                    Input: 9
+                    Output: "IX"
+                    Example 4:
+
+                    Input: 58
+                    Output: "LVIII"
+                    Explanation: L = 50, V = 5, III = 3.
+                    Example 5:
+
+                    Input: 1994
+                    Output: "MCMXCIV"
+                    Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+                    Time Complexity : O(N) where N is the length of the input
+                    Space Complexity : O(1) constant space
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<int> inputs = new List<int>();
+            inputs.Add(1945);
+            inputs.Add(3999);
+            inputs.Add(3900);
+            inputs.Add(0);
+            inputs.Add(58);
+            inputs.Add(5);
+            inputs.Add(10);
+            inputs.Add(11);
+            inputs.Add(5);
+            inputs.Add(10);
+            inputs.Add(50);
+            inputs.Add(100);
+            inputs.Add(500);
+            inputs.Add(1000);
+
+            string res;
+            foreach (int input in inputs)
+            {
+                res = this.IntToRoman(input);
+                result.AppendLine($"Roman value for the given integer {input} is {(string.IsNullOrEmpty(res) ? "Empty" : res)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        private string IntToRoman(int num)
+        {            
+            if (num == 0)
+            {
+                return null;
+            }
+
+            int val = num;
+            int div = 1;
+            int rem = 0;
+            System.Text.StringBuilder res = new System.Text.StringBuilder();
+            Dictionary<int, char> dict = new Dictionary<int, char>();
+            dict.Add(1, 'I');
+            dict.Add(5, 'V');
+            dict.Add(10, 'X');
+            dict.Add(50, 'L');
+            dict.Add(100, 'C');
+            dict.Add(500, 'D');
+            dict.Add(1000, 'M');
+
+            while (val >= div)
+            {
+                div *= 10;
+            }
+
+             div /= 10;
+
+
+            while (val > 0)
+            {
+                rem = val / div;
+
+                if (rem <= 3)
+                {
+                    res.Append(new String(dict[div], rem));
+                }
+                else if (rem == 4)
+                {
+                    res.Append($"{dict[div]}{dict[div * 5]}");
+                }
+                else if (rem >= 5 && rem <= 8)
+                {
+                    res.Append($"{dict[div * 5]}{new String(dict[div], rem - 5) }" );
+                }
+                else // rem == 9
+                {
+                    res.Append($"{dict[div]}{dict[div * 10]}");
+                }
+
+                val = val % div;
+                div /= 10;
+
+            }
+            return res.ToString();
         }
     }
 }

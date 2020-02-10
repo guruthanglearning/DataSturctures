@@ -80,6 +80,8 @@
             this.btn_Socks_Merchant = new System.Windows.Forms.Button();
             this.btn_Steps_To_Make_0_from_binary = new System.Windows.Forms.Button();
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II = new System.Windows.Forms.Button();
+            this.btn_Container_With_Most_Water = new System.Windows.Forms.Button();
+            this.btn_Merge_Overlapping_Intervals_with_DSets = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -263,7 +265,7 @@
             // 
             // btn_Random_number_generator_in_arbitrary_probability_distribution_fashion
             // 
-            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(13, 803);
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(15, 846);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Name = "btn_Random_number_generator_in_arbitrary_probability_distribution_fashion";
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Size = new System.Drawing.Size(487, 43);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.TabIndex = 17;
@@ -273,7 +275,7 @@
             // 
             // btn_Sum_the_first_two_min_elements_from_the_given_array
             // 
-            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(13, 852);
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(15, 895);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Name = "btn_Sum_the_first_two_min_elements_from_the_given_array";
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Size = new System.Drawing.Size(487, 41);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.TabIndex = 18;
@@ -485,7 +487,7 @@
             // 
             // btn_Plus_One
             // 
-            this.btn_Plus_One.Location = new System.Drawing.Point(13, 899);
+            this.btn_Plus_One.Location = new System.Drawing.Point(15, 942);
             this.btn_Plus_One.Name = "btn_Plus_One";
             this.btn_Plus_One.Size = new System.Drawing.Size(490, 34);
             this.btn_Plus_One.TabIndex = 39;
@@ -505,9 +507,9 @@
             // 
             // btn_Array_partition_based_on_Pivot
             // 
-            this.btn_Array_partition_based_on_Pivot.Location = new System.Drawing.Point(10, 938);
+            this.btn_Array_partition_based_on_Pivot.Location = new System.Drawing.Point(997, 472);
             this.btn_Array_partition_based_on_Pivot.Name = "btn_Array_partition_based_on_Pivot";
-            this.btn_Array_partition_based_on_Pivot.Size = new System.Drawing.Size(490, 41);
+            this.btn_Array_partition_based_on_Pivot.Size = new System.Drawing.Size(367, 41);
             this.btn_Array_partition_based_on_Pivot.TabIndex = 41;
             this.btn_Array_partition_based_on_Pivot.Text = "Array partition based on Pivot";
             this.btn_Array_partition_based_on_Pivot.UseVisualStyleBackColor = true;
@@ -613,11 +615,33 @@
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II.UseVisualStyleBackColor = true;
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Click += new System.EventHandler(this.btn_Best_Time_to_Buy_and_Sell_Stock_II_Click);
             // 
+            // btn_Container_With_Most_Water
+            // 
+            this.btn_Container_With_Most_Water.Location = new System.Drawing.Point(998, 433);
+            this.btn_Container_With_Most_Water.Name = "btn_Container_With_Most_Water";
+            this.btn_Container_With_Most_Water.Size = new System.Drawing.Size(362, 33);
+            this.btn_Container_With_Most_Water.TabIndex = 53;
+            this.btn_Container_With_Most_Water.Text = "Container With Most Water";
+            this.btn_Container_With_Most_Water.UseVisualStyleBackColor = true;
+            this.btn_Container_With_Most_Water.Click += new System.EventHandler(this.btn_Container_With_Most_Water_Click);
+            // 
+            // btn_Merge_Overlapping_Intervals_with_DSets
+            // 
+            this.btn_Merge_Overlapping_Intervals_with_DSets.Location = new System.Drawing.Point(15, 802);
+            this.btn_Merge_Overlapping_Intervals_with_DSets.Name = "btn_Merge_Overlapping_Intervals_with_DSets";
+            this.btn_Merge_Overlapping_Intervals_with_DSets.Size = new System.Drawing.Size(487, 40);
+            this.btn_Merge_Overlapping_Intervals_with_DSets.TabIndex = 54;
+            this.btn_Merge_Overlapping_Intervals_with_DSets.Text = "Merge Overlapping Intervals with DSets";
+            this.btn_Merge_Overlapping_Intervals_with_DSets.UseVisualStyleBackColor = true;
+            this.btn_Merge_Overlapping_Intervals_with_DSets.Click += new System.EventHandler(this.btn_Merge_Overlapping_Intervals_with_DSets_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_Merge_Overlapping_Intervals_with_DSets);
+            this.Controls.Add(this.btn_Container_With_Most_Water);
             this.Controls.Add(this.btn_Best_Time_to_Buy_and_Sell_Stock_II);
             this.Controls.Add(this.btn_Steps_To_Make_0_from_binary);
             this.Controls.Add(this.btn_Socks_Merchant);
@@ -731,5 +755,7 @@
         private System.Windows.Forms.Button btn_Socks_Merchant;
         private System.Windows.Forms.Button btn_Steps_To_Make_0_from_binary;
         private System.Windows.Forms.Button btn_Best_Time_to_Buy_and_Sell_Stock_II;
+        private System.Windows.Forms.Button btn_Container_With_Most_Water;
+        private System.Windows.Forms.Button btn_Merge_Overlapping_Intervals_with_DSets;
     }
 }
