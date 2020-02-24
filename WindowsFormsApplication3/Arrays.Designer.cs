@@ -82,6 +82,7 @@
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II = new System.Windows.Forms.Button();
             this.btn_Container_With_Most_Water = new System.Windows.Forms.Button();
             this.btn_Merge_Overlapping_Intervals_with_DSets = new System.Windows.Forms.Button();
+            this.btn_3_Sum = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -635,11 +636,22 @@
             this.btn_Merge_Overlapping_Intervals_with_DSets.UseVisualStyleBackColor = true;
             this.btn_Merge_Overlapping_Intervals_with_DSets.Click += new System.EventHandler(this.btn_Merge_Overlapping_Intervals_with_DSets_Click);
             // 
+            // btn_3_Sum
+            // 
+            this.btn_3_Sum.Location = new System.Drawing.Point(996, 519);
+            this.btn_3_Sum.Name = "btn_3_Sum";
+            this.btn_3_Sum.Size = new System.Drawing.Size(368, 39);
+            this.btn_3_Sum.TabIndex = 55;
+            this.btn_3_Sum.Text = "3 Sum";
+            this.btn_3_Sum.UseVisualStyleBackColor = true;
+            this.btn_3_Sum.Click += new System.EventHandler(this.btn_3_Sum_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_3_Sum);
             this.Controls.Add(this.btn_Merge_Overlapping_Intervals_with_DSets);
             this.Controls.Add(this.btn_Container_With_Most_Water);
             this.Controls.Add(this.btn_Best_Time_to_Buy_and_Sell_Stock_II);
@@ -757,5 +769,6 @@
         private System.Windows.Forms.Button btn_Best_Time_to_Buy_and_Sell_Stock_II;
         private System.Windows.Forms.Button btn_Container_With_Most_Water;
         private System.Windows.Forms.Button btn_Merge_Overlapping_Intervals_with_DSets;
+        private System.Windows.Forms.Button btn_3_Sum;
     }
 }

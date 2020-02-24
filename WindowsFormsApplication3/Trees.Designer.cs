@@ -36,6 +36,8 @@
             this.btn_Find_longest_Path_in_a_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Path_Sum = new System.Windows.Forms.Button();
             this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input = new System.Windows.Forms.Button();
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion = new System.Windows.Forms.Button();
+            this.btn_Binary_Tree_Maximum_Path_Sum = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -118,11 +120,33 @@
             this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.UseVisualStyleBackColor = true;
             this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Click += new System.EventHandler(this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input_Click);
             // 
+            // btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion
+            // 
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Location = new System.Drawing.Point(12, 392);
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Name = "btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion";
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Size = new System.Drawing.Size(303, 56);
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.TabIndex = 8;
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Text = "Find two numbers which adds to Sum from a binary search tree (Recurssion)";
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.UseVisualStyleBackColor = true;
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Click += new System.EventHandler(this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion_Click);
+            // 
+            // btn_Binary_Tree_Maximum_Path_Sum
+            // 
+            this.btn_Binary_Tree_Maximum_Path_Sum.Location = new System.Drawing.Point(12, 454);
+            this.btn_Binary_Tree_Maximum_Path_Sum.Name = "btn_Binary_Tree_Maximum_Path_Sum";
+            this.btn_Binary_Tree_Maximum_Path_Sum.Size = new System.Drawing.Size(303, 38);
+            this.btn_Binary_Tree_Maximum_Path_Sum.TabIndex = 9;
+            this.btn_Binary_Tree_Maximum_Path_Sum.Text = "Binary Tree Maximum Path Sum";
+            this.btn_Binary_Tree_Maximum_Path_Sum.UseVisualStyleBackColor = true;
+            this.btn_Binary_Tree_Maximum_Path_Sum.Click += new System.EventHandler(this.btn_Binary_Tree_Maximum_Path_Sum_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1099, 540);
+            this.Controls.Add(this.btn_Binary_Tree_Maximum_Path_Sum);
+            this.Controls.Add(this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion);
             this.Controls.Add(this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input);
             this.Controls.Add(this.btn_Path_Sum);
             this.Controls.Add(this.btn_Find_longest_Path_in_a_Binary_Tree);
@@ -147,5 +171,7 @@
         private System.Windows.Forms.Button btn_Find_longest_Path_in_a_Binary_Tree;
         private System.Windows.Forms.Button btn_Path_Sum;
         private System.Windows.Forms.Button btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input;
+        private System.Windows.Forms.Button btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion;
+        private System.Windows.Forms.Button btn_Binary_Tree_Maximum_Path_Sum;
     }
 }

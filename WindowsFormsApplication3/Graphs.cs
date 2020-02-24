@@ -392,6 +392,27 @@ namespace WindowsFormsApplication3
 
             TraverseGraphForEdges(A, nodeWeight, 0);
 
+            result.AppendLine("Depth First Traversal");
+            foreach (string key in nodeWeight.Keys)
+            {
+                result.AppendLine($"{key} \t: {nodeWeight[key]}");
+            }
+
+            nodeWeight = new Dictionary<string, string>();
+
+            this.TraverseGraphForEdgesBFS(A, ref nodeWeight);
+            result.AppendLine();
+            result.AppendLine("Breath First Traversal");
+            foreach (string key in nodeWeight.Keys)
+            {
+                result.AppendLine($"{key} \t: {nodeWeight[key]}");
+            }
+
+
+            nodeWeight = new Dictionary<string, string>();
+            this.TraverseGraphForEdgesDFS(A, ref nodeWeight);
+            result.AppendLine();
+            result.AppendLine("Depth First Traversal");
             foreach (string key in nodeWeight.Keys)
             {
                 result.AppendLine($"{key} \t: {nodeWeight[key]}");
@@ -400,6 +421,91 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Node path is \n {result.ToString()}");
 
         }
+
+        private void TraverseGraphForEdgesBFS(GraphWeight node, ref Dictionary<string, string> result)
+        {
+            if (node == null )
+            {
+                return;
+            }
+
+            if (result == null)
+            {
+                result = new Dictionary<string, string>();
+            }
+
+            Queue<GraphWeight> qg= new Queue<GraphWeight>();
+            Queue<int> qt = new Queue<int>();
+            qg.Enqueue(node);
+            qt.Enqueue(0);
+
+            int nodeValue = 0;
+            GraphWeight graphNode = null;
+
+            while(qg.Count > 0)
+            {
+                graphNode = qg.Dequeue();
+                nodeValue = qt.Dequeue();
+
+                if (result.ContainsKey(graphNode.Data))
+                {
+                    result[graphNode.Data] += $",{nodeValue}";
+                }
+                else
+                {
+                    result.Add(graphNode.Data, $"{nodeValue}");                    
+                }
+
+                foreach (Edge n in graphNode.Edges)
+                {
+                    qg.Enqueue(n.Node);
+                    qt.Enqueue(nodeValue + n.Weight);
+                }
+            }
+        }
+
+        private void TraverseGraphForEdgesDFS(GraphWeight node, ref Dictionary<string, string> result)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            if (result == null)
+            {
+                result = new Dictionary<string, string>();
+            }
+
+            Stack<GraphWeight> qg = new Stack<GraphWeight>();
+            Stack<int> qt = new Stack<int>();
+            qg.Push(node);
+            qt.Push(0);
+
+            int nodeValue = 0;
+            GraphWeight graphNode = null;
+
+            while (qg.Count > 0)
+            {
+                graphNode = qg.Pop();
+                nodeValue = qt.Pop();
+
+                if (result.ContainsKey(graphNode.Data))
+                {
+                    result[graphNode.Data] += $",{nodeValue}";
+                }
+                else
+                {
+                    result.Add(graphNode.Data, $"{nodeValue}");
+                }
+
+                foreach (Edge n in graphNode.Edges)
+                {
+                    qg.Push(n.Node);
+                    qt.Push(nodeValue + n.Weight);
+                }
+            }
+        }
+
 
         public void TraverseGraphForEdges(GraphWeight node, Dictionary<string, string> result, int sum)
         {

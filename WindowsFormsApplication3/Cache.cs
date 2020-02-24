@@ -213,6 +213,9 @@ namespace WindowsFormsApplication3
         public string Put(string dataKey, string data)
         {
 
+            List<string> l = new List<string>();
+            
+
             if (Cache.ContainsKey(dataKey))
             {            
                 return this.Get(dataKey);

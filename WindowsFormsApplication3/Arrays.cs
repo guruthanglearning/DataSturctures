@@ -167,7 +167,7 @@ namespace WindowsFormsApplication3
             }
             Array.Resize(ref buffer, insert + 1);
 
-    
+
 
             MessageBox.Show(string.Join(",", buffer));
         }
@@ -323,7 +323,7 @@ namespace WindowsFormsApplication3
         }
 
         public string IntToBinaryString(int number)
-        { 
+        {
             var binary = string.Empty;
             /*
                 60 ->30->15->7->3->
@@ -341,6 +341,7 @@ namespace WindowsFormsApplication3
                     2|7  - 1
                     2|3  - 1
                     1|1
+                        
                  */
                 binary = (number & 1) + binary;
                 number = number >> 1;
@@ -554,7 +555,7 @@ namespace WindowsFormsApplication3
                         break;
                     arr[j] = arr[k];
                     j = k;
-                }   
+                }
                 arr[j] = temp;
             }
         }
@@ -656,7 +657,6 @@ namespace WindowsFormsApplication3
         }
 
 
-
         public double findMedianSortedArrays(int[] A, int[] B)
         {
             int m = A.Length;
@@ -741,7 +741,7 @@ namespace WindowsFormsApplication3
         private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
         {
             /*
-                Time Complexity         : O(log n)
+                Time Complexity         : O(log (min(m,n))
                 Space Complexity        : O(1)
                                
                 At first, the searching range is [0, m][0,m]. And the length of this searching range will be reduced by half after each loop. 
@@ -766,14 +766,14 @@ namespace WindowsFormsApplication3
                 int[] nums1 = new int[] { 2, 3, 4, 5 };
                 int[] nums2 = new int[] { };
 
-                int[] nums1 = new int[] { };
+                int[] nums1 = new int[] {1, 3 };
                 int[] nums2 = new int[] { 1, 2, };
 
 
             */
 
-            int[] nums1 = new int[] { 2, 3, 4, 5 };
-            int[] nums2 = new int[] { 1, 2, };
+            int[] nums1 = new int[] { 1 };
+            int[] nums2 = new int[] { 1 };
 
 
             MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
@@ -796,7 +796,7 @@ namespace WindowsFormsApplication3
                         |___|___|___|___|____|
                     His   1   2	  4	  2	   1
                     Pos   0   1   2   3    4
-            */            
+            */
             int[] heights = new int[] { 1, 2, 4, 2, 1 };
             int tempPos = 0;
             int tempHist = 0;
@@ -1172,20 +1172,20 @@ namespace WindowsFormsApplication3
                 result.Append($"Before swap input array :  {Display(input)} \n");
                 int l = 0;
                 int r = input.Length - 1;
-                while(l<= r)
+                while (l <= r)
                 {
                     if (input[l] == 0)
                     {
                         l++;
                     }
-                    else if (input[l]>0 && input[r] == 0)
+                    else if (input[l] > 0 && input[r] == 0)
                     {
                         Swap(input, l, r);
                     }
                     else
                     {
                         r--;
-                    }                    
+                    }
                 }
 
 
@@ -1293,7 +1293,7 @@ namespace WindowsFormsApplication3
             //int[] input = new int[] { };
             //int[] input = new int[] { 3,2,2,3 }; //3
             //int[] input = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
-            int[] input = new int[] { 0, 1, 3,4,5,6 };
+            int[] input = new int[] { 0, 1, 3, 4, 5, 6 };
             int removeElement = 2;
             int index = -1;
             int i = 0;
@@ -1302,7 +1302,7 @@ namespace WindowsFormsApplication3
                 // index = 5 i = 7
                 if (index == -1 && input[i] == removeElement)
                 {
-                    index = i; 
+                    index = i;
                 }
                 else if (index >= 0 && input[i] != removeElement)
                 {
@@ -1363,7 +1363,7 @@ namespace WindowsFormsApplication3
 
                 // 6, 7, 1, 3, 8, 2, 4
                 firstOld = input[start];            //6
-                secondOld =  input[start + 1]; //7
+                secondOld = input[start + 1]; //7
                 if (end <= 2)
                 {
                     thirdOld = Math.Max(firstOld, secondOld);
@@ -1371,7 +1371,7 @@ namespace WindowsFormsApplication3
                 }
 
                 int i = 0;
-                for (i =  2; i < end; i++) // 6
+                for (i = 2; i < end; i++) // 6
                 {
                     thirdOld = Math.Max(input[i] + firstOld, secondOld); //
                     firstOld = secondOld; //12
@@ -1945,24 +1945,24 @@ namespace WindowsFormsApplication3
                 int previous = -1;
                 int left = 0;
                 int right = 0;
-                for (int i = 0; i < input.Length; i++) 
+                for (int i = 0; i < input.Length; i++)
                 {
                     //1, 0, 0, 0, 1, 0, 1
                     // i = 6 previous = 6 front = 6 distance = 2 left = 1 right = 1
                     if (input[i] == 1)
                     {
-                        previous = i; 
+                        previous = i;
                     }
                     else
-                    {                        
+                    {
                         while (front < input.Length && (input[front] == 0 || front < i))
                         {
-                            front++; 
+                            front++;
                         }
 
-                        left = previous == -1 ? input.Length : i - previous; 
-                        right = front == input.Length ? input.Length : front - i; 
-                        distance = Math.Max(distance, Math.Min(left, right)); 
+                        left = previous == -1 ? input.Length : i - previous;
+                        right = front == input.Length ? input.Length : front - i;
+                        distance = Math.Max(distance, Math.Min(left, right));
                     }
                 }
 
@@ -2227,7 +2227,7 @@ namespace WindowsFormsApplication3
                     2-0                    
                  */
 
-                Dictionary<int, int> taskEntry = new Dictionary<int, int>();                
+                Dictionary<int, int> taskEntry = new Dictionary<int, int>();
                 int result = 0;
                 int taskIndex = 0;
                 int last = 0;
@@ -2441,7 +2441,7 @@ namespace WindowsFormsApplication3
             List<int[]> inputs = new List<int[]>();
             inputs.Add(new int[8] { 2, 4, 6, 8, 10, 2, 6, 8 });
             inputs.Add(new int[6] { 2, 4, 7, 9, 2, 4 });
-            inputs.Add(new int[8] { 19,20,21,21,20,19,18,17});
+            inputs.Add(new int[8] { 19, 20, 21, 21, 20, 19, 18, 17 });
 
             foreach (var input in inputs)
             {
@@ -2475,7 +2475,7 @@ namespace WindowsFormsApplication3
                     {
                         y = y ^ input[i];
                     }
-                    
+
                 }
 
                 result.AppendLine($"Two unique values are {x} and {y} for the given array {string.Join(" ", input)}");
@@ -2761,7 +2761,7 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 18, 90, 90, 13, 90, 75, 90, 8, 90, 43 });
             inputs.Add(new int[] { 82, 49, 82, 82, 41, 82, 15, 63, 38, 25 });
             inputs.Add(new int[] { 44, 53, 31, 27, 77, 60, 66, 77, 26, 36 });
-            
+
             StringBuilder result = new StringBuilder();
             int maxCandle = 0;
             int maxCandleCount = 0;
@@ -2802,17 +2802,20 @@ namespace WindowsFormsApplication3
                 2. find the GCD of all the integers of array B.
                 3. Count the number of multiples (ie 2) of LCM that evenly divides the GCD.
 
-              Time Complexity : O(nlogn)
+              Time Complexity : O(m + n) + O(log p)  where m is the total elements in array a 
+                                                           n is the total elements in array b
+                                                           p is number of iteration to find the sets
+                                                                    
               */
 
             StringBuilder result = new StringBuilder();
             List<TwoArrayInputs> inputs = new List<TwoArrayInputs>();
-            inputs.Add(new TwoArrayInputs() {a = new int[] { 2, 4 }, b= new int[] { 16, 32, 96 } }); //3
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 4 }, b = new int[] { 16, 32, 96 } }); //3
             inputs.Add(new TwoArrayInputs() { a = new int[] { 3, 4 }, b = new int[] { 24, 48 } }); //2
             inputs.Add(new TwoArrayInputs() { a = new int[] { 100, 99, 98, 97, 96, 95, 94, 93, 92, 91 }, b = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } }); //0
             inputs.Add(new TwoArrayInputs() { a = new int[] { 2 }, b = new int[] { 20, 30, 12 } }); //1
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 1}, b = new int[] { 100} }); //1
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 3,9,6 }, b = new int[] { 36, 72 } }); //2       
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 1 }, b = new int[] { 100 } }); //1
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 3, 9, 6 }, b = new int[] { 36, 72 } }); //2       
             inputs.Add(new TwoArrayInputs() { a = new int[] { 1 }, b = new int[] { 100 } }); //9
             inputs.Add(new TwoArrayInputs() { a = new int[] { 51 }, b = new int[] { 50 } }); //0
             inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 3, 6 }, b = new int[] { 42, 84 } }); //2
@@ -2820,7 +2823,7 @@ namespace WindowsFormsApplication3
             int lcm = 0;
             int gcd = 0;
             int counter = 0;
-            foreach(var input in inputs)
+            foreach (var input in inputs)
             {
                 counter = 0;
                 lcm = this.LCMForArray(input.a);
@@ -2842,9 +2845,9 @@ namespace WindowsFormsApplication3
         }
 
         public int GCDForArray(int[] input)
-        {            
+        {
             int result = input[0];
-            for(int i = 1; i <input.Length; i++)
+            for (int i = 1; i < input.Length; i++)
             {
                 result = this.GCD(result, input[i]);
             }
@@ -2852,11 +2855,11 @@ namespace WindowsFormsApplication3
         }
 
         public int LCMForArray(int[] input)
-        {         
+        {
             int result = input[0];
             for (int i = 1; i < input.Length; i++)
             {
-                result =  (result * input[i])/this.GCD(result, input[i]);
+                result = (result * input[i]) / this.GCD(result, input[i]);
             }
             return result;
         }
@@ -2922,7 +2925,7 @@ namespace WindowsFormsApplication3
                     int minS = input[0];
                     int maxS = minS;
 
-                    for(int i = 0; i < input.Length; i++)
+                    for (int i = 0; i < input.Length; i++)
                     {
                         if (input[i] < minS)
                         {
@@ -2956,7 +2959,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<BirthDayChocolate> inputs = new List<BirthDayChocolate>();
-            inputs.Add(new BirthDayChocolate() {ChocolateBoxNumber = new int[] { 1, 2, 1, 3, 2 } ,Birthday = 3, BirthMonth = 2 });
+            inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 1, 2, 1, 3, 2 }, Birthday = 3, BirthMonth = 2 });
             inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 1, 1, 1, 1, 1 }, Birthday = 3, BirthMonth = 2 });
             inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 4, 1 }, Birthday = 1, BirthMonth = 1 });
             inputs.Add(new BirthDayChocolate() { ChocolateBoxNumber = new int[] { 4, 5, 4, 2, 4, 5, 2, 3, 2, 1, 1, 5, 4 }, Birthday = 15, BirthMonth = 4 });
@@ -3019,7 +3022,7 @@ namespace WindowsFormsApplication3
 
         }
 
-   
+
         private void btn_Divsible_Sum_Pairs_Click(object sender, EventArgs e)
         {
 
@@ -3064,7 +3067,7 @@ namespace WindowsFormsApplication3
                     r = inArray[i] % k;
                     if (r != 0)
                     {
-                        sum += fr[k - r];                        
+                        sum += fr[k - r];
                     }
                     else
                     {
@@ -3085,7 +3088,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Migratory_Birds_Click(object sender, EventArgs e)
         {
-      
+
             /*
                 https://www.hackerrank.com/challenges/migratory-birds/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
                 Time Complexity : O(n) where n is the list of items in the given input
@@ -3102,7 +3105,7 @@ namespace WindowsFormsApplication3
 
             foreach (int[] input in inputs)
             {
-                result.AppendLine($"The bird sited is {this.MigratoryBirds(input)} for this given array {string.Join(" ", input)}"); 
+                result.AppendLine($"The bird sited is {this.MigratoryBirds(input)} for this given array {string.Join(" ", input)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -3118,7 +3121,7 @@ namespace WindowsFormsApplication3
 
             Dictionary<int, int> dict = new Dictionary<int, int>();
 
-            foreach(int i in input)
+            foreach (int i in input)
             {
                 if (!dict.ContainsKey(i))
                 {
@@ -3130,9 +3133,9 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            int lv = -1, lk = -1, sv = -1, sk = -1; 
+            int lv = -1, lk = -1, sv = -1, sk = -1;
 
-            foreach(int k in dict.Keys)
+            foreach (int k in dict.Keys)
             {
                 if (dict[k] > lv)
                 {
@@ -3178,23 +3181,23 @@ namespace WindowsFormsApplication3
 
             */
 
-            
+
 
             StringBuilder builder = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
-            inputs.Add(new int[] {7, 1, 5, 3, 6, 4 }); //5
+            inputs.Add(new int[] { 7, 1, 5, 3, 6, 4 }); //5
             inputs.Add(new int[] { 3, 2, 6, 5, 0, 3 }); //4
             inputs.Add(new int[] { 2, 4, 1 }); //2
             inputs.Add(new int[] { 1, 2 }); //1
             inputs.Add(new int[] { 7, 6, 4, 3, 1 }); //0
 
-            foreach(int[] input in inputs)
+            foreach (int[] input in inputs)
             {
                 builder.AppendLine($"The max stock price is {this.MaxProfit(input)} for the given input {(string.Join(" ", input))}");
             }
 
             MessageBox.Show(builder.ToString());
-    }
+        }
 
         private int MaxProfit(int[] prices)
         {
@@ -3210,7 +3213,7 @@ namespace WindowsFormsApplication3
             int min = prices[0];
             int max = min;
 
-            // 7, 1, 5, 3, 6, 4
+            // 7, 1, 5, 3, 6, 4 // 2, 4, 1
             for (int i = 1; i < prices.Length; i++)
             {
 
@@ -3250,9 +3253,9 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 10, 20, 20, 10, 10, 30, 50, 10, 20 });
             inputs.Add(new int[] { 6, 5, 2, 3, 5, 2, 2, 1, 1, 5, 1, 3, 3, 3, 5 });
             inputs.Add(new int[] { 4, 5, 5, 5, 6, 6, 4, 1, 4, 4, 3, 6, 6, 3, 6, 1, 4, 5, 5, 5 });
- 
 
-            foreach(var input in inputs)
+
+            foreach (var input in inputs)
             {
                 result.AppendLine($"There are  {this.sockMerchant(input)} pairs available for the given input {string.Join(" ", input)}");
 
@@ -3261,8 +3264,8 @@ namespace WindowsFormsApplication3
             MessageBox.Show(result.ToString());
 
         }
-   
-        public int sockMerchant( int[] ar)
+
+        public int sockMerchant(int[] ar)
         {
             int n = ar.Length;
             if (n == 0 || n == 1)
@@ -3335,16 +3338,16 @@ namespace WindowsFormsApplication3
             long temp = int.MaxValue;
             inputs.Add("011100"); //28  and 7 steps to make it 0
             inputs.Add(""); //0 steps 
-            inputs.Add(Convert.ToString(int.MaxValue,2)); //int.MaxValue             
+            inputs.Add(Convert.ToString(int.MaxValue, 2)); //int.MaxValue             
             inputs.Add(Convert.ToString(temp + 1, 2)); //int.MaxValue + 1 and 0 steps 
             inputs.Add(Convert.ToString(int.MinValue, 2)); //int.MinValue and 0 steps
 
             int steps = 0;
             int val = 0;
-            foreach(string input in inputs)
+            foreach (string input in inputs)
             {
                 steps = 0;
-                val = 0;                
+                val = 0;
                 if (!string.IsNullOrEmpty(input) && input.Length > 0 && input.Length <= 32)
                 {
                     val = this.ConvertBinaryToInt(input);
@@ -3354,36 +3357,36 @@ namespace WindowsFormsApplication3
                     }
                 }
                 result.AppendLine($"There are {steps} to make 0 for the given binary input {input} and its integer is {val}");
-                
+
             }
-            
+
             MessageBox.Show(result.ToString());
         }
 
 
         private int ConvertBinaryToInt(string input)
-        {                        
+        {
             if (string.IsNullOrEmpty(input))
             {
                 return -1;
-            }            
+            }
             long power = 1;
-            int counter = input.Length -1;
+            int counter = input.Length - 1;
             int val = 0;
             long result = 0;
 
             while (counter >= 0)
             {
                 val = input[counter] - '0';
-                if (!(val >=0 && val < 2))
+                if (!(val >= 0 && val < 2))
                 {
                     return -1;
                 }
 
-                result += (val * power);                
+                result += (val * power);
                 power = power * 2;
 
-                if (result >int.MaxValue || power > int.MaxValue)
+                if (result > int.MaxValue || power > int.MaxValue)
                 {
                     result = -1;
                     break;
@@ -3391,18 +3394,18 @@ namespace WindowsFormsApplication3
 
                 counter--;
             }
-            
+
             return (int)result;
         }
 
         private int solution(int input)
         {
             int step = 0;
-                    
+
             int val = input;
             while (val != 0)
             {
-                if ((val %2) == 1)
+                if ((val % 2) == 1)
                 {
                     val--;
                 }
@@ -3411,8 +3414,8 @@ namespace WindowsFormsApplication3
                     val = val / 2;
                 }
                 step++;
-            }                
-            
+            }
+
             return step;
         }
 
@@ -3454,11 +3457,11 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
-            inputs.Add(new int[] {7, 1, 5, 3, 6, 4 }); //7
+            inputs.Add(new int[] { 7, 1, 5, 3, 6, 4 }); //7
             inputs.Add(new int[] { 1, 2, 3, 4, 5 });   //4
             inputs.Add(new int[] { 7, 6, 4, 3, 1 });   //0
-      
-            foreach(int[] input in inputs)
+
+            foreach (int[] input in inputs)
             {
                 result.AppendLine($"Max for profit is {this.MaxProfit_2(input)} for the given input {(string.Join(" ", input))}");
             }
@@ -3535,8 +3538,8 @@ namespace WindowsFormsApplication3
 
             int max = 0;
             int l = height.Length - 1;
-
-            for (int i = 0; i < l;)
+            int i = 0;
+            while (i < l)
             {
                 max = Math.Max(max, Math.Min(height[i], height[l]) * (l - i));
 
@@ -3566,14 +3569,14 @@ namespace WindowsFormsApplication3
             //a.Add(new IntervalRange() { Start = 5, End = 12 });
             //a.Add(new IntervalRange() { Start = 13, End = 15 });
 
-            List<IntervalRange> b =  new List<IntervalRange>();
+            List<IntervalRange> b = new List<IntervalRange>();
             b.Add(new IntervalRange() { Start = 1, End = 3 });
             b.Add(new IntervalRange() { Start = 5, End = 7 });
             b.Add(new IntervalRange() { Start = 7, End = 14 });
 
             List<IntervalRange> res = MergeIntervals(a, b);
 
-            foreach(IntervalRange i in res)
+            foreach (IntervalRange i in res)
             {
                 Console.WriteLine($"{i.Start},{i.End}");
             }
@@ -3594,7 +3597,7 @@ namespace WindowsFormsApplication3
             {
                 return null;
             }
-          
+
             Stack<IntervalRange> stack = new Stack<IntervalRange>();
             int length = a == null ? 0 : a.Count;
             length = Math.Max(length, (b == null ? 0 : b.Count));
@@ -3631,7 +3634,7 @@ namespace WindowsFormsApplication3
 
         private void Merge(Stack<IntervalRange> s, IntervalRange interval)
         {
-         
+
             if (s != null & interval != null)
             {
                 if (s.Count == 0)
@@ -3653,6 +3656,84 @@ namespace WindowsFormsApplication3
                     }
                 }
             }
+        }
+
+        private void btn_3_Sum_Click(object sender, EventArgs e)
+        {
+            List<int[]> inputs = new List<int[]>();
+            StringBuilder result = new StringBuilder();
+
+            inputs.Add(new int[] { -1, 0, 1, 2, -1, -4 });
+            inputs.Add(new int[] { 0, 0, 0 });
+            inputs.Add(new int[] { 0, 0, 0, 0 });
+            inputs.Add(new int[] { 1, -1, -1, 0 });
+            inputs.Add(new int[] { 3, 0, -2, -1, 1, 2 });
+
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"The sum for the given array {string.Join(" ", input)} is");
+                var temp = ThreeSum(input);
+                foreach(var t in temp)
+                {
+                    result.AppendLine(string.Join(" ", t));
+                }
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public IList<IList<int>> ThreeSum(int[] nums)
+        {
+            IList<IList<int>> list = new List<IList<int>>();
+            if (nums == null || nums.Length == 0 || nums.Length < 3)
+            {
+                return list;
+            }
+
+            if (nums.Length == 3 && nums.Sum() == 0)
+            {
+                list.Add(nums);
+            }
+            else
+            {
+                Array.Sort(nums);
+                int l = 0;
+                int r = 0;
+                int result = 0;
+
+                for (int i = 0; i <= nums.Length - 3; i++)
+                {
+                    l = i + 1;
+                    r = nums.Length - 1;
+
+                    while (l < r)
+                    {
+                        result = nums[i] + nums[l] + nums[r];
+                        if (result == 0)
+                        {
+                            if (list.Where(w => w[0] == nums[i] && w[1] == nums[l] && w[2] == nums[r]).Count() == 0)
+                            { 
+                                var inList = new List<int>() { nums[i], nums[l], nums[r] };                            
+                                list.Add(inList);
+                            }
+                            l++;
+                            r--;
+                        }
+                        else if (result > 0)
+                        {
+                            r--;
+                            
+                        }
+                        else
+                        {
+                            l++;
+                        }
+                    }
+                }
+            }
+
+            return list;
         }
 
 

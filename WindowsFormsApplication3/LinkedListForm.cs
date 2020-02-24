@@ -35,10 +35,7 @@ namespace WindowsFormsApplication3
 
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Stack t = new Stack();
-            
-
+        {            
             /*
                                        10
                                     /      \
@@ -74,6 +71,8 @@ namespace WindowsFormsApplication3
             Insert(9, ref tree);
             datas.Clear();
             datas.Append("\r\n InOrder Traversal :");
+            //Inorder traversal without recursion 
+            //https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
             InOrder(tree);
             datas.Append("\r\n PreOrder Traversal :");
             PreOrder(tree);
@@ -82,7 +81,7 @@ namespace WindowsFormsApplication3
             datas.Append("\r\n BFS Traversal :");
             BFT(tree);
             MessageBox.Show(datas.ToString());
-
+            
         }
 
 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Threading;
 
 namespace WindowsFormsApplication3
 {
@@ -147,6 +148,14 @@ namespace WindowsFormsApplication3
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int workerThreads = 0;
+            int completionThreads = 0;
+            ThreadPool.GetMaxThreads(out workerThreads, out completionThreads);
+            MessageBox.Show($"Worker Threads{workerThreads} Completion Threads {completionThreads}");
         }
     }
 

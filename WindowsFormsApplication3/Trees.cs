@@ -180,6 +180,13 @@ namespace WindowsFormsApplication3
 
         }
 
+        public string TraverseBinaryTree(Node node)
+        {
+            datas.Clear();
+            this.InOrder(node);
+            return datas.ToString();
+        }
+
         private void InOrder(Node node)
         {
             if (node != null)
@@ -751,8 +758,8 @@ namespace WindowsFormsApplication3
         private void btn_Path_Sum_Click(object sender, EventArgs e)
         {
             /*            
-                Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all 
-                the values along the path equals the given sum.
+                Given a binary tree and a sum, determine if the tree has a root-to-leaf path such 
+                that adding up all the values along the path equals the given sum.
                 Note: A leaf is a node with no children.
 
                 Example:
@@ -909,5 +916,125 @@ namespace WindowsFormsApplication3
                 }
             }
         }
+
+        private void btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion_Click(object sender, EventArgs e)
+        {
+            /*
+                                    20
+                              /         \
+                             /           \
+                            18           22
+                           /  \         /   \
+                          /    \       /     \
+                        17     19    21      23
+                       /
+                      /
+                    16
+
+            Time Complexity : O(log N) where N is the total number of nodes in BST
+            Space Complexity: O(log N) where N is the total number of nodes in BST
+             */
+
+            HashSet<int> dict = null;
+            Node root = null;
+            this.Insert(20, ref root);
+            this.Insert(18, ref root);
+            this.Insert(22, ref root);
+            this.Insert(17, ref root);
+            this.Insert(19, ref root);
+            this.Insert(21, ref root);
+            this.Insert(23, ref root);
+            this.Insert(16, ref root);
+
+            //int sum = 42;
+            int sum = 39;
+            int[] result = this.FindTwoNumbersForGivenSumInBST(root, sum, ref dict);
+
+            MessageBox.Show($"The sum {sum} is formed with these two numbers {result[0]} and {result[1]} in this binary search tree  {TraverseBinaryTree(root)}");
+
+        }
+
+
+        public int[] FindTwoNumbersForGivenSumInBST(Node node, int sum, ref HashSet<int> dict)
+        {
+            int temp = 0;
+
+            if (dict == null)
+            {
+                dict = new HashSet<int>();
+            }
+
+            if (node != null)
+            {
+                temp = sum - node.data;
+
+                if (dict.Contains(temp))
+                {
+                    return new int[] {node.data, temp };
+                }
+                else
+                {
+                    dict.Add(node.data);
+                }
+
+                if (node.data > temp)
+                {
+                    return FindTwoNumbersForGivenSumInBST(node.left, sum, ref dict);
+                }
+                else
+                {
+                    return FindTwoNumbersForGivenSumInBST(node.right, sum, ref dict);
+                }
+            }
+
+            return null;
+
+        }
+
+        private void btn_Binary_Tree_Maximum_Path_Sum_Click(object sender, EventArgs e)
+        {
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 10, 4, 15, 6, 20, 1 })); // 50
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { -10, 9, 20, null, null, 15, 7 })); //42
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { -3 }));//-3
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 2, 1 })); //2
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1 })); // 48
+
+            foreach (Node input in inputs)
+            {
+                result.AppendLine($"Max sum path is {this.MaxPathSum(input)} for the given binary tree {TreeTraverse(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public int MaxPathSum(Node root)
+        {
+            int max = int.MinValue;
+            int result = GenerateSumAndMax(root, ref max);
+            return max;
+        }
+
+        public int GenerateSumAndMax(Node node, ref int max)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            int l = GenerateSumAndMax(node.left, ref max);
+            int r = GenerateSumAndMax(node.right, ref max);
+
+            int sum = 0;
+            sum = node.data + Math.Max(l, 0) + Math.Max(r, 0);
+            max = Math.Max(max, sum);
+            sum = node.data + Math.Max(0, Math.Max(l, r));
+            return sum;
+
+        }
+
     }
 }

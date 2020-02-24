@@ -172,8 +172,7 @@ namespace WindowsFormsApplication3
             temp = new DoubleLL() { Data = data };
 
             while (current!=null)
-            {
-                
+            {                
                 if (previous.Data < data && current.Data >= data)
                 {
                     
