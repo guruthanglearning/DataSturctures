@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -1174,11 +1175,11 @@ namespace WindowsFormsApplication3
                 int r = input.Length - 1;
                 while (l <= r)
                 {
-                    if (input[l] == 0)
+                    if (input[l] > 0)
                     {
                         l++;
                     }
-                    else if (input[l] > 0 && input[r] == 0)
+                    else if (input[l] == 0 && input[r] > 0)
                     {
                         Swap(input, l, r);
                     }
@@ -1328,6 +1329,8 @@ namespace WindowsFormsApplication3
             for (int i = 0; i < input.Length; i++)
             {
                 x |= 1 << (input[i] - 1); //
+
+               
             }
 
             MessageBox.Show($"All integers for the given input array is {(x == (1 << input.Length) - 1 ? "present" : "is not present")}");
@@ -2440,13 +2443,20 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
             inputs.Add(new int[8] { 2, 4, 6, 8, 10, 2, 6, 8 });
-            inputs.Add(new int[6] { 2, 4, 7, 9, 2, 4 });
-            inputs.Add(new int[8] { 19, 20, 21, 21, 20, 19, 18, 17 });
+            //inputs.Add(new int[6] { 2, 4, 7, 9, 2, 4 });
+            //inputs.Add(new int[8] { 19, 20, 21, 21, 20, 19, 18, 17 });
+
+
+
 
             foreach (var input in inputs)
             {
                 int xor = 0;
                 int y = 0;
+
+                Stopwatch stopWatch = new Stopwatch();
+                stopWatch.Start();
+
                 for (int i = 0; i < input.Length; i++)
                 {
                     xor ^= input[i];
@@ -2477,8 +2487,28 @@ namespace WindowsFormsApplication3
                     }
 
                 }
+                stopWatch.Stop();
+                result.AppendLine($"Bit Operation - Two unique values are {x} and {y} for the given array {string.Join(" ", input)} and total time is {stopWatch.Elapsed.TotalMilliseconds}");
 
-                result.AppendLine($"Two unique values are {x} and {y} for the given array {string.Join(" ", input)}");
+                stopWatch = new Stopwatch();
+                stopWatch.Start();
+                HashSet<int> dict = new HashSet<int>();
+                foreach (int i in input)
+                {
+                    if (dict.Contains(i))
+                    {
+                        dict.Remove(i);
+                    }
+                    else
+                    {
+                        dict.Add(i);
+                    }
+                }
+
+                result.AppendLine($"HashSet - Two unique values are {string.Join(" and ", dict)} for the given array {string.Join(" ", input)} and total time is {stopWatch.Elapsed.TotalMilliseconds}");
+
+
+                stopWatch.Stop();
 
             }
 
@@ -3673,7 +3703,7 @@ namespace WindowsFormsApplication3
             {
                 result.AppendLine($"The sum for the given array {string.Join(" ", input)} is");
                 var temp = ThreeSum(input);
-                foreach(var t in temp)
+                foreach (var t in temp)
                 {
                     result.AppendLine(string.Join(" ", t));
                 }
@@ -3701,6 +3731,7 @@ namespace WindowsFormsApplication3
                 int l = 0;
                 int r = 0;
                 int result = 0;
+                HashSet<string> dict = new HashSet<string>();
 
                 for (int i = 0; i <= nums.Length - 3; i++)
                 {
@@ -3712,10 +3743,11 @@ namespace WindowsFormsApplication3
                         result = nums[i] + nums[l] + nums[r];
                         if (result == 0)
                         {
-                            if (list.Where(w => w[0] == nums[i] && w[1] == nums[l] && w[2] == nums[r]).Count() == 0)
-                            { 
-                                var inList = new List<int>() { nums[i], nums[l], nums[r] };                            
+                            if (!dict.Contains($"{nums[i]},{nums[l]},{nums[r]}"))
+                            {
+                                var inList = new List<int>() { nums[i], nums[l], nums[r] };
                                 list.Add(inList);
+                                dict.Add($"{nums[i]},{nums[l]},{nums[r]}");
                             }
                             l++;
                             r--;
@@ -3723,7 +3755,7 @@ namespace WindowsFormsApplication3
                         else if (result > 0)
                         {
                             r--;
-                            
+
                         }
                         else
                         {
@@ -3736,7 +3768,63 @@ namespace WindowsFormsApplication3
             return list;
         }
 
+        private void btn_New_Year_Chaos_Click(object sender, EventArgs e)
+        {
+            /*            
+                https://www.hackerrank.com/challenges/new-year-chaos/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+                https://www.youtube.com/watch?v=YWYF6bOhPW8
+            */
 
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            //inputs.Add(new int[] { 2, 1, 3, 4, 5 });
+            //inputs.Add(new int[] { 1, 2, 5, 3, 4, 7, 8, 6 });
+            inputs.Add(new int[] { 5, 1, 2, 3, 7, 8, 6, 4 });
+            //inputs.Add(new int[] { 1, 2, 5, 3, 7, 8, 6, 4 });
+
+
+
+
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"Number pribe for the given queue is {(string.Join(" ", input))} is {this.NewYearChaos(input)}");
+            }
+
+            MessageBox.Show(result.ToString()); 
+       }
+
+
+        private int NewYearChaos(int[] q)
+        {
+            if (q == null || q.Length == 0)
+            {
+                return 0;
+            }
+
+            int swapCounter = 0;
+            for (int i = q.Length - 1; i >= 0; i--)
+            {
+                if (q[i] != i + 1)
+                {
+                    if (i > 0 && q[i - 1] == i + 1)
+                    {
+                        swapCounter++;
+                        Swap(q, i - 1, i);
+                    }
+                    else if (i > 1 && q[i - 2] == i + 1)
+                    {
+                        swapCounter += 2;
+                        Swap(q, i - 2, i - 1);
+                        Swap(q, i - 1, i);
+                    }
+
+                }
+
+            }
+            return swapCounter;
+
+        }
 
     }
 }
+ 

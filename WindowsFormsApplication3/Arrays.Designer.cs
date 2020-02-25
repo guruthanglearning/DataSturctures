@@ -83,6 +83,7 @@
             this.btn_Container_With_Most_Water = new System.Windows.Forms.Button();
             this.btn_Merge_Overlapping_Intervals_with_DSets = new System.Windows.Forms.Button();
             this.btn_3_Sum = new System.Windows.Forms.Button();
+            this.btn_New_Year_Chaos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -646,11 +647,22 @@
             this.btn_3_Sum.UseVisualStyleBackColor = true;
             this.btn_3_Sum.Click += new System.EventHandler(this.btn_3_Sum_Click);
             // 
+            // btn_New_Year_Chaos
+            // 
+            this.btn_New_Year_Chaos.Location = new System.Drawing.Point(1001, 564);
+            this.btn_New_Year_Chaos.Name = "btn_New_Year_Chaos";
+            this.btn_New_Year_Chaos.Size = new System.Drawing.Size(363, 37);
+            this.btn_New_Year_Chaos.TabIndex = 56;
+            this.btn_New_Year_Chaos.Text = "New Year Chaos";
+            this.btn_New_Year_Chaos.UseVisualStyleBackColor = true;
+            this.btn_New_Year_Chaos.Click += new System.EventHandler(this.btn_New_Year_Chaos_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_New_Year_Chaos);
             this.Controls.Add(this.btn_3_Sum);
             this.Controls.Add(this.btn_Merge_Overlapping_Intervals_with_DSets);
             this.Controls.Add(this.btn_Container_With_Most_Water);
@@ -770,5 +782,6 @@
         private System.Windows.Forms.Button btn_Container_With_Most_Water;
         private System.Windows.Forms.Button btn_Merge_Overlapping_Intervals_with_DSets;
         private System.Windows.Forms.Button btn_3_Sum;
+        private System.Windows.Forms.Button btn_New_Year_Chaos;
     }
 }
