@@ -225,7 +225,7 @@ namespace WindowsFormsApplication3
             int reminder = 0;
             int rotateNumber = 0;
             int temp = 0;
-            int pow = 0;
+            int pow = 1;
             while(n > 0) //n = 255
             {
                 reminder = n % 10;
@@ -234,8 +234,8 @@ namespace WindowsFormsApplication3
                 {
                     return false;
                 }
-                rotateNumber = rotateNumber + (temp * (int)Math.Pow(10.0,pow)); // 522
-                pow++;
+                rotateNumber = rotateNumber + (temp * pow); // 522
+                pow*=10;
                 n = n / 10;
 
             }

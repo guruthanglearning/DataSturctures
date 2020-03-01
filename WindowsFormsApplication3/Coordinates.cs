@@ -133,12 +133,12 @@ namespace WindowsFormsApplication3
 
 
 
-        private bool IsKangaruMeet(Point p1, Point p2)
+        private bool IsKangaruMeet(Point k1, Point k2)
         {
             int reminder = 0;
-            if (p1.Y > p2.Y)
+            if (k1.Y > k2.Y)
             {
-                reminder = (p2.X - p1.X) % (p1.Y - p2.Y);
+                reminder = (k2.X - k1.X) % (k1.Y - k2.Y);
 
                 if (reminder == 0)
                 {

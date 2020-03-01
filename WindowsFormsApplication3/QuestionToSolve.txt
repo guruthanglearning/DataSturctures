@@ -1,6 +1,6 @@
 ﻿1.) Concurrent read with the commited value and exculsive writes with locks
 2.)You have a set of tiles, where each tile has one letter tiles[i] printed on it.  
-Return the number of possible non-empty sequences of letters you can make.
+Return the nu mber of possible non-empty sequences of letters you can make.
 
 Example 1:
 
@@ -41,7 +41,9 @@ For example
 		[10, 12]
 
 
-9.) There are N coins, each showing either heads or tails. We would like all the coins to form a sequence of alternating heads and tails. What is the minimum number of coins that must be reversed to achieve this? 
+9.) There are N coins, each showing either heads or tails. We would like all the coins to 
+form a sequence of alternating heads and tails. What is the minimum number of coins 
+that must be reversed to achieve this? 
 
 Write a function: 
 class Solution

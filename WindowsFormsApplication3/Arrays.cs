@@ -543,11 +543,12 @@ namespace WindowsFormsApplication3
             /* Instead of moving one by one, divide the array in different sets where number of sets is equal to GCD of n and d and move the elements within sets.             
                If GCD is 1 as is for the above example array(n = 7 and d = 2) */
             int max = this.GCD(d, n);
+            
             for (i = 0; i < max; i++)
             {
                 temp = arr[i];
                 j = i;
-                while (1 != 0)
+                while (true)
                 {
                     k = j + d;
                     if (k >= n)
@@ -845,24 +846,29 @@ namespace WindowsFormsApplication3
             */
 
             int[] input = new int[] { 1, 2, 3, 4, 10, 5 };
-            bool? returnValue = null;
+            bool returnValue = false;
+
+            if (input == null || input.Length == 0)
+            {
+                MessageBox.Show("Array is empty");
+                return;
+            }
+
             if (input != null && input.Length > 0)
             {
                 returnValue = true;
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < input.Length - 1; i++)
                 {
-                    if (i + 1 < input.Length)
-                    {
                         if (input[i] > input[i + 1])
                         {
                             returnValue = false;
                             break;
                         }
-                    }
+                    
                 }
             }
 
-            string result = returnValue != null ? "Empty" : returnValue.Value ? "Sorted" : "Not Sorted";
+            string result = returnValue ? "Sorted" : "Not Sorted";
             MessageBox.Show($"Given array is {result}");
 
         }
@@ -3567,19 +3573,19 @@ namespace WindowsFormsApplication3
             }
 
             int max = 0;
-            int l = height.Length - 1;
-            int i = 0;
-            while (i < l)
+            int r = height.Length - 1;
+            int l = 0;
+            while (l < r)
             {
-                max = Math.Max(max, Math.Min(height[i], height[l]) * (l - i));
+                max = Math.Max(max, Math.Min(height[l], height[r]) * (r - l));
 
-                if (height[i] < height[l])
+                if (height[l] < height[r])
                 {
-                    i++;
+                    l++;
                 }
                 else
                 {
-                    l--;
+                    r--;
                 }
             }
             return max;
@@ -3690,6 +3696,27 @@ namespace WindowsFormsApplication3
 
         private void btn_3_Sum_Click(object sender, EventArgs e)
         {
+            /*
+            
+                Given an array nums of n integers, are there elements a, b, c in nums 
+                such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+                
+                Note: The solution set must not contain duplicate triplets.
+
+                Example:
+                Given array nums = [-1, 0, 1, 2, -1, -4],
+
+                A solution set is:
+                [
+                  [-1, 0, 1],
+                  [-1, -1, 2]
+                ]
+
+
+                Time Complexity : O(N) where N is the list of items in the array
+                Space Complexity : O(log N)
+             */
+
             List<int[]> inputs = new List<int[]>();
             StringBuilder result = new StringBuilder();
 
@@ -3773,25 +3800,26 @@ namespace WindowsFormsApplication3
             /*            
                 https://www.hackerrank.com/challenges/new-year-chaos/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
                 https://www.youtube.com/watch?v=YWYF6bOhPW8
+
+                Time Complexity : O(N) where N is the length of the item in the array
+                Space Complexity: O(1) constant space
             */
+
 
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
-            //inputs.Add(new int[] { 2, 1, 3, 4, 5 });
-            //inputs.Add(new int[] { 1, 2, 5, 3, 4, 7, 8, 6 });
+            inputs.Add(new int[] { 2, 1, 3, 4, 5 });
+            inputs.Add(new int[] { 1, 2, 5, 3, 4, 7, 8, 6 });
             inputs.Add(new int[] { 5, 1, 2, 3, 7, 8, 6, 4 });
-            //inputs.Add(new int[] { 1, 2, 5, 3, 7, 8, 6, 4 });
-
-
-
+            inputs.Add(new int[] { 1, 2, 5, 3, 7, 8, 6, 4 });
 
             foreach (int[] input in inputs)
             {
                 result.AppendLine($"Number pribe for the given queue is {(string.Join(" ", input))} is {this.NewYearChaos(input)}");
             }
 
-            MessageBox.Show(result.ToString()); 
-       }
+            MessageBox.Show(result.ToString());
+        }
 
 
         private int NewYearChaos(int[] q)
@@ -3825,6 +3853,84 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_3_Sum_Closest_Click(object sender, EventArgs e)
+        {
+            /*            
+               Given an array nums of n integers and an integer target, find three integers in nums such that the sum is 
+               closest to target. Return the sum of the three integers. You may assume that each input would have exactly 
+               one solution.
+
+                Example: Given array nums = [-1, 2, 1, -4], and target = 1.
+
+                The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+
+                Time Complexity : O(n^2)
+                Space Complexity : O(1) constant space
+           */
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { -1, 2, 1, -4 }, find = 1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 0,0,0 }, find = 1 });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The sum that is closest to the target {input.find} is {this.ThreeSumClosest(input.input, input.find)} for the given input {(string.Join(" ", input.input))} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public int ThreeSumClosest(int[] nums, int target)
+        {
+
+            if (nums == null || nums.Length == 0)
+            {
+                return 0;
+            }
+
+            Array.Sort(nums);
+            int l = 0;
+            int r = 0;
+            int cSum = 0;
+            int retSum = 0;
+            int min = int.MaxValue;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                l = i + 1;
+                r = nums.Length - 1;
+
+                while (l < r)
+                {
+                    cSum = nums[i] + nums[l] + nums[r];
+
+                    if (Math.Abs(cSum - target) < min)
+                    {
+                        min = Math.Abs(cSum - target);
+                        retSum = cSum;
+                    }
+
+                    if (cSum == target)
+                    {
+                        return cSum;
+                    }
+                    else if (cSum > target)
+                    {
+                        r--;
+                    }
+                    else
+                    {
+                        l++;
+                    }
+                }
+            }
+            return retSum;
+        }
     }
 }
  

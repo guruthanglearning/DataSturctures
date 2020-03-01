@@ -266,6 +266,7 @@ namespace WindowsFormsApplication3
                     {
                         previous.Next = null;
                         current = null;
+                        break;
                     }
                 }
 

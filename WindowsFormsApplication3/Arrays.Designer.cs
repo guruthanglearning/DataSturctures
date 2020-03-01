@@ -84,6 +84,7 @@
             this.btn_Merge_Overlapping_Intervals_with_DSets = new System.Windows.Forms.Button();
             this.btn_3_Sum = new System.Windows.Forms.Button();
             this.btn_New_Year_Chaos = new System.Windows.Forms.Button();
+            this.btn_3_Sum_Closest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -450,7 +451,7 @@
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Location = new System.Drawing.Point(506, 763);
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Name = "btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_s" +
     "lots";
-            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Size = new System.Drawing.Size(477, 33);
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Size = new System.Drawing.Size(478, 33);
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.TabIndex = 35;
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Text = "Given a list of tasks to run with cooldown interval find min number of time slots" +
     " ";
@@ -461,7 +462,7 @@
             // 
             this.btn_Find_Peak_in_an_integer_array.Location = new System.Drawing.Point(508, 802);
             this.btn_Find_Peak_in_an_integer_array.Name = "btn_Find_Peak_in_an_integer_array";
-            this.btn_Find_Peak_in_an_integer_array.Size = new System.Drawing.Size(474, 44);
+            this.btn_Find_Peak_in_an_integer_array.Size = new System.Drawing.Size(475, 44);
             this.btn_Find_Peak_in_an_integer_array.TabIndex = 36;
             this.btn_Find_Peak_in_an_integer_array.Text = "Find Peak in an integer array";
             this.btn_Find_Peak_in_an_integer_array.UseVisualStyleBackColor = true;
@@ -471,7 +472,7 @@
             // 
             this.btn_Search_Insert_Position.Location = new System.Drawing.Point(506, 852);
             this.btn_Search_Insert_Position.Name = "btn_Search_Insert_Position";
-            this.btn_Search_Insert_Position.Size = new System.Drawing.Size(474, 37);
+            this.btn_Search_Insert_Position.Size = new System.Drawing.Size(475, 37);
             this.btn_Search_Insert_Position.TabIndex = 37;
             this.btn_Search_Insert_Position.Text = "Search Insert Position";
             this.btn_Search_Insert_Position.UseVisualStyleBackColor = true;
@@ -481,7 +482,7 @@
             // 
             this.btn_Find_the_two_elements_that_appear_only_once.Location = new System.Drawing.Point(508, 895);
             this.btn_Find_the_two_elements_that_appear_only_once.Name = "btn_Find_the_two_elements_that_appear_only_once";
-            this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(463, 37);
+            this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(481, 37);
             this.btn_Find_the_two_elements_that_appear_only_once.TabIndex = 38;
             this.btn_Find_the_two_elements_that_appear_only_once.Text = "Find the two elements that appear only once";
             this.btn_Find_the_two_elements_that_appear_only_once.UseVisualStyleBackColor = true;
@@ -501,7 +502,7 @@
             // 
             this.btn_Min_Max_Sum.Location = new System.Drawing.Point(511, 938);
             this.btn_Min_Max_Sum.Name = "btn_Min_Max_Sum";
-            this.btn_Min_Max_Sum.Size = new System.Drawing.Size(457, 42);
+            this.btn_Min_Max_Sum.Size = new System.Drawing.Size(475, 42);
             this.btn_Min_Max_Sum.TabIndex = 40;
             this.btn_Min_Max_Sum.Text = "Min Max Sum";
             this.btn_Min_Max_Sum.UseVisualStyleBackColor = true;
@@ -639,7 +640,7 @@
             // 
             // btn_3_Sum
             // 
-            this.btn_3_Sum.Location = new System.Drawing.Point(996, 519);
+            this.btn_3_Sum.Location = new System.Drawing.Point(996, 517);
             this.btn_3_Sum.Name = "btn_3_Sum";
             this.btn_3_Sum.Size = new System.Drawing.Size(368, 39);
             this.btn_3_Sum.TabIndex = 55;
@@ -649,7 +650,7 @@
             // 
             // btn_New_Year_Chaos
             // 
-            this.btn_New_Year_Chaos.Location = new System.Drawing.Point(1001, 564);
+            this.btn_New_Year_Chaos.Location = new System.Drawing.Point(997, 604);
             this.btn_New_Year_Chaos.Name = "btn_New_Year_Chaos";
             this.btn_New_Year_Chaos.Size = new System.Drawing.Size(363, 37);
             this.btn_New_Year_Chaos.TabIndex = 56;
@@ -657,11 +658,22 @@
             this.btn_New_Year_Chaos.UseVisualStyleBackColor = true;
             this.btn_New_Year_Chaos.Click += new System.EventHandler(this.btn_New_Year_Chaos_Click);
             // 
+            // btn_3_Sum_Closest
+            // 
+            this.btn_3_Sum_Closest.Location = new System.Drawing.Point(997, 560);
+            this.btn_3_Sum_Closest.Name = "btn_3_Sum_Closest";
+            this.btn_3_Sum_Closest.Size = new System.Drawing.Size(368, 39);
+            this.btn_3_Sum_Closest.TabIndex = 57;
+            this.btn_3_Sum_Closest.Text = "3 Sum Closest";
+            this.btn_3_Sum_Closest.UseVisualStyleBackColor = true;
+            this.btn_3_Sum_Closest.Click += new System.EventHandler(this.btn_3_Sum_Closest_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 991);
+            this.Controls.Add(this.btn_3_Sum_Closest);
             this.Controls.Add(this.btn_New_Year_Chaos);
             this.Controls.Add(this.btn_3_Sum);
             this.Controls.Add(this.btn_Merge_Overlapping_Intervals_with_DSets);
@@ -783,5 +795,6 @@
         private System.Windows.Forms.Button btn_Merge_Overlapping_Intervals_with_DSets;
         private System.Windows.Forms.Button btn_3_Sum;
         private System.Windows.Forms.Button btn_New_Year_Chaos;
+        private System.Windows.Forms.Button btn_3_Sum_Closest;
     }
 }

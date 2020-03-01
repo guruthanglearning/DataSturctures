@@ -274,12 +274,12 @@ namespace WindowsFormsApplication3
 
             for (int layer = 0; layer < n / 2; layer++)
             {
-                first = layer;
-                last = n - 1 - layer;
+                first = layer; //0
+                last = n - 1 - layer; // 4-1-0= 3
                 for (int i = first; i < last; i++)
                 {
                     //StringBuilder result = new StringBuilder();
-                    offset = i - first;
+                    offset = i - first; //0
                     top = matrix[first, i];
                     matrix[first, i] = matrix[last - offset, first];
                     matrix[last - offset, first] = matrix[last, last - offset];
@@ -928,8 +928,8 @@ namespace WindowsFormsApplication3
                     i = Math.Max(index[s[j]], i);
                 }
 
-                ans = Math.Max(ans, j - i + 1);
-                index[s[j]] = j + 1;
+                ans = Math.Max(ans, j - i + 1); //
+                index[s[j]] = j + 1; //
             }
 
             return ans;
@@ -1037,7 +1037,9 @@ namespace WindowsFormsApplication3
         private void button21_Click(object sender, EventArgs e)
         {
             //MMMCMXCIX
-            Dictionary<char, int> _romanMap = new Dictionary<char, int> { { 'I', 1 }, { 'V', 5 }, { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 }, { 'M', 1000 } };
+            Dictionary<char, int> _romanMap = new Dictionary<char, int> { { 'I', 1 }, { 'V', 5 }, { 'X', 10 },
+                                                                          { 'L', 50 }, { 'C', 100 }, { 'D', 500 },
+                                                                          { 'M', 1000 } };
             textBox1.Text = "MMMCMXCIX";
             string text = textBox1.Text;
             int totalValue = 0, prevValue = 0;
@@ -1065,8 +1067,10 @@ namespace WindowsFormsApplication3
 
         private void Query_nth_most_frequent_word_Click(object sender, EventArgs e)
         {
-            string word = this.GetNthMostFrequentWord(new string[] { "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C" }, 2);
-
+            int frequentWord = 2;
+            string[] words = new string[] { "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C","C" };
+            string word = this.GetNthMostFrequentWord(words, frequentWord);
+            MessageBox.Show($"{frequentWord} frequent words from the given words {string.Join(",", words)} is {(word == null ? "is Nothing" : word)} ");
 
         }
 
@@ -1080,26 +1084,45 @@ namespace WindowsFormsApplication3
             }
 
             Dictionary<string, int> wordCount = new Dictionary<string, int>();
+            Dictionary<int, HashSet<string>> freq = new Dictionary<int, HashSet<string>>();
+            freq.Add(1, new HashSet<string>() {});
             string maxword = string.Empty;
+            int freqKey = 0;
             foreach (string word in words)
             {
                 if (wordCount.ContainsKey(word))
                 {
-                    wordCount[word]++;
+                    freqKey = wordCount[word];
+                    if (freq.ContainsKey(freqKey))
+                    {
+                        freq[freqKey].Remove(word);                        
+                    }
+                    freqKey++;
+                    wordCount[word]= freqKey;
+                    if (freq.ContainsKey(freqKey))
+                    {
+                        freq[freqKey].Add(word);
+                    }
+                    else
+                    {
+                        freq.Add(freqKey, new HashSet<string>() { word });
+                    }
                 }
                 else
                 {
                     wordCount.Add(word, 1);
+                    freq[1].Add(word);
                 }
             }
 
-            int max = 0;
-            foreach (string key in wordCount.Keys)
-            {
+            string result = null;
 
+            if (freq.ContainsKey(nthFrequentWord))
+            {
+                result = string.Join(" ", freq[nthFrequentWord]);
             }
 
-            return string.Empty;
+            return result;
         }
 
         private void StringToInt_Click(object sender, EventArgs e)
@@ -1554,7 +1577,35 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            MessageBox.Show($"Longest Substring of an given string {input}  is {previousString}");
+            HashSet<char> dict = new HashSet<char>();
+            int cs = 0, cl = 0, ps = 0, pl = 0;
+
+            for(int i = 0; i < input.Length; i++)
+            {
+                if (dict.Contains(input[i]))
+                {
+                    if (pl < cl)
+                    {
+                        ps = cs;
+                        pl = cl;
+                    }
+                    dict.Clear();
+                    cs = i;
+                    cl = 0; 
+                }
+                dict.Add(input[i]);                
+                cl++;
+            }
+            
+            if (pl < cl)
+            {
+                pl = cl;
+                ps = cs;
+            }
+                                 
+
+            MessageBox.Show($"Longest Substring of an given string {input}  is {previousString} \n " +
+                            $"With second approach {input.Substring(ps, pl)}");
 
         }
 
@@ -3235,7 +3286,7 @@ namespace WindowsFormsApplication3
              div /= 10;
 
 
-            while (val > 0)
+            while (val > 0)  // 1945 
             {
                 rem = val / div;
 
