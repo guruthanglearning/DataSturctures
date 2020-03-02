@@ -92,10 +92,10 @@ namespace WindowsFormsApplication3
         {
             StringBuilder output = new StringBuilder();
             List<ArrayContainterForSearch> inputs = new List<ArrayContainterForSearch>();
-            inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 1, 2, 3, 4, 5, 6 }, Search = 6 });
+            //inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 1, 2, 3, 4, 5, 6 }, Search = 6 });
             inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 3, 4, 5, 6, 1, 2 }, Search = 4 });
-            inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 3, 4, 5, 6, 7, 1, 2 }, Search = 3 });
-            inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 5, 6, 7, 8, 9, 10, 1, 2, 3, 4 }, Search = 11 });
+            //inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 3, 4, 5, 6, 7, 1, 2 }, Search = 3 });
+            //inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 5, 6, 7, 8, 9, 10, 1, 2, 3, 4 }, Search = 11 });
 
             
             int left = 0; int right = 0;
@@ -185,7 +185,7 @@ namespace WindowsFormsApplication3
                     r = m;
                 }
             }
-            return m;;
+            return m;
 
 
         }

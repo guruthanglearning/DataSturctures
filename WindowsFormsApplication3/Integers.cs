@@ -354,7 +354,7 @@ namespace WindowsFormsApplication3
                     datas.Add(1);
                 }
 
-                result.Add(new List<int>(datas));
+                result.Add(datas);
             }
 
             return result;
@@ -410,7 +410,6 @@ namespace WindowsFormsApplication3
 
                 if (i > 1)
                 {
-
                     int qc = q.Count;
                     int j = 0;
                     int c = 0;

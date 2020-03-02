@@ -1255,7 +1255,8 @@ namespace WindowsFormsApplication3
             int current = 0;
 
             int temp = 0;
-            for (int i = 1; i <= input; i++)
+            int i = 0;
+            for (i = 1; i <= input; i++)
             {
                 if (i == 1)
                 {
@@ -1263,22 +1264,17 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    if (current < 0)
-                    {
-                        current *= -1;
-                    }
-
-                    // current = 1, previous = 1, temp =1
                     temp = previous;
                     previous = current;
-                    current = current + temp;
-                    if (isNegativeInput)
-                    {
-                        if (i % 2 == 0)
-                        {
-                            current *= -1;
-                        }
-                    }
+                    current = current + temp;                    
+                }
+            }
+
+            if (isNegativeInput)
+            {
+                if ((i -1) % 2 == 0)
+                {
+                    current *= -1;
                 }
             }
 
