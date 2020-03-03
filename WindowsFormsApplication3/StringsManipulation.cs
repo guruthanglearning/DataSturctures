@@ -779,9 +779,9 @@ namespace WindowsFormsApplication3
                 while (maxLengthForArray1 > 0 || maxLengthForArray2 > 0)
                 {
                     int result = (maxLengthForArray1 > 0 ? intArray1[maxLengthForArray1 - 1] : 0) +
-                                  (maxLengthForArray2 > 0 ? intArray2[maxLengthForArray2 - 1] : 0);
+                                  (maxLengthForArray2 > 0 ? intArray2[maxLengthForArray2 - 1] : 0) + reminder;
 
-                    sum.Add(result % 10 + reminder);
+                    sum.Add(result % 10);
                     reminder = result / 10;
                     maxLengthForArray1--; maxLengthForArray2--;
                 }

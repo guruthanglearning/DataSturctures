@@ -183,7 +183,7 @@
             this.button8.Location = new System.Drawing.Point(20, 237);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(437, 35);
+            this.button8.Size = new System.Drawing.Size(434, 35);
             this.button8.TabIndex = 9;
             this.button8.Text = "Remove duplicate characters Without additional  Constant";
             this.button8.UseVisualStyleBackColor = true;
@@ -312,7 +312,7 @@
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(18, 561);
+            this.button20.Location = new System.Drawing.Point(18, 557);
             this.button20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(420, 35);

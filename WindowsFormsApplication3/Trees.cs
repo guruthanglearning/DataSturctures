@@ -132,11 +132,7 @@ namespace WindowsFormsApplication3
                 tp = qp.Dequeue();
                 tq = qq.Dequeue();
 
-                if (
-                        (tp != null && tq != null && tp.data != tq.data) ||
-                         (tp != null && tq == null) ||
-                         (tp == null && tq != null)
-                   )
+                if (tp == null || tq == null || tp.data != tq.data)                  
                 {
                     return false;
                 }
@@ -560,7 +556,8 @@ namespace WindowsFormsApplication3
             /*            
                 Given a binary tree, determine if it is height-balanced.
                 For this problem, a height-balanced binary tree is defined as:
-                a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+                a binary tree in which the left and right subtrees of every node differ in 
+                height by no more than 1.
 
                 Example 1:
                 Given the following tree [3,9,20,null,null,15,7]:
@@ -621,7 +618,7 @@ namespace WindowsFormsApplication3
                         / \
                        3   3
                       / \
-                     4   4
+                     4   4 
                                             
             */
 

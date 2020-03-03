@@ -1363,7 +1363,7 @@ namespace WindowsFormsApplication3
             // At this point we have three lists, and it's
             // just a matter of appending them together
             // in the right order (aList, root, bList)
-            aList = append(aList, root);
+            aList = append(aList, root);// 3 , 5
             aList = append(aList, bList);
 
             return (aList);
@@ -1376,12 +1376,12 @@ namespace WindowsFormsApplication3
             if (b == null) return (a);
 
             // find the last node in each using the .previous pointer
-            Node aLast = a.left;
-            Node bLast = b.right;
+            Node aLast = a.left; // null
+            Node bLast = b.right; // 8
 
             // join the two together to make it connected and circular
-            join(aLast, b);
-            join(bLast, a);
+            join(aLast, b); //null, 5
+            join(bLast, a); // 8, 3
 
             return (a);
         }
@@ -3789,8 +3789,8 @@ namespace WindowsFormsApplication3
         private void btn_Count_the_number_of_unival_subtrees_Click(object sender, EventArgs e)
         {
             /*
-             A unival tree (which stands for "universal value") is a tree where all nodes under it have the same value.
-             Given the root to a binary tree, count the number of unival subtrees.
+             A unival tree (which stands for "universal value") is a tree where all nodes under 
+             it have the same value. Given the root to a binary tree, count the number of unival subtrees.
 
              For example, the following tree has 5 unival subtrees:
 
