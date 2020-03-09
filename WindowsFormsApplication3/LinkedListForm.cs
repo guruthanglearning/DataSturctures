@@ -4109,7 +4109,7 @@ namespace WindowsFormsApplication3
                 For example, given
 
                 9 -> 9
-                5 -> 2 ->1
+                5 -> 2
                 return 124 (99 + 25) as: 124
 
                 4 -> 2 -> 1

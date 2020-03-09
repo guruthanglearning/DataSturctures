@@ -516,8 +516,6 @@ namespace WindowsFormsApplication3
 
         private void btn_Navigate_from_North_West_to_South_East_of_the_building_Click(object sender, EventArgs e)
         {
-            int[,] m = new int[3, 3];
-            m = null;
             
             /*
              

@@ -3931,6 +3931,134 @@ namespace WindowsFormsApplication3
             }
             return retSum;
         }
+
+        private void btn_Find_Intersection_of_all_Intervals_Click(object sender, EventArgs e)
+        {
+            /* 
+                https://www.geeksforgeeks.org/find-intersection-of-all-intervals/
+
+                Time Complexity  :  O(N) where N is the number of intervals
+                Space Complexity :  O(1) constanct space.
+             */
+
+            StringBuilder result = new StringBuilder();
+            IList<IList<Interval>> inputs = new List<IList<Interval>>();
+
+            inputs.Add(
+                new List<Interval>()
+                {
+                    new Interval() { Start = 1, End = 6 },
+                    new Interval() { Start = 2, End = 8 },
+                    new Interval() { Start = 3, End = 10 },
+                    new Interval() { Start = 5, End = 8 },
+                });
+
+
+            inputs.Add(
+                new List<Interval>()
+                {
+                    new Interval() { Start = 5, End = 8 },
+                    new Interval() { Start = 2, End = 8 },
+                    new Interval() { Start = 3, End = 10 },
+                    new Interval() { Start = 1, End = 6 },
+                   
+                });
+
+            inputs.Add(
+                new List<Interval>()
+                {
+                    new Interval() { Start = 1, End = 6 },
+                    new Interval() { Start = 8, End = 18 }
+                });
+
+            Interval? interval = null;
+            for(int i = 0; i < inputs.Count; i++)
+            {
+                interval = this.Intersection_Of_Intervals(inputs[i]);
+
+                if (interval != null)
+                {
+                    result.AppendLine($"Intersection is {interval.Value.Start} {interval.Value.End} from this intervals \n{this.GetInterval(inputs[i])}");
+                }
+                else
+                {
+                    result.AppendLine($"No Intersection from this intervals \n{this.GetInterval(inputs[i])}");
+                }
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        private Interval? Intersection_Of_Intervals(IList<Interval> input)
+        {
+            if (input == null || input.Count == 0)
+            {
+                return null;
+            }
+
+            Interval cInterval = input[0]; 
+            Interval current;
+
+            for(int i = 1; i < input.Count; i++)
+            {
+                current = input[i];
+                if(current.Start > cInterval.Start && current.Start> cInterval.End)
+                {
+                    return null;
+                }
+                else
+                {
+                    cInterval.Start = Math.Max(cInterval.Start, current.Start);
+                    cInterval.End = Math.Min(cInterval.End, current.End);
+                }                
+            }
+
+
+            return cInterval;
+
+        }
+
+        private string GetInterval(IList<Interval> input)
+        {
+            StringBuilder result = new StringBuilder();
+            foreach(Interval interval in input)
+            {
+                result.AppendLine($"{interval.Start} {interval.End }");
+            }
+
+            return result.ToString();
+        }
+
+        private void btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                https://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
+                Time Complexity : O(1)
+                Space Complexity : O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Interval> inputs = new List<Interval>();
+            inputs.Add(new Interval() { Start = 4, End = 3 });
+
+            foreach(Interval input in inputs)
+            {
+
+                int m = input.Start;
+                int n = input.End;
+                int path = 1;
+                for (int i = n; i < (m + n - 1); i++)
+                {
+                    path *= i;
+                    path /= (i - n + 1);
+                }
+                result.AppendLine($"Total number of paths from top left to bottom for the given matrix coordinates {m} and {n} is {path}");
+            }
+            MessageBox.Show(result.ToString());
+
+        }
     }
 }
  

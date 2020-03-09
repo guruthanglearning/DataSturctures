@@ -227,6 +227,14 @@ namespace WindowsFormsApplication3
                 int min = 0;
                 int max = 0;
 
+                /*
+                    1 2
+                    2 3
+                    3 1
+
+                    No of Garden = 3
+                 */
+
                 while (proceed)
                 {
                     proceed = false;
