@@ -3309,6 +3309,294 @@ namespace WindowsFormsApplication3
             }
             return res.ToString();
         }
+
+        private void btn_Letter_Combinations_of_a_Phone_Number_Click(object sender, EventArgs e)
+        {
+            /*
+                 Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
+
+                A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+                    
+                    2: abc
+                    3 : def
+                    4 : ghi
+                    5 : jkl
+                    6 : mno
+                    7 : pqrs
+                    8 : tuv
+                    9 : wxyz
+
+                Example:
+                Input: "23"
+                Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+
+                Time Complexity      : O(N * M) where N is the number of character in the input and M is the number of character in the dictionary for the matching character in input 
+                Space Complexity     : O(N* M) where N is the number of character in the input and M is the number of character in the dictionary for the matching character in input  
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>() {"23","234", "sdf23","1",""};
+            IList<string> output = null;
+            foreach(string input in inputs)
+            {
+                output = this.LetterCombinations(input);
+                result.AppendLine($"List of string for the given input {input} is {(output == null ? "Invalid Input" : string.Join(@",", output))}");
+            }
+
+            MessageBox.Show(result.ToString());
+       
+        }
+
+        public IList<string> LetterCombinations(string digits)
+        {
+
+            System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"^[2-9]*$");
+
+            if (string.IsNullOrEmpty(digits) || !(r.IsMatch(digits)))
+            {
+                return null;
+            }
+
+            string[] dict = new string[8] { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+            int key = digits[0] - '2';
+                        
+            Queue<string> que = new Queue<string>();
+            
+            foreach (char c in dict[key])
+            {
+                que.Enqueue($"{c}");
+            }
+
+            string s = string.Empty;
+            while (que.Count > 0)
+            {
+                s = que.Peek();
+
+                if (s.Length == digits.Length)
+                {
+                    break;
+                }
+               que.Dequeue();
+
+                key = digits[s.Length] - '2';
+
+                foreach (char c in dict[key])
+                {
+                    que.Enqueue($"{s}{c}");
+                }
+
+            }
+
+            return que.ToList<string>();
+                
+        }
+
+        private void btn_Given_a_sequence_of_words_print_all_anagrams_together_Click(object sender, EventArgs e)
+        {
+            /* 
+                Time Complexity  : O(N*M) N is the list of string and M is the total number of characters
+                Space Complexity : O(N + M) 
+
+            */
+
+            List<string> strings = new List<string>() { "cat", "dog", "tac", "god", "act","abc" };
+            var result = this.GetListOfAnagrams(strings);
+
+            MessageBox.Show($"The below are the list of anagrams for the given input strings {string.Join(",", strings)} \n {string.Join(Environment.NewLine, result)}");
+
+        }
+
+        private List<string> GetListOfAnagrams(List<string> inputs)
+        {
+
+            if (inputs == null || inputs.Count == 0)
+            {
+                return null;
+            }
+
+            
+            if (inputs.Count == 1)
+            {
+                return new List<string> { inputs[0] };
+            }
+
+            List<string> result = null;           
+            Dictionary<int, List<string>> dict = new Dictionary<int, List<string>>();
+           
+            List<string> tempList = null;
+            int tempKey = 0;
+            foreach(string input in inputs)
+            {
+                tempKey = 0;
+                foreach (char c in input)
+                {
+                    tempKey += c;
+                }
+
+                dict.TryGetValue(tempKey, out tempList);
+                if (tempList == null)
+                {                    
+                    tempList = new List<string>();
+                }
+                tempList.Add(input);
+                dict[tempKey] = tempList;
+
+            }
+            tempList = new List<string>();
+
+
+            foreach (var s in dict.Values)
+            {
+                if (s.Count > 1)
+                {
+                    tempList.AddRange(s);
+                }
+            }
+
+            
+            return tempList;
+        }
+
+        private void btn_Backspace_String_Compare_Click(object sender, EventArgs e)
+        {
+
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            
+
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>() { new AddBinaryInputs() { inputA = "ab#c", inputB = "ad#c" } };
+            StringBuilder result = new StringBuilder();
+
+            foreach(var  input in inputs)
+            {
+                result.AppendLine($"Two strings {input.inputA} and {input.inputB} are backspace  {(this.BackspaceCompare(input.inputA, input.inputB) ? "" : " not ")} equal ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public bool BackspaceCompare(string S, string T)
+        {
+
+
+            if (string.IsNullOrEmpty(S) || string.IsNullOrEmpty(T))
+            {
+                return false;
+            }
+
+            string s1 = this.RemoveBackSpace(S);
+            string s2 = this.RemoveBackSpace(T);
+
+            return s1 == s2;
+
+        }
+
+        public string RemoveBackSpace(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return string.Empty;
+            }
+
+            Stack<char> stack = new Stack<char>();          
+
+            foreach (char c in s)
+            {
+                if (c == '#' && stack.Count > 0)
+                {
+                    stack.Pop();
+                }
+                else
+                {
+                    stack.Push(c);
+                }
+            }
+
+          
+            return string.Join("", stack);
+
+
+        }
+
+    
+        private void btn_Valid_Parenthesis_String_2_Click(object sender, EventArgs e)
+        {
+            /* 
+                Given a string containing only three types of characters: '(', ')' and '*', write a function to check whether 
+                this string is valid. We define the validity of a string by these rules:
+                1.) Any left parenthesis '(' must have a corresponding right parenthesis ')'.
+                2.) Any right parenthesis ')' must have a corresponding left parenthesis '('.
+                3.) Left parenthesis '(' must go before the corresponding right parenthesis ')'.
+                4.) '*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or an empty string.
+                5.) An empty string is also valid.
+                Example 1:
+                Input: "()"
+                Output: True
+                
+                Example 2:
+                Input: "(*)"
+                Output: True
+                
+                Example 3:
+                Input: "(*))"
+                Output: True
+                
+                Note:
+                    The string size will be in the range [1, 100]. 
+            
+                Time Complexity     :  O(N)
+                Space complexity    :  O(1) constant space 
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("()");
+            inputs.Add("(*)");
+            inputs.Add("((*)");
+            inputs.Add("(*))");
+            inputs.Add("())");
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"The given string {input} is {(this.IsValidParanthesis(input) ? "" : " not ") } valid string");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public bool IsValidParanthesis(string input)
+        {
+            if (string.IsNullOrEmpty(input) || input.Length == 0)
+            {
+                return true;
+            }
+
+            int l = 0;
+            int h = 0;
+
+            foreach(char c in input)
+            {
+                l += c == '(' ? 1 : -1;
+                h += c != ')' ? 1 : -1;
+
+                l = l < 0 ? 0: l;
+
+                if (h < 0)
+                {
+                    return false;
+                }
+
+            }
+            return l == 0;
+            
+        }
+
+
+
+
     }
 }
 

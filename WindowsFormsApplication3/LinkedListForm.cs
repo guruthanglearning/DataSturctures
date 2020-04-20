@@ -187,6 +187,37 @@ namespace WindowsFormsApplication3
             }
         }
 
+
+        private string InOrderTravelUsingStack(Node root)
+        {
+
+            if (root == null)
+            {
+                return null;
+            }
+
+
+            StringBuilder result = new StringBuilder();
+            Stack<Node> s = new Stack<Node>();
+            Node current =  root;
+            
+            while (current != null || s.Count > 0)
+            { 
+                
+                while (current!=null)
+                {
+                    s.Push(current);
+                    current = current.left;
+                }
+
+                current = s.Pop();
+                result.Append($@" {current.data} ,");
+                current = current.right;
+            }
+
+            return result.ToString();
+        }
+
         private void PreOrder(Node node)
         {
             if (node != null)
@@ -710,7 +741,7 @@ namespace WindowsFormsApplication3
             //Insert(15, ref tree);
             //Insert(22, ref tree);
             string max = $"Max Depth Recursive = {MaxDepthOfTheTree(tree)} Max Depth Iterative = {MaxDepthOfTheTreeWithIterative(tree)}";
-            string min = $"Min Depth Recursive = {MinDepthOfTheTree(tree)} Mix Depth Iterative = {MinDepthOfTheTreeIterative(tree)}";
+            string min = $"Min Depth Recursive = {MinDepthOfTheTree(tree)} Min Depth Iterative = {MinDepthOfTheTreeIterative(tree)}";
             MessageBox.Show($"{max}\n {min}");
         }
 
@@ -900,12 +931,7 @@ namespace WindowsFormsApplication3
             {
                 return 0;
             }            
-            
-            if (node == null)
-            {
-                return 0;
-            }
-
+                       
             return 1 + Math.Min(MinDepthOfTheTree(node.left), MinDepthOfTheTree(node.right));
 
         }
@@ -1105,10 +1131,7 @@ namespace WindowsFormsApplication3
                             break;
                         }
                         node = p;
-                        if (node.parent == null)
-                        {
-                            break;
-                        }
+                       
                     }
                 }
             }
@@ -2247,8 +2270,13 @@ namespace WindowsFormsApplication3
             int[] data = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             datas.Clear();
             Node tree = this.CreateBST(data, 0, data.Length - 1);
-            MessageBox.Show(datas.ToString());
+            Node treeStack = this.CreateBSTUsingStack(data);
+            datas.AppendLine("");
+            MessageBox.Show($"Balanced BST Recurrsion:  {datas.ToString()}  \nBST Stack {this.InOrderTravelUsingStack(treeStack)}");
         }
+
+
+
 
 
         private Node CreateBST(int[] data, int start, int end)
@@ -2267,6 +2295,66 @@ namespace WindowsFormsApplication3
             return node;
         }
 
+
+        public class NodeWithLeftRight
+        {
+            public int Left;
+            public int Right;
+            public Node Node;
+        }
+
+        private Node CreateBSTUsingStack(int[] data)
+        {
+            if (data == null || data.Length == 0)
+            {
+                return null;
+            }
+
+
+            int l = 0;
+            int r = data.Length - 1;
+            int m = (l + r) / 2;
+            Node root = new Node() { data = data[m] };
+            Node node = root;
+
+            Stack<NodeWithLeftRight> s = new Stack<NodeWithLeftRight>();
+            s.Push(new NodeWithLeftRight() { Left = l, Right = m-1, Node = node }) ;
+            s.Push(new NodeWithLeftRight() { Left = m+1, Right = r, Node = node });
+
+            NodeWithLeftRight temp = null;
+            Node nodeTemp = null;
+            while (s.Count > 0)
+            {
+                temp = s.Pop();
+                l = temp.Left;
+                r = temp.Right;
+                m = (l + r) / 2;
+
+                if (temp.Node.data > data[m])
+                {
+                    temp.Node.left = new Node() { data = data[m] };
+                    nodeTemp = temp.Node.left;
+                }
+                else
+                {
+                    temp.Node.right = new Node() { data = data[m] };
+                    nodeTemp = temp.Node.right;
+                }
+
+                if (l <= m -1)
+                {
+                    s.Push(new NodeWithLeftRight() { Left = l, Right = m - 1, Node = nodeTemp });
+                }
+                if (m + 1 <= r)
+                {
+                    s.Push(new NodeWithLeftRight() { Left = m + 1, Right = r, Node = nodeTemp });
+                }
+            }
+
+
+            return root;
+
+        }
 
 
         private void button30_Click(object sender, EventArgs e)
@@ -4269,6 +4357,131 @@ namespace WindowsFormsApplication3
                 odd = even != null ? even.next : null;                
             }
         }
+
+        private void btn_Remove_Nth_Node_From_End_of_List_Click(object sender, EventArgs e)
+        {
+            /*
+        
+                Given a linked list, remove the n-th node from the end of list and return its head.
+
+                Example:
+
+                Given linked list: 1->2->3->4->5, and n = 2.
+
+                After removing the second node from the end, the linked list becomes 1->2->3->5.
+                Note:
+
+                Given n will always be valid.
+
+             */
+
+            LinkList linkList = null;
+            linkList = InsertLinkList(linkList, 1);
+            linkList = InsertLinkList(linkList, 2);
+            linkList = InsertLinkList(linkList, 3);
+            linkList = InsertLinkList(linkList, 4);
+            linkList = InsertLinkList(linkList, 5);
+            datas.Append("Before Delete \n");
+            DisplayLinkList(linkList);
+
+            linkList = this.RemoveNthFromEnd(linkList, 10);
+
+            datas.Append("After Delete \n");
+            DisplayLinkList(linkList);
+
+            MessageBox.Show(datas.ToString());
+
+        }
+
+        public LinkList RemoveNthFromEnd(LinkList head, int n)
+        {
+            if (head == null || n == 0)
+            {
+                return head;
+            }
+
+            LinkList lead = head;
+            LinkList chase = head;
+            LinkList prev = null;
+
+            while (n > 0)
+            {
+                if (lead == null)
+                {
+                    return null;
+                }
+
+                lead = lead.next;
+                n--;
+            }
+
+            while (lead != null)
+            {
+                prev = chase;
+                chase = chase.next;
+                lead = lead.next;
+            }
+
+            if (prev == null)
+            {
+                head = head.next;
+            }
+            else
+            {
+                prev.next = chase.next;
+            }
+
+            return head;
+        }
+
+        private void btn_MiddleNode_Click(object sender, EventArgs e)
+        {
+            LinkList linkList = null;
+            linkList = InsertLinkList(linkList, 1);
+            linkList = InsertLinkList(linkList, 2);
+            linkList = InsertLinkList(linkList, 3);
+            linkList = InsertLinkList(linkList, 4);
+            linkList = InsertLinkList(linkList, 5);
+            linkList = InsertLinkList(linkList, 6);
+            datas.Clear();
+            datas.Append("Before\n");
+            DisplayLinkList(linkList);
+            LinkList result = this.MiddleNode(linkList);
+            datas.AppendLine("After \n");
+            DisplayLinkList(result);
+
+            MessageBox.Show(datas.ToString());
+        }
+
+        public LinkList MiddleNode(LinkList head)
+        {
+
+            if (head == null)
+            {
+                return head;
+            }
+
+            LinkList runner = head;
+            
+            int i = 0;
+                        
+            while (runner != null)
+            {
+                runner = runner.next;                
+                i++;
+            }
+
+            i = (i / 2);
+            runner = head;
+
+            for(int j = 0; j < i; j++)
+            {
+                runner = runner.next;
+            }
+
+            return runner;
+        }
+
     }
 
     class Graph

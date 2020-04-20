@@ -34,10 +34,10 @@
             // 
             // btn_BinarySearch
             // 
-            this.btn_BinarySearch.Location = new System.Drawing.Point(13, 14);
-            this.btn_BinarySearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_BinarySearch.Location = new System.Drawing.Point(12, 11);
+            this.btn_BinarySearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_BinarySearch.Name = "btn_BinarySearch";
-            this.btn_BinarySearch.Size = new System.Drawing.Size(753, 40);
+            this.btn_BinarySearch.Size = new System.Drawing.Size(669, 32);
             this.btn_BinarySearch.TabIndex = 0;
             this.btn_BinarySearch.Text = "Binary Search";
             this.btn_BinarySearch.UseVisualStyleBackColor = true;
@@ -45,9 +45,10 @@
             // 
             // btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists
             // 
-            this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.Location = new System.Drawing.Point(13, 62);
+            this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.Location = new System.Drawing.Point(12, 50);
+            this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.Name = "btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists";
-            this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.Size = new System.Drawing.Size(753, 43);
+            this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.Size = new System.Drawing.Size(669, 34);
             this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.TabIndex = 1;
             this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.Text = "Given an rotate array in the sorted order search  given value exists";
             this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists.UseVisualStyleBackColor = true;
@@ -55,12 +56,12 @@
             // 
             // Search
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 402);
+            this.ClientSize = new System.Drawing.Size(746, 322);
             this.Controls.Add(this.btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists);
             this.Controls.Add(this.btn_BinarySearch);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Search";
             this.Text = "Search";
             this.ResumeLayout(false);

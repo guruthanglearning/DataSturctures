@@ -58,24 +58,24 @@ namespace WindowsFormsApplication3
             //arr2[1] = 5;
             //arr2[2] = 6;//Worst Case O(n+m)
 
-            //int[] arr1 = new int[10];
-            //arr1[0] = 1;
-            //arr1[1] = 2;
-            //arr1[2] = 3;
-            //arr1[3] = 4;
-            //arr1[4] = 5;
-            //arr1[5] = 6;
-            //arr1[6] = 7;
-            //int[] arr2 = new int[3];
-            //arr2[0] = 3;
-            //arr2[1] = 9;
-            //arr2[2] = 10; //Best Case O(n+m)
+            int[] arr1 = new int[10];
+            arr1[0] = 1;
+            arr1[1] = 2;
+            arr1[2] = 3;
+            arr1[3] = 4;
+            arr1[4] = 5;
+            arr1[5] = 6;
+            arr1[6] = 7;
+            int[] arr2 = new int[3];
+            arr2[0] = 3;
+            arr2[1] = 9;
+            arr2[2] = 10; //Best Case O(n+m)
 
-            int[] arr1 = new int[1];
-            arr1[0] = 0;
+            //int[] arr1 = new int[1];
+            //arr1[0] = 0;
 
-            int[] arr2 = new int[1];
-            arr2[0] = 1;
+            //int[] arr2 = new int[1];
+            //arr2[0] = 1;
 
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
@@ -223,6 +223,7 @@ namespace WindowsFormsApplication3
                      arr2   :   3   3   4   10
               
             */
+            
 
             int[] arr1 = new int[11];
             arr1[0] = 1;
@@ -239,6 +240,7 @@ namespace WindowsFormsApplication3
             arr2[2] = 4;
             arr2[3] = 10; //Best Case O(n+m)
 
+            
 
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
@@ -489,7 +491,7 @@ namespace WindowsFormsApplication3
             int res = 0;
             for (int i = 0; i < input.Length; i++)
             {
-                res = res ^ input[i];
+                res ^= input[i];
 
             }
 
@@ -1236,6 +1238,7 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 4, -1, 2 });
             inputs.Add(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 });
 
+
             StringBuilder result = new StringBuilder();
 
             foreach (int[] input in inputs)
@@ -1259,7 +1262,8 @@ namespace WindowsFormsApplication3
                     if (sum < input[i])
                     {
                         sum = input[i];
-                        startIndex = i;
+                        startIndex = i; 
+                        endIndex = i;
                     }
 
                     if (sum > maxSum)
@@ -1267,23 +1271,6 @@ namespace WindowsFormsApplication3
                         maxSum = sum;
                         endIndex = i;
                     }
-
-                    //if (sum > maxSum)
-                    //{
-                    //    maxSum = sum;
-                    //    endIndex = i;
-                    //}
-
-                    //if (sum <= 0)
-                    //{
-                    //    maxSum = 0;
-                    //    sum = 0;
-                    //    if (i + 1 < input.Length)
-                    //    {
-                    //        startIndex = i + 1;
-                    //    }
-                    //    endIndex = 0;
-                    //}
                 }
                 result.Append($"Largest Subarray Sum in array is {maxSum.ToString()} for the given array {string.Join(" ", input)} starting index {startIndex.ToString()} and ending index {endIndex.ToString()} \n");
             }
@@ -2865,7 +2852,7 @@ namespace WindowsFormsApplication3
                 lcm = this.LCMForArray(input.a);
                 gcd = this.GCDForArray(input.b);
 
-                for (int i = lcm, j = 2; i <= gcd; i += lcm, j++)
+                for (int i = lcm; i <= gcd; i += lcm)
                 {
                     if ((gcd % i) == 0)
                     {
@@ -3053,7 +3040,7 @@ namespace WindowsFormsApplication3
                     sum -= s[i - (m - 1)];
                 }
             }
-
+            
             return result;
 
         }
@@ -3098,7 +3085,7 @@ namespace WindowsFormsApplication3
                 int k = input.find;
                 int sum = 0;
                 int r = 0;
-                for (int i = 0; i < inArray.Length; i++)
+                for (int i = 0; i < inArray.Length; i++) //0:   1:2      2:2      3:2      Sum = 3
                 {
                     r = inArray[i] % k;
                     if (r != 0)
@@ -3169,24 +3156,25 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            int lv = -1, lk = -1, sv = -1, sk = -1;
+            int lv = -1, lk = -1, sv = -1, sk = -1, dicValue = 0;
+
 
             foreach (int k in dict.Keys)
             {
-                if (dict[k] > lv)
+                dicValue = dict[k];
+                if (dicValue > lv)
                 {
-                    lv = dict[k];
+                    lv = dicValue;
                     lk = k;
                 }
-                else if (dict[k] == lv)
+                else if (dicValue == lv)
                 {
-                    sv = dict[k];
+                    sv = dicValue;
                     sk = k;
                 }
             }
 
             return lv > sv ? lk : Math.Min(sk, lk);
-
         }
 
         private void btn_Best_Time_to_Buy_and_Sell_Stock_Click(object sender, EventArgs e)
@@ -3364,9 +3352,6 @@ namespace WindowsFormsApplication3
                 • string S consists only of the characters "0" and/or "1"; 
                 • the binary representation is big-endian, i.e. the first character of string S corresponds to the most significant bit;
                 • the binary representation may contain leading zeros. 
- 
-
-             
              */
 
             StringBuilder result = new StringBuilder();
@@ -3392,6 +3377,7 @@ namespace WindowsFormsApplication3
                         steps = this.solution(val);
                     }
                 }
+
                 result.AppendLine($"There are {steps} to make 0 for the given binary input {input} and its integer is {val}");
 
             }
@@ -3399,6 +3385,38 @@ namespace WindowsFormsApplication3
             MessageBox.Show(result.ToString());
         }
 
+
+        private int? GetInteger(String s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return null;
+            }
+
+            int incr = s.Length - 1;
+            int pow = 1;
+            int val = 0;
+            int result = 0;
+            while (incr >= 0)
+            {
+                val = s[incr] - '0';
+                if (val > 1)
+                {
+                    return null;
+                }
+
+                result = result + (val * pow);
+                pow *= 2;
+
+                if (result > int.MaxValue || result < int.MinValue)
+                {
+                    return null;
+                }
+
+                incr--;
+            }
+            return result;
+        }
 
         private int ConvertBinaryToInt(string input)
         {
@@ -3670,7 +3688,6 @@ namespace WindowsFormsApplication3
 
         private void Merge(Stack<IntervalRange> s, IntervalRange interval)
         {
-
             if (s != null & interval != null)
             {
                 if (s.Count == 0)
@@ -3760,6 +3777,7 @@ namespace WindowsFormsApplication3
                 int result = 0;
                 HashSet<string> dict = new HashSet<string>();
 
+
                 for (int i = 0; i <= nums.Length - 3; i++)
                 {
                     l = i + 1;
@@ -3830,7 +3848,7 @@ namespace WindowsFormsApplication3
             }
 
             int swapCounter = 0;
-            for (int i = q.Length - 1; i >= 0; i--)
+            for (int i = q.Length - 1; i >= 0; i--) // Length = 4   Data=  1, 2, 5, 3, 7, 8, 6, 4  // 1, 2, 3, 4, 5, 6, 7, 8  
             {
                 if (q[i] != i + 1)
                 {
@@ -3900,7 +3918,7 @@ namespace WindowsFormsApplication3
             int retSum = 0;
             int min = int.MaxValue;
 
-            for (int i = 0; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length; i++) // -1, 2, 1, -4 }, find = 1 
             {
                 l = i + 1;
                 r = nums.Length - 1;
@@ -4058,7 +4076,508 @@ namespace WindowsFormsApplication3
             }
             MessageBox.Show(result.ToString());
 
+           
         }
+
+        private void btn_Number_of_flips_to_make_coin_head_or_tails_Click(object sender, EventArgs e)
+        {
+            /*
+                Time Complexity     : O(N) where N is the list of integers
+                Space Complexity    : O(1) constant
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 0, 1, 0, 1, 1 }); //1
+            inputs.Add(new int[] { 1, 1, 0, 1, 1 }); // 2
+            inputs.Add(new int[] { 0, 1, 0 }); // 0
+            inputs.Add(new int[] { 0, 1, 1, 0 }); // 2
+
+            foreach(int[] input in inputs)
+            {
+                result.AppendLine($"Number of flip is {this.GetFlips(input)} for the given input {string.Join(" ", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        private int GetFlips(int[] input)
+        {
+
+            int fhCount = 0;
+            int ftCount = 0;
+            int fh = 0;
+            int ft = 1;
+
+            if (input == null || input.Length == 0)
+            {
+                return fhCount;
+            }
+
+            for(int i = 0; i < input.Length; i++)
+            {
+                if (input[i] != fh)
+                {
+                    fhCount++;
+                }
+
+                if (input[i] != ft)
+                {
+                    ftCount++;
+                }
+
+                fh = fh == 1 ? 0 : 1;
+                ft = ft == 1 ? 0 : 1;
+                
+            }
+
+            return Math.Min(fhCount,ftCount);
+        }
+
+        private void btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y_Click(object sender, EventArgs e)
+        {
+            List<List<Interval>> inputs = new List<List<Interval>>();
+
+            inputs.Add(new List<Interval>() {   new Interval() { Start = 1, End = 3 }, 
+                                                new Interval() { Start = 6, End = 8 },
+                                                new Interval() { Start = 10, End = 12 },
+                                                new Interval() { Start = 8, End = 3 }
+                                            });
+        }
+
+        private List<int> MergeIntervalsMatchXAndY(List<Interval> input)
+        {
+            List<int> result = new List<int>();
+            Dictionary<int, HashSet<int>> dict = new Dictionary<int, HashSet<int>>();
+            HashSet<int> temp = new HashSet<int>();
+
+            foreach(Interval interval in input)
+            {
+               if (dict.ContainsKey(interval.Start))
+               {
+                    temp.Add(interval.Start);
+                    //temp.
+               }
+
+            }
+
+            return null;
+        }
+
+        private void btn_4_Sum_Click(object sender, EventArgs e)
+        {
+
+         
+
+            StringBuilder result = new StringBuilder();
+            StringBuilder tempResult = new StringBuilder();
+
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 1, 0, -1, 0, -2, 2, 0 }, find = 0 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 0 ,0 ,0 , 0 }, find = 1 });
+
+            foreach (var arrayAndValue in inputs)
+            { 
+                var temp = this.FourSum(arrayAndValue.input, arrayAndValue.find);
+                string str = string.Join(Environment.NewLine, temp.Select(s => string.Join(",",s )));
+                result.AppendLine($"4 Sum for the target {arrayAndValue.find} for given input array \n {string.Join(",", arrayAndValue.input)} is {(string.IsNullOrEmpty(str)? "Empty" : str)}  \n ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public IList<IList<int>> FourSum(int[] nums, int target)
+        {
+
+            if (nums == null || nums.Length == 0 || nums.Length <= 3)
+            {
+                return new List<IList<int>>();
+            }
+
+            Array.Sort(nums);
+            HashSet<string> dict = new HashSet<string>();
+            string dictKey = string.Empty;
+
+            int f = 0;
+            int s = 0;
+            int l = 0;
+            int r = nums.Length - 1;
+
+            List<IList<int>> result = new List<IList<int>>();
+            int sum = 0;
+
+            for (f = 0; f < nums.Length; f++)
+            {
+                s = f + 1;
+                for (; s < nums.Length; s++)
+                {
+                    r = nums.Length - 1;
+                    l = s + 1;
+                    while (l < r)
+                    {
+                        sum = nums[f] + nums[s] + nums[l] + nums[r];
+                        if (sum == target)
+                        {
+                            dictKey = $"{nums[f] },{nums[s]},{nums[l]},{nums[r]}";
+                            if (!dict.Contains(dictKey))
+                            {
+                                result.Add(new List<int>() { nums[f], nums[s], nums[l], nums[r] });
+                                dict.Add(dictKey);
+                            }
+                            l++;
+                            r--;
+
+                        } 
+                        else if (sum < target)
+                        {
+                            l++;
+                        }
+                        else
+                        {
+                            r--;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        private void btn_Last_Stone_Weight_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                We have a collection of stones, each stone has a positive integer weight.
+
+                Each turn, we choose the two heaviest stones and smash them together.  Suppose the stones have weights x and y with x <= y.  The result of this smash is:
+
+                If x == y, both stones are totally destroyed;
+                If x != y, the stone of weight x is totally destroyed, and the stone of weight y has new weight y-x.
+                At the end, there is at most 1 stone left.  Return the weight of this stone (or 0 if there are no stones left.)
+
+ 
+
+                Example 1:
+
+                Input: [2,7,4,1,8,1]
+                Output: 1
+                Explanation: 
+                We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,
+                we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,
+                we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
+                we combine 1 and 1 to get 0 so the array converts to [1] then that's the value of last stone.
+ 
+
+                Note:
+
+                1 <= stones.length <= 30
+                1 <= stones[i] <= 1000
+
+                Note : Simulate the process. We can do it with a heap, or by sorting some list of stones every time we take a turn.
+
+                Time Complexity     : O(N) where n is the total numbers of input
+                Space Complexity    : O(1) Constanct space
+
+
+
+             */
+
+            List<int[]> inputs = new List<int[]>() { 
+                                                        new int[] { 2, 7, 4, 1, 8, 1 },
+                                                        new int[] { 2,2 },
+
+                                                   };
+            StringBuilder result = new StringBuilder();
+
+            foreach(int[] input in inputs)
+            {
+
+                result.AppendLine($"The weight of the stone is {this.LastStoneWeight(input)} for the given input {string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int LastStoneWeight(int[] stones)
+        {
+
+            if (stones == null || stones.Length == 0)
+            {
+                return 0;
+            }
+
+            int fmax = 0;
+            int smax = 0;
+            int fmaxInd = 0;
+            int smaxInd = 0;
+
+
+            while (true)
+            {
+                fmax = 0;
+                fmaxInd = -1;
+                smax = 0;
+                smaxInd = -1;
+
+                for (int i = 0; i < stones.Length; i++)
+                {
+                    if (stones[i] == -1)
+                        continue;
+
+                    if (stones[i] >= fmax && stones[i] >= smax)
+                    {
+                        smax = fmax;
+                        smaxInd = fmaxInd;
+                        fmax = stones[i];
+                        fmaxInd = i;
+                    }
+                    else if (stones[i] > smax)
+                    {
+                        smax = stones[i];
+                        smaxInd = i;
+                    }
+                }
+
+                if (smaxInd >= 0 && fmaxInd >= 0)
+                {
+                    stones[smaxInd] = fmax - smax;
+                    stones[fmaxInd] = -1;
+                }
+                else if (fmaxInd == -1 || smaxInd == -1)
+                {
+                    break;
+                }
+            }
+
+            return fmax;
+        }
+
+        private void Test(int[][] t)
+        {
+            t[0] = new int[] { 1 };
+        }
+
+        private void btn_Contiguous_Array_Click(object sender, EventArgs e)
+        {
+       
+
+            /*
+             
+                Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.
+
+                Example 1:
+                Input: [0,1]
+                Output: 2
+                Explanation: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.
+                Example 2:
+                Input: [0,1,0]
+                Output: 2
+                Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.
+                Note: The length of the given binary array will not exceed 50,000.
+
+                Time Complexity : O(N)
+                Space Complexity : O(N)
+
+             */
+
+
+
+            List<int[]> inputs = new List<int[]>() {
+                                                        new int[] { 0,1 },
+                                                        new int[] { 0,1, 1 },
+                                                        new int[] { 1, 0, 1, 1, 1, 0, 0},
+                                                        new int[] { 1, 1, 1, 1},
+                                                        new int[] { 0, 0, 1, 1,  0},
+
+                                                   };
+            StringBuilder result = new StringBuilder();
+
+            foreach (int[] input in inputs)
+            {
+
+                result.AppendLine($"Max length for continous array with equal 0 and 1 is {this.FindMaxLength(input)} for the given input {string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int FindMaxLength(int[] nums)
+        {
+
+            if (nums == null || nums.Length == 0)
+                return 0;
+
+            int sum = 0;
+            int maxLength = 0;
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            dict[0] = -1;
+            int dicValue = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                sum += (nums[i] == 0 ? -1 : 1);
+
+                if (dict.TryGetValue(sum, out dicValue))
+                {
+                    maxLength = Math.Max(maxLength, i - dicValue);
+                }
+                else
+                {
+                    dict[sum] = i;
+                }
+            }
+
+            return maxLength;
+
+
+        }
+
+
+       
+
+        private void btn_Perform_String_Shifts_Click(object sender, EventArgs e)
+        {
+            int[] nums = new int[4];
+            int[] aux = new  int[nums.Length];
+
+            /*
+             
+            You are given a string s containing lowercase English letters, and a matrix shift, where shift[i] = [direction, amount]:
+
+            direction can be 0 (for left shift) or 1 (for right shift). 
+            amount is the amount by which string s is to be shifted.
+            A left shift by 1 means remove the first character of s and append it to the end.
+            Similarly, a right shift by 1 means remove the last character of s and add it to the beginning.
+            Return the final string after all operations.
+
+ 
+
+            Example 1:
+
+            Input: s = "abc", shift = [[0,1],[1,2]]
+            Output: "cab"
+            Explanation: 
+            [0,1] means shift to left by 1. "abc" -> "bca"
+            [1,2] means shift to right by 2. "bca" -> "cab"
+            Example 2:
+
+            Input: s = "abcdefg", shift = [[1,1],[1,1],[0,2],[1,3]]
+            Output: "efgabcd"
+            Explanation:  
+            [1,1] means shift to right by 1. "abcdefg" -> "gabcdef"
+            [1,1] means shift to right by 1. "gabcdef" -> "fgabcde"
+            [0,2] means shift to left by 2. "fgabcde" -> "abcdefg"
+            [1,3] means shift to right by 3. "abcdefg" -> "efgabcd"
+ 
+
+            Constraints:
+
+            1 <= s.length <= 100
+            s only contains lower case English letters.
+            1 <= shift.length <= 100
+            shift[i].length == 2
+            0 <= shift[i][0] <= 1
+            0 <= shift[i][1] <= 100 
+
+            Time Complexity     : 
+            Space Complexity    :
+
+             */
+
+            StringBuilder result = new StringBuilder();
+
+
+            List<JaggedArraysWithString> inputs = new List<JaggedArraysWithString>();
+            //inputs.Add(new JaggedArraysWithString() { input = "abcdefg", shifts = new int[][] { new int[]{ 1, 1 }, new int[] { 1, 1 }, new int[] { 0, 2 }, new int[] { 1, 3 } } });
+            //inputs.Add(new JaggedArraysWithString() { input = "abc", shifts = new int[][] { new int[] { 0, 1 }, new int[] { 1, 2 }} });
+            inputs.Add(new JaggedArraysWithString() { input = "yisxjwry", shifts = new int[][] { new int[] { 1, 8 }, new int[] { 1, 4 }, new int[] { 1, 3 }, new int[] { 1, 6 }, new int[] { 0, 6 }, new int[] { 1, 4 }, new int[] { 0, 2 }, new int[] { 0, 1 } } });
+
+            foreach (var input in inputs)
+            {
+
+                result.AppendLine(this.PrintData(input)); 
+                this.MergeShifts(input.shifts, input.input.Length);
+                result.AppendLine($"{this.ShiftStrings(input.input, input.shifts[input.shifts.Length - 1][0], input.shifts[input.shifts.Length - 1][1])}");
+            }
+
+            MessageBox.Show(result.ToString());
+         }
+
+        private void MergeShifts(int[][] shift, int len)
+        {
+            for (int i = 0; i < shift.Length - 1; i++)
+            {
+                if (shift[i + 1][1] == 0)
+                {
+                    shift[i + 1][0] = shift[i][0];
+                    shift[i + 1][1] = shift[i][1];
+                }
+                else if (shift[i][0] == shift[i + 1][0])
+                {
+                    shift[i + 1][1] += shift[i][1];
+                    if (shift[i + 1][1] >= len)
+                    {
+                        shift[i + 1][1] -= len;
+                    }
+                }
+                else if (shift[i][0] != shift[i + 1][0])
+                {
+                    if (shift[i][1] > shift[i + 1][1])
+                    {
+                        shift[i + 1][1] = shift[i][1] - shift[i + 1][1];
+                        shift[i + 1][0] = shift[i][0];
+                    }
+                    else
+                    {
+                        shift[i + 1][1] -= shift[i][1];
+                    }
+                }
+            }
+        }
+
+        private string PrintData(JaggedArraysWithString input)
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.AppendLine($"String shift for the input string {input.input} for the given shifts ");
+            for(int i = 0; i < input.shifts.Length; i++)
+            {
+                result.AppendLine($"{input.shifts[i][0]},{input.shifts[i][1]}");               
+            }
+            return result.ToString();
+
+        }
+
+        public string ShiftStrings(string input, int direction, int move)
+        {
+            string result;
+
+            if (direction == 1)
+            {
+                result = string.Concat(input.Substring(input.Length - move), input.Substring(0, input.Length - move));
+            }
+            else
+            {
+                result = string.Concat(input.Substring(move), input.Substring(0, move));
+            }
+
+            return result;
+
+        }
+
+
+
+
+        public class JaggedArraysWithString
+        {
+            public int[][] shifts;
+            public string input;
+        }
+
     }
 }
  

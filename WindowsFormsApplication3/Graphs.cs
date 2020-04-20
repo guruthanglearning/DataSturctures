@@ -291,9 +291,8 @@ namespace WindowsFormsApplication3
              */
             if (graph!= null)
             {
-                Stack s = new Stack();                
-                Queue<GraphNode> queue = new Queue<GraphNode>();
-                
+                Queue<GraphNode> queue = new Queue<GraphNode>();               
+
                 foreach (var key in graph.Nodes.Keys)
                 {
                     queue.Enqueue(graph.Nodes[key]);
@@ -453,7 +452,7 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    result.Add(graphNode.Data, $"{nodeValue}");                    
+                    result[graphNode.Data] = $"{nodeValue}";                    
                 }
 
                 foreach (Edge n in graphNode.Edges)

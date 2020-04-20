@@ -1017,6 +1017,20 @@ namespace WindowsFormsApplication3
 
         public int GenerateSumAndMax(Node node, ref int max)
         {
+
+            /*  10, 4, 15, 6, 20, 1 
+                                               10
+                                           /        \
+                                          /          \
+                                         4           15
+                                       /  \         /         
+                                      /    \       /
+                                     6     20     1
+              
+             */
+
+
+
             if (node == null)
             {
                 return 0;

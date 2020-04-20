@@ -535,7 +535,7 @@ namespace WindowsFormsApplication3
                         m++;
                     }
 
-                    minFlip = Math.Min(p / 2, (m - p) / 2);
+                    minFlip = Math.Min(p / 2, (m - p) / 2);   
                 }
 
                 result.AppendLine($"Min flip for {p} page in total pages {n} is  {minFlip} ");
@@ -546,6 +546,166 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void btn_Clock_Angle_Click(object sender, EventArgs e)
+        {
+          
+            /*
+             
+            https://en.wikipedia.org/wiki/Clock_angle_problem
+            
+            Hour makes 360 degree in 12 hours with degree of angle as 0.5      
+            Min makes 360 degree in 1 hour  with degree of angle as 6
+
+            So we can use one of the below formula 
+
+            Formula 1 :
+                Hour angle = ((60 * hour) + M) * 0.5
+                Min angle = 6 * Min
+                HourMinAngle =  Math.Abs(Hour angle - Min angle)
+                Angle = Math.Min(360 - HourMinAngle, HourMinAngle)
+            
+                Time Complexity : O(1)
+                Space Complexity : O(1) 
+
+             */
+
+            List<Point> hourMins = new List<Point>();
+            StringBuilder result = new StringBuilder();
+
+            hourMins.Add(new Point() {X =12, Y = 45 });
+            hourMins.Add(new Point() { X = 3, Y = 30 });
+            hourMins.Add(new Point() { X = 14, Y = 23 });
+
+            foreach (Point hourMin in hourMins)
+            {
+                result.AppendLine($"The angle is {(this.GetClockAngle(hourMin.X, hourMin.Y))} for the hour : {hourMin.X} and Min : {hourMin.Y} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public double GetClockAngle(int hour, int min)
+        {
+          
+            if (hour < 0 || hour > 24 || min < 0 || min > 60)
+            {
+                return 0;
+            }
+
+            if (hour > 12)
+            {
+                hour -= 12;
+            }
+            
+                
+            if (hour == 12)
+            {
+                hour = 0;
+            }
+
+            if (min == 60)
+            {
+                min = 0;
+                hour += 1;
+            }
+
+            double angle =  Math.Abs( (0.5 * ((60 * hour) + min)) - (6 * min));
+
+            return Math.Min(360 - angle, angle);
+
+
+        }
+
+        private void btn_Happy_Numbers_Click(object sender, EventArgs e)
+        {
+            /* 
+             
+                A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.
+
+                Return True if n is a happy number, and False if not.
+
+                Example: 
+
+                Input: 19
+                Output: true
+                Explanation: 
+                12 + 92 = 82
+                82 + 22 = 68
+                62 + 82 = 100
+                12 + 02 + 02 = 1
+             */
+
+            List<int> inputs = new List<int>() { 19 };
+            StringBuilder result = new StringBuilder();
+
+            foreach(int input in inputs)
+            {
+                result.AppendLine($"{input} is {(this.IsHappy(input)? "" : "not") } happy number");
+            }
+            MessageBox.Show(result.ToString());
+            
+
+        }
+
+
+
+        public bool IsHappy(int n)
+        {
+
+            if (n == 0 || n == 1)
+            {
+                return n == 1;
+            }
+
+            HashSet<int> dict = new HashSet<int>() { n};
+            int sum = n;
+            bool result = false;
+
+            while (true)
+            {
+                sum = this.GetSumedNumber(sum);
+                if (sum == 1)
+                {
+                    result = true;
+                    break;
+                }
+                else if (dict.Contains(sum))
+                {
+                    result = false;
+                    break;
+                }
+                else
+                {
+                    dict.Add(sum);
+                }
+
+            }
+            return result;
+        }
+
+        private int GetSumedNumber(int n)
+        {
+            if (n == 0 || n == 1)
+            {
+                return n;
+            }
+
+            int q = n / 10;
+            int r = n % 10;
+            int sum = r * r;
+
+            while (q > 0)
+            {
+                r = q % 10;
+                sum += (r * r);
+                q = q / 10;
+            }
+
+            return sum;
+        }
+
     }
 }
 

@@ -821,5 +821,225 @@ namespace WindowsFormsApplication3
             sum += input[r + 1][c + 1];
             return sum;
         }
+
+        private void btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix_Click(object sender, EventArgs e)
+        {
+            char[,] grid = new char[,]
+                     {
+                         {'A', 'B', 'C', 'D', 'E', 'F', 'G'},
+                         {'M', 'I', 'Z', 'Z', 'A', 'B', 'C'},
+                         {'C', 'A', 'B', 'C', 'D', 'Z', 'Z'},
+                         {'A', 'R', 'O', 'F', 'T', 'A', 'A'},
+                         {'B', 'S', 'G', 'B', 'A', 'T', 'G'}
+                    };
+           MessageBox.Show($"Pattern {(PatternExists(grid, "MICROSOFT") ? "Exists" : "do not exists")}");
+
+
+        }
+
+        public bool PatternExists(char[,] input, string pattern)
+        {
+            if (input == null || input.Length == 0 || string.IsNullOrEmpty(pattern))
+            {
+                return false;
+            }
+
+            int[] offset = new int[] { -1, 0, 1 };
+            Queue<Point> q = new Queue<Point>();
+            q.Enqueue(new Point(){X=0, Y = 0 });
+
+            int patIndex = 0;
+
+            Point temp;
+
+            int row = 0; int col = 0;
+            int rowLength = input.GetLength(0);
+            int colLength = input.GetLength(1);
+
+            while (q.Count > 0)
+            {
+                temp = q.Dequeue();
+                row = temp.X;
+                col = temp.Y;
+
+                for (int r = 0; r < offset.Length; r++)
+                {
+                    for (int c = 0; c < offset.Length; c++)
+                    {                     
+                        if ( 
+                            (row + offset[r] >= 0 && row + offset[r] < rowLength) &&
+                             (col + offset[c] >= 0 && col + offset[c] < colLength) &&
+                             input[row + offset[r], col + offset[c]] == pattern[patIndex]
+                           )
+                        {
+                            q.Enqueue(new Point() { X = row + offset[r], Y = col + offset[c]});
+                            patIndex++;
+                            if (pattern.Length == patIndex)
+                            {
+                                return true;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+            return false;            
+        }
+
+        private void btn_No_of_island_Horizontal_Vertical_Click(object sender, EventArgs e)
+        {
+            StringBuilder result = new StringBuilder();
+            List<char[][]> inputs = new List<char[][]>();
+            inputs.Add(new char[][]
+                {
+                        new char[]{'1','1','1','1','1','0','1','1','1','1','1','1','1','1','1','0','1','0','1','1'},
+                        new char[]{'0','1','1','1','1','1','1','1','1','1','1','1','1','0','1','1','1','1','1','0'},
+                        new char[]{'1','0','1','1','1','0','0','1','1','0','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','1','1','1','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','0','1','1','1','1','1','1','0','1','1','1','0','1','1','1','0','1','1','1'},
+                        new char[]{'0','1','1','1','1','1','1','1','1','1','1','1','0','1','1','0','1','1','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','0','1','1','1','1','0','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','0','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'0','1','1','1','1','1','1','1','0','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','1','1','1','1','0','1','1','1','1','1','1','1','0','1','1','1','1','1','1'},
+                        new char[]{'1','0','1','1','1','1','1','0','1','1','1','0','1','1','1','1','0','1','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','0','1','1','1','1','1','1','0'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','1','0','1','1','1','1','0','0'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                        new char[]{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'}
+                    }
+                );
+
+           // inputs.Add(new char[][]
+           // {
+           //     new char[]{'1','1','1','1','0'},
+           //     new char[]{'1','1','0','1','0'},
+           //     new char[]{'1','1','0','0','0'},
+           //     new char[]{'0','0','0','0','0'}
+           // });
+
+           // inputs.Add(new char[][]
+           // {
+           //     new char[]{'1','1','0','0','0'},
+           //     new char[]{'1','1','0','0','0'},
+           //     new char[]{'0','0','1','0','0'},
+           //     new char[]{'0','0','0','1','1'}
+           //});
+
+            foreach (char[][] input in inputs)
+            {
+                result.AppendLine($"For the given land {Environment.NewLine} {this.PrintCharArray(input)} {Environment.NewLine} there are {this.GetNoOfIslands(input)} islands ");      
+            }
+
+
+            MessageBox.Show(result.ToString());
+
+
+            
+        }
+
+        private string PrintCharArray(char[][] input)
+        {
+            StringBuilder result = new StringBuilder();
+
+            foreach(var data in input)
+            {
+                foreach(char c in data)
+                {
+                    result.Append($" {c}");
+                }
+                result.AppendLine();
+            }
+
+            return result.ToString();
+
+        }
+
+
+        public class RowCol
+        {
+            public int Row;
+            public int Col;
+        }
+
+
+        private int GetNoOfIslands(char[][] gridInput)
+        {
+            if (gridInput == null || gridInput.Length == 0)
+                return 0;
+
+            int island = 0;
+
+            int rowLen = gridInput.Length;
+            int colLen = 0;
+
+            Queue<RowCol> q = new Queue<RowCol>();
+            RowCol temp;
+
+            for (   int i = 0; i < rowLen; i++)
+            {
+                colLen = gridInput[i].Length;
+                for (int j = 0; j < colLen; j++)
+                {
+                    if (gridInput[i][j] == '1')
+                    {
+                        island++;
+
+                        q.Enqueue(new RowCol() { Row = i, Col = j });
+                        
+                        while (q.Count > 0)
+                        {
+                            temp = q.Dequeue();
+                            gridInput[temp.Row][temp.Col] = '0';
+
+                            if (this.ConvertLandToWater(temp.Row-1,temp.Col, gridInput))
+                            {
+                                q.Enqueue(new RowCol() { Row = temp.Row - 1, Col = temp.Col });
+                            }
+
+                            if (this.ConvertLandToWater(temp.Row + 1, temp.Col, gridInput))
+                            {
+                                q.Enqueue(new RowCol() { Row = temp.Row + 1, Col = temp.Col });
+                            }
+
+                            if (this.ConvertLandToWater(temp.Row, temp.Col - 1, gridInput))
+                            {
+                                q.Enqueue(new RowCol() { Row = temp.Row, Col = temp.Col - 1 });
+                            }
+
+                            if (this.ConvertLandToWater(temp.Row, temp.Col + 1, gridInput))
+                            {
+                                q.Enqueue(new RowCol() { Row = temp.Row, Col = temp.Col + 1 });
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+
+            return island;
+
+        }
+
+        private bool ConvertLandToWater(int r, int c, char[][] input)
+        {
+            bool result = false;
+            if  (r >= 0 && r < input.Length && c >= 0 && c < input[r].Length && input[r][c] == '1')
+            {
+                input[r][c] = '0';
+                result = true;
+            }
+            return result;
+            
+        }
+
     }
 }

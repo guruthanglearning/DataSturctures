@@ -80,7 +80,83 @@ namespace WindowsFormsApplication3
             }
         }
 
+        private void btn_Min_Stack_Click(object sender, EventArgs e)
+        {
+            MinStack minStack = new MinStack();
+            minStack.Push(-2);
+            minStack.Push(0);
+            minStack.Push(-3);
+            minStack.GetMin(); //Returns - 3.
+            minStack.Pop();
+            minStack.Top(); // Returns 0.
+            minStack.GetMin(); // Returns - 2.
 
+            
+        }
+
+        public class MinStack
+        {
+
+            /** initialize your data structure here. */
+
+            Dictionary<int, MinForKey> dict;
+            int i = 0;
+            int min = 0;
+
+            public MinStack()
+            {
+                dict = new Dictionary<int, MinForKey>();
+            }
+
+            public void Push(int x)
+            {
+                if (i > 0)
+                {
+                    min = dict[i].Min;
+                    if (x < min)
+                    {
+                        min = x;
+                    }
+                }
+                else
+                {
+                    min = x;
+                }
+
+                i++;
+                dict[i] = new MinForKey() { Data = x, Min = min };
+            }
+
+            public void Pop()
+            {
+                if (i > 0)
+                {
+                    dict.Remove(i);
+                    i--;
+                }
+            }
+
+            public int Top()
+            {
+                if (i > 0)
+                    return dict[i].Data;
+                return 0;
+            }
+
+            public int GetMin()
+            {
+                if (i > 0)
+                    return dict[i].Min;
+                return 0;
+            }
+
+            public class MinForKey
+            {
+                public int Data;
+                public int Min;
+            }
+
+        }
 
     }
 }

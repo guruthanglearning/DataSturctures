@@ -108,24 +108,7 @@ namespace WindowsFormsApplication3
             {
                 input = arrayContainterForSearch.Input;
                 search = arrayContainterForSearch.Search;
-                left = 0; right = input.Length - 1;
-                pivot = -1;
-                if (input[left] > input[right])
-                {                    
-                    pivot = this.FindPivot(input, 0, input.Length - 1);
-                    if (pivot > -1)
-                    {
-                        result = this.binarySearchIterative(input, left, pivot, search);
-                        if (result == -1)
-                        {
-                            result = this.binarySearchIterative(input, pivot + 1, right, search);
-                        }
-                    }
-                }
-                else
-                {
-                    result = this.binarySearchIterative(input, left, right, search);
-                }
+                result = this.SearchInRotatedSortedArray(input, search);
                 output.Append($"Index of the given number {search} in the given array {string.Join(",",input)} is {result.ToString()}\n");
             }
 
@@ -133,64 +116,52 @@ namespace WindowsFormsApplication3
 
         }
 
-        private int FindPivot (int[] input, int l, int r)
+        public int SearchInRotatedSortedArray(int[] nums, int target)
         {
-            // 5, 6, 7, 8, 9, 10, 1, 2, 3, 4 
-            //if (input.Length > 0 && left <= right)
-            //{
-            //    int mid = 0;
-            //    while(left <= right)
-            //    {
-            //        // m =7  l = 5 r= 9
-            //        mid = (left + right) / 2;
-            //        if (input[mid] < input[mid + 1] && input[mid - 1] < input[mid] && input[left] < input[mid])
-            //        {
-            //            left = mid + 1;
-            //        }
-            //        else if (input[left] > input[left +1])
-            //        {
-            //            return left;
-            //        }
-            //    }
-
-            //}
-            //return -1;
-            int m = 0;
-            while (l < r)
+            int? len = nums?.Length == 0 ? 0 : nums?.Length;
+            if (len == 0)
             {
-                m = (l + r) / 2;
-
-                if (m == 0)
+                return -1;
+            }
+            // 4,5,6,7,0,1,2, target = 0
+            int start, end;
+            start = 0; end = (int)len - 1;
+            while (start <= end)
+            {
+                var mid = start + (end - start) / 2;
+                if (nums[mid] == target)
                 {
-                    if (input[l] > input[r])
+                    return mid; // return index of found number 
+                }
+                else if (nums[mid] >= nums[start])
+                {
+                    if (target >= nums[start] && target < nums[mid]) // 0 >= 4  && 0<= 7
                     {
-                        m = l;
+                        end = mid - 1;
                     }
                     else
                     {
-                        m = -1;
+                        start = mid + 1;
                     }
-                    break;
-                }
-                else if (input[m - 1] < input[m] && input[m] > input[m + 1])
-                {
-                    break;
-                }
-                else if (input[l] < input[m])
-                {
-                    l = m + 1;
                 }
                 else
                 {
-                    r = m;
+                    if (target > nums[mid] && target <= nums[end])  // 8 > 7 
+                    {
+                        start = mid + 1;
+                    }
+                    else
+                    {
+                        end = mid - 1;
+                    }
                 }
+
             }
-            return m;
-
-
+            return -1;
         }
 
-      
+
+
         class ArrayContainterForSearch
         {
             public int[] Input;
