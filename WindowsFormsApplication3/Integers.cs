@@ -706,6 +706,56 @@ namespace WindowsFormsApplication3
             return sum;
         }
 
+        private void btn_Bitwise_AND_of_Numbers_Range_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a range [m, n] where 0 <= m <= n <= 2147483647, return the bitwise AND of all numbers in this range, inclusive.
+
+                Example 1:
+
+                Input: [5,7]
+                Output: 4
+                Example 2:
+
+                Input: [0,1]
+                Output: 0
+
+                Time Complexity     : O(log N)
+                Space Complexity    : O(1) 
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Point> inputs = new List<Point>();
+            inputs.Add(new Point() { X = 5, Y = 7 });
+
+            foreach(var input in inputs)
+            {
+                result.AppendLine($"The number is {this.RangeBitwiseAnd(input.X, input.Y)} for the given bitwise AND of numbers range {input.X} and {input.Y}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int RangeBitwiseAnd(int m, int n)
+        {
+
+            int counter = 0;
+
+            while (m!=n)
+            {
+                m >>= 1;
+                n >>= 1;
+                counter++;
+            }
+
+            m <<= counter;
+
+            return m;
+        }
     }
 }
 

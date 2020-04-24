@@ -57,7 +57,7 @@ namespace WindowsFormsApplication3
          */
 
             Node tree = null;
-            Insert(10, ref tree);
+            /*Insert(10, ref tree);
             Insert(5, ref tree);
             Insert(20, ref tree);
             Insert(3, ref tree);
@@ -68,7 +68,10 @@ namespace WindowsFormsApplication3
             Insert(1, ref tree);
             Insert(2, ref tree);
             Insert(4, ref tree);
-            Insert(9, ref tree);
+            Insert(9, ref tree);*/
+
+            InsertNoRecurrssion(new int[] { 10, 5, 20, 3, 8, 6, 15, 22, 1, 2, 4, 9 }, ref tree);
+
             datas.Clear();
             datas.Append("\r\n InOrder Traversal :");
             //Inorder traversal without recursion 
@@ -83,7 +86,57 @@ namespace WindowsFormsApplication3
             MessageBox.Show(datas.ToString());
             
         }
+        
 
+        private void InsertNoRecurrssion(int[] input, ref Node tree)
+        {
+            if (input.Length == 0)
+            {
+                return;
+            }
+
+            if (tree == null)
+            {
+                tree = new Node() { data = input[0] }; 
+            }
+
+            Node temp = tree;
+            for (int i = 1; i < input.Length; i++)
+            {
+
+                while (true)
+                {
+
+                    if (temp.data > input[i])
+                    {
+                        if (temp.left != null)
+                        {
+                            temp = temp.left;
+                        }
+                        else
+                        {
+                            temp.left = new Node() { data = input[i] };
+                            break;
+                        }
+                    }
+                    else
+                    {
+
+                        if (temp.right != null)
+                        {
+                            temp = temp.right;
+                        }
+                        else
+                        {
+                            temp.right = new Node() { data = input[i] };
+                            break;
+                        }
+                    }
+                }
+                temp = tree;
+            }
+
+        }
 
 
         private Node Insert(int data, ref Node tree)

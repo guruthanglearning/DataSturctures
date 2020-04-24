@@ -1041,5 +1041,112 @@ namespace WindowsFormsApplication3
             
         }
 
+        private void btn_MinPathSum_Click(object sender, EventArgs e)
+        {
+
+            /*
+             
+            Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+
+            Note: You can only move either down or right at any point in time.
+
+            Example:
+
+            Input:
+            [
+              [1,3,1],
+              [1,5,1],
+              [4,2,1]
+            ]
+            Output: 7
+            Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+
+            Time Complexity     : O(M*N) where M is row length and N is column length
+            Space Complexity    : O(1)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+
+            List<int[][]> inputs = new List<int[][]>();
+            inputs.Add(new int[][] {
+                                        new int[] { 1, 3, 1 },
+                                        new int[] { 1, 5, 1 },
+                                        new int[] { 4, 2, 1 },
+
+                                   }
+                       );
+
+            inputs.Add(new int[][] {
+                                        new int[] { 9,1,4,8}
+                                   }
+                       );
+
+
+            
+            foreach(var input in inputs)
+            {
+                result.AppendLine($"For the given input {Environment.NewLine}{this.PrintJaggedArray(input)}the min path sum is {this.MinPathSum(input)}");
+                result.AppendLine();
+            }
+
+
+            MessageBox.Show(result.ToString());
+        
+        }
+
+
+        public int MinPathSum(int[][] grid)
+        {
+            int result = 0;
+            if (grid == null || grid.Length == 0)
+            {
+                return 0;
+            }
+
+            int c = 1;
+            int r = 1;
+            int rl = grid.Length;
+            int cl = grid[0].Length;
+
+            for (c = 1; c < cl; c++)
+            {
+                grid[0][c] += grid[0][c - 1];
+            }
+
+
+            for (r = 1; r < rl; r++)
+            {
+                grid[r][0] += grid[r - 1][0];
+            }
+
+
+            for (r = 1; r < rl; r++)
+            {
+                for (c = 1; c < cl  ; c++)
+                {                    
+                    grid[r][c] += Math.Min(grid[r][c - 1], grid[r - 1][c]);
+                }
+            }
+
+            return grid[rl-1][cl-1] ;
+        }
+
+        private string PrintJaggedArray(int[][] input)
+        {
+            StringBuilder result = new StringBuilder();
+
+            for (int r = 0; r < input.Length; r++)
+            {
+                for (int c = 0; c < input[r].Length; c++)
+                {
+                    result.Append($"{input[r][c]} \t");
+                }
+                result.AppendLine();
+            }
+
+            return result.ToString();
+        }
+
     }
 }

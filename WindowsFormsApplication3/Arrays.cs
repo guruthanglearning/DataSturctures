@@ -4355,11 +4355,7 @@ namespace WindowsFormsApplication3
             return fmax;
         }
 
-        private void Test(int[][] t)
-        {
-            t[0] = new int[] { 1 };
-        }
-
+     
         private void btn_Contiguous_Array_Click(object sender, EventArgs e)
         {
        
@@ -4576,6 +4572,74 @@ namespace WindowsFormsApplication3
         {
             public int[][] shifts;
             public string input;
+        }
+
+        private void btn_Subarray_Sum_Equals_K_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+
+                Example 1:
+                Input:nums = [1,1,1], k = 2
+                Output: 2
+
+                Time Complexity : O(N)
+                Space Complexity : O(N)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Array2n> inputs = new List<Array2n>();
+            inputs.Add(new Array2n() {Data = new int[] {10,2,-2,-20,10 }, N= -10 }); //3
+            inputs.Add(new Array2n() { Data = new int[] { 1,1,1}, N = 2 }); //2
+            inputs.Add(new Array2n() { Data = new int[] { 3,4,7,2,-3,1,4,2 }, N = 7 }); //4
+            inputs.Add(new Array2n() { Data = new int[] { 1,2,1,2,1 }, N = 3 }); //4
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"There are {this.SubarraySum(input.Data, input.N)} sub array with in the array { string.Join(",",  input.Data)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int SubarraySum(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0)
+            {
+                return 0;
+            }
+
+            int counter = 0;
+            int sum = 0;
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            int temp = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                sum += nums[i];
+
+                if (sum == k)
+                    counter++;
+
+                if (dict.TryGetValue(sum - k, out temp))
+                {
+                    counter += temp;
+                }
+                
+                if (dict.TryGetValue(sum, out temp))
+                {                    
+                    dict[sum] +=1;
+                }
+                else
+                {
+                    dict[sum] = 1;
+                }
+
+            }
+
+            return counter;
         }
 
     }

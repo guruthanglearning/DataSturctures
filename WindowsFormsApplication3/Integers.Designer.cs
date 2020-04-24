@@ -39,6 +39,7 @@
             this.btn_Drawing_Book = new System.Windows.Forms.Button();
             this.btn_Clock_Angle = new System.Windows.Forms.Button();
             this.btn_Happy_Numbers = new System.Windows.Forms.Button();
+            this.btn_Bitwise_AND_of_Numbers_Range = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -160,11 +161,22 @@
             this.btn_Happy_Numbers.UseVisualStyleBackColor = true;
             this.btn_Happy_Numbers.Click += new System.EventHandler(this.btn_Happy_Numbers_Click);
             // 
+            // btn_Bitwise_AND_of_Numbers_Range
+            // 
+            this.btn_Bitwise_AND_of_Numbers_Range.Location = new System.Drawing.Point(12, 445);
+            this.btn_Bitwise_AND_of_Numbers_Range.Name = "btn_Bitwise_AND_of_Numbers_Range";
+            this.btn_Bitwise_AND_of_Numbers_Range.Size = new System.Drawing.Size(355, 36);
+            this.btn_Bitwise_AND_of_Numbers_Range.TabIndex = 11;
+            this.btn_Bitwise_AND_of_Numbers_Range.Text = "Bitwise AND of Numbers Range";
+            this.btn_Bitwise_AND_of_Numbers_Range.UseVisualStyleBackColor = true;
+            this.btn_Bitwise_AND_of_Numbers_Range.Click += new System.EventHandler(this.btn_Bitwise_AND_of_Numbers_Range_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 556);
+            this.Controls.Add(this.btn_Bitwise_AND_of_Numbers_Range);
             this.Controls.Add(this.btn_Happy_Numbers);
             this.Controls.Add(this.btn_Clock_Angle);
             this.Controls.Add(this.btn_Drawing_Book);
@@ -196,5 +208,6 @@
         private System.Windows.Forms.Button btn_Drawing_Book;
         private System.Windows.Forms.Button btn_Clock_Angle;
         private System.Windows.Forms.Button btn_Happy_Numbers;
+        private System.Windows.Forms.Button btn_Bitwise_AND_of_Numbers_Range;
     }
 }

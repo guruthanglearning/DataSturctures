@@ -93,6 +93,7 @@
             this.btn_Last_Stone_Weight = new System.Windows.Forms.Button();
             this.btn_Contiguous_Array = new System.Windows.Forms.Button();
             this.btn_Perform_String_Shifts = new System.Windows.Forms.Button();
+            this.btn_Subarray_Sum_Equals_K = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -809,11 +810,22 @@
             this.btn_Perform_String_Shifts.UseVisualStyleBackColor = true;
             this.btn_Perform_String_Shifts.Click += new System.EventHandler(this.btn_Perform_String_Shifts_Click);
             // 
+            // btn_Subarray_Sum_Equals_K
+            // 
+            this.btn_Subarray_Sum_Equals_K.Location = new System.Drawing.Point(1211, 73);
+            this.btn_Subarray_Sum_Equals_K.Name = "btn_Subarray_Sum_Equals_K";
+            this.btn_Subarray_Sum_Equals_K.Size = new System.Drawing.Size(231, 30);
+            this.btn_Subarray_Sum_Equals_K.TabIndex = 66;
+            this.btn_Subarray_Sum_Equals_K.Text = "Subarray Sum Equals K";
+            this.btn_Subarray_Sum_Equals_K.UseVisualStyleBackColor = true;
+            this.btn_Subarray_Sum_Equals_K.Click += new System.EventHandler(this.btn_Subarray_Sum_Equals_K_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1446, 797);
+            this.Controls.Add(this.btn_Subarray_Sum_Equals_K);
             this.Controls.Add(this.btn_Perform_String_Shifts);
             this.Controls.Add(this.btn_Contiguous_Array);
             this.Controls.Add(this.btn_Last_Stone_Weight);
@@ -953,5 +965,6 @@
         private System.Windows.Forms.Button btn_Last_Stone_Weight;
         private System.Windows.Forms.Button btn_Contiguous_Array;
         private System.Windows.Forms.Button btn_Perform_String_Shifts;
+        private System.Windows.Forms.Button btn_Subarray_Sum_Equals_K;
     }
 }

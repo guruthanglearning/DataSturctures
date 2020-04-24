@@ -38,6 +38,7 @@
             this.btn_2D_Array_DS = new System.Windows.Forms.Button();
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix = new System.Windows.Forms.Button();
             this.btn_No_of_island_Horizontal_Vertical = new System.Windows.Forms.Button();
+            this.btn_MinPathSum = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -131,7 +132,7 @@
             // btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix
             // 
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Location = new System.Drawing.Point(2, 330);
-            this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Margin = new System.Windows.Forms.Padding(2);
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Name = "btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix";
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Size = new System.Drawing.Size(518, 31);
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.TabIndex = 26;
@@ -150,11 +151,22 @@
             this.btn_No_of_island_Horizontal_Vertical.UseVisualStyleBackColor = true;
             this.btn_No_of_island_Horizontal_Vertical.Click += new System.EventHandler(this.btn_No_of_island_Horizontal_Vertical_Click);
             // 
+            // btn_MinPathSum
+            // 
+            this.btn_MinPathSum.Location = new System.Drawing.Point(2, 366);
+            this.btn_MinPathSum.Name = "btn_MinPathSum";
+            this.btn_MinPathSum.Size = new System.Drawing.Size(518, 28);
+            this.btn_MinPathSum.TabIndex = 67;
+            this.btn_MinPathSum.Text = "Min Path Sum";
+            this.btn_MinPathSum.UseVisualStyleBackColor = true;
+            this.btn_MinPathSum.Click += new System.EventHandler(this.btn_MinPathSum_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 567);
+            this.Controls.Add(this.btn_MinPathSum);
             this.Controls.Add(this.btn_No_of_island_Horizontal_Vertical);
             this.Controls.Add(this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix);
             this.Controls.Add(this.btn_2D_Array_DS);
@@ -185,5 +197,6 @@
         private System.Windows.Forms.Button btn_2D_Array_DS;
         private System.Windows.Forms.Button btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix;
         private System.Windows.Forms.Button btn_No_of_island_Horizontal_Vertical;
+        private System.Windows.Forms.Button btn_MinPathSum;
     }
 }
