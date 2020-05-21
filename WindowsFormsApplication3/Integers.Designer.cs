@@ -40,6 +40,8 @@
             this.btn_Clock_Angle = new System.Windows.Forms.Button();
             this.btn_Happy_Numbers = new System.Windows.Forms.Button();
             this.btn_Bitwise_AND_of_Numbers_Range = new System.Windows.Forms.Button();
+            this.btn_Number_Complement = new System.Windows.Forms.Button();
+            this.btn_Remove_K_Digits = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -171,11 +173,33 @@
             this.btn_Bitwise_AND_of_Numbers_Range.UseVisualStyleBackColor = true;
             this.btn_Bitwise_AND_of_Numbers_Range.Click += new System.EventHandler(this.btn_Bitwise_AND_of_Numbers_Range_Click);
             // 
+            // btn_Number_Complement
+            // 
+            this.btn_Number_Complement.Location = new System.Drawing.Point(11, 487);
+            this.btn_Number_Complement.Name = "btn_Number_Complement";
+            this.btn_Number_Complement.Size = new System.Drawing.Size(356, 36);
+            this.btn_Number_Complement.TabIndex = 12;
+            this.btn_Number_Complement.Text = "Number Complement";
+            this.btn_Number_Complement.UseVisualStyleBackColor = true;
+            this.btn_Number_Complement.Click += new System.EventHandler(this.btn_Number_Complement_Click);
+            // 
+            // btn_Remove_K_Digits
+            // 
+            this.btn_Remove_K_Digits.Location = new System.Drawing.Point(12, 529);
+            this.btn_Remove_K_Digits.Name = "btn_Remove_K_Digits";
+            this.btn_Remove_K_Digits.Size = new System.Drawing.Size(355, 30);
+            this.btn_Remove_K_Digits.TabIndex = 13;
+            this.btn_Remove_K_Digits.Text = "Remove K Digits";
+            this.btn_Remove_K_Digits.UseVisualStyleBackColor = true;
+            this.btn_Remove_K_Digits.Click += new System.EventHandler(this.btn_Remove_K_Digits_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 556);
+            this.ClientSize = new System.Drawing.Size(1047, 698);
+            this.Controls.Add(this.btn_Remove_K_Digits);
+            this.Controls.Add(this.btn_Number_Complement);
             this.Controls.Add(this.btn_Bitwise_AND_of_Numbers_Range);
             this.Controls.Add(this.btn_Happy_Numbers);
             this.Controls.Add(this.btn_Clock_Angle);
@@ -209,5 +233,7 @@
         private System.Windows.Forms.Button btn_Clock_Angle;
         private System.Windows.Forms.Button btn_Happy_Numbers;
         private System.Windows.Forms.Button btn_Bitwise_AND_of_Numbers_Range;
+        private System.Windows.Forms.Button btn_Number_Complement;
+        private System.Windows.Forms.Button btn_Remove_K_Digits;
     }
 }

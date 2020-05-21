@@ -86,6 +86,9 @@
             this.btn_Given_a_sequence_of_words_print_all_anagrams_together = new System.Windows.Forms.Button();
             this.btn_Backspace_String_Compare = new System.Windows.Forms.Button();
             this.btn_Valid_Parenthesis_String_2 = new System.Windows.Forms.Button();
+            this.btn_LongestCommonSubsequence = new System.Windows.Forms.Button();
+            this.btn_Find_All_Anagrams_in_a_String = new System.Windows.Forms.Button();
+            this.btn_Permutation_in_String = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -151,7 +154,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(16, 325);
+            this.button5.Location = new System.Drawing.Point(16, 393);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(373, 28);
@@ -206,7 +209,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(16, 358);
+            this.button10.Location = new System.Drawing.Point(16, 426);
             this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(373, 28);
@@ -261,7 +264,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(16, 394);
+            this.button15.Location = new System.Drawing.Point(16, 462);
             this.button15.Margin = new System.Windows.Forms.Padding(4);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(373, 28);
@@ -283,7 +286,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(16, 439);
+            this.button17.Location = new System.Drawing.Point(16, 498);
             this.button17.Margin = new System.Windows.Forms.Padding(4);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(373, 28);
@@ -316,7 +319,7 @@
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(16, 479);
+            this.button20.Location = new System.Drawing.Point(16, 538);
             this.button20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(373, 28);
@@ -349,7 +352,7 @@
             // 
             // StringToInt
             // 
-            this.StringToInt.Location = new System.Drawing.Point(16, 515);
+            this.StringToInt.Location = new System.Drawing.Point(16, 574);
             this.StringToInt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StringToInt.Name = "StringToInt";
             this.StringToInt.Size = new System.Drawing.Size(373, 28);
@@ -360,7 +363,7 @@
             // 
             // FibonociSeries
             // 
-            this.FibonociSeries.Location = new System.Drawing.Point(16, 549);
+            this.FibonociSeries.Location = new System.Drawing.Point(16, 608);
             this.FibonociSeries.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FibonociSeries.Name = "FibonociSeries";
             this.FibonociSeries.Size = new System.Drawing.Size(373, 28);
@@ -391,7 +394,7 @@
             // 
             // btn_Find_index_of_homogenous_continous_charcter
             // 
-            this.btn_Find_index_of_homogenous_continous_charcter.Location = new System.Drawing.Point(16, 581);
+            this.btn_Find_index_of_homogenous_continous_charcter.Location = new System.Drawing.Point(16, 640);
             this.btn_Find_index_of_homogenous_continous_charcter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Find_index_of_homogenous_continous_charcter.Name = "btn_Find_index_of_homogenous_continous_charcter";
             this.btn_Find_index_of_homogenous_continous_charcter.Size = new System.Drawing.Size(373, 31);
@@ -402,10 +405,10 @@
             // 
             // btn_First_Recurring_character
             // 
-            this.btn_First_Recurring_character.Location = new System.Drawing.Point(18, 617);
+            this.btn_First_Recurring_character.Location = new System.Drawing.Point(395, 561);
             this.btn_First_Recurring_character.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_First_Recurring_character.Name = "btn_First_Recurring_character";
-            this.btn_First_Recurring_character.Size = new System.Drawing.Size(366, 28);
+            this.btn_First_Recurring_character.Size = new System.Drawing.Size(373, 28);
             this.btn_First_Recurring_character.TabIndex = 29;
             this.btn_First_Recurring_character.Text = "First Recurring character";
             this.btn_First_Recurring_character.UseVisualStyleBackColor = true;
@@ -581,7 +584,7 @@
             this.btn_Implement_strStr.Location = new System.Drawing.Point(1191, 265);
             this.btn_Implement_strStr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Implement_strStr.Name = "btn_Implement_strStr";
-            this.btn_Implement_strStr.Size = new System.Drawing.Size(403, 28);
+            this.btn_Implement_strStr.Size = new System.Drawing.Size(287, 28);
             this.btn_Implement_strStr.TabIndex = 45;
             this.btn_Implement_strStr.Text = "Implement IndexOf";
             this.btn_Implement_strStr.UseVisualStyleBackColor = true;
@@ -716,11 +719,44 @@
             this.btn_Valid_Parenthesis_String_2.UseVisualStyleBackColor = true;
             this.btn_Valid_Parenthesis_String_2.Click += new System.EventHandler(this.btn_Valid_Parenthesis_String_2_Click);
             // 
+            // btn_LongestCommonSubsequence
+            // 
+            this.btn_LongestCommonSubsequence.Location = new System.Drawing.Point(1191, 298);
+            this.btn_LongestCommonSubsequence.Name = "btn_LongestCommonSubsequence";
+            this.btn_LongestCommonSubsequence.Size = new System.Drawing.Size(283, 35);
+            this.btn_LongestCommonSubsequence.TabIndex = 58;
+            this.btn_LongestCommonSubsequence.Text = "Longest Common Subsequence";
+            this.btn_LongestCommonSubsequence.UseVisualStyleBackColor = true;
+            this.btn_LongestCommonSubsequence.Click += new System.EventHandler(this.btn_LongestCommonSubsequence_Click);
+            // 
+            // btn_Find_All_Anagrams_in_a_String
+            // 
+            this.btn_Find_All_Anagrams_in_a_String.Location = new System.Drawing.Point(18, 319);
+            this.btn_Find_All_Anagrams_in_a_String.Name = "btn_Find_All_Anagrams_in_a_String";
+            this.btn_Find_All_Anagrams_in_a_String.Size = new System.Drawing.Size(369, 31);
+            this.btn_Find_All_Anagrams_in_a_String.TabIndex = 59;
+            this.btn_Find_All_Anagrams_in_a_String.Text = "Find All Anagrams in a String";
+            this.btn_Find_All_Anagrams_in_a_String.UseVisualStyleBackColor = true;
+            this.btn_Find_All_Anagrams_in_a_String.Click += new System.EventHandler(this.btn_Find_All_Anagrams_in_a_String_Click);
+            // 
+            // btn_Permutation_in_String
+            // 
+            this.btn_Permutation_in_String.Location = new System.Drawing.Point(18, 356);
+            this.btn_Permutation_in_String.Name = "btn_Permutation_in_String";
+            this.btn_Permutation_in_String.Size = new System.Drawing.Size(369, 27);
+            this.btn_Permutation_in_String.TabIndex = 60;
+            this.btn_Permutation_in_String.Text = "Permutation in String";
+            this.btn_Permutation_in_String.UseVisualStyleBackColor = true;
+            this.btn_Permutation_in_String.Click += new System.EventHandler(this.btn_Permutation_in_String_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1700, 680);
+            this.Controls.Add(this.btn_Permutation_in_String);
+            this.Controls.Add(this.btn_Find_All_Anagrams_in_a_String);
+            this.Controls.Add(this.btn_LongestCommonSubsequence);
             this.Controls.Add(this.btn_Valid_Parenthesis_String_2);
             this.Controls.Add(this.btn_Backspace_String_Compare);
             this.Controls.Add(this.btn_Given_a_sequence_of_words_print_all_anagrams_together);
@@ -848,5 +884,8 @@
         private System.Windows.Forms.Button btn_Given_a_sequence_of_words_print_all_anagrams_together;
         private System.Windows.Forms.Button btn_Backspace_String_Compare;
         private System.Windows.Forms.Button btn_Valid_Parenthesis_String_2;
+        private System.Windows.Forms.Button btn_LongestCommonSubsequence;
+        private System.Windows.Forms.Button btn_Find_All_Anagrams_in_a_String;
+        private System.Windows.Forms.Button btn_Permutation_in_String;
     }
 }

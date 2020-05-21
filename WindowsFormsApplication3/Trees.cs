@@ -183,13 +183,27 @@ namespace WindowsFormsApplication3
             return datas.ToString();
         }
 
-        private void InOrder(Node node)
+        private void InOrder(Node root)
         {
+            Node node = root;
+
             if (node != null)
             {
-                InOrder(node.left);
-                datas.Append(node.data.ToString() + ",");
-                InOrder(node.right);
+                Stack<Node> s = new Stack<Node>();
+                while(s.Count > 0 || node != null)
+                {
+
+                    while (node!= null)
+                    {
+                        s.Push(node);
+                        node = node.left;
+                    }
+
+                    node = s.Pop();
+                    datas.Append($"{node.data} ,");
+                    node = node.right;
+                }
+
             }
         }
 
@@ -1047,5 +1061,438 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Diameter_of_Binary_Tree_Click(object sender, EventArgs e)
+        {
+
+            /*
+             
+            
+                Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+
+                Example:
+                Given a binary tree
+                          1
+                         / \
+                        2   3
+                       / \     
+                      4   5    
+                Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
+                Note: The length of path between two nodes is represented by the number of edges between them.
+             
+                Time Complexity     : O(N) where N is the total number of nodes
+                Space Complexity    : O(1) constant space
+                
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+  
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1,2,3,4,5 })); //3
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, 4, 5,null, 6 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, 4, 5, null, null, 6, 7, null, 8, null, null, 9, null, 10, 11, null, 12, null, null, 13 })); //8
+
+            foreach (Node input in inputs)
+            {
+                int diameter = 0;
+                this.GetDiameter(input, ref diameter);
+                result.AppendLine($"Diameter is {diameter} for the given binary tree {TreeTraverse(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        private int GetDiameter(Node node, ref int diameter)
+        {
+      
+
+            if (node == null)
+            {
+                return 0;
+            }
+
+            int left = GetDiameter(node.left, ref diameter);
+            int right = GetDiameter(node.right, ref diameter);
+
+
+            diameter = Math.Max(diameter, left + right);
+
+            return 1 + Math.Max(left, right);
+
+        }
+
+        public class NodeAndInputArray
+        {
+            public Node TreeNode;
+            public int[] arr;
+        }
+
+        private void btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree_Click(object sender, EventArgs e)
+        {
+
+            /*
+             
+                Given a binary tree where each path going from the root to any leaf form a valid sequence, check if a given string is a valid sequence in such binary tree. 
+
+                We get the given string from the concatenation of an array of integers arr and the concatenation of all values of the nodes along a path results in a sequence in the given binary tree.
+
+                Example 1:
+                Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,0,1]
+                Output: true
+                Explanation: 
+                The path 0 -> 1 -> 0 -> 1 is a valid sequence (green color in the figure). 
+                Other valid sequences are: 
+                0 -> 1 -> 1 -> 0 
+                0 -> 0 -> 0
+
+                Example 2:
+                Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,0,1]
+                Output: false 
+                Explanation: The path 0 -> 0 -> 1 does not exist, therefore it is not even a sequence.
+                
+                Example 3:
+                Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,1]
+                Output: false
+                Explanation: The path 0 -> 1 -> 1 is a sequence, but it is not a valid sequence.
+                 
+                Time Complexity  : O(Log N)
+                Space Complexity : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<NodeAndInputArray> inputs = new List<NodeAndInputArray>();
+
+            inputs.Add(new NodeAndInputArray() { TreeNode = this.CreateBinaryTreeFromArray(new int?[] { 0, 1, 0, 0, 1, 0, null, null, 1, 0, 0 }), arr = new int[] { 0, 1, 0, 1 } }); // true
+            inputs.Add(new NodeAndInputArray() { TreeNode = this.CreateBinaryTreeFromArray(new int?[] { 0, 1, 0, 0, 1, 0, null, null, 1, 0, 0 }), arr = new int[] { 0,0,1 } }); // false
+            inputs.Add(new NodeAndInputArray() { TreeNode = this.CreateBinaryTreeFromArray(new int?[] { 0, 1, 0, 0, 1, 0, null, null, 1, 0, 0 }), arr = new int[] { 0, 1, 1 } }); //false
+            inputs.Add(new NodeAndInputArray() { TreeNode = this.CreateBinaryTreeFromArray(new int?[] { 4, null, 2, 7, 5, 3, 4, 4 }), arr = new int[] { 4, 2, 7, 4 } });
+            //inputs.Add(new NodeAndInputArray() { TreeNode = this.CreateBinaryTreeFromArray(new int?[] { 0, 9, 0, 5, 6, 6, 9, 2, 8, 1, 6, 9, 5, 6, 3, 1, 4, 1, 9, 9, 1, 0, 1, 9, 7, 0, 4, 6, 5, 2, 7, 3, 3, 6, 9, 8, 2, 9, 1, 8, 5, 9, 2, null, 5, 3, 4, 7, 6, 5, 3, 2, 7, 6, 4, 0, 2, 0, 5, 8, 4, 1, 2, 9, 0, null, 2, 7, 8, 7, 4, 9, null, 9, 3, 9, 7, 0, 7, 3, 7, null, 7, 3, 5, 4, 1, 1, 8, null, 7, 7, 9, 4, 2, 6, 0, null, 5, 5, 4, 1, 0, 7, 4, 9, 8, 2, 8, 5, 2, null, null, 1, 9, 0, 5, 7, 3, null, null, 9, 4, 3, 6, 2, 9, 1, 1, 8, 5, 0, null, 8, null, 6, 8, 4, 5, 2, 3, null, null, null, null, 0, null, 2, 9, 1, null, null, null, 8, null, 7, null, 1, 1, null, 5, 8, 9, 5, 6, null, 4, 5, 9, null, 4, 6, null, null, 1, 8, null, 6, 3, 4, 5, 7, 3, 3, 9, 8, null, 0, 1, 3, 9, 9, 0, 4, 3, 1, 3, 9, 2, 1, 9, 5, null, 1, 8, 3, 6, null, null, 5, 3, null, 2, 2, 4, 6, 9, 8, 2, null, 5, 2, null, null, 4, 1, 6, null, 9, 5, 8, 3, null, null, 8, 3, null, 7, 6, null, 6, 4, null, null, null, null, null, 7, 0, 9, 4, 6, 5, 2, 3, null, 0, 2, 1, null, null, 8, 3, null, null, null, null, null, null, 1, 0, null, null, null, 4, null, 9, null, 7, null, null, 5, 7, null, 2, null, 0, null, 5, null, null, null, null, null, 0, 4, null, 2, 3, 2, null, 5, null, 1, 5, 3, null, null, 6, 2, 4, 1, 9, 9, 3, null, null, 3, 9, 0, null, 7, 7, 2, 8, 9, 8, 8, 2, 6, 9, 4, 6, 3, 0, 5, 0, 8, null, null, 5, 5, 6, 3, 0, 6, 9, 0, 0, 1, 0, 1, 0, 7, 2, null, null, null, null, null, null, null, null, 0, 6, 8, 4, null, 5, 3, 0, 9, null, null, null, null, 5, 7, 9, 0, 8, 4, 6, 3, 5, 9, null, null, null, null, null, null, null, null, null, 9, 9, 0, null, null, 9, 1, 9, 6, 6, null, 1, 2, null, 2, 4, 4, 7, 5, 4, 0, 1, 4, 9, null, 8, 3, null, null, null, 0, null, 4, null, null, 6, null, null, null, null, null, null, null, null, 4, null, null, null, null, null, null, null, null, null, 0, null, null, null, null, null, null, null, 2, 8, null, null, 8, 6, 1, 6, null, 4, 1, 2, 0, null, null, 0, 2, null, 2, 7, 7, 0, 6, 4, 1, 4, 1, 9, 9, 7, 0, 8, 7, 7, 3, 5, 7, 1, 8, null, 2, 8, 9, null, 5, 4, 0, 5, 4, null, 3, 6, 5, 7, 0, 4, null, 5, 7, 8, 8, 2, null, null, null, null, 3, 4, null, 1, 8, 6, 4, 7, 7, 7, 6, null, 8, 8, null, 1, 0, 9, null, null, 5, 8, 4, 7, null, 7, null, 3, 2, null, null, null, null, 4, 0, 3, 3, 5, 8, 2, null, 7, 4, 9, null, null, null, 0, 4, 8, 3, 0, 7, 0, 4, null, 3, null, null, null, 6, 8, 6, null, 1, 2, 2, 6, null, null, null, null, 3, 7, null, 0, 7, 1, 5, 3, null, null, 9, 6, null, null, null, 7, 7, 2, 6, 3, null, null, 9, 7, 0, 9, 0, null, 4, 5, 1, 3, 2, null, null, null, 7, null, null, null, null, null, null, null, null, 9, null, null, 5, 9, null, 9, null, null, 9, 6, null, 2, null, null, null, null, null, null, 6, null, 7, 9, 2, 6, 4, 3, null, 0, null, null, 1, 3, 1, 4, 3, 4, 7, null, null, null, null, null, 0, null, 7, 6, 3, 4, null, 3, 3, 9, null, null, 8, 8, 6, 4, 0, null, 4, 0, null, 4, null, 6, 3, 6, 7, null, null, null, 0, 2, 6, 0, 8, 2, null, 9, 4, 1, 5, 9, 9, 1, 0, 0, 4, 6, 1, 1, 3, null, 6, 0, 3, 7, 1, 3, 7, 4, 9, 0, null, 4, 9, null, null, 9, 4, 0, 2, 6, 4, null, null, null, 0, null, 3, 3, 4, 6, null, null, 4, null, null, null, 5, null, null, 3, 0, 3, null, null, 9, 1, 0, null, 6, 8, 2, null, null, null, null, 5, null, null, 5, null, 8, null, null, null, 6, null, 4, null, 5, null, 0, null, null, 7, 3, null, null, null, 9, null, null, 1, 9, 4, null, 4, 2, null, null, null, 3, 7, null, null, null, 5, 7, null, null, null, 8, null, null, null, null, null, null, null, 5, null, null, null, null, 2, 3, 6, null, null, 1, null, 3, 3, null, null, null, null, null, 2, 4, 0, null, 7, null, 2, 4, 1, 2, 6, null, 0, null, 8, null, 8, 8, 0, null, 8, 0, null, 0, null, null, 9, null, null, null, null, 4, 2, 4, 8, null, null, null, null, null, 7, null, null, null, null, null, 5, 1, null, null, null, 8, null, 9, 4, null, null, 1, null, 7, 5, 8, 9, 0, null, null, null, null, null, 1, 2, 7, null, null, 1, 2, 7, 4, 8, 6, 6, 4, 0, 9, 3, null, null, 2, null, null, null, null, null, null, null, null, null, 8, null, 0, null, 5, 3, 4, null, 4, 7, 5, null, null, null, null, 9, 6, 0, 7, 4, 7, 4, 7, 0, null, 0, 9, 1, 3, null, 9, null, null, null, 6, 1, null, null, 2, 9, 9, 5, 2, 9, null, null, 5, 8, 5, 4, 8, 1, 9, 6, 9, 9, 7, 8, 5, null, 0, 4, 9, 2, 1, 7, 3, 8, 7, 9, null, 0, 3, 9, 7, 9, 8, null, 3, 5, null, null, 0, 6, null, null, 2, 6, null, 9, null, null, 0, null, null, null, null, null, null, null, 2, null, null, null, null, 1, null, 4, null, null, 2, 6, 0, 2, 0, 2, null, null, null, null, null, 0, 2, 9, 5, 4, null, null, null, null, 1, 8, null, 4, null, null, null, 7, null, 4, null, null, null, 5, null, 9, null, null, 6, null, 9, 6, null, 3, null, null, null, null, 3, null, null, null, 9, 1, null, null, 7, null, null, 6, 8, null, null, null, null, null, null, null, 4, null, null, null, 9, null, null, null, null, null, 9, 8, null, 0, 7, 1, 2, 0, null, null, null, null, null, null, 7, null, null, null, null, null, null, null, null, null, null, null, 2, 1, null, null, 5, null, null, null, 5, null, null, 6, null, null, null, null, null, 1, null, null, 9, null, 3, 6, null, null, 1, 9, 3, 1, 2, 7, 8, null, null, null, 1, null, null, null, null, null, 8, 9, 0, null, 9, null, 1, null, null, null, 5, 1, 7, null, 3, 0, null, null, null, 0, null, null, null, null, 3, 4, null, null, 2, null, 0, null, 6, null, null, null, null, null, 9, null, 2, 3, 4, 4, 0, 9, 7, 4, 6, null, null, null, 5, 0, null, 6, null, null, null, 5, 2, 7, null, 5, null, 8, null, 6, 0, 4, null, null, 6, 1, 0, 6, 6, null, 2, null, null, 7, 5, 2, 7, null, 0, 2, 7, null, 3, 3, 3, null, 6, 3, 2, 4, null, 1, 9, null, 2, null, 1, 8, null, 7, 4, 0, 0, 2, 3, 3, null, null, null, null, null, null, 5, 2, 7, 4, 4, 7, 7, null, 8, 7, null, null, null, null, null, null, 7, 8, null, null, null, null, null, 7, 1, 0, null, 1, null, 8, null, null, null, null, null, null, null, 2, 1, 5, null, null, null, null, 2, 6, null, null, 8, 5, 4, 4, 0, 1, null, 7, 8, null, null, null, null, 0, null, 4, 5, 0, 2, null, 3, 9, null, null, null, 4, 9, null, 9, null, null, null, 7, 7, null, 0, null, null, null, 5, null, 6, 0, 0, null, null, null, null, null, null, null, null, null, 9, null, null, 0, null, 3, 7, null, 6, null, null, null, null, null, null, null, 1, 9, 6, null, 7, 1, 2, 7, 3, 7, 4, null, null, null, null, null, null, 3, 1, 1, 9, 2, 6, null, null, null, 3, 9, 0, 3, 1, null, null, null, null, 4, null, null, 0, null, null, null, 1, 9, 0, null, 0, 2, 8, 6, null, null, null, null, null, 1, null, 6, 4, null, null, null, null, null, null, null, null, 6, null, null, 1, null, null, null, null, 6, 4, 6, 7, null, null, 4, 5, null, null, null, 4, null, 4, null, 3, null, 1, 8, 5, null, 4, null, null, null, 6, 4, 1, 1, 0, 0, 0, 6, 4, null, 3, 4, 6, 9, null, 2, null, null, 4, null, null, 8, null, null, null, null, null, null, null, null, null, 0, 8, null, 6, null, null, 2, 0, 8, null, 9, 7, null, null, 3, 7, null, null, 8, null, null, 0, 2, null, 1, null, 6, 4, 5, 0, 0, 9, 7, 4, null, 9, 5, 7, 3, 4, null, null, null, 4, 7, 3, null, 5, 4, null, 9, null, null, 6, 7, null, null, null, null, null, null, null, 5, 2, null, null, null, null, 7, null, null, null, 3, 8, 7, null, null, null, null, null, 0, 3, null, null, 7, 5, null, null, 2, 8, null, null, null, 0, null, null, null, null, null, null, null, null, null, 4, null, null, 6, 3, null, null, null, null, null, null, null, null, 9, 0, 8, null, 6, 1, null, null, null, 9, null, null, null, 4, 3, null, null, null, 5, null, 8, 3, 2, 9, 5, 7, null, 3, 6, null, 1, null, 3, 3, null, null, 8, null, null, null, null, null, null, null, 2, 1, 3, 6, null, null, 7, null, 2, null, null, null, null, null, null, 4, 9, null, 3, null, 5, null, null, 5, null, null, null, null, null, null, null, null, null, 4, null, null, 1, null, 2, null, null, null, null, null, null, null, null, null, null, 2, 0, 0, null, null, null, null, 4, 3, 4, 1, 8, 7, 6, 1, 3, null, null, 8, null, null, null, null, null, null, null, null, null, 7, null, null, 5, 9, null, null, null, 0, 9, 5, 4, 1, 9, null, 0, 3, 8, 5, null, 9, 6, 0, null, 2, 9, 8, 1, null, null, null, 2, null, 0, 2, null, 8, null, null, null, 6, 7, 0, 0, 6, 4, null, 2, 0, null, null, null, 9, null, 2, 5, 3, null, null, null, null, null, 9, 5, null, 6, 1, null, 0, 3, 6, 8, 1, 6, 1, null, 6, 9, 2, 0, 8, 8, 5, 1, 8, 2, 8, 0, null, null, null, null, 7, null, null, null, null, null, null, null, null, null, 4, null, 4, null, 8, 7, null, null, null, null, null, 8, 6, null, 5, 2, null, null, null, null, null, 8, null, null, 6, null, 8, null, null, null, null, null, null, 5, null, null, null, 9, 7, 0, 0, null, null, null, null, null, 8, null, 1, null, null, null, null, null, null, null, null, 2, null, 7, 7, null, 7, 4, null, null, null, null, null, null, null, 8, null, null, null, 1, null, 0, 2, null, null, null, null, null, 3, null, 3, 6, 9, 5, null, 0, null, 1, null, null, 6, null, 4, null, null, null, null, null, 5, null, null, 6, null, 7, 0, 6, 8, 3, null, 5, null, 7, 7, null, null, 2, null, 5, null, null, 9, null, 6, null, null, null, 1, null, null, null, null, null, null, null, null, null, null, 5, null, null, null, null, 2, 6, 6, null, 9, null, 4, null, 2, 9, 3, null, null, 3, 7, 2, 1, 5, 6, null, null, null, null, 0, null, 6, 7, 2, 0, 5, null, null, null, null, 6, null, 6, 7, null, null, null, 4, null, null, 4, null, 5, null, null, null, null, null, null, null, null, 8, 5, null, null, null, 0, 7, 8, null, 0, 1, 6, 9, 7, 5, 0, null, 9, 7, 1, null, null, null, null, null, null, null, null, 8, 2, null, 6, null, 3, 1, 3, 1, 4, 6, 3, 5, 5, 4, 5, null, null, null, null, 7, 3, null, null, null, 3, null, 6, null, null, 5, null, 4, 9, 4, null, 3, null, null, null, null, null, null, null, null, null, null, null, 9, null, null, null, null, null, null, 6, null, null, null, null, 3, 6, null, null, null, null, null, null, 3, null, null, null, null, null, 4, null, null, null, null, null, null, 6, null, null, 1, null, null, null, null, null, null, null, null, null, null, null, null, 8, null, 9, 5, null, 9, 6, 0, 7, 3, 9, null, null, 3, 9, null, null, 4, null, null, null, null, null, null, null, null, 1, 8, null, null, null, null, 7, null, 6, 7, 5, null, null, 6, 5, null, null, null, null, null, null, null, null, null, 0, 1, null, null, null, 8, 0, 0, 3, null, null, null, null, null, 0, 0, null, null, null, 6, 3, null, 4, 5, 3, null, null, null, 9, null, null, null, null, null, 7, 5, 4, 8, 6, 5, 1, null, 4, 5, 3, null, 8, 1, 2, 7, 6, 8, 9, 6, null, null, null, null, null, 6, null, 3, 7, null, null, 6, 0, null, null, null, null, 6, 4, 9, 2, 9, 3, 1, null, 5, 7, null, null, null, null, 1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0, null, null, null, 2, null, null, 6, null, null, null, null, null, null, 7, null, null, null, null, 0, 8, null, null, 3, null, null, null, null, null, null, null, null, null, 3, null, null, null, null, null, null, null, null, 5, null, null, null, null, 9, null, 5, null, 4, null, null, null, null, null, null, null, 2, null, null, null, 7, null, null, 1, 5, 7, 8, null, null, 8, null, null, 1, null, 3, null, null, 4, 6, null, null, 9, null, null, null, 1, 2, 4, null, 1, 1, null, null, 3, null, 4, 3, null, null, null, 5, 6, 0, 6, 4, 3, 8, null, 9, null, null, null, 9, null, null, null, 0, 7, null, null, 3, null, 9, 8, 1, 2, 7, 7, null, null, 4, null, 6, 8, 3, 9, null, null, 2, null, null, 8, null, null, null, 8, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, null, null, 7, null, null, null, null, null, null, null, null, null, 5, null, null, null, null, 0, null, null, null, null, null, null, null, null, null, null, null, 4, null, 3, null, 8, 2, 0, null, null, null, null, 0, null, null, 6, null, null, null, 7, null, null, 8, 3, 0, null, null, null, null, null, null, 4, 4, null, null, null, null, 1, null, null, 3, null, null, 2, null, 5, 8, null, null, null, null, null, null, null, null, null, 7, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, null, null, null, null, null, null, null, null, null, null, 3, 8, 3, 5, null, null, null, 4, null, null, 8, null, 0, 0, null, 2, null, 1, null, 7, null, 5, 9, 2, null, null, null, 9, 3, 0, 3, null, null, null, null, 6, 0, 6, null, 5, 8, null, 7, 7, null, null, null, null, null, 2, 4, 9, null, null, null, null, null, 5, null, 6, null, null, null, null, null, null, 5, null, null, null, null, null, null, 8, null, 9 }), 
+             //  arr = new int[] { 0, 0, 6, 9, 9, 7, 4, 6, 2, 8, 9, 4, 5, 7, 3, 8 } });
+
+
+
+
+            foreach (NodeAndInputArray input in inputs)
+            {
+                result.AppendLine($"There is {(this.IsValidSequence(input.TreeNode, input.arr) ? "": "no" )} sequence exists  for the given binary tree {TreeTraverse(input.TreeNode)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public bool IsValidSequence(Node root, int[] arr)
+        {
+
+            int count = 0;
+            this.CheckSequenceExists(root, arr, ref count);
+            return count == arr.Length;
+        }
+
+        private void CheckSequenceExists(Node root, int[] arr, ref int count)
+        {
+
+            if (root == null)
+                return;
+
+            if (root.data == arr[count])
+            {
+                count++;
+            }
+            while (root!= null)
+            {                         
+
+                if (root.left != null && root.left.data == arr[count])
+                {
+                    count++;
+                    root = root.left;
+                }
+                else if (root.right != null && root.right.data == arr[count])
+                {
+                    count++;
+                    root = root.right;
+                }
+                else
+                {
+                    root = null;
+                }
+
+                if (count >= arr.Length)
+                {
+                    if  (root.right != null && root.left != null)
+                    {
+                        count = arr.Length + 1;
+                    }
+                    root = null;
+                }
+                else if (count < arr.Length && root != null && root.left == null && root.right == null)
+                {
+                    count = arr.Length;
+                    root = null;
+                }                
+            }                       
+        }
+
+        private void btn_Cousins_in_Binary_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+             
+            In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.
+
+            Two nodes of a binary tree are cousins if they have the same depth, but have different parents.
+
+            We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.
+
+            Return true if and only if the nodes corresponding to the values x and y are cousins.
+
+            Example 1:
+
+                                                1
+                                           /        \
+                                          /          \
+                                         2            3
+                                       /  
+                                      / 
+                                     4  
+
+            Input: root = [1,2,3,4], x = 4, y = 3
+            Output: false
+
+            Example 2 :
+             
+
+                                                1
+                                           /        \
+                                          /          \
+                                         2            3
+                                          \            \
+                                           \            \
+                                            4            5
+            Input: root = [1,2,3,null,4,null,5], x = 5, y = 4
+            Output: true
+
+            Example 3: 
+
+                                                1
+                                           /        \
+                                          /          \
+                                         2            3
+                                          \            
+                                           \           
+                                            4          
+
+            Input: root = [1,2,3,null,4], x = 2, y = 3
+            Output: false
+
+            Time Complexity         : O(N) where N is the total number of nodes
+            Space Complexity        : O(N) 
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<BinaryCousin> inputs = new List<BinaryCousin>();
+
+            inputs.Add(new BinaryCousin() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, 4 }), Cousin1 = 4, Cousin2 = 3 }); 
+            inputs.Add(new BinaryCousin() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, null, 4, null, 5 }), Cousin1 = 5, Cousin2 = 4 });
+            inputs.Add(new BinaryCousin() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, null, 4 }), Cousin1 = 2, Cousin2 = 3 });
+
+
+            foreach (BinaryCousin input in inputs)
+            {
+                result.AppendLine($"There is {(this.IsCousins(input.Tree, input.Cousin1, input.Cousin2) ? "" : "no")} cousin for the given cousine 1: {input.Cousin1} cousine 2 :{input.Cousin1} binary tree {TreeTraverse(input.Tree)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public bool IsCousins(Node root, int x, int y)
+        {
+
+            if (root == null)
+            {
+                return false;
+            }
+
+            bool isFirstExists = false;
+            bool isSecondExists = false;
+
+            Node temp = null;
+
+            Queue<Node> l = new Queue<Node>();
+            Queue<Node> r = new Queue<Node>();
+
+            Node c1;
+            Node c2;
+
+
+            if (root.left != null)
+            {
+                l.Enqueue(root.left.left);
+                r.Enqueue(root.right.left);
+            }
+
+            if (root.right != null)
+            {
+                l.Enqueue(root.right.left);
+                r.Enqueue(root.right.right);
+            }
+
+            l.Enqueue(null);
+            r.Enqueue(null);
+
+
+            while (l.Count > 0 || r.Count > 0)
+            {
+
+            }
+
+
+            return isFirstExists && isSecondExists;
+        }
+
+
+        private void IsCousinExists(Queue<Node> l, Queue<Node> r, int c1, int c2 )
+        {
+
+
+
+
+
+
+        }
+
+        public class BinaryCousin
+        {
+            public Node Tree;
+            public int Cousin1;
+            public int Cousin2;
+        }
+
+        private void btn_Kth_Smallest_Element_in_a_BST_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
+
+                    Note:
+                    You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
+
+                    Example 1:
+
+                    Input: root = [3,1,4,null,2], k = 1
+                       3
+                      / \
+                     1   4
+                      \
+                       2
+                    Output: 1
+                    Example 2:
+
+                    Input: root = [5,3,6,2,4,null,null,1], k = 3
+                           5
+                          / \
+                         3   6
+                        / \
+                       2   4
+                      /
+                     1
+                    Output: 3
+
+
+                Time Complexity     : O(height of the Tree)
+                Space Complexity    : O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<KthSmallestInBST> inputs = new List<KthSmallestInBST>();
+            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 3, 1, 4, 2 }), K = 1 });
+            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 3 });
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"{input.K}  smallest value for the given BST tree {this.TraverseBinaryTree(input.Tree)} is {this.KthSmallest(input.Tree, input.K)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public class KthSmallestInBST
+        {
+            public Node Tree;
+            public int K;
+        }
+
+        public int KthSmallest(Node root, int k)
+        {
+            if (root == null)
+                return 0;
+
+            int data = -1;
+
+            Stack<Node> s = new Stack<Node>();
+            Node current = root;
+
+            while (s.Count > 0 || current != null)
+            {
+
+                while (current != null)
+                {
+                    s.Push(current);
+                    current = current.left;
+                }
+
+                current = s.Pop();
+                k--;
+                if (k == 0)
+                {
+                    data = current.data;
+                    break;
+                }
+                current = current.right;
+            }
+
+            return data;
+
+        }
+
+        private Node CreateBST(int[] input)
+        {
+            Node tree = null;
+
+            foreach(int i in input)
+            {
+                if (tree == null)
+                {
+                    tree = new Node() { data = i };
+                }
+                else
+                    this.BST(ref tree, i);
+            }
+
+            return tree;
+
+        }
+
+        private Node BST(ref Node root, int data)
+        {
+
+            if (root == null)
+            {
+                root = new Node() { data = data };
+            }
+            else if (root.data > data)
+            {
+                BST(ref root.left, data);
+            }
+            else
+            {
+                BST(ref root.right, data);
+            }
+
+            return root;
+         
+        }
+    
     }
 }

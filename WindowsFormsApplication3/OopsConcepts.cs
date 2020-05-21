@@ -259,6 +259,92 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Online_Stock_Span_Click(object sender, EventArgs e)
+        {
+            /*
+            
+            Write a class StockSpanner which collects daily price quotes for some stock, and returns the span of that stock's price for the current day.
+
+            The span of the stock's price today is defined as the maximum number of consecutive days (starting from today and going backwards) for which the price of the stock was less than or equal to today's price.
+
+            For example, if the price of a stock over the next 7 days were [100, 80, 60, 70, 60, 75, 85], then the stock spans would be [1, 1, 1, 2, 1, 4, 6].
+
+ 
+
+            Example 1:
+
+            Input: ["StockSpanner","next","next","next","next","next","next","next"], [[],[100],[80],[60],[70],[60],[75],[85]]
+            Output: [null,1,1,1,2,1,4,6]
+            Explanation: 
+            First, S = StockSpanner() is initialized.  Then:
+            S.next(100) is called and returns 1,
+            S.next(80) is called and returns 1,
+            S.next(60) is called and returns 1,
+            S.next(70) is called and returns 2,
+            S.next(60) is called and returns 1,
+            S.next(75) is called and returns 4,
+            S.next(85) is called and returns 6.
+
+            Note that (for example) S.next(75) returned 4, because the last 4 prices
+            (including today's price of 75) were less than or equal to today's price.
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            StockSpanner S = new StockSpanner();
+
+            result.AppendLine($"For price 100 span is {S.Next(100)}"); //is called and returns 1,
+            result.AppendLine($"For price 80 span is {S.Next(80)}");  //is called and returns 1,
+            result.AppendLine($"For price 60 span is {S.Next(60)}");  //is called and returns 1,
+            result.AppendLine($"For price 70 span is {S.Next(70)}");  //is called and returns 2,
+            result.AppendLine($"For price 60 span is {S.Next(60)}");  //is called and returns 1,
+            result.AppendLine($"For price 75 span is {S.Next(75)}");  //is called and returns 4,
+            result.AppendLine($"For price 85 span is {S.Next(85)}");  //is called and returns 6.
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public class StockSpanner
+        {
+
+            int[] sp = new int[7] { 100, 80, 60, 70, 60, 75, 85 };
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+
+            public StockSpanner()
+            {
+                this.GetSpanner();
+            }
+
+            private void GetSpanner()
+            {
+                Stack<int> s = new Stack<int>();
+                s.Push(0);
+
+                for (int i = 1; i < sp.Length; i++)
+                {
+                    while (s.Count > 0 && sp[s.Peek()] < sp[i])
+                        s.Pop();
+
+                    if (s.Count == 0)
+                        dict[sp[i]] = i + 1;
+                    else
+                        dict[sp[i]] = i - s.Peek();
+
+                    s.Push(i);
+                }
+            }
+
+            public int Next(int price)
+            {
+
+                int result = 0;
+                dict.TryGetValue(price, out result);
+                return result;
+            }
+        }
+
     }
 
 }

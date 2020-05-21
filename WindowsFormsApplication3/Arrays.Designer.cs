@@ -94,6 +94,9 @@
             this.btn_Contiguous_Array = new System.Windows.Forms.Button();
             this.btn_Perform_String_Shifts = new System.Windows.Forms.Button();
             this.btn_Subarray_Sum_Equals_K = new System.Windows.Forms.Button();
+            this.btn_Counting_Elements = new System.Windows.Forms.Button();
+            this.btn_Jump_Game = new System.Windows.Forms.Button();
+            this.btn_First_Unique_Number = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -820,11 +823,44 @@
             this.btn_Subarray_Sum_Equals_K.UseVisualStyleBackColor = true;
             this.btn_Subarray_Sum_Equals_K.Click += new System.EventHandler(this.btn_Subarray_Sum_Equals_K_Click);
             // 
+            // btn_Counting_Elements
+            // 
+            this.btn_Counting_Elements.Location = new System.Drawing.Point(1209, 109);
+            this.btn_Counting_Elements.Name = "btn_Counting_Elements";
+            this.btn_Counting_Elements.Size = new System.Drawing.Size(235, 37);
+            this.btn_Counting_Elements.TabIndex = 67;
+            this.btn_Counting_Elements.Text = "Counting Elements";
+            this.btn_Counting_Elements.UseVisualStyleBackColor = true;
+            this.btn_Counting_Elements.Click += new System.EventHandler(this.btn_Counting_Elements_Click);
+            // 
+            // btn_Jump_Game
+            // 
+            this.btn_Jump_Game.Location = new System.Drawing.Point(1206, 152);
+            this.btn_Jump_Game.Name = "btn_Jump_Game";
+            this.btn_Jump_Game.Size = new System.Drawing.Size(236, 36);
+            this.btn_Jump_Game.TabIndex = 68;
+            this.btn_Jump_Game.Text = "Jump Game";
+            this.btn_Jump_Game.UseVisualStyleBackColor = true;
+            this.btn_Jump_Game.Click += new System.EventHandler(this.btn_Jump_Game_Click);
+            // 
+            // btn_First_Unique_Number
+            // 
+            this.btn_First_Unique_Number.Location = new System.Drawing.Point(1207, 195);
+            this.btn_First_Unique_Number.Name = "btn_First_Unique_Number";
+            this.btn_First_Unique_Number.Size = new System.Drawing.Size(234, 31);
+            this.btn_First_Unique_Number.TabIndex = 69;
+            this.btn_First_Unique_Number.Text = "First Unique Number";
+            this.btn_First_Unique_Number.UseVisualStyleBackColor = true;
+            this.btn_First_Unique_Number.Click += new System.EventHandler(this.btn_First_Unique_Number_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1446, 797);
+            this.Controls.Add(this.btn_First_Unique_Number);
+            this.Controls.Add(this.btn_Jump_Game);
+            this.Controls.Add(this.btn_Counting_Elements);
             this.Controls.Add(this.btn_Subarray_Sum_Equals_K);
             this.Controls.Add(this.btn_Perform_String_Shifts);
             this.Controls.Add(this.btn_Contiguous_Array);
@@ -966,5 +1002,8 @@
         private System.Windows.Forms.Button btn_Contiguous_Array;
         private System.Windows.Forms.Button btn_Perform_String_Shifts;
         private System.Windows.Forms.Button btn_Subarray_Sum_Equals_K;
+        private System.Windows.Forms.Button btn_Counting_Elements;
+        private System.Windows.Forms.Button btn_Jump_Game;
+        private System.Windows.Forms.Button btn_First_Unique_Number;
     }
 }

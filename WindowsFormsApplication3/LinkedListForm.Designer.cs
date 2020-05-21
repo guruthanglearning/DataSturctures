@@ -80,6 +80,7 @@
             this.btn_Arrange_Even_And_Odd = new System.Windows.Forms.Button();
             this.btn_Remove_Nth_Node_From_End_of_List = new System.Windows.Forms.Button();
             this.btn_MiddleNode = new System.Windows.Forms.Button();
+            this.btn_Odd_Even_Linked_List = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -649,11 +650,22 @@
             this.btn_MiddleNode.UseVisualStyleBackColor = true;
             this.btn_MiddleNode.Click += new System.EventHandler(this.btn_MiddleNode_Click);
             // 
+            // btn_Odd_Even_Linked_List
+            // 
+            this.btn_Odd_Even_Linked_List.Location = new System.Drawing.Point(790, 244);
+            this.btn_Odd_Even_Linked_List.Name = "btn_Odd_Even_Linked_List";
+            this.btn_Odd_Even_Linked_List.Size = new System.Drawing.Size(283, 46);
+            this.btn_Odd_Even_Linked_List.TabIndex = 56;
+            this.btn_Odd_Even_Linked_List.Text = "Odd Even Linked List";
+            this.btn_Odd_Even_Linked_List.UseVisualStyleBackColor = true;
+            this.btn_Odd_Even_Linked_List.Click += new System.EventHandler(this.btn_Odd_Even_Linked_List_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 822);
+            this.Controls.Add(this.btn_Odd_Even_Linked_List);
             this.Controls.Add(this.btn_MiddleNode);
             this.Controls.Add(this.btn_Remove_Nth_Node_From_End_of_List);
             this.Controls.Add(this.btn_Arrange_Even_And_Odd);
@@ -769,5 +781,6 @@
         private System.Windows.Forms.Button btn_Arrange_Even_And_Odd;
         private System.Windows.Forms.Button btn_Remove_Nth_Node_From_End_of_List;
         private System.Windows.Forms.Button btn_MiddleNode;
+        private System.Windows.Forms.Button btn_Odd_Even_Linked_List;
     }
 }

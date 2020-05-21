@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
+
 namespace WindowsFormsApplication3
 {
     public partial class StringsManipulation : Form
@@ -3399,62 +3401,56 @@ namespace WindowsFormsApplication3
 
             */
 
+            StringBuilder result = new StringBuilder();
             List<string> strings = new List<string>() { "cat", "dog", "tac", "god", "act","abc" };
-            var result = this.GetListOfAnagrams(strings);
-
-            MessageBox.Show($"The below are the list of anagrams for the given input strings {string.Join(",", strings)} \n {string.Join(Environment.NewLine, result)}");
+            var anagrams = this.GetListOfAnagrams(strings);
+            foreach(List<string> s in anagrams)
+            {
+                result.AppendLine(string.Join(",",s));
+            }
+            MessageBox.Show($"The below are the group of anagrams for the given input strings {string.Join(",", strings)} \n\n {result.ToString()}");
 
         }
 
-        private List<string> GetListOfAnagrams(List<string> inputs)
+        private List<IList<string>> GetListOfAnagrams(List<string> strs)
         {
 
-            if (inputs == null || inputs.Count == 0)
-            {
+            if (strs == null || strs.Count == 0)
                 return null;
-            }
 
-            
-            if (inputs.Count == 1)
-            {
-                return new List<string> { inputs[0] };
-            }
-
-            List<string> result = null;           
             Dictionary<int, List<string>> dict = new Dictionary<int, List<string>>();
-           
-            List<string> tempList = null;
-            int tempKey = 0;
-            foreach(string input in inputs)
+            List<string> temp;
+            int dictkey;
+            List<IList<string>> result = new List<IList<string>>();
+            int[] key = new int[26];
+
+            foreach (string str in strs)
             {
-                tempKey = 0;
-                foreach (char c in input)
+                key = new int[26];
+                foreach (char c in str)
                 {
-                    tempKey += c;
+                    key[c - 'a']++;
                 }
 
-                dict.TryGetValue(tempKey, out tempList);
-                if (tempList == null)
-                {                    
-                    tempList = new List<string>();
-                }
-                tempList.Add(input);
-                dict[tempKey] = tempList;
+                dictkey = string.Join("", key).GetHashCode();
 
-            }
-            tempList = new List<string>();
-
-
-            foreach (var s in dict.Values)
-            {
-                if (s.Count > 1)
+                if (dict.TryGetValue(dictkey, out temp))
                 {
-                    tempList.AddRange(s);
+                    temp.Add(str);
+                }
+                else
+                {
+                    dict[dictkey] = new List<String>() { str };
                 }
             }
 
-            
-            return tempList;
+            foreach (int k in dict.Keys)
+            {
+                result.Add(dict[k]);
+            }
+
+            return result;
+
         }
 
         private void btn_Backspace_String_Compare_Click(object sender, EventArgs e)
@@ -3595,6 +3591,275 @@ namespace WindowsFormsApplication3
         }
 
 
+        private void btn_LongestCommonSubsequence_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given two strings text1 and text2, return the length of their longest common subsequence.
+                A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings.
+
+                If there is no common subsequence, return 0.
+
+                Example 1:
+
+                Input: text1 = "abcde", text2 = "ace" 
+                Output: 3  
+                Explanation: The longest common subsequence is "ace" and its length is 3.
+                Example 2:
+
+                Input: text1 = "abc", text2 = "abc"
+                Output: 3
+                Explanation: The longest common subsequence is "abc" and its length is 3.
+                Example 3:
+
+                Input: text1 = "abc", text2 = "def"
+                Output: 0
+                Explanation: There is no such common subsequence, so the result is 0.
+                
+                Time Complexity     : O(M*N)
+                Space Complexity    : O(M*N)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<IndexOf> inputs = new List<IndexOf>();
+            inputs.Add(new IndexOf() {findIndex = "abcde", input="ace" });
+            inputs.Add(new IndexOf() { findIndex = "abc", input = "abc" });
+            inputs.Add(new IndexOf() { findIndex = "abc", input = "def" });
+
+            foreach (var input in inputs )
+            {
+                result.AppendLine($"Longest Common Subsequence is {this.LongestCommonSubsequence(input.findIndex, input.input)} for the given strings {input.findIndex} and {input.input}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int LongestCommonSubsequence(string text1, string text2)
+        {
+            if (string.IsNullOrEmpty(text1) || text1.Length == 0)
+            {
+                return text2.Length;
+            }
+
+            if (string.IsNullOrEmpty(text2) || text2.Length == 0)
+            {
+                return text1.Length;
+            }
+
+
+            int[,] dict = new int[text1.Length + 1, text2.Length + 1];
+
+            for (int row = 0; row < text1.Length; row++)
+            {
+                for (int col = 0; col < text2.Length; col++)
+                {
+                    if (text1[row] == text2[col])
+                    {
+                        dict[row + 1, col + 1] = 1 + dict[row, col];
+                    }
+                    else
+                    {
+                        dict[row + 1, col + 1] = Math.Max(dict[row +1, col], dict[row,col+1]);
+                    }                    
+                }
+            }
+
+            return dict[text1.Length, text2.Length];
+
+        }
+
+        private void btn_Find_All_Anagrams_in_a_String_Click(object sender, EventArgs e)
+        {
+            /*
+        
+                Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+
+                Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.
+
+                The order of output does not matter.
+
+                Example 1:
+
+                Input:
+                s: "cbaebabacd" p: "abc"
+
+                Output:
+                [0, 6]
+
+                Explanation:
+                The substring with start index = 0 is "cba", which is an anagram of "abc".
+                The substring with start index = 6 is "bac", which is an anagram of "abc".
+                Example 2:
+
+                Input:
+                s: "abab" p: "ab"
+
+                Output:
+                [0, 1, 2]
+
+                Explanation:
+                The substring with start index = 0 is "ab", which is an anagram of "ab".
+                The substring with start index = 1 is "ba", which is an anagram of "ab".
+                The substring with start index = 2 is "ab", which is an anagram of "ab".
+
+
+                Time Complexity     :  O(N)
+                Space Complexity    : O(1)
+            */
+
+            StringBuilder result = new StringBuilder();
+            Dictionary<string, string> inputs = new Dictionary<string, string>();
+            inputs.Add("abc", "cbaebabacd");
+
+            foreach (string key in inputs.Keys)
+            {
+                result.AppendLine($"The anagram indexes are {string.Join(",",FindAnagrams(inputs[key], key))} for the given string {inputs[key]} and pattern {key} ");
+            }
+
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public IList<int> FindAnagrams(string s, string p)
+        {
+
+            if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(p) )
+            {
+                return null;
+            }
+
+            int[] dict = new int[26];
+
+            foreach(char c in p)
+            {
+                dict[c - 'a']++;
+            }
+
+            List<int> result = new List<int>();
+
+            int startIndex = -1;
+            int count = 0;
+
+            for(int i= 0; i < s.Length; i++)
+            {
+                if (dict[s[i] -'a'] > 0)
+                {
+                    count++;
+                    if (startIndex == -1)
+                    {
+                        startIndex = i;
+                    }
+
+                    if (count == p.Length)
+                    {
+                        result.Add(startIndex);
+                        count = 1;
+                        startIndex = i;
+                    }
+                }
+                else
+                {
+                    startIndex = -1;
+                    count = 0;
+                }           
+            }
+            return result;
+        }
+
+        private void btn_Permutation_in_String_Click(object sender, EventArgs e)
+        {
+
+            /*
+
+                Given two strings s1 and s2, write a function to return true if s2 contains the permutation of s1. In other words, one of the first string's permutations is the substring of the second string. 
+            
+                Example 1:
+                Input: s1 = "ab" s2 = "eidbaooo"
+                Output: True
+                Explanation: s2 contains one permutation of s1 ("ba").
+            
+                Example 2:
+                Input:s1= "ab" s2 = "eidboaoo"
+                Output: False
+    
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            Dictionary<string, string> inputs = new Dictionary<string, string>();
+            inputs.Add("eidbaooo", "ab");
+            inputs.Add("eidboaoo", "ab");
+            inputs.Add("dcda","adc");
+
+
+            foreach (string key in inputs.Keys)
+            {
+                result.AppendLine($"There is {(this.CheckInclusion(inputs[key], key) ? "" :" no ")}Permutation in String for the given string  {key} and pattern {inputs[key]} ");
+            }
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public bool CheckInclusion(string s1, string s2)
+        {
+
+            if (string.IsNullOrEmpty(s1) || (string.IsNullOrEmpty(s1)))
+                return false;
+
+            int[] dic = new int[26];
+            
+            bool result = false;
+
+            foreach (char ch in s1)
+            {
+                dic[ch - 'a']++;
+            }
+
+            int c = 0;
+            int len = s1.Length;
+            int p = 0;
+            int prevp = 0;
+            /*
+                 inputs.Add("eidbaooo", "ab");
+                 inputs.Add("eidboaoo", "ab");
+                 inputs.Add("dcda","adc");
+             */
+            while (c < s2.Length)
+            {
+                if (dic[s2[c] - 'a'] > 0)
+                {
+                    dic[s2[c] - 'a']--;
+                    p++;
+                }
+                else if (p > 0)
+                {
+                    prevp = p;
+                    while (p > 0)
+                    {                      
+                        dic[s2[c-p] - 'a']++;
+                        p--;                                                    
+                    }
+                    c -= prevp;
+                    prevp = 0;
+                }
+                if (p == len)
+                {
+                    result = true;
+                    break;
+                }
+                c++;
+            }                                            
+            return result;
+
+        }
 
 
     }

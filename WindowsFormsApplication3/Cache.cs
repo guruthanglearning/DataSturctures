@@ -28,21 +28,120 @@ namespace WindowsFormsApplication3
                 MRU -->Removes the most recently used item from the cache (delete from the end of the double link list)
             */
 
-            LRUCacheWithDictionaryValueAsLinkedList cache = new LRUCacheWithDictionaryValueAsLinkedList();
-            cache.Put("A", "A");
-            cache.Put("B", "B");
-            cache.Put("C", "C");
-            //cache.Get("B");
-            cache.Put("D", "D");
-            cache.Put("E", "E");
-            cache.Put("F", "F");
-            cache.Put("G", "G");
-            cache.Put("H", "H");
-            cache.Put("I", "I");
-            cache.Put("J", "J");
-            cache.Get("G");
-            cache.Put("K","K");
-            MessageBox.Show($"Foward list \n{cache.DisplayForward()}\n\nBackward list \n{cache.DisplayBackward()}");
+            LRUCacheWithDictionaryValueAsLinkedList c = new LRUCacheWithDictionaryValueAsLinkedList(10);
+
+            c.Put("10", "13");
+            c.Put("3", "17");
+            c.Put("6", "11");
+            c.Put("10", "5");
+            c.Put("9", "10");
+            c.Get("13");
+            c.Put("2", "19");
+            c.Get("2");
+            c.Get("3");
+            c.Put("5", "25");
+            c.Get("8");
+            c.Put("9", "22");
+            c.Put("5", "5");
+            c.Put("1", "30");
+            c.Get("11");
+            c.Put("9", "12");
+            c.Get("7");
+            c.Get("5");
+            c.Get("8");
+            c.Get("9");
+            c.Put("4", "30");
+            c.Put("9", "3");
+            c.Get("9");
+            c.Get("10");
+            c.Get("10");
+            c.Put("6", "14");
+            c.Put("3", "1");
+            c.Get("3");
+            c.Put("10", "11");
+            c.Get("8");
+            c.Put("2", "14");
+            c.Get("1");
+            c.Get("5");
+            c.Get("4");
+            c.Put("11", "4");
+            c.Put("12", "24");
+            c.Put("5", "18");
+            c.Get("13");
+            c.Put("7", "23");
+            c.Get("8");
+            c.Get("12");
+            c.Put("3", "27");
+            c.Put("2", "12");
+            c.Get("5");
+            c.Put("2", "9");
+            c.Put("13", "4");
+            c.Put("8", "18");
+            c.Put("1", "7");
+            c.Get("6");
+            c.Put("9", "29");
+            c.Put("8", "21");
+            c.Get("5");
+            c.Put("6", "30");
+            c.Put("1", "12");
+            c.Get("10");
+            c.Put("4", "15");
+            c.Put("7", "22");
+            c.Put("11", "26");
+            c.Put("8", "17");
+            c.Put("9", "29");
+            c.Get("5");
+            c.Put("3", "4");
+            c.Put("11", "30");
+            c.Get("12");
+            c.Put("4", "29");
+            c.Get("3");
+            c.Get("9");
+            c.Get("6");
+            c.Put("3", "4");
+            c.Get("1");
+            c.Get("10");
+            c.Put("3", "29");
+            c.Put("10", "28");
+            c.Put("1", "20");
+            c.Put("11", "13");
+            c.Get("3");
+            c.Put("3", "12");
+            c.Put("3", "8");
+            c.Put("10", "9");
+            c.Put("3", "26");
+            c.Get("8");
+            c.Get("7");
+            c.Get("5");
+            c.Put("13", "17");
+            c.Put("2", "27");
+            c.Put("11", "15");
+            c.Get("12");
+            c.Put("9", "19");
+            c.Put("2", "15");
+            c.Put("3", "16");
+            c.Get("1");
+            c.Put("12", "17");
+            c.Put("9", "1");
+            c.Put("6", "19");
+            c.Get("4");
+            c.Get("5");
+            c.Get("5");
+            c.Put("8", "1");
+            c.Put("11", "7");
+            c.Put("5", "2");
+            c.Put("9", "28");
+            c.Get("1");
+            c.Put("2", "2");
+            c.Put("7", "4");
+            c.Put("4", "22");
+            c.Put("7", "24");
+            c.Put("9", "26");
+            c.Put("13", "28");
+            c.Put("11", "26");
+
+
+            MessageBox.Show($"Foward list \n{c.DisplayForward()}\n\nBackward list \n{c.DisplayBackward()}");
 
 
         }
@@ -78,13 +177,14 @@ namespace WindowsFormsApplication3
     public class DDLinkedList
     {
         public string Data;
+        public string Key;
         public DDLinkedList Next;
         public DDLinkedList Previous;
     }
 
     public interface ICache
     {
-        string Put(string dataKey, string data);
+        void Put(string dataKey, string data);
         string Get(string key);
     }
 
@@ -92,89 +192,105 @@ namespace WindowsFormsApplication3
     {
         Dictionary<string, DDLinkedList> cacheStorage = new Dictionary<string, DDLinkedList>();
         DDLinkedList runner = null;
-        DDLinkedList startPointLinkList = null;
+        DDLinkedList start = null;
+        int capacity = 0;        
+
+        DDLinkedList temp = null;
+
+        public LRUCacheWithDictionaryValueAsLinkedList(int capacity)
+        {
+            this.capacity = capacity;
+        }
+
 
         public string Get(string key)
         {
-            if (!cacheStorage.ContainsKey(key))
+            temp = null;
+            cacheStorage.TryGetValue(key, out temp);
+
+            if (temp == null)
             {
-                throw new Exception("Invalid key");
+                return "-1";
             }
 
 
-            DDLinkedList tempList = cacheStorage[key];
-            
-            if (runner.Data == tempList.Data)
+            if (start.Next == null)
             {
-                //This means retriving data is present at the end of the list
-                return tempList.Data;
+                return start.Data;
             }
-            else if (startPointLinkList.Data == tempList.Data)
+            else if (temp.Next == null)
             {
-                //This means retriving data is present at the start of the list
-                startPointLinkList = startPointLinkList.Next;
-                startPointLinkList.Previous = null;
-                tempList.Next = null;
-                tempList.Previous = runner;
-                runner.Next = tempList;
-                runner = runner.Next;
+                return temp.Data;
             }
-            else
-            { 
-                tempList.Previous.Next = tempList.Next;
-                tempList.Next.Previous = tempList.Previous;
-                tempList.Next = null;
-                tempList.Previous = runner;
-                runner.Next = tempList;
-                runner = runner.Next;
-            }             
-            return runner.Data;
+            else if (temp.Key == start.Key) // if data is in start location;
+            {
+                start = start.Next;
+                start.Previous = null;
+                temp.Previous = new DDLinkedList();
+            }
+            else if (temp.Next != null) //
+            {
+                temp.Previous.Next = temp.Next;
+                temp.Next.Previous = temp.Previous;
+            }
+
+            temp.Next = null;
+            temp.Previous = runner;
+            runner.Next = temp;
+            runner = runner.Next;
+            return temp.Data;
+
         }
 
-        public string Put(string dataKey, string data)
+        public void Put(string key, string value)
         {
 
-            if (string.IsNullOrWhiteSpace(data) || string.IsNullOrWhiteSpace(dataKey))
+            temp = null;
+            cacheStorage.TryGetValue(key, out temp);
+            if (temp != null)
             {
-                throw new Exception("Invalid Input");
+                Get(key);
+                temp.Data = value;
             }
-
-            if (cacheStorage.ContainsKey(dataKey))
+            else
             {
-                throw new Exception("Key already present");
-            }
-
-            if (cacheStorage.Count < 5 )
-            {    
-                
-                if (runner == null)
+                if (cacheStorage.Count == capacity)
                 {
-                    runner = new DDLinkedList() { Data = data }; 
-                    startPointLinkList = runner;                 
+                    cacheStorage.Remove(start.Key);
+                    if (start.Next == null)
+                    {
+                        start.Data = value;
+                    }
+                    else
+                    {
+                        start = start.Next;
+                        start.Previous = null;
+                        runner.Next = new DDLinkedList() { Key = key, Data = value, Previous = runner };
+                        runner = runner.Next;
+                    }
                 }
                 else
                 {
-                    runner.Next = new DDLinkedList() { Data = data,Previous = runner };
-                    runner = runner.Next;
-                }                
-                cacheStorage.Add(dataKey, runner);                
+                    if (start == null)
+                    {
+                        start = new DDLinkedList() { Key = key, Data = value };
+                        runner = start;
+                    }
+                    else
+                    {
+                        runner.Next = new DDLinkedList() { Key = key, Data = value, Previous = runner };
+                        runner = runner.Next;
+                    }
+                }
+                cacheStorage[key] = runner;
             }
-            else
-            {
-                    cacheStorage.Remove(startPointLinkList.Data);
-                    startPointLinkList = startPointLinkList.Next;
-                    startPointLinkList.Previous = null;
-                    runner.Next = new DDLinkedList() { Data = data, Previous = runner };
-                    runner = runner.Next;
-                    cacheStorage[dataKey]= runner;            
-            }            
-            return data;
+
         }
 
         public string DisplayForward()
         {
             StringBuilder result = new StringBuilder();
-            DDLinkedList traverse = startPointLinkList;
+            DDLinkedList traverse = start;
             while (traverse != null)
             {
                 result.Append($"Key = {traverse.Data} Value = {traverse.Data} \n");
@@ -210,15 +326,15 @@ namespace WindowsFormsApplication3
             FrequencyData.Add(1, new List<string>());
         }
 
-        public string Put(string dataKey, string data)
+        public void Put(string dataKey, string data)
         {
 
             List<string> l = new List<string>();
             
 
             if (Cache.ContainsKey(dataKey))
-            {            
-                return this.Get(dataKey);
+            {
+                return;// this.Get(dataKey);
             }
 
             if (Cache.Count >= 5)
@@ -233,7 +349,6 @@ namespace WindowsFormsApplication3
             Frequency.Add(dataKey, 1);
             FrequencyData[1].Add(dataKey);
             min = 1;
-            return data;
            
         }
 
@@ -269,12 +384,12 @@ namespace WindowsFormsApplication3
 
         ArrayList cache = new ArrayList();
 
-        public string Put(string dataKey, string data)
+        public void Put(string dataKey, string data)
         {
             
             
 
-            return string.Empty;
+            
         }
 
         public string Get(string key)

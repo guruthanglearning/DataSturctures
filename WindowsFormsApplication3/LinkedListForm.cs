@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Web.UI.WebControls;
 
 //using OfficeOpenXml;
 //using OfficeOpenXml.Style;
@@ -35,7 +36,7 @@ namespace WindowsFormsApplication3
 
 
         private void button1_Click(object sender, EventArgs e)
-        {            
+        {
             /*
                                        10
                                     /      \
@@ -84,9 +85,9 @@ namespace WindowsFormsApplication3
             datas.Append("\r\n BFS Traversal :");
             BFT(tree);
             MessageBox.Show(datas.ToString());
-            
+
         }
-        
+
 
         private void InsertNoRecurrssion(int[] input, ref Node tree)
         {
@@ -97,7 +98,7 @@ namespace WindowsFormsApplication3
 
             if (tree == null)
             {
-                tree = new Node() { data = input[0] }; 
+                tree = new Node() { data = input[0] };
             }
 
             Node temp = tree;
@@ -252,12 +253,12 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             Stack<Node> s = new Stack<Node>();
-            Node current =  root;
-            
+            Node current = root;
+
             while (current != null || s.Count > 0)
-            { 
-                
-                while (current!=null)
+            {
+
+                while (current != null)
                 {
                     s.Push(current);
                     current = current.left;
@@ -437,7 +438,7 @@ namespace WindowsFormsApplication3
                 MessageBox.Show(data.ToString());
             }
         }
-  
+
         private BFSNode newNode(int data)
         {
             BFSNode node = new BFSNode();
@@ -526,7 +527,7 @@ namespace WindowsFormsApplication3
         private string GetLinkListData(LinkList linkList)
         {
             StringBuilder result = new StringBuilder();
-            while (linkList!=null)
+            while (linkList != null)
             {
                 result.Append($" {linkList.data} ");
                 linkList = linkList.next;
@@ -825,7 +826,7 @@ namespace WindowsFormsApplication3
                 return 0;
             }
             return 1 + Math.Max(MaxDepthOfTheTree(node.left), MaxDepthOfTheTree(node.right));
-                
+
         }
 
         private int MaxDepthOfTheTreeWithIterative(Node node)
@@ -850,69 +851,69 @@ namespace WindowsFormsApplication3
                 2
                  
             Iterative approach */
-               if (node == null)
-                {
-                    return 0;
-                }
-        
-                Queue<Node> q = new Queue< Node>();
-                q.Enqueue(node);
-                q.Enqueue(null);
-        
-                int counter = 0;
-        
-                Node t = null;
-        
+            if (node == null)
+            {
+                return 0;
+            }
+
+            Queue<Node> q = new Queue<Node>();
+            q.Enqueue(node);
+            q.Enqueue(null);
+
+            int counter = 0;
+
+            Node t = null;
+
+            while (q.Peek() != null)
+            {
                 while (q.Peek() != null)
-                {        
-                    while (q.Peek() != null)
+                {
+                    t = q.Dequeue();
+                    if (t.left != null)
                     {
-                         t = q.Dequeue();
-                         if (t.left != null)
-                         {
-                             q.Enqueue(t.left);
-                         }
-                
-                         if (t.right != null)
-                         {
-                             q.Enqueue(t.right);
-                         }                
+                        q.Enqueue(t.left);
                     }
-                    q.Dequeue();
-                    q.Enqueue(null);
-            
-                    counter++;            
+
+                    if (t.right != null)
+                    {
+                        q.Enqueue(t.right);
+                    }
                 }
-                
-                return counter;
-             
+                q.Dequeue();
+                q.Enqueue(null);
+
+                counter++;
+            }
+
+            return counter;
+
         }
 
         private int MinDepthOfTheTreeIterative(Node node)
         {
-                    /*
-                                     10
-                                  /      \
-                                 /        \
-                                /          \
-                               /            \                           
-                              /              \
-                             5               20
-                           /  \             / \
-                          /    \           /   \  
-                         /      \         /     \
-                        3        8       15     22 
-                       / \      / \ 
-                      /   \    /   \
-                     1    4    6    9
-                      \
-                       \
-                        2
-                */
-            
+            /*
+                             10
+                          /      \
+                         /        \
+                        /          \
+                       /            \                           
+                      /              \
+                     5               20
+                   /  \             / \
+                  /    \           /   \  
+                 /      \         /     \
+                3        8       15     22 
+               / \      / \ 
+              /   \    /   \
+             1    4    6    9
+              \
+               \
+                2
+        */
+
             Node temp;
             Queue<Node> q = new Queue<Node>();
-            
+
             int min = 0;
 
             q.Enqueue(node);
@@ -924,7 +925,7 @@ namespace WindowsFormsApplication3
                 temp = q.Dequeue();
 
                 if (temp == null)
-                {                    
+                {
                     if (q.Count == 0)
                     {
                         break;
@@ -944,12 +945,12 @@ namespace WindowsFormsApplication3
                     {
                         q.Enqueue(temp.right);
                     }
-                        
+
                     if (temp.left == null && temp.right == null)
                     {
                         min++;
                         break;
-                    }                
+                    }
                 }
             }
 
@@ -983,8 +984,8 @@ namespace WindowsFormsApplication3
             if (node == null)
             {
                 return 0;
-            }            
-                       
+            }
+
             return 1 + Math.Min(MinDepthOfTheTree(node.left), MinDepthOfTheTree(node.right));
 
         }
@@ -1165,7 +1166,7 @@ namespace WindowsFormsApplication3
                     //right side traversal
                     p = node.parent;
                     while (p != null && p.right == node)
-                    {                                     
+                    {
                         node = p;
                         if (p.parent == null)
                         {
@@ -1176,7 +1177,7 @@ namespace WindowsFormsApplication3
                     }
 
                     //left side traversal
-                    
+
                     while ((p = node.parent) != null)
                     {
                         if (p.left == node)
@@ -1184,7 +1185,7 @@ namespace WindowsFormsApplication3
                             break;
                         }
                         node = p;
-                       
+
                     }
                 }
             }
@@ -2371,8 +2372,8 @@ namespace WindowsFormsApplication3
             Node node = root;
 
             Stack<NodeWithLeftRight> s = new Stack<NodeWithLeftRight>();
-            s.Push(new NodeWithLeftRight() { Left = l, Right = m-1, Node = node }) ;
-            s.Push(new NodeWithLeftRight() { Left = m+1, Right = r, Node = node });
+            s.Push(new NodeWithLeftRight() { Left = l, Right = m - 1, Node = node });
+            s.Push(new NodeWithLeftRight() { Left = m + 1, Right = r, Node = node });
 
             NodeWithLeftRight temp = null;
             Node nodeTemp = null;
@@ -2394,7 +2395,7 @@ namespace WindowsFormsApplication3
                     nodeTemp = temp.Node.right;
                 }
 
-                if (l <= m -1)
+                if (l <= m - 1)
                 {
                     s.Push(new NodeWithLeftRight() { Left = l, Right = m - 1, Node = nodeTemp });
                 }
@@ -2423,7 +2424,7 @@ namespace WindowsFormsApplication3
 
 
 
-             MessageBox.Show($"{s} length {s.Length.ToString()}");
+            MessageBox.Show($"{s} length {s.Length.ToString()}");
 
         }
 
@@ -3341,7 +3342,7 @@ namespace WindowsFormsApplication3
             //input = "a+b*c*d+e";
             //Given post fix binary tree expression, build binary tree expression and out the
             //result in infix expression
-            string input = "x1+y3xm*++/";       
+            string input = "x1+y3xm*++/";
             if (string.IsNullOrWhiteSpace(input))
             {
                 MessageBox.Show("Expression is empty");
@@ -3457,7 +3458,7 @@ namespace WindowsFormsApplication3
             NodeWithNext current = null, previous = null;
             //NodeWithNext node = null;            
 
-            while(que.Count > 0)
+            while (que.Count > 0)
             {
                 if (que.Peek() == null)
                 {
@@ -3466,12 +3467,12 @@ namespace WindowsFormsApplication3
                         break;
                     }
 
-                    if (current.left!=null)
+                    if (current.left != null)
                     {
                         que.Enqueue(current.left);
                     }
 
-                    if (current.right!=null)
+                    if (current.right != null)
                     {
                         que.Enqueue(current.right);
                     }
@@ -3484,7 +3485,7 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    if (current==null)
+                    if (current == null)
                     {
                         current = que.Dequeue();
                     }
@@ -3501,7 +3502,7 @@ namespace WindowsFormsApplication3
                             current.next = previous;
                         }
 
-                        if (previous.left!=null)
+                        if (previous.left != null)
                         {
                             que.Enqueue(previous.left);
                         }
@@ -3685,12 +3686,12 @@ namespace WindowsFormsApplication3
             {
                 return new int[2];
             }
-            int[] left = RobHouse(node.left); 
-            int[] right = RobHouse(node.right); 
+            int[] left = RobHouse(node.left);
+            int[] right = RobHouse(node.right);
 
-            int[] current = new Int32[2]; 
-            current[0] = node.data + left[1] + right[1]; 
-            current[1] = Math.Max(left[0], left[1]) + Math.Max(right[0], right[1]);  
+            int[] current = new Int32[2];
+            current[0] = node.data + left[1] + right[1];
+            current[1] = Math.Max(left[0], left[1]) + Math.Max(right[0], right[1]);
             return current;
         }
 
@@ -3700,7 +3701,7 @@ namespace WindowsFormsApplication3
                   1->4->5,
                   1->3->4,
                   2->6
-            */            
+            */
             List<LinkList> lists = new List<LinkList>();
             //LinkList LLNodeFirst = null;
             //LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
@@ -3727,13 +3728,13 @@ namespace WindowsFormsApplication3
             datas.Clear();
 
             LinkList result = null;
-            
+
             foreach (LinkList linkList in lists)
             {
                 result = this.MergeLinkListWithoutExtraMemory(result, linkList);
             }
 
-            
+
             DisplayLinkList(result);
             MessageBox.Show($"The result of merging two link list is {datas.ToString()}");
 
@@ -3749,7 +3750,7 @@ namespace WindowsFormsApplication3
             else if (linklist1 == null)
             {
                 return linklist2;
-            }                
+            }
             else if (linklist2 == null)
                 return linklist1;
 
@@ -3760,14 +3761,14 @@ namespace WindowsFormsApplication3
             LinkList linkList1Previous = linklist1;
             bool isLinkListMoveFirstTime = false;
 
-            while (linklist1!= null && linklist2!= null)
+            while (linklist1 != null && linklist2 != null)
             {
                 t1 = null;
                 t2 = null;
 
                 if (linklist1.data < linklist2.data)
                 {
-                    
+
                     if (!isLinkListMoveFirstTime)
                     {
                         isLinkListMoveFirstTime = true;
@@ -3816,7 +3817,7 @@ namespace WindowsFormsApplication3
 
             }
 
-            if (linklist2!= null)
+            if (linklist2 != null)
             {
                 linkList1Previous.next = linklist2;
             }
@@ -3825,13 +3826,13 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Searilzing_and_De_serialzing_Binary_Tree_Click(object sender, EventArgs e)
-        {            
+        {
 
-            Node root = new Node() { data = 1};
+            Node root = new Node() { data = 1 };
             root.left = new Node() { data = 2 };
             root.right = new Node() { data = 3 };
             root.right.left = new Node() { data = 4 };
-            root.right.right= new Node() { data = 5 };
+            root.right.right = new Node() { data = 5 };
 
             string result = this.Serialize(root);
             this.DeSerialize(result);
@@ -3848,15 +3849,15 @@ namespace WindowsFormsApplication3
                 return null;
             }
 
-           string[] datas = input.Split(',');
+            string[] datas = input.Split(',');
 
 
-           Node tree = new Node() { data = int.Parse(datas[0])};
-           Queue<Node> queue= new Queue<Node>();
-           queue.Enqueue(tree);
-           //1,2,3,null,null,4,5
-           for(int i = 1; i< datas.Length -1; i++)
-           {
+            Node tree = new Node() { data = int.Parse(datas[0]) };
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(tree);
+            //1,2,3,null,null,4,5
+            for (int i = 1; i < datas.Length - 1; i++)
+            {
                 var parent = queue.Dequeue();
                 if (!string.IsNullOrEmpty(datas[i]))
                 {
@@ -3868,7 +3869,7 @@ namespace WindowsFormsApplication3
                     parent.right = new Node() { data = int.Parse(datas[i]) };
                     queue.Enqueue(parent.right);
                 }
-           }
+            }
 
 
             return tree;
@@ -3912,12 +3913,12 @@ namespace WindowsFormsApplication3
                     serializableString.Append($"{node.data.ToString()},");
                     que.Enqueue(node.left);
                     que.Enqueue(node.right);
-                }                
+                }
             }
 
             if (lastValidIndex > 0)
             {
-                result = serializableString.ToString().Substring(0, serializableString.Length - (lastValidIndex +1));
+                result = serializableString.ToString().Substring(0, serializableString.Length - (lastValidIndex + 1));
             }
             else
             {
@@ -3966,19 +3967,19 @@ namespace WindowsFormsApplication3
             queue.Enqueue(root);
             Node temp = null;
             int counter = 0;
-            while(queue.Count >0)
+            while (queue.Count > 0)
             {
                 temp = queue.Dequeue();
-                if (temp!=null)
+                if (temp != null)
                 {
                     if ((temp.left != null && temp.right != null && temp.data == temp.left.data && temp.left.data == temp.right.data) ||
-                        (temp.left == null && temp.right==null))
+                        (temp.left == null && temp.right == null))
                     {
                         counter++;
                     }
                 }
-                
-                if (temp.left!=null)
+
+                if (temp.left != null)
                 {
                     queue.Enqueue(temp.left);
                 }
@@ -3994,25 +3995,25 @@ namespace WindowsFormsApplication3
         private void btn_Find_the_Deepest_Node_in_a_Binary_Tree_Click(object sender, EventArgs e)
         {
 
-         /*
-                                                   10
-                                                /      \
-                                               /        \
-                                              /          \
-                                             /            \                           
-                                            /              \
-                                           5               20
-                                         /  \             / \
-                                        /    \           /   \  
-                                       /      \         /     \
-                                      3        8       15     22 
-                                     / \      / \ 
-                                    /   \    /   \
-                                   1    4    6    9
-                                    \
-                                     \
-                                      2
-         */
+            /*
+                                                      10
+                                                   /      \
+                                                  /        \
+                                                 /          \
+                                                /            \                           
+                                               /              \
+                                              5               20
+                                            /  \             / \
+                                           /    \           /   \  
+                                          /      \         /     \
+                                         3        8       15     22 
+                                        / \      / \ 
+                                       /   \    /   \
+                                      1    4    6    9
+                                       \
+                                        \
+                                         2
+            */
 
             Node tree = null;
             Insert(10, ref tree);
@@ -4028,7 +4029,7 @@ namespace WindowsFormsApplication3
             Insert(4, ref tree);
             Insert(9, ref tree);
 
-            
+
             int maxLevel = -1;
             int maxLevelQ = -1;
 
@@ -4049,9 +4050,9 @@ namespace WindowsFormsApplication3
             q.Enqueue(null);
             Node current = null;
 
-            while(q.Count > 0)
+            while (q.Count > 0)
             {
-                
+
                 if (q.Peek() == null)
                 {
                     maxLevel++;
@@ -4117,7 +4118,7 @@ namespace WindowsFormsApplication3
                 maxLevel = level;
                 result = root;
             }
-            else if (temp!=null)
+            else if (temp != null)
             {
                 result = temp;
             }
@@ -4148,9 +4149,9 @@ namespace WindowsFormsApplication3
              */
             Node root = new Node() { data = 1 };
             root.left = new Node() { data = 2 };
-            root.right= new Node() { data = 3 };
+            root.right = new Node() { data = 3 };
             root.right.right = new Node() { data = 5 };
-            root.right.left= new Node() { data = 4 };
+            root.right.left = new Node() { data = 4 };
             List<string> result = new List<string>();
             this.GetAllPathFromRootToLeaves(root, result, string.Empty);
             MessageBox.Show($"All Path from root to leaves are below \n {string.Join("\n", result)}");
@@ -4160,22 +4161,22 @@ namespace WindowsFormsApplication3
         private void GetAllPathFromRootToLeaves(Node root, List<string> result, string paths)
         {
 
-            if (root==null)
+            if (root == null)
             {
-                return ;
+                return;
             }
 
-            if (root.left!=null)
+            if (root.left != null)
             {
-                GetAllPathFromRootToLeaves(root.left, result,  $"{paths} {(string.IsNullOrEmpty(paths)? "": ",")} {root.data}");
-            }          
+                GetAllPathFromRootToLeaves(root.left, result, $"{paths} {(string.IsNullOrEmpty(paths) ? "" : ",")} {root.data}");
+            }
 
-            if (root.right!= null)
+            if (root.right != null)
             {
                 GetAllPathFromRootToLeaves(root.right, result, $"{paths} {(string.IsNullOrEmpty(paths) ? "" : ",")} {root.data}");
             }
 
-            if (root.left == null && root.right==null)
+            if (root.left == null && root.right == null)
             {
                 result.Add($"{paths} {(string.IsNullOrEmpty(paths) ? "" : ",")} {root.data}");
             }
@@ -4208,7 +4209,7 @@ namespace WindowsFormsApplication3
             root.left.right = new Node() { data = 3 };
             root.right = new Node() { data = 0 };
             this.Distribute(root, ref numOfSteps);
-            MessageBox.Show($"No of steps taken to distribute the coin is {numOfSteps} for the given binary tree");            
+            MessageBox.Show($"No of steps taken to distribute the coin is {numOfSteps} for the given binary tree");
         }
 
         private int Distribute(Node root, ref int numOfSteps)
@@ -4228,7 +4229,7 @@ namespace WindowsFormsApplication3
             if (root == null) return 0;
             int left = this.Distribute(root.left, ref numOfSteps); // 1
             int right = this.Distribute(root.right, ref numOfSteps); //-1
-            numOfSteps+= Math.Abs(left) + Math.Abs(right); //2
+            numOfSteps += Math.Abs(left) + Math.Abs(right); //2
             return root.data - 1 + left + right; //
         }
 
@@ -4260,7 +4261,7 @@ namespace WindowsFormsApplication3
             LinkList LLNodeFirst1 = null;
             LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 9);
             LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 9);
-                       
+
             LinkList LLNodeFirst2 = null;
             LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 5);
             LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 2);
@@ -4272,21 +4273,21 @@ namespace WindowsFormsApplication3
             int quotent = sum;
             LinkList start = null;
             LinkList temp = null;
-            
+
             while (quotent > 0)
             {
-                reminder = quotent % 10;                
+                reminder = quotent % 10;
                 if (start == null)
                 {
                     start = new LinkList() { data = reminder }; //4
                     temp = start;
                 }
                 else
-                {                                         
-                    temp.next = new LinkList() { data = reminder};
+                {
+                    temp.next = new LinkList() { data = reminder };
                     temp = temp.next;
                 }
-                
+
                 quotent /= 10;
             }
 
@@ -4297,11 +4298,11 @@ namespace WindowsFormsApplication3
         private int GetIntDataFromListInTheReverseOrder(LinkList linkList)
         {
 
-            if (linkList!= null)
+            if (linkList != null)
             {
                 int pow = 0;
                 int result = 0;
-                while(linkList!=null)
+                while (linkList != null)
                 {
                     result = result + (linkList.data * (int)Math.Pow(10.00, pow));
                     linkList = linkList.next;
@@ -4392,22 +4393,22 @@ namespace WindowsFormsApplication3
             }
 
 
-            LinkList pointer = linkList;            
-            LinkList even= linkList.next;
+            LinkList pointer = linkList;
+            LinkList even = linkList.next;
             LinkList odd = even != null ? even.next : null;
             LinkList t;
             // 1->2->3->4->5
 
-            while (odd != null && even !=null )
+            while (odd != null && even != null)
             {
                 t = odd.next;
-                odd.next = null;                
+                odd.next = null;
                 pointer.next = odd;
                 odd.next = even;
                 even.next = t;
                 pointer = even;
                 even = even.next;
-                odd = even != null ? even.next : null;                
+                odd = even != null ? even.next : null;
             }
         }
 
@@ -4515,19 +4516,19 @@ namespace WindowsFormsApplication3
             }
 
             LinkList runner = head;
-            
+
             int i = 0;
-                        
+
             while (runner != null)
             {
-                runner = runner.next;                
+                runner = runner.next;
                 i++;
             }
 
             i = (i / 2);
             runner = head;
 
-            for(int j = 0; j < i; j++)
+            for (int j = 0; j < i; j++)
             {
                 runner = runner.next;
             }
@@ -4535,7 +4536,122 @@ namespace WindowsFormsApplication3
             return runner;
         }
 
+        private string GetOddEvenListData(ListNode head)
+        {
+            StringBuilder result = new StringBuilder();
+
+            while (head != null)
+            {
+                result.Append($"{head.val}->");
+                head = head.next;
+            }
+            result.Append("NULL");
+            return result.ToString();
+
+        }
+
+        public ListNode OddEvenList(ListNode head)
+        {
+            ListNode runner = head;
+            ListNode odd = null;
+            ListNode even = null;
+            ListNode evenStart = null;
+
+            if (runner == null)
+                return runner;
+
+            odd = runner;
+            even = runner.next;
+            evenStart = even;
+
+            while (odd != null && odd.next != null && even != null && even.next != null)
+            {
+                odd.next = odd.next.next;
+                even.next = even.next.next;
+                odd = odd.next;
+                even = even.next;
+            }
+
+            odd.next = evenStart;
+
+            return head;
+        }
+
+        public class ListNode
+        {
+            public int val;
+            public ListNode next;
+        }
+
+        public ListNode InsertListNode(int[] data)
+        {
+
+            if (data == null || data.Length == 0)
+                return null;
+
+            ListNode listNode = null;
+            ListNode result = null;
+
+
+            foreach (int i in data)
+            {
+
+                if (listNode == null)
+                {
+                    listNode = new ListNode() { val = i };
+                    result = listNode;
+                }
+                else
+                {
+                    listNode.next = new ListNode() { val = i };
+                    listNode = listNode.next;
+                }
+            }
+
+            return result;
+        }
+        private void btn_Odd_Even_Linked_List_Click(object sender, EventArgs e)
+        {
+
+            /*
+
+                Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
+
+                You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.
+
+                Example 1:
+
+                Input: 1->2->3->4->5->NULL
+                Output: 1->3->5->2->4->NULL
+                Example 2:
+
+                Input: 2->1->3->5->6->4->7->NULL
+                Output: 2->3->6->7->1->5->4->NULL
+
+
+                Time Complexity     : O(N)
+                Space Complxity     : (1)
+
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<ListNode> inputs = new List<ListNode>();
+            inputs.Add(this.InsertListNode(new int[] { 1, 2, 3, 4, 5, 6 }));
+            inputs.Add(this.InsertListNode(new int[] { 2, 1, 3, 5, 6, 4, 7 }));
+            string temp = string.Empty;
+            foreach(var input in inputs)
+            {
+                temp = this.GetOddEvenListData(input);
+                result.AppendLine($"The Odd Even Linked List is {this.GetOddEvenListData(this.OddEvenList(input))} for the given list {temp}");
+            }
+            
+            MessageBox.Show(result.ToString());
+
+        }
     }
+
 
     class Graph
     {

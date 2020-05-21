@@ -756,6 +756,144 @@ namespace WindowsFormsApplication3
 
             return m;
         }
+
+        private void btn_Number_Complement_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a positive integer num, output its complement number. The complement strategy is to flip the bits of its binary representation.
+ 
+                Example 1:
+
+                Input: num = 5
+                Output: 2
+                Explanation: The binary representation of 5 is 101 (no leading zero bits), and its complement is 010. So you need to output 2.
+                Example 2:
+
+                Input: num = 1
+                Output: 0
+                Explanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.
+ 
+                Time Complexity     : O(log N)
+                Space Complexity    : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            int[] inputs = new int[] { 5, 1, 2 };
+
+           foreach(int input in inputs)
+            {
+                result.AppendLine($"Number complement is {this.FindComplement(input)} for the given number {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+            
+        }
+
+        public int FindComplement(int num)
+        {
+           
+            int compliment = 0;
+            int power = 1;
+            while(num > 0)
+            {
+                compliment += (num % 2 == 0 ? 1 : 0) * power;
+                num >>= 1;
+                power*=2;
+            }
+
+            return compliment;
+
+
+        }
+
+        private void btn_Remove_K_Digits_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a non-negative integer num represented as a string, remove k digits from the number so that the new number is the smallest possible.
+
+                Note:
+                The length of num is less than 10002 and will be ≥ k.
+                The given num does not contain any leading zero.
+                Example 1:
+
+                Input: num = "1432219", k = 3
+                Output: "1219"
+                Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
+                Example 2:
+
+                Input: num = "10200", k = 1
+                Output: "200"
+                Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
+                Example 3:
+
+                Input: num = "10", k = 2
+                Output: "0"
+                Explanation: Remove all the digits from the number and it is left with nothing which is 0.
+    
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<RemoveKDigits> inputs = new List<RemoveKDigits>();
+            //inputs.Add(new RemoveKDigits() { Digits = "1432219", RemoveDigits = 3 });
+            //inputs.Add(new RemoveKDigits() { Digits = "10200", RemoveDigits = 1 });
+            //inputs.Add(new RemoveKDigits() { Digits = "10", RemoveDigits = 0 });
+            inputs.Add(new RemoveKDigits() { Digits = "9", RemoveDigits = 1 });
+            inputs.Add(new RemoveKDigits() { Digits = "123", RemoveDigits = 1 });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"New digits is {this.RemoveKdigits(input.Digits, input.RemoveDigits)} for the given digits {input.Digits} and remove digits {input.RemoveDigits}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public class RemoveKDigits
+        {
+            public string Digits;
+            public int RemoveDigits;
+        }
+
+        public string RemoveKdigits(string num, int k)
+        {
+            if (k == 0 || string.IsNullOrEmpty(num))
+                return num;
+            
+            Stack<char> stack = new Stack<char>();
+            StringBuilder result = new StringBuilder();
+
+            foreach(char c in num)
+            {
+               
+                    while(stack.Count> 0 && (c - '0') < (stack.Peek() - '0') && k > 0)
+                    {
+                        stack.Pop();
+                        k--;
+                    }
+                    if (!(stack.Count == 0 &&  c == '0' ))                       
+                        stack.Push(c);               
+            }
+
+            
+            while(stack.Count > 0)
+            {
+                if (k != 0)
+                {
+                    k--;
+                    stack.Pop();
+                    continue;
+                }
+
+                result.Insert(0, stack.Pop());
+            }
+
+            return result.Length == 0 ? "0" : result.ToString();
+        }
     }
 }
 

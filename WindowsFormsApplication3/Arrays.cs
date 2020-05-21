@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -430,49 +431,69 @@ namespace WindowsFormsApplication3
 
         private void MajorityElement_Click(object sender, EventArgs e)
         {
-            //http://www.geeksforgeeks.org/majority-element/
-            //int[] input = new int[] { 1, 2, 3, 4, 5, 6, 8, -20 }; // 8 items
-            //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 }; // 9
-            //int[] input = new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }; // 8
-            //int[] input = new int[] { 3, 3, 4, 2, 1, 4, 4, 2, 4, 4 };
-            int[] input = new int[] { 1, 2, 1, 1, 3, 4, 0 };
-            int count = 1;
-            int majorityIndex = 0;
-            int maxOccurance = 1;
+
+
             /*
-                count = 3;
-                majorityIndex = 5;
-                maxOccurance = 4; 
-                I = 10
+                Time Complexity : O(N)
+                Space Complexity : O(N)
              */
-            for (int i = 1; i < input.Length; i++)
+
+            StringBuilder result = new StringBuilder();
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 2, 3, 4, 5, 6, 8, -20 });
+            inputs.Add(new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 });
+            inputs.Add(new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }); 
+            inputs.Add(new int[] { 3, 3, 4, 2, 1, 4, 4, 2, 4, 4 });
+            inputs.Add(new int[] { 1, 2, 1, 1, 3, 4, 0 });
+            inputs.Add(new int[] { 3, 2, 3 });
+            inputs.Add(new int[] { 2, 2, 1, 1, 1, 2, 2 });
+
+
+            foreach (var input in inputs)
             {
-                if (input[majorityIndex] == input[i])
+                result.AppendLine($"Majority element is {this.FindMajorityElement(input)} for the given input array {(string.Join(",", input))}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int FindMajorityElement(int[] nums)
+        {
+
+            if (nums == null || nums.Length == 0)
+            {
+                return 0;
+            }
+
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+            int temp = 0;
+            foreach (int i in nums)
+            {
+                if (dict.TryGetValue(i, out temp))
                 {
-                    count++;
-                    maxOccurance++;
+                    dict[i]++;
                 }
                 else
                 {
-                    count--;
+                    dict[i] = 1;
                 }
+            }
 
-                if (count == 0)
+            temp = nums.Length / 2;
+
+            foreach (int i in dict.Keys)
+            {
+                if (dict[i] > temp)
                 {
-                    majorityIndex = i;
-                    count = 1;
-                    maxOccurance = 1;
+                    return i;
                 }
             }
 
-            if (maxOccurance >= (input.Length / 2))
-            {
-                MessageBox.Show($"Majority Element {input[majorityIndex].ToString()}");
-            }
-            else
-            {
-                MessageBox.Show($"No Majority Element present");
-            }
+            return 0;
+
+
         }
 
         private void Find_the_Number_Occurring_Odd_Number_of_Times_Click(object sender, EventArgs e)
@@ -4642,6 +4663,965 @@ namespace WindowsFormsApplication3
             return counter;
         }
 
+        private void btn_Counting_Elements_Click(object sender, EventArgs e)
+        {
+           
+
+            /*
+             Given an integer array arr, count element x such that x + 1 is also in arr.
+
+                If there're duplicates in arr, count them seperately. 
+
+                Example 1:
+
+                Input: arr = [1,2,3]
+                Output: 2
+                Explanation: 1 and 2 are counted cause 2 and 3 are in arr.
+                Example 2:
+
+                Input: arr = [1,1,3,3,5,5,7,7]
+                Output: 0
+                Explanation: No numbers are counted, cause there's no 2, 4, 6, or 8 in arr.
+                Example 3:
+
+                Input: arr = [1,3,2,3,5,0]
+                Output: 3
+                Explanation: 0, 1 and 2 are counted cause 1, 2 and 3 are in arr.
+                Example 4:
+
+                Input: arr = [1,1,2,2]
+                Output: 2
+                Explanation: Two 1s are counted cause 2 is in arr.
+                
+                Time Complexity     : O(N) where N is the total nunber of element in the array
+                Space Complexity    :O(N)
+             
+            */
+
+
+
+            List<int[]> inputs = new List<int[]>() {
+                                                        new int[] {1,2,3},
+                                                        new int[] { 1,1,3,3,5,5,7,7 },
+                                                        new int[] { 1,3,2,3,5,0},
+                                                        new int[] { 1,1,2,2}
+                                                   };
+
+            StringBuilder result = new StringBuilder();
+            foreach (int[] input in inputs)
+            {
+
+                result.AppendLine($"There are {this.CountElements(input)} counting elements for the given input {string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int CountElements(int[] arr)
+        {
+            if (arr == null || arr.Length == 0)
+                return 0;
+
+            HashSet<int> dict = new HashSet<int>();
+            int counter = 0;
+            foreach (int i in arr)
+                dict.Add(i);
+
+            foreach (int i in arr)
+            {
+                if (dict.Contains(i + 1))
+                    counter++;
+            }
+
+
+            return counter;
+        }
+
+        private void btn_Jump_Game_Click(object sender, EventArgs e)
+        {
+            
+            /*
+                Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+                Each element in the array represents your maximum jump length at that position.
+
+                Determine if you are able to reach the last index.
+
+                Example 1:
+
+                Input: [2,3,1,1,4]
+                Output: true
+                Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+                Example 2:
+
+                Input: [3,2,1,0,4]
+                Output: false
+                Explanation: You will always arrive at index 3 no matter what. Its maximum
+                                jump length is 0, which makes it impossible to reach the last index.
+             
+                Time Complexity     : O(N)
+                Space Complexity    : O(1) 
+
+             */
+
+            List<int[]> inputs = new List<int[]>() {
+                                                        new int[] {2,3,1,1,4},
+                                                        new int[] { 3,2,1,0,4 },
+                                                        new int[] { 2,0,0},
+                                                        new int[] { 3,2,1,0,4},
+                                                        new int[] { 1,1,0,1},
+                                                        new int[] { 3,2,1,0,4},
+                                                        new int[] { 1,1,0,1},
+                                                        new int[] { 1,1,1,0},
+                                                        new int[] { 2,1,0,0},
+                                                        new int[] { 1,2,0,1}
+
+                                                   };
+
+            StringBuilder result = new StringBuilder();
+            foreach (int[] input in inputs)
+            {
+
+                result.AppendLine($"There is a path {(this.CanJump(input) ? ""  : "dont") } exists to jump for the given input {string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public bool CanJump(int[] nums)
+        {
+            if (nums == null || nums.Length == 0)
+            {
+                return false;
+            }
+
+            int movingIndex = nums[0];
+
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (movingIndex < i)
+                    return false;
+
+                movingIndex = Math.Max(movingIndex, i + nums[i]);
+
+
+            }
+
+            return true;
+
+        }
+
+        public class FirstUnique
+        {
+            private class DoubleLinkList
+            {
+                public int Data;
+                public DoubleLinkList Next;
+                public DoubleLinkList Previous;
+            }
+
+            DoubleLinkList start = null;
+            DoubleLinkList runner = null;
+            Dictionary<int, DoubleLinkList> dict = new Dictionary<int, DoubleLinkList>();
+
+
+            public FirstUnique(int[] nums)
+            {
+
+                
+                if (nums != null && nums.Length > 0)
+                {
+                    foreach (int i in nums)
+                    {
+                        Add(i);
+                    }
+                }
+            }
+
+            public int ShowFirstUnique()
+            {
+
+                int result = -1;
+                if (start != null)
+                {
+                    result = start.Data;
+                }
+                return result;
+            }
+
+            public void Add(int value)
+            {
+                DoubleLinkList temp;
+                if (dict.TryGetValue(value, out temp))
+                {
+                    if (temp != null)
+                    {
+                        if (temp.Previous != null)
+                        {
+                            temp.Previous.Next = temp.Next;
+                            if (temp.Next != null)
+                            {
+                                temp.Next.Previous = temp.Previous;
+                            }
+                            else
+                            {
+                                temp.Previous = null;
+                            }                     
+                        }
+                        else
+                        {
+                            start = start.Next;
+                            if (start != null)
+                            {
+                                start.Previous = null;
+                            }
+                        }
+                        dict[value] = null;
+                    }                                  
+                }
+                else
+                {
+                    if (start == null)
+                    {
+                        start = new DoubleLinkList() { Data = value };
+                        runner = start;
+                    }
+                    else
+                    {
+                        runner.Next = new DoubleLinkList() { Data = value, Previous = runner };
+                        runner = runner.Next;
+                    }
+                    dict[value] = runner;
+                }                
+            }
+        }
+
+        private void btn_First_Unique_Number_Click(object sender, EventArgs e)
+        {
+            
+
+            bool debug = true;
+
+            if (debug)
+            {
+                FirstUnique fq = new FirstUnique(new int[] { 2, 3, 5 });
+                fq.ShowFirstUnique();
+                fq.Add(5);
+                fq.ShowFirstUnique();
+                fq.Add(2);
+                fq.ShowFirstUnique();
+                fq.Add(3);
+                fq.ShowFirstUnique();
+                fq.Add(2);
+                fq.ShowFirstUnique();
+                fq.Add(6);
+                fq.ShowFirstUnique();
+            }
+            else
+            {
+                FirstUnique funique = new FirstUnique(new int[] { 392, 59, 691, 331, 805, 15, 180, 248, 114, 62, 643, 401, 316, 764, 793, 234, 821, 304, 441, 905, 983, 815, 38, 560, 526, 259, 995, 343, 165, 648, 995, 945, 401, 414, 44, 16, 224, 423, 933, 452, 152, 893, 116, 570, 343, 317, 263, 311, 600, 928, 573, 859, 540, 739, 244, 994, 409, 429, 892, 277, 413, 481, 88, 445, 744, 706, 971, 136, 233, 250, 584, 619, 439, 316, 601, 120, 245, 252, 187, 844, 48, 139, 412, 778, 316, 929, 8, 182, 839, 868, 15, 793, 31, 733, 987, 69, 212, 319, 594, 485, 955, 598, 543, 68, 947, 719, 552, 763, 520, 543, 487, 62, 740, 694, 293, 52, 599, 998, 414, 479, 292, 954, 195, 846, 143, 384, 186, 113, 490, 956, 64, 708, 654, 701, 297, 187, 236, 514, 607, 409, 462, 427, 87, 503, 566, 835, 17, 327, 395, 4, 87, 605, 24, 293, 141, 648, 62, 919, 749, 291, 760, 322, 84, 274, 306, 734, 495, 550, 925, 434, 848, 869, 873, 904, 442, 772, 858, 9, 729, 956, 85, 404, 882, 305, 674, 172, 398, 582, 915, 428, 475, 516, 459, 939, 239, 673, 837, 227, 262, 921, 506, 8, 110, 122, 294, 187, 964, 941, 168, 380, 803, 698, 886, 361, 464, 1, 162, 30, 955, 264, 225, 347, 302, 553, 771, 492, 2, 694, 764, 147, 608, 620, 455, 378, 367, 306, 303, 5, 306, 467, 973, 233, 579, 923, 965, 137, 586, 499, 896, 941, 372, 854, 483, 794, 610, 746, 751, 64, 106, 229, 939, 966, 40, 962, 75, 27, 136, 215, 687, 439, 414, 416, 564, 963, 789, 171, 364, 229, 327, 77, 31, 493, 900, 972, 639, 355, 262, 832, 315, 148, 824, 559, 763, 320, 76, 802, 882, 685, 399, 63, 843, 304, 551, 710, 774, 519, 275, 883, 204, 576, 387, 808, 709, 912, 363, 99, 82, 959, 626, 304, 604, 716, 273, 468, 807, 352, 379, 708, 246, 825, 638, 434, 974, 402, 153, 46, 275, 946, 883, 202, 37, 925, 649, 431, 562, 310, 445, 713, 578, 521, 814, 616, 670, 963, 667, 852, 984, 813, 168, 969, 270, 729, 877, 795, 232, 908, 402, 312, 431, 946, 386, 463, 692, 458, 93, 330, 492, 390, 619, 819, 573, 903, 147, 363, 354, 625, 783, 358, 991, 292, 476, 757, 660, 83, 872, 523, 135, 750, 835, 793, 749, 777, 740, 665, 993, 779, 259, 921, 215, 551, 838, 244, 47, 976, 782, 907, 63, 448, 945, 115, 730, 180, 423, 895, 909, 407, 138, 955, 282, 919, 429, 894, 935, 124, 469, 459, 503, 135, 667, 530, 543, 60, 157, 600, 947, 792, 417, 528, 349, 622, 285, 738, 575, 48, 885, 809, 661, 405, 965, 923, 721, 209, 582, 587, 185, 825, 974, 67, 349, 745, 953, 2, 628, 404, 226, 165, 299, 811, 366, 935, 215, 440, 196, 218, 348, 266, 810, 565, 126, 988, 520, 855, 305, 255, 72, 987, 714, 496, 159, 673, 268, 645, 658, 572, 600, 898, 166, 942, 431, 864, 373, 702, 201, 257, 14, 588, 483, 730, 870, 610, 804, 106, 315, 780, 204, 986, 223, 259, 442, 333, 690, 504, 492, 874, 344, 73, 391, 56, 797, 852, 581, 879, 40, 12, 792, 802, 940, 696, 562, 312, 165, 306, 391, 241, 410, 284, 248, 296, 89, 682, 238, 262, 647, 245, 257, 23, 389, 451, 227, 270, 635, 401, 589, 268, 839, 94, 279, 973, 827, 657, 129, 699, 674, 142, 304, 682, 515, 688, 173, 413, 788, 766, 189, 239, 864, 80, 516, 488, 129, 662, 294, 138, 714, 772, 970, 239, 704, 51, 358, 916, 975, 653 });
+                funique.Add(810);
+                funique.Add(357);
+                funique.Add(544);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(793);
+                funique.ShowFirstUnique();
+                funique.Add(766);
+                funique.Add(93);
+                funique.Add(625);
+                funique.Add(546);
+                funique.Add(841);
+                funique.ShowFirstUnique();
+                funique.Add(24);
+                funique.Add(33);
+                funique.Add(943);
+                funique.Add(611);
+                funique.Add(665);
+                funique.Add(43);
+                funique.Add(236);
+                funique.Add(493);
+                funique.Add(353);
+                funique.ShowFirstUnique();
+                funique.Add(178);
+                funique.Add(128);
+                funique.Add(104);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(308);
+                funique.Add(727);
+                funique.Add(341);
+                funique.Add(164);
+                funique.Add(658);
+                funique.ShowFirstUnique();
+                funique.Add(786);
+                funique.Add(98);
+                funique.Add(523);
+                funique.Add(507);
+                funique.Add(584);
+                funique.Add(768);
+                funique.Add(349);
+                funique.Add(360);
+                funique.Add(647);
+                funique.Add(805);
+                funique.Add(796);
+                funique.Add(18);
+                funique.Add(790);
+                funique.Add(329);
+                funique.ShowFirstUnique();
+                funique.Add(737);
+                funique.Add(504);
+                funique.Add(392);
+                funique.Add(191);
+                funique.Add(110);
+                funique.Add(337);
+                funique.Add(379);
+                funique.Add(386);
+                funique.Add(902);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(864);
+                funique.Add(393);
+                funique.Add(154);
+                funique.Add(316);
+                funique.Add(501);
+                funique.Add(794);
+                funique.Add(52);
+                funique.Add(178);
+                funique.Add(486);
+                funique.Add(738);
+                funique.Add(106);
+                funique.Add(474);
+                funique.Add(344);
+                funique.Add(360);
+                funique.Add(601);
+                funique.Add(945);
+                funique.Add(785);
+                funique.Add(703);
+                funique.Add(117);
+                funique.Add(713);
+                funique.Add(975);
+                funique.Add(333);
+                funique.Add(561);
+                funique.Add(236);
+                funique.Add(626);
+                funique.Add(775);
+                funique.Add(279);
+                funique.Add(302);
+                funique.Add(838);
+                funique.Add(457);
+                funique.Add(705);
+                funique.ShowFirstUnique();
+                funique.Add(110);
+                funique.Add(812);
+                funique.Add(618);
+                funique.Add(735);
+                funique.Add(559);
+                funique.Add(419);
+                funique.Add(399);
+                funique.ShowFirstUnique();
+                funique.Add(275);
+                funique.Add(427);
+                funique.ShowFirstUnique();
+                funique.Add(732);
+                funique.Add(762);
+                funique.Add(689);
+                funique.Add(434);
+                funique.ShowFirstUnique();
+                funique.Add(1000);
+                funique.Add(585);
+                funique.Add(355);
+                funique.Add(124);
+                funique.Add(487);
+                funique.Add(181);
+                funique.ShowFirstUnique();
+                funique.Add(700);
+                funique.Add(58);
+                funique.Add(555);
+                funique.ShowFirstUnique();
+                funique.Add(470);
+                funique.ShowFirstUnique();
+                funique.Add(837);
+                funique.ShowFirstUnique();
+                funique.Add(615);
+                funique.Add(636);
+                funique.Add(467);
+                funique.Add(632);
+                funique.Add(81);
+                funique.Add(699);
+                funique.Add(86);
+                funique.Add(662);
+                funique.Add(102);
+                funique.Add(209);
+                funique.ShowFirstUnique();
+                funique.Add(399);
+                funique.Add(436);
+                funique.Add(856);
+                funique.Add(357);
+                funique.Add(836);
+                funique.Add(351);
+                funique.Add(31);
+                funique.Add(943);
+                funique.Add(686);
+                funique.Add(271);
+                funique.Add(205);
+                funique.Add(51);
+                funique.Add(964);
+                funique.ShowFirstUnique();
+                funique.Add(89);
+                funique.Add(850);
+                funique.ShowFirstUnique();
+                funique.Add(158);
+                funique.ShowFirstUnique();
+                funique.Add(595);
+                funique.Add(680);
+                funique.Add(39);
+                funique.Add(448);
+                funique.Add(975);
+                funique.ShowFirstUnique();
+                funique.Add(135);
+                funique.Add(270);
+                funique.Add(449);
+                funique.Add(806);
+                funique.Add(377);
+                funique.Add(102);
+                funique.Add(983);
+                funique.ShowFirstUnique();
+                funique.Add(152);
+                funique.Add(63);
+                funique.Add(368);
+                funique.Add(45);
+                funique.Add(441);
+                funique.Add(950);
+                funique.Add(494);
+                funique.Add(646);
+                funique.Add(327);
+                funique.Add(17);
+                funique.Add(604);
+                funique.Add(298);
+                funique.Add(649);
+                funique.Add(491);
+                funique.Add(255);
+                funique.Add(766);
+                funique.Add(354);
+                funique.Add(993);
+                funique.Add(844);
+                funique.Add(159);
+                funique.ShowFirstUnique();
+                funique.Add(874);
+                funique.Add(711);
+                funique.Add(634);
+                funique.Add(727);
+                funique.Add(845);
+                funique.Add(34);
+                funique.Add(193);
+                funique.Add(417);
+                funique.Add(878);
+                funique.Add(577);
+                funique.Add(680);
+                funique.Add(626);
+                funique.Add(365);
+                funique.Add(399);
+                funique.Add(50);
+                funique.Add(560);
+                funique.Add(569);
+                funique.Add(528);
+                funique.Add(225);
+                funique.Add(164);
+                funique.Add(979);
+                funique.ShowFirstUnique();
+                funique.Add(673);
+                funique.ShowFirstUnique();
+                funique.Add(12);
+                funique.Add(957);
+                funique.Add(854);
+                funique.Add(975);
+                funique.Add(995);
+                funique.Add(76);
+                funique.Add(618);
+                funique.Add(138);
+                funique.Add(131);
+                funique.ShowFirstUnique();
+                funique.Add(308);
+                funique.Add(618);
+                funique.Add(464);
+                funique.Add(145);
+                funique.Add(20);
+                funique.Add(816);
+                funique.Add(491);
+                funique.Add(70);
+                funique.Add(553);
+                funique.Add(559);
+                funique.Add(346);
+                funique.Add(124);
+                funique.ShowFirstUnique();
+                funique.Add(858);
+                funique.Add(541);
+                funique.Add(350);
+                funique.Add(379);
+                funique.Add(805);
+                funique.Add(986);
+                funique.Add(620);
+                funique.Add(846);
+                funique.Add(724);
+                funique.Add(197);
+                funique.Add(958);
+                funique.Add(659);
+                funique.Add(47);
+                funique.ShowFirstUnique();
+                funique.Add(284);
+                funique.Add(714);
+                funique.ShowFirstUnique();
+                funique.Add(573);
+                funique.Add(890);
+                funique.Add(431);
+                funique.Add(931);
+                funique.Add(124);
+                funique.Add(284);
+                funique.Add(42);
+                funique.Add(123);
+                funique.Add(875);
+                funique.Add(738);
+                funique.ShowFirstUnique();
+                funique.Add(194);
+                funique.Add(539);
+                funique.Add(365);
+                funique.ShowFirstUnique();
+                funique.Add(294);
+                funique.Add(805);
+                funique.Add(389);
+                funique.Add(584);
+                funique.Add(995);
+                funique.Add(284);
+                funique.Add(147);
+                funique.Add(897);
+                funique.Add(620);
+                funique.Add(814);
+                funique.Add(199);
+                funique.Add(300);
+                funique.Add(766);
+                funique.Add(343);
+                funique.Add(943);
+                funique.Add(677);
+                funique.Add(40);
+                funique.Add(615);
+                funique.ShowFirstUnique();
+                funique.Add(338);
+                funique.Add(760);
+                funique.Add(405);
+                funique.ShowFirstUnique();
+                funique.Add(341);
+                funique.Add(577);
+                funique.Add(417);
+                funique.Add(536);
+                funique.Add(944);
+                funique.Add(716);
+                funique.Add(449);
+                funique.Add(27);
+                funique.ShowFirstUnique();
+                funique.Add(76);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(750);
+                funique.Add(99);
+                funique.Add(153);
+                funique.Add(763);
+                funique.Add(482);
+                funique.ShowFirstUnique();
+                funique.Add(66);
+                funique.Add(291);
+                funique.Add(292);
+                funique.Add(458);
+                funique.ShowFirstUnique();
+                funique.Add(573);
+                funique.Add(66);
+                funique.Add(259);
+                funique.Add(119);
+                funique.Add(342);
+                funique.Add(800);
+                funique.Add(688);
+                funique.Add(883);
+                funique.Add(97);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(202);
+                funique.Add(349);
+                funique.Add(686);
+                funique.Add(478);
+                funique.Add(419);
+                funique.Add(953);
+                funique.Add(844);
+                funique.Add(253);
+                funique.Add(840);
+                funique.Add(485);
+                funique.Add(72);
+                funique.Add(278);
+                funique.Add(214);
+                funique.Add(650);
+                funique.Add(669);
+                funique.Add(163);
+                funique.Add(263);
+                funique.Add(581);
+                funique.Add(663);
+                funique.ShowFirstUnique();
+                funique.Add(258);
+                funique.Add(661);
+                funique.Add(925);
+                funique.Add(435);
+                funique.Add(584);
+                funique.Add(628);
+                funique.Add(307);
+                funique.ShowFirstUnique();
+                funique.Add(730);
+                funique.Add(932);
+                funique.ShowFirstUnique();
+                funique.Add(170);
+                funique.Add(593);
+                funique.Add(349);
+                funique.Add(366);
+                funique.ShowFirstUnique();
+                funique.Add(519);
+                funique.Add(815);
+                funique.ShowFirstUnique();
+                funique.Add(830);
+                funique.Add(82);
+                funique.Add(593);
+                funique.Add(418);
+                funique.Add(797);
+                funique.Add(289);
+                funique.Add(159);
+                funique.ShowFirstUnique();
+                funique.Add(846);
+                funique.Add(961);
+                funique.Add(850);
+                funique.Add(583);
+                funique.Add(971);
+                funique.Add(92);
+                funique.Add(971);
+                funique.Add(839);
+                funique.Add(501);
+                funique.Add(39);
+                funique.ShowFirstUnique();
+                funique.Add(412);
+                funique.Add(785);
+                funique.ShowFirstUnique();
+                funique.Add(739);
+                funique.Add(639);
+                funique.Add(472);
+                funique.Add(939);
+                funique.Add(157);
+                funique.Add(407);
+                funique.Add(249);
+                funique.Add(789);
+                funique.Add(211);
+                funique.Add(144);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(145);
+                funique.Add(601);
+                funique.Add(755);
+                funique.Add(788);
+                funique.Add(902);
+                funique.Add(370);
+                funique.Add(609);
+                funique.Add(638);
+                funique.Add(436);
+                funique.ShowFirstUnique();
+                funique.Add(752);
+                funique.Add(690);
+                funique.Add(973);
+                funique.Add(160);
+                funique.Add(345);
+                funique.Add(884);
+                funique.Add(561);
+                funique.Add(851);
+                funique.Add(845);
+                funique.Add(397);
+                funique.Add(396);
+                funique.Add(129);
+                funique.Add(739);
+                funique.Add(973);
+                funique.Add(450);
+                funique.Add(160);
+                funique.Add(473);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(447);
+                funique.Add(328);
+                funique.Add(452);
+                funique.Add(564);
+                funique.Add(6);
+                funique.Add(707);
+                funique.Add(965);
+                funique.Add(545);
+                funique.Add(928);
+                funique.Add(17);
+                funique.Add(901);
+                funique.Add(858);
+                funique.Add(416);
+                funique.Add(410);
+                funique.Add(842);
+                funique.Add(284);
+                funique.Add(566);
+                funique.Add(569);
+                funique.Add(960);
+                funique.Add(719);
+                funique.Add(443);
+                funique.Add(747);
+                funique.Add(93);
+                funique.Add(47);
+                funique.Add(923);
+                funique.ShowFirstUnique();
+                funique.Add(542);
+                funique.ShowFirstUnique();
+                funique.Add(392);
+                funique.Add(753);
+                funique.ShowFirstUnique();
+                funique.Add(126);
+                funique.Add(659);
+                funique.Add(344);
+                funique.Add(578);
+                funique.Add(792);
+                funique.ShowFirstUnique();
+                funique.Add(524);
+                funique.Add(182);
+                funique.Add(899);
+                funique.Add(795);
+                funique.Add(728);
+                funique.Add(424);
+                funique.Add(268);
+                funique.Add(841);
+                funique.Add(459);
+                funique.Add(932);
+                funique.Add(674);
+                funique.Add(857);
+                funique.Add(986);
+                funique.Add(228);
+                funique.Add(700);
+                funique.Add(97);
+                funique.Add(924);
+                funique.Add(460);
+                funique.Add(245);
+                funique.Add(220);
+                funique.Add(214);
+                funique.Add(941);
+                funique.Add(712);
+                funique.Add(801);
+                funique.Add(310);
+                funique.Add(724);
+                funique.Add(452);
+                funique.Add(709);
+                funique.Add(958);
+                funique.Add(410);
+                funique.Add(562);
+                funique.Add(152);
+                funique.Add(873);
+                funique.Add(477);
+                funique.Add(513);
+                funique.Add(378);
+                funique.Add(142);
+                funique.Add(549);
+                funique.ShowFirstUnique();
+                funique.Add(83);
+                funique.Add(903);
+                funique.Add(128);
+                funique.Add(545);
+                funique.Add(501);
+                funique.Add(145);
+                funique.Add(923);
+                funique.Add(552);
+                funique.Add(420);
+                funique.Add(970);
+                funique.Add(791);
+                funique.Add(433);
+                funique.Add(740);
+                funique.ShowFirstUnique();
+                funique.Add(917);
+                funique.Add(463);
+                funique.Add(112);
+                funique.Add(609);
+                funique.Add(76);
+                funique.Add(173);
+                funique.ShowFirstUnique();
+                funique.Add(688);
+                funique.Add(75);
+                funique.ShowFirstUnique();
+                funique.Add(102);
+                funique.Add(617);
+                funique.ShowFirstUnique();
+                funique.Add(204);
+                funique.Add(321);
+                funique.Add(115);
+                funique.Add(453);
+                funique.Add(66);
+                funique.ShowFirstUnique();
+                funique.Add(984);
+                funique.Add(331);
+                funique.Add(871);
+                funique.Add(270);
+                funique.Add(780);
+                funique.Add(387);
+                funique.Add(360);
+                funique.Add(109);
+                funique.Add(684);
+                funique.Add(326);
+                funique.Add(528);
+                funique.Add(429);
+                funique.ShowFirstUnique();
+                funique.Add(55);
+                funique.Add(519);
+                funique.Add(148);
+                funique.Add(588);
+                funique.Add(337);
+                funique.ShowFirstUnique();
+                funique.Add(591);
+                funique.Add(409);
+                funique.Add(369);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(440);
+                funique.Add(551);
+                funique.Add(423);
+                funique.Add(729);
+                funique.Add(483);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(637);
+                funique.Add(732);
+                funique.Add(557);
+                funique.Add(482);
+                funique.Add(936);
+                funique.Add(210);
+                funique.Add(328);
+                funique.ShowFirstUnique();
+                funique.ShowFirstUnique();
+                funique.Add(23);
+                funique.Add(156);
+                funique.ShowFirstUnique();
+                funique.Add(783);
+                funique.Add(618);
+                funique.Add(210);
+                funique.Add(744);
+                funique.Add(292);
+                funique.Add(994);
+                funique.Add(155);
+                funique.ShowFirstUnique();
+                funique.Add(729);
+                funique.Add(72);
+                funique.Add(334);
+                funique.Add(174);
+                funique.Add(395);
+                funique.Add(93);
+                funique.Add(268);
+                funique.Add(853);
+                funique.Add(729);
+                funique.ShowFirstUnique();
+                funique.Add(929);
+                funique.Add(439);
+                funique.Add(619);
+                funique.Add(832);
+                funique.Add(478);
+                funique.Add(638);
+                funique.Add(654);
+                funique.Add(162);
+                funique.Add(650);
+                funique.Add(747);
+                funique.Add(838);
+                funique.Add(28);
+                funique.Add(747);
+                funique.Add(332);
+                funique.Add(506);
+                funique.Add(215);
+                funique.Add(893);
+                funique.Add(820);
+                funique.Add(621);
+                funique.ShowFirstUnique();
+                funique.Add(973);
+                funique.Add(330);
+                funique.Add(647);
+                funique.Add(774);
+                funique.Add(75);
+                funique.Add(314);
+                funique.Add(778);
+                funique.Add(503);
+                funique.ShowFirstUnique();
+                funique.Add(885);
+                funique.Add(454);
+                funique.Add(80);
+                funique.Add(84);
+                funique.Add(487);
+                funique.Add(194);
+                funique.Add(551);
+                funique.Add(489);
+                funique.Add(644);
+                funique.Add(615);
+                funique.Add(657);
+                funique.Add(356);
+                funique.Add(636);
+                funique.Add(741);
+                funique.Add(714);
+                funique.ShowFirstUnique();
+                funique.Add(83);
+                funique.Add(73);
+                funique.ShowFirstUnique();
+                funique.Add(34);
+                funique.ShowFirstUnique();
+                funique.Add(675);
+                funique.Add(570);
+                funique.Add(756);
+                funique.Add(375);
+                funique.Add(81);
+                funique.Add(790);
+                funique.Add(323);
+                funique.Add(456);
+                funique.Add(594);
+                funique.Add(590);
+                funique.Add(80);
+                funique.Add(498);
+                funique.Add(651);
+                funique.Add(546);
+                funique.Add(450);
+                funique.ShowFirstUnique();
+                funique.Add(722);
+                funique.Add(946);
+                funique.Add(332);
+                funique.Add(154);
+                funique.Add(136);
+                funique.Add(353);
+                funique.Add(22);
+                funique.Add(122);
+                funique.Add(899);
+                funique.Add(672);
+                funique.Add(667);
+                funique.Add(986);
+                funique.Add(357);
+                funique.Add(622);
+                funique.Add(873);
+                funique.Add(866);
+                funique.Add(820);
+                funique.Add(627);
+                funique.Add(820);
+                funique.ShowFirstUnique();
+                funique.Add(623);
+                funique.Add(698);
+                funique.Add(685);
+                funique.Add(167);
+                funique.Add(159);
+                funique.Add(345);
+                funique.Add(425);
+                funique.ShowFirstUnique();
+                funique.Add(337);
+                funique.Add(699);
+                funique.Add(787);
+                funique.Add(668);
+                funique.Add(77);
+                funique.Add(678);
+                funique.Add(234);
+                funique.ShowFirstUnique();
+            }
+
+        }
+        
     }
 }
  
