@@ -42,6 +42,11 @@
             this.btn_Flood_Fill = new System.Windows.Forms.Button();
             this.btn_Check_If_It_Is_a_Straight_Line = new System.Windows.Forms.Button();
             this.btn_Find_the_Town_Judge = new System.Windows.Forms.Button();
+            this.btn_Count_Square_Submatrices_with_All_Ones = new System.Windows.Forms.Button();
+            this.btn_Interval_List_Intersections = new System.Windows.Forms.Button();
+            this.btn_Possible_Bipartition = new System.Windows.Forms.Button();
+            this.btn_Course_Schedule = new System.Windows.Forms.Button();
+            this.btn_K_Closest_Points_to_Origin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -194,11 +199,66 @@
             this.btn_Find_the_Town_Judge.UseVisualStyleBackColor = true;
             this.btn_Find_the_Town_Judge.Click += new System.EventHandler(this.btn_Find_the_Town_Judge_Click);
             // 
+            // btn_Count_Square_Submatrices_with_All_Ones
+            // 
+            this.btn_Count_Square_Submatrices_with_All_Ones.Location = new System.Drawing.Point(2, 576);
+            this.btn_Count_Square_Submatrices_with_All_Ones.Name = "btn_Count_Square_Submatrices_with_All_Ones";
+            this.btn_Count_Square_Submatrices_with_All_Ones.Size = new System.Drawing.Size(288, 33);
+            this.btn_Count_Square_Submatrices_with_All_Ones.TabIndex = 73;
+            this.btn_Count_Square_Submatrices_with_All_Ones.Text = "Count Square Submatrices with All Ones";
+            this.btn_Count_Square_Submatrices_with_All_Ones.UseVisualStyleBackColor = true;
+            this.btn_Count_Square_Submatrices_with_All_Ones.Click += new System.EventHandler(this.btn_Count_Square_Submatrices_with_All_Ones_Click);
+            // 
+            // btn_Interval_List_Intersections
+            // 
+            this.btn_Interval_List_Intersections.Location = new System.Drawing.Point(2, 615);
+            this.btn_Interval_List_Intersections.Name = "btn_Interval_List_Intersections";
+            this.btn_Interval_List_Intersections.Size = new System.Drawing.Size(288, 35);
+            this.btn_Interval_List_Intersections.TabIndex = 74;
+            this.btn_Interval_List_Intersections.Text = "Interval List Intersections";
+            this.btn_Interval_List_Intersections.UseVisualStyleBackColor = true;
+            this.btn_Interval_List_Intersections.Click += new System.EventHandler(this.btn_Interval_List_Intersections_Click);
+            // 
+            // btn_Possible_Bipartition
+            // 
+            this.btn_Possible_Bipartition.Location = new System.Drawing.Point(2, 656);
+            this.btn_Possible_Bipartition.Name = "btn_Possible_Bipartition";
+            this.btn_Possible_Bipartition.Size = new System.Drawing.Size(288, 34);
+            this.btn_Possible_Bipartition.TabIndex = 75;
+            this.btn_Possible_Bipartition.Text = "Possible Bipartition";
+            this.btn_Possible_Bipartition.UseVisualStyleBackColor = true;
+            this.btn_Possible_Bipartition.Click += new System.EventHandler(this.btn_Possible_Bipartition_Click);
+            // 
+            // btn_Course_Schedule
+            // 
+            this.btn_Course_Schedule.Location = new System.Drawing.Point(2, 696);
+            this.btn_Course_Schedule.Name = "btn_Course_Schedule";
+            this.btn_Course_Schedule.Size = new System.Drawing.Size(288, 43);
+            this.btn_Course_Schedule.TabIndex = 76;
+            this.btn_Course_Schedule.Text = "Course Schedule";
+            this.btn_Course_Schedule.UseVisualStyleBackColor = true;
+            this.btn_Course_Schedule.Click += new System.EventHandler(this.btn_Course_Schedule_Click);
+            // 
+            // btn_K_Closest_Points_to_Origin
+            // 
+            this.btn_K_Closest_Points_to_Origin.Location = new System.Drawing.Point(2, 743);
+            this.btn_K_Closest_Points_to_Origin.Name = "btn_K_Closest_Points_to_Origin";
+            this.btn_K_Closest_Points_to_Origin.Size = new System.Drawing.Size(288, 42);
+            this.btn_K_Closest_Points_to_Origin.TabIndex = 77;
+            this.btn_K_Closest_Points_to_Origin.Text = " K Closest Points to Origin";
+            this.btn_K_Closest_Points_to_Origin.UseVisualStyleBackColor = true;
+            this.btn_K_Closest_Points_to_Origin.Click += new System.EventHandler(this.btn_K_Closest_Points_to_Origin_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 815);
+            this.Controls.Add(this.btn_K_Closest_Points_to_Origin);
+            this.Controls.Add(this.btn_Course_Schedule);
+            this.Controls.Add(this.btn_Possible_Bipartition);
+            this.Controls.Add(this.btn_Interval_List_Intersections);
+            this.Controls.Add(this.btn_Count_Square_Submatrices_with_All_Ones);
             this.Controls.Add(this.btn_Find_the_Town_Judge);
             this.Controls.Add(this.btn_Check_If_It_Is_a_Straight_Line);
             this.Controls.Add(this.btn_Flood_Fill);
@@ -237,5 +297,10 @@
         private System.Windows.Forms.Button btn_Flood_Fill;
         private System.Windows.Forms.Button btn_Check_If_It_Is_a_Straight_Line;
         private System.Windows.Forms.Button btn_Find_the_Town_Judge;
+        private System.Windows.Forms.Button btn_Count_Square_Submatrices_with_All_Ones;
+        private System.Windows.Forms.Button btn_Interval_List_Intersections;
+        private System.Windows.Forms.Button btn_Possible_Bipartition;
+        private System.Windows.Forms.Button btn_Course_Schedule;
+        private System.Windows.Forms.Button btn_K_Closest_Points_to_Origin;
     }
 }

@@ -528,6 +528,9 @@ namespace WindowsFormsApplication3
             }
         }
 
+        private void btn_Course_Schedule_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

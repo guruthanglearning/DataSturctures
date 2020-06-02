@@ -89,6 +89,8 @@
             this.btn_LongestCommonSubsequence = new System.Windows.Forms.Button();
             this.btn_Find_All_Anagrams_in_a_String = new System.Windows.Forms.Button();
             this.btn_Permutation_in_String = new System.Windows.Forms.Button();
+            this.btn_Sort_Characters_By_Frequency = new System.Windows.Forms.Button();
+            this.btn_Edit_Distance = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -749,11 +751,33 @@
             this.btn_Permutation_in_String.UseVisualStyleBackColor = true;
             this.btn_Permutation_in_String.Click += new System.EventHandler(this.btn_Permutation_in_String_Click);
             // 
+            // btn_Sort_Characters_By_Frequency
+            // 
+            this.btn_Sort_Characters_By_Frequency.Location = new System.Drawing.Point(1191, 339);
+            this.btn_Sort_Characters_By_Frequency.Name = "btn_Sort_Characters_By_Frequency";
+            this.btn_Sort_Characters_By_Frequency.Size = new System.Drawing.Size(281, 39);
+            this.btn_Sort_Characters_By_Frequency.TabIndex = 61;
+            this.btn_Sort_Characters_By_Frequency.Text = "Sort Characters By Frequency";
+            this.btn_Sort_Characters_By_Frequency.UseVisualStyleBackColor = true;
+            this.btn_Sort_Characters_By_Frequency.Click += new System.EventHandler(this.btn_Sort_Characters_By_Frequency_Click);
+            // 
+            // btn_Edit_Distance
+            // 
+            this.btn_Edit_Distance.Location = new System.Drawing.Point(1191, 384);
+            this.btn_Edit_Distance.Name = "btn_Edit_Distance";
+            this.btn_Edit_Distance.Size = new System.Drawing.Size(283, 26);
+            this.btn_Edit_Distance.TabIndex = 62;
+            this.btn_Edit_Distance.Text = "Edit Distance";
+            this.btn_Edit_Distance.UseVisualStyleBackColor = true;
+            this.btn_Edit_Distance.Click += new System.EventHandler(this.btn_Edit_Distance_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1700, 680);
+            this.Controls.Add(this.btn_Edit_Distance);
+            this.Controls.Add(this.btn_Sort_Characters_By_Frequency);
             this.Controls.Add(this.btn_Permutation_in_String);
             this.Controls.Add(this.btn_Find_All_Anagrams_in_a_String);
             this.Controls.Add(this.btn_LongestCommonSubsequence);
@@ -887,5 +911,7 @@
         private System.Windows.Forms.Button btn_LongestCommonSubsequence;
         private System.Windows.Forms.Button btn_Find_All_Anagrams_in_a_String;
         private System.Windows.Forms.Button btn_Permutation_in_String;
+        private System.Windows.Forms.Button btn_Sort_Characters_By_Frequency;
+        private System.Windows.Forms.Button btn_Edit_Distance;
     }
 }

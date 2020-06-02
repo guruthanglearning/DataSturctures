@@ -97,6 +97,7 @@
             this.btn_Counting_Elements = new System.Windows.Forms.Button();
             this.btn_Jump_Game = new System.Windows.Forms.Button();
             this.btn_First_Unique_Number = new System.Windows.Forms.Button();
+            this.btn_Uncrossed_Lines = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -845,7 +846,7 @@
             // 
             // btn_First_Unique_Number
             // 
-            this.btn_First_Unique_Number.Location = new System.Drawing.Point(1207, 195);
+            this.btn_First_Unique_Number.Location = new System.Drawing.Point(1207, 193);
             this.btn_First_Unique_Number.Name = "btn_First_Unique_Number";
             this.btn_First_Unique_Number.Size = new System.Drawing.Size(234, 31);
             this.btn_First_Unique_Number.TabIndex = 69;
@@ -853,11 +854,22 @@
             this.btn_First_Unique_Number.UseVisualStyleBackColor = true;
             this.btn_First_Unique_Number.Click += new System.EventHandler(this.btn_First_Unique_Number_Click);
             // 
+            // btn_Uncrossed_Lines
+            // 
+            this.btn_Uncrossed_Lines.Location = new System.Drawing.Point(1209, 227);
+            this.btn_Uncrossed_Lines.Name = "btn_Uncrossed_Lines";
+            this.btn_Uncrossed_Lines.Size = new System.Drawing.Size(234, 30);
+            this.btn_Uncrossed_Lines.TabIndex = 70;
+            this.btn_Uncrossed_Lines.Text = "Uncrossed Lines";
+            this.btn_Uncrossed_Lines.UseVisualStyleBackColor = true;
+            this.btn_Uncrossed_Lines.Click += new System.EventHandler(this.btn_Uncrossed_Lines_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1446, 797);
+            this.Controls.Add(this.btn_Uncrossed_Lines);
             this.Controls.Add(this.btn_First_Unique_Number);
             this.Controls.Add(this.btn_Jump_Game);
             this.Controls.Add(this.btn_Counting_Elements);
@@ -1005,5 +1017,6 @@
         private System.Windows.Forms.Button btn_Counting_Elements;
         private System.Windows.Forms.Button btn_Jump_Game;
         private System.Windows.Forms.Button btn_First_Unique_Number;
+        private System.Windows.Forms.Button btn_Uncrossed_Lines;
     }
 }

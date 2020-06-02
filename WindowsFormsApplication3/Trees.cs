@@ -234,6 +234,7 @@ namespace WindowsFormsApplication3
             public int data;
             public Node right;
             public Node left;
+            public int childCount;
         }
 
         public class NodeAndInput
@@ -1409,6 +1410,8 @@ namespace WindowsFormsApplication3
             List<KthSmallestInBST> inputs = new List<KthSmallestInBST>();
             inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 3, 1, 4, 2 }), K = 1 });
             inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 3 });
+            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 6 });
+            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 5 });
             foreach (var input in inputs)
             {
                 result.AppendLine($"{input.K}  smallest value for the given BST tree {this.TraverseBinaryTree(input.Tree)} is {this.KthSmallest(input.Tree, input.K)}");
@@ -1430,30 +1433,26 @@ namespace WindowsFormsApplication3
 
             int data = -1;
 
-            Stack<Node> s = new Stack<Node>();
+
             Node current = root;
 
-            while (s.Count > 0 || current != null)
+            while (current != null)
             {
-
-                while (current != null)
+                data = current.data;
+                if (k < current.childCount)
                 {
-                    s.Push(current);
                     current = current.left;
                 }
-
-                current = s.Pop();
-                k--;
-                if (k == 0)
+                else if (k > current.childCount)
                 {
-                    data = current.data;
+                    current = current.right;
+                }
+                else
+                {                    
                     break;
                 }
-                current = current.right;
             }
-
             return data;
-
         }
 
         private Node CreateBST(int[] input)
@@ -1464,7 +1463,7 @@ namespace WindowsFormsApplication3
             {
                 if (tree == null)
                 {
-                    tree = new Node() { data = i };
+                    tree = new Node() { data = i,childCount = 0 };
                 }
                 else
                     this.BST(ref tree, i);
@@ -1479,15 +1478,19 @@ namespace WindowsFormsApplication3
 
             if (root == null)
             {
-                root = new Node() { data = data };
-            }
-            else if (root.data > data)
-            {
-                BST(ref root.left, data);
+                root = new Node() { data = data, childCount = 0 };
             }
             else
             {
-                BST(ref root.right, data);
+                root.childCount++;
+                if (root.data > data)
+                {
+                    BST(ref root.left, data);
+                }
+                else
+                {                    
+                    BST(ref root.right, data);
+                }
             }
 
             return root;

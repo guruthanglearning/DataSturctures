@@ -42,6 +42,7 @@
             this.btn_Bitwise_AND_of_Numbers_Range = new System.Windows.Forms.Button();
             this.btn_Number_Complement = new System.Windows.Forms.Button();
             this.btn_Remove_K_Digits = new System.Windows.Forms.Button();
+            this.btn_Counting_Bits = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -193,11 +194,22 @@
             this.btn_Remove_K_Digits.UseVisualStyleBackColor = true;
             this.btn_Remove_K_Digits.Click += new System.EventHandler(this.btn_Remove_K_Digits_Click);
             // 
+            // btn_Counting_Bits
+            // 
+            this.btn_Counting_Bits.Location = new System.Drawing.Point(11, 565);
+            this.btn_Counting_Bits.Name = "btn_Counting_Bits";
+            this.btn_Counting_Bits.Size = new System.Drawing.Size(356, 30);
+            this.btn_Counting_Bits.TabIndex = 14;
+            this.btn_Counting_Bits.Text = "Counting Bits";
+            this.btn_Counting_Bits.UseVisualStyleBackColor = true;
+            this.btn_Counting_Bits.Click += new System.EventHandler(this.btn_Counting_Bits_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 698);
+            this.Controls.Add(this.btn_Counting_Bits);
             this.Controls.Add(this.btn_Remove_K_Digits);
             this.Controls.Add(this.btn_Number_Complement);
             this.Controls.Add(this.btn_Bitwise_AND_of_Numbers_Range);
@@ -235,5 +247,6 @@
         private System.Windows.Forms.Button btn_Bitwise_AND_of_Numbers_Range;
         private System.Windows.Forms.Button btn_Number_Complement;
         private System.Windows.Forms.Button btn_Remove_K_Digits;
+        private System.Windows.Forms.Button btn_Counting_Bits;
     }
 }

@@ -3787,7 +3787,7 @@ namespace WindowsFormsApplication3
                 Input:s1= "ab" s2 = "eidboaoo"
                 Output: False
     
-                Time Complexity     : O(N)
+                Time Complexity     : O(alphabetSie* Length of S2 which is N)
                 Space Complexity    : O(1)
 
             */
@@ -3861,6 +3861,245 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Sort_Characters_By_Frequency_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a string, sort it in decreasing order based on the frequency of characters.
+
+                Example 1:
+
+                Input:
+                "tree"
+
+                Output:
+                "eert"
+
+                Explanation:
+                'e' appears twice while 'r' and 't' both appear once.
+                So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.
+                Example 2:
+
+                Input:
+                "cccaaa"
+
+                Output:
+                "cccaaa"
+
+                Explanation:
+                Both 'c' and 'a' appear three times, so "aaaccc" is also a valid answer.
+                Note that "cacaca" is incorrect, as the same characters must be together.
+                Example 3:
+
+                Input:
+                "Aabb"
+
+                Output:
+                "bbAa"
+
+                Explanation:
+                "bbaA" is also a valid answer, but "Aabb" is incorrect.
+                 Note that 'A' and 'a' are treated as two different characters.
+    
+                84ms:
+                Time Complexity : O(N)
+                Space Complexity: O(1)
+
+                148ms:
+                Time Complexity : O(N)
+                Space Complexity: O(N)
+
+
+            */
+
+
+
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("tree");
+            inputs.Add("cccaaa");
+            inputs.Add("Aabb");
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Frequency sort 148 ms is {this.FrequencySort_148ms(input)} for the given strings {input}");
+                result.AppendLine($"Frequency sort 84 ms is {this.FrequencySort_84ms(input)} for the given strings {input}");
+                
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public string FrequencySort_84ms(string s)
+        {
+            
+            var ansi = new int[256];
+            foreach (var c in s)
+            {
+                ansi[c]++;
+            }
+            var strs = new StringBuilder[s.Length + 1];
+            for (var i = 0; i < ansi.Length; i++)
+            {
+                if (strs[ansi[i]] == null)
+                {
+                    strs[ansi[i]] = new StringBuilder();
+                }
+                strs[ansi[i]].Append((char)i, ansi[i]);
+
+            }
+            var sb = new StringBuilder();
+            for (int i = strs.Length - 1; i >= 0; --i)
+            {
+                if (strs[i] == null) continue;
+                sb.Append(strs[i]);
+            }
+            return sb.ToString();
+        }
+
+        public string FrequencySort_148ms(string s)
+        {
+
+            if (string.IsNullOrEmpty(s))
+                return s;
+
+            Dictionary<char, int> freq = new Dictionary<char, int>();
+            Dictionary<int, HashSet<char>> freqData = new Dictionary<int, HashSet<char>>();
+            int maxCounter = 0;
+            int counter = 0;
+            HashSet<char> temp;
+
+            foreach (char c in s)
+            {
+                counter = 0;
+                temp = null;
+                if (!freq.TryGetValue(c, out counter))
+                {
+                    counter = 1;
+                    freq[c] = counter;
+                    if (!freqData.TryGetValue(counter, out temp))
+                        freqData[counter] = new HashSet<char>() { c };
+                    else
+                    {
+                        temp.Add(c);
+                    }
+                }
+                else
+                {
+                    freq[c]++;
+                    freqData[counter].Remove(c);
+                    counter++;
+                    freqData.TryGetValue(counter, out temp);
+                    if (temp == null)
+                    {
+                        temp = new HashSet<char>() { c };
+                        freqData[counter] = temp;
+                    }
+                    else
+                    {
+                        temp.Add(c);
+                    }
+                }
+
+                if (maxCounter < counter)
+                    maxCounter = counter;
+            }
+
+            return this.GetSortedString(freqData, maxCounter);
+        }
+
+        private string GetSortedString(Dictionary<int, HashSet<char>> freqData, int counter)
+        {
+            StringBuilder result = new StringBuilder();
+
+            HashSet<char> dict;
+
+            while (counter > 0)
+            {
+                if (freqData.TryGetValue(counter, out dict))
+                {
+                    foreach (char c in dict)
+                    {
+                        result.Append(new String(c, counter));
+                    }
+                    counter--;
+                }
+            }
+
+
+            return result.ToString();
+        }
+
+        private void btn_Edit_Distance_Click(object sender, EventArgs e)
+        {
+            /*
+            
+            Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.
+
+            You have the following 3 operations permitted on a word:
+
+            Insert a character
+            Delete a character
+            Replace a character
+            Example 1:
+
+            Input: word1 = "horse", word2 = "ros"
+            Output: 3
+            Explanation: 
+            horse -> rorse (replace 'h' with 'r')
+            rorse -> rose (remove 'r')
+            rose -> ros (remove 'e')
+            Example 2:
+
+            Input: word1 = "intention", word2 = "execution"
+            Output: 5
+            Explanation: 
+            intention -> inention (remove 't')
+            inention -> enention (replace 'i' with 'e')
+            enention -> exention (replace 'n' with 'x')
+            exention -> exection (replace 'n' with 'c')
+            exection -> execution (insert 'u')
+              
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
+            inputs.Add(new AddBinaryInputs() { inputA = "horse", inputB = "ros" });
+            inputs.Add(new AddBinaryInputs() { inputA = "intention", inputB = "execution" });
+
+            foreach(var input in inputs)
+            {
+                result.AppendLine($"Edit Disance is {this.MinDistance(input.inputA, input.inputB)} for the string1 : {input.inputA} and string2: {input.inputB}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        
+
+        public int MinDistance(string word1, string word2)
+        {
+
+            if (word1 == null && word2 == null)
+                return 0;
+
+
+            int rl = word1.Length + 1;
+            int cl = word2.Length;
+            int[][] dict = new int[rl][];
+
+            for (int r = 0; r < rl; r++)
+            {
+
+            }
+
+
+
+        }
 
     }
 }
