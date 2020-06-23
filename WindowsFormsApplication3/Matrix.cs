@@ -1,10 +1,12 @@
 ﻿using ExtensionMethodsDemo1;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1554,6 +1556,22 @@ namespace WindowsFormsApplication3
             return result.ToString();
         }
 
+        public string PrintJaggedArrayForJudegesChar(char[][] input)
+        {
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                result.AppendLine("");
+                for (int j = 0; j < input[0].Length; j++)
+                    result.Append($"{input[i][j]}  ");
+            }
+
+
+            return result.ToString();
+        }
+
+
         private void btn_Count_Square_Submatrices_with_All_Ones_Click(object sender, EventArgs e)
         {
          
@@ -1787,7 +1805,7 @@ namespace WindowsFormsApplication3
              */
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
-            
+            /*
             inputs.Add(new Common()
             {
                 Input = new int[][]{
@@ -1989,7 +2007,7 @@ namespace WindowsFormsApplication3
                 new int[]{3,46}
             },N = 50});
 
-            /*
+            
             inputs.Add(new Common()
             {
                 Input = new int[][]
@@ -2036,6 +2054,21 @@ namespace WindowsFormsApplication3
 
             */
 
+            inputs.Add(new Common()
+            {
+                Input = new int[][]
+                                      {
+                                                            new int[] { 1, 2 },
+                                                            new int[] { 3, 4 },
+                                                            new int[] { 5, 6 },
+                                                            new int[] { 6, 7 },
+                                                            new int[] { 8, 9 },
+                                                            new int[] { 7, 8 },
+                                      },
+                N = 10 //10 [[1,2],[3,4],[5,6],[6,7],[8,9],[7,8]]
+            });
+
+
             foreach (var input in inputs)
             {
                 result.AppendLine($"There is {(this.PossibleBipartition(input.N, input.Input) ? "": "no") } possible partition for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
@@ -2073,17 +2106,15 @@ namespace WindowsFormsApplication3
             { 
                 if (color[i] == -1)
                 {
-                    if (!this.IsPartitionExists(list, N, i, color))
+                    if (!this.IsPartitionExists(list, i, color))
                         return false; 
                 }
             }
 
-          
-
             return true;
         }
 
-        private bool IsPartitionExists(List<int>[] list, int N, int start, int[] color)
+        private bool IsPartitionExists(List<int>[] list,  int start, int[] color)
         {
             bool result = true;
 
@@ -2314,78 +2345,76 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
 
-            //inputs.Add(new Common()
-            //{
-            //    Input = new int[][]
-            //                          {
-            //                                                new int[] { 1, 3 },
-            //                                                new int[] { -2, 2 }
-            //                          },
-            //    N = 2
-            //});
+            inputs.Add(new Common()
+            {
+                Input = new int[][]
+                                      {
+                                                            new int[] { 1, 3 },
+                                                            new int[] { -2, 2 }
+                                      },
+                N = 2
+            });
 
 
-            //inputs.Add(new Common()
-            //{
-            //    Input = new int[][]
-            //                          {
-            //                                                new int[] { 3, 3 },
-            //                                                new int[] { 5, -1 },
-            //                                                new int[] { -2, 4 },
-            //                          },
-            //    N = 2
-            //});
+            inputs.Add(new Common()
+            {
+                Input = new int[][]
+                                      {
+                                                            new int[] { 3, 3 },
+                                                            new int[] { 5, -1 },
+                                                            new int[] { -2, 4 },
+                                      },
+                N = 2
+            });
 
-            //inputs.Add(new Common()
-            //{
-            //    Input = new int[][]
-            //                        {
-            //                                                new int[] { 6, 10 },
-            //                                                new int[] { 3, -3 },
-            //                                                new int[] { -2, 5 },
-            //                                                new int[] { 0, 2 },
-            //                        },
-            //    N = 3
-            //});
+            inputs.Add(new Common()
+            {
+                Input = new int[][]
+                                    {
+                                                            new int[] { 6, 10 },
+                                                            new int[] { 3, -3 },
+                                                            new int[] { -2, 5 },
+                                                            new int[] { 0, 2 },
+                                    },
+                N = 3
+            });
 
-            //inputs.Add(new Common()
-            //{
-            //    Input = new int[][]
-            //                  {
-            //                                                new int[] { 10, -2 }, // 100+4=104      ->4
-            //                                                new int[] { 2, -2 },  // 4+4 = 8        ->1
-            //                                                new int[] { 10,10 },  // 100+100=200    ->5
-            //                                                new int[] { 9,4 },    // 81+16= 97      ->3
-            //                                                new int[] { -8,1 },   // 64+1= 65       ->2
-            //                  },
-            //    N = 4
-            //});
-
-
-            //inputs.Add(new Common()
-            //{
-            //    Input = new int[][]
-            //                        {
-            //                                                new int[] { 3, 3 }, //18
-            //                                                new int[] { 5, -1 },//26
-            //                                                new int[] { -2, 4 } //18
-
-            //                        },
-            //    N = 2
-            //});
-
-            //inputs.Add(new Common()
-            //{
-            //    Input = new int[][]
-            //                        {
-            //                                                new int[] { 1, 3 },
-            //                                                new int[] { -2, 2 },
-            //                                                new int[] { -2, 2 },
-            //                        },
-            //    N = 2
-            //});
+            inputs.Add(new Common()
+            {
+                Input = new int[][]
+                              {
+                                                            new int[] { 10, -2 }, // 100+4=104      ->4
+                                                            new int[] { 2, -2 },  // 4+4 = 8        ->1
+                                                            new int[] { 10,10 },  // 100+100=200    ->5
+                                                            new int[] { 9,4 },    // 81+16= 97      ->3
+                                                            new int[] { -8,1 },   // 64+1= 65       ->2
+                              },
+                N = 4
+            });
 
 
+            inputs.Add(new Common()
+            {
+                Input = new int[][]
+                                    {
+                                                            new int[] { 3, 3 }, //18
+                                                            new int[] { 5, -1 },//26
+                                                            new int[] { -2, 4 } //18
+
+                                    },
+                N = 2
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][]
+                                    {
+                                                            new int[] { 1, 3 },
+                                                            new int[] { -2, 2 },
+                                                            new int[] { -2, 2 },
+                                    },
+                N = 2
+            });
 
             inputs.Add(new Common()
             {
@@ -2402,7 +2431,6 @@ namespace WindowsFormsApplication3
                 N = 1
             });
 
-
             foreach (var input in inputs)
             {
                 result.AppendLine($"{input.N} Closest Points to Origin are {Environment.NewLine}{this.PrintJaggedArrayForJudeges(this.KClosest(input.Input, input.N)) }{Environment.NewLine} for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
@@ -2415,7 +2443,7 @@ namespace WindowsFormsApplication3
 
         void BuildKClostHeap(Distance[] heap, int n)
         {
-            int i = n -1;
+            int i = (n -1)/2;
             while (i >= 0)
             {
                 Heapify(heap, i, n);
@@ -2437,50 +2465,43 @@ namespace WindowsFormsApplication3
             for (int r = 0; r < l; r++)
             {
                 heap[r] = new Distance() { Index = r, Value = Math.Sqrt((points[r][1] * points[r][1]) + (points[r][0] * points[r][0])) };
-                this.Heapify(heap, 0, r);
             }
 
-            l--;
-            BuildKClostHeap(heap, l);
-
+            this.BuildKClostHeap(heap, l);
 
             for (int r = 0; r < K; r++)
             {
                 this.Heapify(heap, 0, l);
                 result[r] = points[heap[0].Index];
-                heap[0] = heap[l-1];
+                heap[0] = heap[l - 1];
                 l--;
             }
-          
+
 
             return result;
 
         }
 
-
         public void Heapify(Distance[] heap, int start, int end)
         {
 
             int s = start;
-            int l = (start * 2) ;
+            int l = (start * 2);
             int r = (start * 2) + 1;
             Distance temp;
-
-            if (l <= end && r <= end)
+            
+            if (l < end && heap[s].Value > heap[l].Value)
+                s = l;
+            if (r < end && heap[s].Value > heap[r].Value)
+                s = r;
+            if (s != start)
             {
-
-                if (heap[s].Value >= heap[l].Value)
-                    s = l;
-                if (heap[s].Value >= heap[r].Value)
-                    s = r;
-                if (s != start)
-                {
-                    temp = heap[start];
-                    heap[start] = heap[s];
-                    heap[s] = temp;
-                    Heapify(heap, s, end);
-                }
+                temp = heap[start];
+                heap[start] = heap[s];
+                heap[s] = temp;
+                Heapify(heap, s, end);
             }
+            
         }
 
 
@@ -2490,5 +2511,159 @@ namespace WindowsFormsApplication3
             public double Value;
         }
 
-    }
+        private void btn_Two_City_Scheduling_Click(object sender, EventArgs e)
+        {
+            /*
+             
+            There are 2N people a company is planning to interview. The cost of flying the i-th person to city A is costs[i][0], and the cost of flying the i-th person to city B is costs[i][1].
+            Return the minimum cost to fly every person to a city such that exactly N people arrive in each city.
+
+ 
+            Example 1:
+
+            Input: [[10,20],[30,200],[400,50],[30,20]]
+            Output: 110
+            Explanation: 
+            The first person goes to city A for a cost of 10.
+            The second person goes to city A for a cost of 30.
+            The third person goes to city B for a cost of 50.
+            The fourth person goes to city B for a cost of 20.
+
+            The total minimum cost is 10 + 30 + 50 + 20 = 110 to have half the people interviewing in each city.
+
+            Time Complexity     : 
+            Space Complexity    :
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<int[][]> inputs = new List<int[][]>();
+
+            inputs.Add(new int[][]
+                                      {
+                                                            new int[] { 10, 20  },
+                                                            new int[] { 30, 200  },
+                                                            new int[] { 400, 50  },
+                                                            new int[] { 30, 20  }
+
+                                      });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Two City Scheduling cost is {this.TwoCitySchedCost(input)} for the input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int TwoCitySchedCost(int[][] costs)
+        {
+            if (costs == null || costs.Length == 0)
+                return 0;
+
+            //Comparer<int[]> comparer = Comparer<int[]>.Create((a,b)=>((a[1]-a[0]) > (b[1] - b[0]) ? a : b ));
+
+            //Array.Sort(costs, comparer );
+
+            return 0;
+        }
+
+        private void btn_Surrounded_Regions_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
+
+                A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+                Example:
+
+                X X X X
+                X O O X
+                X X O X
+                X O X X
+                After running your function, the board should be:
+
+                X X X X
+                X X X X
+                X X X X
+                X O X X
+                Explanation:
+
+                Surrounded regions shouldn’t be on the border, which means that any 'O' on the border of the board are not flipped to 'X'. Any 'O' that is not on the border and it is not connected to an 'O' 
+                on the border will be flipped to 'X'. Two cells are connected if they are adjacent cells connected horizontally or vertically.
+
+
+                Time Complexity         : 
+                Space Complexity        : 
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<char[][]> inputs = new List<char[][]>();
+
+            inputs.Add(new char[][]
+                                      {
+                                                            new char[] { 'X', 'X', 'X','X'},
+                                                            new char[] { 'X', '0', '0','X' },
+                                                            new char[] { 'X', 'X', '0','X' },
+                                                            new char[] { 'X', '0', 'X','X' },
+
+                                      });
+
+            foreach (var input in inputs)
+            {
+                
+                result.AppendLine($"Surrounded Regions for the given input{Environment.NewLine}{this.PrintJaggedArrayForJudegesChar(input)} { Environment.NewLine} is ");
+                this.Solve(input);
+                result.AppendLine($"{this.PrintJaggedArrayForJudegesChar(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public void Solve(char[][] board)
+        {
+            if (board == null || board.Length == 0)
+                return;
+
+            int rl = board.Length;
+            int cl = board[0].Length;
+            var bk = new char[board.Length][];
+
+            for(int r = 0; r < rl; r++)
+            {
+                if (bk[r] == null)
+                    bk[r] = new char[cl];
+
+                for(int c = 0; c < cl; c++)
+                {
+                    bk[r][c] = board[r][c];
+                }
+            }
+
+            rl--;cl--;
+            
+            for (int r = 1; r < rl; r++)
+            {
+                for (int c = 1; c < cl ; c++)
+                {
+                    
+                    if (bk[r][c] == '0' &&
+                        (
+                            ((c - 1 > 0 || c + 1 < cl) && (bk[r][c] == bk[r][c - 1] || bk[r][c] == bk[r][c + 1])) ||
+                            ((r - 1 > 0 || r + 1 < rl) && (bk[r][c] == bk[r - 1][c] || bk[r][c] == bk[r + 1][c]))
+                         )
+                       )
+                    {
+                        board[r][c] = 'X';
+                    }
+                    
+                }
+            }
+            
+        }
+    }    
 }

@@ -47,14 +47,16 @@
             this.btn_Possible_Bipartition = new System.Windows.Forms.Button();
             this.btn_Course_Schedule = new System.Windows.Forms.Button();
             this.btn_K_Closest_Points_to_Origin = new System.Windows.Forms.Button();
+            this.btn_Two_City_Scheduling = new System.Windows.Forms.Button();
+            this.btn_Surrounded_Regions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(2, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Location = new System.Drawing.Point(2, 8);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(288, 47);
+            this.button1.Size = new System.Drawing.Size(216, 38);
             this.button1.TabIndex = 0;
             this.button1.Text = "Kth smallest element in a row-wise and column-wise sorted 2D array | Set 1";
             this.button1.UseVisualStyleBackColor = true;
@@ -62,10 +64,10 @@
             // 
             // btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix
             // 
-            this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Location = new System.Drawing.Point(2, 63);
-            this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Location = new System.Drawing.Point(2, 51);
+            this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Name = "btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix";
-            this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Size = new System.Drawing.Size(288, 48);
+            this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Size = new System.Drawing.Size(216, 39);
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.TabIndex = 1;
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.Text = "Count Negative Numbers in a Column-Wise and Row-Wise Sorted Matrix";
             this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix.UseVisualStyleBackColor = true;
@@ -73,10 +75,10 @@
             // 
             // btn_Find_the_largest_square_of_1_in_a_given_matrix
             // 
-            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Location = new System.Drawing.Point(2, 117);
-            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Location = new System.Drawing.Point(2, 95);
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Name = "btn_Find_the_largest_square_of_1_in_a_given_matrix";
-            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Size = new System.Drawing.Size(288, 33);
+            this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Size = new System.Drawing.Size(216, 27);
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.TabIndex = 20;
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.Text = "Find the largest square of 1 in a given matrix";
             this.btn_Find_the_largest_square_of_1_in_a_given_matrix.UseVisualStyleBackColor = true;
@@ -84,10 +86,10 @@
             // 
             // btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table
             // 
-            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Location = new System.Drawing.Point(2, 154);
-            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Location = new System.Drawing.Point(2, 125);
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Name = "btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table";
-            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Size = new System.Drawing.Size(288, 31);
+            this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Size = new System.Drawing.Size(216, 25);
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.TabIndex = 21;
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.Text = "Find No of times X occurance for NXN multiplication table";
             this.btn_Find_No_of_times_X_occurance_for_NXN_multiplication_table.UseVisualStyleBackColor = true;
@@ -95,10 +97,10 @@
             // 
             // btn_Find_no_of_island_for_the_given_matrix
             // 
-            this.btn_Find_no_of_island_for_the_given_matrix.Location = new System.Drawing.Point(2, 190);
-            this.btn_Find_no_of_island_for_the_given_matrix.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_Find_no_of_island_for_the_given_matrix.Location = new System.Drawing.Point(2, 154);
+            this.btn_Find_no_of_island_for_the_given_matrix.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Find_no_of_island_for_the_given_matrix.Name = "btn_Find_no_of_island_for_the_given_matrix";
-            this.btn_Find_no_of_island_for_the_given_matrix.Size = new System.Drawing.Size(288, 28);
+            this.btn_Find_no_of_island_for_the_given_matrix.Size = new System.Drawing.Size(216, 23);
             this.btn_Find_no_of_island_for_the_given_matrix.TabIndex = 22;
             this.btn_Find_no_of_island_for_the_given_matrix.Text = "Find no of island for the given matrix";
             this.btn_Find_no_of_island_for_the_given_matrix.UseVisualStyleBackColor = true;
@@ -106,10 +108,10 @@
             // 
             // btn_Find_Exit_for_Maze
             // 
-            this.btn_Find_Exit_for_Maze.Location = new System.Drawing.Point(2, 258);
-            this.btn_Find_Exit_for_Maze.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_Find_Exit_for_Maze.Location = new System.Drawing.Point(2, 210);
+            this.btn_Find_Exit_for_Maze.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Find_Exit_for_Maze.Name = "btn_Find_Exit_for_Maze";
-            this.btn_Find_Exit_for_Maze.Size = new System.Drawing.Size(288, 34);
+            this.btn_Find_Exit_for_Maze.Size = new System.Drawing.Size(216, 28);
             this.btn_Find_Exit_for_Maze.TabIndex = 23;
             this.btn_Find_Exit_for_Maze.Text = "Find Exit for Maze";
             this.btn_Find_Exit_for_Maze.UseVisualStyleBackColor = true;
@@ -117,10 +119,10 @@
             // 
             // btn_Navigate_from_North_West_to_South_East_of_the_building
             // 
-            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Location = new System.Drawing.Point(2, 298);
-            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Location = new System.Drawing.Point(2, 242);
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Navigate_from_North_West_to_South_East_of_the_building.Name = "btn_Navigate_from_North_West_to_South_East_of_the_building";
-            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Size = new System.Drawing.Size(288, 50);
+            this.btn_Navigate_from_North_West_to_South_East_of_the_building.Size = new System.Drawing.Size(216, 41);
             this.btn_Navigate_from_North_West_to_South_East_of_the_building.TabIndex = 24;
             this.btn_Navigate_from_North_West_to_South_East_of_the_building.Text = "Navigate from North West to South East of the building";
             this.btn_Navigate_from_North_West_to_South_East_of_the_building.UseVisualStyleBackColor = true;
@@ -128,10 +130,10 @@
             // 
             // btn_2D_Array_DS
             // 
-            this.btn_2D_Array_DS.Location = new System.Drawing.Point(2, 353);
-            this.btn_2D_Array_DS.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_2D_Array_DS.Location = new System.Drawing.Point(2, 287);
+            this.btn_2D_Array_DS.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_2D_Array_DS.Name = "btn_2D_Array_DS";
-            this.btn_2D_Array_DS.Size = new System.Drawing.Size(288, 27);
+            this.btn_2D_Array_DS.Size = new System.Drawing.Size(216, 22);
             this.btn_2D_Array_DS.TabIndex = 25;
             this.btn_2D_Array_DS.Text = "2D Array - DS";
             this.btn_2D_Array_DS.UseVisualStyleBackColor = true;
@@ -139,10 +141,10 @@
             // 
             // btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix
             // 
-            this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Location = new System.Drawing.Point(2, 385);
+            this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Location = new System.Drawing.Point(2, 313);
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Margin = new System.Windows.Forms.Padding(2);
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Name = "btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix";
-            this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Size = new System.Drawing.Size(288, 31);
+            this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Size = new System.Drawing.Size(216, 25);
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.TabIndex = 26;
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.Text = "Find Pattern Exists in Given Character Matrix";
             this.btn_btn_Find_Pattern_Exists_in_Given_Character_Matrix.UseVisualStyleBackColor = true;
@@ -150,10 +152,10 @@
             // 
             // btn_No_of_island_Horizontal_Vertical
             // 
-            this.btn_No_of_island_Horizontal_Vertical.Location = new System.Drawing.Point(2, 224);
-            this.btn_No_of_island_Horizontal_Vertical.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_No_of_island_Horizontal_Vertical.Location = new System.Drawing.Point(2, 182);
+            this.btn_No_of_island_Horizontal_Vertical.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_No_of_island_Horizontal_Vertical.Name = "btn_No_of_island_Horizontal_Vertical";
-            this.btn_No_of_island_Horizontal_Vertical.Size = new System.Drawing.Size(288, 28);
+            this.btn_No_of_island_Horizontal_Vertical.Size = new System.Drawing.Size(216, 23);
             this.btn_No_of_island_Horizontal_Vertical.TabIndex = 27;
             this.btn_No_of_island_Horizontal_Vertical.Text = "No of island Horizontal && Vertical";
             this.btn_No_of_island_Horizontal_Vertical.UseVisualStyleBackColor = true;
@@ -161,9 +163,10 @@
             // 
             // btn_MinPathSum
             // 
-            this.btn_MinPathSum.Location = new System.Drawing.Point(2, 421);
+            this.btn_MinPathSum.Location = new System.Drawing.Point(2, 342);
+            this.btn_MinPathSum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_MinPathSum.Name = "btn_MinPathSum";
-            this.btn_MinPathSum.Size = new System.Drawing.Size(288, 28);
+            this.btn_MinPathSum.Size = new System.Drawing.Size(216, 23);
             this.btn_MinPathSum.TabIndex = 67;
             this.btn_MinPathSum.Text = "Min Path Sum";
             this.btn_MinPathSum.UseVisualStyleBackColor = true;
@@ -171,9 +174,10 @@
             // 
             // btn_Flood_Fill
             // 
-            this.btn_Flood_Fill.Location = new System.Drawing.Point(2, 455);
+            this.btn_Flood_Fill.Location = new System.Drawing.Point(2, 370);
+            this.btn_Flood_Fill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Flood_Fill.Name = "btn_Flood_Fill";
-            this.btn_Flood_Fill.Size = new System.Drawing.Size(288, 33);
+            this.btn_Flood_Fill.Size = new System.Drawing.Size(216, 27);
             this.btn_Flood_Fill.TabIndex = 68;
             this.btn_Flood_Fill.Text = "Flood Fill";
             this.btn_Flood_Fill.UseVisualStyleBackColor = true;
@@ -181,9 +185,10 @@
             // 
             // btn_Check_If_It_Is_a_Straight_Line
             // 
-            this.btn_Check_If_It_Is_a_Straight_Line.Location = new System.Drawing.Point(2, 494);
+            this.btn_Check_If_It_Is_a_Straight_Line.Location = new System.Drawing.Point(2, 401);
+            this.btn_Check_If_It_Is_a_Straight_Line.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Check_If_It_Is_a_Straight_Line.Name = "btn_Check_If_It_Is_a_Straight_Line";
-            this.btn_Check_If_It_Is_a_Straight_Line.Size = new System.Drawing.Size(288, 34);
+            this.btn_Check_If_It_Is_a_Straight_Line.Size = new System.Drawing.Size(216, 28);
             this.btn_Check_If_It_Is_a_Straight_Line.TabIndex = 71;
             this.btn_Check_If_It_Is_a_Straight_Line.Text = "Check If It Is a Straight Line";
             this.btn_Check_If_It_Is_a_Straight_Line.UseVisualStyleBackColor = true;
@@ -191,9 +196,10 @@
             // 
             // btn_Find_the_Town_Judge
             // 
-            this.btn_Find_the_Town_Judge.Location = new System.Drawing.Point(2, 534);
+            this.btn_Find_the_Town_Judge.Location = new System.Drawing.Point(2, 434);
+            this.btn_Find_the_Town_Judge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Find_the_Town_Judge.Name = "btn_Find_the_Town_Judge";
-            this.btn_Find_the_Town_Judge.Size = new System.Drawing.Size(288, 36);
+            this.btn_Find_the_Town_Judge.Size = new System.Drawing.Size(216, 29);
             this.btn_Find_the_Town_Judge.TabIndex = 72;
             this.btn_Find_the_Town_Judge.Text = "Find the Town Judge";
             this.btn_Find_the_Town_Judge.UseVisualStyleBackColor = true;
@@ -201,9 +207,10 @@
             // 
             // btn_Count_Square_Submatrices_with_All_Ones
             // 
-            this.btn_Count_Square_Submatrices_with_All_Ones.Location = new System.Drawing.Point(2, 576);
+            this.btn_Count_Square_Submatrices_with_All_Ones.Location = new System.Drawing.Point(2, 468);
+            this.btn_Count_Square_Submatrices_with_All_Ones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Count_Square_Submatrices_with_All_Ones.Name = "btn_Count_Square_Submatrices_with_All_Ones";
-            this.btn_Count_Square_Submatrices_with_All_Ones.Size = new System.Drawing.Size(288, 33);
+            this.btn_Count_Square_Submatrices_with_All_Ones.Size = new System.Drawing.Size(216, 27);
             this.btn_Count_Square_Submatrices_with_All_Ones.TabIndex = 73;
             this.btn_Count_Square_Submatrices_with_All_Ones.Text = "Count Square Submatrices with All Ones";
             this.btn_Count_Square_Submatrices_with_All_Ones.UseVisualStyleBackColor = true;
@@ -211,9 +218,10 @@
             // 
             // btn_Interval_List_Intersections
             // 
-            this.btn_Interval_List_Intersections.Location = new System.Drawing.Point(2, 615);
+            this.btn_Interval_List_Intersections.Location = new System.Drawing.Point(2, 500);
+            this.btn_Interval_List_Intersections.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Interval_List_Intersections.Name = "btn_Interval_List_Intersections";
-            this.btn_Interval_List_Intersections.Size = new System.Drawing.Size(288, 35);
+            this.btn_Interval_List_Intersections.Size = new System.Drawing.Size(216, 28);
             this.btn_Interval_List_Intersections.TabIndex = 74;
             this.btn_Interval_List_Intersections.Text = "Interval List Intersections";
             this.btn_Interval_List_Intersections.UseVisualStyleBackColor = true;
@@ -221,9 +229,10 @@
             // 
             // btn_Possible_Bipartition
             // 
-            this.btn_Possible_Bipartition.Location = new System.Drawing.Point(2, 656);
+            this.btn_Possible_Bipartition.Location = new System.Drawing.Point(2, 533);
+            this.btn_Possible_Bipartition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Possible_Bipartition.Name = "btn_Possible_Bipartition";
-            this.btn_Possible_Bipartition.Size = new System.Drawing.Size(288, 34);
+            this.btn_Possible_Bipartition.Size = new System.Drawing.Size(216, 28);
             this.btn_Possible_Bipartition.TabIndex = 75;
             this.btn_Possible_Bipartition.Text = "Possible Bipartition";
             this.btn_Possible_Bipartition.UseVisualStyleBackColor = true;
@@ -231,9 +240,10 @@
             // 
             // btn_Course_Schedule
             // 
-            this.btn_Course_Schedule.Location = new System.Drawing.Point(2, 696);
+            this.btn_Course_Schedule.Location = new System.Drawing.Point(2, 566);
+            this.btn_Course_Schedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Course_Schedule.Name = "btn_Course_Schedule";
-            this.btn_Course_Schedule.Size = new System.Drawing.Size(288, 43);
+            this.btn_Course_Schedule.Size = new System.Drawing.Size(216, 35);
             this.btn_Course_Schedule.TabIndex = 76;
             this.btn_Course_Schedule.Text = "Course Schedule";
             this.btn_Course_Schedule.UseVisualStyleBackColor = true;
@@ -241,19 +251,43 @@
             // 
             // btn_K_Closest_Points_to_Origin
             // 
-            this.btn_K_Closest_Points_to_Origin.Location = new System.Drawing.Point(2, 743);
+            this.btn_K_Closest_Points_to_Origin.Location = new System.Drawing.Point(2, 604);
+            this.btn_K_Closest_Points_to_Origin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_K_Closest_Points_to_Origin.Name = "btn_K_Closest_Points_to_Origin";
-            this.btn_K_Closest_Points_to_Origin.Size = new System.Drawing.Size(288, 42);
+            this.btn_K_Closest_Points_to_Origin.Size = new System.Drawing.Size(216, 34);
             this.btn_K_Closest_Points_to_Origin.TabIndex = 77;
             this.btn_K_Closest_Points_to_Origin.Text = " K Closest Points to Origin";
             this.btn_K_Closest_Points_to_Origin.UseVisualStyleBackColor = true;
             this.btn_K_Closest_Points_to_Origin.Click += new System.EventHandler(this.btn_K_Closest_Points_to_Origin_Click);
             // 
+            // btn_Two_City_Scheduling
+            // 
+            this.btn_Two_City_Scheduling.Location = new System.Drawing.Point(226, 11);
+            this.btn_Two_City_Scheduling.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Two_City_Scheduling.Name = "btn_Two_City_Scheduling";
+            this.btn_Two_City_Scheduling.Size = new System.Drawing.Size(182, 34);
+            this.btn_Two_City_Scheduling.TabIndex = 78;
+            this.btn_Two_City_Scheduling.Text = "Two City Scheduling";
+            this.btn_Two_City_Scheduling.UseVisualStyleBackColor = true;
+            this.btn_Two_City_Scheduling.Click += new System.EventHandler(this.btn_Two_City_Scheduling_Click);
+            // 
+            // btn_Surrounded_Regions
+            // 
+            this.btn_Surrounded_Regions.Location = new System.Drawing.Point(226, 51);
+            this.btn_Surrounded_Regions.Name = "btn_Surrounded_Regions";
+            this.btn_Surrounded_Regions.Size = new System.Drawing.Size(181, 29);
+            this.btn_Surrounded_Regions.TabIndex = 79;
+            this.btn_Surrounded_Regions.Text = "Surrounded Regions";
+            this.btn_Surrounded_Regions.UseVisualStyleBackColor = true;
+            this.btn_Surrounded_Regions.Click += new System.EventHandler(this.btn_Surrounded_Regions_Click);
+            // 
             // Matrix
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 815);
+            this.ClientSize = new System.Drawing.Size(707, 662);
+            this.Controls.Add(this.btn_Surrounded_Regions);
+            this.Controls.Add(this.btn_Two_City_Scheduling);
             this.Controls.Add(this.btn_K_Closest_Points_to_Origin);
             this.Controls.Add(this.btn_Course_Schedule);
             this.Controls.Add(this.btn_Possible_Bipartition);
@@ -273,7 +307,7 @@
             this.Controls.Add(this.btn_Find_the_largest_square_of_1_in_a_given_matrix);
             this.Controls.Add(this.btn_Count_Negative_Numbers_in_a_Column_Wise_and_Row_Wise_Sorted_Matrix);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Matrix";
             this.Text = "Matrix";
             this.Load += new System.EventHandler(this.Matrix_Load);
@@ -302,5 +336,7 @@
         private System.Windows.Forms.Button btn_Possible_Bipartition;
         private System.Windows.Forms.Button btn_Course_Schedule;
         private System.Windows.Forms.Button btn_K_Closest_Points_to_Origin;
+        private System.Windows.Forms.Button btn_Two_City_Scheduling;
+        private System.Windows.Forms.Button btn_Surrounded_Regions;
     }
 }

@@ -4060,6 +4060,9 @@ namespace WindowsFormsApplication3
             enention -> exention (replace 'n' with 'x')
             exention -> exection (replace 'n' with 'c')
             exection -> execution (insert 'u')
+
+            Time Complexity         : O(NM)
+            Space Complexity        : O(NM)
               
              */
 
@@ -4089,17 +4092,330 @@ namespace WindowsFormsApplication3
 
 
             int rl = word1.Length + 1;
-            int cl = word2.Length;
+            int cl = word2.Length + 1;
             int[][] dict = new int[rl][];
 
             for (int r = 0; r < rl; r++)
             {
+                if (dict[r] == null)
+                {
+                    dict[r] = new int[cl];
+                }
 
+                if (r == 0)
+                    dict[r][0] = 0;
+                else
+                    dict[r][0] = r;
             }
+
+            for (int c = 1; c < cl; c++)
+            {
+                dict[0][c] = c;
+            }
+
+
+            for (int r = 1; r < rl; r++)
+            {
+                for (int c = 1; c < cl; c++)
+                {
+                    if (word1[r - 1] == word2[c - 1])
+                        dict[r][c] = dict[r - 1][c - 1];
+                    else
+                        dict[r][c] = Math.Min(dict[r - 1][c - 1], Math.Min(dict[r][c - 1], dict[r - 1][c]));
+                }
+            }
+
+            return dict[rl - 1][cl - 1];
+
+        }
+
+        private void btn_Is_Subsequence_Click(object sender, EventArgs e)
+        {
+            /*
+
+                Given a string s and a string t, check if s is subsequence of t.
+
+                A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ace" is a subsequence of "abcde" while "aec" is not).
+
+                Follow up:
+                If there are lots of incoming S, say S1, S2, ... , Sk where k >= 1B, and you want to check one by one to see if T has its subsequence. In this scenario, how would you change your code?
+
+                Credits:
+                Special thanks to @pbrother for adding this problem and creating all test cases.
+
+ 
+
+                Example 1:
+                Input: s = "abc", t = "ahbgdc"
+                Output: true
+                
+                Example 2:
+                Input: s = "axc", t = "ahbgdc"
+                Output: false
+
+                Time Complexity         : O(S + T)
+                Space Complexity        : O(1)
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
+            inputs.Add(new AddBinaryInputs() { inputA = "abc", inputB = "ahbgdc" });
+            inputs.Add(new AddBinaryInputs() { inputA = "axc", inputB = "ahbgdc" });
+            inputs.Add(new AddBinaryInputs() { inputA = "", inputB = "" });
+            inputs.Add(new AddBinaryInputs() { inputA = "abc", inputB = "" });
+            inputs.Add(new AddBinaryInputs() { inputA = "abc", inputB = "ahgdb" });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Sequence {(this.IsSubsequence(input.inputA, input.inputB) ? "" : "does not")} exists for the string1 : {input.inputA} and string2: {input.inputB}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public bool IsSubsequence(string s, string t)
+        {
+
+            /*
+                My solution 
+
+                   int c = 0;
+                   int counter = 0;
+                   for(int r = 0; r < s.Length; r++)
+                   {
+                       for(; c < t.Length; c++)
+                       {
+                           if (s[r] == t[c])
+                           {
+                               counter++;
+                               c++;
+                               break;
+                           }
+                       }
+                   }
+        
+                   return counter == s.Length;
+
+             */
+
+            if (s == "")
+                return true;
+            if (t == "")
+                return false;
+            var index = 0;
+            var length = s.Length;
+            var curChar = s[index];
+            foreach (var c in t)
+            {
+                if (c == curChar)
+                {
+                    index++;
+                    if (index == length)
+                        return true;
+                    curChar = s[index];
+                }
+            }
+            return false;
 
 
 
         }
+
+        private void btn_Validate_IP_Address_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Write a function to check whether an input string is a valid IPv4 address or IPv6 address or neither.
+
+                IPv4 addresses are canonically represented in dot-decimal notation, which consists of four decimal numbers, each ranging from 0 to 255, separated by dots ("."), e.g.,172.16.254.1;
+
+                Besides, leading zeros in the IPv4 is invalid. For example, the address 172.16.254.01 is invalid.
+
+                IPv6 addresses are represented as eight groups of four hexadecimal digits, each group representing 16 bits. The groups are separated by colons (":"). For example, the address 2001:0db8:85a3:0000:0000:8a2e:0370:7334 is a valid one. Also, we could omit some leading zeros among four hexadecimal digits and some low-case characters in the address to upper-case ones, so 2001:db8:85a3:0:0:8A2E:0370:7334 is also a valid IPv6 address(Omit leading zeros and using upper cases).
+
+                However, we don't replace a consecutive group of zero value with a single empty group using two consecutive colons (::) to pursue simplicity. For example, 2001:0db8:85a3::8A2E:0370:7334 is an invalid IPv6 address.
+
+                Besides, extra leading zeros in the IPv6 is also invalid. For example, the address 02001:0db8:85a3:0000:0000:8a2e:0370:7334 is invalid.
+
+                Note: You may assume there is no extra space or special characters in the input string.
+
+                Example 1:
+                Input: "172.16.254.1"
+
+                Output: "IPv4"
+
+                Explanation: This is a valid IPv4 address, return "IPv4".
+                Example 2:
+                Input: "2001:0db8:85a3:0:0:8A2E:0370:7334"
+
+                Output: "IPv6"
+
+                Explanation: This is a valid IPv6 address, return "IPv6".
+                Example 3:
+                Input: "256.256.256.256"
+
+                Output: "Neither"
+
+                Explanation: This is neither a IPv4 address nor a IPv6 address.
+
+
+                Time Complexity         : O(N)
+                Space Complexity        : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("172.16.254.1");
+            inputs.Add("2001:0db8:85a3:0:0:8A2E:0370:7334");
+            inputs.Add("256.256.256.256");
+            inputs.Add("2001:0db8:85a3:0:0:8A2E:0370:7334");
+            inputs.Add("1.1.1.01");          
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The given IP address {input } is {this.ValidIPAddress(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public string ValidIPAddress(string IP)
+        {
+
+            string result = "Neither";
+            if (IP == null || IP.Length == 0)
+                return result;
+
+            if (IP.IndexOf('.') != -1)
+            {
+                if (IsValidIpv4(IP.Split('.')))
+                    result = "IPv4";
+            }
+            else if (IsValidIpv6(IP.Split(':')))
+                result = "IPv6";
+
+            return result;
+
+        }
+
+
+        private bool IsValidIpv6(string[] ips)
+        {
+            if (ips == null || ips.Length != 8)
+                return false;
+
+            foreach (string ip in ips)
+            {
+                if (!ValidateIp6(ip))
+                    return false;
+            }
+
+            return true;
+        }
+
+
+        private bool ValidateIp6(string ip)
+        {
+            if (ip == null || ip.Length == 0)
+                return false;
+
+
+            if (ip.Length >= 1 && ip.Length <= 4)
+            {
+                foreach (char c in ip)
+                {
+                    if (!(
+                            (c >= '0' && c <= '9') ||
+                            (c >= 'a' && c <= 'f') ||
+                            (c >= 'A' && c <= 'F')
+                        ))
+                        return false;
+                }
+            }
+            else
+                return false;
+
+
+            return true;
+        }
+
+        private bool IsValidIpv4(string[] ips)
+        {
+            if (ips == null || ips.Length != 4)
+                return false;
+
+            int result = 0;
+
+            foreach (string ip in ips)
+            {
+                if (ip.Length >= 1 && ip.Length <= 3)
+                {
+                    result = Atoi(ip);
+                    if (!(result >= 0 && result <= 255))
+                        return false;
+                }
+                else
+                    return false;
+            }
+
+            return true;
+        }
+
+        private int Atoi(string s)
+        {
+
+            if (string.IsNullOrEmpty(s) || s[0] == '0')
+                return -1;
+
+            int i = 0;
+            int result = 0;
+            int t = 0;
+
+            while (i < s.Length)
+            {
+                t = s[i] - '0';
+                result = (result * 10) + t;
+                i++;
+            }
+
+            return result;
+        }
+
+        private void btn_Longest_Duplicate_Substring_Click(object sender, EventArgs e)
+        {
+            /*
+            
+
+                Given a string S, consider all duplicated substrings: (contiguous) substrings of S that occur 2 or more times.  (The occurrences may overlap.)
+
+                Return any duplicated substring that has the longest possible length.  (If S does not have a duplicated substring, the answer is "".)
+
+                Example 1:
+                Input: "banana"
+                Output: "ana"
+                
+                Example 2:
+                Input: "abcd"
+                Output: ""
+ 
+                Note:
+                2 <= S.length <= 10^5
+                S consists of lowercase English letters.
+                
+                Hint #1  
+                Binary search for the length of the answer. (If there's an answer of length 10, then there are answers of length 9, 8, 7, ...)
+                
+                Hint #2  
+                To check whether an answer of length K exists, we can use Rabin-Karp 's algorithm.
+             */
+
+            string str = string.Join("", "123", 'c');
+                     
+        }
+
 
     }
 }

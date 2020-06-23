@@ -1496,6 +1496,84 @@ namespace WindowsFormsApplication3
             return root;
          
         }
-    
+
+        private void btn_Invert_Binary_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+                Invert a binary tree.
+
+                Example:
+                    
+                            Input:
+
+                             4
+                           /   \
+                          2     7
+                         / \   / \
+                        1   3 6   9
+                
+                            Output:
+
+                             4
+                           /   \
+                          7     2
+                         / \   / \
+                        9   6 3   1
+
+                Time Complexity     : O(N) where N is the number of nodes
+                Space Complexity    : O(N)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBST(new int[] {4,2,7,1,3,6,9 }));
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Before inverting {this.TraverseBinaryTree(input)} and after inverting {this.TraverseBinaryTree(this.InvertTree(input))} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public Node InvertTree(Node root)
+        {
+            if (root == null)
+                return null;
+
+            Node result = root;
+
+
+            Queue<Node> q = new Queue<Node>();
+            q.Enqueue(result);
+            Node parent;
+            Node temp;
+            while (q.Count > 0)
+            {
+                parent = q.Dequeue();
+
+                if (parent != null)
+                {
+                    if (parent.left!= null)
+                    {
+                        q.Enqueue(parent.left);
+                    }
+
+                    if (parent.right != null)
+                    {
+                        q.Enqueue(parent.right);
+                    }
+
+                    temp = parent.left;
+                    parent.left = parent.right;
+                    parent.right = temp;
+                }
+            }
+            return root;
+        }
     }
 }

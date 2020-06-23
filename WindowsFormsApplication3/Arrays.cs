@@ -5622,13 +5622,10 @@ namespace WindowsFormsApplication3
 
         }
 
-        private void btn_Count_Square_Submatrices_with_All_Ones_Click(object sender, EventArgs e)
-        {
-             
-        }
-
+   
         private void btn_Uncrossed_Lines_Click(object sender, EventArgs e)
         {
+       
            /*
             
             We write the integers of A and B (in the order they are given) on two separate horizontal lines.
@@ -5719,7 +5716,385 @@ namespace WindowsFormsApplication3
             public int[] A;
             public int[] B;
         }
-        
-    }
+
+        private void btn_Random_Pick_with_Weight_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array w of positive integers, where w[i] describes the weight of index i, write a function pickIndex which randomly picks an index in proportion to its weight.
+
+                Note:
+
+                1 <= w.length <= 10000
+                1 <= w[i] <= 10^5
+                pickIndex will be called at most 10000 times.
+                Example 1:
+
+                Input: 
+                ["Solution","pickIndex"]
+                [[[1]],[]]
+                Output: [null,0]
+                Example 2:
+
+                Input: 
+                ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
+                [[[1,3]],[],[],[],[],[]]
+                Output: [null,0,1,1,1,0]
+                Explanation of Input Syntax:
+
+                The input is two lists: the subroutines called and their arguments. Solution's constructor has one argument, the array w. pickIndex has no arguments. Arguments are always wrapped with a list, even if there aren't any.
+             */
+
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 3 });
+            StringBuilder result = new StringBuilder();
+            foreach (int[] input in inputs)
+            {
+                Solution solution = new Solution(input);
+
+                result.Append($"Random pick weight for the given input {string.Join(",", input)} ");
+                result.Append($"is {solution.PickIndex()},{solution.PickIndex()},{solution.PickIndex()},{solution.PickIndex()},{solution.PickIndex()}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public class Solution
+        {
+
+            int[] weight = new int[] { };
+            int[] cumW;
+            Random rand;
+
+            public Solution(int[] w)
+            {
+                this.weight = w;
+                this.cumW = w;
+                this.GenerateRandomWeight();
+                rand = new Random();
+            }
+
+            public int PickIndex()
+            {
+
+                if (cumW == null || cumW.Length == 0)
+                    return -1;
+
+                //return GetCumIndex(rand.Next(0, cumW[cumW.Length - 1]));
+                int ran = rand.Next(0, cumW[cumW.Length - 1]);
+                int result =  Array.BinarySearch(cumW, 0, cumW.Length-1, ran);
+                return result;
+               // Array.BinarySearch(dp, 0, len, input);
+
+            }
+
+            private void GenerateRandomWeight()
+            {
+                if (weight == null || weight.Length == 0)
+                    return;
+                cumW = new int[weight.Length];
+                int cs = 0;
+                for (int i = 0; i < weight.Length; i++)
+                {
+                    cs += weight[i];
+                    cumW[i] = cs;
+                }
+            }
+
+
+            private int GetCumIndex(int findVal)
+            {
+                int l = 0;
+                int r = cumW.Length - 1;
+                int m = 0;
+
+
+                while (l < r)
+                {
+                    m = (l + r) / 2;
+                    if (cumW[m] == findVal)
+                        return m;
+                    else if (cumW[m] > findVal)
+                        r = m - 1;
+                    else
+                        l = m + 1;
+                }
+
+                return l;
+
+            }
+        }
+
+        private void btn_Coin_Change_2_Click(object sender, EventArgs e)
+        {
+            /*
+                You are given coins of different denominations and a total amount of money. Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.
+
+                Example 1:
+                Input: amount = 5, coins = [1, 2, 5]
+                Output: 4
+                Explanation: there are four ways to make up the amount:
+                5=5
+                5=2+2+1
+                5=2+1+1+1
+                5=1+1+1+1+1
+
+                Example 2:
+                Input: amount = 3, coins = [2]
+                Output: 0
+                Explanation: the amount of 3 cannot be made up just with coins of 2.
+                
+                Example 3:
+                Input: amount = 10, coins = [10] 
+                Output: 1
+             
+             */
+   
+
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 5 }, find = 5 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2}, find = 3 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 10 }, find = 10 });
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {                             
+                result.AppendLine ($"There are {this.Change(input.find, input.input)} coin change for the given coins { string.Join(",", input.input)} and amount {input.find}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int Change(int amount, int[] coins)
+        {
+            int[] dict = new int[amount + 1];
+            dict[0] = 1;
+            for (int r = 0; r < coins.Length; r++)
+            {
+                for (int c = 1; c < dict.Length; c++)
+                {
+                    if (c >= coins[r])
+                    {
+                        dict[c] = dict[c - coins[r]] + dict[c];
+                    }
+                }
+            }
+            return dict[dict.Length - 1];
+        }
+
+        private void btn_Largest_Divisible_Subset_Click(object sender, EventArgs e)
+        {
+            /*
+                    Given a set of distinct positive integers, find the largest subset such that every pair (Si, Sj) of elements in this subset satisfies:
+
+                    Si % Sj = 0 or Sj % Si = 0.
+
+                    If there are multiple solutions, return any subset is fine.
+
+                    Example 1:
+
+                    Input: [1,2,3]
+                    Output: [1,2] (of course, [1,3] will also be ok)
+                    Example 2:
+
+                    Input: [1,2,4,8]
+                    Output: [1,2,4,8]
+
+
+                    Time Complexity     : O(NLogN) + O(N^2) + (N) = O(N^2)
+                    Space Complexity    : O(N)
+
+            */
+
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] {1,2,3 });
+            inputs.Add(new int[] { 1, 2, 4, 8 });
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Largest divisible subset  are {string.Join(", ",this.LargestDivisibleSubset(input))} for the given input{ string.Join(",", input)}");
+            }
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public IList<int> LargestDivisibleSubset(int[] nums)
+        {
+
+
+            List<int> result = new List<int>();
+            if (nums == null || nums.Length == 0)
+                return result;
+
+
+            Array.Sort(nums); //O(NLogN)
+            int[] dict = Enumerable.Repeat<int>(1, nums.Length).ToArray(); 
+            int max = 1;
+
+
+            for (int i = 1; i < nums.Length; i++) //O(N^2)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (nums[i] % nums[j] == 0 && (1 + dict[j]) > dict[i])
+                        dict[i] = 1 + dict[j];
+
+                    if (dict[i] > max)
+                        max = dict[i];
+                }
+            }
+
+            int prev = -1;
+
+
+            for (int i = dict.Length - 1; i >= 0; i--) //O(N)
+            {
+                if (dict[i] == max && (prev % nums[i] == 0 || prev == -1))
+                {
+                    result.Add(nums[i]);
+                    max--;
+                    prev = nums[i];
+                }
+            }
+
+
+            return result;
+        }
+
+        private void btn_H_Index_II_Click(object sender, EventArgs e)
+        {
+
+            /*
+
+                Given an array of citations sorted in ascending order (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.
+
+                According to the definition of h-index on Wikipedia: "A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each."
+
+                Example:
+
+                Input: citations = [0,1,3,5,6]
+                Output: 3 
+                Explanation: [0,1,3,5,6] means the researcher has 5 papers in total and each of them had 
+                             received 0, 1, 3, 5, 6 citations respectively. 
+                             Since the researcher has 3 papers with at least 3 citations each and the remaining 
+                             two with no more than 3 citations each, her h-index is 3.
+                Note:
+
+                If there are several possible values for h, the maximum one is taken as the h-index.
+
+                Follow up:
+
+                This is a follow up problem to H-Index, where citations is now guaranteed to be sorted in ascending order.
+                Could you solve it in logarithmic time complexity?
+
+
+                Time Complexity         : O(log N)
+                Space Complexity        : O(1)
+
+            */
+
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 0, 1, 3, 5, 6 });
+            inputs.Add(new int[] { 100 });
+            inputs.Add(new int[] { 0 });
+            StringBuilder result = new StringBuilder();
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"H Index is {this.HIndex(input)} for the given input { string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int HIndex(int[] citations)
+        {
+            if (citations == null || citations.Length == 0)
+                return 0;
+
+            int cl = citations.Length;
+            int l = 0;
+            int r = citations.Length - 1;
+            int m = 0;
+            int res = 0;
+
+
+            while (l <= r)
+            {
+                m = (l + r) / 2;
+
+                if (citations[m] == (cl - m))
+                    return citations[m];
+                else if (citations[m] > cl - m)
+                    r = m - 1;
+                else
+                    l = m + 1;
+
+            }
+            return cl - l;
+
+        }
+
+        private void btn_Single_Number_II_Click(object sender, EventArgs e)
+        {
+            /*
+
+                Given a non-empty array of integers, every element appears three times except for one, which appears exactly once. Find that single one.
+                Note:
+
+                Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+                Example 1:
+
+                Input: [2,2,3,2]
+                Output: 3
+                Example 2:
+
+                Input: [0,1,0,1,0,1,99]
+                Output: 99
+
+                Time Complexity         : O(N)
+                Space Complexity        : O(1)
+
+            */
+
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 0, 1, 3, 5, 6 });
+            inputs.Add(new int[] { 100 });
+            inputs.Add(new int[] { 0 });
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Single Number which is not repeating is {this.SingleNumber(input)} for the given input { string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public int SingleNumber(int[] nums)
+        {
+
+            int s1 = 0;
+            int s2 = 0;
+
+            foreach (int i in nums)
+            {
+                s1 = (s1 ^ i) & (~s2);
+                s2 = (s2 ^ i) & (~s1);
+            }
+
+            return s1;
+
+        }
+    }        
 }
  

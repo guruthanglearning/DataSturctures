@@ -91,12 +91,15 @@
             this.btn_Permutation_in_String = new System.Windows.Forms.Button();
             this.btn_Sort_Characters_By_Frequency = new System.Windows.Forms.Button();
             this.btn_Edit_Distance = new System.Windows.Forms.Button();
+            this.btn_Is_Subsequence = new System.Windows.Forms.Button();
+            this.btn_Validate_IP_Address = new System.Windows.Forms.Button();
+            this.btn_Longest_Duplicate_Substring = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 82);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(373, 28);
             this.button1.TabIndex = 0;
@@ -107,7 +110,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(16, 15);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(340, 22);
             this.textBox1.TabIndex = 1;
@@ -115,7 +118,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(16, 118);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(373, 28);
             this.button2.TabIndex = 2;
@@ -126,7 +129,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(16, 154);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(373, 28);
             this.button3.TabIndex = 3;
@@ -138,7 +141,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(16, 257);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(373, 28);
             this.button4.TabIndex = 4;
@@ -149,7 +152,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(16, 47);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(340, 22);
             this.textBox2.TabIndex = 5;
@@ -157,7 +160,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(16, 393);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(373, 28);
             this.button5.TabIndex = 6;
@@ -168,7 +171,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(393, 6);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(373, 28);
             this.button6.TabIndex = 7;
@@ -178,8 +181,8 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(393, 40);
-            this.button7.Margin = new System.Windows.Forms.Padding(4);
+            this.button7.Location = new System.Drawing.Point(393, 39);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(373, 28);
             this.button7.TabIndex = 8;
@@ -189,10 +192,10 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(18, 190);
-            this.button8.Margin = new System.Windows.Forms.Padding(4);
+            this.button8.Location = new System.Drawing.Point(19, 190);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(386, 28);
+            this.button8.Size = new System.Drawing.Size(387, 28);
             this.button8.TabIndex = 9;
             this.button8.Text = "Remove duplicate characters Without additional  Constant";
             this.button8.UseVisualStyleBackColor = true;
@@ -201,7 +204,7 @@
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(16, 225);
-            this.button9.Margin = new System.Windows.Forms.Padding(4);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(373, 28);
             this.button9.TabIndex = 10;
@@ -212,7 +215,7 @@
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(16, 426);
-            this.button10.Margin = new System.Windows.Forms.Padding(4);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(373, 28);
             this.button10.TabIndex = 11;
@@ -223,7 +226,7 @@
             // button11
             // 
             this.button11.Location = new System.Drawing.Point(393, 75);
-            this.button11.Margin = new System.Windows.Forms.Padding(4);
+            this.button11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(373, 28);
             this.button11.TabIndex = 12;
@@ -234,7 +237,7 @@
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(393, 111);
-            this.button12.Margin = new System.Windows.Forms.Padding(4);
+            this.button12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(373, 28);
             this.button12.TabIndex = 13;
@@ -245,7 +248,7 @@
             // button13
             // 
             this.button13.Location = new System.Drawing.Point(393, 185);
-            this.button13.Margin = new System.Windows.Forms.Padding(4);
+            this.button13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(373, 28);
             this.button13.TabIndex = 14;
@@ -255,8 +258,8 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(393, 221);
-            this.button14.Margin = new System.Windows.Forms.Padding(4);
+            this.button14.Location = new System.Drawing.Point(393, 222);
+            this.button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(373, 28);
             this.button14.TabIndex = 15;
@@ -267,7 +270,7 @@
             // button15
             // 
             this.button15.Location = new System.Drawing.Point(16, 462);
-            this.button15.Margin = new System.Windows.Forms.Padding(4);
+            this.button15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(373, 28);
             this.button15.TabIndex = 16;
@@ -278,7 +281,7 @@
             // button16
             // 
             this.button16.Location = new System.Drawing.Point(393, 149);
-            this.button16.Margin = new System.Windows.Forms.Padding(4);
+            this.button16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(373, 28);
             this.button16.TabIndex = 17;
@@ -289,7 +292,7 @@
             // button17
             // 
             this.button17.Location = new System.Drawing.Point(16, 498);
-            this.button17.Margin = new System.Windows.Forms.Padding(4);
+            this.button17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(373, 28);
             this.button17.TabIndex = 18;
@@ -302,7 +305,7 @@
             this.btnLongest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(393, 496);
             this.btnLongest_Substring_Without_Repeating_Characters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLongest_Substring_Without_Repeating_Characters.Name = "btnLongest_Substring_Without_Repeating_Characters";
-            this.btnLongest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(366, 28);
+            this.btnLongest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(365, 28);
             this.btnLongest_Substring_Without_Repeating_Characters.TabIndex = 19;
             this.btnLongest_Substring_Without_Repeating_Characters.Text = "Length of Longest Substring Without Repeating Characters";
             this.btnLongest_Substring_Without_Repeating_Characters.UseVisualStyleBackColor = true;
@@ -377,6 +380,7 @@
             // Longest_Palondrome_in_a_given_string
             // 
             this.Longest_Palondrome_in_a_given_string.Location = new System.Drawing.Point(393, 396);
+            this.Longest_Palondrome_in_a_given_string.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Longest_Palondrome_in_a_given_string.Name = "Longest_Palondrome_in_a_given_string";
             this.Longest_Palondrome_in_a_given_string.Size = new System.Drawing.Size(373, 25);
             this.Longest_Palondrome_in_a_given_string.TabIndex = 26;
@@ -386,7 +390,8 @@
             // 
             // Longest_Palondrome_in_a_given_string_O_Off_N
             // 
-            this.Longest_Palondrome_in_a_given_string_O_Off_N.Location = new System.Drawing.Point(393, 424);
+            this.Longest_Palondrome_in_a_given_string_O_Off_N.Location = new System.Drawing.Point(393, 423);
+            this.Longest_Palondrome_in_a_given_string_O_Off_N.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Longest_Palondrome_in_a_given_string_O_Off_N.Name = "Longest_Palondrome_in_a_given_string_O_Off_N";
             this.Longest_Palondrome_in_a_given_string_O_Off_N.Size = new System.Drawing.Size(373, 27);
             this.Longest_Palondrome_in_a_given_string_O_Off_N.TabIndex = 27;
@@ -443,7 +448,7 @@
             this.btn_Longest_Substring_Without_Repeating_Characters.Location = new System.Drawing.Point(395, 529);
             this.btn_Longest_Substring_Without_Repeating_Characters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Longest_Substring_Without_Repeating_Characters.Name = "btn_Longest_Substring_Without_Repeating_Characters";
-            this.btn_Longest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(366, 28);
+            this.btn_Longest_Substring_Without_Repeating_Characters.Size = new System.Drawing.Size(365, 28);
             this.btn_Longest_Substring_Without_Repeating_Characters.TabIndex = 32;
             this.btn_Longest_Substring_Without_Repeating_Characters.Text = "Longest Substring Without Repeating Characters ";
             this.btn_Longest_Substring_Without_Repeating_Characters.UseVisualStyleBackColor = true;
@@ -451,7 +456,7 @@
             // 
             // btn_Reverse_the_string_word_by_word
             // 
-            this.btn_Reverse_the_string_word_by_word.Location = new System.Drawing.Point(772, 72);
+            this.btn_Reverse_the_string_word_by_word.Location = new System.Drawing.Point(772, 71);
             this.btn_Reverse_the_string_word_by_word.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Reverse_the_string_word_by_word.Name = "btn_Reverse_the_string_word_by_word";
             this.btn_Reverse_the_string_word_by_word.Size = new System.Drawing.Size(413, 27);
@@ -553,7 +558,7 @@
             this.btn_Permutation_of_a_string.Location = new System.Drawing.Point(776, 395);
             this.btn_Permutation_of_a_string.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Permutation_of_a_string.Name = "btn_Permutation_of_a_string";
-            this.btn_Permutation_of_a_string.Size = new System.Drawing.Size(406, 26);
+            this.btn_Permutation_of_a_string.Size = new System.Drawing.Size(405, 26);
             this.btn_Permutation_of_a_string.TabIndex = 42;
             this.btn_Permutation_of_a_string.Text = "Permutation of a string";
             this.btn_Permutation_of_a_string.UseVisualStyleBackColor = true;
@@ -561,7 +566,7 @@
             // 
             // btn_Longest_Common_Prefix
             // 
-            this.btn_Longest_Common_Prefix.Location = new System.Drawing.Point(778, 426);
+            this.btn_Longest_Common_Prefix.Location = new System.Drawing.Point(779, 426);
             this.btn_Longest_Common_Prefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Longest_Common_Prefix.Name = "btn_Longest_Common_Prefix";
             this.btn_Longest_Common_Prefix.Size = new System.Drawing.Size(407, 30);
@@ -572,7 +577,7 @@
             // 
             // btn_Valid_Parentheses
             // 
-            this.btn_Valid_Parentheses.Location = new System.Drawing.Point(778, 461);
+            this.btn_Valid_Parentheses.Location = new System.Drawing.Point(779, 462);
             this.btn_Valid_Parentheses.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Valid_Parentheses.Name = "btn_Valid_Parentheses";
             this.btn_Valid_Parentheses.Size = new System.Drawing.Size(405, 36);
@@ -616,7 +621,7 @@
             // 
             // btn_Convert_12hour_Time_to_24_hour_time
             // 
-            this.btn_Convert_12hour_Time_to_24_hour_time.Location = new System.Drawing.Point(1191, 72);
+            this.btn_Convert_12hour_Time_to_24_hour_time.Location = new System.Drawing.Point(1191, 71);
             this.btn_Convert_12hour_Time_to_24_hour_time.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Convert_12hour_Time_to_24_hour_time.Name = "btn_Convert_12hour_Time_to_24_hour_time";
             this.btn_Convert_12hour_Time_to_24_hour_time.Size = new System.Drawing.Size(287, 25);
@@ -638,10 +643,10 @@
             // 
             // btn_Shortest_Standardized_Path
             // 
-            this.btn_Shortest_Standardized_Path.Location = new System.Drawing.Point(1191, 136);
+            this.btn_Shortest_Standardized_Path.Location = new System.Drawing.Point(1191, 135);
             this.btn_Shortest_Standardized_Path.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Shortest_Standardized_Path.Name = "btn_Shortest_Standardized_Path";
-            this.btn_Shortest_Standardized_Path.Size = new System.Drawing.Size(283, 24);
+            this.btn_Shortest_Standardized_Path.Size = new System.Drawing.Size(283, 25);
             this.btn_Shortest_Standardized_Path.TabIndex = 50;
             this.btn_Shortest_Standardized_Path.Text = "Shortest Standardized Path";
             this.btn_Shortest_Standardized_Path.UseVisualStyleBackColor = true;
@@ -649,7 +654,7 @@
             // 
             // btn_Valid_Palindrome
             // 
-            this.btn_Valid_Palindrome.Location = new System.Drawing.Point(1194, 165);
+            this.btn_Valid_Palindrome.Location = new System.Drawing.Point(1195, 165);
             this.btn_Valid_Palindrome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Valid_Palindrome.Name = "btn_Valid_Palindrome";
             this.btn_Valid_Palindrome.Size = new System.Drawing.Size(284, 30);
@@ -683,6 +688,7 @@
             // btn_Letter_Combinations_of_a_Phone_Number
             // 
             this.btn_Letter_Combinations_of_a_Phone_Number.Location = new System.Drawing.Point(1191, 201);
+            this.btn_Letter_Combinations_of_a_Phone_Number.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Letter_Combinations_of_a_Phone_Number.Name = "btn_Letter_Combinations_of_a_Phone_Number";
             this.btn_Letter_Combinations_of_a_Phone_Number.Size = new System.Drawing.Size(287, 31);
             this.btn_Letter_Combinations_of_a_Phone_Number.TabIndex = 54;
@@ -692,8 +698,8 @@
             // 
             // btn_Given_a_sequence_of_words_print_all_anagrams_together
             // 
-            this.btn_Given_a_sequence_of_words_print_all_anagrams_together.Location = new System.Drawing.Point(18, 291);
-            this.btn_Given_a_sequence_of_words_print_all_anagrams_together.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Given_a_sequence_of_words_print_all_anagrams_together.Location = new System.Drawing.Point(19, 290);
+            this.btn_Given_a_sequence_of_words_print_all_anagrams_together.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Given_a_sequence_of_words_print_all_anagrams_together.Name = "btn_Given_a_sequence_of_words_print_all_anagrams_together";
             this.btn_Given_a_sequence_of_words_print_all_anagrams_together.Size = new System.Drawing.Size(373, 28);
             this.btn_Given_a_sequence_of_words_print_all_anagrams_together.TabIndex = 55;
@@ -704,8 +710,9 @@
             // btn_Backspace_String_Compare
             // 
             this.btn_Backspace_String_Compare.Location = new System.Drawing.Point(1191, 236);
+            this.btn_Backspace_String_Compare.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Backspace_String_Compare.Name = "btn_Backspace_String_Compare";
-            this.btn_Backspace_String_Compare.Size = new System.Drawing.Size(287, 24);
+            this.btn_Backspace_String_Compare.Size = new System.Drawing.Size(287, 25);
             this.btn_Backspace_String_Compare.TabIndex = 56;
             this.btn_Backspace_String_Compare.Text = "Backspace String Compare";
             this.btn_Backspace_String_Compare.UseVisualStyleBackColor = true;
@@ -714,6 +721,7 @@
             // btn_Valid_Parenthesis_String_2
             // 
             this.btn_Valid_Parenthesis_String_2.Location = new System.Drawing.Point(776, 502);
+            this.btn_Valid_Parenthesis_String_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Valid_Parenthesis_String_2.Name = "btn_Valid_Parenthesis_String_2";
             this.btn_Valid_Parenthesis_String_2.Size = new System.Drawing.Size(407, 30);
             this.btn_Valid_Parenthesis_String_2.TabIndex = 57;
@@ -724,8 +732,9 @@
             // btn_LongestCommonSubsequence
             // 
             this.btn_LongestCommonSubsequence.Location = new System.Drawing.Point(1191, 298);
+            this.btn_LongestCommonSubsequence.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_LongestCommonSubsequence.Name = "btn_LongestCommonSubsequence";
-            this.btn_LongestCommonSubsequence.Size = new System.Drawing.Size(283, 35);
+            this.btn_LongestCommonSubsequence.Size = new System.Drawing.Size(283, 34);
             this.btn_LongestCommonSubsequence.TabIndex = 58;
             this.btn_LongestCommonSubsequence.Text = "Longest Common Subsequence";
             this.btn_LongestCommonSubsequence.UseVisualStyleBackColor = true;
@@ -733,7 +742,8 @@
             // 
             // btn_Find_All_Anagrams_in_a_String
             // 
-            this.btn_Find_All_Anagrams_in_a_String.Location = new System.Drawing.Point(18, 319);
+            this.btn_Find_All_Anagrams_in_a_String.Location = new System.Drawing.Point(19, 319);
+            this.btn_Find_All_Anagrams_in_a_String.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Find_All_Anagrams_in_a_String.Name = "btn_Find_All_Anagrams_in_a_String";
             this.btn_Find_All_Anagrams_in_a_String.Size = new System.Drawing.Size(369, 31);
             this.btn_Find_All_Anagrams_in_a_String.TabIndex = 59;
@@ -743,7 +753,8 @@
             // 
             // btn_Permutation_in_String
             // 
-            this.btn_Permutation_in_String.Location = new System.Drawing.Point(18, 356);
+            this.btn_Permutation_in_String.Location = new System.Drawing.Point(19, 356);
+            this.btn_Permutation_in_String.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Permutation_in_String.Name = "btn_Permutation_in_String";
             this.btn_Permutation_in_String.Size = new System.Drawing.Size(369, 27);
             this.btn_Permutation_in_String.TabIndex = 60;
@@ -753,7 +764,8 @@
             // 
             // btn_Sort_Characters_By_Frequency
             // 
-            this.btn_Sort_Characters_By_Frequency.Location = new System.Drawing.Point(1191, 339);
+            this.btn_Sort_Characters_By_Frequency.Location = new System.Drawing.Point(1191, 338);
+            this.btn_Sort_Characters_By_Frequency.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Sort_Characters_By_Frequency.Name = "btn_Sort_Characters_By_Frequency";
             this.btn_Sort_Characters_By_Frequency.Size = new System.Drawing.Size(281, 39);
             this.btn_Sort_Characters_By_Frequency.TabIndex = 61;
@@ -763,7 +775,8 @@
             // 
             // btn_Edit_Distance
             // 
-            this.btn_Edit_Distance.Location = new System.Drawing.Point(1191, 384);
+            this.btn_Edit_Distance.Location = new System.Drawing.Point(1191, 383);
+            this.btn_Edit_Distance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Edit_Distance.Name = "btn_Edit_Distance";
             this.btn_Edit_Distance.Size = new System.Drawing.Size(283, 26);
             this.btn_Edit_Distance.TabIndex = 62;
@@ -771,11 +784,46 @@
             this.btn_Edit_Distance.UseVisualStyleBackColor = true;
             this.btn_Edit_Distance.Click += new System.EventHandler(this.btn_Edit_Distance_Click);
             // 
+            // btn_Is_Subsequence
+            // 
+            this.btn_Is_Subsequence.Location = new System.Drawing.Point(1192, 412);
+            this.btn_Is_Subsequence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Is_Subsequence.Name = "btn_Is_Subsequence";
+            this.btn_Is_Subsequence.Size = new System.Drawing.Size(280, 38);
+            this.btn_Is_Subsequence.TabIndex = 63;
+            this.btn_Is_Subsequence.Text = "Is Subsequence";
+            this.btn_Is_Subsequence.UseVisualStyleBackColor = true;
+            this.btn_Is_Subsequence.Click += new System.EventHandler(this.btn_Is_Subsequence_Click);
+            // 
+            // btn_Validate_IP_Address
+            // 
+            this.btn_Validate_IP_Address.Location = new System.Drawing.Point(1191, 454);
+            this.btn_Validate_IP_Address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Validate_IP_Address.Name = "btn_Validate_IP_Address";
+            this.btn_Validate_IP_Address.Size = new System.Drawing.Size(281, 31);
+            this.btn_Validate_IP_Address.TabIndex = 64;
+            this.btn_Validate_IP_Address.Text = "Validate IP Address";
+            this.btn_Validate_IP_Address.UseVisualStyleBackColor = true;
+            this.btn_Validate_IP_Address.Click += new System.EventHandler(this.btn_Validate_IP_Address_Click);
+            // 
+            // btn_Longest_Duplicate_Substring
+            // 
+            this.btn_Longest_Duplicate_Substring.Location = new System.Drawing.Point(1192, 491);
+            this.btn_Longest_Duplicate_Substring.Name = "btn_Longest_Duplicate_Substring";
+            this.btn_Longest_Duplicate_Substring.Size = new System.Drawing.Size(276, 30);
+            this.btn_Longest_Duplicate_Substring.TabIndex = 65;
+            this.btn_Longest_Duplicate_Substring.Text = "Longest Duplicate Substring";
+            this.btn_Longest_Duplicate_Substring.UseVisualStyleBackColor = true;
+            this.btn_Longest_Duplicate_Substring.Click += new System.EventHandler(this.btn_Longest_Duplicate_Substring_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1700, 680);
+            this.ClientSize = new System.Drawing.Size(1700, 679);
+            this.Controls.Add(this.btn_Longest_Duplicate_Substring);
+            this.Controls.Add(this.btn_Validate_IP_Address);
+            this.Controls.Add(this.btn_Is_Subsequence);
             this.Controls.Add(this.btn_Edit_Distance);
             this.Controls.Add(this.btn_Sort_Characters_By_Frequency);
             this.Controls.Add(this.btn_Permutation_in_String);
@@ -839,7 +887,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "StringsManipulation";
             this.Text = "StringsManipulation";
             this.Load += new System.EventHandler(this.StringsManipulation_Load);
@@ -913,5 +961,8 @@
         private System.Windows.Forms.Button btn_Permutation_in_String;
         private System.Windows.Forms.Button btn_Sort_Characters_By_Frequency;
         private System.Windows.Forms.Button btn_Edit_Distance;
+        private System.Windows.Forms.Button btn_Is_Subsequence;
+        private System.Windows.Forms.Button btn_Validate_IP_Address;
+        private System.Windows.Forms.Button btn_Longest_Duplicate_Substring;
     }
 }

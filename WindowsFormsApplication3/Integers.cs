@@ -959,6 +959,163 @@ namespace WindowsFormsApplication3
 
             return result;
         }
+
+        private void btn_Power_of_Two_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given an integer, write a function to determine if it is a power of two.
+
+                Example 1:
+                Input: 1
+                Output: true 
+                Explanation: 20 = 1
+                
+                Example 2:
+                Input: 16
+                Output: true
+                Explanation: 24 = 16
+                
+                Example 3:
+                Input: 218
+                Output: false
+
+                Time Complexity         : O(log N)
+                Space Complexity        : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int> inputs = new List<int>();
+            inputs.Add(1);
+            inputs.Add(16);
+            inputs.Add(218);
+            inputs.Add(-16);
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The given integer {input} is {(this.IsPowerOfTwo(input) ? "": "not")} power of 2 ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public bool IsPowerOfTwo(int n)
+        {
+            if (n <= 0)
+                return false;
+            
+            while (n > 1)
+            {
+                if (n % 2 == 1)
+                {
+                    return false;
+                }
+                n >>= 1;
+            } // you can also perform the above by checking this by AND operator n & 1 if its 0 then n>>=1 else return false
+            return true;
+
+        }
+
+        private void btn_Permutation_Sequence_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                    The set [1,2,3,...,n] contains a total of n! unique permutations.
+                    By listing and labeling all of the permutations in order, we get the following sequence for n = 3:
+
+                    "123"
+                    "132"
+                    "213"
+                    "231"
+                    "312"
+                    "321"
+                    Given n and k, return the kth permutation sequence.
+
+                    Note:
+
+                    Given n will be between 1 and 9 inclusive.
+                    Given k will be between 1 and n! inclusive.
+                    Example 1:
+
+                    Input: n = 3, k = 3
+                    Output: "213"
+                    Example 2:
+
+                    Input: n = 4, k = 9
+                    Output: "2314"
+                
+                    Time Complexity     :  O(N)
+                    Space Complexity    :  O(N)
+             */
+
+
+
+
+            StringBuilder result = new StringBuilder();
+            Dictionary<int, int> inputs = new Dictionary<int, int>();
+            inputs.Add(3, 3);
+            inputs.Add(2, 3);
+            inputs.Add(1, 3);
+            inputs.Add(4, 9);
+
+
+
+            foreach (var input in inputs.Keys)
+            {
+                result.AppendLine($"Permutation sequence for {inputs[input]} is {this.GetPermutation(inputs[input], input) } at the level  {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public string GetPermutation(int n, int k)
+        {
+
+            if (k == 0)
+                return n.ToString();
+
+            StringBuilder result = new StringBuilder();
+            List<int> input = new List<int>();
+            List<int> fact = new List<int>();
+
+            for (int i = 1; i <= n; i++)
+            {
+                input.Add(i);
+            }
+
+            fact.Add(1);
+            int p = 1;
+            for (int i = 1; i < n; i++)
+            {
+                p *= i;
+                fact.Add(p);
+            }
+
+           
+            int index = 0;
+
+           
+            while (n > 1)
+            {
+
+                index = k / fact[n-1];
+                index = (k % fact[n - 1] == 0 ? index - 1 : index);
+                result.Append(input[index]);
+                input.RemoveAt(index);
+                k -= fact[n-1] * (index);
+                n--;
+            }
+
+            result.Append(string.Join("",input));
+
+
+            return result.ToString();
+        }
+
     }
 }
 

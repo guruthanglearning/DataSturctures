@@ -43,6 +43,8 @@
             this.btn_Number_Complement = new System.Windows.Forms.Button();
             this.btn_Remove_K_Digits = new System.Windows.Forms.Button();
             this.btn_Counting_Bits = new System.Windows.Forms.Button();
+            this.btn_Power_of_Two = new System.Windows.Forms.Button();
+            this.btn_Permutation_Sequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -146,9 +148,10 @@
             // 
             // btn_Clock_Angle
             // 
-            this.btn_Clock_Angle.Location = new System.Drawing.Point(11, 360);
+            this.btn_Clock_Angle.Location = new System.Drawing.Point(11, 359);
+            this.btn_Clock_Angle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Clock_Angle.Name = "btn_Clock_Angle";
-            this.btn_Clock_Angle.Size = new System.Drawing.Size(356, 35);
+            this.btn_Clock_Angle.Size = new System.Drawing.Size(356, 34);
             this.btn_Clock_Angle.TabIndex = 9;
             this.btn_Clock_Angle.Text = "Clock Angle ";
             this.btn_Clock_Angle.UseVisualStyleBackColor = true;
@@ -157,6 +160,7 @@
             // btn_Happy_Numbers
             // 
             this.btn_Happy_Numbers.Location = new System.Drawing.Point(11, 401);
+            this.btn_Happy_Numbers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Happy_Numbers.Name = "btn_Happy_Numbers";
             this.btn_Happy_Numbers.Size = new System.Drawing.Size(356, 38);
             this.btn_Happy_Numbers.TabIndex = 10;
@@ -166,7 +170,8 @@
             // 
             // btn_Bitwise_AND_of_Numbers_Range
             // 
-            this.btn_Bitwise_AND_of_Numbers_Range.Location = new System.Drawing.Point(12, 445);
+            this.btn_Bitwise_AND_of_Numbers_Range.Location = new System.Drawing.Point(12, 446);
+            this.btn_Bitwise_AND_of_Numbers_Range.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Bitwise_AND_of_Numbers_Range.Name = "btn_Bitwise_AND_of_Numbers_Range";
             this.btn_Bitwise_AND_of_Numbers_Range.Size = new System.Drawing.Size(355, 36);
             this.btn_Bitwise_AND_of_Numbers_Range.TabIndex = 11;
@@ -177,6 +182,7 @@
             // btn_Number_Complement
             // 
             this.btn_Number_Complement.Location = new System.Drawing.Point(11, 487);
+            this.btn_Number_Complement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Number_Complement.Name = "btn_Number_Complement";
             this.btn_Number_Complement.Size = new System.Drawing.Size(356, 36);
             this.btn_Number_Complement.TabIndex = 12;
@@ -187,6 +193,7 @@
             // btn_Remove_K_Digits
             // 
             this.btn_Remove_K_Digits.Location = new System.Drawing.Point(12, 529);
+            this.btn_Remove_K_Digits.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Remove_K_Digits.Name = "btn_Remove_K_Digits";
             this.btn_Remove_K_Digits.Size = new System.Drawing.Size(355, 30);
             this.btn_Remove_K_Digits.TabIndex = 13;
@@ -197,6 +204,7 @@
             // btn_Counting_Bits
             // 
             this.btn_Counting_Bits.Location = new System.Drawing.Point(11, 565);
+            this.btn_Counting_Bits.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Counting_Bits.Name = "btn_Counting_Bits";
             this.btn_Counting_Bits.Size = new System.Drawing.Size(356, 30);
             this.btn_Counting_Bits.TabIndex = 14;
@@ -204,11 +212,36 @@
             this.btn_Counting_Bits.UseVisualStyleBackColor = true;
             this.btn_Counting_Bits.Click += new System.EventHandler(this.btn_Counting_Bits_Click);
             // 
+            // btn_Power_of_Two
+            // 
+            this.btn_Power_of_Two.Location = new System.Drawing.Point(11, 601);
+            this.btn_Power_of_Two.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Power_of_Two.Name = "btn_Power_of_Two";
+            this.btn_Power_of_Two.Size = new System.Drawing.Size(356, 34);
+            this.btn_Power_of_Two.TabIndex = 15;
+            this.btn_Power_of_Two.Text = "Power of Two";
+            this.btn_Power_of_Two.UseVisualStyleBackColor = true;
+            this.btn_Power_of_Two.Click += new System.EventHandler(this.btn_Power_of_Two_Click);
+            // 
+            // btn_Permutation_Sequence
+            // 
+            this.btn_Permutation_Sequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Permutation_Sequence.Location = new System.Drawing.Point(12, 641);
+            this.btn_Permutation_Sequence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Permutation_Sequence.Name = "btn_Permutation_Sequence";
+            this.btn_Permutation_Sequence.Size = new System.Drawing.Size(355, 28);
+            this.btn_Permutation_Sequence.TabIndex = 16;
+            this.btn_Permutation_Sequence.Text = "Permutation Sequence";
+            this.btn_Permutation_Sequence.UseVisualStyleBackColor = true;
+            this.btn_Permutation_Sequence.Click += new System.EventHandler(this.btn_Permutation_Sequence_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 698);
+            this.Controls.Add(this.btn_Permutation_Sequence);
+            this.Controls.Add(this.btn_Power_of_Two);
             this.Controls.Add(this.btn_Counting_Bits);
             this.Controls.Add(this.btn_Remove_K_Digits);
             this.Controls.Add(this.btn_Number_Complement);
@@ -248,5 +281,7 @@
         private System.Windows.Forms.Button btn_Number_Complement;
         private System.Windows.Forms.Button btn_Remove_K_Digits;
         private System.Windows.Forms.Button btn_Counting_Bits;
+        private System.Windows.Forms.Button btn_Power_of_Two;
+        private System.Windows.Forms.Button btn_Permutation_Sequence;
     }
 }
