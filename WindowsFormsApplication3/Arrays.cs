@@ -2231,6 +2231,8 @@ namespace WindowsFormsApplication3
             List<TaskCoolDown> tasks = new List<TaskCoolDown>();
             tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 1, 2, 1, 2 }, Cooldown = 2 }); // 1--12-12
             tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 2, 3, 1, 2, 3 }, Cooldown = 3 }); // 123-123
+            tasks.Add(new TaskCoolDown() { Task = new int[] { 1, 1, 1, 1, 1, 1,2,3,4,5,6 }, Cooldown = 2 }); // 123-123
+
             StringBuilder message = new StringBuilder();
 
             foreach (var task in tasks)
@@ -2278,6 +2280,7 @@ namespace WindowsFormsApplication3
         public class TaskCoolDown
         {
             public int[] Task;
+            public char[] CharTasks;
             public int Cooldown;
         }
 
@@ -2298,7 +2301,7 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 2, 1 }); // 1
             inputs.Add(new int[] { }); // -1
             inputs.Add(new int[] { 1, 2, 3, 1 }); // 2
-            inputs.Add(new int[] { 1, 2, 1, 3, 5, 6, 4 }); // 5
+            inputs.Add(new int[] { 1, 2, 1, 3, 5, 6, 4 }); // 5   
 
             StringBuilder result = new StringBuilder();
             foreach (int[] input in inputs)
@@ -3758,15 +3761,16 @@ namespace WindowsFormsApplication3
             List<int[]> inputs = new List<int[]>();
             StringBuilder result = new StringBuilder();
 
-            inputs.Add(new int[] { -1, 0, 1, 2, -1, -4 });
-            inputs.Add(new int[] { 0, 0, 0 });
+            //inputs.Add(new int[] { -1, 0, 1, 2, -1, -4 });
+            //inputs.Add(new int[] { 0, 0, 0 });
             inputs.Add(new int[] { 0, 0, 0, 0 });
-            inputs.Add(new int[] { 1, -1, -1, 0 });
-            inputs.Add(new int[] { 3, 0, -2, -1, 1, 2 });
+            //inputs.Add(new int[] { 1, -1, -1, 0 });
+            //inputs.Add(new int[] { 3, 0, -2, -1, 1, 2 });
 
             foreach (int[] input in inputs)
             {
                 result.AppendLine($"The sum for the given array {string.Join(" ", input)} is");
+                //var temp = ThreeSum_New(input);
                 var temp = ThreeSum(input);
                 foreach (var t in temp)
                 {
@@ -3775,6 +3779,60 @@ namespace WindowsFormsApplication3
             }
 
             MessageBox.Show(result.ToString());
+
+        }
+
+        public IList<IList<int>> ThreeSum_New(int[] nums)
+        {
+            if (nums == null || nums.Length < 3)
+                return new List<IList<int>>();
+
+            var result = new List<IList<int>>();
+            if (nums.Length == 3 && nums.Sum() == 0)
+            {
+                result.Add(nums.ToList<int>());
+                return result;
+            }
+
+            Array.Sort(nums);
+            int s = 0;
+            int res = 0;
+
+            for (int i = 0; i < nums.Length - 2; i++)
+            {
+                res = BinarySearch(nums, i + 2, nums.Length - 1, s - (nums[i] + nums[i + 1]));
+                if (res > 0 && (nums[i] + nums[i + 1] + nums[res]) == s)
+                {
+                    result.Add(new List<int> { nums[i], nums[i + 1], nums[res] });
+                }
+            }
+
+            return result;
+
+
+        }
+
+        private int BinarySearch(int[] nums, int l, int r, int search)
+        {
+            if (nums == null || nums.Length == 0)
+                return -1;
+
+            int result = -1;
+            int mid = 0;
+
+            while (l <= r)
+            {
+                mid = (l + r) / 2;
+                if (nums[mid] == search)
+                    return mid;
+                else if (nums[mid] > search)
+                    r--;
+                else
+                    l++;
+            }
+
+
+            return result;
 
         }
 
@@ -3795,12 +3853,13 @@ namespace WindowsFormsApplication3
                 Array.Sort(nums);
                 int l = 0;
                 int r = 0;
-                int result = 0;
-                HashSet<string> dict = new HashSet<string>();
-
-
-                for (int i = 0; i <= nums.Length - 3; i++)
+                int result = 0;                
+                for (int i = 0; i < nums.Length - 2; i++)
                 {
+                    if (!(i == 0 || nums[i] != nums[i - 1]))
+                        continue;
+
+
                     l = i + 1;
                     r = nums.Length - 1;
 
@@ -3809,12 +3868,11 @@ namespace WindowsFormsApplication3
                         result = nums[i] + nums[l] + nums[r];
                         if (result == 0)
                         {
-                            if (!dict.Contains($"{nums[i]},{nums[l]},{nums[r]}"))
-                            {
-                                var inList = new List<int>() { nums[i], nums[l], nums[r] };
-                                list.Add(inList);
-                                dict.Add($"{nums[i]},{nums[l]},{nums[r]}");
-                            }
+                                list.Add(new List<int>() { nums[i], nums[l], nums[r] });                                                        
+                                while (l < nums.Length -1 && nums[l] == nums[l + 1])
+                                    l++;
+                                while (r < nums.Length - 1 && nums[r] == nums[r - 1])
+                                    r--;                                                         
                             l++;
                             r--;
                         }
@@ -6041,6 +6099,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Single_Number_II_Click(object sender, EventArgs e)
         {
+
+            
             /*
 
                 Given a non-empty array of integers, every element appears three times except for one, which appears exactly once. Find that single one.
@@ -6094,6 +6154,566 @@ namespace WindowsFormsApplication3
 
             return s1;
 
+        }
+
+        private void btn_Find_the_Duplicate_Number_Click(object sender, EventArgs e)
+        {
+            
+            
+            /*
+             
+            Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+
+            Example 1:
+
+            Input: [1,3,4,2,2]
+            Output: 2
+            Example 2:
+
+            Input: [3,1,3,4,2]
+            Output: 3
+            Note:
+
+            You must not modify the array (assume the array is read only).
+            You must use only constant, O(1) extra space.
+            Your runtime complexity should be less than O(n2).
+            There is only one duplicate number in the array, but it could be repeated more than once.
+             
+
+            Time Complexity     : O(N)
+            Space Complexity    : O(1)
+
+            */
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 3, 4, 2, 2 });
+            inputs.Add(new int[] { 3, 1, 3, 4, 2 });            
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Duplicate number is  {this.FindDuplicate(input)} for the given input { string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int FindDuplicate(int[] nums)
+        {
+            int num1 = 0;
+            int num2 = 0;
+
+            do
+            {
+                num1 = nums[num1];
+                num2 = nums[nums[num2]];
+            } while (num1 != num2);
+
+            num1 = 0;
+
+            while (num1!=num2)
+            {
+                num1 = nums[num1];
+                num2 = nums[num2];
+            }
+
+
+            return num2;
+            
+        }
+
+        private void btn_Top_K_Frequent_Elements_Click(object sender, EventArgs e)
+        {
+            /*
+
+                Given a non-empty array of integers, return the k most frequent elements.
+
+                Example 1:
+
+                Input: nums = [1,1,1,2,2,3], k = 2
+                Output: [1,2]
+                Example 2:
+
+                Input: nums = [1], k = 1
+                Output: [1]
+                Note:
+
+                You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+                Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+                It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
+                You can return the answer in any order.
+
+                Time Complexity             : O(N + log N) which O(N)
+                Space Complexity            : O(K) where K is the requent element
+
+
+            */
+
+            
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 1, 1, 2, 2, 3 }, find = 2 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 3, 2, 2, 3 }, find = 2 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1 }, find = 1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1,1 }, find = 2 });
+
+            StringBuilder result = new StringBuilder();
+            foreach (var sip in inputs)
+            {
+                result.Append($"The K Frequent Elements are {string.Join(",",this.TopKFrequent(sip.input, sip.find))} for the given int array {string.Join(" ", sip.input)} for the give K {sip.find}  \n");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public int[] TopKFrequent(int[] nums, int k)
+        {
+
+            if (nums == null || nums.Length == 0 || nums.Length == k)
+                return nums;
+
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+
+            foreach (int j in nums)
+            {
+                if (!dict.ContainsKey(j))
+                    dict[j] = 1;
+                else
+                    dict[j]++;
+            }
+
+            int i = 0;
+            Heap[] heap = new Heap[dict.Count];
+            foreach (int key in dict.Keys)
+            {
+                heap[i] = new Heap() { Value = key, Count = dict[key] };
+                i++;
+            }
+
+            this.BuildHeap(heap);
+            int[] result = new int[k];
+
+            for (i = 0; i < k; i++)
+            {
+                Heapify(heap, 0, heap.Length - 1 - i);
+                result[i] = heap[0].Value;
+                heap[0] = heap[heap.Length - 1 - i];
+            }
+
+            return result;
+
+
+        }
+
+        private void BuildHeap(Heap[] heap)
+        {
+            int i = (heap.Length - 1) / 2;
+
+            while (i >= 0)
+            {
+                Heapify(heap, i, heap.Length - 1);
+                i--;
+            }
+        }
+
+        private void Heapify(Heap[] heap, int i, int n)
+        {
+
+            int l = (i * 2);
+            int r = (i * 2) + 1;
+            int h = i;
+
+            if (l <= n && heap[l].Count > heap[h].Count)
+                h = l;
+            if (r <= n && heap[r].Count > heap[h].Count)
+                h = r;
+
+            if (h != i)
+            {
+                this.Swap(heap, i, h);
+                this.Heapify(heap, h, n);
+            }
+        }
+
+
+        private void Swap(Heap[] heap, int i, int j)
+        {
+            Heap temp = heap[i];
+            heap[i] = heap[j];
+            heap[j] = temp;
+        }
+
+        public class Heap
+        {
+            public int Value;
+            public int Count;
+        }
+
+        private void btn_Single_Number_III_Click(object sender, EventArgs e)
+        {
+            /*
+        
+                Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.
+                Example:
+
+                Input:  [1,2,1,3,2,5]
+                Output: [3,5]
+                Note:
+
+                The order of the result is not important. So in the above example, [5, 3] is also correct.
+                Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)    
+
+            */
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 2, 1, 3, 2, 5 });
+            
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Single Number which is not repeating is {string.Join(",",this.SingleNumber_3(input))} for the given input { string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int[] SingleNumber_3(int[] nums)
+        {
+            int bitmask = 0;
+            foreach (int num in nums)
+                bitmask ^= num;
+
+            int diff = bitmask & (-bitmask);
+            int x = 0;
+
+            foreach (int num in nums)
+                if ((num & diff) != 0)
+                    x ^= num;
+
+            return new int[] { x, bitmask ^ x };
+        }
+
+        private void btn_Find_Minimum_in_Rotated_Sorted_Array_II_Click(object sender, EventArgs e)
+        {
+
+            
+            /*
+             
+                Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+                (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+                Find the minimum element.
+
+                The array may contain duplicates.
+
+                Example 1:
+
+                Input: [1,3,5]
+                Output: 1
+                Example 2:
+
+                Input: [2,2,2,0,1]
+                Output: 0
+            
+                Time Complexity     : O(log N)
+                Space Complexity    : O(1);
+
+             */
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 3, 1, 3 });
+            inputs.Add(new int[] { 1, 2, 3 });
+            inputs.Add(new int[] { 2, 2, 2, 1, 2 });
+            inputs.Add(new int[] { 1, 2, 1 });
+            inputs.Add(new int[] { 3, 1, 1 });
+            inputs.Add(new int[] { 10, 1, 10, 10, 10 });
+
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.Append($"Minimum in Rotated Sorted Array is {this.FindMin(input)} for the given  array {string.Join(" ", input)}\n");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int FindMin(int[] nums)
+        {
+            if (nums == null && nums.Length == 0)
+                return -1;
+
+            int s = 0;
+            int e = nums.Length - 1;
+            int m = 0;
+            
+            while (s < e)
+            {
+                if (s == e)
+                    break;
+
+                m = (s + e) / 2;
+
+                if (nums[m] > nums[e])
+                    s = m + 1;
+                else if (nums[m] < nums[e])
+                    e = m;
+                else
+                    e--;
+
+            }
+
+            return nums[s];
+
+        }
+
+        private void btn_Task_Scheduler_Click(object sender, EventArgs e)
+        {
+            /*
+                    You are given a char array representing tasks CPU need to do. It contains capital letters A to Z where each letter represents a different task. Tasks could be done without the original order of the array. 
+                    Each task is done in one unit of time. For each unit of time, the CPU could complete either one task or just be idle.
+
+                    However, there is a non-negative integer n that represents the cooldown period between two same tasks (the same letter in the array), that is that there must be at least n units of time between any two
+                    same tasks.
+
+                    You need to return the least number of units of times that the CPU will take to finish all the given tasks.
+
+                    Example 1:
+
+                    Input: tasks = ['A','A','A','B','B','B'], n = 2
+                    Output: 8
+                    Explanation: 
+                    A -> B -> idle -> A -> B -> idle -> A -> B
+                    There is at least 2 units of time between any two same tasks.
+                    Example 2:
+
+                    Input: tasks = ['A','A','A','B','B','B'], n = 0
+                    Output: 6
+                    Explanation: On this case any permutation of size 6 would work since n = 0.
+                    ["A","A","A","B","B","B"]
+                    ["A","B","A","B","A","B"]
+                    ["B","B","B","A","A","A"]
+                    ...
+                    And so on.
+                    Example 3:
+
+                    Input: tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
+                    Output: 16
+                    Explanation: 
+                    One possible solution is
+                    A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
+ 
+
+                    Constraints:
+
+                    The number of tasks is in the range [1, 10000].
+                    The integer n is in the range [0, 100].
+
+
+                    Time Complexity     : O(NLogN)
+                    Space Complexity    : O(26)
+            */
+
+            
+
+            List<TaskCoolDown> tasks = new List<TaskCoolDown>();
+            tasks.Add(new TaskCoolDown() { CharTasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' }, Cooldown = 2 }); // 1--12-12
+            tasks.Add(new TaskCoolDown() { CharTasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' }, Cooldown = 0 }); // 123-123
+            tasks.Add(new TaskCoolDown() { CharTasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' }, Cooldown = 2 }); // 123-123
+
+            StringBuilder message = new StringBuilder();
+
+            foreach (var task in tasks)
+            {
+                message.AppendLine($"There {this.LeastInterval(task.CharTasks, task.Cooldown)} least number of units of times that the CPU will take to finish all the given tasks {string.Join(",",task.CharTasks)}");
+
+            }
+            MessageBox.Show(message.ToString());
+
+
+
+        }
+
+        public int LeastInterval(char[] tasks, int n)
+        {
+            if (tasks == null || tasks.Length == 0)
+                return 0;
+
+            int[] dict = new int[26];
+
+            foreach (char c in tasks)
+                dict[c - 'A']++;
+
+            Array.Sort(dict);
+
+            int chunk = dict[25] - 1;
+            int idle = chunk * n;
+
+            for (int i = 24; i >= 0; i--)
+            {
+                idle -= Math.Min(chunk, dict[i]);
+            }
+
+
+            return idle < 0 ? tasks.Length : idle + tasks.Length;
+
+
+        }
+
+        private void btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Say you have an array for which the ith element is the price of a given stock on day i.
+
+                Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:
+
+                You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
+                After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)
+                Example:
+
+                Input: [1,2,3,0,2]
+                Output: 3 
+                Explanation: transactions = [buy, sell, cooldown, buy, sell]
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+            */
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1,2,3,0,2 });
+            
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Max profit is {this.MaxProfit_3(input)} for the given input { string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int MaxProfit_3(int[] prices)
+        {
+            if (prices == null || prices.Length == 0 || prices.Length == 1)
+                return 0;
+ 
+            if (prices.Length == 2)
+                if (prices[1] > prices[0])
+                    return prices[1] - prices[0];
+                else
+                    return 0;
+
+
+            /*
+                A = Math.Max(PrevA, PrevC)      // Buy
+                B = Math.Max(B,PrevA-prices[i]) // Sell
+                C = PrebB + Prices[i]           // Sell            
+
+             */
+
+
+            int a = 0;            
+            int b = -prices[0];            
+            int c = 0;
+            int t = 0;
+
+            
+            for(int i = 1; i < prices.Length; i++)
+            {
+                t = a;
+                a = Math.Max(t, c); 
+                c = b + prices[i]; 
+                b = Math.Max(b, t - prices[i]); 
+                
+            }
+
+            return Math.Max(a,c);
+            
+
+
+        }
+
+        private void btn_Find_All_Duplicates_in_an_Array_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+
+                Find all the elements that appear twice in this array.
+
+                Could you do it without extra space and in O(n) runtime?
+
+                Example:
+                Input:
+                [4,3,2,7,8,2,3,1]
+
+                Output:
+                [2,3]
+             
+             */
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 4, 3, 2, 7, 8, 2, 3, 1 });
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The duplicate numbers are {string.Join(",", this.FindDuplicates(input))} for the given input { string.Join(",", input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+        public IList<int> FindDuplicates(int[] nums)
+        {
+
+            /* My solution
+             
+            List<int> result = new List<int>();
+
+            if (nums == null || nums.Length == 0)
+                return result;
+
+            HashSet<int> dict = new HashSet<int>();
+            foreach (int i in nums)
+            {
+                if (dict.Contains(i))
+                    result.Add(i);
+                else
+                    dict.Add(i);
+            }
+
+            return result; 
+            */
+
+
+
+
+            var dups = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                var index = Math.Abs(nums[i]) - 1;
+                if (nums[index] < 0)
+                    dups.Add(index + 1);
+                else
+                    nums[index] = -nums[index];
+            }
+
+            return dups;
         }
     }        
 }

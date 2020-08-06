@@ -94,6 +94,8 @@
             this.btn_Is_Subsequence = new System.Windows.Forms.Button();
             this.btn_Validate_IP_Address = new System.Windows.Forms.Button();
             this.btn_Longest_Duplicate_Substring = new System.Windows.Forms.Button();
+            this.btn_Reconstruct_Itinerary = new System.Windows.Forms.Button();
+            this.btn_Detect_Capital = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -809,18 +811,42 @@
             // btn_Longest_Duplicate_Substring
             // 
             this.btn_Longest_Duplicate_Substring.Location = new System.Drawing.Point(1192, 491);
+            this.btn_Longest_Duplicate_Substring.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Longest_Duplicate_Substring.Name = "btn_Longest_Duplicate_Substring";
-            this.btn_Longest_Duplicate_Substring.Size = new System.Drawing.Size(276, 30);
+            this.btn_Longest_Duplicate_Substring.Size = new System.Drawing.Size(286, 30);
             this.btn_Longest_Duplicate_Substring.TabIndex = 65;
             this.btn_Longest_Duplicate_Substring.Text = "Longest Duplicate Substring";
             this.btn_Longest_Duplicate_Substring.UseVisualStyleBackColor = true;
             this.btn_Longest_Duplicate_Substring.Click += new System.EventHandler(this.btn_Longest_Duplicate_Substring_Click);
+            // 
+            // btn_Reconstruct_Itinerary
+            // 
+            this.btn_Reconstruct_Itinerary.Location = new System.Drawing.Point(779, 533);
+            this.btn_Reconstruct_Itinerary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Reconstruct_Itinerary.Name = "btn_Reconstruct_Itinerary";
+            this.btn_Reconstruct_Itinerary.Size = new System.Drawing.Size(401, 33);
+            this.btn_Reconstruct_Itinerary.TabIndex = 66;
+            this.btn_Reconstruct_Itinerary.Text = "Reconstruct Itinerary";
+            this.btn_Reconstruct_Itinerary.UseVisualStyleBackColor = true;
+            this.btn_Reconstruct_Itinerary.Click += new System.EventHandler(this.btn_Reconstruct_Itinerary_Click);
+            // 
+            // btn_Detect_Capital
+            // 
+            this.btn_Detect_Capital.Location = new System.Drawing.Point(1194, 527);
+            this.btn_Detect_Capital.Name = "btn_Detect_Capital";
+            this.btn_Detect_Capital.Size = new System.Drawing.Size(284, 36);
+            this.btn_Detect_Capital.TabIndex = 67;
+            this.btn_Detect_Capital.Text = "Detect Capital";
+            this.btn_Detect_Capital.UseVisualStyleBackColor = true;
+            this.btn_Detect_Capital.Click += new System.EventHandler(this.btn_Detect_Capital_Click);
             // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1700, 679);
+            this.Controls.Add(this.btn_Detect_Capital);
+            this.Controls.Add(this.btn_Reconstruct_Itinerary);
             this.Controls.Add(this.btn_Longest_Duplicate_Substring);
             this.Controls.Add(this.btn_Validate_IP_Address);
             this.Controls.Add(this.btn_Is_Subsequence);
@@ -964,5 +990,7 @@
         private System.Windows.Forms.Button btn_Is_Subsequence;
         private System.Windows.Forms.Button btn_Validate_IP_Address;
         private System.Windows.Forms.Button btn_Longest_Duplicate_Substring;
+        private System.Windows.Forms.Button btn_Reconstruct_Itinerary;
+        private System.Windows.Forms.Button btn_Detect_Capital;
     }
 }

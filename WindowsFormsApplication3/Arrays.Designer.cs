@@ -103,6 +103,13 @@
             this.btn_Largest_Divisible_Subset = new System.Windows.Forms.Button();
             this.btn_H_Index_II = new System.Windows.Forms.Button();
             this.btn_Single_Number_II = new System.Windows.Forms.Button();
+            this.btn_Find_the_Duplicate_Number = new System.Windows.Forms.Button();
+            this.btn_Top_K_Frequent_Elements = new System.Windows.Forms.Button();
+            this.btn_Single_Number_III = new System.Windows.Forms.Button();
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II = new System.Windows.Forms.Button();
+            this.btn_Task_Scheduler = new System.Windows.Forms.Button();
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown = new System.Windows.Forms.Button();
+            this.btn_Find_All_Duplicates_in_an_Array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -923,19 +930,103 @@
             // 
             // btn_Single_Number_II
             // 
-            this.btn_Single_Number_II.Location = new System.Drawing.Point(1215, 419);
+            this.btn_Single_Number_II.Location = new System.Drawing.Point(1215, 418);
+            this.btn_Single_Number_II.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Single_Number_II.Name = "btn_Single_Number_II";
-            this.btn_Single_Number_II.Size = new System.Drawing.Size(223, 25);
+            this.btn_Single_Number_II.Size = new System.Drawing.Size(223, 26);
             this.btn_Single_Number_II.TabIndex = 75;
             this.btn_Single_Number_II.Text = "Single Number II";
             this.btn_Single_Number_II.UseVisualStyleBackColor = true;
             this.btn_Single_Number_II.Click += new System.EventHandler(this.btn_Single_Number_II_Click);
+            // 
+            // btn_Find_the_Duplicate_Number
+            // 
+            this.btn_Find_the_Duplicate_Number.Location = new System.Drawing.Point(1215, 480);
+            this.btn_Find_the_Duplicate_Number.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Find_the_Duplicate_Number.Name = "btn_Find_the_Duplicate_Number";
+            this.btn_Find_the_Duplicate_Number.Size = new System.Drawing.Size(223, 30);
+            this.btn_Find_the_Duplicate_Number.TabIndex = 76;
+            this.btn_Find_the_Duplicate_Number.Text = "Find the Duplicate Number";
+            this.btn_Find_the_Duplicate_Number.UseVisualStyleBackColor = true;
+            this.btn_Find_the_Duplicate_Number.Click += new System.EventHandler(this.btn_Find_the_Duplicate_Number_Click);
+            // 
+            // btn_Top_K_Frequent_Elements
+            // 
+            this.btn_Top_K_Frequent_Elements.Location = new System.Drawing.Point(1216, 514);
+            this.btn_Top_K_Frequent_Elements.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Top_K_Frequent_Elements.Name = "btn_Top_K_Frequent_Elements";
+            this.btn_Top_K_Frequent_Elements.Size = new System.Drawing.Size(224, 32);
+            this.btn_Top_K_Frequent_Elements.TabIndex = 77;
+            this.btn_Top_K_Frequent_Elements.Text = "Top K Frequent Elements";
+            this.btn_Top_K_Frequent_Elements.UseVisualStyleBackColor = true;
+            this.btn_Top_K_Frequent_Elements.Click += new System.EventHandler(this.btn_Top_K_Frequent_Elements_Click);
+            // 
+            // btn_Single_Number_III
+            // 
+            this.btn_Single_Number_III.Location = new System.Drawing.Point(1219, 448);
+            this.btn_Single_Number_III.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Single_Number_III.Name = "btn_Single_Number_III";
+            this.btn_Single_Number_III.Size = new System.Drawing.Size(217, 26);
+            this.btn_Single_Number_III.TabIndex = 78;
+            this.btn_Single_Number_III.Text = "Single Number III";
+            this.btn_Single_Number_III.UseVisualStyleBackColor = true;
+            this.btn_Single_Number_III.Click += new System.EventHandler(this.btn_Single_Number_III_Click);
+            // 
+            // btn_Find_Minimum_in_Rotated_Sorted_Array_II
+            // 
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.Location = new System.Drawing.Point(1215, 550);
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.Name = "btn_Find_Minimum_in_Rotated_Sorted_Array_II";
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.Size = new System.Drawing.Size(228, 52);
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.TabIndex = 79;
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.Text = "Find Minimum in Rotated Sorted Array II";
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.UseVisualStyleBackColor = true;
+            this.btn_Find_Minimum_in_Rotated_Sorted_Array_II.Click += new System.EventHandler(this.btn_Find_Minimum_in_Rotated_Sorted_Array_II_Click);
+            // 
+            // btn_Task_Scheduler
+            // 
+            this.btn_Task_Scheduler.Location = new System.Drawing.Point(1215, 606);
+            this.btn_Task_Scheduler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Task_Scheduler.Name = "btn_Task_Scheduler";
+            this.btn_Task_Scheduler.Size = new System.Drawing.Size(228, 31);
+            this.btn_Task_Scheduler.TabIndex = 80;
+            this.btn_Task_Scheduler.Text = "Task Scheduler";
+            this.btn_Task_Scheduler.UseVisualStyleBackColor = true;
+            this.btn_Task_Scheduler.Click += new System.EventHandler(this.btn_Task_Scheduler_Click);
+            // 
+            // btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown
+            // 
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.Location = new System.Drawing.Point(1213, 642);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.Name = "btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown";
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.Size = new System.Drawing.Size(228, 30);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.TabIndex = 81;
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.Text = "Best Time to Buy and Sell Stock with Cooldown";
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.UseVisualStyleBackColor = true;
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.Click += new System.EventHandler(this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown_Click);
+            // 
+            // btn_Find_All_Duplicates_in_an_Array
+            // 
+            this.btn_Find_All_Duplicates_in_an_Array.Location = new System.Drawing.Point(1215, 677);
+            this.btn_Find_All_Duplicates_in_an_Array.Name = "btn_Find_All_Duplicates_in_an_Array";
+            this.btn_Find_All_Duplicates_in_an_Array.Size = new System.Drawing.Size(227, 34);
+            this.btn_Find_All_Duplicates_in_an_Array.TabIndex = 82;
+            this.btn_Find_All_Duplicates_in_an_Array.Text = "Find All Duplicates in an Array";
+            this.btn_Find_All_Duplicates_in_an_Array.UseVisualStyleBackColor = true;
+            this.btn_Find_All_Duplicates_in_an_Array.Click += new System.EventHandler(this.btn_Find_All_Duplicates_in_an_Array_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1445, 798);
+            this.Controls.Add(this.btn_Find_All_Duplicates_in_an_Array);
+            this.Controls.Add(this.btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown);
+            this.Controls.Add(this.btn_Task_Scheduler);
+            this.Controls.Add(this.btn_Find_Minimum_in_Rotated_Sorted_Array_II);
+            this.Controls.Add(this.btn_Single_Number_III);
+            this.Controls.Add(this.btn_Top_K_Frequent_Elements);
+            this.Controls.Add(this.btn_Find_the_Duplicate_Number);
             this.Controls.Add(this.btn_Single_Number_II);
             this.Controls.Add(this.btn_H_Index_II);
             this.Controls.Add(this.btn_Largest_Divisible_Subset);
@@ -1095,5 +1186,12 @@
         private System.Windows.Forms.Button btn_Largest_Divisible_Subset;
         private System.Windows.Forms.Button btn_H_Index_II;
         private System.Windows.Forms.Button btn_Single_Number_II;
+        private System.Windows.Forms.Button btn_Find_the_Duplicate_Number;
+        private System.Windows.Forms.Button btn_Top_K_Frequent_Elements;
+        private System.Windows.Forms.Button btn_Single_Number_III;
+        private System.Windows.Forms.Button btn_Find_Minimum_in_Rotated_Sorted_Array_II;
+        private System.Windows.Forms.Button btn_Task_Scheduler;
+        private System.Windows.Forms.Button btn_Best_Time_to_Buy_and_Sell_Stock_with_Cooldown;
+        private System.Windows.Forms.Button btn_Find_All_Duplicates_in_an_Array;
     }
 }

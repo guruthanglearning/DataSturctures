@@ -45,6 +45,10 @@
             this.btn_Counting_Bits = new System.Windows.Forms.Button();
             this.btn_Power_of_Two = new System.Windows.Forms.Button();
             this.btn_Permutation_Sequence = new System.Windows.Forms.Button();
+            this.btn_Hamming_Distance = new System.Windows.Forms.Button();
+            this.btn_Pow_x_n = new System.Windows.Forms.Button();
+            this.btn_Add_Digits = new System.Windows.Forms.Button();
+            this.btn_Power_of_Four = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -225,9 +229,9 @@
             // 
             // btn_Permutation_Sequence
             // 
-            this.btn_Permutation_Sequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Permutation_Sequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Permutation_Sequence.Location = new System.Drawing.Point(12, 641);
-            this.btn_Permutation_Sequence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Permutation_Sequence.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Permutation_Sequence.Name = "btn_Permutation_Sequence";
             this.btn_Permutation_Sequence.Size = new System.Drawing.Size(355, 28);
             this.btn_Permutation_Sequence.TabIndex = 16;
@@ -235,11 +239,58 @@
             this.btn_Permutation_Sequence.UseVisualStyleBackColor = true;
             this.btn_Permutation_Sequence.Click += new System.EventHandler(this.btn_Permutation_Sequence_Click);
             // 
+            // btn_Hamming_Distance
+            // 
+            this.btn_Hamming_Distance.Location = new System.Drawing.Point(15, 676);
+            this.btn_Hamming_Distance.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Hamming_Distance.Name = "btn_Hamming_Distance";
+            this.btn_Hamming_Distance.Size = new System.Drawing.Size(351, 32);
+            this.btn_Hamming_Distance.TabIndex = 78;
+            this.btn_Hamming_Distance.Text = "Hamming Distance";
+            this.btn_Hamming_Distance.UseVisualStyleBackColor = true;
+            this.btn_Hamming_Distance.Click += new System.EventHandler(this.btn_Hamming_Distance_Click);
+            // 
+            // btn_Pow_x_n
+            // 
+            this.btn_Pow_x_n.Location = new System.Drawing.Point(11, 713);
+            this.btn_Pow_x_n.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Pow_x_n.Name = "btn_Pow_x_n";
+            this.btn_Pow_x_n.Size = new System.Drawing.Size(355, 32);
+            this.btn_Pow_x_n.TabIndex = 79;
+            this.btn_Pow_x_n.Text = "Pow(x, n)";
+            this.btn_Pow_x_n.UseVisualStyleBackColor = true;
+            this.btn_Pow_x_n.Click += new System.EventHandler(this.btn_Pow_x_n_Click);
+            // 
+            // btn_Add_Digits
+            // 
+            this.btn_Add_Digits.Location = new System.Drawing.Point(383, 10);
+            this.btn_Add_Digits.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Add_Digits.Name = "btn_Add_Digits";
+            this.btn_Add_Digits.Size = new System.Drawing.Size(239, 33);
+            this.btn_Add_Digits.TabIndex = 80;
+            this.btn_Add_Digits.Text = "Add Digits";
+            this.btn_Add_Digits.UseVisualStyleBackColor = true;
+            this.btn_Add_Digits.Click += new System.EventHandler(this.btn_Add_Digits_Click);
+            // 
+            // btn_Power_of_Four
+            // 
+            this.btn_Power_of_Four.Location = new System.Drawing.Point(12, 750);
+            this.btn_Power_of_Four.Name = "btn_Power_of_Four";
+            this.btn_Power_of_Four.Size = new System.Drawing.Size(354, 36);
+            this.btn_Power_of_Four.TabIndex = 81;
+            this.btn_Power_of_Four.Text = " Power of Four";
+            this.btn_Power_of_Four.UseVisualStyleBackColor = true;
+            this.btn_Power_of_Four.Click += new System.EventHandler(this.btn_Power_of_Four_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 698);
+            this.ClientSize = new System.Drawing.Size(1200, 973);
+            this.Controls.Add(this.btn_Power_of_Four);
+            this.Controls.Add(this.btn_Add_Digits);
+            this.Controls.Add(this.btn_Pow_x_n);
+            this.Controls.Add(this.btn_Hamming_Distance);
             this.Controls.Add(this.btn_Permutation_Sequence);
             this.Controls.Add(this.btn_Power_of_Two);
             this.Controls.Add(this.btn_Counting_Bits);
@@ -283,5 +334,9 @@
         private System.Windows.Forms.Button btn_Counting_Bits;
         private System.Windows.Forms.Button btn_Power_of_Two;
         private System.Windows.Forms.Button btn_Permutation_Sequence;
+        private System.Windows.Forms.Button btn_Hamming_Distance;
+        private System.Windows.Forms.Button btn_Pow_x_n;
+        private System.Windows.Forms.Button btn_Add_Digits;
+        private System.Windows.Forms.Button btn_Power_of_Four;
     }
 }

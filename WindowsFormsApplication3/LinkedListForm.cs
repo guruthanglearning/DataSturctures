@@ -4717,6 +4717,7 @@ namespace WindowsFormsApplication3
         {
             public ListNode Node1;
             public ListNode Node2;
+            public int Find;
         }
 
 
@@ -4746,7 +4747,75 @@ namespace WindowsFormsApplication3
                 node.next = node.next.next;
             }
         }
+
+        private void btn_Remove_Linked_List_Elements_Click(object sender, EventArgs e)
+        {
+
+            /*
+
+                Remove all elements from a linked list of integers that have value val.
+
+               Example:
+
+               Input:  1->2->6->3->4->5->6, val = 6
+               Output: 1->2->3->4->5
+
+               Time Complexity     : O(N) 
+               Space Complexity    : O(1)
+          */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5, 6 }), Find = 6 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 6 }), Find = 6 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { }), Find = 6 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Before deleting ListNode {this.GetListNodeData(input.Node1)} and after delete {this.GetListNodeData(this.RemoveElements(input.Node1, input.Find))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public ListNode RemoveElements(ListNode head, int val)
+        {
+
+
+            if (head == null)
+                return null;
+
+            // 1->2->6->3->4->5->6, val = 6
+            // 3->4->5->6, val = 6
+
+            while (head != null && head.val == val)
+            {
+                head = head.next;
+            }
+
+            
+            ListNode curr = head;
+
+            while (curr.next != null)
+            {
+                if (curr.next.val == val)
+                {
+                    curr.next = curr.next.next;
+                }
+                else
+                {
+                    curr = curr.next;
+                }
+            }
+
+            return head;
+
+        }
+
     }
+
 
 
     class Graph

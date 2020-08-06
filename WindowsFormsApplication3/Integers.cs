@@ -1003,6 +1003,8 @@ namespace WindowsFormsApplication3
 
         public bool IsPowerOfTwo(int n)
         {
+
+            // We can also use (n & (n-1) == 0) to determine power of 2
             if (n <= 0)
                 return false;
             
@@ -1116,6 +1118,263 @@ namespace WindowsFormsApplication3
             return result.ToString();
         }
 
+
+        private void btn_Hamming_Distance_Click(object sender, EventArgs e)
+        {
+
+            
+
+
+
+            /*
+
+                The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+
+                Given two integers x and y, calculate the Hamming distance.
+
+                Note:
+                0 ≤ x, y < 231.
+
+                Example:
+
+                Input: x = 1, y = 4
+
+                Output: 2
+
+                Explanation:
+                1   (0 0 0 1)
+                4   (0 1 0 0)
+                       ↑   ↑
+
+                The above arrows point to positions where the corresponding bits are different.
+
+                Time Complexity     : O(N) where N is the number of bits in two numbers
+                Space Complexity    : O(1)
+
+            */
+            List<Point> inputs = new List<Point>();
+            inputs.Add(new Point() {X = 1, Y= 4 });
+            
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Hamming Distance between {input.X}  and {input.Y} is { this.HammingDistance(input.X, input.Y)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public int HammingDistance(int x, int y)
+        {
+
+            int res = x ^ y;
+            int dis = 0;
+
+            while (res != 0)
+            {
+                if ((res & 1) != 0)
+                    dis++;
+                res >>= 1;
+
+            }
+
+            return dis;
+
+        }
+
+        private void btn_Pow_x_n_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Implement pow(x, n), which calculates x raised to the power n (xn).
+
+                Example 1:
+
+                Input: 2.00000, 10
+                Output: 1024.00000
+                Example 2:
+
+                Input: 2.10000, 3
+                Output: 9.26100
+                Example 3:
+
+                Input: 2.00000, -2
+                Output: 0.25000
+                Explanation: 2-2 = 1/22 = 1/4 = 0.25
+                Note:
+
+                -100.0 < x < 100.0
+                n is a 32-bit signed integer, within the range [−231, 231 − 1]
+
+            */
+
+            List<PowerOf> inputs = new List<PowerOf>();
+            inputs.Add(new PowerOf() { X = 1.00, N = int.MinValue });
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Power ({input.X}, {input.N} ) {this.MyPow(input.X, input.N)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        
+
+
+        }
+
+        public class PowerOf
+        {
+            public double X;
+            public int N;
+        }
+
+
+        public double MyPow(double x, int n)
+        {
+
+            double result = 0;
+            long p = n;
+
+            if (n < 0)
+                result = 1 / (Pow(x, -p));
+            else if (n == 0)
+                result = 1;
+            else
+                result = Pow(x, n);
+
+            return result;
+        }
+
+        private double Pow(double x, long n)
+        {
+
+            if (n == 1)
+                return x;
+
+            double result = 0;
+            result = Pow(x * x, n / 2);
+
+            if ((n % 2) == 1)
+                result *= x;
+
+            return result;
+        }
+
+        private void btn_Add_Digits_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+
+                Example:
+
+                Input: 38
+                Output: 2 
+                Explanation: The process is like: 3 + 8 = 11, 1 + 1 = 2. 
+                             Since 2 has only one digit, return it.
+                Follow up:
+                Could you do it without any loop/recursion in O(1) runtime?
+
+                   Hide Hint #1  
+                A naive implementation of the above process is trivial. Could you come up with other methods?
+                   Hide Hint #2  
+                What are all the possible results?
+                   Hide Hint #3  
+                How do they occur, periodically or randomly?
+                   Hide Hint #4  
+                You may find this Wikipedia article useful.
+
+            */
+
+
+            List<int> inputs = new List<int>();
+            inputs.Add(38);
+            inputs.Add(123);
+            inputs.Add(8912);
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Add Digits is {AddDigits(input)} for the given number is {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+
+        public int AddDigits(int num)
+        {
+            int result = 0; ;
+
+            while (true)
+            {
+                result += num % 10;
+                num = num / 10;
+
+                if (num < 10)
+                {
+                    result += num;
+                    if (result < 10)
+                        break;
+                    num = result;
+                    result = 0;
+                }
+            }
+
+            return result;
+        }
+
+        private void btn_Power_of_Four_Click(object sender, EventArgs e)
+        {
+            /*             
+                Given an integer (signed 32 bits), write a function to check whether it is a power of 4.
+
+                Example 1:
+
+                Input: 16
+                Output: true
+                Example 2:
+
+                Input: 5
+                Output: false
+             
+                Time Complexity     :   O(1)
+                Space Complexity    :   O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<int> inputs = new List<int>();
+            inputs.Add(1);
+            inputs.Add(4);
+            inputs.Add(7);
+            inputs.Add(8);
+            inputs.Add(15);
+            inputs.Add(16);
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The given integer {input} is {(this.IsPowerOfFour(input) ? "" : "not")} power of 4 ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public bool IsPowerOfFour(int n)
+        {
+            return (n & (n - 1)) == 0 && (n % 3) == 1;
+        }
     }
 }
 

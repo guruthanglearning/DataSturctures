@@ -122,6 +122,22 @@ namespace WindowsFormsApplication3
             }
         }
 
+        public class DerivedProtected_Old : BaseProtected
+        {
+            public int Test()
+            {
+                return this.count = 1;
+            }
+
+            public int NewTest()
+            {
+                return 2;
+            }
+
+
+
+        }
+
 
         public class StaticMemberTest
         {
@@ -261,6 +277,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Online_Stock_Span_Click(object sender, EventArgs e)
         {
+            
             /*
             
             Write a class StockSpanner which collects daily price quotes for some stock, and returns the span of that stock's price for the current day.

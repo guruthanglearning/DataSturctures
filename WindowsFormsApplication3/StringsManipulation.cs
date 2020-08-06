@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1749,6 +1748,10 @@ namespace WindowsFormsApplication3
 
         private void btn_Word_Break_cats_and_dogs_Click(object sender, EventArgs e)
         {
+
+
+
+
             //string input = "catsanddogs";
             //List<string> dictionary = new List<string>() {"cats", "cat", "and", "dogs", "sand", "dog" };
 
@@ -1760,8 +1763,8 @@ namespace WindowsFormsApplication3
                 ]
              */
 
-            string input = "pineapplepenapple";
-            List<string> dictionary = new List<string>() { "apple", "pen", "applepen", "pine", "pineapple" };
+            //string input = "pineapplepenapple";
+            //List<string> dictionary = new List<string>() { "apple", "pen", "applepen", "pine", "pineapple" };
             /*
               Output:
                 [
@@ -1771,12 +1774,23 @@ namespace WindowsFormsApplication3
                 ]             
              */
 
+            //string input = "catsandog";
+            //List<string> dictionary = new List<string>() { "cats", "dog", "sand", "and", "cat" };
+
+            //string input = "ab";
+            //List<string> dictionary = new List<string>() { "a", "b"};
+
+
+            string input = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            List<string> dictionary = new List<string>() { "a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa" };
+
+
             List<string>[] pos = new List<string>[input.Length];
             pos[0] = new List<string>();
             string subString = string.Empty;
             for (int i = 0; i < input.Length; i++)
             {
-                for (int j = i + 1; j < input.Length; j++)
+                for (int j = i; j < input.Length; j++)
                 {
                     subString = input.Substring(i, (j - i) + 1);
                     if (dictionary.Contains(subString))
@@ -1801,7 +1815,8 @@ namespace WindowsFormsApplication3
             else
             {
                 List<string> result = new List<string>();
-                dfs(pos, result, "", input.Length - 1);
+                Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+                dfs(pos, result, "", input.Length - 1, dict);
                 StringBuilder outputs = new StringBuilder();
                 foreach (string str in result)
                 {
@@ -1814,18 +1829,29 @@ namespace WindowsFormsApplication3
 
         }
 
-        public void dfs(List<String>[] pos, List<String> result, String curr, int i)
+        public void dfs(List<String>[] pos, List<String> result, String curr, int i, Dictionary<string, List<string>> dict)
         {
-            if (i <= 0)
+            if (i < 0)
             {
                 result.Add(curr.Trim());
                 return;
             }
 
+            if (pos[i] == null)
+                return;
+
             foreach (String s in pos[i])
             {
                 String combined = s + " " + curr;
-                dfs(pos, result, combined, i - s.Length);
+                if (dict.ContainsKey(combined))
+                {
+                    result.AddRange(dict[combined]);
+                }
+                else
+                {
+                    dfs(pos, result, combined, i - s.Length, dict);
+                }
+                dict[combined] = result;
             }
         }
 
@@ -2708,7 +2734,6 @@ namespace WindowsFormsApplication3
 
         private void btn_Add_Binary_Click(object sender, EventArgs e)
         {
-
             /*
                 Given two binary strings, return their sum (also a binary string).
                 The input strings are both non-empty and contains only characters 1 or 0.
@@ -2727,81 +2752,154 @@ namespace WindowsFormsApplication3
              */
 
             List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
-            inputs.Add(new AddBinaryInputs() { inputA = "11", inputB = "0" });
-            inputs.Add(new AddBinaryInputs() { inputA = "11" });
-            inputs.Add(new AddBinaryInputs() { inputB = "11" });
-            inputs.Add(new AddBinaryInputs() { });
-            inputs.Add(new AddBinaryInputs() { inputA = "1111", inputB = "111" });
+            //inputs.Add(new AddBinaryInputs() { inputA = "11", inputB = "1" });
+            //inputs.Add(new AddBinaryInputs() { inputA = "11" });
+            //inputs.Add(new AddBinaryInputs() { inputB = "11" });
+            //inputs.Add(new AddBinaryInputs() { });
+            //inputs.Add(new AddBinaryInputs() { inputA = "1111", inputB = "111" });
 
             StringBuilder result = new StringBuilder();
 
             foreach (var input in inputs)
             {
-                int al = 0;
-                int bl = 0;
-                int sum = 0;
-                int carry = 0;
-
-                StringBuilder binarySum = new StringBuilder();
-
-                if (string.IsNullOrEmpty(input.inputA))
-                {
-                    result.AppendLine($"Adding two binary {(input.inputA == null ? "A NULL" : input.inputA)} and {(input.inputB == null ? "B NULL" : input.inputB)}  is {(input.inputB == null ? "NULL" : input.inputB)}");
-                    continue;
-                }
-                else if (string.IsNullOrEmpty(input.inputB))
-                {
-                    result.AppendLine($"Adding two binary {(input.inputA == null ? "A NULL" : input.inputA)} and {(input.inputB == null ? "B NULL" : input.inputB)}  is {(input.inputA == null ? "NULL" : input.inputA)}");
-                    continue;
-                }
-
-                input.inputA = input.inputA.Trim();
-                input.inputB = input.inputB.Trim();
-
-                al = input.inputA.Length - 1;
-                bl = input.inputB.Length - 1;
-
-                while (al >= 0 && bl >= 0)
-                {
-                    sum = carry;
-                    sum += (input.inputA[al] - '0');
-                    sum += (input.inputB[bl] - '0');
-                    carry = sum / 2;
-                    binarySum.Insert(0, sum % 2);
-                    al--;
-                    bl--;
-                }
-
-                while (al >= 0)
-                {
-                    sum = carry;
-                    sum += (input.inputA[al] - '0');
-                    carry = sum / 2;
-                    binarySum.Insert(0, sum % 2);
-                    al--;
-                }
-
-                while (bl >= 0)
-                {
-                    sum = carry;
-                    sum += (input.inputB[bl] - '0');
-                    carry = sum / 2;
-                    binarySum.Insert(0, sum % 2);
-                    bl--;
-                }
-
-                if (carry > 0)
-                {
-                    binarySum.Insert(0, carry);
-                }
-
-                result.AppendLine($"Adding two binary {input.inputA} and {input.inputB}  is {binarySum.ToString()}");
+                //result.AppendLine($"Adding two binary A :  {input.inputA} and  B : {input.inputB}  is {AddBinaryStringBuilder(input.inputA, input.inputB)}");
+                result.AppendLine($"Adding two binary A : {input.inputA} and B : {input.inputB}  is {AddBinaryStack(input.inputA, input.inputB)}");
             }
 
             MessageBox.Show(result.ToString());
 
+        }
+
+        public string AddBinaryStringBuilder(string inputA, string inputB)
+        {
+            if (string.IsNullOrEmpty(inputA))
+                return inputB;
+
+            if (string.IsNullOrEmpty(inputB))
+                return inputA;
+
+            if (string.IsNullOrEmpty(inputA) && string.IsNullOrEmpty(inputB))
+                return inputA;
 
 
+            int al = 0;
+            int bl = 0;
+            int sum = 0;
+            int carry = 0;
+
+            StringBuilder binarySum = new StringBuilder();
+            
+            inputA = inputA.Trim();
+            inputB = inputB.Trim();
+
+            al = inputA.Length - 1;
+            bl = inputB.Length - 1;
+
+            while (al >= 0 && bl >= 0)
+            {
+                sum = carry;
+                sum += (inputA[al] - '0');
+                sum += (inputB[bl] - '0');
+                carry = sum / 2;
+                binarySum.Insert(0, sum % 2);
+                al--;
+                bl--;
+            }
+
+            while (al >= 0)
+            {
+                sum = carry;
+                sum += (inputA[al] - '0');
+                carry = sum / 2;
+                binarySum.Insert(0, sum % 2);
+                al--;
+            }
+
+            while (bl >= 0)
+            {
+                sum = carry;
+                sum += (inputB[bl] - '0');
+                carry = sum / 2;
+                binarySum.Insert(0, sum % 2);
+                bl--;
+            }
+
+            if (carry > 0)
+            {
+                binarySum.Insert(0, carry);
+            }
+
+            return binarySum.ToString();
+
+        }
+
+        public string AddBinaryStack(string a, string b)
+        {
+            if (string.IsNullOrEmpty(a))
+                return b;
+
+            if (string.IsNullOrEmpty(b))
+                return a;
+
+            if (string.IsNullOrEmpty(a) && string.IsNullOrEmpty(a))
+                return b;
+
+            int al = a.Length - 1;
+            int bl = b.Length - 1;
+
+            Stack<int> s = new Stack<int>();
+            int temp = 0;
+            int reminder = 0;
+
+
+            while (al >= 0 && bl >= 0)
+            {
+                temp = (a[al] - '0') + (b[bl] - '0') + reminder;
+                if (temp > 1)
+                {
+                    reminder = temp / 2;
+                    temp = temp % 2;
+                }
+                else
+                    reminder = 0;
+                s.Push(temp);
+                al--;
+                bl--;
+
+            }
+
+            while (al >= 0)
+            {
+                temp = (a[al] - '0') + reminder;
+                if (temp > 1)
+                {
+                    reminder = 1;
+                    temp = 0;
+                }
+                else
+                    reminder = 0;
+                s.Push(temp);
+                al--;
+            }
+
+            while (bl >= 0)
+            {
+                temp = (b[bl] - '0') + reminder;
+                if (temp > 1)
+                {
+                    reminder = 1;
+                    temp = 0;
+                }
+                else
+                    reminder = 0;
+                s.Push(temp);
+                bl--;
+            }
+
+            if (reminder > 0)
+                s.Push(reminder);
+
+            return string.Join("", s);
 
         }
 
@@ -3084,6 +3182,34 @@ namespace WindowsFormsApplication3
             }
 
             return true;
+        }
+
+
+        public bool IsPalindrome_T(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return false;
+
+            string input = s.ToLower();
+
+            int start = 0;
+            int end = input.Length - 1;
+
+            while (start < end)
+            {
+                if (input[start] == 32 || !((input[start] >= 97 && input[end] <= 122) || (input[start] >= 48 && input[end] <= 59))) 
+                start++;
+            else if (input[start] == 32 || !((input[start] >= 97 && input[end] <= 122) || (input[start] >= 48 && input[end] <= 59))) 
+                end--;
+            else if (input[start] != input[end])
+                    return false;
+
+                start++;
+                end--;
+            }
+
+            return true;
+
         }
 
         private void btn_Longest_Palindromic_Substring_Click(object sender, EventArgs e)
@@ -4386,6 +4512,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Longest_Duplicate_Substring_Click(object sender, EventArgs e)
         {
+                  
             /*
             
 
@@ -4416,7 +4543,229 @@ namespace WindowsFormsApplication3
                      
         }
 
+        private void btn_Reconstruct_Itinerary_Click(object sender, EventArgs e)
+        {
+            /*
 
+                Reconstruct Itinerary
+                Solution
+                Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with JFK.
+                
+                Note:
+                If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string. For example, the itinerary ["JFK", "LGA"] has a smaller lexical order than ["JFK", "LGB"].
+                All airports are represented by three capital letters (IATA code).
+                You may assume all tickets form at least one valid itinerary.
+                One must use all the tickets once and only once.
+                Example 1:
+
+                Input: [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
+                Output: ["JFK", "MUC", "LHR", "SFO", "SJC"]
+                Example 2:
+
+                Input: [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+                Output: ["JFK","ATL","JFK","SFO","ATL","SFO"]
+                Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"].
+                             But it is larger in lexical order.
+            
+                Time Complexity     :   O(N) + O(N Log N)
+                Space Complexity    :   O(N) 
+             
+             */
+
+
+
+            StringBuilder result = new StringBuilder();
+
+            List<IList<int>> r = new List<IList<int>>();
+            r.Add(new List<int>() { 1, 2 });
+
+            IList<IList<IList<string>>> inputs = new List<IList<IList<string>>>();
+            inputs.Add(new List<IList<string>>()
+                        {
+                            new List<string> { "JFK", "SFO" },
+                            new List<string> { "JFK", "ATL" },
+                            new List<string> { "SFO", "ATL" },
+                            new List<string> {  "ATL", "JFK" },
+                            new List<string> {  "ATL", "SFO" }
+                        });
+
+
+            //inputs.Add(new List<IList<string>>()
+            //            {
+            //                new List<string> { "MUC", "LHR" },
+            //                new List<string> { "JFK", "MUC" },
+            //                new List<string> { "SFO", "SJC" },
+            //                new List<string> {  "LHR", "SFO" }
+            //            });
+
+            //inputs.Add(new List<IList<string>>()
+            //            {
+            //                new List<string> { "JFK", "KUL" },
+            //                new List<string> { "JFK", "NRT" },
+            //                new List<string> { "NRT", "JFK" }
+            //            });
+
+            
+
+
+            foreach (var input in inputs)
+            {                
+                result.AppendLine($"The Iternary is {string.Join("-> ", (this.FindItinerary(input))) } for the given input {string.Join(" ",input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+
+        public IList<string> FindItinerary(IList<IList<string>> tickets)
+        {
+                        
+            return this.GetItinerary(this.ParseData(tickets));
+        }
+
+        private Dictionary<string, List<string>> ParseData(IList<IList<string>> tickets)
+        {
+            if (tickets == null || tickets.Count == 0)
+                return null;
+
+            Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+            List<String> it;
+
+            foreach (var ticket in tickets)
+            {
+                    if (!dict.TryGetValue(ticket[0], out it))
+                        dict[ticket[0]] = new List<string>() { ticket[1] };
+                    else
+                    {
+                        it.Add(ticket[1]);                        
+                    }                
+            }
+
+            return dict;
+        }
+
+
+        private IList<string> GetItinerary(Dictionary<string, List<string>> itr)
+        {
+            if (itr == null || itr.Count == 0)
+                return new List<string>();
+
+          
+            Stack<string> result = new Stack<string>();
+            List<string> tempItr;
+            Stack<string> s = new Stack<string>();
+            s.Push("JFK");
+            String t;
+
+            while (s.Count > 0)
+            {
+                t = s.Peek();
+                if (!itr.TryGetValue(t, out tempItr) || tempItr.Count == 0)
+                {
+                    result.Push(t);
+                    s.Pop();
+                }
+                else
+                {
+                    if (tempItr.Count > 1 )
+                        tempItr.Sort();
+                    s.Push(tempItr[0]);
+                    tempItr.RemoveAt(0);
+                }
+            }
+
+            return result.ToList<string>();
+
+        }
+
+        private void btn_Detect_Capital_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a word, you need to judge whether the usage of capitals in it is right or not.
+
+                We define the usage of capitals in a word to be right when one of the following cases holds:
+
+                All letters in this word are capitals, like "USA".
+                All letters in this word are not capitals, like "leetcode".
+                Only the first letter in this word is capital, like "Google".
+                Otherwise, we define that this word doesn't use capitals in a right way.
+ 
+
+                Example 1:
+
+                Input: "USA"
+                Output: True
+ 
+
+                Example 2:
+
+                Input: "FlaG"
+                Output: False
+ 
+
+                Note: The input will be a non-empty word consisting of uppercase and lowercase latin letters.
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("USA");
+            inputs.Add("Google");
+            inputs.Add("leetcode");
+            inputs.Add("leetCode");
+            inputs.Add("123");
+            inputs.Add("g");           
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The given string {input} is Capital {(this.DetectCapitalUse(input) ? "true" : "false")}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+            char c = 'c';
+            
+
+        }
+
+        public bool DetectCapitalUse(string word)
+        {
+
+            if (string.IsNullOrEmpty(word))
+                return true;
+
+            if (word.Length == 1)
+                return true;
+
+            bool isFullCaps = word[0]  >= 65 && word[0] <= 90 && word[1]  >= 65 && word[1]  <= 90;
+            bool isFirstCapsAndSmall = !isFullCaps && word[0] >= 65 && word[0] <= 90 && word[1]  >= 97 && word[1]  <= 122;
+            bool isSmall = !isFirstCapsAndSmall && word[0]  >= 97 && word[0]  <= 122 && word[1]  >= 97 && word[1] <= 122;
+
+            if (!isFullCaps && !isFirstCapsAndSmall && !isSmall)
+                return false;
+
+            for (int i = 2; i < word.Length; i++)
+            {
+                if (isFullCaps && !(word[i] >= 65 && word[i]<= 90))
+                    return false;
+                else if (isFirstCapsAndSmall && !(word[i]  >= 97 && word[i]  <= 122))
+                    return false;
+                else if (isSmall && !(word[i]  >= 97 && word[i] <= 122))
+                    return false;
+
+            }
+
+
+            return true;
+        }
     }
 }
 

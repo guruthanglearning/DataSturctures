@@ -98,6 +98,7 @@ namespace WindowsFormsApplication3
                 p = input.Tree1;
                 q = input.Tree2;
                 result.AppendLine($"The below two given trees {(this.IsSameTree(p, q) ? "Same" : "Not same")}\np: {(this.TreeTraverse(p))} \nq: {(this.TreeTraverse(q))} \n");
+                //IsSameTree_V2
             }
 
             MessageBox.Show(result.ToString());
@@ -151,6 +152,35 @@ namespace WindowsFormsApplication3
 
             }
             return true;
+        }
+
+        public bool IsSameTree_V2(Node p, Node q)
+        {
+            if (p == null && q == null)
+                return true;
+
+            if ((p == null && q != null) || (p != null && q == null))
+                return false;
+
+            return this.IsTreeSame(p, q);
+        }
+
+
+        private bool IsTreeSame(Node p, Node q)
+        {
+
+            if ((p == null && q != null) || (p != null && q == null) || (p != null && q != null && p.data != q.data))
+                return false;
+
+            if (p == null && q == null)
+                return true;
+
+            bool result = IsTreeSame(p.left, q.left);
+            if (result)
+                result = IsTreeSame(p.right, q.right);
+
+            return result;
+
         }
 
 
@@ -1575,5 +1605,622 @@ namespace WindowsFormsApplication3
             }
             return root;
         }
+
+        private void btn_Count_Complete_Tree_Nodes_Click(object sender, EventArgs e)
+        {
+            /*
+             
+            Given a complete binary tree, count the number of nodes.
+
+                Note:
+
+                Definition of a complete binary tree from Wikipedia:
+                In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far 
+                left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+
+                Example:
+
+                Input: 
+                    1
+                   / \
+                  2   3
+                 / \  /
+                4  5 6
+
+                Output: 6
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBST(new int[] { 1,2,3,4,5,6 }));
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Total nodes in Complete Binary tree is {this.CountNodes(input)} for the given complete binary tree {this.TraverseBinaryTree(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public int CountNodes(Node root)
+        {
+
+            if (root == null)
+                return 0;
+
+
+            Queue<Node> q = new Queue<Node>();
+            q.Enqueue(root);
+            int result = 0;
+            Node t;
+
+            while (q.Count > 0)
+            {
+                result++;
+                t = q.Dequeue();
+                if (t.left != null)
+                    q.Enqueue(t.left);
+
+                if (t.right != null)
+                    q.Enqueue(t.right);
+
+            }
+
+
+            return result;
+
+
+
+        }
+
+        private void btn_Unique_Binary_Search_Trees_Click(object sender, EventArgs e)
+        {
+            
+
+            /*
+
+                Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
+
+                Example:
+
+                Input: 3
+                Output: 5
+                Explanation:
+                Given n = 3, there are a total of 5 unique BST's:
+
+                   1         3     3      2      1
+                    \       /     /      / \      \
+                     3     2     1      1   3      2
+                    /     /       \                 \
+                   2     1         2                 3
+
+                Catalan Series Formula : Sum (F(i-1)*F(N-i))
+                Time Complexity     :   O(N ^ 2)
+                Space Complexity    :   O(N);
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<int> inputs = new List<int>();
+            inputs.Add(3);
+            inputs.Add(7);
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"There are total of {this.NumTrees(input)} binary search trees can be created for the given {input} nodes ");
+                //Also see GetCatalanBinomialCoeff O(N)
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        static long binomialCoeff(int n, int k)
+        {
+            long res = 1;
+
+            // Since C(n, k) = C(n, n-k)  
+            if (k > n - k)
+            {
+                k = n - k;
+            }
+
+            // Calculate value of [n*(n-1)*---*(n-k+1)] / [k*(k-1)*---*1]  
+            for (int i = 0; i < k; ++i)
+            {
+                res *= (n - i);
+                res /= (i + 1);
+            }
+
+            return res;
+        }
+
+        // A Binomial coefficient based function to find nth catalan  
+        // number in O(n) time  
+        private long GetCatalanBinomialCoeff(int n)
+        {
+            // Calculate value of 2nCn  
+            long c = binomialCoeff(2 * n, n);
+
+            // return 2nCn/(n+1)  
+            return c / (n + 1);
+        }
+
+        public int NumTrees(int n)
+        {
+            return this.GetCatalan(n);
+        }
+
+        private int GetCatalan(int n)
+        {
+            int[] catalan = new int[n + 1];
+            catalan[0] = 1;
+
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                    catalan[i] += (catalan[j - 1] * catalan[i - j]);
+            }
+
+            return catalan[n];
+        }
+
+        private void btn_Sum_Root_to_Leaf_Numbers_Click(object sender, EventArgs e)
+        {
+            /*
+                
+                    Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.
+
+                    An example is the root-to-leaf path 1->2->3 which represents the number 123.
+
+                    Find the total sum of all root-to-leaf numbers.
+
+                    Note: A leaf is a node with no children.
+
+                    Example:
+
+                    Input: [1,2,3]
+                        1
+                       / \
+                      2   3
+                    Output: 25
+                    Explanation:
+                    The root-to-leaf path 1->2 represents the number 12.
+                    The root-to-leaf path 1->3 represents the number 13.
+                    Therefore, sum = 12 + 13 = 25.
+                    Example 2:
+
+                    Input: [4,9,0,5,1]
+                        4
+                       / \
+                      9   0
+                     / \
+                    5   1
+                    Output: 1026
+                    Explanation:
+                    The root-to-leaf path 4->9->5 represents the number 495.
+                    The root-to-leaf path 4->9->1 represents the number 491.
+                    The root-to-leaf path 4->0 represents the number 40.
+                    Therefore, sum = 495 + 491 + 40 = 1026.
+             
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 4,9,0,5,1}));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1,null , 3 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 3, null }));
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Sum is {this.SumNumbers(input)} for the given binary tree {this.TraverseBinaryTree(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public int SumNumbers(Node root)
+        {
+
+            if (root == null)
+                return 0;
+
+            return this.InOrder(root, 0);
+
+        }
+
+        private int InOrder(Node node, int sum)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            if (node.left == null && node.right == null)
+                return (sum * 10) + node.data;
+
+            int left = 0;
+            int right = 0;
+
+
+
+            if (node.left != null)
+                left = InOrder(node.left, (sum * 10) + node.data); // 495 + 491
+            if (node.right != null)
+                right = InOrder(node.right, (sum * 10) + node.data);
+
+            return left + right;
+
+        }
+
+        private void btn_Maximum_Width_of_Binary_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+
+                    Given a binary tree, write a function to get the maximum width of the given tree. The width of a tree is the maximum width among all levels. The binary tree has the same structure as a full binary tree, but some nodes are null.
+
+                    The width of one level is defined as the length between the end-nodes (the leftmost and right most non-null nodes in the level, where the null nodes between the end-nodes are also counted into the length calculation.
+
+                    Example 1:
+
+                    Input: 
+
+                               1
+                             /   \
+                            3     2
+                           / \     \  
+                          5   3     9 
+
+                    Output: 4
+                    Explanation: The maximum width existing in the third level with the length 4 (5,3,null,9).
+                    Example 2:
+
+                    Input: 
+
+                              1
+                             /  
+                            3    
+                           / \       
+                          5   3     
+
+                    Output: 2
+                    Explanation: The maximum width existing in the third level with the length 2 (5,3).
+                    Example 3:
+
+                    Input: 
+
+                              1
+                             / \
+                            3   2 
+                           /        
+                          5      
+
+                    Output: 2
+                    Explanation: The maximum width existing in the second level with the length 2 (3,2).
+                    Example 4:
+
+                    Input: 
+
+                              1
+                             / \
+                            3   2
+                           /     \  
+                          5       9 
+                         /         \
+                        6           7
+                    Output: 8
+                    Explanation:The maximum width existing in the fourth level with the length 8 (6,null,null,null,null,null,null,7).
+
+
+                    Note: Answer will in the range of 32-bit signed integer.
+
+                    Time Complexity     : O(N)
+                    Space Complexity    : O(N)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 3, 2, 5, 3, null, 9 }));
+            
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Width Of Binary Tree is {this.WidthOfBinaryTree(input)} for the given binary tree {this.TraverseBinaryTree(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public class QItem
+        {
+            public Node Node;
+            public int Index;
+        }
+
+
+        public int WidthOfBinaryTree(Node root)
+        {
+
+            if (root == null)
+                return 0;
+
+            int ind = -1;
+            int result = 0;
+            int sI = 0;
+            int eI = 0;
+
+            Queue<QItem> q = new Queue<QItem>();
+            q.Enqueue(new QItem() { Node = root, Index = ++ind });
+            q.Enqueue(null);
+            QItem temp;
+
+            while (q.Count > 0)
+            {
+                temp = q.Dequeue();
+              
+
+                if (temp == null)
+                {
+                    result = Math.Max(result, ((eI - sI) + 1));
+                    sI = 0;
+                    eI = 0;
+                    if (q.Count == 0)
+                        break;
+                    q.Enqueue(null);
+                }
+                else
+                {
+                    if (sI == 0)
+                    {
+                        sI = temp.Index;
+                    }
+
+                    eI = temp.Index;
+                    if (temp.Node.left != null)
+                    {
+                        q.Enqueue(new QItem() { Node = temp.Node.left, Index = (temp.Index * 2) + 1 });
+                    }
+
+                    if (temp.Node.right != null)
+                    {
+                        q.Enqueue(new QItem() { Node = temp.Node.right, Index = (temp.Index * 2) + 2 });
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private void btn_Binary_Tree_Zigzag_Level_Order_Traversal_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
+
+                For example:
+                Given binary tree [3,9,20,null,null,15,7],
+                    3
+                   / \
+                  9  20
+                    /  \
+                   15   7
+                return its zigzag level order traversal as:
+                [
+                  [3],
+                  [20,9],
+                  [15,7]
+                ]
+
+            Time Complexity     :  O(N) where N is the total number of nodes
+            Space Complexity    : O (N)
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 3, 9, 20, null, null, 15, 7 }));
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"ZigZag  Of Binary Tree Traversal is {this.GetDataFromListOfList(this.ZigzagLevelOrder(input))} for the given binary tree {this.TraverseBinaryTree(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public IList<IList<int>> ZigzagLevelOrder(Node root)
+        {
+
+            List<IList<int>> result = new List<IList<int>>();
+
+            if (root == null)
+                return result;
+
+            bool rightToLeft = false;
+            Queue<Node> q = new Queue<Node>();
+            Stack<int> s = new Stack<int>();
+            q.Enqueue(root);
+            q.Enqueue(null);
+            List<int> tempList = new List<int>();
+            Node temp;
+
+
+            while (q.Count > 0)
+            {
+                temp = q.Dequeue();
+
+                if (temp == null)
+                {
+                    if (rightToLeft)
+                    {
+                        result.Add(s.ToList());
+                        s = new Stack<int>();
+                    }
+                    else
+                    {
+                        result.Add(tempList);
+                        tempList = new List<int>();
+                    }
+
+
+                    if (q.Count == 0)
+                        break;
+
+                    q.Enqueue(null);
+                    rightToLeft = !rightToLeft;
+                }
+                else
+                {
+
+                    if (rightToLeft)
+                        s.Push(temp.data);
+                    else
+                        tempList.Add(temp.data);
+    
+
+                if (temp.left != null)
+                        q.Enqueue(temp.left);
+
+                    if (temp.right != null)
+                        q.Enqueue(temp.right);
+
+                }
+
+            }
+
+            return result;
+        }
+
+
+        private string GetDataFromListOfList(IList<IList<int>> inputs)
+        {
+            if (inputs.Count == 0)
+                return string.Empty;
+            StringBuilder result = new StringBuilder();
+
+            foreach (IList<int> input in inputs)
+            {
+                result.AppendLine();
+                result.Append($"[ {string.Join(",",input)} ]" );                
+            }
+
+            return result.ToString();
+        }
+
+        private void btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal_Click(object sender, EventArgs e)
+        {
+            /*
+
+                Given inorder and postorder traversal of a tree, construct the binary tree.
+
+                Note:
+                You may assume that duplicates do not exist in the tree.
+
+                For example, given
+
+                inorder = [9,3,15,20,7]
+                postorder = [9,15,7,20,3]
+                Return the following binary tree:
+
+                    3
+                   / \
+                  9  20
+                    /  \
+                   15   7
+
+            Refer this link for creating binary tree from Inorder and PreOrder input : https://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
+
+            Time Complexity     : O(N)
+            Space Complexity    : O(1)  
+                
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<InutArray> inputs = new List<InutArray>();
+            inputs.Add(new InutArray() { InOrder = new int[] { 9, 3, 15, 20, 7 }, PostOrder = new int[] { 9, 15, 7, 20, 3 } });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($" Binary Tree from Inorder : {string.Join(",", input.InOrder)} and Postorder : {string.Join(",", input.PostOrder)} Traversal is {this.TraverseBinaryTree(this.BuildTree(input.InOrder, input.PostOrder))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public class InutArray
+        {
+            public int[] InOrder;
+            public int[] PostOrder;
+        }
+
+        public Node BuildTree(int[] inorder, int[] postorder)
+        {
+            int pEnd = postorder.Length - 1;
+            return this.Build(inorder, postorder, 0, inorder.Length - 1, ref pEnd);
+        }
+
+
+        private Node Build(int[] inorder, int[] postorder, int start, int end, ref int pEnd)
+        {
+
+            if (
+                inorder == null || inorder.Length == 0 || 
+                postorder == null || postorder.Length == 0 ||
+                start > end || pEnd < 0
+               )
+                return null;
+
+
+            Node node = null;
+            int index = 0;
+
+            index = this.Search(inorder, postorder[pEnd]); //0
+            if (index >= 0)
+            {
+                node = new Node() { data = postorder[pEnd]};
+                pEnd--;
+                node.right = this.Build(inorder, postorder, index + 1, end, ref pEnd);
+                node.left = this.Build(inorder, postorder, start, index - 1, ref pEnd);
+            }
+            
+            return node;
+        }
+
+
+        private int Search(int[] inOrder, int search)
+        {
+
+            if (inOrder == null || inOrder.Length == 0)
+                return -1;
+
+            for (int i = 0; i < inOrder.Length; i++)
+            {
+                if (inOrder[i] == search)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+
     }
 }

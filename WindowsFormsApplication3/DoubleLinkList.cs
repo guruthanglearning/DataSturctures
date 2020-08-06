@@ -17,7 +17,7 @@ namespace WindowsFormsApplication3
         {
             public int data;
             public Node left;
-            public Node right;
+            public Node right;            
         }
 
 
@@ -26,6 +26,7 @@ namespace WindowsFormsApplication3
             public int Data;
             public DoubleLL Next;
             public DoubleLL Previous;
+            public DoubleLL Child;
         }
         #endregion
 
@@ -140,6 +141,12 @@ namespace WindowsFormsApplication3
             }
             return node;
         }
+
+        public DoubleLL InsertDoubleLLWithChildFromArray(DoubleLL node, int?[] data)
+        {
+            return null;
+        }
+
 
         public DoubleLL InsertDoubleLLSortedOrder(DoubleLL node , int data)
         {
@@ -385,7 +392,187 @@ namespace WindowsFormsApplication3
                 InsertNodeIntoBSTTree(ref root.right, data);
             }            
         }
+
+        private void btn_Flatten_a_Multilevel_Doubly_Linked_List_Click(object sender, EventArgs e)
+        {
+            /*
+                    You are given a doubly linked list which in addition to the next and previous pointers, it could have a child pointer, which may or may not point to a separate doubly linked list. 
+                    These child lists may have one or more children of their own, and so on, to produce a multilevel data structure, as shown in the example below.
+
+                    Flatten the list so that all the nodes appear in a single-level, doubly linked list. You are given the head of the first level of the list.
+
+                    Example 1:
+
+                    Input: head = [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
+                    Output: [1,2,3,7,8,11,12,9,10,4,5,6]
+                    Explanation:
+
+                    The multilevel linked list in the input is as follows:
+
+                    After flattening the multilevel linked list it becomes:
+
+                    Example 2:
+
+                    Input: head = [1,2,null,3]
+                    Output: [1,3,2]
+                    Explanation:
+
+                    The input multilevel linked list is as follows:
+
+                      1---2---NULL
+                      |
+                      3---NULL
+                    Example 3:
+
+                    Input: head = []
+                    Output: []
+ 
+
+                    How multilevel linked list is represented in test case:
+
+                    We use the multilevel linked list from Example 1 above:
+
+                     1---2---3---4---5---6--NULL
+                             |
+                             7---8---9---10--NULL
+                                 |
+                                 11--12--NULL
+                    The serialization of each level is as follows:
+
+                    [1,2,3,4,5,6,null]
+                    [7,8,9,10,null]
+                    [11,12,null]
+                    To serialize all levels together we will add nulls in each level to signify no node connects to the upper node of the previous level. The serialization becomes:
+
+                    [1,2,3,4,5,6,null]
+                    [null,null,7,8,9,10,null]
+                    [null,11,12,null]
+                    Merging the serialization of each level and removing trailing nulls we obtain:
+
+                    [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
+ 
+
+                    Constraints:
+
+                        Number of Nodes will not exceed 1000.
+                        1 <= Node.val <= 10^5
+
+                    Time Complexity     : O(N)
+                    Space Complexity    : O(1)
+            */
+
+            //DoubleLL child2 = new DoubleLL() { Data = 11 };
+            //child2.Next = new DoubleLL() { Data = 12, Previous = child2 };
+
+            //DoubleLL child1 = new DoubleLL() { Data = 7 };
+            //child1.Next = new DoubleLL() { Data = 8, Previous = child1, Child = child2 };
+            //child1.Next.Next = new DoubleLL() { Data = 9, Previous = child1.Next };
+            //child1.Next.Next.Next = new DoubleLL() { Data = 10, Previous = child1.Next.Next };
+
+            //DoubleLL head = new DoubleLL() { Data = 1 };
+            //head.Next = new DoubleLL() { Data = 2, Previous = head };
+            //head.Next.Next = new DoubleLL() { Data = 3, Previous = head.Next, Child = child1 };
+            //head.Next.Next.Next = new DoubleLL() { Data = 4, Previous = head.Next.Next };
+            //head.Next.Next.Next.Next = new DoubleLL() { Data = 5, Previous = head.Next.Next.Next };
+            //head.Next.Next.Next.Next.Next = new DoubleLL() { Data = 6, Previous = head.Next.Next.Next.Next };
+
+
+            StringBuilder result = new StringBuilder();
+            List<DoubleLL> inputs = new List<DoubleLL>();
+            inputs.Add(this.InsertDoubleLLWithChildNodes(null ,new int?[] { 1, 2, 3, 4, 5, 6, null, null, null, 7, 8, 9, 10, null, null, 11, 12 }));
+
+
+            
+            foreach(DoubleLL input in inputs)
+            {
+                this.Flatten(input);
+                DoubleLL temp = input;
+                result.AppendLine($"Flatten a Multilevel Doubly Linked List for the given input double linked list is {this.PrintForward(ref temp)}");
+            }
+
+            MessageBox.Show(result.ToString());            
+
+        }
+
+        public DoubleLL Flatten(DoubleLL head)
+        {
+            this.FattenNode(head);
+            return head;
+        }
+
+        private DoubleLL FattenNode(DoubleLL node)
+        {
+
+            if (node == null)
+                return node;
+
+            DoubleLL runner = node;
+
+            while (runner != null)
+            {
+                if (runner.Child != null)
+                {
+                    DoubleLL endNode = FattenNode(runner.Child);
+                    if (endNode != null)
+                    { 
+                        endNode.Next = runner.Next;
+                        if (runner.Next != null)
+                            runner.Next.Previous = endNode;
+                        runner.Next.Previous = endNode;
+                        DoubleLL child = runner.Child;
+                        runner.Child = null;
+                        runner.Next = child;
+                        child.Previous = runner;
+                    }
+                }
+
+                if (runner.Next == null)
+                {
+                    return runner;                    
+                }
+                runner = runner.Next;
+            }
+
+            return null;
+        }
+
+
+        public DoubleLL InsertDoubleLLWithChildNodes(DoubleLL node, int?[] datas)
+        {
+
+            //[1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
+            int nullCounter = 0;
+            for (int i = 0; i < datas.Length; i++)
+            {
+                if (datas[i].HasValue)
+                {
+                    if (nullCounter > 0)
+                    {
+
+                        DoubleLL temp = node;
+                        while (nullCounter > 1 && temp.Next != null)
+                        {
+                            temp = temp.Next;
+                            nullCounter--;
+                        }
+
+                        int?[] subArray = new int?[datas.Length - i];
+                        Array.Copy(datas, i, subArray, 0, datas.Length - i);
+
+                        temp.Child = InsertDoubleLLWithChildNodes(temp.Child, subArray);
+                        break;
+                    }
+                    else
+                        node = this.InsertDoubleLL(node, datas[i].Value);
+                }
+                else
+                {
+                    nullCounter++;
+                }
+            }
+
+            return node;
+        }
+
     }
-
-
 }

@@ -32,6 +32,8 @@ namespace WindowsFormsApplication3
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            
             /*
                 http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
                 Time Complexity : O(n + kLogn) where building min heap takes O(n) where n is the dimension of the array. 
@@ -1377,6 +1379,8 @@ namespace WindowsFormsApplication3
         {
             public int[][] Input;
             public int N;
+            public char[][] CharInput;
+            public string word;
         }
 
         private void btn_Find_the_Town_Judge_Click(object sender, EventArgs e)
@@ -2664,6 +2668,286 @@ namespace WindowsFormsApplication3
                 }
             }
             
+        }
+
+        private void btn_Unique_Paths_Click(object sender, EventArgs e)
+        {
+            /*
+                A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+                The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid 
+                (marked 'Finish' in the diagram below).
+
+                How many possible unique paths are there?
+
+                Above is a 7 x 3 grid. How many possible unique paths are there?
+
+                Example 1:
+
+                Input: m = 3, n = 2
+                Output: 3
+                Explanation:
+                From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+                1. Right -> Right -> Down
+                2. Right -> Down -> Right
+                3. Down -> Right -> Right
+                Example 2:
+
+                Input: m = 7, n = 3
+                Output: 28
+ 
+
+                Constraints:
+
+                1 <= m, n <= 100
+                It's guaranteed that the answer will be less than or equal to 2 * 10 ^ 9.
+
+                Time Complexity          : O(RC)
+                Space Complexity         : O(RC)
+
+            */
+            StringBuilder result = new StringBuilder();
+            List<RowCol> inputs = new List<RowCol>();
+            inputs.Add(new RowCol() {Row = 3, Col = 2  });
+            inputs.Add(new RowCol() { Row = 7, Col = 3 });
+
+
+            foreach (var input in inputs)
+            {                               
+                result.AppendLine($"There are {this.UniquePaths(input.Row, input.Col)} unique paths for the given row : {input.Row} column : {input.Col}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int UniquePaths(int m, int n)
+        {
+            int[,] dict = new int[m, n];
+
+            for (int r = 0; r < m; r++)
+                dict[r, 0] = 1;
+            for (int c = 1; c < n; c++)
+                dict[0, c] = 1;
+
+            for (int r = 1; r < m; r++)
+                for (int c = 1; c < n; c++)
+                    dict[r, c] = dict[r - 1, c] + dict[r, c - 1];
+
+            return dict[m - 1, n - 1];
+        }
+
+        private void btn_Island_Perimeter_Click(object sender, EventArgs e)
+        {
+            /*
+
+                Island Perimeter
+                You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water.
+
+                Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells).
+
+                The island doesn't have "lakes" (water inside that isn't connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don't exceed 100. Determine the perimeter of the island.
+
+ 
+
+                Example:
+
+                Input:
+                [[0,1,0,0],
+                 [1,1,1,0],
+                 [0,1,0,0],
+                 [1,1,0,0]]
+
+                Output: 16
+
+                Explanation: The perimeter is the 16 yellow stripes in the image below:
+
+                Time Complexity     : O(RC)
+                Space Complexity    : O(1)
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<int[][]> inputs = new List<int[][]>();
+
+            inputs.Add(new int[][]
+                                      {
+                                                            new int[] { 0, 1, 0, 0 },
+                                                            new int[] { 1, 1, 1, 0 },
+                                                            new int[] { 0, 1, 0, 0 },
+                                                            new int[] { 1, 1, 0, 0 },
+
+                                      });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Perimeter of an island for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)} { Environment.NewLine} is {this.IslandPerimeter(input)}");                                
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int IslandPerimeter(int[][] grid)
+        {
+            if (grid == null || grid.Length == 0)
+                return 0;
+
+            int islands = 0;
+            int neighbors = 0;
+            int rows = grid.Length;
+            int cols = grid[0].Length;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (grid[i][j] == 1)
+                    {
+                        islands++;
+                        if (i + 1 < rows && grid[i + 1][j] == 1)
+                        {
+                            neighbors++;
+                        }
+                        if (j + 1 < cols && grid[i][j + 1] == 1)
+                        {
+                            neighbors++;
+                        }
+                    }
+                }
+            }
+            return islands * 4 - neighbors * 2;
+        }
+
+        private void btn_Word_Search_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a 2D board and a word, find if the word exists in the grid.
+
+                The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. 
+                The same letter cell may not be used more than once.
+
+                Example:
+                board =
+                [
+                  ['A','B','C','E'],
+                  ['S','F','C','S'],
+                  ['A','D','E','E']
+                ]
+
+                Given word = "ABCCED", return true.
+                Given word = "SEE", return true.
+                Given word = "ABCB", return false.             
+
+
+                Time Complexity     : O(RC)
+                Space Complexity    : O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+            inputs.Add(new Common()
+            {
+                CharInput = new char[][]
+                                          {
+                                                                new char[] { 'A', 'B', 'C', 'E' },
+                                                                new char[] { 'S', 'F', 'C', 'S' },
+                                                                new char[] { 'A', 'D', 'E', 'E' }
+                                          },
+                word = "ABCCED"
+            });
+
+
+            inputs.Add(new Common()
+            {
+                CharInput = new char[][]
+                                     {
+                                                                new char[] { 'A', 'B', 'C', 'E' },
+                                                                new char[] { 'S', 'F', 'C', 'S' },
+                                                                new char[] { 'A', 'D', 'E', 'E' }
+                                     },
+                word = "SEE"
+            });
+
+            inputs.Add(new Common()
+            {
+                CharInput = new char[][]
+                                     {
+                                                                new char[] { 'A', 'B', 'C', 'E' },
+                                                                new char[] { 'S', 'F', 'C', 'S' },
+                                                                new char[] { 'A', 'D', 'E', 'E' }
+                                     },
+                word = "ABCB"
+            });
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Word {input.word} {(this.Exist(input.CharInput, input.word) ? "" : "not")} exists for the given dictionary {this.PrintJaggedArrayForJudegesChar(input.CharInput)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+
+        public bool Exist(char[][] board, string word)
+        {
+
+            if (string.IsNullOrEmpty(word) || board.Length == 0)
+                return false;
+
+
+            for (int r = 0; r < board.Length; r++)
+            {
+                for (int c = 0; c < board[0].Length; c++)
+                {
+                    if (board[r][c] == word[0])
+                    {
+                        if (IsWordExists(board, word, r, c, 0))
+                            return true;
+                    }
+                }
+            }
+
+
+            return false;
+
+        }
+
+        private bool IsWordExists(char[][] board, string word, int r, int c, int wIndex)
+        {
+            int rl = board.Length;
+            int cl = board[0].Length;
+
+            if (wIndex == word.Length - 1)
+                return true;
+
+            bool result = false;
+
+            if (word[wIndex] == board[r][c] && !result)
+            {
+                char chr = board[r][c];
+                board[r][c] = '\0';
+
+                if ((r >= 0 || r < rl) && c - 1 >= 0 && word[wIndex+1] == board[r][c - 1])                
+                    result = this.IsWordExists(board, word, r, c - 1, wIndex + 1);                    
+                
+                if (!result && (r >= 0 || r < rl) && c + 1 < cl && word[wIndex + 1] == board[r][c + 1])                
+                    result = this.IsWordExists(board, word, r, c + 1, wIndex + 1);                    
+                
+                if (!result && r - 1 >= 0 && (c >= 0 || c < cl) && word[wIndex + 1] == board[r - 1][c])                
+                    result = this.IsWordExists(board, word, r-1, c , wIndex + 1);                    
+                
+                if (!result &&  r + 1 < rl && (c >= 0 || c < cl) && word[wIndex + 1] == board[r + 1][c])
+                    result = this.IsWordExists(board, word, r + 1, c, wIndex + 1);
+                    
+                board[r][c] = chr;
+            }
+            
+            return result;
+
         }
     }    
 }
