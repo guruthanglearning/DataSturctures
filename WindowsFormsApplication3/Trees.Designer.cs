@@ -49,6 +49,11 @@
             this.btn_Maximum_Width_of_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Binary_Tree_Zigzag_Level_Order_Traversal = new System.Windows.Forms.Button();
             this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal = new System.Windows.Forms.Button();
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree = new System.Windows.Forms.Button();
+            this.btn_Sum_of_Left_Leaves = new System.Windows.Forms.Button();
+            this.btn_Delete_Node_in_a_BST = new System.Windows.Forms.Button();
+            this.btn_All_Elements_in_Two_Binary_Search_Trees = new System.Windows.Forms.Button();
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -278,11 +283,66 @@
             this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.UseVisualStyleBackColor = true;
             this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Click += new System.EventHandler(this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal_Click);
             // 
+            // btn_Vertical_Order_Traversal_of_a_Binary_Tree
+            // 
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Location = new System.Drawing.Point(212, 129);
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Name = "btn_Vertical_Order_Traversal_of_a_Binary_Tree";
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Size = new System.Drawing.Size(149, 40);
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.TabIndex = 21;
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Text = "Vertical Order Traversal of a Binary Tree";
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.UseVisualStyleBackColor = true;
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Click += new System.EventHandler(this.btn_Vertical_Order_Traversal_of_a_Binary_Tree_Click);
+            // 
+            // btn_Sum_of_Left_Leaves
+            // 
+            this.btn_Sum_of_Left_Leaves.Location = new System.Drawing.Point(212, 172);
+            this.btn_Sum_of_Left_Leaves.Name = "btn_Sum_of_Left_Leaves";
+            this.btn_Sum_of_Left_Leaves.Size = new System.Drawing.Size(150, 26);
+            this.btn_Sum_of_Left_Leaves.TabIndex = 22;
+            this.btn_Sum_of_Left_Leaves.Text = "Sum of Left Leaves";
+            this.btn_Sum_of_Left_Leaves.UseVisualStyleBackColor = true;
+            this.btn_Sum_of_Left_Leaves.Click += new System.EventHandler(this.btn_Sum_of_Left_Leaves_Click);
+            // 
+            // btn_Delete_Node_in_a_BST
+            // 
+            this.btn_Delete_Node_in_a_BST.Location = new System.Drawing.Point(214, 200);
+            this.btn_Delete_Node_in_a_BST.Name = "btn_Delete_Node_in_a_BST";
+            this.btn_Delete_Node_in_a_BST.Size = new System.Drawing.Size(147, 26);
+            this.btn_Delete_Node_in_a_BST.TabIndex = 23;
+            this.btn_Delete_Node_in_a_BST.Text = "Delete Node in a BST";
+            this.btn_Delete_Node_in_a_BST.UseVisualStyleBackColor = true;
+            this.btn_Delete_Node_in_a_BST.Click += new System.EventHandler(this.btn_Delete_Node_in_a_BST_Click);
+            // 
+            // btn_All_Elements_in_Two_Binary_Search_Trees
+            // 
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.Location = new System.Drawing.Point(216, 230);
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.Name = "btn_All_Elements_in_Two_Binary_Search_Trees";
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.Size = new System.Drawing.Size(146, 44);
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.TabIndex = 24;
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.Text = "All Elements in Two Binary Search Trees";
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.UseVisualStyleBackColor = true;
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.Click += new System.EventHandler(this.btn_All_Elements_in_Two_Binary_Search_Trees_Click);
+            // 
+            // btn_Sum_of_Root_To_Leaf_Binary_Numbers
+            // 
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Location = new System.Drawing.Point(218, 278);
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Name = "btn_Sum_of_Root_To_Leaf_Binary_Numbers";
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Size = new System.Drawing.Size(143, 30);
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.TabIndex = 25;
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Text = " Sum of Root To Leaf Binary Numbers";
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.UseVisualStyleBackColor = true;
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Click += new System.EventHandler(this.btn_Sum_of_Root_To_Leaf_Binary_Numbers_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 570);
+            this.Controls.Add(this.btn_Sum_of_Root_To_Leaf_Binary_Numbers);
+            this.Controls.Add(this.btn_All_Elements_in_Two_Binary_Search_Trees);
+            this.Controls.Add(this.btn_Delete_Node_in_a_BST);
+            this.Controls.Add(this.btn_Sum_of_Left_Leaves);
+            this.Controls.Add(this.btn_Vertical_Order_Traversal_of_a_Binary_Tree);
             this.Controls.Add(this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal);
             this.Controls.Add(this.btn_Binary_Tree_Zigzag_Level_Order_Traversal);
             this.Controls.Add(this.btn_Maximum_Width_of_Binary_Tree);
@@ -334,5 +394,10 @@
         private System.Windows.Forms.Button btn_Maximum_Width_of_Binary_Tree;
         private System.Windows.Forms.Button btn_Binary_Tree_Zigzag_Level_Order_Traversal;
         private System.Windows.Forms.Button btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal;
+        private System.Windows.Forms.Button btn_Vertical_Order_Traversal_of_a_Binary_Tree;
+        private System.Windows.Forms.Button btn_Sum_of_Left_Leaves;
+        private System.Windows.Forms.Button btn_Delete_Node_in_a_BST;
+        private System.Windows.Forms.Button btn_All_Elements_in_Two_Binary_Search_Trees;
+        private System.Windows.Forms.Button btn_Sum_of_Root_To_Leaf_Binary_Numbers;
     }
 }

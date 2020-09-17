@@ -2221,6 +2221,577 @@ namespace WindowsFormsApplication3
             return -1;
         }
 
+        private void btn_Vertical_Order_Traversal_of_a_Binary_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Given a binary tree, return the vertical order traversal of its nodes values.
+
+                For each node at position (X, Y), its left and right children respectively will be at positions (X-1, Y-1) and (X+1, Y-1).
+
+                Running a vertical line from X = -infinity to X = +infinity, whenever the vertical line touches some nodes, we report the values of the nodes in order from top to bottom (decreasing Y coordinates).
+
+                If two nodes have the same position, then the value of the node that is reported first is the value that is smaller.
+
+                Return an list of non-empty reports in order of X coordinate.  Every report will have a list of values of nodes.
+
+ 
+
+                Example 1:
+
+
+
+                Input: [3,9,20,null,null,15,7]
+                Output: [[9],[3,15],[20],[7]]
+                Explanation: 
+                Without loss of generality, we can assume the root node is at position (0, 0):
+                Then, the node with value 9 occurs at position (-1, -1);
+                The nodes with values 3 and 15 occur at positions (0, 0) and (0, -2);
+                The node with value 20 occurs at position (1, -1);
+                The node with value 7 occurs at position (2, -2).
+                Example 2:
+
+
+
+                Input: [1,2,3,4,5,6,7]
+                Output: [[4],[2],[1,5,6],[3],[7]]
+                Explanation: 
+                The node with value 5 and the node with value 6 have the same position according to the given scheme.
+                However, in the report "[1,5,6]", the node value of 5 comes first since 5 is smaller than 6.
+ 
+
+                Note:
+
+                The tree will have between 1 and 1000 nodes.
+                Each node's value will be between 0 and 1000.
+
+             
+             */
+
+
+
+            //List<Point> points = new List<Point>();
+            //points.Add(new Point() { X = 1, Y = 2 });
+            //points.Add(new Point() { X = 4, Y = 1 });
+            //points.Add(new Point() { X = 3, Y = 2 });
+            //points.Sort((Point X, Point Y) => X.X > Y.X ? -1 : 1 );
+
+
+
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, 4, 5, 6, 7 }));
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 3, 9, 20, null, null, 15, 7 }));
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 0, 8, 1, null, null, 3, 7, null, 4, 5, null, null, 2, 6 }));
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 0, 2, 1, 3, null, null, null, 4, 5, null, 7, 6, null, 10, 8, 11, 9 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 0, 5, 1, 9, null, 2, null, null, null, null, 3, 4, 8, 6, null, null, null, 7 }));
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Vertical Traversal of a tree is  {this.GetDataFromListOfList(this.VerticalTraversal(input))} for the given binary tree {this.TraverseBinaryTree(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+
+        public IList<IList<int>> VerticalTraversal(Node root)
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+            List<int> t = null;
+
+            if (root == null)
+                return result;
+
+            Dictionary<int, List<Point>> dict = new Dictionary<int, List<Point>>();
+            int min = 0;
+            Traverse(root, ref min, dict, 0, 0);
+            List<Point> temp = null;
+            dict.TryGetValue(min, out temp);
+
+            while (temp != null)
+            {
+                temp.Sort((Point P1, Point P2) => P1 == null && P2 ==null ? 0 : 
+                                                                              ((P1 != null && P2 == null) || 
+                                                                               (P1 == null && P2 != null)
+                                                                              ) ? -1 :
+                                                                               P1.Y < P2.Y ? 1 : 
+                                                                                                P1.Y == P2.Y && P1.X > P2.X ? 1 : -1
+                );
+
+                t = new List<int>();
+
+                foreach(var point in temp)
+                {
+                    t.Add(point.X);
+                }
+
+                result.Add(t);
+                min++;
+                dict.TryGetValue(min, out temp);
+
+            }
+
+            return result;
+        }
+
+        private void Traverse(Node node, ref int min, Dictionary<int, List<Point>> dict, int x, int y)
+        {
+            if (node == null)
+                return;
+
+            List<Point> temp = null;
+            NodeWithPoint nwp = null;
+
+            Queue<NodeWithPoint> q = new Queue<NodeWithPoint>();
+            q.Enqueue(new NodeWithPoint() { Node = node, X = x, Y = y });
+
+            while (q.Count > 0)
+            {
+                nwp = q.Dequeue();
+
+                dict.TryGetValue(nwp.X, out temp);
+                if (temp == null)
+                {
+                    temp = new List<Point>();
+                    temp.Add(new Point() { X = nwp.Node.data, Y = nwp.Y });
+                    dict[nwp.X] = temp;
+                }
+                else
+                    dict[nwp.X].Add(new Point() { X = nwp.Node.data, Y = nwp.Y });
+
+                if (nwp.X < min)
+                    min = nwp.X;
+
+                if (nwp.Node.left != null)
+                    q.Enqueue(new NodeWithPoint() { Node = nwp.Node.left, X = nwp.X - 1, Y = nwp.Y - 1 });
+
+                if (nwp.Node.right != null)
+                    q.Enqueue(new NodeWithPoint() { Node = nwp.Node.right, X = nwp.X + 1, Y = nwp.Y - 1 });
+            }
+        }
+
+        public class NodeWithPoint
+        {
+            public Node Node;
+            public int X;
+            public int Y;
+        }
+
+        private void btn_Sum_of_Left_Leaves_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Find the sum of all left leaves in a given binary tree.
+
+                Example:
+
+                    3
+                   / \
+                  9  20
+                    /  \
+                   15   7
+
+                There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(N)  we can also perform through recurrsion to avoid O(N)
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, 4, 5, 6, 7 }));
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 3, 9, 20, null, null, 15, 7 }));
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 0, 8, 1, null, null, 3, 7, null, 4, 5, null, null, 2, 6 }));
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 0, 2, 1, 3, null, null, null, 4, 5, null, 7, 6, null, 10, 8, 11, 9 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 3, 9, 20, null, null, 15, 7 }));
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Sum of Left Leaves is  {this.SumOfLeftLeaves(input)} for the given binary tree {this.TraverseBinaryTree(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int SumOfLeftLeaves(Node root)
+        {
+            if (root == null)
+                return 0;
+
+            Queue<NodeLeftRight> q = new Queue<NodeLeftRight>();
+
+            q.Enqueue(new NodeLeftRight() { Node = root });
+            NodeLeftRight temp = null;
+
+            int result = 0;
+
+            while (q.Count > 0)
+            {
+                temp = q.Dequeue();
+                if (temp.IsLeft && temp.Node.left == null && temp.Node.right == null)
+                    result += temp.Node.data;
+
+                if (temp.Node.left != null)
+                    q.Enqueue(new NodeLeftRight() { Node = temp.Node.left, IsLeft = true });
+
+                if (temp.Node.right != null)
+                    q.Enqueue(new NodeLeftRight() { Node = temp.Node.right });
+
+            }
+
+            return result;
+
+        }
+
+
+        public class NodeLeftRight
+        {
+            public Node Node;
+            public bool IsLeft;
+        }
+
+        private void btn_Delete_Node_in_a_BST_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.
+
+                Basically, the deletion can be divided into two stages:
+
+                Search for a node to remove.
+                If the node is found, delete the node.
+                Note: Time complexity should be O(height of tree).
+
+                Example:
+
+                root = [5,3,6,2,4,null,7]
+                key = 3
+
+                    5
+                   / \
+                  3   6
+                 / \   \
+                2   4   7
+
+                Given key to delete is 3. So we find the node with value 3 and delete it.
+
+                One valid answer is [5,4,6,2,null,null,7], shown in the following BST.
+
+                    5
+                   / \
+                  4   6
+                 /     \
+                2       7
+
+                Another valid answer is [5,2,6,null,4,null,7].
+
+                    5
+                   / \
+                  2   6
+                   \   \
+                    4   7
+
+
+
+            
+                Time Complexity     : O(H)
+                Space Complexity    : O(1)
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<KthSmallestInBST> inputs = new List<KthSmallestInBST>();
+            //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4,  7 }), K = 3 });
+            //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 0 }), K = 0 });
+            //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 1,2 }), K = 2 });
+            //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 3, 1, 4,2 }), K = 2 });
+            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4,  7 }), K = 5 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Delete BST for {this.TraverseBinaryTree(input.Tree)} is {this.TraverseBinaryTree(this.DeleteNode(input.Tree, input.K))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public Node DeleteNode(Node root, int key)
+        {
+
+            if (root == null)
+                return null;
+
+            root = Delete(root, key);
+            return root;
+
+        }
+
+        private Node Delete(Node root, int key)
+        {
+
+            if (root == null) return root;
+
+            if (key < root.data)
+                root.left = Delete(root.left, key);
+            else if (key > root.data)
+                root.right = Delete(root.right, key);
+            else
+            {
+                if (root.left == null)
+                    return root.right;
+                else if (root.right == null)
+                    return root.left;
+
+                root.data = MinValue(root.right);
+                root.right = Delete(root.right, root.data);
+            }
+            return root;
+        }
+
+
+        private int MinValue(Node root)
+        {            
+            int minv = root.data;
+            while (root.left != null)
+            {
+                minv = root.left.data;
+                root = root.left;
+            }
+            return minv;
+        }
+
+        private void btn_All_Elements_in_Two_Binary_Search_Trees_Click(object sender, EventArgs e)
+        {
+
+            /*
+
+                Given two binary search trees root1 and root2.
+
+                Return a list containing all the integers from both trees sorted in ascending order.
+
+                Example 1:
+
+                     2                               1                      
+                   /    \                         /     \
+                1        4                      0         3
+
+                Input: root1 = [2,1,4], root2 = [1,0,3]
+                Output: [0,1,1,2,3,4]
+                Example 2:
+
+                Input: root1 = [0,-10,10], root2 = [5,1,7,0,2]
+                Output: [-10,0,0,1,2,5,7,10]
+                Example 3:
+
+                Input: root1 = [], root2 = [5,1,7,0,2]
+                Output: [0,1,2,5,7]
+                Example 4:
+
+                Input: root1 = [0,-10,10], root2 = []
+                Output: [-10,0,10]
+                Example 5:
+
+
+                Input: root1 = [1,null,8], root2 = [8,1]
+                Output: [1,1,8,8]
+ 
+
+                Constraints:
+
+                Each tree has at most 5000 nodes.
+                Each node's value is between [-10^5, 10^5].
+                   Hide Hint #1  
+                Traverse the first tree in list1 and the second tree in list2.
+                   Hide Hint #2  
+                Merge the two trees in one list and sort it.
+
+                Time Complexity         : O(N+M)
+                Space Complexity        : O(N+M)
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<TreeSame> inputs = new List<TreeSame>();
+            inputs.Add(new TreeSame() { Tree1 = this.CreateBST(new int[] { 2,1,4 }), Tree2 = this.CreateBST(new int[] { 1, 0, 3 }) });
+         
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"All Elements in Two Binary Search Trees is {string.Join(",",this.GetAllElements(input.Tree1, input.Tree2))} for the given BST \nTree1:  { this.TraverseBinaryTree(input.Tree1)}\nTree2: {this.TraverseBinaryTree(input.Tree2)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+        public IList<int> GetAllElements(Node root1, Node root2)
+        {
+
+            List<int> result = new List<int>();
+            if (root1 == null && root2 == null)
+                return result;
+
+            List<int> res1 = InOrderTraversal(root1);
+            List<int> res2 = InOrderTraversal(root2);
+
+            if (res1.Count == 0 && res2.Count > 0)
+                return res2;
+            else if (res1.Count > 0 && res2.Count == 0)
+                return res1;
+            else
+                return Merge(res1, res2);
+
+
+        }
+
+
+        private List<int> Merge(List<int> res1, List<int> res2)
+        {
+            List<int> result = new List<int>();
+
+            int ires1 = res1.Count - 1;
+            int ires2 = res2.Count - 1;
+
+
+            while (ires1 >= 0 && ires2 >= 0)
+            {
+                if (res1[ires1] >= res2[ires2])
+                {
+                    result.Insert(0, res1[ires1]);
+                    ires1--;
+                }
+                else 
+                {
+                    result.Insert(0, res2[ires2]);
+                    ires2--;
+                }
+                
+            }
+
+            while (ires1 >= 0)
+            {
+                result.Insert(0, res1[ires1]);
+                ires1--;
+            }
+
+            while (ires2 >= 0)
+            {
+                result.Insert(0, res2[ires2]);
+                ires2--;
+            }
+
+            return result;
+        }
+
+
+        private List<int> InOrderTraversal(Node node)
+        {
+            List<int> result = new List<int>();
+            if (node == null)
+                return result;
+
+            Stack<Node> s = new Stack<Node>();            
+            Node current = node;
+
+            while (s.Count > 0 || current != null)
+            {
+                while (current != null)
+                {
+                    s.Push(current);
+                    current = current.left;
+                }
+                current = s.Pop();
+                result.Add(current.data);
+                current = current.right;
+
+            }
+
+            return result;
+
+
+        }
+
+        private void btn_Sum_of_Root_To_Leaf_Binary_Numbers_Click(object sender, EventArgs e)
+        {
+            
+            /*
+
+                Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -> 1 -> 1 -> 0 -> 1, then this could represent 01101 in binary, which is 13.
+                For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.
+                Return the sum of these numbers.
+
+                Example 1:
+
+                       1
+                   /       \
+                  0         1
+                /  \       /  \
+               0    1    0    1
+
+
+                Input: [1,0,1,0,1,0,1]
+                Output: 22
+                Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
+ 
+
+                Note:
+
+                The number of nodes in the tree is between 1 and 1000.
+                node.val is 0 or 1.
+                The answer will not exceed 2^31 - 1.
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            //inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, 0, 1, 0, 1, 0, 1 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, null, 0 }));
+            
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Sum of Root To Leaf Binary Numbers is {SumRootToLeaf(input)} for the given Tree1: {this.TraverseBinaryTree(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int SumRootToLeaf(Node root)
+        {
+            if (root == null)
+                return 0;
+
+            return GetSum(root, 0);
+
+        }
+
+
+        private int GetSum(Node root, int sum)
+        {
+            if (root == null)
+                return 0;
+
+            sum = (sum << 1) + root.data;
+            if (root.left == null && root.right == null)
+                return sum;
+
+
+            return GetSum(root.left, sum) + GetSum(root.right, sum);
+
+        }
+
+
 
     }
 }

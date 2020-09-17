@@ -1110,7 +1110,7 @@ namespace WindowsFormsApplication3
             InsertBFSNode(1, ref tree, tree);
             //InsertBFSNode(24, ref tree, tree);
 
-            BFSNode inputNode = tree.right.left;
+            BFSNode inputNode = tree.right;
             BFSNode node = GetInOrderSuccessorWithParentNode(inputNode);
             MessageBox.Show($"With Parent Node {node.data.ToString()}");
             node = GetInOrderSuccessorWithoutParentNode(inputNode, tree);
@@ -1197,8 +1197,7 @@ namespace WindowsFormsApplication3
 
         private BFSNode GetInOrderSuccessorWithoutParentNode(BFSNode node, BFSNode root)
         {
-            int[] n = new int[2];
-
+            
             /*
                                    10
                                 /      \
@@ -4737,7 +4736,7 @@ namespace WindowsFormsApplication3
 
         
         public void DeleteNode(ListNode node)
-        {
+        { 
             if (node == null)
                 return;
 

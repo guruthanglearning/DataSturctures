@@ -2949,5 +2949,147 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Rotting_Oranges_Click(object sender, EventArgs e)
+        {
+            /*
+        
+                In a given grid, each cell can have one of three values:
+
+                the value 0 representing an empty cell;
+                the value 1 representing a fresh orange;
+                the value 2 representing a rotten orange.
+                Every minute, any fresh orange that is adjacent (4-directionally) to a rotten orange becomes rotten.
+
+                Return the minimum number of minutes that must elapse until no cell has a fresh orange.  If this is impossible, return -1 instead.
+
+ 
+             
+                Example 1:
+
+
+
+                Input: [[2,1,1],[1,1,0],[0,1,1]]
+                Output: 4
+                Example 2:
+
+                Input: [[2,1,1],[0,1,1],[1,0,1]]
+                Output: -1
+                Explanation:  The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.
+                Example 3:
+
+                Input: [[0,2]]
+                Output: 0
+                Explanation:  Since there are already no fresh oranges at minute 0, the answer is just 0.
+ 
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<int[][]> inputs = new List<int[][]>();
+
+            inputs.Add(new int[][]
+                                      {
+                                                            new int[] { 2, 1, 1 },
+                                                            new int[] { 1, 1, 0 },
+                                                            new int[] { 0, 1, 1 }
+                                      });
+
+            inputs.Add(new int[][]
+                                      {
+                                                            new int[] { 0, 2 }
+                                                     
+                                      });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Min Time to rotten all oranges is { this.OrangesRotting(input) } for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+        public int OrangesRotting(int[][] grid)
+        {
+            int result = 0;
+            if (grid == null || grid.Length == 0)
+                return result;
+
+            int rl = grid.Length;
+            int cl = grid[0].Length;
+
+            Queue<RCR> q = new Queue<RCR>();
+            result = 0;
+
+            for (int row = 0; row < rl; row++)
+            {
+                for (int col = 0; col < cl; col++)
+                {
+                    if (grid[row][col] == 2)
+                        q.Enqueue(new RCR() { Row = row, Col = col, Time = result });
+                }
+            }
+
+            RCR r = null;
+
+            /* [2,2,2],              
+             [2,2,0],               2,2,4 
+             [0,2,2]     */
+            while (q.Count > 0)
+            {
+                r = q.Dequeue();
+
+                if (r.Col + 1 < cl && grid[r.Row][r.Col + 1] == 1)
+                {
+                    grid[r.Row][r.Col + 1] = 2;
+                    q.Enqueue(new RCR() { Row = r.Row, Col = r.Col + 1, Time = r.Time + 1 });
+                    result = Math.Max(r.Time + 1, result);
+                }
+
+                if (r.Col - 1 >= 0 && grid[r.Row][r.Col - 1] == 1)
+                {
+                    grid[r.Row][r.Col - 1] = 2;
+                    q.Enqueue(new RCR() { Row = r.Row, Col = r.Col - 1, Time = r.Time + 1 });
+                    result = Math.Max(r.Time + 1, result);
+                }
+
+                if (r.Row + 1 < rl && grid[r.Row + 1][r.Col] == 1)
+                {
+                    grid[r.Row + 1][r.Col] = 2;
+                    q.Enqueue(new RCR() { Row = r.Row + 1, Col = r.Col, Time = r.Time + 1 });
+                    result = Math.Max(r.Time + 1, result);
+                }
+
+
+                if (r.Row - 1 >= 0 && grid[r.Row - 1][r.Col] == 1)
+                {
+                    grid[r.Row - 1][r.Col] = 2;
+                    q.Enqueue(new RCR() { Row = r.Row - 1, Col = r.Col, Time = r.Time + 1 });
+                    result = Math.Max(r.Time + 1, result);
+                }
+            }
+
+
+            for (int row = 0; row < rl; row++)
+            {
+                for (int col = 0; col < cl; col++)
+                {
+                    if (grid[row][col] == 1)
+                        return -1;
+                }
+            }
+
+            return result;
+        }
+
+        public class RCR
+        {
+            public int Row;
+            public int Col;
+            public int Time;
+        }
     }    
 }

@@ -1375,6 +1375,157 @@ namespace WindowsFormsApplication3
         {
             return (n & (n - 1)) == 0 && (n % 3) == 1;
         }
+
+        private void btn_Fizz_Buzz_Click(object sender, EventArgs e)
+        {
+
+            
+            /*
+            
+                Write a program that outputs the string representation of numbers from 1 to n.
+
+                But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.
+
+                Example:
+
+                n = 15,
+
+                Return:
+                [
+                    "1",
+                    "2",
+                    "Fizz",
+                    "4",
+                    "Buzz",
+                    "Fizz",
+                    "7",
+                    "8",
+                    "Fizz",
+                    "Buzz",
+                    "11",
+                    "Fizz",
+                    "13",
+                    "14",
+                    "FizzBuzz"
+                ]
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+            */
+
+
+            List<int> inputs = new List<int>();
+            inputs.Add(1);
+            inputs.Add(15);
+            
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Fizz Buzz is { string.Join(",", this.FizzBuzz(input))} for the given number is {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public IList<string> FizzBuzz(int n)
+        {
+            List<string> result = new List<string>();
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 3 == 0 && i % 5 == 0)
+                    result.Add("FizzBuzz");
+                else if (i % 5 == 0)    
+                    result.Add("Buzz");
+                else if (i % 3 == 0)
+                    result.Add("Fizz");
+                else
+                    result.Add($"{i}");
+            }
+
+            return result;
+        }
+
+        private void btn_Combination_Sum_III_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                 Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
+
+                Note:
+
+                All numbers will be positive integers.
+                The solution set must not contain duplicate combinations.
+                Example 1:
+
+                Input: k = 3, n = 7
+                Output: [[1,2,4]]
+                Example 2:
+
+                Input: k = 3, n = 9
+                Output: [[1,2,6], [1,3,5], [2,3,4]] 
+             
+             */
+
+
+            List<TwoInt> inputs = new List<TwoInt>();
+            inputs.Add(new TwoInt() {Input1 = 3, Input2 = 7 });
+    
+
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                temp.Clear();
+                resultList.Clear();
+                result.AppendLine($"Combination Sum 3 is { string.Join(",", this.CombinationSum3(input.Input1, input.Input2))} for the given K : {input.Input1}  and N: {input.Input2} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public class TwoInt
+        {
+            public int Input1;
+            public int Input2;
+        }
+
+        List<IList<int>> resultList = new List<IList<int>>();
+        List<int> temp = new List<int>();
+        public IList<IList<int>> CombinationSum3(int k, int n)
+        {
+
+            GetSum(1, n, k);
+            return resultList;
+        }
+
+
+
+        private void GetSum(int start, int n, int k)
+        {
+            if (temp.Count == k)
+            {
+                if (n == 0)
+                    resultList.Add(new List<int>(temp));
+                return;
+            }
+
+            for (int i = start; i < n; i++)
+            {
+                temp.Add(i);
+                GetSum(start + 1, n - i, k);
+                temp.Remove(temp.Count - 1);
+            }
+
+
+
+        }
+
     }
 }
 

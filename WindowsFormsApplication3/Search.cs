@@ -90,7 +90,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Given_an_split_array_in_the_sorted_order_search_given_value_exists_Click(object sender, EventArgs e)
         {
-            StringBuilder output = new StringBuilder();
+            StringBuilder output = new StringBuilder(); 
             List<ArrayContainterForSearch> inputs = new List<ArrayContainterForSearch>();
             //inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 1, 2, 3, 4, 5, 6 }, Search = 6 });
             inputs.Add(new ArrayContainterForSearch() { Input = new int[] { 3, 4, 5, 6, 1, 2 }, Search = 4 });

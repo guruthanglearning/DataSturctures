@@ -28,9 +28,9 @@ namespace WindowsFormsApplication3
                 MRU -->Removes the most recently used item from the cache (delete from the end of the double link list)
             */
 
-            LRUCacheWithDictionaryValueAsLinkedList c = new LRUCacheWithDictionaryValueAsLinkedList(10);
+            LRUCacheWithDictionaryValueAsLinkedList c = new LRUCacheWithDictionaryValueAsLinkedList(5);
 
-            c.Put("10", "13");
+            /*c.Put("10", "13");
             c.Put("3", "17");
             c.Put("6", "11");
             c.Put("10", "5");
@@ -139,6 +139,12 @@ namespace WindowsFormsApplication3
             c.Put("9", "26");
             c.Put("13", "28");
             c.Put("11", "26");
+            */
+
+            c.Put("1","1");
+            c.Put("2","2");
+            c.Put("3","3");
+            c.Get("1");
 
 
             MessageBox.Show($"Foward list \n{c.DisplayForward()}\n\nBackward list \n{c.DisplayBackward()}");
@@ -226,7 +232,7 @@ namespace WindowsFormsApplication3
             {
                 start = start.Next;
                 start.Previous = null;
-                temp.Previous = new DDLinkedList();
+                //temp.Previous = new DDLinkedList();
             }
             else if (temp.Next != null) //
             {

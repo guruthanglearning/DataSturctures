@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,9 @@ namespace WindowsFormsApplication3
         private int[] permutationValue = new int[0];
         private static int atoz = 126;
         private int counter = 0;
+        List<char> vowel = new List<char>() { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        int acounter = 1;
+
 
         private char[] inputSet;
         public char[] InputSet
@@ -2409,6 +2413,7 @@ namespace WindowsFormsApplication3
         private List<string> GetPermuationOfGivenString(string input, string currentString)
         {
             List<string> result = new List<string>();
+            
             if (input.Length == 0)
             {
                 result.Add(currentString);
@@ -2716,17 +2721,20 @@ namespace WindowsFormsApplication3
                     result.AppendLine($"Max length is 0 for the last word in this given string {s}");
                 }
                 else
-                {
-                    int i = input.Length - 1;
-
-                    for (; i >= 0; i--)
+                {                    
+                    int len = 0;
+                    for (int i = input.Length - 1; i >= 0; i--)
                     {
+
                         if (input[i] == ' ')
                         {
-                            break;
+                            if (len > 0)
+                                break;
                         }
+                        else
+                            len++;
                     }
-                    result.AppendLine($"Max length is {input.Length - (i + 1)} for the last word in this given string {s}");
+                    result.AppendLine($"Max length is {len} for the last word in this given string {input}");
                 }
             }
             MessageBox.Show(result.ToString());
@@ -4681,8 +4689,86 @@ namespace WindowsFormsApplication3
 
         }
 
+
+        private void  Test()
+        {
+            CounterCreationDataCollection counterDataCollection = new CounterCreationDataCollection();
+
+            // Add the counter.
+            CounterCreationData test1 = new CounterCreationData();
+            test1.CounterType = PerformanceCounterType.NumberOfItems32;
+            test1.CounterName = "Scheduler: Waiting";
+            test1.CounterHelp = "An increasing value indicates the scheduler thread is running and checking the schedule for the next start or stop time.";
+            counterDataCollection.Add(test1);
+
+            CounterCreationData test2 = new CounterCreationData();
+            test2.CounterType = PerformanceCounterType.NumberOfItems32;
+            test2.CounterName = "Processor: Waiting";
+            test2.CounterHelp = "An increasing value indicates the subscription processing thread is waiting for the scheduler to signal the start of processing.";
+            counterDataCollection.Add(test2);
+
+
+            CounterCreationData test3 = new CounterCreationData();
+            test3.CounterType = PerformanceCounterType.NumberOfItems32;
+            test3.CounterName = "Processor: Processing";
+            test3.CounterHelp = "An increasing value indicates the subscription processing thread is actively processing subscriptions.";
+            counterDataCollection.Add(test3);
+
+
+            CounterCreationData test4 = new CounterCreationData();
+            test4.CounterType = PerformanceCounterType.NumberOfItems32;
+            test4.CounterName = "Subscriptions: # processed in latest run";
+            test4.CounterHelp = "The total number of subscriptions processed in the current or most recent run.";
+            counterDataCollection.Add(test4);
+
+            CounterCreationData test5 = new CounterCreationData();
+            test5.CounterType = PerformanceCounterType.NumberOfItems32;
+            test5.CounterName = "Subscriptions: Total # processed";
+            test5.CounterHelp = "The total number of subscriptions processed since the service was started.";
+            counterDataCollection.Add(test5);
+
+
+            CounterCreationData test6 = new CounterCreationData();
+            test6.CounterType = PerformanceCounterType.NumberOfItems32;
+            test6.CounterName = "Processor: Busy threads";
+            test6.CounterHelp = "The number of subscriptions currently being processed by the worker threads.";
+            counterDataCollection.Add(test6);
+
+
+            CounterCreationData test7 = new CounterCreationData();
+            test7.CounterType = PerformanceCounterType.NumberOfItems32;
+            test7.CounterName = "Processor: Problem detected";
+            test7.CounterHelp = "If this value is not 0 then it appears the processor thread is not responding. The service should be restarted.";
+            counterDataCollection.Add(test7);
+
+            CounterCreationData test8 = new CounterCreationData();
+            test8.CounterType = PerformanceCounterType.RateOfCountsPerSecond32;
+            test8.CounterName = "Processor: Subscriptions per second";
+            test8.CounterHelp = "Number of subscriptions processed per second during the current sampling period.";
+            counterDataCollection.Add(test8);
+
+            CounterCreationData test9 = new CounterCreationData();
+            test9.CounterType = PerformanceCounterType.NumberOfItems32;
+            test9.CounterName = "Transact: Total current connections to transact";
+            test9.CounterHelp = "The total number of active connections to transact at this moment.";
+            counterDataCollection.Add(test9);
+
+
+
+
+
+
+            // Create the category.
+            PerformanceCounterCategory.Create("ANET ARBTransGen",
+                "ANET ARBTransGen",
+                PerformanceCounterCategoryType.SingleInstance, counterDataCollection);
+
+        }
+
         private void btn_Detect_Capital_Click(object sender, EventArgs e)
         {
+
+         
             /*
              
                 Given a word, you need to judge whether the usage of capitals in it is right or not.
@@ -4731,8 +4817,7 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
 
-            char c = 'c';
-            
+           
 
         }
 
@@ -4765,6 +4850,784 @@ namespace WindowsFormsApplication3
 
 
             return true;
+        }
+
+        private void btn_Excel_Sheet_Column_Number_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Given a column title as appear in an Excel sheet, return its corresponding column number.
+
+                For example:
+
+                    A -> 1
+                    B -> 2
+                    C -> 3
+                    ...
+                    Z -> 26
+                    AA -> 27
+                    AB -> 28 
+                    ...
+                Example 1:
+
+                Input: "A"
+                Output: 1
+                Example 2:
+
+                Input: "AB"
+                Output: 28
+                Example 3:
+
+                Input: "ZY"
+                Output: 701
+
+                Time Complexity      : O(N)
+                Space Complexity     : O(1)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("A");
+            inputs.Add("ZY");
+            inputs.Add("ABA");
+            
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Title To Number is {this.TitleToNumber(input)} for the given input {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public int TitleToNumber(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return 0;
+
+            int result = 0;
+            int pow = 1;
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                result += ((s[i] - 'A') + 1) * pow;
+                pow *= 26;
+            }
+
+            return result;
+
+        }
+
+        private void btn_Iterator_for_Combination_Click(object sender, EventArgs e)
+        {
+            
+            /*
+            
+                Design an Iterator class, which has:
+
+                A constructor that takes a string characters of sorted distinct lowercase English letters and a number combinationLength as arguments.
+                A function next() that returns the next combination of length combinationLength in lexicographical order.
+                A function hasNext() that returns True if and only if there exists a next combination.
+ 
+
+                Example:
+
+                CombinationIterator iterator = new CombinationIterator("abc", 2); // creates the iterator.
+
+                iterator.next(); // returns "ab"
+                iterator.hasNext(); // returns true
+                iterator.next(); // returns "ac"
+                iterator.hasNext(); // returns true
+                iterator.next(); // returns "bc"
+                iterator.hasNext(); // returns false
+ 
+
+                Constraints:
+
+                1 <= combinationLength <= characters.length <= 15
+                There will be at most 10^4 function calls per test.
+                It's guaranteed that all calls of the function next are valid.
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            CombinationIterator ci = new CombinationIterator("abc", 2);
+            result.AppendLine(ci.Next());
+            result.AppendLine(ci.HasNext() ? "true" : "false");
+            result.AppendLine(ci.Next());
+            result.AppendLine(ci.HasNext() ? "true" : "false");
+            result.AppendLine(ci.Next());
+            result.AppendLine(ci.HasNext() ? "true" : "false");
+            MessageBox.Show(result.ToString());
+        }
+
+        public class CombinationIterator
+        {
+
+            string datas = null;
+            List<string> dict = null;
+            int currPos = 0;
+            int cl = 0;
+            int len = 0;
+
+            public CombinationIterator(string characters, int combinationLength)
+            {
+                this.datas = characters;
+                dict = new List<string>();
+                cl = combinationLength;
+                ParseData(characters, "");
+                len = dict.Count;
+            }
+
+            public string Next()
+            {
+
+                string result = string.Empty;
+                if (currPos < len)
+                {
+                    result = dict[currPos];
+                    currPos++;
+                }
+                return result;
+            }
+
+            public bool HasNext()
+            {
+                return currPos < len;
+            }
+
+            /* 
+                ab
+                ac
+                bc
+            */
+
+            private void ParseData(string data, string conc)
+            {
+                /*
+                    abc      ""
+                        bc        a
+                            c     ab
+                */
+                if (conc.Length == cl)
+                {
+                    dict.Add(conc);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(data))
+                    return;
+
+                for (int i = 0; i < data.Length; i++)
+                    ParseData(data.Substring(i + 1), conc + data.Substring(i, 1));
+
+            }
+        }
+
+        private void btn_Longest_Palindrome_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.
+
+                This is case sensitive, for example "Aa" is not considered a palindrome here.
+
+                Note:
+                Assume the length of given string will not exceed 1,010.
+
+                Example:
+
+                Input:
+                "abccccdd"
+
+                Output:
+                7
+
+                Explanation:
+                One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(N)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("abccccdd");
+    
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Longest Palindrome is {this.LongestPalindrome(input)} for the given input {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int LongestPalindrome(string s)
+        {
+
+            
+
+            if (string.IsNullOrEmpty(s))
+                return 0;
+
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+
+            int pos = 0;
+            int neg = 0;
+            bool isNeg = false;
+
+            foreach (char c in s)
+            {
+                if (!dict.ContainsKey(c))
+                    dict[c] = 1;
+                else
+                    dict[c]++;
+            }
+
+            int temp = 0;
+            foreach (char c in dict.Keys)
+            {
+                temp = dict[c];
+                if (temp % 2 == 0)
+                    pos += temp;
+                else
+                {
+                    neg += (temp - 1);
+                    isNeg = true;
+                }
+            }
+
+            return pos + neg + (isNeg ? 1 : 0);
+
+        }
+
+        private void btn_Goat_Latin_Click(object sender, EventArgs e)
+        {
+            /*
+
+                A sentence S is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only.
+
+                We would like to convert the sentence to "Goat Latin" (a made-up language similar to Pig Latin.)
+
+                The rules of Goat Latin are as follows:
+
+                If a word begins with a vowel (a, e, i, o, or u), append "ma" to the end of the word.
+                For example, the word 'apple' becomes 'applema'.
+ 
+                If a word begins with a consonant (i.e. not a vowel), remove the first letter and append it to the end, then add "ma".
+                For example, the word "goat" becomes "oatgma".
+ 
+                Add one letter 'a' to the end of each word per its word index in the sentence, starting with 1.
+                For example, the first word gets "a" added to the end, the second word gets "aa" added to the end and so on.
+                Return the final sentence representing the conversion from S to Goat Latin. 
+
+ 
+
+                Example 1:
+
+                Input: "I speak Goat Latin"
+                Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
+                Example 2:
+
+                Input: "The quick brown fox jumped over the lazy dog"
+                Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
+ 
+
+                Notes:
+
+                S contains only uppercase, lowercase and spaces. Exactly one space between each word.
+                1 <= S.length <= 150.
+
+
+                Time Complexity     :  O(N)
+                Space Complexity    :  O(N)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("I speak Goat Latin");
+            inputs.Add("The quick brown fox jumped over the lazy dog");
+
+            foreach (var input in inputs)
+            {
+                acounter = 1;
+                result.AppendLine($"Goat Latin for the given input : \n{input} is \n{ToGoatLatin(input)} \n");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public string ToGoatLatin(string S)
+        {
+
+            if (string.IsNullOrEmpty(S))
+                return S;
+
+            StringBuilder result = new StringBuilder();
+            string[] words = S.Split(' ');
+
+            foreach (string word in words)
+            {
+                result.Append($"{Vowel(word)}{NonVowel(word)}{Repeat(acounter)}{(acounter == words.Length ? "" : " ")}");
+                acounter++;
+            }
+
+            return result.ToString();
+
+        }
+
+        private string Vowel(string s)
+        {
+            StringBuilder result = new StringBuilder();
+            if (vowel.Contains(s[0]))
+            {
+                result.Append($"{s}ma");
+            }
+            return result.ToString();
+        }
+
+        private string NonVowel(string s)
+        {
+            StringBuilder result = new StringBuilder();
+            if (!vowel.Contains(s[0]))
+            {
+                result.Append($"{s.Substring(1)}{s[0]}ma");
+            }
+
+            return result.ToString();
+        }
+
+        private string Repeat(int n)
+        {
+            return new String('a', n);
+        }
+
+        private void btn_Repeated_Substring_Pattern_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.
+
+                Example 1:
+
+                Input: "abab"
+                Output: True
+                Explanation: It's the substring "ab" twice.
+                Example 2:
+
+                Input: "aba"
+                Output: False
+                Example 3:
+
+                Input: "abcabcabcabc"
+                Output: True
+                Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+             
+                Time Complexity     : O(N)
+                Space Complexity    : O(N)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("abab");
+            inputs.Add("aba");
+            inputs.Add("aabaaba");
+            inputs.Add("abcabcabcabc");
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"Repeated Substring pattern {(RepeatedSubstringPattern(input)? "": " not ")} exists for the given input string {input}");
+            }
+            
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public bool RepeatedSubstringPattern(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return false;
+
+            string subString = string.Empty;
+            string temp = string.Empty;
+            int l = s.Length;
+            int sl = 0;
+
+            for (int i = 0; i < l/2; i++)
+            {
+                subString = $"{subString}{s[i]}";
+                sl = subString.Length;
+
+                if ((l % sl) == 0)
+                {
+                    if (s.CompareTo(string.Join("",Enumerable.Repeat(subString, l / subString.Length))) == 0)
+                        return true;                    
+                }
+            }
+            return false;
+        }
+
+        private void btn_Partition_Labels_Click(object sender, EventArgs e)
+        {
+            /*
+
+             A string S of lowercase English letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.
+ 
+
+            Example 1:
+
+            Input: S = "ababcbacadefegdehijhklij"
+            Output: [9,7,8]
+            Explanation:
+            The partition is "ababcbaca", "defegde", "hijhklij".
+            This is a partition so that each letter appears in at most one part.
+            A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
+ 
+
+            Note:
+
+            S will have length in range [1, 500].
+            S will consist of lowercase English letters ('a' to 'z') only.
+
+            Time Complexity     :   O(N)
+            Space Complexity    :   O(26)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("ababcbacadefegdehijhklij");
+            inputs.Add("aba");
+            inputs.Add("aabaaba");
+            inputs.Add("abcabcabcabc");
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"Partition Labels is  {string.Join(",",PartitionLabels(input))} for the given input string {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public IList<int> PartitionLabels(string S)
+        {
+            List<int> result = new List<int>();
+            if (string.IsNullOrEmpty(S))
+                return result;
+
+            int[] dict = new int[26];
+            int start = 0;
+            int j = 0;
+
+            for (int i = 0; i < S.Length; i++)
+                dict[S[i] - 'a'] = i;
+
+            for (int i = 0; i < S.Length; i++)
+            {
+                j = Math.Max(j, dict[S[i] - 'a']);
+
+                if (i == j)
+                {
+                    result.Add(j + 1 - start);
+                    start = i + 1;
+                }
+
+            }
+
+            return result;
+
+        }
+
+        private void btn_Word_Pattern_Click(object sender, EventArgs e)
+        {
+
+            /*
+             
+                Given a pattern and a string str, find if str follows the same pattern.
+
+                Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.
+
+                Example 1:
+
+                Input: pattern = "abba", str = "dog cat cat dog"
+                Output: true
+                Example 2:
+
+                Input:pattern = "abba", str = "dog cat cat fish"
+                Output: false
+                Example 3:
+
+                Input: pattern = "aaaa", str = "dog cat cat dog"
+                Output: false
+                Example 4:
+
+                Input: pattern = "abba", str = "dog dog dog dog"
+                Output: false
+                Notes:
+                You may assume pattern contains only lowercase letters, and str contains lowercase letters that may be separated by a single space.
+
+                Time Complexity             : O(N+M)
+                Space Complexity            : O(N+M)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
+            inputs.Add(new AddBinaryInputs() { inputA = "abba", inputB = "dog cat cat dog" });
+            inputs.Add(new AddBinaryInputs() { inputA = "abba", inputB = "dog cat cat fish" });
+            inputs.Add(new AddBinaryInputs() { inputA = "aaaa", inputB = "dog cat cat dog" });
+            inputs.Add(new AddBinaryInputs() { inputA = "abba", inputB = "dog dog dog dog" });
+                        
+
+            foreach (AddBinaryInputs input in inputs)
+            {
+                result.AppendLine($"Word Pattern {(WordPattern(input.inputA, input.inputB) ? "": " not ")}  exists given pattern : {input.inputA} and string : {input.inputB}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public bool WordPattern(string pattern, string str)
+        {
+            
+            
+
+            if (string.IsNullOrEmpty(pattern) || string.IsNullOrEmpty(str))
+                return false;
+
+            Dictionary<char, string> ds = new Dictionary<char, string>();
+            Dictionary<string, char> dc = new Dictionary<string, char>();
+            int charLen = pattern.Length;
+            string[] strs = str.Split(' ');
+
+            string temps = null;
+            char tempc = '\0';
+
+            if (strs.Length - 1 != charLen - 1)
+                return false;
+
+            for (int i = 0; i < charLen; i++)
+            {
+                ds.TryGetValue(pattern[i], out temps);
+                dc.TryGetValue(strs[i], out tempc);
+
+                if (temps == null)
+                {
+                    ds.Add(pattern[i], strs[i]);
+                    temps = strs[i];
+                }
+
+                if (tempc == '\0')
+                {
+                    dc.Add(strs[i], pattern[i]);
+                    tempc = pattern[i];
+                }
+
+                if (temps.CompareTo(strs[i]) != 0 || tempc != pattern[i])
+                    return false;
+            }
+
+            return true;
+        }
+
+        private void btn_Compare_Version_Numbers_Click(object sender, EventArgs e)
+        {
+            /*
+
+                Compare two version numbers version1 and version2.
+                If version1 > version2 return 1; if version1 < version2 return -1;otherwise return 0.
+
+                You may assume that the version strings are non-empty and contain only digits and the . character.
+
+                The . character does not represent a decimal point and is used to separate number sequences.
+
+                For instance, 2.5 is not "two and a half" or "half way to version three", it is the fifth second-level revision of the second first-level revision.
+
+                You may assume the default revision number for each level of a version number to be 0. For example, version number 3.4 has a revision number of 3 and 4 for its first and second level revision number. Its third and fourth level revision number are both 0.
+
+ 
+
+                Example 1:
+
+                Input: version1 = "0.1", version2 = "1.1"
+                Output: -1
+                Example 2:
+
+                Input: version1 = "1.0.1", version2 = "1"
+                Output: 1
+                Example 3:
+
+                Input: version1 = "7.5.2.4", version2 = "7.5.3"
+                Output: -1
+                Example 4:
+
+                Input: version1 = "1.01", version2 = "1.001"
+                Output: 0
+                Explanation: Ignoring leading zeroes, both “01” and “001" represent the same number “1”
+                Example 5:
+
+                Input: version1 = "1.0", version2 = "1.0.0"
+                Output: 0
+                Explanation: The first version number does not have a third level revision number, which means its third level revision number is default to "0"
+ 
+
+                Note:
+
+                Version strings are composed of numeric strings separated by dots . and this numeric strings may have leading zeroes.
+                Version strings do not start or end with dots, and they will not be two consecutive dots.
+            
+                Time Complexity      : O(N+M)                
+                Space Complexity     : O(N+M)
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
+            inputs.Add(new AddBinaryInputs() { inputA = "0.1", inputB = "1.1" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1.0.1", inputB = "1" });
+            inputs.Add(new AddBinaryInputs() { inputA = "7.5.2.4", inputB = "7.5.3" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1.01", inputB = "1.001" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1.0", inputB = "1.0.0" });
+            inputs.Add(new AddBinaryInputs() { inputA = "01", inputB = "1" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1.1", inputB = "1.10" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1", inputB = "01" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1.2", inputB = "1.10" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1", inputB = "01" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1.10", inputB = "1.2" });
+
+
+            foreach (AddBinaryInputs input in inputs)
+            {
+                result.AppendLine($"Compare Version Numbers is { CompareVersion(input.inputA, input.inputB) }  for the given version 1: {input.inputA} and version 2 : {input.inputB}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int CompareVersion(string version1, string version2)
+        {
+            if (string.IsNullOrEmpty(version1) || string.IsNullOrEmpty(version2))
+                return -1;
+
+            string[] v1 = version1.Split('.');
+            string[] v2 = version2.Split('.');
+
+            int i = 0;
+            int len = Math.Max(v1.Length, v2.Length);
+            int result = 0;
+
+            while (i < len)
+            {
+                result = GetResult(i < v1.Length ? int.Parse(v1[i]) : 0, i < v2.Length ? int.Parse(v2[i]) : 0);
+                if (result < 0 || result > 0)
+                {
+                    break;
+                }
+                i++;
+            }
+
+
+
+            return result;
+        }
+
+        private int GetResult(int version1, int version2)
+        {
+            int result = 0;
+            if (version1 > version2)
+                result = 1;
+            else if (version1 < version2)
+                result = -1;
+
+            return result;
+        }
+
+        private void btn_Bulls_and_Cows_Click(object sender, EventArgs e)
+        {
+            
+            /*
+             
+                You are playing the following Bulls and Cows game with your friend: You write down a number and ask your friend to guess what the number is. Each time your friend makes a guess, you provide a hint that indicates how many digits in said guess match your secret number exactly in both digit and position (called "bulls") and how many digits match the secret number but locate in the wrong position (called "cows"). Your friend will use successive guesses and hints to eventually derive the secret number.
+
+                Write a function to return a hint according to the secret number and friend's guess, use A to indicate the bulls and B to indicate the cows. 
+
+                Please note that both secret number and friend's guess may contain duplicate digits.
+
+                Example 1:
+
+                Input: secret = "1807", guess = "7810"
+
+                Output: "1A3B"
+
+                Explanation: 1 bull and 3 cows. The bull is 8, the cows are 0, 1 and 7.
+                Example 2:
+
+                Input: secret = "1123", guess = "0111"
+
+                Output: "1A1B"
+
+                Explanation: The 1st 1 in friend's guess is a bull, the 2nd or 3rd 1 is a cow.
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(10)  which is O(1)
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
+            inputs.Add(new AddBinaryInputs() { inputA = "1807", inputB = "7810" });
+            inputs.Add(new AddBinaryInputs() { inputA = "1123", inputB = "0111" });
+
+            foreach (AddBinaryInputs input in inputs)
+            {
+                result.AppendLine($"Bulls and Cows are { GetHint(input.inputA, input.inputB) }  for the given secret : {input.inputA} and guess : {input.inputB}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public string GetHint(string secret, string guess)
+        {
+            
+            string result = string.Empty;
+            int cow = 0;
+            int bull = 0;
+
+            int[] dict = new int[10];
+            int c = 0;
+            int b = 0;
+            for (int i = 0; i < secret.Length; i++)
+            {
+                b = secret[i] - '0';
+                c = guess[i] - '0';
+
+                if (b == c)
+                    bull++;
+                else
+                {
+                    if (dict[b]++ < 0)
+                        cow++;
+                    if (dict[c]-- > 0)
+                        cow++;
+                }
+            }
+
+            return $"{bull}A{cow}B";
         }
     }
 }
