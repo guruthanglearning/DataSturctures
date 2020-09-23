@@ -1526,6 +1526,111 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Sequential_Digits_Click(object sender, EventArgs e)
+        {
+            /*
+                An integer has sequential digits if and only if each digit in the number is one more than the previous digit.
+
+                Return a sorted list of all the integers in the range [low, high] inclusive that have sequential digits.
+
+ 
+
+                Example 1:
+
+                Input: low = 100, high = 300
+                Output: [123,234]
+                Example 2:
+
+                Input: low = 1000, high = 13000
+                Output: [1234,2345,3456,4567,5678,6789,12345]
+ 
+
+                Constraints:
+
+                Hint #1  
+                Generate all numbers with sequential digits and check if they are in the given range.
+                
+                Hint #2  
+                Fix the starting digit then do a recursion that tries to append all valid digits.
+             
+                Time Complexity     : O(
+
+             */
+
+
+            List<TwoInt> inputs = new List<TwoInt>();
+            inputs.Add(new TwoInt() { Input1 = 100, Input2 = 300 });
+            inputs.Add(new TwoInt() { Input1 = 1000, Input2 = 13000 });
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                temp.Clear();
+                resultList.Clear();
+                result.AppendLine($"Sequential Digits 3 is { string.Join(",", this.SequentialDigits(input.Input1, input.Input2))} for the given low: {input.Input1}  and high: {input.Input2} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public IList<int> SequentialDigits(int low, int high)
+        {
+            var result = new List<int>();
+            var queue = new Queue<Tuple<int, int>>();
+
+            for (var i = 1; i < 9; i++)
+            {
+                queue.Enqueue(Tuple.Create(i, i + 1));
+            }
+
+            while (queue.Count != 0)
+            {
+                var current = queue.Dequeue();
+                var prevNum = current.Item1;
+                var currentDigit = current.Item2;
+                var currentNum = prevNum * 10 + currentDigit;
+                if (currentNum > high) continue;
+                if (currentNum >= low) result.Add(currentNum);
+                if (currentDigit < 9) queue.Enqueue(Tuple.Create(currentNum, currentDigit + 1));
+            }
+
+            return result;
+        }
+
+        public IList<int> SequentialDigits_Mine(int low, int high)
+        {
+            string str = "123456789";
+            SortedSet<int> dict = new SortedSet<int>();
+
+            for (int i = 0; i < str.Length; i++)
+                GenerateNumber(low, high, dict, str.Substring(i));
+
+            return dict.ToList<int>();
+
+        }
+
+        private void GenerateNumber(int low, int high, SortedSet<int> dict, string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return;
+
+            int number = 0;
+            int start = 0;
+            while (start < str.Length)
+            {
+                number = (number * 10) + (str[start] - '0');
+                if (number > high)
+                    number = 0;
+                else if (number >= low && number <= high && !dict.Contains(number))
+                    dict.Add(number);
+
+                start++;
+            }
+
+        }
+
     }
 }
 

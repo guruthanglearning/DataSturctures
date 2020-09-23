@@ -150,6 +150,8 @@ namespace WindowsFormsApplication3
 
         public DoubleLL InsertDoubleLLSortedOrder(DoubleLL node , int data)
         {
+            //1->4->3->2
+
             DoubleLL current = node== null? null :node.Next;
             DoubleLL previous = node;
             DoubleLL temp = null;

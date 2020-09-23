@@ -2276,7 +2276,7 @@ namespace WindowsFormsApplication3
 
                 message.Append($"The minimum number of time slots required to run is {result} to run {string.Join(" ", task.Task)} \n ");
 
-            }
+            } 
             MessageBox.Show(message.ToString());
 
         }
@@ -3099,7 +3099,7 @@ namespace WindowsFormsApplication3
             */
             StringBuilder result = new StringBuilder();
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();
-            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 2, 1, 7, 5, 3 }, find = 4 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 2, 1, 7, 5, 3, 4 }, find = 4 });
             inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 2, 6, 1 }, find = 4 });
             inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 2, 6, 1, 2 }, find = 3 });
             inputs.Add(new ArrayAndValue() { input = new int[] { 5, 9, 10, 7, 4 }, find = 2 });
@@ -3113,10 +3113,10 @@ namespace WindowsFormsApplication3
                 int k = input.find;
                 int sum = 0;
                 int r = 0;
-                for (int i = 0; i < inArray.Length; i++) //0:   1:2      2:2      3:2      Sum = 3
+                for (int i = 0; i < inArray.Length; i++) 
                 {
                     r = inArray[i] % k;
-                    if (r != 0)
+                    if (r > 0)
                     {
                         sum += fr[k - r];
                     }
@@ -3126,6 +3126,15 @@ namespace WindowsFormsApplication3
                     }
 
                     fr[r]++;
+
+                    /* sum = 3
+                        fr : 
+                          0:0
+                          1:3
+                          2:2
+                          3:1
+                        
+                     */
 
                 }
                 result.AppendLine($"There are {sum} pairs which are divisible by {k} from the given array {string.Join(" ", inArray)}");
@@ -3347,6 +3356,23 @@ namespace WindowsFormsApplication3
 
         private void btn_Steps_To_Make_0_from_binary_Click(object sender, EventArgs e)
         {
+            /* string input1 = "101";
+            int i1 = input1.Length -1;
+            int pow1 = 1;
+            int result1 = 0;
+            
+            while (i1 >=0)
+            {
+                result1 += ((input1[i1] - '0') * pow1);
+                pow1 *= 2;
+                i1--;
+            }
+
+            MessageBox.Show($"{result1}");
+            */
+
+
+
             //int.Parse("10",System.Globalization.NumberStyles.Number)
             /*
             9.)A non-negative integer variable V is given. There are two actions available that modify its value: 
@@ -4018,19 +4044,19 @@ namespace WindowsFormsApplication3
             int retSum = 0;
             int min = int.MaxValue;
 
-            for (int i = 0; i < nums.Length; i++) // -1, 2, 1, -4 }, find = 1 
+            for (int i = 0; i < nums.Length; i++) // -4, -1, 1, 2   find = 1 
             {
                 l = i + 1;
                 r = nums.Length - 1;
 
                 while (l < r)
                 {
-                    cSum = nums[i] + nums[l] + nums[r];
+                    cSum = nums[i] + nums[l] + nums[r];     // -1
 
-                    if (Math.Abs(cSum - target) < min)
+                    if (Math.Abs(cSum - target) < min)   //3
                     {
-                        min = Math.Abs(cSum - target);
-                        retSum = cSum;
+                        min = Math.Abs(cSum - target);  //2
+                        retSum = cSum;                  //-1
                     }
 
                     if (cSum == target)
@@ -4716,8 +4742,14 @@ namespace WindowsFormsApplication3
             Dictionary<int, int> dict = new Dictionary<int, int>();
             int temp = 0;
 
-            for (int i = 0; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length; i++) //10,2,-2,-20,10    N = -10   counter = 2
             {
+                /*
+                    10     :   2
+                    12      :  1
+                   -10      : 1
+                    
+                */
                 sum += nums[i];
 
                 if (sum == k)

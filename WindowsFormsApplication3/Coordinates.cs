@@ -112,7 +112,7 @@ namespace WindowsFormsApplication3
             
               v1j-v2j = x2-x1
               j(v1-v2) = (x2-x1)
-              j = (x2-x1)/(v1-v2) we need to find j is the integer or not and we can identify by checking 
+              j = (x2-x1)/(v1-v2) we need to find j is the integer since j is an jump and it can be in decimal and we can identify by checking 
               (x2-x1) % (v1-v2) should be 0  K1.V1 > K2.V2 since K1 starts first than K2.
             
              

@@ -2750,7 +2750,7 @@ namespace WindowsFormsApplication3
 
                 Example:
 
-                Input:
+                Input: n                         
                 [[0,1,0,0],
                  [1,1,1,0],
                  [0,1,0,0],
@@ -3091,5 +3091,61 @@ namespace WindowsFormsApplication3
             public int Col;
             public int Time;
         }
-    }    
+
+        private void btn_Count_All_Possible_Path_from_Top_Left_to_Bottom_Right_Click(object sender, EventArgs e)
+        {
+            /*
+                https://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
+                 
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Point> inputs = new List<Point>();
+            inputs.Add(new Point() { X = 3, Y = 2 });
+
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"NumberOfPath using DP: { this.NumberOfPathsUsingDP(input.X, input.Y) } and Formual: {this.NumberOfPathsUsingFomula(input.X, input.Y)} for the given matrix Row : {input.X} and Column : {input.Y}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        private int NumberOfPathsUsingFomula(int m, int n)
+        {
+            // We have to calculate m+n-2 C n-1 here 
+            // which will be (m+n-2)! / (n-1)! (m-1)! 
+            int path = 1;
+            for (int i = n; i < (m + n - 1); i++)
+            {
+                path *= i;
+                path /= (i - n + 1);
+            }
+            return path;
+        }
+        private int NumberOfPathsUsingDP(int m, int n)
+        {
+            // Create a 1D array to store 
+            // results of subproblems 
+            int[] dp = new int[n];
+            dp[0] = 1;
+
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 1; j < n; j++)
+                {
+                    dp[j] += dp[j - 1];
+                }
+            }
+
+            return dp[n - 1];
+        }
+
+
+    }
 }
