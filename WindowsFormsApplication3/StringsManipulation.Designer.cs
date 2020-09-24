@@ -105,6 +105,7 @@
             this.btn_Word_Pattern = new System.Windows.Forms.Button();
             this.btn_Compare_Version_Numbers = new System.Windows.Forms.Button();
             this.btn_Bulls_and_Cows = new System.Windows.Forms.Button();
+            this.btn_Find_the_Difference = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -917,11 +918,22 @@
             this.btn_Bulls_and_Cows.UseVisualStyleBackColor = true;
             this.btn_Bulls_and_Cows.Click += new System.EventHandler(this.btn_Bulls_and_Cows_Click);
             // 
+            // btn_Find_the_Difference
+            // 
+            this.btn_Find_the_Difference.Location = new System.Drawing.Point(1114, 32);
+            this.btn_Find_the_Difference.Name = "btn_Find_the_Difference";
+            this.btn_Find_the_Difference.Size = new System.Drawing.Size(149, 26);
+            this.btn_Find_the_Difference.TabIndex = 77;
+            this.btn_Find_the_Difference.Text = "Find the Difference";
+            this.btn_Find_the_Difference.UseVisualStyleBackColor = true;
+            this.btn_Find_the_Difference.Click += new System.EventHandler(this.btn_Find_the_Difference_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 552);
+            this.Controls.Add(this.btn_Find_the_Difference);
             this.Controls.Add(this.btn_Bulls_and_Cows);
             this.Controls.Add(this.btn_Compare_Version_Numbers);
             this.Controls.Add(this.btn_Word_Pattern);
@@ -1086,5 +1098,6 @@
         private System.Windows.Forms.Button btn_Word_Pattern;
         private System.Windows.Forms.Button btn_Compare_Version_Numbers;
         private System.Windows.Forms.Button btn_Bulls_and_Cows;
+        private System.Windows.Forms.Button btn_Find_the_Difference;
     }
 }
