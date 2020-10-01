@@ -106,6 +106,7 @@
             this.btn_Compare_Version_Numbers = new System.Windows.Forms.Button();
             this.btn_Bulls_and_Cows = new System.Windows.Forms.Button();
             this.btn_Find_the_Difference = new System.Windows.Forms.Button();
+            this.btn_Word_Break = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -928,11 +929,22 @@
             this.btn_Find_the_Difference.UseVisualStyleBackColor = true;
             this.btn_Find_the_Difference.Click += new System.EventHandler(this.btn_Find_the_Difference_Click);
             // 
+            // btn_Word_Break
+            // 
+            this.btn_Word_Break.Location = new System.Drawing.Point(1114, 62);
+            this.btn_Word_Break.Name = "btn_Word_Break";
+            this.btn_Word_Break.Size = new System.Drawing.Size(149, 25);
+            this.btn_Word_Break.TabIndex = 78;
+            this.btn_Word_Break.Text = "Word Break";
+            this.btn_Word_Break.UseVisualStyleBackColor = true;
+            this.btn_Word_Break.Click += new System.EventHandler(this.btn_Word_Break_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 552);
+            this.Controls.Add(this.btn_Word_Break);
             this.Controls.Add(this.btn_Find_the_Difference);
             this.Controls.Add(this.btn_Bulls_and_Cows);
             this.Controls.Add(this.btn_Compare_Version_Numbers);
@@ -1099,5 +1111,6 @@
         private System.Windows.Forms.Button btn_Compare_Version_Numbers;
         private System.Windows.Forms.Button btn_Bulls_and_Cows;
         private System.Windows.Forms.Button btn_Find_the_Difference;
+        private System.Windows.Forms.Button btn_Word_Break;
     }
 }

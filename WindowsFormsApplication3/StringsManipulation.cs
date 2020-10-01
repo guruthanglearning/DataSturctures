@@ -1750,6 +1750,13 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"The given inputs strings {input1} and {input2} is {(isIsomorphic ? "" : "not")} isomorphic strings");
         }
 
+
+        public class WorkBreak
+        {
+            public List<string> Dictionary;
+            public string input;
+        }
+
         private void btn_Word_Break_cats_and_dogs_Click(object sender, EventArgs e)
         {
 
@@ -1778,57 +1785,63 @@ namespace WindowsFormsApplication3
                 ]             
              */
 
-            //string input = "catsandog";
-            //List<string> dictionary = new List<string>() { "cats", "dog", "sand", "and", "cat" };
+            StringBuilder result = new StringBuilder();
+            List<WorkBreak> inputs = new List<WorkBreak>();
+            inputs.Add(new WorkBreak() { input = "leetcode", Dictionary = new List<string>() { "leet", "code" } });
+            inputs.Add(new WorkBreak() { input = "applepenapple", Dictionary = new List<string>() { "apple", "pen" } });
+            inputs.Add(new WorkBreak() { input = "pineapplepenapple", Dictionary = new List<string>() { "apple", "pen", "applepen", "pine", "pineapple" } });
+            inputs.Add(new WorkBreak() { input = "catsandog", Dictionary = new List<string>() { "cats", "dog", "sand", "and", "cat" } });
+            inputs.Add(new WorkBreak() { input = "ab", Dictionary = new List<string>() { "a","b" } });
+            //inputs.Add(new WorkBreak() { input = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Dictionary = new List<string>() { "a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa" } });
 
-            //string input = "ab";
-            //List<string> dictionary = new List<string>() { "a", "b"};
 
-
-            string input = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            List<string> dictionary = new List<string>() { "a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa" };
-
-
-            List<string>[] pos = new List<string>[input.Length];
-            pos[0] = new List<string>();
-            string subString = string.Empty;
-            for (int i = 0; i < input.Length; i++)
+            foreach (WorkBreak input in inputs)
             {
-                for (int j = i; j < input.Length; j++)
+
+                List<string>[] pos = new List<string>[input.input.Length];
+                pos[0] = new List<string>();
+                string subString = string.Empty;
+                for (int i = 0; i < input.input.Length; i++)
                 {
-                    subString = input.Substring(i, (j - i) + 1);
-                    if (dictionary.Contains(subString))
+                    for (int j = i; j < input.input.Length; j++)
                     {
-                        if (pos[j] == null)
+                        subString = input.input.Substring(i, (j - i) + 1);
+                        if (input.Dictionary.Contains(subString))
                         {
-                            pos[j] = new List<string>();
-                            pos[j].Add(subString);
-                        }
-                        else
-                        {
-                            pos[j].Add(subString);
+                            if (pos[j] == null)
+                            {
+                                pos[j] = new List<string>();
+                                pos[j].Add(subString);
+                            }
+                            else
+                            {
+                                pos[j].Add(subString);
+                            }
                         }
                     }
                 }
-            }
 
-            if (pos[input.Length - 1] == null)
-            {
-                MessageBox.Show($"No sentence avialable for this input {input} ");
-            }
-            else
-            {
-                List<string> result = new List<string>();
-                Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
-                dfs(pos, result, "", input.Length - 1, dict);
-                StringBuilder outputs = new StringBuilder();
-                foreach (string str in result)
+                result.AppendLine();
+                if (pos[input.input.Length - 1] == null)
                 {
-                    outputs.Append(str + "\n");
+                    result.AppendLine($"No sentence avialable for this input {input.input} and for the dictionary {string.Join(",", input.Dictionary)}");
                 }
+                else
+                {
+                    List<string> temp = new List<string>();
+                    Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+                    dfs(pos, temp, "", input.input.Length - 1, dict);
+                    StringBuilder outputs = new StringBuilder();
+                    foreach (string str in temp)
+                    {
+                        outputs.Append(str + "\n");
+                    }
 
-                MessageBox.Show($"The list of words from the given input {input} is \n {outputs.ToString()}");
+                    result.AppendLine($"Sentences avialable are \n  {string.Join(",", temp)} \n for this input {input.input} and for the dictionary {string.Join(",", input.Dictionary)}");
+                }
             }
+
+            MessageBox.Show(result.ToString());
 
 
         }
@@ -5632,6 +5645,9 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_the_Difference_Click(object sender, EventArgs e)
         {
+          
+
+
             /*
             
                 Given two strings s and t which consist of only lowercase letters.
@@ -5684,6 +5700,144 @@ namespace WindowsFormsApplication3
                 result -= c;
 
             return (char)Math.Abs(result);
+        }
+
+        private void btn_Word_Break_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+                Note:
+
+                The same word in the dictionary may be reused multiple times in the segmentation.
+                You may assume the dictionary does not contain duplicate words.
+                Example 1:
+
+                Input: s = "leetcode", wordDict = ["leet", "code"]
+                Output: true
+                Explanation: Return true because "leetcode" can be segmented as "leet code".
+                Example 2:
+
+                Input: s = "applepenapple", wordDict = ["apple", "pen"]
+                Output: true
+                Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+                             Note that you are allowed to reuse a dictionary word.
+                Example 3:
+
+                Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+                Output: false 
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(N)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<WorkBreak> inputs = new List<WorkBreak>();
+            //inputs.Add(new WorkBreak() { input = "leetcode", Dictionary = new List<string>() { "leet", "code" } });
+            //inputs.Add(new WorkBreak() { input = "applepenapple", Dictionary = new List<string>() { "apple", "pen" } });
+            //inputs.Add(new WorkBreak() { input = "catsandog", Dictionary = new List<string>() { "cats", "dog", "sand", "and", "cat" } });
+            //inputs.Add(new WorkBreak() { input = "aaaaaaa", Dictionary = new List<string>() { "aaaa", "aaa" } });
+            inputs.Add(new WorkBreak() { input = "goalspecial", Dictionary = new List<string>() { "go", "goal", "goals", "special" } });
+
+            foreach (WorkBreak input in inputs)
+            {
+                Dictionary<string, bool> dict = new Dictionary<string, bool>();
+                //result.AppendLine($"Word Break is {(this.WordBreak_Working(input.input, input.Dictionary, dict) ? "": " not ")} possible for the given string {input.input} and for the dictionary {string.Join(",", input.Dictionary)}");
+                result.AppendLine($"Word Break is {(this.WordBreak(input.input, input.Dictionary) ? "" : " not ")} possible for the given string {input.input} and for the dictionary {string.Join(",", input.Dictionary)}");
+            }
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public bool WordBreak_Working(string s, IList<string> wordDict, Dictionary<string, bool> dict)
+        {
+            /*            
+                "catsandog"
+                "sand"
+                "og"
+                ["cats", "dog", "sand", "and", "cat"]        
+            */
+
+            string temp = string.Empty;
+            if (wordDict.Contains(s))
+                return true;
+
+            if (dict.ContainsKey(s))
+                return dict[s];
+
+            for (int i = 1; i <= s.Length; i++)
+            {
+                temp = s.Substring(0, i);
+                if (wordDict.Contains(temp) && WordBreak_Working(s.Substring(i), wordDict, dict))
+                {
+                    dict[s] = true;
+                    return true;
+                }
+            }
+
+            dict[s] = false;
+            return false;
+
+        }
+
+        public bool WordBreak(string s, IList<string> wordDict)
+        {
+
+            int left = 0;
+            int right = 1;
+            bool result = false;
+            string temp = string.Empty;
+            Dictionary<string, bool> dict = new Dictionary<string, bool>();
+
+            /*
+
+                "aaaaaaa"  //7
+                ["aaaa","aaa"]
+
+            */
+
+
+            int i = 0;
+            int j = 0;
+            
+            for (; i < s.Length; i++)
+            {
+                dict.TryGetValue(s.Substring(i), out result);
+
+                if (wordDict.Contains(s.Substring(i)) || result)
+                {
+                    result = true;
+                    i += s.Substring(i).Length - 1;
+                    continue;
+                }
+
+                for( j = 1; j <= s.Length - i; j++)
+                {
+                    temp = s.Substring(i, j);
+
+                    dict.TryGetValue(temp, out result);
+
+                    if (result || wordDict.Contains(temp))
+                    {
+
+                        result = true;                       
+                        dict[temp] = true;
+                        j--;
+                        break;
+                    }
+                    else
+                        result = false;
+                }
+
+                if ((i + j) == s.Length-1)
+                    break;                
+                i += j;
+            }
+
+            return result;
         }
     }
 }

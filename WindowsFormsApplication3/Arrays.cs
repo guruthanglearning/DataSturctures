@@ -7073,6 +7073,223 @@ namespace WindowsFormsApplication3
             return result;
         }
 
+        private void btn_Largest_Number_Click(object sender, EventArgs e)
+        {
+
+            /*
+             
+                Given a list of non negative integers, arrange them such that they form the largest number.
+
+                Example 1:
+
+                Input: [10,2]
+                Output: "210"
+                Example 2:
+
+                Input: [3,30,34,5,9]
+                Output: "9534330"
+             
+             */
+
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] {10, 2 });
+            inputs.Add(new int[] { 3, 30, 34, 5, 9 });
+            inputs.Add(new int[] { 0,0 });
+            StringBuilder result = new StringBuilder();
+
+
+
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"Largest Number is {this.LargestNumber(input)} for the given array : {string.Join(",", input)}");
+            }
+
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public string LargestNumber(int[] nums)
+        {
+
+            long temp = 0;
+            string result = "0";
+
+            if (nums == null || nums.Length == 0)
+                return result;
+
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if (($"{nums[i]}{nums[j]}").CompareTo($"{nums[j]}{nums[i]}") < 0)
+                        Swap(nums, i, j);
+
+                }
+            }
+
+            result = string.Join("", nums);
+            if (long.TryParse(result, out temp) && temp == 0)
+                result = "0";
+
+
+            return result;
+
+        }
+
+        private void btn_Subarray_Product_Less_Than_K_Click(object sender, EventArgs e)
+        {
+            /*
+                Your are given an array of positive integers nums.
+
+                Count and print the number of (contiguous) subarrays where the product of all the elements in the subarray is less than k.
+
+                Example 1:
+                Input: nums = [10, 5, 2, 6], k = 100
+                Output: 8
+                Explanation: The 8 subarrays that have product less than 100 are: [10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6].
+                Note that [10, 5, 2] is not included as the product of 100 is not strictly less than k.
+                Note:
+
+                0 < nums.length <= 50000.
+                0 < nums[i] < 1000.
+                0 <= k < 10^6.
+
+                Hint #1  
+                For each j, let opt(j) be the smallest i so that nums[i] * nums[i+1] * ... * nums[j] is less than k. opt is an increasing function.
+             
+             */
+
+
+
+            List<ArrayAndValue > inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 10, 5, 2, 6 }, find = 100 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 3 }, find = 0 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 1, 1 }, find = 1 });
+            
+
+
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.Append($"Subarray Product Less Than K is  {this.NumSubarrayProductLessThanK(input.input, input.find)} for the given int array {string.Join(" ", input.input)} for given K {input.find}  \n");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int NumSubarrayProductLessThanK(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0 || k <= 1)
+                return 0;
+
+            int result = 0;
+            int product = 1;
+            int j = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                product *= nums[i];
+                for (; product >= k; j++)
+                    product /= nums[j];
+                result += 1 + (i - j);
+            }
+
+            return result;
+        }
+
+        private void btn_First_Missing_Positive_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given an unsorted integer array, find the smallest missing positive integer.
+
+                Example 1:
+
+                Input: [1,2,0]
+                Output: 3
+                Example 2:
+
+                Input: [3,4,-1,1]
+                Output: 2
+                Example 3:
+
+                Input: [7,8,9,11,12]
+                Output: 1
+                Follow up:
+
+                Your algorithm should run in O(n) time and uses constant extra space.
+
+                Hint #1  
+                Think about how you would solve the problem in non-constant space. Can you apply that logic to the existing space?
+                Hint #2  
+                We don't care about duplicates or non-positive integers
+                Hint #3  
+                Remember that O(2n) = O(n)
+
+                Time Complexity     : O(N)
+                Space Complexity    : non constanct time
+            
+             */
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 2, 0 });
+            inputs.Add(new int[] { 3, 4, -1, 1 });
+            inputs.Add(new int[] { 7, 8, 9, 11, 12 });
+            inputs.Add(new int[] { 1, 1 });
+            inputs.Add(new int[] { 1, 0 });
+            inputs.Add(new int[] { 1000, -1 });
+            inputs.Add(new int[] { -1, -2 });
+            inputs.Add(new int[] { 0, -1 });
+            inputs.Add(new int[] { 0, 0 });
+            inputs.Add(new int[] { });
+            inputs.Add(new int[] { -1, -2 });
+
+
+            StringBuilder result = new StringBuilder();
+
+
+
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"For the given array : {string.Join(",", input)} the First missing  positive number is {this.FirstMissingPositive(input)}");
+            }
+
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int FirstMissingPositive(int[] nums)
+        {
+            if (nums == null || nums.Length == 0)
+                return 1;
+
+            int len = nums.Length;
+            for (int i = 0; i < len; i++)
+                if (nums[i] <= 0 || nums[i] > len)
+                    nums[i] = len + 1;
+
+            int j = 0;
+            for (int i = 0; i < len; i++)
+            {
+                j = Math.Abs(nums[i]);
+                if (j > len)
+                    continue;
+                if (nums[--j] > 0)
+                    nums[j] *= -1;
+            }
+
+
+            for (int i = 0; i < len; i++)
+            {
+                if (nums[i] > 0)
+                    return i + 1;
+            }
+
+            return len + 1;
+        }
     }
 }
  

@@ -114,6 +114,9 @@
             this.btn_Largest_Time_for_Given_Digits = new System.Windows.Forms.Button();
             this.btn_Contains_Duplicate_III = new System.Windows.Forms.Button();
             this.btn_Maximum_Product_Subarray = new System.Windows.Forms.Button();
+            this.btn_Largest_Number = new System.Windows.Forms.Button();
+            this.btn_Subarray_Product_Less_Than_K = new System.Windows.Forms.Button();
+            this.btn_First_Missing_Positive = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1046,11 +1049,44 @@
             this.btn_Maximum_Product_Subarray.UseVisualStyleBackColor = true;
             this.btn_Maximum_Product_Subarray.Click += new System.EventHandler(this.btn_Maximum_Product_Subarray_Click);
             // 
+            // btn_Largest_Number
+            // 
+            this.btn_Largest_Number.Location = new System.Drawing.Point(1088, 55);
+            this.btn_Largest_Number.Name = "btn_Largest_Number";
+            this.btn_Largest_Number.Size = new System.Drawing.Size(151, 24);
+            this.btn_Largest_Number.TabIndex = 87;
+            this.btn_Largest_Number.Text = "Largest Number";
+            this.btn_Largest_Number.UseVisualStyleBackColor = true;
+            this.btn_Largest_Number.Click += new System.EventHandler(this.btn_Largest_Number_Click);
+            // 
+            // btn_Subarray_Product_Less_Than_K
+            // 
+            this.btn_Subarray_Product_Less_Than_K.Location = new System.Drawing.Point(1091, 86);
+            this.btn_Subarray_Product_Less_Than_K.Name = "btn_Subarray_Product_Less_Than_K";
+            this.btn_Subarray_Product_Less_Than_K.Size = new System.Drawing.Size(147, 31);
+            this.btn_Subarray_Product_Less_Than_K.TabIndex = 88;
+            this.btn_Subarray_Product_Less_Than_K.Text = "Subarray Product Less Than K";
+            this.btn_Subarray_Product_Less_Than_K.UseVisualStyleBackColor = true;
+            this.btn_Subarray_Product_Less_Than_K.Click += new System.EventHandler(this.btn_Subarray_Product_Less_Than_K_Click);
+            // 
+            // btn_First_Missing_Positive
+            // 
+            this.btn_First_Missing_Positive.Location = new System.Drawing.Point(1091, 124);
+            this.btn_First_Missing_Positive.Name = "btn_First_Missing_Positive";
+            this.btn_First_Missing_Positive.Size = new System.Drawing.Size(145, 32);
+            this.btn_First_Missing_Positive.TabIndex = 89;
+            this.btn_First_Missing_Positive.Text = "First Missing Positive";
+            this.btn_First_Missing_Positive.UseVisualStyleBackColor = true;
+            this.btn_First_Missing_Positive.Click += new System.EventHandler(this.btn_First_Missing_Positive_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1544, 755);
+            this.ClientSize = new System.Drawing.Size(1540, 755);
+            this.Controls.Add(this.btn_First_Missing_Positive);
+            this.Controls.Add(this.btn_Subarray_Product_Less_Than_K);
+            this.Controls.Add(this.btn_Largest_Number);
             this.Controls.Add(this.btn_Maximum_Product_Subarray);
             this.Controls.Add(this.btn_Contains_Duplicate_III);
             this.Controls.Add(this.btn_Largest_Time_for_Given_Digits);
@@ -1231,5 +1267,8 @@
         private System.Windows.Forms.Button btn_Largest_Time_for_Given_Digits;
         private System.Windows.Forms.Button btn_Contains_Duplicate_III;
         private System.Windows.Forms.Button btn_Maximum_Product_Subarray;
+        private System.Windows.Forms.Button btn_Largest_Number;
+        private System.Windows.Forms.Button btn_Subarray_Product_Less_Than_K;
+        private System.Windows.Forms.Button btn_First_Missing_Positive;
     }
 }
