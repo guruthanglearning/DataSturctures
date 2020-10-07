@@ -7579,50 +7579,30 @@ namespace WindowsFormsApplication3
 
         public int RemoveCoveredIntervals(int[][] intervals)
         {
+            int result = 0;
             if (intervals == null || intervals.Length == 0)
-                return 0;
+                result++;
 
-            List<int[][]> dictInt = new List<int[][]>();
-            int[][] temp = new int[2][];
+            Array.Sort(intervals, ((x, y) => x[0] - y[0]));
+            int[]temp = new int[2] { -1, -1 };
+            
 
-            temp = new int[2][];
-            temp[0] = new int[1] { intervals[0][0] };
-            temp[1] = new int[1] { intervals[0][1] };
-            dictInt.Add(temp);
-
-            int a = 0, b = 0, c = 0, d = 0;
-
-            for (int i = 1; i < intervals.Length; i++)
+            foreach(var c in intervals)
             {
-                a = intervals[i][0]; // 3
-                b = intervals[i][1]; // 4
-
-                temp = new int[2][];
-                temp[0] = new int[1] { a };
-                temp[1] = new int[1] { b };
-                dictInt.Add(temp);
-
-                for (int j = 0; j < dictInt.Count - 1; j++)
+                if (c[0] > temp[0] && c[1] > temp[1])
                 {
-                    c = dictInt[j][0][0]; // 1
-                    d = dictInt[j][1][0]; // 4
-
-                    if (c <= a && b <= d)
-                    {
-                        dictInt.RemoveAt(dictInt.Count - 1);
-                        break;
-                    }
-                    else if (a <= c && d <= b)
-                    {
-                        dictInt.RemoveAt(j);
-                    }
-
+                    temp[0] = c[0];
+                    result++;
                 }
 
-
+                temp[1] = Math.Max(temp[1], c[1]);
             }
 
-            return dictInt.Count;
+
+           
+
+            return result;
+
         }
 
 
