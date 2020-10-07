@@ -54,6 +54,7 @@
             this.btn_Delete_Node_in_a_BST = new System.Windows.Forms.Button();
             this.btn_All_Elements_in_Two_Binary_Search_Trees = new System.Windows.Forms.Button();
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers = new System.Windows.Forms.Button();
+            this.btn_Insert_into_a_Binary_Search_Tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -325,19 +326,30 @@
             // 
             // btn_Sum_of_Root_To_Leaf_Binary_Numbers
             // 
-            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Location = new System.Drawing.Point(218, 278);
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Location = new System.Drawing.Point(215, 278);
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Name = "btn_Sum_of_Root_To_Leaf_Binary_Numbers";
-            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Size = new System.Drawing.Size(143, 30);
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Size = new System.Drawing.Size(146, 30);
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.TabIndex = 25;
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Text = " Sum of Root To Leaf Binary Numbers";
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.UseVisualStyleBackColor = true;
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Click += new System.EventHandler(this.btn_Sum_of_Root_To_Leaf_Binary_Numbers_Click);
+            // 
+            // btn_Insert_into_a_Binary_Search_Tree
+            // 
+            this.btn_Insert_into_a_Binary_Search_Tree.Location = new System.Drawing.Point(214, 312);
+            this.btn_Insert_into_a_Binary_Search_Tree.Name = "btn_Insert_into_a_Binary_Search_Tree";
+            this.btn_Insert_into_a_Binary_Search_Tree.Size = new System.Drawing.Size(148, 33);
+            this.btn_Insert_into_a_Binary_Search_Tree.TabIndex = 26;
+            this.btn_Insert_into_a_Binary_Search_Tree.Text = "Insert into a Binary Search Tree";
+            this.btn_Insert_into_a_Binary_Search_Tree.UseVisualStyleBackColor = true;
+            this.btn_Insert_into_a_Binary_Search_Tree.Click += new System.EventHandler(this.btn_Insert_into_a_Binary_Search_Tree_Click);
             // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 570);
+            this.Controls.Add(this.btn_Insert_into_a_Binary_Search_Tree);
             this.Controls.Add(this.btn_Sum_of_Root_To_Leaf_Binary_Numbers);
             this.Controls.Add(this.btn_All_Elements_in_Two_Binary_Search_Trees);
             this.Controls.Add(this.btn_Delete_Node_in_a_BST);
@@ -399,5 +411,6 @@
         private System.Windows.Forms.Button btn_Delete_Node_in_a_BST;
         private System.Windows.Forms.Button btn_All_Elements_in_Two_Binary_Search_Trees;
         private System.Windows.Forms.Button btn_Sum_of_Root_To_Leaf_Binary_Numbers;
+        private System.Windows.Forms.Button btn_Insert_into_a_Binary_Search_Tree;
     }
 }

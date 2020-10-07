@@ -1631,6 +1631,60 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Complement_of_Base_10_Integer_Click(object sender, EventArgs e)
+        {
+            /*
+             
+             Every non-negative integer N has a binary representation.  For example, 5 can be represented as "101" in binary, 11 as "1011" in binary, and so on.  
+             Note that except for N = 0, there are no leading zeroes in any binary representation.
+
+             The complement of a binary representation is the number in binary you get when changing every 1 to a 0 and 0 to a 1.  For example, the complement of "101" in binary is "010" in binary.
+
+             For a given number N in base-10, return the complement of it's binary representation as a base-10 integer.
+             
+             Time Complexity        : O(1)
+             Space Complexity       : O(1)
+
+             */
+
+            List<int> inputs = new List<int>();
+            inputs.Add(5);
+            inputs.Add(7);
+            inputs.Add(10);
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Complement of Base 10 integer is Other : {BitwiseComplement(input)}  Mine : {BitwiseComplement_My(input)} for the given number is {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int BitwiseComplement(int N)
+        {
+
+            return (N == 0 ? 1 : ((1 << Convert.ToString(N, 2).Length - 1) - 1) ^ N);
+
+        }
+
+        public int BitwiseComplement_My(int N)
+        {
+
+            
+            
+            string binary = Convert.ToString(N, 2);
+            StringBuilder build = new StringBuilder();
+
+            foreach (char c in binary)
+            {
+                build.Append($"{(c == '0' ? 1 : 0)}");
+            }
+
+            return Convert.ToInt32(build.ToString(), 2);
+
+        }
     }
 }
 

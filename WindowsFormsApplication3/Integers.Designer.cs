@@ -52,6 +52,7 @@
             this.btn_Fizz_Buzz = new System.Windows.Forms.Button();
             this.btn_Combination_Sum_III = new System.Windows.Forms.Button();
             this.btn_Sequential_Digits = new System.Windows.Forms.Button();
+            this.btn_Complement_of_Base_10_Integer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -313,11 +314,22 @@
             this.btn_Sequential_Digits.UseVisualStyleBackColor = true;
             this.btn_Sequential_Digits.Click += new System.EventHandler(this.btn_Sequential_Digits_Click);
             // 
+            // btn_Complement_of_Base_10_Integer
+            // 
+            this.btn_Complement_of_Base_10_Integer.Location = new System.Drawing.Point(280, 138);
+            this.btn_Complement_of_Base_10_Integer.Name = "btn_Complement_of_Base_10_Integer";
+            this.btn_Complement_of_Base_10_Integer.Size = new System.Drawing.Size(179, 28);
+            this.btn_Complement_of_Base_10_Integer.TabIndex = 85;
+            this.btn_Complement_of_Base_10_Integer.Text = "Complement of Base 10 Integer";
+            this.btn_Complement_of_Base_10_Integer.UseVisualStyleBackColor = true;
+            this.btn_Complement_of_Base_10_Integer.Click += new System.EventHandler(this.btn_Complement_of_Base_10_Integer_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 791);
+            this.Controls.Add(this.btn_Complement_of_Base_10_Integer);
             this.Controls.Add(this.btn_Sequential_Digits);
             this.Controls.Add(this.btn_Combination_Sum_III);
             this.Controls.Add(this.btn_Fizz_Buzz);
@@ -375,5 +387,6 @@
         private System.Windows.Forms.Button btn_Fizz_Buzz;
         private System.Windows.Forms.Button btn_Combination_Sum_III;
         private System.Windows.Forms.Button btn_Sequential_Digits;
+        private System.Windows.Forms.Button btn_Complement_of_Base_10_Integer;
     }
 }

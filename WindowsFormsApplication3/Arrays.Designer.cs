@@ -117,6 +117,9 @@
             this.btn_Largest_Number = new System.Windows.Forms.Button();
             this.btn_Subarray_Product_Less_Than_K = new System.Windows.Forms.Button();
             this.btn_First_Missing_Positive = new System.Windows.Forms.Button();
+            this.btn_Combination_Sum = new System.Windows.Forms.Button();
+            this.btn_K_diff_Pairs_in_an_Array = new System.Windows.Forms.Button();
+            this.btn_Remove_Covered_Intervals = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1061,7 +1064,7 @@
             // 
             // btn_Subarray_Product_Less_Than_K
             // 
-            this.btn_Subarray_Product_Less_Than_K.Location = new System.Drawing.Point(1091, 86);
+            this.btn_Subarray_Product_Less_Than_K.Location = new System.Drawing.Point(1089, 83);
             this.btn_Subarray_Product_Less_Than_K.Name = "btn_Subarray_Product_Less_Than_K";
             this.btn_Subarray_Product_Less_Than_K.Size = new System.Drawing.Size(147, 31);
             this.btn_Subarray_Product_Less_Than_K.TabIndex = 88;
@@ -1071,7 +1074,7 @@
             // 
             // btn_First_Missing_Positive
             // 
-            this.btn_First_Missing_Positive.Location = new System.Drawing.Point(1091, 124);
+            this.btn_First_Missing_Positive.Location = new System.Drawing.Point(1089, 118);
             this.btn_First_Missing_Positive.Name = "btn_First_Missing_Positive";
             this.btn_First_Missing_Positive.Size = new System.Drawing.Size(145, 32);
             this.btn_First_Missing_Positive.TabIndex = 89;
@@ -1079,11 +1082,44 @@
             this.btn_First_Missing_Positive.UseVisualStyleBackColor = true;
             this.btn_First_Missing_Positive.Click += new System.EventHandler(this.btn_First_Missing_Positive_Click);
             // 
+            // btn_Combination_Sum
+            // 
+            this.btn_Combination_Sum.Location = new System.Drawing.Point(1088, 153);
+            this.btn_Combination_Sum.Name = "btn_Combination_Sum";
+            this.btn_Combination_Sum.Size = new System.Drawing.Size(144, 23);
+            this.btn_Combination_Sum.TabIndex = 90;
+            this.btn_Combination_Sum.Text = "Combination Sum";
+            this.btn_Combination_Sum.UseVisualStyleBackColor = true;
+            this.btn_Combination_Sum.Click += new System.EventHandler(this.btn_Combination_Sum_Click);
+            // 
+            // btn_K_diff_Pairs_in_an_Array
+            // 
+            this.btn_K_diff_Pairs_in_an_Array.Location = new System.Drawing.Point(1089, 178);
+            this.btn_K_diff_Pairs_in_an_Array.Name = "btn_K_diff_Pairs_in_an_Array";
+            this.btn_K_diff_Pairs_in_an_Array.Size = new System.Drawing.Size(143, 23);
+            this.btn_K_diff_Pairs_in_an_Array.TabIndex = 91;
+            this.btn_K_diff_Pairs_in_an_Array.Text = "K-diff Pairs in an Array";
+            this.btn_K_diff_Pairs_in_an_Array.UseVisualStyleBackColor = true;
+            this.btn_K_diff_Pairs_in_an_Array.Click += new System.EventHandler(this.btn_K_diff_Pairs_in_an_Array_Click);
+            // 
+            // btn_Remove_Covered_Intervals
+            // 
+            this.btn_Remove_Covered_Intervals.Location = new System.Drawing.Point(1088, 206);
+            this.btn_Remove_Covered_Intervals.Name = "btn_Remove_Covered_Intervals";
+            this.btn_Remove_Covered_Intervals.Size = new System.Drawing.Size(144, 34);
+            this.btn_Remove_Covered_Intervals.TabIndex = 92;
+            this.btn_Remove_Covered_Intervals.Text = "Remove Covered Intervals";
+            this.btn_Remove_Covered_Intervals.UseVisualStyleBackColor = true;
+            this.btn_Remove_Covered_Intervals.Click += new System.EventHandler(this.btn_Remove_Covered_Intervals_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1540, 755);
+            this.Controls.Add(this.btn_Remove_Covered_Intervals);
+            this.Controls.Add(this.btn_K_diff_Pairs_in_an_Array);
+            this.Controls.Add(this.btn_Combination_Sum);
             this.Controls.Add(this.btn_First_Missing_Positive);
             this.Controls.Add(this.btn_Subarray_Product_Less_Than_K);
             this.Controls.Add(this.btn_Largest_Number);
@@ -1270,5 +1306,8 @@
         private System.Windows.Forms.Button btn_Largest_Number;
         private System.Windows.Forms.Button btn_Subarray_Product_Less_Than_K;
         private System.Windows.Forms.Button btn_First_Missing_Positive;
+        private System.Windows.Forms.Button btn_Combination_Sum;
+        private System.Windows.Forms.Button btn_K_diff_Pairs_in_an_Array;
+        private System.Windows.Forms.Button btn_Remove_Covered_Intervals;
     }
 }

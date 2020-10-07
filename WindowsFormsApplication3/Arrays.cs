@@ -7290,6 +7290,342 @@ namespace WindowsFormsApplication3
 
             return len + 1;
         }
+
+        private void btn_Combination_Sum_Click(object sender, EventArgs e)
+        {
+            /*
+                    Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+
+                    The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+
+ 
+
+                    Example 1:
+
+                    Input: candidates = [2,3,6,7], target = 7
+                    Output: [[2,2,3],[7]]
+                    Explanation:
+                    2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
+                    7 is a candidate, and 7 = 7.
+                    These are the only two combinations.
+                    Example 2:
+
+                    Input: candidates = [2,3,5], target = 8
+                    Output: [[2,2,2,2],[2,3,3],[3,5]]
+                    Example 3:
+
+                    Input: candidates = [2], target = 1
+                    Output: []
+                    Example 4:
+
+                    Input: candidates = [1], target = 1
+                    Output: [[1]]
+                    Example 5:
+
+                    Input: candidates = [1], target = 2
+                    Output: [[1,1]]
+ 
+
+                    Constraints:
+
+                    1 <= candidates.length <= 30
+                    1 <= candidates[i] <= 200
+                    All elements of candidates are distinct.
+                    1 <= target <= 500
+             
+                    Time Complexity     : Expoential
+                    Space Complexity    : O(1) 
+             */
+
+
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 3, 6, 7 }, find = 7 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 3, 5 }, find = 8 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2 }, find = 1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1}, find = 1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1}, find = 2 });
+            
+
+
+            StringBuilder result = new StringBuilder();
+            foreach (var sip in inputs)
+            {
+                result.AppendLine($"Combination Sum  for the given int array {string.Join(" ", sip.input)} for given target {sip.find} is  \n");
+                foreach (List<int> i in this.CombinationSum(sip.input, sip.find))
+                    result.Append($"{string.Join(",",i)}");
+                result.AppendLine();
+
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public IList<IList<int>> CombinationSum(int[] candidates, int target)
+        {
+
+            List<IList<int>> result = new List<IList<int>>();
+            List<int> list = new List<int>();
+            GetSum(0, target, result, list, candidates);
+            return result;
+
+        }
+
+
+
+        private void GetSum(int start, int target, List<IList<int>> result, List<int> list, int[] input)
+        {            
+            if (target < 0)
+                return;
+
+
+            if (target == 0)
+                result.Add(new List<int>(list));
+
+
+            for (int i = start ; i < input.Length; i++)
+            {
+                list.Add(input[i]);
+                GetSum(i,target - input[i], result, list, input);
+                list.RemoveAt(list.Count() - 1);
+            }
+
+        }
+
+        private void btn_K_diff_Pairs_in_an_Array_Click(object sender, EventArgs e)
+        {
+            
+
+            /*
+                Given an array of integers nums and an integer k, return the number of unique k-diff pairs in the array.
+
+                A k-diff pair is an integer pair (nums[i], nums[j]), where the following are true:
+
+                0 <= i, j < nums.length
+                i != j
+                a <= b
+                b - a == k
+ 
+
+                Example 1:
+
+                Input: nums = [3,1,4,1,5], k = 2
+                Output: 2
+                Explanation: There are two 2-diff pairs in the array, (1, 3) and (3, 5).
+                Although we have two 1s in the input, we should only return the number of unique pairs.
+                Example 2:
+
+                Input: nums = [1,2,3,4,5], k = 1
+                Output: 4
+                Explanation: There are four 1-diff pairs in the array, (1, 2), (2, 3), (3, 4) and (4, 5).
+                Example 3:
+
+                Input: nums = [1,3,1,5,4], k = 0
+                Output: 1
+                Explanation: There is one 0-diff pair in the array, (1, 1).
+                Example 4:
+
+                Input: nums = [1,2,4,4,3,3,0,9,2,3], k = 3
+                Output: 2
+                Example 5:
+
+                Input: nums = [-1,-2,-3], k = 1
+                Output: 2
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 104
+                -107 <= nums[i] <= 107
+                0 <= k <= 107
+
+
+
+            */
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 3, 1, 4, 1, 5 }, find = 2 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 3, 4, 5 }, find = 1 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 3, 1, 5, 4 }, find = 0 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 4, 4, 3, 3, 0, 9, 2, 3 }, find = 3 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { -1, -2, -3 }, find = 1 });
+
+
+
+            StringBuilder result = new StringBuilder();
+            foreach (var sip in inputs)
+            {
+                result.AppendLine($"K-diff Pairs for the given array {string.Join(" ", sip.input)} is {this.K_Diff_Pairs(sip.input,sip.find)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int K_Diff_Pairs(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0)
+                return 0;
+
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+            /*
+                [3,1,4,1,5] 2
+                [1,2,3,4,5] 1
+                [1,3,1,5,4] 0
+                [1,2,4,4,3,3,0,9,2,3] 3
+                [-1,-2,-3] 1
+            */
+
+            int counter = 0;
+
+            foreach (int i in nums)
+            {
+                if (!dict.ContainsKey(i))
+                    dict[i] = 1;
+                else
+                    dict[i]++;
+            }
+
+            foreach (int key in dict.Keys)
+            {
+                if (k > 0)
+                {
+                    if (dict.ContainsKey(key + k))
+                        counter++;
+                }
+                else
+                {
+                    if (dict[key] > 1)
+                        counter++;
+                }
+            }
+
+            return counter;
+
+        }
+
+        private void btn_Remove_Covered_Intervals_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a list of intervals, remove all intervals that are covered by another interval in the list.
+                Interval [a,b) is covered by interval [c,d) if and only if c <= a and b <= d.
+
+                After doing so, return the number of remaining intervals.
+                Example 1:
+
+                Input: intervals = [[1,4],[3,6],[2,8]]
+                Output: 2
+                Explanation: Interval [3,6] is covered by [2,8], therefore it is removed.
+                Example 2:
+
+                Input: intervals = [[1,4],[2,3]]
+                Output: 1
+                Example 3:
+
+                Input: intervals = [[0,10],[5,12]]
+                Output: 2
+                Example 4:
+
+                Input: intervals = [[3,10],[4,10],[5,11]]
+                Output: 2
+                Example 5:
+
+                Input: intervals = [[1,2],[1,4],[3,4]]
+                Output: 1
+ 
+
+                Constraints:
+
+                1 <= intervals.length <= 1000
+                intervals[i].length == 2
+                0 <= intervals[i][0] < intervals[i][1] <= 10^5
+                All the intervals are unique.
+                
+                Hint #1  
+                How to check if an interval is covered by another?
+                
+                Hint #2  
+                Compare each interval to all others and check if it is covered by any interval.
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<JaggedArraysWithString> inputs = new List<JaggedArraysWithString>();
+            inputs.Add(new JaggedArraysWithString() { shifts = new int[][] { new int[]{ 1, 4 }, new int[] { 3, 6 }, new int[] { 2, 8 }} });
+            //inputs.Add(new JaggedArraysWithString() { shifts = new int[][] { new int[] { 1 , 4 }, new int[] { 2, 3 }} });
+            //inputs.Add(new JaggedArraysWithString() { shifts = new int[][] { new int[] { 0, 10 }, new int[] { 5, 12 }} });
+            //inputs.Add(new JaggedArraysWithString() { shifts = new int[][] { new int[] { 3, 10 }, new int[] { 4, 10 }, new int[] { 5, 11 } } });
+            //inputs.Add(new JaggedArraysWithString() { shifts = new int[][] { new int[] { 1, 2 }, new int[] { 1, 4 }, new int[] { 3, 4 } } });
+
+            foreach (var input in inputs)
+            {
+
+                result.AppendLine($"There are  {this.RemoveCoveredIntervals(input.shifts)} covered intervals for the given input {this.PrintData(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+
+
+
+
+
+        }
+
+        public int RemoveCoveredIntervals(int[][] intervals)
+        {
+            if (intervals == null || intervals.Length == 0)
+                return 0;
+
+            List<int[][]> dictInt = new List<int[][]>();
+            int[][] temp = new int[2][];
+
+            temp = new int[2][];
+            temp[0] = new int[1] { intervals[0][0] };
+            temp[1] = new int[1] { intervals[0][1] };
+            dictInt.Add(temp);
+
+            int a = 0, b = 0, c = 0, d = 0;
+
+            for (int i = 1; i < intervals.Length; i++)
+            {
+                a = intervals[i][0]; // 3
+                b = intervals[i][1]; // 4
+
+                temp = new int[2][];
+                temp[0] = new int[1] { a };
+                temp[1] = new int[1] { b };
+                dictInt.Add(temp);
+
+                for (int j = 0; j < dictInt.Count - 1; j++)
+                {
+                    c = dictInt[j][0][0]; // 1
+                    d = dictInt[j][1][0]; // 4
+
+                    if (c <= a && b <= d)
+                    {
+                        dictInt.RemoveAt(dictInt.Count - 1);
+                        break;
+                    }
+                    else if (a <= c && d <= b)
+                    {
+                        dictInt.RemoveAt(j);
+                    }
+
+                }
+
+
+            }
+
+            return dictInt.Count;
+        }
+
+
     }
 }
  
