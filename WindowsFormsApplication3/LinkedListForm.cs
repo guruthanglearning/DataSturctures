@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Web.UI.WebControls;
+using System.Runtime.Remoting.Messaging;
 
 //using OfficeOpenXml;
 //using OfficeOpenXml.Style;
@@ -4812,6 +4813,90 @@ namespace WindowsFormsApplication3
             return head;
 
         }
+
+        private void btn_Rotate_List_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a linked list, rotate the list to the right by k places, where k is non-negative.
+
+                Example 1:
+
+                Input: 1->2->3->4->5->NULL, k = 2
+                Output: 4->5->1->2->3->NULL
+                Explanation:
+                rotate 1 steps to the right: 5->1->2->3->4->NULL
+                rotate 2 steps to the right: 4->5->1->2->3->NULL
+                Example 2:
+
+                Input: 0->1->2->NULL, k = 4
+                Output: 2->0->1->NULL
+                Explanation:
+                rotate 1 steps to the right: 2->0->1->NULL
+                rotate 2 steps to the right: 1->2->0->NULL
+                rotate 3 steps to the right: 0->1->2->NULL
+                rotate 4 steps to the right: 2->0->1->NULL
+             
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }), Find = 2 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 0,1, 2 }), Find = 4 });
+            
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Rotate List for the given list {this.GetListNodeData(input.Node1)}  is  {this.GetListNodeData(this.RotateRight(input.Node1, input.Find))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public ListNode RotateRight(ListNode head, int k)
+        {
+
+            if (head == null)
+                return head;
+
+
+            int len = 0;
+            ListNode current = head;
+            ListNode temp = head;
+          
+            while (current.next != null)
+            {
+                current = current.next;
+                len++;
+            }
+            len++;
+
+            current.next = head;
+            current = head;
+
+            len = len - (k % len) -1;
+
+            while(len > 0)
+            {
+                current = current.next;
+                len--;
+            }
+
+            temp = current.next;
+            current.next = null;
+            head = temp;
+
+            return head;
+        }
+        
+
+        
 
     }
 
