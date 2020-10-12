@@ -7605,7 +7605,22 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Find_the_Kth_missing_number_in_a_sorted_Array_Click(object sender, EventArgs e)
+        {
 
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() {input = new int[] {1,3,5,6 },find = 2 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1,  3, 5, 6 }, find = 8 });
+
+            foreach(ArrayAndValue input in inputs)
+            {
+                
+            }
+
+            MessageBox.Show(result.ToString());
+        }
     }
 }
  

@@ -2881,6 +2881,125 @@ namespace WindowsFormsApplication3
             return root;
 
         }
-        
+
+        private void btn_Serialize_and_Deserialize_BST_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Serialization is converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link 
+                to be reconstructed later in the same or another computer environment. Design an algorithm to serialize and deserialize a binary search tree. There is no restriction on how your
+                serialization/deserialization algorithm should work. You need to ensure that a binary search tree can be serialized to a string, and this string can be deserialized to the original tree
+                structure. The encoded string should be as compact as possible.
+
+                Example 1:
+
+                Input: root = [2,1,3]
+                Output: [2,1,3]
+                Example 2:
+
+                Input: root = []
+                Output: []
+ 
+
+                Constraints:
+
+                The number of nodes in the tree is in the range [0, 104].
+                0 <= Node.val <= 104
+                The input tree is guaranteed to be a binary search tree.
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("3,2,4,null,null,null,5");
+            inputs.Add("2,1,3");
+            inputs.Add("");
+
+            Codec codec = new Codec();
+
+            foreach(string input in inputs)
+            {
+                result.AppendLine($"For the given BST  {input} {Environment.NewLine} Serialization : { codec.serialize(codec.deserialize(input)) }  {Environment.NewLine} De-serialization : { codec.serialize(codec.deserialize(input))}   ");            
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+        public class Codec
+        {
+
+            // Encodes a tree to a single string.
+            public string serialize(Node root)
+            {
+                return SerializeBST(root);
+            }
+
+            // Decodes your encoded data to tree.
+            public Node deserialize(string data)
+            {
+                return CreateBST(data);
+
+            }
+
+
+            private Node CreateBST(string data)
+            {
+                if (string.IsNullOrEmpty(data))
+                    return null;
+
+                Queue<Node> q = new Queue<Node>();
+                Node temp = null;
+                string[] node = data.Split(',');
+                int len = node.Length;
+                int i = 0;
+                Node root = new Node() { data = Convert.ToInt32(node[i]) };
+                q.Enqueue(root);
+
+                while (q.Count > 0)
+                {
+                    temp = q.Dequeue();
+                    if (temp == null || i >= len - 1)
+                        continue;
+
+                    temp.left = node[++i] == "null" ? null : new Node() { data = Convert.ToInt32(node[i]) };
+                    temp.right = node[++i] == "null" ? null : new Node() { data = Convert.ToInt32(node[i]) };
+
+                    q.Enqueue(temp.left);
+                    q.Enqueue(temp.right);
+                }
+
+                return root;
+            }
+
+            private string SerializeBST(Node root)
+            {
+
+                if (root == null)
+                    return string.Empty;
+
+                List<string> result = new List<string>();
+                Node temp;
+                Queue<Node> q = new Queue<Node>();
+                q.Enqueue(root);
+
+                while (q.Count > 0)
+                {
+                    temp = q.Dequeue();
+                    result.Add($"{(temp == null ? "null" : temp.data.ToString())}");
+                    if (temp != null)
+                    {
+                        q.Enqueue(temp.left);
+                        q.Enqueue(temp.right);
+                    }
+                }
+
+                return string.Join(",", result);
+            }
+        }
+
+
     }
 }

@@ -5703,7 +5703,7 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Word_Break_Click(object sender, EventArgs e)
-        {
+        {        
             /*
                 Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 
@@ -5838,6 +5838,101 @@ namespace WindowsFormsApplication3
             }
 
             return result;
+        }
+
+        private void btn_Buddy_Strings_Click(object sender, EventArgs e)
+        {
+            /*
+                Given two strings A and B of lowercase letters, return true if you can swap two letters in A so the result is equal to B, otherwise, return false.
+
+                Swapping letters is defined as taking two indices i and j (0-indexed) such that i != j and swapping the characters at A[i] and A[j]. For example, swapping at indices 0 and 2 in "abcd" results in "cbad".
+
+                Example 1:
+
+                Input: A = "ab", B = "ba"
+                Output: true
+                Explanation: You can swap A[0] = 'a' and A[1] = 'b' to get "ba", which is equal to B.
+                Example 2:
+
+                Input: A = "ab", B = "ab"
+                Output: false
+                Explanation: The only letters you can swap are A[0] = 'a' and A[1] = 'b', which results in "ba" != B.
+                Example 3:
+
+                Input: A = "aa", B = "aa"
+                Output: true
+                Explanation: You can swap A[0] = 'a' and A[1] = 'a' to get "aa", which is equal to B.
+                Example 4:
+
+                Input: A = "aaaaaaabc", B = "aaaaaaacb"
+                Output: true
+                Example 5:
+
+                Input: A = "", B = "aa"
+                Output: false
+ 
+
+                Constraints:
+
+                0 <= A.length <= 20000
+                0 <= B.length <= 20000
+                A and B consist of lowercase letters
+
+
+                Time Complexity     : O(NM)
+                Space Complexity    : O(NM)
+
+             */
+
+
+
+            StringBuilder result = new StringBuilder();
+            List<AddBinaryInputs> inputs = new List<AddBinaryInputs>();
+            inputs.Add(new AddBinaryInputs() { inputA = "ab", inputB = "ba" });
+            inputs.Add(new AddBinaryInputs() { inputA = "ab", inputB = "ab" });
+            inputs.Add(new AddBinaryInputs() { inputA = "aa", inputB = "aa" });
+            inputs.Add(new AddBinaryInputs() { inputA = "aaaaaaabc", inputB = "aaaaaaacb" });
+            inputs.Add(new AddBinaryInputs() { inputA = "", inputB = "aa" });
+            inputs.Add(new AddBinaryInputs() { inputA = "abcd", inputB = "badc" });
+
+            foreach (AddBinaryInputs input in inputs)
+            {
+                result.AppendLine($"Buddy Strings for the given string 1 : {input.inputA} and string 2 : {input.inputB} is  { BuddyStrings(input.inputA, input.inputB) }");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public bool BuddyStrings(string A, string B)
+        {
+            if (string.IsNullOrEmpty(A) || string.IsNullOrEmpty(B) || A.Length != B.Length)
+                return false;
+
+            HashSet<int> dict = new HashSet<int>();
+            List<int> indexes = new List<int>();
+
+            if (A.CompareTo(B) == 0)
+            {
+                foreach (char c in A)
+                {
+                    if (dict.Contains(c))
+                        return true;
+                    dict.Add(c);
+                }
+                return false;
+            }
+
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                if (A[i] != B[i])
+                    indexes.Add(i);
+
+            }
+
+            return (indexes.Count == 2 && A[indexes[0]] == B[indexes[1]] && A[indexes[1]] == B[indexes[0]]);
+
         }
     }
 }
