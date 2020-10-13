@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 namespace WindowsFormsApplication3
 {
-    public partial class StringsManipulation : Form
+    public partial class btn_Remove_Duplicate_Letters : Form
     {
         private int elementLevel = -1;
         private int numberOfElements;
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication3
         }
 
 
-        public StringsManipulation()
+        public btn_Remove_Duplicate_Letters()
         {
             InitializeComponent();
         }
@@ -5842,6 +5842,10 @@ namespace WindowsFormsApplication3
 
         private void btn_Buddy_Strings_Click(object sender, EventArgs e)
         {
+
+
+            
+
             /*
                 Given two strings A and B of lowercase letters, return true if you can swap two letters in A so the result is equal to B, otherwise, return false.
 
@@ -5934,6 +5938,90 @@ namespace WindowsFormsApplication3
             return (indexes.Count == 2 && A[indexes[0]] == B[indexes[1]] && A[indexes[1]] == B[indexes[0]]);
 
         }
+
+        private void btn_Remove_Duplicate_Letters_Load(object sender, EventArgs e)
+        {
+            /*
+                Given a string s, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.
+
+                Note: This question is the same as 1081: https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
+
+ 
+
+                Example 1:
+
+                Input: s = "bcabc"
+                Output: "abc"
+                Example 2:
+
+                Input: s = "cbacdcbc"
+                Output: "acdb"
+ 
+
+                Constraints:
+
+                1 <= s.length <= 104
+                s consists of lowercase English letters.
+                   Hide Hint #1  
+                Greedily try to add one missing character. How to check if adding some character will not cause problems ? Use bit-masks to check whether you will be able to complete the sub-sequence
+                if you add the character at some index i.
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(26)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("bcabc");
+            //inputs.Add("cbacdcbc");            
+
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"Removed duplicate letters is {this.RemoveDuplicateLetters(input)} for the given string is {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public string RemoveDuplicateLetters(string s)
+        {
+            if (s == null || s.Length == 0)
+                return s;
+
+            StringBuilder result = new StringBuilder();
+            int[] charlastIndex = new int[26];
+            HashSet<char> dict = new HashSet<char>();
+            Stack<char> chars = new Stack<char>();
+            char c = '\0';
+
+            for (int i = 0; i < s.Length; i++)
+                charlastIndex[s[i] - 'a'] = i;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                c = s[i];
+
+                if (dict.Contains(c))
+                    continue;
+
+                while (chars.Count > 0 && chars.Peek() > c && i < charlastIndex[chars.Peek() - 'a'])
+                {
+                    dict.Remove(chars.Pop());                    
+                    
+                }
+
+                chars.Push(c);
+                dict.Add(c); //acdb
+
+            }
+
+            while (chars.Count > 0)
+                result.Insert(0, chars.Pop());
+
+            return result.ToString();
+        }
+
+
     }
 }
 
