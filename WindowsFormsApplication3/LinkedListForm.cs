@@ -4895,9 +4895,143 @@ namespace WindowsFormsApplication3
 
             return head;
         }
-        
 
-        
+        private void btn_Sort_List_Click(object sender, EventArgs e)
+        {
+            /*
+                Given the head of a linked list, return the list after sorting it in ascending order.
+
+                Follow up: Can you sort the linked list in O(n logn) time and O(1) memory (i.e. constant space)?
+ 
+                Example 1:
+
+
+                Input: head = [4,2,1,3]
+                Output: [1,2,3,4]
+                Example 2:
+
+
+                Input: head = [-1,5,3,4,0]
+                Output: [-1,0,3,4,5]
+                Example 3:
+
+                Input: head = []
+                Output: []
+ 
+
+                Constraints:
+
+                The number of nodes in the list is in the range [0, 5 * 104].
+                -105 <= Node.val <= 105
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<ListNode> inputs = new List<ListNode>();
+            //inputs.Add(this.InsertListNode(new int[] { 4,2,1, 3}));
+            //inputs.Add(this.InsertListNode(new int[] { -1, 5, 3, 4, 0 }));
+            inputs.Add(this.InsertListNode(new int[] { 3, 2, 4 }));
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Sorted List for the given list {this.GetListNodeData(input)}  is  {this.GetListNodeData(this.SortList(input))}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public ListNode SortList(ListNode head)
+        {
+
+            if (head == null || head.next == null)
+                return head;
+
+            ListNode mid = GetMiddle(head); 
+            ListNode left = SortList(head); 
+            ListNode right = SortList(mid);
+
+            
+
+            return MergeList(left, right);
+
+
+
+        }
+
+
+        private ListNode MergeList(ListNode left, ListNode right)
+        {
+
+            ListNode L1 = left;
+            ListNode L2 = right;
+            ListNode L2p = right;
+
+            if (L1 == null || L2 == null)
+                return null;
+            else if (L1 == null && L2 != null)
+                return L2;
+            else if (L1 != null && L2 == null)
+                return L1;
+
+          
+
+            /*
+              L1:3
+              L2:4
+             
+             
+            */
+            
+            ListNode temp = null;
+
+            while (L1!=null && L2!= null )
+            {               
+
+                if (L1.val > L2.val)
+                {
+                    temp = L1.next;
+                    L1.next = null;
+                    L1.next = L2.next;
+                    L2.next = L1;
+                    L1 = temp;
+                    L2 = L2.next.next;
+                }
+                else
+                {
+                   
+                    temp = L1.next;
+                    L1.next = null;
+                    L1.next = L2;
+                    L2 = L1;
+                    L1 = temp;
+                    L2p = L2.next;
+                    L2 = L2.next;
+                    right = left;
+                }
+            }
+           
+            return right;
+        }
+
+        private ListNode GetMiddle(ListNode head) 
+        {            
+            ListNode slow = head;
+            ListNode fast = head.next;
+            ListNode med = head;
+
+            while (fast != null && fast.next != null)
+            {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+
+            med = slow.next;
+            slow.next = null;
+            
+            return med;
+
+        }
 
     }
 

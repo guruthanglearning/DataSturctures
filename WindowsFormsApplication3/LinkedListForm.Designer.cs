@@ -84,6 +84,7 @@
             this.btn_Delete_Node_in_a_Linked_List = new System.Windows.Forms.Button();
             this.btn_Remove_Linked_List_Elements = new System.Windows.Forms.Button();
             this.btn_Rotate_List = new System.Windows.Forms.Button();
+            this.btn_Sort_List = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -306,7 +307,7 @@
             // button24
             // 
             this.button24.Location = new System.Drawing.Point(331, 437);
-            this.button24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(196, 23);
             this.button24.TabIndex = 26;
@@ -327,7 +328,7 @@
             // button26
             // 
             this.button26.Location = new System.Drawing.Point(818, 393);
-            this.button26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(200, 35);
             this.button26.TabIndex = 28;
@@ -338,7 +339,7 @@
             // button27
             // 
             this.button27.Location = new System.Drawing.Point(819, 436);
-            this.button27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button27.Margin = new System.Windows.Forms.Padding(2);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(194, 34);
             this.button27.TabIndex = 29;
@@ -349,7 +350,7 @@
             // button28
             // 
             this.button28.Location = new System.Drawing.Point(815, 536);
-            this.button28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button28.Margin = new System.Windows.Forms.Padding(2);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(202, 22);
             this.button28.TabIndex = 30;
@@ -360,7 +361,7 @@
             // button29
             // 
             this.button29.Location = new System.Drawing.Point(9, 224);
-            this.button29.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button29.Margin = new System.Windows.Forms.Padding(2);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(315, 24);
             this.button29.TabIndex = 31;
@@ -411,7 +412,7 @@
             // btnDistance_of_two_nodes_in_Binary_Search_Tree
             // 
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Location = new System.Drawing.Point(9, 407);
-            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Margin = new System.Windows.Forms.Padding(2);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Name = "btnDistance_of_two_nodes_in_Binary_Search_Tree";
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Size = new System.Drawing.Size(315, 30);
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.TabIndex = 36;
@@ -422,7 +423,7 @@
             // btnBinary_Tree_Is_BST
             // 
             this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(9, 443);
-            this.btnBinary_Tree_Is_BST.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBinary_Tree_Is_BST.Margin = new System.Windows.Forms.Padding(2);
             this.btnBinary_Tree_Is_BST.Name = "btnBinary_Tree_Is_BST";
             this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(315, 28);
             this.btnBinary_Tree_Is_BST.TabIndex = 37;
@@ -433,7 +434,7 @@
             // btn_Clone_a_linked_list_with_next_and_random_pointer
             // 
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Location = new System.Drawing.Point(815, 567);
-            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Clone_a_linked_list_with_next_and_random_pointer.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Name = "btn_Clone_a_linked_list_with_next_and_random_pointer";
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Size = new System.Drawing.Size(195, 38);
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.TabIndex = 38;
@@ -444,7 +445,7 @@
             // btn_Clone_a_linked_list_with_next_pointer
             // 
             this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(817, 615);
-            this.btn_Clone_a_linked_list_with_next_pointer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Clone_a_linked_list_with_next_pointer.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Clone_a_linked_list_with_next_pointer.Name = "btn_Clone_a_linked_list_with_next_pointer";
             this.btn_Clone_a_linked_list_with_next_pointer.Size = new System.Drawing.Size(194, 33);
             this.btn_Clone_a_linked_list_with_next_pointer.TabIndex = 39;
@@ -455,7 +456,7 @@
             // btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree
             // 
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(9, 475);
-            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Name = "btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree";
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Size = new System.Drawing.Size(314, 31);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.TabIndex = 40;
@@ -466,7 +467,7 @@
             // btn_Build_Binary_Tree_for_the_given_arithmatic_expression
             // 
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(7, 510);
-            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Name = "btn_Build_Binary_Tree_for_the_given_arithmatic_expression";
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Size = new System.Drawing.Size(315, 33);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.TabIndex = 41;
@@ -487,7 +488,7 @@
             // btn_Connect_Nodes_with_iterating_queue_data_into_list
             // 
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Location = new System.Drawing.Point(10, 348);
-            this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Name = "btn_Connect_Nodes_with_iterating_queue_data_into_list";
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.Size = new System.Drawing.Size(310, 23);
             this.btn_Connect_Nodes_with_iterating_queue_data_into_list.TabIndex = 43;
@@ -498,7 +499,7 @@
             // btn_Robbing_a_home_3
             // 
             this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(10, 547);
-            this.btn_Robbing_a_home_3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Robbing_a_home_3.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Robbing_a_home_3.Name = "btn_Robbing_a_home_3";
             this.btn_Robbing_a_home_3.Size = new System.Drawing.Size(311, 33);
             this.btn_Robbing_a_home_3.TabIndex = 44;
@@ -509,7 +510,7 @@
             // btn_Merge_k_Sorted_LinkLists
             // 
             this.btn_Merge_k_Sorted_LinkLists.Location = new System.Drawing.Point(585, 33);
-            this.btn_Merge_k_Sorted_LinkLists.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Merge_k_Sorted_LinkLists.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Merge_k_Sorted_LinkLists.Name = "btn_Merge_k_Sorted_LinkLists";
             this.btn_Merge_k_Sorted_LinkLists.Size = new System.Drawing.Size(224, 25);
             this.btn_Merge_k_Sorted_LinkLists.TabIndex = 45;
@@ -520,7 +521,7 @@
             // btn_Searilzing_and_De_serialzing_Binary_Tree
             // 
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.Location = new System.Drawing.Point(9, 583);
-            this.btn_Searilzing_and_De_serialzing_Binary_Tree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Searilzing_and_De_serialzing_Binary_Tree.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.Name = "btn_Searilzing_and_De_serialzing_Binary_Tree";
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.Size = new System.Drawing.Size(314, 26);
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.TabIndex = 46;
@@ -531,7 +532,7 @@
             // btn_Count_the_number_of_unival_subtrees
             // 
             this.btn_Count_the_number_of_unival_subtrees.Location = new System.Drawing.Point(8, 613);
-            this.btn_Count_the_number_of_unival_subtrees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Count_the_number_of_unival_subtrees.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Count_the_number_of_unival_subtrees.Name = "btn_Count_the_number_of_unival_subtrees";
             this.btn_Count_the_number_of_unival_subtrees.Size = new System.Drawing.Size(314, 29);
             this.btn_Count_the_number_of_unival_subtrees.TabIndex = 47;
@@ -542,7 +543,7 @@
             // btn_Find_the_Deepest_Node_in_a_Binary_Tree
             // 
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Location = new System.Drawing.Point(328, 87);
-            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Name = "btn_Find_the_Deepest_Node_in_a_Binary_Tree";
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.Size = new System.Drawing.Size(253, 31);
             this.btn_Find_the_Deepest_Node_in_a_Binary_Tree.TabIndex = 48;
@@ -553,7 +554,7 @@
             // btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves
             // 
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Location = new System.Drawing.Point(328, 122);
-            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Name = "btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves";
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.Size = new System.Drawing.Size(252, 39);
             this.btn_Given_Binary_tree_return_all_paths_from_the_root_to_leaves.TabIndex = 49;
@@ -564,7 +565,7 @@
             // btn_Distribute_coin_in_a_binary_tree
             // 
             this.btn_Distribute_coin_in_a_binary_tree.Location = new System.Drawing.Point(328, 164);
-            this.btn_Distribute_coin_in_a_binary_tree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Distribute_coin_in_a_binary_tree.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Distribute_coin_in_a_binary_tree.Name = "btn_Distribute_coin_in_a_binary_tree";
             this.btn_Distribute_coin_in_a_binary_tree.Size = new System.Drawing.Size(252, 25);
             this.btn_Distribute_coin_in_a_binary_tree.TabIndex = 50;
@@ -575,7 +576,7 @@
             // btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order
             // 
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Location = new System.Drawing.Point(585, 63);
-            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Name = "btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order";
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.Size = new System.Drawing.Size(221, 42);
             this.btn_Sum_of_two_Linked_list_and_get_the_linklist_of_the_sum_in_reverse_order.TabIndex = 51;
@@ -586,7 +587,7 @@
             // btn_Remove_Item_from_sorted_Linked_List
             // 
             this.btn_Remove_Item_from_sorted_Linked_List.Location = new System.Drawing.Point(818, 81);
-            this.btn_Remove_Item_from_sorted_Linked_List.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Remove_Item_from_sorted_Linked_List.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Remove_Item_from_sorted_Linked_List.Name = "btn_Remove_Item_from_sorted_Linked_List";
             this.btn_Remove_Item_from_sorted_Linked_List.Size = new System.Drawing.Size(199, 25);
             this.btn_Remove_Item_from_sorted_Linked_List.TabIndex = 52;
@@ -597,7 +598,7 @@
             // btn_Arrange_Even_And_Odd
             // 
             this.btn_Arrange_Even_And_Odd.Location = new System.Drawing.Point(584, 110);
-            this.btn_Arrange_Even_And_Odd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Arrange_Even_And_Odd.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Arrange_Even_And_Odd.Name = "btn_Arrange_Even_And_Odd";
             this.btn_Arrange_Even_And_Odd.Size = new System.Drawing.Size(225, 22);
             this.btn_Arrange_Even_And_Odd.TabIndex = 53;
@@ -652,7 +653,7 @@
             // btn_Remove_Linked_List_Elements
             // 
             this.btn_Remove_Linked_List_Elements.Location = new System.Drawing.Point(588, 254);
-            this.btn_Remove_Linked_List_Elements.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Remove_Linked_List_Elements.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Remove_Linked_List_Elements.Name = "btn_Remove_Linked_List_Elements";
             this.btn_Remove_Linked_List_Elements.Size = new System.Drawing.Size(217, 22);
             this.btn_Remove_Linked_List_Elements.TabIndex = 58;
@@ -670,11 +671,22 @@
             this.btn_Rotate_List.UseVisualStyleBackColor = true;
             this.btn_Rotate_List.Click += new System.EventHandler(this.btn_Rotate_List_Click);
             // 
+            // btn_Sort_List
+            // 
+            this.btn_Sort_List.Location = new System.Drawing.Point(588, 319);
+            this.btn_Sort_List.Name = "btn_Sort_List";
+            this.btn_Sort_List.Size = new System.Drawing.Size(218, 25);
+            this.btn_Sort_List.TabIndex = 60;
+            this.btn_Sort_List.Text = "Sort List";
+            this.btn_Sort_List.UseVisualStyleBackColor = true;
+            this.btn_Sort_List.Click += new System.EventHandler(this.btn_Sort_List_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 744);
+            this.Controls.Add(this.btn_Sort_List);
             this.Controls.Add(this.btn_Rotate_List);
             this.Controls.Add(this.btn_Remove_Linked_List_Elements);
             this.Controls.Add(this.btn_Delete_Node_in_a_Linked_List);
@@ -797,5 +809,6 @@
         private System.Windows.Forms.Button btn_Delete_Node_in_a_Linked_List;
         private System.Windows.Forms.Button btn_Remove_Linked_List_Elements;
         private System.Windows.Forms.Button btn_Rotate_List;
+        private System.Windows.Forms.Button btn_Sort_List;
     }
 }
