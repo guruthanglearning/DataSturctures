@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 namespace WindowsFormsApplication3
 {
-    public partial class btn_Remove_Duplicate_Letters : Form
+    public partial class StringsManipulation : Form
     {
         private int elementLevel = -1;
         private int numberOfElements;
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication3
         }
 
 
-        public btn_Remove_Duplicate_Letters()
+        public StringsManipulation()
         {
             InitializeComponent();
         }

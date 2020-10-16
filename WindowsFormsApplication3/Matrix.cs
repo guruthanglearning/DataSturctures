@@ -1,5 +1,4 @@
-﻿using ExtensionMethodsDemo1;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -3146,6 +3145,105 @@ namespace WindowsFormsApplication3
             return dp[n - 1];
         }
 
+        private void btn_Search_a_2D_Matrix_Click(object sender, EventArgs e)
+        {
+            /*
+                Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+
+                Integers in each row are sorted from left to right.
+                The first integer of each row is greater than the last integer of the previous row.
+ 
+
+                Example 1:
+
+
+                Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,50]], target = 3
+                Output: true
+                Example 2:
+
+
+                Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,50]], target = 13
+                Output: false
+                Example 3:
+
+                Input: matrix = [], target = 0
+                Output: false
+ 
+
+                Constraints:
+
+                m == matrix.length
+                n == matrix[i].length
+                0 <= m, n <= 100
+                -104 <= matrix[i][j], target <= 104
+           
+                Time Complexity     :  O(log N)
+                Space Complexity    :  O(1)
+
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                     new int[] {1, 3, 5, 7 },
+                                     new int[] {10, 11, 16,20},
+                                     new int[] {23,30,34,60}
+                                    },
+                N = 3
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                     new int[] {1, 3, 5, 7 },
+                                     new int[] {10, 11, 16,20},
+                                     new int[] {23,30,34,60}
+                                    },
+                N = 13
+            });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Search a 2D Matrix is { this.SearchMatrix(input.Input, input.N) } for the given input array : {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)} and target :{input.N}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public bool SearchMatrix(int[][] matrix, int target)
+        {
+            if (matrix == null || matrix.Length == 0 || matrix[0].Length == 0)
+                return false;
+            
+            int r = 0;
+            int cl = matrix[0].Length -1;            
+           
+            while (cl>=0 && r < matrix.Length)
+            {
+                if (matrix[r][cl] == target)
+                    return true;
+                else if (target > matrix[r][cl])
+                    r++;
+                else
+                    cl--;
+
+            }
+
+            return false;
+
+        }
+
+        
 
     }
 }
