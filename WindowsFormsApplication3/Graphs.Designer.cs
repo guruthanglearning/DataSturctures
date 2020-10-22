@@ -33,12 +33,13 @@
             this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight = new System.Windows.Forms.Button();
             this.btn_Cheapest_Flights_Within_K_Stops = new System.Windows.Forms.Button();
             this.btn_All_Paths_From_Source_to_Target = new System.Windows.Forms.Button();
+            this.btn_Clone_Graph = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Traverse_a_graph_with_Depth_First_Search
             // 
             this.btn_Traverse_a_graph_with_Depth_First_Search.Location = new System.Drawing.Point(8, 8);
-            this.btn_Traverse_a_graph_with_Depth_First_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Traverse_a_graph_with_Depth_First_Search.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Traverse_a_graph_with_Depth_First_Search.Name = "btn_Traverse_a_graph_with_Depth_First_Search";
             this.btn_Traverse_a_graph_with_Depth_First_Search.Size = new System.Drawing.Size(236, 32);
             this.btn_Traverse_a_graph_with_Depth_First_Search.TabIndex = 0;
@@ -49,7 +50,7 @@
             // btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node
             // 
             this.btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node.Location = new System.Drawing.Point(9, 43);
-            this.btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node.Name = "btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node";
             this.btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node.Size = new System.Drawing.Size(236, 36);
             this.btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node.TabIndex = 1;
@@ -60,7 +61,7 @@
             // btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight
             // 
             this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight.Location = new System.Drawing.Point(8, 82);
-            this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight.Name = "btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight";
             this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight.Size = new System.Drawing.Size(236, 37);
             this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight.TabIndex = 2;
@@ -88,17 +89,28 @@
             this.btn_All_Paths_From_Source_to_Target.UseVisualStyleBackColor = true;
             this.btn_All_Paths_From_Source_to_Target.Click += new System.EventHandler(this.btn_All_Paths_From_Source_to_Target_Click);
             // 
+            // btn_Clone_Graph
+            // 
+            this.btn_Clone_Graph.Location = new System.Drawing.Point(9, 181);
+            this.btn_Clone_Graph.Name = "btn_Clone_Graph";
+            this.btn_Clone_Graph.Size = new System.Drawing.Size(235, 25);
+            this.btn_Clone_Graph.TabIndex = 5;
+            this.btn_Clone_Graph.Text = "Clone Graph";
+            this.btn_Clone_Graph.UseVisualStyleBackColor = true;
+            this.btn_Clone_Graph.Click += new System.EventHandler(this.btn_Clone_Graph_Click);
+            // 
             // Graphs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(706, 310);
+            this.Controls.Add(this.btn_Clone_Graph);
             this.Controls.Add(this.btn_All_Paths_From_Source_to_Target);
             this.Controls.Add(this.btn_Cheapest_Flights_Within_K_Stops);
             this.Controls.Add(this.btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight);
             this.Controls.Add(this.btn_Traverse_a_graph_with_Depth_First_Search_To_Find_Dependencies_Of_A_Node);
             this.Controls.Add(this.btn_Traverse_a_graph_with_Depth_First_Search);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Graphs";
             this.Text = "Graphs";
             this.ResumeLayout(false);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button btn_Given_a_weighted_graph_print_the_path_of_the_each_node_with_weight;
         private System.Windows.Forms.Button btn_Cheapest_Flights_Within_K_Stops;
         private System.Windows.Forms.Button btn_All_Paths_From_Source_to_Target;
+        private System.Windows.Forms.Button btn_Clone_Graph;
     }
 }

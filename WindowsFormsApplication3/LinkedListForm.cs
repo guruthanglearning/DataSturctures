@@ -4963,6 +4963,8 @@ namespace WindowsFormsApplication3
         private ListNode MergeList(ListNode left, ListNode right)
         {
 
+            
+
             ListNode L1 = left;
             ListNode L2 = right;
             ListNode L2p = right;
@@ -4974,13 +4976,9 @@ namespace WindowsFormsApplication3
             else if (L1 != null && L2 == null)
                 return L1;
 
-          
-
             /*
               L1:3
-              L2:4
-             
-             
+              L2:4                          
             */
             
             ListNode temp = null;

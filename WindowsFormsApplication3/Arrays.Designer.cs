@@ -122,6 +122,8 @@
             this.btn_Remove_Covered_Intervals = new System.Windows.Forms.Button();
             this.btn_Find_the_Kth_missing_number_in_a_sorted_Array = new System.Windows.Forms.Button();
             this.btn_Rotate_Array = new System.Windows.Forms.Button();
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row = new System.Windows.Forms.Button();
+            this.btn_Asteroid_Collision = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1126,7 +1128,7 @@
             // 
             // btn_Rotate_Array
             // 
-            this.btn_Rotate_Array.Location = new System.Drawing.Point(1089, 288);
+            this.btn_Rotate_Array.Location = new System.Drawing.Point(1089, 285);
             this.btn_Rotate_Array.Name = "btn_Rotate_Array";
             this.btn_Rotate_Array.Size = new System.Drawing.Size(143, 27);
             this.btn_Rotate_Array.TabIndex = 94;
@@ -1134,11 +1136,33 @@
             this.btn_Rotate_Array.UseVisualStyleBackColor = true;
             this.btn_Rotate_Array.Click += new System.EventHandler(this.btn_Rotate_Array_Click);
             // 
+            // btn_Minimum_Domino_Rotations_For_Equal_Row
+            // 
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row.Location = new System.Drawing.Point(1090, 314);
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row.Name = "btn_Minimum_Domino_Rotations_For_Equal_Row";
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row.Size = new System.Drawing.Size(140, 23);
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row.TabIndex = 95;
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row.Text = "Minimum Domino Rotations For Equal Row";
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row.UseVisualStyleBackColor = true;
+            this.btn_Minimum_Domino_Rotations_For_Equal_Row.Click += new System.EventHandler(this.btn_Minimum_Domino_Rotations_For_Equal_Row_Click);
+            // 
+            // btn_Asteroid_Collision
+            // 
+            this.btn_Asteroid_Collision.Location = new System.Drawing.Point(1089, 340);
+            this.btn_Asteroid_Collision.Name = "btn_Asteroid_Collision";
+            this.btn_Asteroid_Collision.Size = new System.Drawing.Size(142, 27);
+            this.btn_Asteroid_Collision.TabIndex = 96;
+            this.btn_Asteroid_Collision.Text = "Asteroid Collision";
+            this.btn_Asteroid_Collision.UseVisualStyleBackColor = true;
+            this.btn_Asteroid_Collision.Click += new System.EventHandler(this.btn_Asteroid_Collision_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1540, 755);
+            this.Controls.Add(this.btn_Asteroid_Collision);
+            this.Controls.Add(this.btn_Minimum_Domino_Rotations_For_Equal_Row);
             this.Controls.Add(this.btn_Rotate_Array);
             this.Controls.Add(this.btn_Find_the_Kth_missing_number_in_a_sorted_Array);
             this.Controls.Add(this.btn_Remove_Covered_Intervals);
@@ -1335,5 +1359,7 @@
         private System.Windows.Forms.Button btn_Remove_Covered_Intervals;
         private System.Windows.Forms.Button btn_Find_the_Kth_missing_number_in_a_sorted_Array;
         private System.Windows.Forms.Button btn_Rotate_Array;
+        private System.Windows.Forms.Button btn_Minimum_Domino_Rotations_For_Equal_Row;
+        private System.Windows.Forms.Button btn_Asteroid_Collision;
     }
 }

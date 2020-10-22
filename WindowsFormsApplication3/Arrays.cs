@@ -7725,6 +7725,293 @@ namespace WindowsFormsApplication3
             }
         }
 
+        private void btn_Minimum_Domino_Rotations_For_Equal_Row_Click(object sender, EventArgs e)
+        {
+
+         
+            /*
+            
+                In a row of dominoes, A[i] and B[i] represent the top and bottom halves of the ith domino.  (A domino is a tile with two numbers from 1 to 6 - one on each half of the tile.)
+
+                We may rotate the ith domino, so that A[i] and B[i] swap values.
+
+                Return the minimum number of rotations so that all the values in A are the same, or all the values in B are the same.
+
+                If it cannot be done, return -1.
+
+ 
+
+                Example 1:
+
+
+                Input: A = [2,1,2,4,2,2], B = [5,2,6,2,3,2]
+                Output: 2
+                Explanation: 
+                The first figure represents the dominoes as given by A and B: before we do any rotations.
+                If we rotate the second and fourth dominoes, we can make every value in the top row equal to 2, as indicated by the second figure.
+                Example 2:
+
+                Input: A = [3,5,1,2,3], B = [3,6,3,3,4]
+                Output: -1
+                Explanation: 
+                In this case, it is not possible to rotate the dominoes to make one row of values equal.
+ 
+
+                Constraints:
+
+                2 <= A.length == B.length <= 2 * 104
+                1 <= A[i], B[i] <= 6
+
+                Mine : 
+                Time Complexity     : O(N+M)
+                Space Complexity    : O(N+M)
+
+                Others : 
+                Time Complexity     : O(N+M)
+                Space Complexity    : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<TwoArrayInputs> inputs = new List<TwoArrayInputs>();
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 1, 2, 4, 2, 2 }, b = new int[] { 5, 2, 6, 2, 3, 2 } });
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 3, 5, 1, 2, 3 }, b = new int[] { 3, 6, 3, 3, 4 } });
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 1, 2, 1, 1, 1, 2, 2, 2 }, b = new int[] { 2, 1, 2, 2, 2, 2, 2, 2 } });
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 1, 2, 3, 4, 6 }, b = new int[] { 6, 6, 6, 6, 5 } });
+            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 1, 1, 1, 2, 2, 2, 1, 1, 2 }, b = new int[] { 1, 1, 2, 1, 1, 1, 1, 2, 1, 1 } });
+
+            foreach (TwoArrayInputs input in inputs)
+            {
+                result.AppendLine($"Minimum Domino Rotations For Equal Row with  { this.MinDominoRotations_Mine(input.a, input.b) }  and Others  { this.MinDominoRotations(input.a, input.b)} for the given input array {string.Join(",", input.a)} and {string.Join(",", input.b)}");                
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+        public int MinDominoRotations_Mine(int[] A, int[] B)
+        {
+
+            if (A == null || A.Length == 0 || B == null || B.Length == 0 || A.Length != B.Length)
+                return -1;
+
+            int result = -1;
+            int a = GetDominoValue(A, B);
+            int b = GetDominoValue(B, A);
+
+            if (a == -1 || b == -1)
+                result = Math.Max(a, b);
+            else
+                result = Math.Min(a, b);
+
+            return result;
+
+        }
+
+
+        private int GetDominoValue(int[] A, int[] B)
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            int counter = 0;
+            int val = 0;
+            int result = 0;
+            int currentKey = 0;
+
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                dict.TryGetValue(A[i], out counter);
+                dict[A[i]] = counter + 1;
+            }
+
+
+            foreach (int key in dict.Keys)
+            {
+                if (dict[key] > val)
+                {
+                    currentKey = key;
+                    val = dict[key];
+                }
+            }
+
+            for (int i = 0; i < B.Length; i++)
+            {
+                if (B[i] == currentKey && A[i] != B[i])
+                {
+                    result++;
+                }
+            }
+
+            return ((currentKey > 0 && (result + dict[currentKey] == A.Length)) ? result : -1);
+        }
+
+        public int MinDominoRotations(int[] A, int[] B)
+        {
+
+            int numRotationsA0 = Check(A[0], A, B);
+            int numRotationsB0 = Check(B[0], A, B);
+
+            if (numRotationsA0 != -1 && numRotationsB0 != -1)
+            {
+                return Math.Min(numRotationsA0, numRotationsB0);
+            }
+
+            if (numRotationsA0 != -1)
+                return numRotationsA0;
+
+            return numRotationsB0;
+        }
+
+        public int Check(int num, int[] A, int[] B)
+        {
+            var aRots = 0;
+            var bRots = 0;
+
+            for (var i = 0; i < A.Length; ++i)
+            {
+
+                if (A[i] != num && B[i] != num)
+                    return -1;
+
+                if (A[i] != num)
+                {
+                    aRots++;
+                }
+
+                if (B[i] != num)
+                {
+                    bRots++;
+                }
+            }
+
+            return Math.Min(aRots, bRots);
+        }
+
+        private void btn_Asteroid_Collision_Click(object sender, EventArgs e)
+        {
+            /*
+                We are given an array asteroids of integers representing asteroids in a row.
+
+                For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.
+
+                Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.
+
+ 
+
+                Example 1:
+
+                Input: asteroids = [5,10,-5]
+                Output: [5,10]
+                Explanation: The 10 and -5 collide resulting in 10.  The 5 and 10 never collide.
+                Example 2:
+
+                Input: asteroids = [8,-8]
+                Output: []
+                Explanation: The 8 and -8 collide exploding each other.
+                Example 3:
+
+                Input: asteroids = [10,2,-5]
+                Output: [10]
+                Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.
+                Example 4:
+
+                Input: asteroids = [-2,-1,1,2]
+                Output: [-2,-1,1,2]
+                Explanation: The -2 and -1 are moving left, while the 1 and 2 are moving right. Asteroids moving the same direction never meet, so no asteroids will meet each other.
+ 
+
+                Constraints:
+
+                1 <= asteroids <= 104
+                -1000 <= asteroids[i] <= 1000
+                asteroids[i] != 0
+             
+                Time Complexity     : O(N)
+                Space Complexity    : O(N)
+             
+             */
+
+            int[] i = new int[0];
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 5, 10, -5 });
+            //inputs.Add(new int[] { 8, -8 });
+            //inputs.Add(new int[] { 10, 2, -5 });
+            //inputs.Add(new int[] { -2, -1, 1, 2 });
+
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"Asteroid Collision for the given input array {string.Join(",", input)}  is { this.AsteroidCollision(input)}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+        public int[] AsteroidCollision(int[] asteroids)
+        {
+            if (asteroids == null || asteroids.Length <= 1)
+                return asteroids;
+
+            Stack<int> stk = new Stack<int>();
+            int temp = 0;
+            int resCount = 0;
+            foreach (int i in asteroids)
+            {
+                if (stk.Count == 0)
+                    stk.Push(i);
+                else
+                {                   
+                    while (stk.Count > 0)
+                    {
+                        temp = stk.Peek();
+                        if (temp > 0 && i < 0)
+                        {
+                            if (temp < Math.Abs(i))
+                            {
+                                stk.Pop();
+                                if (stk.Count == 0)
+                                {
+                                    stk.Push(i);
+                                    break;
+                                }
+
+                            }
+                            else if (temp == Math.Abs(i))
+                            {
+                                stk.Pop();
+                                break;
+                            }
+                            else
+                                break;
+                        }
+                        else
+                        {
+                            stk.Push(i);
+                            break;
+                        }
+                    }
+
+
+                }
+            }
+
+            resCount = stk.Count;
+            int[] result = new int[resCount];
+
+            while (stk.Count > 0)
+                result[--resCount] = stk.Pop();
+
+            return result;
+
+
+
+        }
     }
 }
  
