@@ -8012,6 +8012,102 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void btn_132_Pattern_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of n integers nums, a 132 pattern is a subsequence of three integers nums[i], nums[j] and nums[k] such that i < j < k and nums[i] < nums[k] < nums[j].
+
+                Return true if there is a 132 pattern in nums, otherwise, return false.
+
+                Follow up: The O(n^2) is trivial, could you come up with the O(n logn) or the O(n) solution?
+
+ 
+
+                Example 1:
+
+                Input: nums = [1,2,3,4]
+                Output: false
+                Explanation: There is no 132 pattern in the sequence.
+                Example 2:
+
+                Input: nums = [3,1,4,2]
+                Output: true
+                Explanation: There is a 132 pattern in the sequence: [1, 4, 2].
+                Example 3:
+
+                Input: nums = [-1,3,2,0]
+                Output: true
+                Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
+ 
+
+                Constraints:
+
+                n == nums.length
+                1 <= n <= 104
+                -109 <= nums[i] <= 109
+ 
+               Time Complexity      : O(N)
+               Space Complexity     : O(N)
+
+
+             */
+
+            int[] i = new int[0];
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            //inputs.Add(new int[] { 1,2,3,4 });
+            //inputs.Add(new int[] { 3,1,4,2 });
+            //inputs.Add(new int[] { -1,3,2,0 });
+            //inputs.Add(new int[] {1,0,1,-4,-3});
+            inputs.Add(new int[] { 42,43,6,12,3,4,6,11,20 });
+
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"132 pattern {(Find132pattern(input) ? "" : " is not")}  existing for the given input array {string.Join(",", input)}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public bool Find132pattern(int[] nums)
+        {
+            bool result = false;
+            if (nums == null || nums.Length < 3)
+                return result;
+
+
+            int l = nums.Length;
+            int[] min = new int[l];
+            min[0] = nums[0];
+            Stack<int> s = new Stack<int>();
+
+            for (int i = 1; i < nums.Length; i++)
+                min[i] = Math.Min(nums[i], min[i - 1]);
+
+
+            for (int i = l - 1; i >= 0; i--)
+            {
+                if (nums[i] > min[i])
+                {
+                    while (s.Count > 0 && s.Peek() <= min[i])
+                        s.Pop();
+
+                    if (s.Count > 0 && s.Peek() < nums[i])
+                        return true;
+                    s.Push(nums[i]);
+                }
+
+            }
+
+
+
+            return result;
+
+        }
     }
 }
  

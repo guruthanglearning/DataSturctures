@@ -124,6 +124,7 @@
             this.btn_Rotate_Array = new System.Windows.Forms.Button();
             this.btn_Minimum_Domino_Rotations_For_Equal_Row = new System.Windows.Forms.Button();
             this.btn_Asteroid_Collision = new System.Windows.Forms.Button();
+            this.btn_132_Pattern = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1156,11 +1157,22 @@
             this.btn_Asteroid_Collision.UseVisualStyleBackColor = true;
             this.btn_Asteroid_Collision.Click += new System.EventHandler(this.btn_Asteroid_Collision_Click);
             // 
+            // btn_132_Pattern
+            // 
+            this.btn_132_Pattern.Location = new System.Drawing.Point(1090, 374);
+            this.btn_132_Pattern.Name = "btn_132_Pattern";
+            this.btn_132_Pattern.Size = new System.Drawing.Size(146, 30);
+            this.btn_132_Pattern.TabIndex = 97;
+            this.btn_132_Pattern.Text = "132 Pattern";
+            this.btn_132_Pattern.UseVisualStyleBackColor = true;
+            this.btn_132_Pattern.Click += new System.EventHandler(this.btn_132_Pattern_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1540, 755);
+            this.Controls.Add(this.btn_132_Pattern);
             this.Controls.Add(this.btn_Asteroid_Collision);
             this.Controls.Add(this.btn_Minimum_Domino_Rotations_For_Equal_Row);
             this.Controls.Add(this.btn_Rotate_Array);
@@ -1361,5 +1373,6 @@
         private System.Windows.Forms.Button btn_Rotate_Array;
         private System.Windows.Forms.Button btn_Minimum_Domino_Rotations_For_Equal_Row;
         private System.Windows.Forms.Button btn_Asteroid_Collision;
+        private System.Windows.Forms.Button btn_132_Pattern;
     }
 }
