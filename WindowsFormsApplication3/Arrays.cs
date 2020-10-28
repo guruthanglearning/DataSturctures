@@ -8108,6 +8108,105 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Summary_Ranges_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                You are given a sorted unique integer array nums.
+
+                Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums.
+
+                Each range [a,b] in the list should be output as:
+
+                "a->b" if a != b
+                "a" if a == b
+ 
+
+                Example 1:
+                Input: nums = [0,1,2,4,5,7]
+                Output: ["0->2","4->5","7"]
+                Explanation: The ranges are:
+                [0,2] --> "0->2"
+                [4,5] --> "4->5"
+                [7,7] --> "7"
+
+                Example 2:
+                Input: nums = [0,2,3,4,6,8,9]
+                Output: ["0","2->4","6","8->9"]
+                Explanation: The ranges are:
+                [0,0] --> "0"
+                [2,4] --> "2->4"
+                [6,6] --> "6"
+                [8,9] --> "8->9"
+                
+                Example 3:
+                Input: nums = []
+                Output: []
+                
+                Example 4:
+                Input: nums = [-1]
+                Output: ["-1"]
+                
+                Example 5:
+                Input: nums = [0]
+                Output: ["0"]
+ 
+
+                Constraints:
+
+                0 <= nums.length <= 20
+                -231 <= nums[i] <= 231 - 1
+                All the values of nums are unique.
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 0, 1, 2, 4, 5, 7 });
+            inputs.Add(new int[] { 0, 2, 3, 4, 6, 8, 9 });
+            inputs.Add(new int[] { });
+            inputs.Add(new int[] {-1 });
+            inputs.Add(new int[] { 0});
+
+            foreach (int[] input in inputs)
+            {
+                result.AppendLine($"Summary Ranges for the given input array {(string.Join(",",input))} is {string.Join(" ",SummaryRanges(input))}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public IList<string> SummaryRanges(int[] nums)
+        {
+            if (nums == null || nums.Length == 0)
+                return new List<string>();
+
+
+            List<string> result = new List<string>();
+            int start = nums[0];
+            int counter = start;
+            int i = 1;
+            for (; i < nums.Length; i++)
+            {
+                if (nums[i] != ++counter)
+                {
+                    result.Add((start == nums[i - 1] ? $"{start}" : $"{start}->{nums[i - 1]}"));
+                    start = nums[i];
+                    counter = start;
+                }
+            }
+
+            result.Add((start == nums[i - 1] ? $"{start}" : $"{start}->{nums[i - 1]}"));
+
+            return result;
+        }
     }
 }
  
