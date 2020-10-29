@@ -224,7 +224,7 @@ namespace WindowsFormsApplication3
                      arr2   :   3   3   4   10
               
             */
-            
+
 
             int[] arr1 = new int[11];
             arr1[0] = 1;
@@ -241,7 +241,7 @@ namespace WindowsFormsApplication3
             arr2[2] = 4;
             arr2[3] = 10; //Best Case O(n+m)
 
-            
+
 
             MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
 
@@ -449,7 +449,7 @@ namespace WindowsFormsApplication3
             List<int[]> inputs = new List<int[]>();
             inputs.Add(new int[] { 1, 2, 3, 4, 5, 6, 8, -20 });
             inputs.Add(new int[] { 3, 3, 4, 2, 4, 4, 2, 4, 4 });
-            inputs.Add(new int[] { 3, 3, 4, 2, 4, 4, 2, 4 }); 
+            inputs.Add(new int[] { 3, 3, 4, 2, 4, 4, 2, 4 });
             inputs.Add(new int[] { 3, 3, 4, 2, 1, 4, 4, 2, 4, 4 });
             inputs.Add(new int[] { 1, 2, 1, 1, 3, 4, 0 });
             inputs.Add(new int[] { 3, 2, 3 });
@@ -572,7 +572,7 @@ namespace WindowsFormsApplication3
             /* Instead of moving one by one, divide the array in different sets where number of sets is equal to GCD of n and d and move the elements within sets.             
                If GCD is 1 as is for the above example array(n = 7 and d = 2) */
             int max = this.GCD(d, n);
-            
+
             for (i = 0; i < max; i++)
             {
                 temp = arr[i];
@@ -891,12 +891,12 @@ namespace WindowsFormsApplication3
                 returnValue = true;
                 for (int i = 0; i < input.Length - 1; i++)
                 {
-                        if (input[i] > input[i + 1])
-                        {
-                            returnValue = false;
-                            break;
-                        }
-                    
+                    if (input[i] > input[i + 1])
+                    {
+                        returnValue = false;
+                        break;
+                    }
+
                 }
             }
 
@@ -1292,7 +1292,7 @@ namespace WindowsFormsApplication3
                     if (sum < input[i])
                     {
                         sum = input[i];
-                        startIndex = i; 
+                        startIndex = i;
                         endIndex = i;
                     }
 
@@ -1391,7 +1391,7 @@ namespace WindowsFormsApplication3
                 {
                     return input[0];
                 }
-                
+
                 for (int i = 0; i < end; i++) // 6
                 {
                     thirdOld = Math.Max(input[i] + firstOld, secondOld); //
@@ -1961,35 +1961,69 @@ namespace WindowsFormsApplication3
             result.Append("The max distance for the given input arrays are\n");
             foreach (int[] input in inputs)
             {
-                int distance = 0;
-                int front = 0;
-                int previous = -1;
-                int left = 0;
-                int right = 0;
-                for (int i = 0; i < input.Length; i++)
-                {
-                    //1, 0, 0, 0, 1, 0, 1
-                    // i = 6 previous = 6 front = 6 distance = 2 left = 1 right = 1
-                    if (input[i] == 1)
-                    {
-                        previous = i;
-                    }
-                    else
-                    {
-                        while (front < input.Length && (input[front] == 0 || front < i))
-                        {
-                            front++;
-                        }
 
-                        left = previous == -1 ? input.Length : i - previous;
-                        right = front == input.Length ? input.Length : front - i;
-                        distance = Math.Max(distance, Math.Min(left, right));
-                    }
-                }
 
-                result.Append($"{string.Join(" ", input)} is {distance} \n");
+                result.Append($"{string.Join(" ", input)} is {this.MaxDistToClosest(input)}  and {this.MaxDistToClosest_Easy(input)} \n");
             }
             MessageBox.Show(result.ToString());
+        }
+
+
+        private int MaxDistToClosest_Easy(int[] input)
+        {
+            int distance = 0;
+
+            if (input == null || input.Length == 0)
+                return distance;
+
+            int seats = 0;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == 0)
+                    seats++;
+                else
+                {
+                    if (i == distance)
+                        distance = i;
+                    else if ((seats + 1) / 2 > distance)
+                        distance = (seats + 1) / 2;
+                    seats = 0;
+                }
+            }
+
+            return Math.Max(seats, distance);
+        }
+
+        private int MaxDistToClosest(int[] input)
+        {
+            int distance = 0;
+            int front = 0;
+            int previous = -1;
+            int left = 0;
+            int right = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                //1, 0, 0, 0, 1, 0, 1
+                // i = 6 previous = 6 front = 6 distance = 2 left = 1 right = 1
+                if (input[i] == 1)
+                {
+                    previous = i;
+                }
+                else
+                {
+                    while (front < input.Length && (input[front] == 0 || front < i))
+                    {
+                        front++;
+                    }
+
+                    left = previous == -1 ? input.Length : i - previous;
+                    right = front == input.Length ? input.Length : front - i;
+                    distance = Math.Max(distance, Math.Min(left, right));
+                }
+            }
+
+            return distance;
         }
 
         private void btn_Garden_No_Adjacent_Click(object sender, EventArgs e)
