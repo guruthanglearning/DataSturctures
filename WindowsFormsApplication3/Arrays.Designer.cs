@@ -126,6 +126,7 @@
             this.btn_Asteroid_Collision = new System.Windows.Forms.Button();
             this.btn_132_Pattern = new System.Windows.Forms.Button();
             this.btn_Summary_Ranges = new System.Windows.Forms.Button();
+            this.btn_Number_of_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1139,11 +1140,22 @@
             this.btn_Summary_Ranges.UseVisualStyleBackColor = true;
             this.btn_Summary_Ranges.Click += new System.EventHandler(this.btn_Summary_Ranges_Click);
             // 
+            // btn_Number_of_Longest_Increasing_Subsequence
+            // 
+            this.btn_Number_of_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(1635, 678);
+            this.btn_Number_of_Longest_Increasing_Subsequence.Name = "btn_Number_of_Longest_Increasing_Subsequence";
+            this.btn_Number_of_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(223, 66);
+            this.btn_Number_of_Longest_Increasing_Subsequence.TabIndex = 99;
+            this.btn_Number_of_Longest_Increasing_Subsequence.Text = "Number of Longest Increasing Subsequence";
+            this.btn_Number_of_Longest_Increasing_Subsequence.UseVisualStyleBackColor = true;
+            this.btn_Number_of_Longest_Increasing_Subsequence.Click += new System.EventHandler(this.btn_Number_of_Longest_Increasing_Subsequence_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.Controls.Add(this.btn_Number_of_Longest_Increasing_Subsequence);
             this.Controls.Add(this.btn_Summary_Ranges);
             this.Controls.Add(this.btn_132_Pattern);
             this.Controls.Add(this.btn_Asteroid_Collision);
@@ -1349,5 +1361,6 @@
         private System.Windows.Forms.Button btn_Asteroid_Collision;
         private System.Windows.Forms.Button btn_132_Pattern;
         private System.Windows.Forms.Button btn_Summary_Ranges;
+        private System.Windows.Forms.Button btn_Number_of_Longest_Increasing_Subsequence;
     }
 }
