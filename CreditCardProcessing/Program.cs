@@ -10,14 +10,10 @@ namespace CreditCardProcessing
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine(args[0]);
-
+        {            
             ProcessCreditCard pcc = new ProcessCreditCard(args[0]);
-            pcc.Start();
-            
-
-
+            pcc.Execute();            
+            //Console.ReadLine();
         }
     }
 }
