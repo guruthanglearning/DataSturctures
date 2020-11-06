@@ -8331,6 +8331,109 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Find_the_Smallest_Divisor_Given_a_Threshold_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of integers nums and an integer threshold, we will choose a positive integer divisor and divide all the array by it and sum the result of the division. Find the smallest divisor such that the result mentioned above is less than or equal to threshold.
+
+                Each result of division is rounded to the nearest integer greater than or equal to that element. (For example: 7/3 = 3 and 10/2 = 5).
+
+                It is guaranteed that there will be an answer.
+
+ 
+
+                Example 1:
+
+                Input: nums = [1,2,5,9], threshold = 6
+                Output: 5
+                Explanation: We can get a sum to 17 (1+2+5+9) if the divisor is 1. 
+                If the divisor is 4 we can get a sum to 7 (1+1+2+3) and if the divisor is 5 the sum will be 5 (1+1+1+2). 
+                Example 2:
+
+                Input: nums = [2,3,5,7,11], threshold = 11
+                Output: 3
+                Example 3:
+
+                Input: nums = [19], threshold = 5
+                Output: 4
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 5 * 10^4
+                1 <= nums[i] <= 10^6
+                nums.length <= threshold <= 10^6
+                   Hide Hint #1  
+                Examine every possible number for solution. Choose the largest of them.
+                   Hide Hint #2  
+                Use binary search to reduce the time complexity.
+
+
+                Time Complexity     : Nlog (10^6)
+                Space Complexity    : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 5, 9 }, find = 6 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 3, 5, 7, 11 }, find = 11 });
+            inputs.Add(new ArrayAndValue() { input = new int[] {19 }, find = 5 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Smallest Divisor Given a Threshold for the given input {(string.Join(" ", input.input))} and threshold  {input.find} is  {this.SmallestDivisor(input.input, input.find)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int SmallestDivisor(int[] nums, int threshold)
+        {
+            
+            if (nums == null || nums.Length == 0)
+                return 0;
+
+
+            int l = 1;
+            int r = 1000000;
+            int m = 0;
+            long s = 0;
+            while (l <= r) //This block takes Log N complexity due to binary search approach
+            {
+                m = l + (r - l) / 2;
+
+                s = GetSum(nums, m);
+
+                if (s > threshold)
+                {
+                    l = m + 1;
+                }
+                else
+                {
+                    r = m - 1;
+                }
+            }
+
+
+            return l;
+
+
+        }
+
+        private long GetSum(int[] nums, int mid)
+        {
+            //N time complexity
+            int sum = 0;
+            foreach (int i in nums)
+            {
+                sum += ((i - 1) / mid) + 1;
+            }
+            return sum;
+        }
     }
 }
  

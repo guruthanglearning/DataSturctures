@@ -127,6 +127,8 @@
             this.btn_132_Pattern = new System.Windows.Forms.Button();
             this.btn_Summary_Ranges = new System.Windows.Forms.Button();
             this.btn_Number_of_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1150,11 +1152,32 @@
             this.btn_Number_of_Longest_Increasing_Subsequence.UseVisualStyleBackColor = true;
             this.btn_Number_of_Longest_Increasing_Subsequence.Click += new System.EventHandler(this.btn_Number_of_Longest_Increasing_Subsequence_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 100;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btn_Find_the_Smallest_Divisor_Given_a_Threshold
+            // 
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Location = new System.Drawing.Point(1635, 757);
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Name = "btn_Find_the_Smallest_Divisor_Given_a_Threshold";
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Size = new System.Drawing.Size(223, 57);
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.TabIndex = 101;
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Text = "Find the Smallest Divisor Given a Threshold";
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.UseVisualStyleBackColor = true;
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Click += new System.EventHandler(this.btn_Find_the_Smallest_Divisor_Given_a_Threshold_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.Controls.Add(this.btn_Find_the_Smallest_Divisor_Given_a_Threshold);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_Number_of_Longest_Increasing_Subsequence);
             this.Controls.Add(this.btn_Summary_Ranges);
             this.Controls.Add(this.btn_132_Pattern);
@@ -1362,5 +1385,7 @@
         private System.Windows.Forms.Button btn_132_Pattern;
         private System.Windows.Forms.Button btn_Summary_Ranges;
         private System.Windows.Forms.Button btn_Number_of_Longest_Increasing_Subsequence;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Find_the_Smallest_Divisor_Given_a_Threshold;
     }
 }
