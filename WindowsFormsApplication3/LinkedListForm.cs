@@ -5160,6 +5160,119 @@ namespace WindowsFormsApplication3
 
             return null;
         }
+
+        private void btn_Add_Two_Numbers_II_Click(object sender, EventArgs e)
+        {
+            /*
+        
+                You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. 
+                Add the two numbers and return it as a linked list.
+
+                You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+                Follow up:
+                What if you cannot modify the input lists? In other words, reversing the lists is not allowed.
+
+                Example:
+
+                Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+                Output: 7 -> 8 -> 0 -> 7
+
+                Time Complexity     :   O(N+M)
+                Space Complexity    :   O(N+M)
+                
+            */
+
+
+
+            StringBuilder result = new StringBuilder();
+           List<Common> inputs = new List<Common>();            
+           //inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 7,2,4,3}), Node2 = this.InsertListNode(new int[] { 5,6,4}) });
+           //inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 0}), Node2 = this.InsertListNode(new int[] { 0 }) });
+           inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 3, 9, 9, 9, 9, 9, 9, 9, 9, 9 }), Node2 = this.InsertListNode(new int[] { 7 } )});
+           inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] {5 }), Node2 = this.InsertListNode(new int[] { 5 }) });
+
+
+
+            foreach (var input in inputs)
+            {
+
+                result.AppendLine($"Add Two Numbers_2 for the given list1 :  {this.GetListNodeData(input.Node1)} and list2: {this.GetListNodeData(input.Node1)} is {this.GetListNodeData(this.AddTwoNumbers(input.Node1, input.Node2))}  ");
+            }
+
+            MessageBox.Show(result.ToString());
+        
+        }
+
+        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        {
+
+            if (l1 == null)
+                return l2;
+
+            if (l2 == null)
+                return l1;
+
+
+            ListNode result = null;
+            ListNode temp = null;
+
+            Stack<int> ls1 = this.FillStack(l1);
+            Stack<int> ls2 = this.FillStack(l2);
+            int reminder = 0;
+            int sum = 0;
+
+
+            while (ls1.Count > 0 || ls2.Count > 0)
+            {
+                sum = (ls1.Count > 0 ?ls1.Pop() : 0 ) + (ls2.Count > 0 ? ls2.Pop() : 0)+ reminder;
+
+                reminder = sum / 10;
+                if (sum > 9)
+                    sum = sum % 10;
+
+                if (result == null)
+                    result = new ListNode() { val = sum };
+                else
+                {
+                    temp = new ListNode() { val = sum };
+                    temp.next = result;
+                    result = temp;
+                }
+            }
+
+            
+            if (reminder > 0)
+            {
+                temp = new ListNode() { val = reminder };
+                temp.next = result;
+                result = temp;
+            }
+
+
+            return result;
+
+
+        }
+
+        private Stack<int> FillStack(ListNode list)
+        {
+            if (list == null)
+                return new Stack<int>();
+
+            Stack<int> result = new Stack<int>();
+
+            while (list != null)
+            {
+                result.Push(list.val);
+                list = list.next;
+            }
+
+            return result;
+        }
+
+
+
     }
 
 
