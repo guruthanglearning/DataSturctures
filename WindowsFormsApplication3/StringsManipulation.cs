@@ -6021,7 +6021,99 @@ namespace WindowsFormsApplication3
             return result.ToString();
         }
 
+        private void btn_Consecutive_Characters_Click(object sender, EventArgs e)
+        {
+            /*
+             
+            Consecutive Characters
 
+            Solution
+            Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character.
+
+            Return the power of the string.
+
+ 
+
+            Example 1:
+
+            Input: s = "leetcode"
+            Output: 2
+            Explanation: The substring "ee" is of length 2 with the character 'e' only.
+            Example 2:
+
+            Input: s = "abbcccddddeeeeedcba"
+            Output: 5
+            Explanation: The substring "eeeee" is of length 5 with the character 'e' only.
+            Example 3:
+
+            Input: s = "triplepillooooow"
+            Output: 5
+            Example 4:
+
+            Input: s = "hooraaaaaaaaaaay"
+            Output: 11
+            Example 5:
+
+            Input: s = "tourist"
+            Output: 1
+ 
+
+            Constraints:
+
+            1 <= s.length <= 500
+            s contains only lowercase English letters.
+               Hide Hint #1  
+            Keep an array power where power[i] is the maximum power of the i-th character.
+               Hide Hint #2  
+            The answer is max(power[i]).
+
+            Time Complexity     : O(N)
+            Space Complexity    : O(1)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("leetcode");
+            inputs.Add("abbcccddddeeeeedcba");
+            inputs.Add("triplepillooooow");
+            inputs.Add("hooraaaaaaaaaaay");
+            inputs.Add("tourist");
+
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"Consecutive Characters {MaxPower(input)} for the given input string {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int MaxPower(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return 0;
+
+            int prev = 0;
+            int curr = 1;
+            char prevChar = s[0];
+
+            for (int i = 1; i < s.Length; i++)
+            {
+                if (prevChar == s[i])
+                    curr++;
+                else
+                {
+                    prev = Math.Max(curr, prev);
+                    curr = 1;
+                    prevChar = s[i];
+
+                }
+            }
+
+            return curr > prev ? curr : prev;
+        }
     }
 }
 

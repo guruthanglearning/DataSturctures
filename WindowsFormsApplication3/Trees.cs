@@ -706,7 +706,7 @@ namespace WindowsFormsApplication3
                 {
                     if (input[i].HasValue)
                     {
-                        root = new Node() { data = input[i].Value };
+                        root = new Node() { data = input[i].Value, val = input[i].Value };
                         q.Enqueue(root);
                         break;
                     }
@@ -717,13 +717,13 @@ namespace WindowsFormsApplication3
                     temp = q.Dequeue();
                     if (++i < l && input[i].HasValue)
                     {
-                        temp.left = new Node() {data = input[i].Value };
+                        temp.left = new Node() {data = input[i].Value, val = input[i].Value };
                         q.Enqueue(temp.left);
                     }
 
                     if (++i < l && input[i].HasValue)
                     {
-                        temp.right = new Node() { data = input[i].Value };
+                        temp.right = new Node() { data = input[i].Value, val = input[i].Value };
                         q.Enqueue(temp.right);
                     }                    
                 }
@@ -3000,6 +3000,93 @@ namespace WindowsFormsApplication3
             }
         }
 
+        private void btn_btn_Maximum_Difference_Between_Node_and_Ancestor_Click(object sender, EventArgs e)
+        {
+            /*
 
+            Given the root of a binary tree, find the maximum value V for which there exist different nodes A and B where V = |A.val - B.val| and A is an ancestor of B.
+
+            A node A is an ancestor of B if either: any child of A is equal to B, or any child of A is an ancestor of B.
+
+            Example 1:
+                                         8
+                                       /   \
+                                      /     \
+                                     3        10
+                                  /    \       \           
+                                 /      \       \
+                                1        6       14
+                                      /    \     /             
+                                     /      \   /   
+                                    4       7  13
+
+
+
+
+            Input: root = [8,3,10,1,6,null,14,null,null,4,7,13]
+            Output: 7
+            Explanation: We have various ancestor-node differences, some of which are given below :
+            |8 - 3| = 5
+            |3 - 7| = 4
+            |8 - 1| = 7
+            |10 - 13| = 3
+            Among all possible differences, the maximum value of 7 is obtained by |8 - 1| = 7.
+            Example 2:
+
+
+            Input: root = [1,null,2,null,0,3]
+            Output: 3
+ 
+
+            Constraints:
+
+            The number of nodes in the tree is in the range [2, 5000].
+            0 <= Node.val <= 105
+               Hide Hint #1  
+            For each subtree, find the minimum value and maximum value of its descendants.
+
+            Time Complexity         : O(N)
+            Space Complexity        : O(1)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 8, 3, 10, 1, 6, null, 14, null, null, 4, 7, 13 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 1, null, 2, null, 0, 3 }));
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 2, 4, 3, 1, null, 0, 5, null, 6, null, null, null, 7 }));  
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Maximum Difference Between Node and Ancestor is {MaxAncestorDiff(input)} for the given Tree: {this.TraverseBinaryTree(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public int MaxAncestorDiff(Node root)
+        {
+            if (root == null)
+                return 0;
+            int result = 0;
+            GeMaxAncestorDiff(root.val, root.val, root, ref result);
+
+            return result;
+        }
+
+        private void GeMaxAncestorDiff(int max, int min, Node root, ref int result)
+        {
+            if (root == null)
+                return;
+
+            result = Math.Max(result, Math.Max(Math.Abs(root.val - max), Math.Abs(root.val - min)));
+            min = Math.Min(min, root.val);
+            max = Math.Max(max, root.val);
+
+            GeMaxAncestorDiff( max,  min, root.left, ref result);
+            GeMaxAncestorDiff(max, min, root.right, ref result);
+        }
     }
 }
