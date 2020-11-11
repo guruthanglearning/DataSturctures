@@ -2894,16 +2894,16 @@ namespace WindowsFormsApplication3
               */
 
             StringBuilder result = new StringBuilder();
-            List<TwoArrayInputs> inputs = new List<TwoArrayInputs>();
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 4 }, b = new int[] { 16, 32, 96 } }); //3
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 3, 4 }, b = new int[] { 24, 48 } }); //2
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 100, 99, 98, 97, 96, 95, 94, 93, 92, 91 }, b = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } }); //0
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 2 }, b = new int[] { 20, 30, 12 } }); //1
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 1 }, b = new int[] { 100 } }); //1
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 3, 9, 6 }, b = new int[] { 36, 72 } }); //2       
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 1 }, b = new int[] { 100 } }); //9
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 51 }, b = new int[] { 50 } }); //0
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 3, 6 }, b = new int[] { 42, 84 } }); //2
+            List<MoreThan1ArrayInputs> inputs = new List<MoreThan1ArrayInputs>();
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 2, 4 }, b = new int[] { 16, 32, 96 } }); //3
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 3, 4 }, b = new int[] { 24, 48 } }); //2
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 100, 99, 98, 97, 96, 95, 94, 93, 92, 91 }, b = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } }); //0
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 2 }, b = new int[] { 20, 30, 12 } }); //1
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 1 }, b = new int[] { 100 } }); //1
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 3, 9, 6 }, b = new int[] { 36, 72 } }); //2       
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 1 }, b = new int[] { 100 } }); //9
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 51 }, b = new int[] { 50 } }); //0
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 2, 3, 6 }, b = new int[] { 42, 84 } }); //2
 
             int lcm = 0;
             int gcd = 0;
@@ -2949,11 +2949,15 @@ namespace WindowsFormsApplication3
             return result;
         }
 
-        public class TwoArrayInputs
+        public class MoreThan1ArrayInputs
         {
             public int[] a;
             public int[] b;
+            public int[] c;
+            public int[] d;
         }
+
+        
 
         private int LCM(int a, int b)
         {
@@ -7808,14 +7812,14 @@ namespace WindowsFormsApplication3
 
 
             StringBuilder result = new StringBuilder();
-            List<TwoArrayInputs> inputs = new List<TwoArrayInputs>();
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 1, 2, 4, 2, 2 }, b = new int[] { 5, 2, 6, 2, 3, 2 } });
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 3, 5, 1, 2, 3 }, b = new int[] { 3, 6, 3, 3, 4 } });
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 1, 2, 1, 1, 1, 2, 2, 2 }, b = new int[] { 2, 1, 2, 2, 2, 2, 2, 2 } });
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 1, 2, 3, 4, 6 }, b = new int[] { 6, 6, 6, 6, 5 } });
-            inputs.Add(new TwoArrayInputs() { a = new int[] { 2, 1, 1, 1, 2, 2, 2, 1, 1, 2 }, b = new int[] { 1, 1, 2, 1, 1, 1, 1, 2, 1, 1 } });
+            List<MoreThan1ArrayInputs> inputs = new List<MoreThan1ArrayInputs>();
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 2, 1, 2, 4, 2, 2 }, b = new int[] { 5, 2, 6, 2, 3, 2 } });
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 3, 5, 1, 2, 3 }, b = new int[] { 3, 6, 3, 3, 4 } });
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 1, 2, 1, 1, 1, 2, 2, 2 }, b = new int[] { 2, 1, 2, 2, 2, 2, 2, 2 } });
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 1, 2, 3, 4, 6 }, b = new int[] { 6, 6, 6, 6, 5 } });
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 2, 1, 1, 1, 2, 2, 2, 1, 1, 2 }, b = new int[] { 1, 1, 2, 1, 1, 1, 1, 2, 1, 1 } });
 
-            foreach (TwoArrayInputs input in inputs)
+            foreach (MoreThan1ArrayInputs input in inputs)
             {
                 result.AppendLine($"Minimum Domino Rotations For Equal Row with  { this.MinDominoRotations_Mine(input.a, input.b) }  and Others  { this.MinDominoRotations(input.a, input.b)} for the given input array {string.Join(",", input.a)} and {string.Join(",", input.b)}");                
 
@@ -8433,6 +8437,71 @@ namespace WindowsFormsApplication3
                 sum += ((i - 1) / mid) + 1;
             }
             return sum;
+        }
+
+        private void btn_Valid_Square_Click(object sender, EventArgs e)
+        {
+            /*
+                    Given the coordinates of four points in 2D space, return whether the four points could construct a square.
+
+                    The coordinate (x,y) of a point is represented by an integer array with two integers.
+
+                    Example:
+
+                    Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]
+                    Output: True
+ 
+
+                    Note:
+
+                    All the input integers are in the range [-10000, 10000].
+                    A valid square has four equal sides with positive length and four equal angles (90-degree angles).
+                    Input points have no order.
+ 
+                    Time Complexity     : O(1)
+                    Space Complexity    : O(1)
+           */
+
+
+            StringBuilder result = new StringBuilder();
+            List<MoreThan1ArrayInputs> inputs = new List<MoreThan1ArrayInputs>();
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 0, 0 }, b = new int[] { 1,1}, c = new int[] { 1, 0 }, d = new int[] { 0, 1 } });
+            inputs.Add(new MoreThan1ArrayInputs() { a = new int[] { 0, 0 }, b = new int[] { -1, 0 }, c = new int[] { 0, 1 }, d = new int[] { 0, -1 } }); //3
+
+            foreach (var input in inputs)
+            {
+                result.Append($"Valid Square {(ValidSquare(input.a, input.b, input.c, input.d) ? "" : " not " )} exists for the given points {Environment.NewLine}{input.a[0]} {input.a[1]}{Environment.NewLine}{input.b[0]} {input.b[1]}{Environment.NewLine}{input.c[0]} {input.c[1]}{Environment.NewLine}{input.d[0]} {input.d[1]}");
+
+            }
+        }
+
+        public bool ValidSquare(int[] p1, int[] p2, int[] p3, int[] p4)
+        {
+
+            HashSet<int> result = new HashSet<int>();
+            result.Add(Distance(p1, p2));
+            result.Add(Distance(p2, p3));
+            result.Add(Distance(p3, p4));
+            result.Add(Distance(p1, p4));
+            result.Add(Distance(p1, p3));
+            result.Add(Distance(p2, p4));
+
+            return !result.Contains(0) && result.Count == 2;
+
+
+
+
+
+        }
+
+        private int Distance(int[] d1, int[] d2)
+        {
+
+            int r1 = d1[0] - d2[0];
+            int r2 = d1[1] - d2[1];
+
+            return (r1 * r1) + (r2 * r2);
+
         }
     }
 }

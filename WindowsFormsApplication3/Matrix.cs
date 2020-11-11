@@ -1549,10 +1549,16 @@ namespace WindowsFormsApplication3
         public string PrintJaggedArrayForJudeges(int[][] input)
         {
             StringBuilder result = new StringBuilder();
-        
+            string temp = string.Empty;
             for (int i = 0; i < input.Length; i++)
             {
-                result.AppendLine($"({input[i][0]},{input[i][1]}),");
+                temp = string.Empty;
+                for (int j = 0; j < input[0].Length; j++)
+                    temp += $"{input[i][j]}   ";
+
+
+                result.AppendLine($"{temp}");
+
             }
 
           
@@ -3243,7 +3249,103 @@ namespace WindowsFormsApplication3
 
         }
 
-        
+        private void btn_Flipping_an_Image_Click(object sender, EventArgs e)
+        {
+            /*
+             
+            Given a binary matrix A, we want to flip the image horizontally, then invert it, and return the resulting image.
 
+            To flip an image horizontally means that each row of the image is reversed.  For example, flipping [1, 1, 0] horizontally results in [0, 1, 1].
+
+            To invert an image means that each 0 is replaced by 1, and each 1 is replaced by 0. For example, inverting [0, 1, 1] results in [1, 0, 0].
+
+            Example 1:
+
+            Input: [[1,1,0],[1,0,1],[0,0,0]]
+            Output: [[1,0,0],[0,1,0],[1,1,1]]
+            Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
+            Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
+            Example 2:
+
+            Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+            Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+            Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].
+            Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+            Notes:
+
+            1 <= A.length = A[0].length <= 20
+            0 <= A[i][j] <= 1
+
+
+            Time Complexity         : O(RC)
+            Space Complexity        : O(1)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<int[][]> inputs = new List<int[][]>();
+
+
+            inputs.Add(new int[][]
+                                      {
+                                                            new int[] { 1,1,0 },
+                                                            new int[] { 1,0,1 },
+                                                            new int[] {0,0,0 }
+                                      });
+
+            inputs.Add(new int[][]
+                                      {
+                                                              new int[] { 1,1,0, 0},
+                                                              new int[] { 1,0,0,1 },
+                                                              new int[] { 0,1,1,1 },
+                                                              new int[] { 1,0,1,0 },
+
+                                      });
+
+            inputs.Add(new int[][]
+                                      {
+                                                              new int[] { 1} });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Flipping an Image for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)} is {Environment.NewLine} {this.PrintJaggedArrayForJudeges(FlipAndInvertImage(input))} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public int[][] FlipAndInvertImage(int[][] A)
+        {
+            if (A == null || A.Length == 0)
+                return A;
+
+            int clen = A[0].Length;
+            int rlen = A.Length;
+            int cl = 0;
+            int cr = 0;
+            int temp = 0;
+            bool isLengthOdd = clen % 2 == 1;
+            for (int r = 0; r < rlen; r++)
+            {
+                cl = 0;
+                cr = clen - 1;
+                while (cl < cr)
+                {
+                    temp = A[r][cl];
+                    A[r][cl] = A[r][cr] == 0 ? 1 : 0;
+                    A[r][cr] = temp == 0 ? 1 : 0;
+                    cl++;
+                    cr--;
+                }
+
+                if (isLengthOdd)
+                    A[r][cl] = A[r][cl] == 0 ? 1 : 0;
+            }
+
+            return A;
+        }
     }
 }
