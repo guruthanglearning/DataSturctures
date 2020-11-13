@@ -633,7 +633,7 @@ namespace WindowsFormsApplication3
         }
 
 
-
+   
 
         /*This function swaps d elements starting at index fi
         with d elements starting at index si */
@@ -8503,6 +8503,107 @@ namespace WindowsFormsApplication3
             return (r1 * r1) + (r2 * r2);
 
         }
+
+        private void btn_Permutations_II_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
+
+                Example 1:
+
+                Input: nums = [1,1,2]
+                Output:
+                [[1,1,2],
+                 [1,2,1],
+                 [2,1,1]]
+                Example 2:
+
+                Input: nums = [1,2,3]
+                Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 8
+                -10 <= nums[i] <= 10
+             
+
+                Time Complexity     : O(N * N!)
+                Space Complexity    : O(N * N!)
+            */
+
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1,1,2 });
+            inputs.Add(new int[] { 1, 2, 3 });   
+
+            StringBuilder result = new StringBuilder();
+            string str = string.Empty;
+            foreach (var input in inputs)
+            {
+                str = $"Permutations II for the given input {(string.Join(",", input))} is";
+                var temp = this.PermuteUnique(input);
+                foreach (var t in temp)
+                {
+                    str += $"{string.Join(" ", t)} {Environment.NewLine}";
+                }                 
+                
+                result.AppendLine($"{str}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public IList<IList<int>> PermuteUnique(int[] nums)
+        {
+            if (nums == null || nums.Length == 0)
+                return new List<IList<int>>();
+
+
+            IList<IList<int>> result = new List<IList<int>>();
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+
+            foreach(int i in nums)
+            {
+                if (!dict.ContainsKey(i))
+                    dict[i] = 1;
+                else
+                    dict[i]++;
+            }
+
+            GetArrayPermute(nums, new List<int>(), ref result, dict);
+
+            return result;
+
+        }
+
+        private void GetArrayPermute(int[] input, List<int> data, ref IList<IList<int>> result, Dictionary<int, int> dict)
+        {
+           if (data.Count == input.Length)
+            {
+                result.Add(new List<int>(data));
+                return;
+            }
+
+
+           foreach(int key in dict.Keys.ToList<int>())
+           {
+                if (dict[key] == 0)
+                    continue;
+
+                data.Add(key);
+                dict[key]--;
+                GetArrayPermute(input, data, ref result, dict);
+                dict[key]++;
+                data.RemoveAt(data.Count - 1);
+           }
+
+        }
+
+      
+
     }
 }
  
