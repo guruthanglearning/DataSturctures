@@ -3141,7 +3141,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Populating Next Right Pointers in Each Node for the given Tree: {this.TraverseBinaryTree(input)} is {ConnectToNextNodeWithAuxMemoryNoMemory(input)}");
+                result.AppendLine($"Populating Next Right Pointers in Each Node for the given Tree: {this.TraverseBinaryTree(input)} is {this.TraverseBinaryTree(ConnectToNextNodeWithAuxMemoryNoMemory(input))}");
             }
 
             MessageBox.Show(result.ToString());
@@ -3164,9 +3164,10 @@ namespace WindowsFormsApplication3
             var currentNode = selectedNode;
             while (currentNode != null)
             {
-                currentNode.left.next = currentNode.right;
+               if (currentNode.left != null)
+                    currentNode.left.next = currentNode.right;
                 if (currentNode.next != null)
-                    currentNode.right.next = currentNode.next.left;
+                    currentNode.right.next = currentNode.next.left!= null ? currentNode.next.left : currentNode.next.right;
                 currentNode = currentNode.next;
             }
         }       
