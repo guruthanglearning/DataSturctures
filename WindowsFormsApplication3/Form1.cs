@@ -157,6 +157,34 @@ namespace WindowsFormsApplication3
             ThreadPool.GetMaxThreads(out workerThreads, out completionThreads);
             MessageBox.Show($"Worker Threads{workerThreads} Completion Threads {completionThreads}");
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int size = int.Parse(textBox1.Text);
+            string[] datas = new string[size*8];
+            string[] input = File.ReadAllLines(@"E:\Study\CreditCardProcessing\Test\CreditCard.txt");
+            StringBuilder result = new StringBuilder();
+            int k = 1;
+            for(int i = 0; i < datas.Length; )
+            {
+                for(int j = 0; j < input.Length; j++)
+                {
+                    string[] temp = input[j].Split(' ');
+                    if (temp.Length == 4)
+                        datas[i+j] = $"{temp[0]} {temp[1]}{k} {temp[2]} {temp[3]}";
+                    else
+                        datas[i+j] = $"{temp[0]} {temp[1]}{k} {temp[2]}";
+                }
+                i += 8;
+                k++;
+            }
+
+            
+            File.WriteAllLines(@"E:\Study\CreditCardProcessing\Test\CreditCard_" + DateTime.Now.ToString("DD_MM_YY_hh_mm_ss") + ".txt" ,datas );
+
+            
+
+        }
     }
 
     public class Employee

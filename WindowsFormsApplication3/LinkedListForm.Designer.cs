@@ -87,6 +87,7 @@
             this.btn_Sort_List = new System.Windows.Forms.Button();
             this.btn_Linked_List_Cycle_II = new System.Windows.Forms.Button();
             this.btn_Add_Two_Numbers_II = new System.Windows.Forms.Button();
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -650,7 +651,7 @@
             // btn_Delete_Node_in_a_Linked_List
             // 
             this.btn_Delete_Node_in_a_Linked_List.Location = new System.Drawing.Point(879, 343);
-            this.btn_Delete_Node_in_a_Linked_List.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Delete_Node_in_a_Linked_List.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Delete_Node_in_a_Linked_List.Name = "btn_Delete_Node_in_a_Linked_List";
             this.btn_Delete_Node_in_a_Linked_List.Size = new System.Drawing.Size(330, 43);
             this.btn_Delete_Node_in_a_Linked_List.TabIndex = 57;
@@ -711,11 +712,22 @@
             this.btn_Add_Two_Numbers_II.UseVisualStyleBackColor = true;
             this.btn_Add_Two_Numbers_II.Click += new System.EventHandler(this.btn_Add_Two_Numbers_II_Click);
             // 
+            // btn_Convert_Binary_Number_in_a_Linked_List_to_Integer
+            // 
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Location = new System.Drawing.Point(885, 623);
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Name = "btn_Convert_Binary_Number_in_a_Linked_List_to_Integer";
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Size = new System.Drawing.Size(325, 41);
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.TabIndex = 63;
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Text = "Convert Binary Number in a Linked List to Integer";
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.UseVisualStyleBackColor = true;
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Click += new System.EventHandler(this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1671, 1049);
+            this.Controls.Add(this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer);
             this.Controls.Add(this.btn_Add_Two_Numbers_II);
             this.Controls.Add(this.btn_Linked_List_Cycle_II);
             this.Controls.Add(this.btn_Sort_List);
@@ -845,5 +857,6 @@
         private System.Windows.Forms.Button btn_Sort_List;
         private System.Windows.Forms.Button btn_Linked_List_Cycle_II;
         private System.Windows.Forms.Button btn_Add_Two_Numbers_II;
+        private System.Windows.Forms.Button btn_Convert_Binary_Number_in_a_Linked_List_to_Integer;
     }
 }
