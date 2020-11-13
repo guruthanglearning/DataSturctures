@@ -57,6 +57,7 @@
             this.btn_Insert_into_a_Binary_Search_Tree = new System.Windows.Forms.Button();
             this.btn_Serialize_and_Deserialize_BST = new System.Windows.Forms.Button();
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor = new System.Windows.Forms.Button();
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -378,11 +379,22 @@
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.UseVisualStyleBackColor = true;
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Click += new System.EventHandler(this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor_Click);
             // 
+            // btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory
+            // 
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Location = new System.Drawing.Point(323, 656);
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Name = "btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory";
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Size = new System.Drawing.Size(220, 69);
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.TabIndex = 64;
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Text = "Populating Next Right Pointers in Each Node No Memory";
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.UseVisualStyleBackColor = true;
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Click += new System.EventHandler(this.btn_Populating_Next_Right_Pointers_in_Each_Node_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 878);
+            this.Controls.Add(this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory);
             this.Controls.Add(this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor);
             this.Controls.Add(this.btn_Serialize_and_Deserialize_BST);
             this.Controls.Add(this.btn_Insert_into_a_Binary_Search_Tree);
@@ -450,5 +462,6 @@
         private System.Windows.Forms.Button btn_Insert_into_a_Binary_Search_Tree;
         private System.Windows.Forms.Button btn_Serialize_and_Deserialize_BST;
         private System.Windows.Forms.Button btn_btn_Maximum_Difference_Between_Node_and_Ancestor;
+        private System.Windows.Forms.Button btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory;
     }
 }

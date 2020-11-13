@@ -230,7 +230,7 @@ namespace WindowsFormsApplication3
                     }
 
                     node = s.Pop();
-                    datas.Append($"{node.data} ,");
+                    datas.Append($"{node.data}-->{(node.next != null ? node.next.data.ToString() : "NULL")} ,");
                     node = node.right;
                 }
 
@@ -264,6 +264,7 @@ namespace WindowsFormsApplication3
             public int data;
             public Node right;
             public Node left;
+            public Node next;
             public int childCount;
             public int val;
         }
@@ -3088,5 +3089,86 @@ namespace WindowsFormsApplication3
             GeMaxAncestorDiff( max,  min, root.left, ref result);
             GeMaxAncestorDiff(max, min, root.right, ref result);
         }
+
+        private void btn_Populating_Next_Right_Pointers_in_Each_Node_Click(object sender, EventArgs e)
+        {
+            /*
+             
+               Note : This solution will work only for perfect binary tree means which has left and right subtree for all the parent trees
+               You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+
+               struct Node {
+                 int val;
+                 Node *left;
+                 Node *right;
+                 Node *next;
+               }
+               Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+
+               Initially, all next pointers are set to NULL.
+
+
+
+               Follow up:
+
+               You may only use constant extra space.
+               Recursive approach is fine, you may assume implicit stack space does not count as extra space for this problem.
+
+
+               Example 1:
+
+
+
+               Input: root = [1,2,3,4,5,6,7]
+               Output: [1,#,2,3,#,4,5,6,7,#]
+               Explanation: Given the above perfect binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
+
+
+               Constraints:
+
+               The number of nodes in the given tree is less than 4096.
+               -1000 <= node.val <= 1000
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Node> inputs = new List<Node>();
+            inputs.Add(this.CreateBinaryTreeFromArray(new int?[] {1, 2, 3, 4, 5, null, 7 }));
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Populating Next Right Pointers in Each Node for the given Tree: {this.TraverseBinaryTree(input)} is {ConnectToNextNodeWithAuxMemoryNoMemory(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        private Node ConnectToNextNodeWithAuxMemoryNoMemory(Node root)
+        {
+            var leftNode = root;
+            while (leftNode != null && leftNode.left != null)
+            {
+                PopulateNode(leftNode);
+                leftNode = leftNode.left;
+            }
+            return root;
+        }
+
+        private void PopulateNode(Node selectedNode)
+        {
+            var currentNode = selectedNode;
+            while (currentNode != null)
+            {
+                currentNode.left.next = currentNode.right;
+                if (currentNode.next != null)
+                    currentNode.right.next = currentNode.next.left;
+                currentNode = currentNode.next;
+            }
+        }       
     }
 }

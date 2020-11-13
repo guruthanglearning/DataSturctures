@@ -3520,6 +3520,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Connect_Nodes_with_iterating_queue_data_into_list_Click(object sender, EventArgs e)
         {
+            //Note : This solution will work for all types of binary tree (proper and improper). Proper binary tree means which has left and right subtree for all the parent trees
 
             /*
                              10
@@ -3558,6 +3559,7 @@ namespace WindowsFormsApplication3
             InOrderWithNext(tree);
             MessageBox.Show(datas.ToString());
 
+            
             Queue<NodeWithNext> q = new Queue<NodeWithNext>();
             if (tree.left != null)
             {
@@ -3613,6 +3615,7 @@ namespace WindowsFormsApplication3
                 }
             }
         }
+
 
         public void btn_Robbing_a_home_3_Click(object sender, EventArgs e)
         {
@@ -5270,9 +5273,6 @@ namespace WindowsFormsApplication3
 
             return result;
         }
-
-
-
     }
 
 
@@ -5287,7 +5287,8 @@ namespace WindowsFormsApplication3
     {
         public int data;
         public Node right;
-        public Node left;       
+        public Node left;
+        public Node next;
     }
 
     class NodeWithObjectData
