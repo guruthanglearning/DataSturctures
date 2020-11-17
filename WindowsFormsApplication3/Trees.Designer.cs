@@ -58,14 +58,15 @@
             this.btn_Serialize_and_Deserialize_BST = new System.Windows.Forms.Button();
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor = new System.Windows.Forms.Button();
             this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory = new System.Windows.Forms.Button();
+            this.btn_Range_Sum_of_BST = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
             // 
-            this.btn_Same_Tree.Location = new System.Drawing.Point(12, 12);
-            this.btn_Same_Tree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Same_Tree.Location = new System.Drawing.Point(8, 8);
+            this.btn_Same_Tree.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Same_Tree.Name = "btn_Same_Tree";
-            this.btn_Same_Tree.Size = new System.Drawing.Size(303, 38);
+            this.btn_Same_Tree.Size = new System.Drawing.Size(202, 25);
             this.btn_Same_Tree.TabIndex = 0;
             this.btn_Same_Tree.Text = "Same Tree";
             this.btn_Same_Tree.UseVisualStyleBackColor = true;
@@ -73,10 +74,10 @@
             // 
             // btn_Find_Binary_is_Symmetric_Tree
             // 
-            this.btn_Find_Binary_is_Symmetric_Tree.Location = new System.Drawing.Point(12, 54);
-            this.btn_Find_Binary_is_Symmetric_Tree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Find_Binary_is_Symmetric_Tree.Location = new System.Drawing.Point(8, 35);
+            this.btn_Find_Binary_is_Symmetric_Tree.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Find_Binary_is_Symmetric_Tree.Name = "btn_Find_Binary_is_Symmetric_Tree";
-            this.btn_Find_Binary_is_Symmetric_Tree.Size = new System.Drawing.Size(303, 38);
+            this.btn_Find_Binary_is_Symmetric_Tree.Size = new System.Drawing.Size(202, 25);
             this.btn_Find_Binary_is_Symmetric_Tree.TabIndex = 1;
             this.btn_Find_Binary_is_Symmetric_Tree.Text = "Find Binary is Symmetric Tree";
             this.btn_Find_Binary_is_Symmetric_Tree.UseVisualStyleBackColor = true;
@@ -84,10 +85,10 @@
             // 
             // btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up
             // 
-            this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Location = new System.Drawing.Point(12, 98);
-            this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Location = new System.Drawing.Point(8, 64);
+            this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Name = "btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up";
-            this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Size = new System.Drawing.Size(303, 52);
+            this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Size = new System.Drawing.Size(202, 34);
             this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.TabIndex = 2;
             this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.Text = "Binary Tree Level Order Traversal Get Item from the bottom up";
             this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up.UseVisualStyleBackColor = true;
@@ -95,10 +96,10 @@
             // 
             // btn_Heap
             // 
-            this.btn_Heap.Location = new System.Drawing.Point(12, 155);
-            this.btn_Heap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Heap.Location = new System.Drawing.Point(8, 101);
+            this.btn_Heap.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Heap.Name = "btn_Heap";
-            this.btn_Heap.Size = new System.Drawing.Size(303, 38);
+            this.btn_Heap.Size = new System.Drawing.Size(202, 25);
             this.btn_Heap.TabIndex = 3;
             this.btn_Heap.Text = "Heap";
             this.btn_Heap.UseVisualStyleBackColor = true;
@@ -106,10 +107,10 @@
             // 
             // btn_Check_Tree_is_Balanced
             // 
-            this.btn_Check_Tree_is_Balanced.Location = new System.Drawing.Point(12, 198);
-            this.btn_Check_Tree_is_Balanced.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Check_Tree_is_Balanced.Location = new System.Drawing.Point(8, 129);
+            this.btn_Check_Tree_is_Balanced.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Check_Tree_is_Balanced.Name = "btn_Check_Tree_is_Balanced";
-            this.btn_Check_Tree_is_Balanced.Size = new System.Drawing.Size(303, 34);
+            this.btn_Check_Tree_is_Balanced.Size = new System.Drawing.Size(202, 22);
             this.btn_Check_Tree_is_Balanced.TabIndex = 4;
             this.btn_Check_Tree_is_Balanced.Text = "Check Tree is Balanced";
             this.btn_Check_Tree_is_Balanced.UseVisualStyleBackColor = true;
@@ -117,10 +118,10 @@
             // 
             // btn_Find_longest_Path_in_a_Binary_Tree
             // 
-            this.btn_Find_longest_Path_in_a_Binary_Tree.Location = new System.Drawing.Point(12, 238);
-            this.btn_Find_longest_Path_in_a_Binary_Tree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Find_longest_Path_in_a_Binary_Tree.Location = new System.Drawing.Point(8, 155);
+            this.btn_Find_longest_Path_in_a_Binary_Tree.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Find_longest_Path_in_a_Binary_Tree.Name = "btn_Find_longest_Path_in_a_Binary_Tree";
-            this.btn_Find_longest_Path_in_a_Binary_Tree.Size = new System.Drawing.Size(303, 41);
+            this.btn_Find_longest_Path_in_a_Binary_Tree.Size = new System.Drawing.Size(202, 27);
             this.btn_Find_longest_Path_in_a_Binary_Tree.TabIndex = 5;
             this.btn_Find_longest_Path_in_a_Binary_Tree.Text = "Find longest Path in a Binary Tree";
             this.btn_Find_longest_Path_in_a_Binary_Tree.UseVisualStyleBackColor = true;
@@ -128,10 +129,10 @@
             // 
             // btn_Path_Sum
             // 
-            this.btn_Path_Sum.Location = new System.Drawing.Point(12, 285);
-            this.btn_Path_Sum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Path_Sum.Location = new System.Drawing.Point(8, 185);
+            this.btn_Path_Sum.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Path_Sum.Name = "btn_Path_Sum";
-            this.btn_Path_Sum.Size = new System.Drawing.Size(303, 42);
+            this.btn_Path_Sum.Size = new System.Drawing.Size(202, 27);
             this.btn_Path_Sum.TabIndex = 6;
             this.btn_Path_Sum.Text = "Path Sum";
             this.btn_Path_Sum.UseVisualStyleBackColor = true;
@@ -139,10 +140,10 @@
             // 
             // btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input
             // 
-            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Location = new System.Drawing.Point(12, 334);
-            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Location = new System.Drawing.Point(8, 217);
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Name = "btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input";
-            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Size = new System.Drawing.Size(303, 52);
+            this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Size = new System.Drawing.Size(202, 34);
             this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.TabIndex = 7;
             this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.Text = "Remove Node from Binary Tree if Node is Less than the given input";
             this.btn_Remove_Node_from_Binary_Tree_if_Node_is_Less_than_the_given_input.UseVisualStyleBackColor = true;
@@ -150,10 +151,10 @@
             // 
             // btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion
             // 
-            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Location = new System.Drawing.Point(12, 392);
-            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Location = new System.Drawing.Point(8, 255);
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Name = "btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion";
-            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Size = new System.Drawing.Size(303, 58);
+            this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Size = new System.Drawing.Size(202, 38);
             this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.TabIndex = 8;
             this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.Text = "Find two numbers which adds to Sum from a binary search tree (Recurssion)";
             this.btn_Find_two_numbers_which_adds_to_Sum_from_a_binary_search_tree_Recurssion.UseVisualStyleBackColor = true;
@@ -161,10 +162,10 @@
             // 
             // btn_Binary_Tree_Maximum_Path_Sum
             // 
-            this.btn_Binary_Tree_Maximum_Path_Sum.Location = new System.Drawing.Point(12, 454);
-            this.btn_Binary_Tree_Maximum_Path_Sum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Binary_Tree_Maximum_Path_Sum.Location = new System.Drawing.Point(8, 295);
+            this.btn_Binary_Tree_Maximum_Path_Sum.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Binary_Tree_Maximum_Path_Sum.Name = "btn_Binary_Tree_Maximum_Path_Sum";
-            this.btn_Binary_Tree_Maximum_Path_Sum.Size = new System.Drawing.Size(303, 38);
+            this.btn_Binary_Tree_Maximum_Path_Sum.Size = new System.Drawing.Size(202, 25);
             this.btn_Binary_Tree_Maximum_Path_Sum.TabIndex = 9;
             this.btn_Binary_Tree_Maximum_Path_Sum.Text = "Binary Tree Maximum Path Sum";
             this.btn_Binary_Tree_Maximum_Path_Sum.UseVisualStyleBackColor = true;
@@ -172,10 +173,10 @@
             // 
             // btn_Diameter_of_Binary_Tree
             // 
-            this.btn_Diameter_of_Binary_Tree.Location = new System.Drawing.Point(12, 498);
-            this.btn_Diameter_of_Binary_Tree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Diameter_of_Binary_Tree.Location = new System.Drawing.Point(8, 324);
+            this.btn_Diameter_of_Binary_Tree.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Diameter_of_Binary_Tree.Name = "btn_Diameter_of_Binary_Tree";
-            this.btn_Diameter_of_Binary_Tree.Size = new System.Drawing.Size(303, 39);
+            this.btn_Diameter_of_Binary_Tree.Size = new System.Drawing.Size(202, 25);
             this.btn_Diameter_of_Binary_Tree.TabIndex = 10;
             this.btn_Diameter_of_Binary_Tree.Text = "Diameter of Binary Tree";
             this.btn_Diameter_of_Binary_Tree.UseVisualStyleBackColor = true;
@@ -183,11 +184,11 @@
             // 
             // btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree
             // 
-            this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Location = new System.Drawing.Point(14, 542);
-            this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Location = new System.Drawing.Point(9, 352);
+            this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Name = "btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tr" +
     "ee";
-            this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Size = new System.Drawing.Size(302, 82);
+            this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Size = new System.Drawing.Size(201, 53);
             this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.TabIndex = 11;
             this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.Text = "Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree";
             this.btn_Check_If_a_String_Is_a_Valid_Sequence_from_Root_to_Leaves_Path_in_a_Binary_Tree.UseVisualStyleBackColor = true;
@@ -195,10 +196,10 @@
             // 
             // btn_Cousins_in_Binary_Tree
             // 
-            this.btn_Cousins_in_Binary_Tree.Location = new System.Drawing.Point(14, 631);
-            this.btn_Cousins_in_Binary_Tree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Cousins_in_Binary_Tree.Location = new System.Drawing.Point(9, 410);
+            this.btn_Cousins_in_Binary_Tree.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Cousins_in_Binary_Tree.Name = "btn_Cousins_in_Binary_Tree";
-            this.btn_Cousins_in_Binary_Tree.Size = new System.Drawing.Size(302, 38);
+            this.btn_Cousins_in_Binary_Tree.Size = new System.Drawing.Size(201, 25);
             this.btn_Cousins_in_Binary_Tree.TabIndex = 12;
             this.btn_Cousins_in_Binary_Tree.Text = "Cousins in Binary Tree";
             this.btn_Cousins_in_Binary_Tree.UseVisualStyleBackColor = true;
@@ -206,10 +207,10 @@
             // 
             // btn_Kth_Smallest_Element_in_a_BST
             // 
-            this.btn_Kth_Smallest_Element_in_a_BST.Location = new System.Drawing.Point(14, 674);
-            this.btn_Kth_Smallest_Element_in_a_BST.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Kth_Smallest_Element_in_a_BST.Location = new System.Drawing.Point(9, 438);
+            this.btn_Kth_Smallest_Element_in_a_BST.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Kth_Smallest_Element_in_a_BST.Name = "btn_Kth_Smallest_Element_in_a_BST";
-            this.btn_Kth_Smallest_Element_in_a_BST.Size = new System.Drawing.Size(302, 42);
+            this.btn_Kth_Smallest_Element_in_a_BST.Size = new System.Drawing.Size(201, 27);
             this.btn_Kth_Smallest_Element_in_a_BST.TabIndex = 13;
             this.btn_Kth_Smallest_Element_in_a_BST.Text = "Kth Smallest Element in a BST";
             this.btn_Kth_Smallest_Element_in_a_BST.UseVisualStyleBackColor = true;
@@ -217,10 +218,9 @@
             // 
             // btn_Invert_Binary_Tree
             // 
-            this.btn_Invert_Binary_Tree.Location = new System.Drawing.Point(12, 721);
-            this.btn_Invert_Binary_Tree.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Invert_Binary_Tree.Location = new System.Drawing.Point(8, 469);
             this.btn_Invert_Binary_Tree.Name = "btn_Invert_Binary_Tree";
-            this.btn_Invert_Binary_Tree.Size = new System.Drawing.Size(303, 42);
+            this.btn_Invert_Binary_Tree.Size = new System.Drawing.Size(202, 27);
             this.btn_Invert_Binary_Tree.TabIndex = 14;
             this.btn_Invert_Binary_Tree.Text = "Invert Binary Tree";
             this.btn_Invert_Binary_Tree.UseVisualStyleBackColor = true;
@@ -228,10 +228,10 @@
             // 
             // btn_Count_Complete_Tree_Nodes
             // 
-            this.btn_Count_Complete_Tree_Nodes.Location = new System.Drawing.Point(12, 769);
-            this.btn_Count_Complete_Tree_Nodes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Count_Complete_Tree_Nodes.Location = new System.Drawing.Point(8, 500);
+            this.btn_Count_Complete_Tree_Nodes.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Count_Complete_Tree_Nodes.Name = "btn_Count_Complete_Tree_Nodes";
-            this.btn_Count_Complete_Tree_Nodes.Size = new System.Drawing.Size(303, 40);
+            this.btn_Count_Complete_Tree_Nodes.Size = new System.Drawing.Size(202, 26);
             this.btn_Count_Complete_Tree_Nodes.TabIndex = 15;
             this.btn_Count_Complete_Tree_Nodes.Text = " Count Complete Tree Nodes";
             this.btn_Count_Complete_Tree_Nodes.UseVisualStyleBackColor = true;
@@ -239,10 +239,10 @@
             // 
             // btn_Unique_Binary_Search_Trees
             // 
-            this.btn_Unique_Binary_Search_Trees.Location = new System.Drawing.Point(12, 818);
-            this.btn_Unique_Binary_Search_Trees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Unique_Binary_Search_Trees.Location = new System.Drawing.Point(8, 532);
+            this.btn_Unique_Binary_Search_Trees.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_Unique_Binary_Search_Trees.Name = "btn_Unique_Binary_Search_Trees";
-            this.btn_Unique_Binary_Search_Trees.Size = new System.Drawing.Size(303, 35);
+            this.btn_Unique_Binary_Search_Trees.Size = new System.Drawing.Size(202, 23);
             this.btn_Unique_Binary_Search_Trees.TabIndex = 16;
             this.btn_Unique_Binary_Search_Trees.Text = "Unique Binary Search Trees";
             this.btn_Unique_Binary_Search_Trees.UseVisualStyleBackColor = true;
@@ -250,10 +250,9 @@
             // 
             // btn_Sum_Root_to_Leaf_Numbers
             // 
-            this.btn_Sum_Root_to_Leaf_Numbers.Location = new System.Drawing.Point(318, 12);
-            this.btn_Sum_Root_to_Leaf_Numbers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Sum_Root_to_Leaf_Numbers.Location = new System.Drawing.Point(212, 8);
             this.btn_Sum_Root_to_Leaf_Numbers.Name = "btn_Sum_Root_to_Leaf_Numbers";
-            this.btn_Sum_Root_to_Leaf_Numbers.Size = new System.Drawing.Size(225, 38);
+            this.btn_Sum_Root_to_Leaf_Numbers.Size = new System.Drawing.Size(150, 25);
             this.btn_Sum_Root_to_Leaf_Numbers.TabIndex = 17;
             this.btn_Sum_Root_to_Leaf_Numbers.Text = "Sum Root to Leaf Numbers";
             this.btn_Sum_Root_to_Leaf_Numbers.UseVisualStyleBackColor = true;
@@ -261,10 +260,9 @@
             // 
             // btn_Maximum_Width_of_Binary_Tree
             // 
-            this.btn_Maximum_Width_of_Binary_Tree.Location = new System.Drawing.Point(318, 55);
-            this.btn_Maximum_Width_of_Binary_Tree.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Maximum_Width_of_Binary_Tree.Location = new System.Drawing.Point(212, 36);
             this.btn_Maximum_Width_of_Binary_Tree.Name = "btn_Maximum_Width_of_Binary_Tree";
-            this.btn_Maximum_Width_of_Binary_Tree.Size = new System.Drawing.Size(224, 34);
+            this.btn_Maximum_Width_of_Binary_Tree.Size = new System.Drawing.Size(149, 22);
             this.btn_Maximum_Width_of_Binary_Tree.TabIndex = 18;
             this.btn_Maximum_Width_of_Binary_Tree.Text = "Maximum Width of Binary Tree";
             this.btn_Maximum_Width_of_Binary_Tree.UseVisualStyleBackColor = true;
@@ -272,10 +270,9 @@
             // 
             // btn_Binary_Tree_Zigzag_Level_Order_Traversal
             // 
-            this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.Location = new System.Drawing.Point(318, 98);
-            this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.Location = new System.Drawing.Point(212, 64);
             this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.Name = "btn_Binary_Tree_Zigzag_Level_Order_Traversal";
-            this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.Size = new System.Drawing.Size(224, 39);
+            this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.Size = new System.Drawing.Size(149, 25);
             this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.TabIndex = 19;
             this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.Text = "Binary Tree Zigzag Level Order Traversal";
             this.btn_Binary_Tree_Zigzag_Level_Order_Traversal.UseVisualStyleBackColor = true;
@@ -283,10 +280,9 @@
             // 
             // btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal
             // 
-            this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Location = new System.Drawing.Point(318, 138);
-            this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Location = new System.Drawing.Point(212, 90);
             this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Name = "btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal";
-            this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Size = new System.Drawing.Size(224, 55);
+            this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Size = new System.Drawing.Size(149, 36);
             this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.TabIndex = 20;
             this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.Text = "Construct Binary Tree from Inorder and Postorder Traversal";
             this.btn_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.UseVisualStyleBackColor = true;
@@ -294,10 +290,9 @@
             // 
             // btn_Vertical_Order_Traversal_of_a_Binary_Tree
             // 
-            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Location = new System.Drawing.Point(318, 199);
-            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Location = new System.Drawing.Point(212, 129);
             this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Name = "btn_Vertical_Order_Traversal_of_a_Binary_Tree";
-            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Size = new System.Drawing.Size(224, 61);
+            this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Size = new System.Drawing.Size(149, 40);
             this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.TabIndex = 21;
             this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.Text = "Vertical Order Traversal of a Binary Tree";
             this.btn_Vertical_Order_Traversal_of_a_Binary_Tree.UseVisualStyleBackColor = true;
@@ -305,10 +300,9 @@
             // 
             // btn_Sum_of_Left_Leaves
             // 
-            this.btn_Sum_of_Left_Leaves.Location = new System.Drawing.Point(318, 265);
-            this.btn_Sum_of_Left_Leaves.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Sum_of_Left_Leaves.Location = new System.Drawing.Point(212, 172);
             this.btn_Sum_of_Left_Leaves.Name = "btn_Sum_of_Left_Leaves";
-            this.btn_Sum_of_Left_Leaves.Size = new System.Drawing.Size(225, 40);
+            this.btn_Sum_of_Left_Leaves.Size = new System.Drawing.Size(150, 26);
             this.btn_Sum_of_Left_Leaves.TabIndex = 22;
             this.btn_Sum_of_Left_Leaves.Text = "Sum of Left Leaves";
             this.btn_Sum_of_Left_Leaves.UseVisualStyleBackColor = true;
@@ -316,10 +310,9 @@
             // 
             // btn_Delete_Node_in_a_BST
             // 
-            this.btn_Delete_Node_in_a_BST.Location = new System.Drawing.Point(321, 308);
-            this.btn_Delete_Node_in_a_BST.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Delete_Node_in_a_BST.Location = new System.Drawing.Point(214, 200);
             this.btn_Delete_Node_in_a_BST.Name = "btn_Delete_Node_in_a_BST";
-            this.btn_Delete_Node_in_a_BST.Size = new System.Drawing.Size(220, 40);
+            this.btn_Delete_Node_in_a_BST.Size = new System.Drawing.Size(147, 26);
             this.btn_Delete_Node_in_a_BST.TabIndex = 23;
             this.btn_Delete_Node_in_a_BST.Text = "Delete Node in a BST";
             this.btn_Delete_Node_in_a_BST.UseVisualStyleBackColor = true;
@@ -327,10 +320,9 @@
             // 
             // btn_All_Elements_in_Two_Binary_Search_Trees
             // 
-            this.btn_All_Elements_in_Two_Binary_Search_Trees.Location = new System.Drawing.Point(324, 354);
-            this.btn_All_Elements_in_Two_Binary_Search_Trees.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.Location = new System.Drawing.Point(216, 230);
             this.btn_All_Elements_in_Two_Binary_Search_Trees.Name = "btn_All_Elements_in_Two_Binary_Search_Trees";
-            this.btn_All_Elements_in_Two_Binary_Search_Trees.Size = new System.Drawing.Size(219, 68);
+            this.btn_All_Elements_in_Two_Binary_Search_Trees.Size = new System.Drawing.Size(146, 44);
             this.btn_All_Elements_in_Two_Binary_Search_Trees.TabIndex = 24;
             this.btn_All_Elements_in_Two_Binary_Search_Trees.Text = "All Elements in Two Binary Search Trees";
             this.btn_All_Elements_in_Two_Binary_Search_Trees.UseVisualStyleBackColor = true;
@@ -338,10 +330,9 @@
             // 
             // btn_Sum_of_Root_To_Leaf_Binary_Numbers
             // 
-            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Location = new System.Drawing.Point(323, 428);
-            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Location = new System.Drawing.Point(215, 278);
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Name = "btn_Sum_of_Root_To_Leaf_Binary_Numbers";
-            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Size = new System.Drawing.Size(219, 46);
+            this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Size = new System.Drawing.Size(146, 30);
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.TabIndex = 25;
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.Text = " Sum of Root To Leaf Binary Numbers";
             this.btn_Sum_of_Root_To_Leaf_Binary_Numbers.UseVisualStyleBackColor = true;
@@ -349,10 +340,9 @@
             // 
             // btn_Insert_into_a_Binary_Search_Tree
             // 
-            this.btn_Insert_into_a_Binary_Search_Tree.Location = new System.Drawing.Point(321, 480);
-            this.btn_Insert_into_a_Binary_Search_Tree.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Insert_into_a_Binary_Search_Tree.Location = new System.Drawing.Point(214, 312);
             this.btn_Insert_into_a_Binary_Search_Tree.Name = "btn_Insert_into_a_Binary_Search_Tree";
-            this.btn_Insert_into_a_Binary_Search_Tree.Size = new System.Drawing.Size(222, 51);
+            this.btn_Insert_into_a_Binary_Search_Tree.Size = new System.Drawing.Size(148, 33);
             this.btn_Insert_into_a_Binary_Search_Tree.TabIndex = 26;
             this.btn_Insert_into_a_Binary_Search_Tree.Text = "Insert into a Binary Search Tree";
             this.btn_Insert_into_a_Binary_Search_Tree.UseVisualStyleBackColor = true;
@@ -360,10 +350,10 @@
             // 
             // btn_Serialize_and_Deserialize_BST
             // 
-            this.btn_Serialize_and_Deserialize_BST.Location = new System.Drawing.Point(324, 542);
-            this.btn_Serialize_and_Deserialize_BST.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Serialize_and_Deserialize_BST.Location = new System.Drawing.Point(216, 352);
+            this.btn_Serialize_and_Deserialize_BST.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_Serialize_and_Deserialize_BST.Name = "btn_Serialize_and_Deserialize_BST";
-            this.btn_Serialize_and_Deserialize_BST.Size = new System.Drawing.Size(217, 52);
+            this.btn_Serialize_and_Deserialize_BST.Size = new System.Drawing.Size(145, 34);
             this.btn_Serialize_and_Deserialize_BST.TabIndex = 27;
             this.btn_Serialize_and_Deserialize_BST.Text = "Serialize and Deserialize BST";
             this.btn_Serialize_and_Deserialize_BST.UseVisualStyleBackColor = true;
@@ -371,9 +361,10 @@
             // 
             // btn_btn_Maximum_Difference_Between_Node_and_Ancestor
             // 
-            this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Location = new System.Drawing.Point(323, 600);
+            this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Location = new System.Drawing.Point(215, 390);
+            this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Name = "btn_btn_Maximum_Difference_Between_Node_and_Ancestor";
-            this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Size = new System.Drawing.Size(218, 50);
+            this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Size = new System.Drawing.Size(145, 32);
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.TabIndex = 28;
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.Text = "Maximum Difference Between Node and Ancestor";
             this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor.UseVisualStyleBackColor = true;
@@ -381,19 +372,31 @@
             // 
             // btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory
             // 
-            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Location = new System.Drawing.Point(323, 656);
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Location = new System.Drawing.Point(215, 426);
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Name = "btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory";
-            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Size = new System.Drawing.Size(220, 69);
+            this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Size = new System.Drawing.Size(147, 45);
             this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.TabIndex = 64;
             this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Text = "Populating Next Right Pointers in Each Node No Memory";
             this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.UseVisualStyleBackColor = true;
             this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory.Click += new System.EventHandler(this.btn_Populating_Next_Right_Pointers_in_Each_Node_Click);
             // 
+            // btn_Range_Sum_of_BST
+            // 
+            this.btn_Range_Sum_of_BST.Location = new System.Drawing.Point(217, 476);
+            this.btn_Range_Sum_of_BST.Name = "btn_Range_Sum_of_BST";
+            this.btn_Range_Sum_of_BST.Size = new System.Drawing.Size(144, 28);
+            this.btn_Range_Sum_of_BST.TabIndex = 65;
+            this.btn_Range_Sum_of_BST.Text = "Range Sum of BST";
+            this.btn_Range_Sum_of_BST.UseVisualStyleBackColor = true;
+            this.btn_Range_Sum_of_BST.Click += new System.EventHandler(this.btn_Range_Sum_of_BST_Click);
+            // 
             // Trees
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 878);
+            this.ClientSize = new System.Drawing.Size(862, 571);
+            this.Controls.Add(this.btn_Range_Sum_of_BST);
             this.Controls.Add(this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory);
             this.Controls.Add(this.btn_btn_Maximum_Difference_Between_Node_and_Ancestor);
             this.Controls.Add(this.btn_Serialize_and_Deserialize_BST);
@@ -424,7 +427,7 @@
             this.Controls.Add(this.btn_Binary_Tree_Level_Order_Traversal_Get_Item_from_the_bottom_up);
             this.Controls.Add(this.btn_Find_Binary_is_Symmetric_Tree);
             this.Controls.Add(this.btn_Same_Tree);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "Trees";
             this.Text = "Trees";
             this.ResumeLayout(false);
@@ -463,5 +466,6 @@
         private System.Windows.Forms.Button btn_Serialize_and_Deserialize_BST;
         private System.Windows.Forms.Button btn_btn_Maximum_Difference_Between_Node_and_Ancestor;
         private System.Windows.Forms.Button btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory;
+        private System.Windows.Forms.Button btn_Range_Sum_of_BST;
     }
 }

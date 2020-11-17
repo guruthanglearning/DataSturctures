@@ -206,14 +206,14 @@ namespace WindowsFormsApplication3
 
         }
 
-        public string TraverseBinaryTree(Node node)
+        public string TraverseBinaryTree(Node node, bool IsNextNeed = false)
         {
             datas.Clear();
-            this.InOrder(node);
+            this.InOrder(node, IsNextNeed);
             return datas.ToString();
         }
 
-        private void InOrder(Node root)
+        private void InOrder(Node root, bool IsNextNeed)
         {
             Node node = root;
 
@@ -230,7 +230,10 @@ namespace WindowsFormsApplication3
                     }
 
                     node = s.Pop();
-                    datas.Append($"{node.data}-->{(node.next != null ? node.next.data.ToString() : "NULL")} ,");
+                    if (IsNextNeed)
+                        datas.Append($"{node.data}-->{(node.next != null ? node.next.data.ToString() : "NULL")} ,");
+                    else
+                        datas.Append($"{node.data} ,");
                     node = node.right;
                 }
 
@@ -1439,11 +1442,11 @@ namespace WindowsFormsApplication3
              */
 
             StringBuilder result = new StringBuilder();
-            List<KthSmallestInBST> inputs = new List<KthSmallestInBST>();
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 3, 1, 4, 2 }), K = 1 });
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 3 });
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 6 });
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 5 });
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 3, 1, 4, 2 }), K = 1 });
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 3 });
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 6 });
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4, 1 }), K = 5 });
             foreach (var input in inputs)
             {
                 result.AppendLine($"{input.K}  smallest value for the given BST tree {this.TraverseBinaryTree(input.Tree)} is {this.KthSmallest(input.Tree, input.K)}");
@@ -1452,10 +1455,12 @@ namespace WindowsFormsApplication3
             MessageBox.Show(result.ToString());
         }
 
-        public class KthSmallestInBST
+        public class Common
         {
             public Node Tree;
             public int K;
+            public int low;
+            public int high;
         }
 
         public int KthSmallest(Node root, int k)
@@ -2507,12 +2512,12 @@ namespace WindowsFormsApplication3
 
 
             StringBuilder result = new StringBuilder();
-            List<KthSmallestInBST> inputs = new List<KthSmallestInBST>();
+            List<Common> inputs = new List<Common>();
             //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4,  7 }), K = 3 });
             //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 0 }), K = 0 });
             //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 1,2 }), K = 2 });
             //inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 3, 1, 4,2 }), K = 2 });
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4,  7 }), K = 5 });
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4,  7 }), K = 5 });
 
             foreach (var input in inputs)
             {
@@ -2839,10 +2844,10 @@ namespace WindowsFormsApplication3
 
 
             StringBuilder result = new StringBuilder();
-            List<KthSmallestInBST> inputs = new List<KthSmallestInBST>();
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 4, 2, 7, 1, 3 }), K = 5 });
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 40, 20, 60, 10, 30, 50, 70 }), K = 25 });
-            inputs.Add(new KthSmallestInBST() { Tree = this.CreateBST(new int[] { 4, 2, 7, 1, 3 }), K = 5 });            
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 4, 2, 7, 1, 3 }), K = 5 });
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 40, 20, 60, 10, 30, 50, 70 }), K = 25 });
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 4, 2, 7, 1, 3 }), K = 5 });            
             foreach (var input in inputs)
             {
                 result.AppendLine($"For the given Binary Search Tree {string.Join(",",this.InOrderTraversal(input.Tree))} and the value {input.K} the insertion is {string.Join(", ",this.InOrderTraversal(this.InsertIntoBST(input.Tree, input.K)))}");
@@ -3141,7 +3146,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Populating Next Right Pointers in Each Node for the given Tree: {this.TraverseBinaryTree(input)} is {this.TraverseBinaryTree(ConnectToNextNodeWithAuxMemoryNoMemory(input))}");
+                result.AppendLine($"Populating Next Right Pointers in Each Node for the given Tree: {this.TraverseBinaryTree(input, true)} is {this.TraverseBinaryTree(ConnectToNextNodeWithAuxMemoryNoMemory(input))}");
             }
 
             MessageBox.Show(result.ToString());
@@ -3170,6 +3175,90 @@ namespace WindowsFormsApplication3
                     currentNode.right.next = currentNode.next.left!= null ? currentNode.next.left : currentNode.next.right;
                 currentNode = currentNode.next;
             }
-        }       
+        }
+
+        private void btn_Range_Sum_of_BST_Click(object sender, EventArgs e)
+        {
+            /*
+                    Given the root node of a binary search tree, return the sum of values of all nodes with a value in the range [low, high].
+
+                    Example 1:
+
+                            
+                                         10
+                                       /   \
+                                      /     \
+                                     5        15
+                                   /    \       \           
+                                  /      \       \
+                                 3        7       18
+                                      
+
+
+                    Input: root = [10,5,15,3,7,null,18], low = 7, high = 15
+                    Output: 32
+                    Example 2:
+
+
+                    Input: root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10
+                    Output: 23
+                                        10
+                                       /   \
+                                      /     \
+                                     5        15
+                                   /    \       \           
+                                  /      \       \
+                                 3        7       18
+                                /        /
+                               /        /
+                              1        6
+                            
+                    Constraints:
+
+                    The number of nodes in the tree is in the range [1, 2 * 104].
+                    1 <= Node.val <= 105
+                    1 <= low <= high <= 105
+                    All Node.val are unique.
+             
+                    Time Complexity     : O(N)
+                    Space Complexity    : O(1)
+                    
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 10, 5, 15, 3, 7,  18 }), low = 7, high = 15 });
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 10, 5, 15, 3, 7, 13, 18, 1,  6 }), low = 6, high = 10 });
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Range Sum of BST for the given BST tree {this.TraverseBinaryTree(input.Tree)} for low: {input.low} and high : {input.high} is {this.RangeSumBST(input.Tree, input.low, input.high)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+        public int RangeSumBST(Node root, int low, int high)
+        {
+
+            return GetRangeSum(root, low, high);
+
+        }
+
+
+        private int GetRangeSum(Node root, int l, int h)
+        {
+            if (root == null)
+                return 0;
+
+            int result = 0;
+
+            result += GetRangeSum(root.left, l, h);
+            result += GetRangeSum(root.right, l, h);
+
+            if (root.val >= l && root.val <= h)
+                result += root.val;
+
+            return result;
+
+        }
     }
 }
