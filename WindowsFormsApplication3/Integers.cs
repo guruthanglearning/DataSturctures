@@ -1685,6 +1685,68 @@ namespace WindowsFormsApplication3
             return Convert.ToInt32(build.ToString(), 2);
 
         }
+
+        private void btn_Mirror_Reflection_Click(object sender, EventArgs e)
+        {
+            /*
+              
+                There is a special square room with mirrors on each of the four walls.  Except for the southwest corner, there are receptors on each of the remaining corners, numbered 0, 1, and 2.
+
+                The square room has walls of length p, and a laser ray from the southwest corner first meets the east wall at a distance q from the 0th receptor.
+
+                Return the number of the receptor that the ray meets first.  (It is guaranteed that the ray will meet a receptor eventually.)
+
+ 
+
+                Example 1:
+
+                Input: p = 2, q = 1
+                Output: 2
+                Explanation: The ray meets receptor 2 the first time it gets reflected back to the left wall.
+
+                Note:
+
+                1 <= p <= 1000
+                0 <= q <= p
+
+                Time Complexity         : O(1)
+                Space Complexity        : O(1)
+             
+             */
+
+
+            List<TwoInt> inputs = new List<TwoInt>();
+            inputs.Add(new TwoInt() { Input1 = 2, Input2 = 1 });
+            inputs.Add(new TwoInt() { Input1 = 3, Input2 = 1 });
+
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {                
+                result.AppendLine($"Mirror Relection for the given length of the wall {input.Input1} and east wall distance {input.Input2} is { this.MirrorReflection(input.Input1, input.Input2)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int MirrorReflection(int p, int q)
+        {
+
+            while (p % 2 == 0 && q % 2 == 0)
+            {
+                p /= 2;
+                q /= 2;
+            }
+
+            if (p % 2 == 1 && q % 2 == 0) return 0; //p : reflection p : extension
+            if (p % 2 == 0 && q % 2 == 1) return 2;
+            if (p % 2 == 1 && q % 2 == 1) return 1;
+
+            return -1;
+
+
+
+        }
+
     }
 }
 

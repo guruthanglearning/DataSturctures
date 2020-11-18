@@ -3319,6 +3319,10 @@ namespace WindowsFormsApplication3
 
         public int[][] FlipAndInvertImage(int[][] A)
         {
+
+            Stack<int[]> s = new Stack<int[]>();
+            s.ToArray<int[]>();
+
             if (A == null || A.Length == 0)
                 return A;
 
@@ -3346,6 +3350,129 @@ namespace WindowsFormsApplication3
             }
 
             return A;
+        }
+
+        private void btn_Merge_Intervals_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+                Example 1:
+
+                Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+                Output: [[1,6],[8,10],[15,18]]
+                Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+                Example 2:
+
+                Input: intervals = [[1,4],[4,5]]
+                Output: [[1,5]]
+                Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+ 
+
+                Constraints:
+
+                1 <= intervals.length <= 104
+                intervals[i].length == 2
+                0 <= starti <= endi <= 104
+
+                Time Complexty      :       O(NlogN)
+                Space Complexity    :       O(N*M)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+ 
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                         new int[] {1,3},
+                                         new int[] {2,6},
+                                         new int[] {8,10},
+                                         new int[] {15,18},
+                                    }
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                     new int[] {1, 4 },
+                                     new int[] {4,5},
+                                   
+                                    }
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                     new int[] {1, 4 },
+                                     new int[] {1,4},
+
+                                    }
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                     new int[] {1, 4 },
+                                     new int[] {0,4},
+
+                                    }
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                     new int[] {1, 4},
+                                     new int[] {2, 3},
+
+                                    }
+            });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Merging of intervals for the given input array : {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)} is {Environment.NewLine}{this.PrintJaggedArrayForJudeges(this.Merge(input.Input))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public int[][] Merge(int[][] intervals)
+        {
+            if (intervals == null || intervals.Length == 0)
+                return intervals;
+
+            Array.Sort(intervals, ((x, y) => x[0] - y[0]));
+            Stack<int[]> s = new Stack<int[]>();
+            s.Push(intervals[0]);
+            int[] interval = new int[2];
+
+            /*
+                [[1,3],[2,6],[8,10],[15,18]]
+                [[1,4],[4,5]]        
+                [[1,4],[0,4]]
+            */
+
+
+            for (int i = 1; i < intervals.Length; i++)
+            {
+                interval = s.Peek();
+                if (interval[0] <= intervals[i][0] && intervals[i][0] <= interval[1])
+                {
+                    interval[1] = Math.Max(interval[1], intervals[i][1]);
+                    s.Pop();
+                    s.Push(interval);
+                }
+                else
+                    s.Push(intervals[i]);
+            }
+
+            return s.ToArray<int[]>();
+
         }
     }
 }

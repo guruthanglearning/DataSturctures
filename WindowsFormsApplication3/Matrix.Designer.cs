@@ -56,6 +56,7 @@
             this.btn_Count_All_Possible_Path_from_Top_Left_to_Bottom_Right = new System.Windows.Forms.Button();
             this.btn_Search_a_2D_Matrix = new System.Windows.Forms.Button();
             this.btn_Flipping_an_Image = new System.Windows.Forms.Button();
+            this.btn_Merge_Intervals = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -365,11 +366,22 @@
             this.btn_Flipping_an_Image.UseVisualStyleBackColor = true;
             this.btn_Flipping_an_Image.Click += new System.EventHandler(this.btn_Flipping_an_Image_Click);
             // 
+            // btn_Merge_Intervals
+            // 
+            this.btn_Merge_Intervals.Location = new System.Drawing.Point(336, 422);
+            this.btn_Merge_Intervals.Name = "btn_Merge_Intervals";
+            this.btn_Merge_Intervals.Size = new System.Drawing.Size(270, 53);
+            this.btn_Merge_Intervals.TabIndex = 104;
+            this.btn_Merge_Intervals.Text = "Merge Intervals Unsorted Intervals";
+            this.btn_Merge_Intervals.UseVisualStyleBackColor = true;
+            this.btn_Merge_Intervals.Click += new System.EventHandler(this.btn_Merge_Intervals_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Merge_Intervals);
             this.Controls.Add(this.btn_Flipping_an_Image);
             this.Controls.Add(this.btn_Search_a_2D_Matrix);
             this.Controls.Add(this.btn_Count_All_Possible_Path_from_Top_Left_to_Bottom_Right);
@@ -436,5 +448,6 @@
         private System.Windows.Forms.Button btn_Count_All_Possible_Path_from_Top_Left_to_Bottom_Right;
         private System.Windows.Forms.Button btn_Search_a_2D_Matrix;
         private System.Windows.Forms.Button btn_Flipping_an_Image;
+        private System.Windows.Forms.Button btn_Merge_Intervals;
     }
 }
