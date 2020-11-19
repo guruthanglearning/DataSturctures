@@ -109,6 +109,7 @@
             this.btn_Word_Break = new System.Windows.Forms.Button();
             this.btn_Buddy_Strings = new System.Windows.Forms.Button();
             this.btn_Consecutive_Characters = new System.Windows.Forms.Button();
+            this.btn_Decode_String = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -996,11 +997,22 @@
             this.btn_Consecutive_Characters.UseVisualStyleBackColor = true;
             this.btn_Consecutive_Characters.Click += new System.EventHandler(this.btn_Consecutive_Characters_Click);
             // 
+            // btn_Decode_String
+            // 
+            this.btn_Decode_String.Location = new System.Drawing.Point(1670, 240);
+            this.btn_Decode_String.Name = "btn_Decode_String";
+            this.btn_Decode_String.Size = new System.Drawing.Size(225, 50);
+            this.btn_Decode_String.TabIndex = 82;
+            this.btn_Decode_String.Text = "Decode String";
+            this.btn_Decode_String.UseVisualStyleBackColor = true;
+            this.btn_Decode_String.Click += new System.EventHandler(this.btn_Decode_String_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 849);
+            this.Controls.Add(this.btn_Decode_String);
             this.Controls.Add(this.btn_Consecutive_Characters);
             this.Controls.Add(this.btn_Buddy_Strings);
             this.Controls.Add(this.btn_Word_Break);
@@ -1173,5 +1185,6 @@
         private System.Windows.Forms.Button btn_Word_Break;
         private System.Windows.Forms.Button btn_Buddy_Strings;
         private System.Windows.Forms.Button btn_Consecutive_Characters;
+        private System.Windows.Forms.Button btn_Decode_String;
     }
 }

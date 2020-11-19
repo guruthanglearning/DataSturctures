@@ -2826,7 +2826,7 @@ namespace WindowsFormsApplication3
                 al--;
                 bl--;
             }
-
+            
             while (al >= 0)
             {
                 sum = carry;
@@ -6113,6 +6113,171 @@ namespace WindowsFormsApplication3
             }
 
             return curr > prev ? curr : prev;
+        }
+
+        private void btn_Decode_String_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Given an encoded string, return its decoded string.
+
+                The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+
+                You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
+
+                Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won't be input like 3a or 2[4].
+
+ 
+
+                Example 1:
+
+                Input: s = "3[a]2[bc]"
+                Output: "aaabcbc"
+                Example 2:
+
+                Input: s = "3[a2[c]]"
+                Output: "accaccacc"
+                Example 3:
+
+                Input: s = "2[abc]3[cd]ef"
+                Output: "abcabccdcdcdef"
+                Example 4:
+
+                Input: s = "abc3[cd]xyz"
+                Output: "abccdcdcdxyz"
+ 
+
+                Constraints:
+
+                1 <= s.length <= 30
+                s consists of lowercase English letters, digits, and square brackets '[]'.
+                s is guaranteed to be a valid input.
+                All the integers in s are in the range [1, 300].
+             
+                Time Complexity     : O(N)
+                Space Complexity    : O(N)
+             
+             
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("3[a]2[bc]");
+            inputs.Add("3[a2[c]]");
+            inputs.Add("2[abc]3[cd]ef");
+            inputs.Add("abc3[cd]xyz");
+            inputs.Add("3[z]2[2[y]pq4[2[jk]e1[f]]]ef");
+
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"For the given string : { input } decoded string is {Environment.NewLine}{DecodeString(input)} {Environment.NewLine}{DecodeString_WithOneStack(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public string DecodeString_WithOneStack(string s)
+        {
+            int N = s.Length;
+            int cur = 0;
+            Stack<char> st = new Stack<char>();
+
+            while (cur < N)
+            {
+                char c = s[cur++];
+
+                if (']' == c)
+                {
+                    string repeat = "";
+                    int repeat_num = 0;
+                    string dec = "";
+
+                    while ('[' != st.Peek())
+                        repeat = st.Pop() + repeat;
+
+                    st.Pop();
+
+                    int i = 1;
+                    while (st.Count > 0 && char.IsNumber(st.Peek()))
+                    {
+                        repeat_num = repeat_num + (int)(st.Pop() - '0') * i;
+                        i = i * 10;
+                    }
+
+                    dec = String.Concat(Enumerable.Repeat(repeat, repeat_num));
+                    foreach (char r in dec) st.Push(r);
+
+                }
+                else
+                {
+                    st.Push(c);
+                }
+            }
+
+            char[] ans = st.ToArray();
+            Array.Reverse(ans);
+
+            return new string(ans);
+        }
+
+
+        public string DecodeString(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return s;
+
+            Stack<int> r = new Stack<int>();
+            Stack<string> str = new Stack<string>();
+
+            string result = string.Empty;
+            StringBuilder temp = new StringBuilder();
+
+            int i = 0;
+            int ival = 0;
+
+            while (i < s.Length)
+            {
+                if (char.IsNumber(s[i]))
+                {
+                    ival = s[i] - '0';
+                    i++;
+
+                    while (char.IsNumber(s[i]))
+                    {
+                        ival = (ival * 10) + (s[i] - '0');
+                        i++;
+                    }
+                    r.Push(ival);
+                }
+                else if (s[i] == '[')
+                {
+                    str.Push(result);
+                    i++;
+                    result = string.Empty;
+                }
+                else if (s[i] == ']')
+                {
+                    temp.Clear();
+                    temp.Append(str.Pop());
+                    temp.Append(String.Concat(Enumerable.Repeat(result, r.Pop())));
+                    result = temp.ToString();
+                    i++;
+                }
+                else
+                {
+                    result += s[i];
+                    i++;
+                }
+
+
+            }
+
+            return result;
+
+
+
         }
     }
 }
