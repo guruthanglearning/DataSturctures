@@ -2791,6 +2791,7 @@ namespace WindowsFormsApplication3
         public class ArrayAndValue
         {
             public int[] input;
+            public string[] stringinput;
             public int find;
         }
 
@@ -8687,6 +8688,102 @@ namespace WindowsFormsApplication3
 
             return result;
         }
+
+        private void btn_Numbers_At_Most_N_Given_Digit_Set_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of digits, you can write numbers using each digits[i] as many times as we want.  For example, if digits = ['1','3','5'], we may write numbers such as '13', '551', and '1351315'.
+
+                Return the number of positive integers that can be generated that are less than or equal to a given integer n.
+
+ 
+
+                Example 1:
+
+                Input: digits = ["1","3","5","7"], n = 100
+                Output: 20
+                Explanation: 
+                The 20 numbers that can be written are:
+                1, 3, 5, 7, 11, 13, 15, 17, 31, 33, 35, 37, 51, 53, 55, 57, 71, 73, 75, 77.
+                Example 2:
+
+                Input: digits = ["1","4","9"], n = 1000000000
+                Output: 29523
+                Explanation: 
+                We can write 3 one digit numbers, 9 two digit numbers, 27 three digit numbers,
+                81 four digit numbers, 243 five digit numbers, 729 six digit numbers,
+                2187 seven digit numbers, 6561 eight digit numbers, and 19683 nine digit numbers.
+                In total, this is 29523 integers that can be written using the digits array.
+                Example 3:
+
+                Input: digits = ["7"], n = 8
+                Output: 1
+ 
+
+                Constraints:
+
+                1 <= digits.length <= 9
+                digits[i].length == 1
+                digits[i] is a digit from '1' to '9'.
+                All the values in digits are unique.
+                1 <= n <= 109
+             
+                Time Complexity     : O(DN) : where D is Length of the digits and N is Length of N
+                Space Complexity    : O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { stringinput = new string[] { "1", "3", "5", "7" }, find = 100 });
+            inputs.Add(new ArrayAndValue() { stringinput = new string[] { "1", "4", "9" }, find = 1000000000 });
+            inputs.Add(new ArrayAndValue() { stringinput = new string[] { "7" }, find = 8 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Numbers At Most N Given Digit Set for the given input array{(string.Join(" ", input.stringinput))} and number  {input.find} is  {this.AtMostNGivenDigitSet(input.stringinput, input.find)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int AtMostNGivenDigitSet(string[] digits, int n)
+        {
+            if (digits == null || digits.Length == 0 || n <= 0)
+                return 0;
+
+            string N = n.ToString();
+            int nl = N.Length;
+            int dl = digits.Length;
+            bool prefix = false;
+            int result = 0;
+            int pow = 1;
+            for (int i = 1; i < nl; i++)
+            {
+                pow *= dl;
+                result += pow;
+             }
+
+            for (int i = 0; i < nl; i++ )
+            {
+                prefix = false;
+                foreach(string d in digits)
+                {
+                    if (d[0] < N[i])
+                        result +=  (int)Math.Pow(dl, nl - i - 1);
+                    else if (d[0] == N[i])
+                    {
+                        prefix = true;
+                        break;
+                    }
+                }
+                if (!prefix)
+                    return result;
+            }
+
+            return result + 1;
+        }
     }
 }
+
  

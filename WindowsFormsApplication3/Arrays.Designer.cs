@@ -132,6 +132,7 @@
             this.btn_Valid_Square = new System.Windows.Forms.Button();
             this.btn_Permutations_II = new System.Windows.Forms.Button();
             this.btn_Longest_Mountain_in_Array = new System.Windows.Forms.Button();
+            this.btn_Numbers_At_Most_N_Given_Digit_Set = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -207,7 +208,7 @@
             // MajorityElement
             // 
             this.MajorityElement.Location = new System.Drawing.Point(6, 190);
-            this.MajorityElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MajorityElement.Margin = new System.Windows.Forms.Padding(2);
             this.MajorityElement.Name = "MajorityElement";
             this.MajorityElement.Size = new System.Drawing.Size(327, 25);
             this.MajorityElement.TabIndex = 7;
@@ -218,7 +219,7 @@
             // Find_the_Number_Occurring_Odd_Number_of_Times
             // 
             this.Find_the_Number_Occurring_Odd_Number_of_Times.Location = new System.Drawing.Point(6, 221);
-            this.Find_the_Number_Occurring_Odd_Number_of_Times.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Find_the_Number_Occurring_Odd_Number_of_Times.Margin = new System.Windows.Forms.Padding(2);
             this.Find_the_Number_Occurring_Odd_Number_of_Times.Name = "Find_the_Number_Occurring_Odd_Number_of_Times";
             this.Find_the_Number_Occurring_Odd_Number_of_Times.Size = new System.Drawing.Size(327, 28);
             this.Find_the_Number_Occurring_Odd_Number_of_Times.TabIndex = 8;
@@ -229,7 +230,7 @@
             // Function_rotate_that_rotates_arr_of_size_n_by_d_elements
             // 
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Location = new System.Drawing.Point(6, 254);
-            this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Margin = new System.Windows.Forms.Padding(2);
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Name = "Function_rotate_that_rotates_arr_of_size_n_by_d_elements";
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.Size = new System.Drawing.Size(327, 32);
             this.Function_rotate_that_rotates_arr_of_size_n_by_d_elements.TabIndex = 9;
@@ -240,7 +241,7 @@
             // btn_Block_swap_algorithm_for_array_rotation
             // 
             this.btn_Block_swap_algorithm_for_array_rotation.Location = new System.Drawing.Point(8, 291);
-            this.btn_Block_swap_algorithm_for_array_rotation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Block_swap_algorithm_for_array_rotation.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Block_swap_algorithm_for_array_rotation.Name = "btn_Block_swap_algorithm_for_array_rotation";
             this.btn_Block_swap_algorithm_for_array_rotation.Size = new System.Drawing.Size(327, 32);
             this.btn_Block_swap_algorithm_for_array_rotation.TabIndex = 10;
@@ -251,7 +252,7 @@
             // btn_Median_of_Two_sorted_arrays
             // 
             this.btn_Median_of_Two_sorted_arrays.Location = new System.Drawing.Point(8, 327);
-            this.btn_Median_of_Two_sorted_arrays.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Median_of_Two_sorted_arrays.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Median_of_Two_sorted_arrays.Name = "btn_Median_of_Two_sorted_arrays";
             this.btn_Median_of_Two_sorted_arrays.Size = new System.Drawing.Size(326, 31);
             this.btn_Median_of_Two_sorted_arrays.TabIndex = 11;
@@ -262,7 +263,7 @@
             // btn_Maximum_Rectangular_Area_in_Histogram
             // 
             this.btn_Maximum_Rectangular_Area_in_Histogram.Location = new System.Drawing.Point(8, 362);
-            this.btn_Maximum_Rectangular_Area_in_Histogram.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Maximum_Rectangular_Area_in_Histogram.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Maximum_Rectangular_Area_in_Histogram.Name = "btn_Maximum_Rectangular_Area_in_Histogram";
             this.btn_Maximum_Rectangular_Area_in_Histogram.Size = new System.Drawing.Size(326, 30);
             this.btn_Maximum_Rectangular_Area_in_Histogram.TabIndex = 12;
@@ -273,7 +274,7 @@
             // btn_Check_Given_Array_Is_Sorted_Or_Not
             // 
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.Location = new System.Drawing.Point(8, 395);
-            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Check_Given_Array_Is_Sorted_Or_Not.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.Name = "btn_Check_Given_Array_Is_Sorted_Or_Not";
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.Size = new System.Drawing.Size(325, 28);
             this.btn_Check_Given_Array_Is_Sorted_Or_Not.TabIndex = 13;
@@ -284,7 +285,7 @@
             // btn_Union_and_Intersection_of_two_sorted_arrays
             // 
             this.btn_Union_and_Intersection_of_two_sorted_arrays.Location = new System.Drawing.Point(8, 427);
-            this.btn_Union_and_Intersection_of_two_sorted_arrays.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Union_and_Intersection_of_two_sorted_arrays.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Union_and_Intersection_of_two_sorted_arrays.Name = "btn_Union_and_Intersection_of_two_sorted_arrays";
             this.btn_Union_and_Intersection_of_two_sorted_arrays.Size = new System.Drawing.Size(326, 30);
             this.btn_Union_and_Intersection_of_two_sorted_arrays.TabIndex = 14;
@@ -295,7 +296,7 @@
             // btn_Find_Union_and_Intersection_of_two_unsorted_arrays
             // 
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Location = new System.Drawing.Point(8, 461);
-            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Name = "btn_Find_Union_and_Intersection_of_two_unsorted_arrays";
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.Size = new System.Drawing.Size(325, 28);
             this.btn_Find_Union_and_Intersection_of_two_unsorted_arrays.TabIndex = 15;
@@ -306,7 +307,7 @@
             // btn_Merge_Overlapping_Intervals
             // 
             this.btn_Merge_Overlapping_Intervals.Location = new System.Drawing.Point(8, 492);
-            this.btn_Merge_Overlapping_Intervals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Merge_Overlapping_Intervals.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Merge_Overlapping_Intervals.Name = "btn_Merge_Overlapping_Intervals";
             this.btn_Merge_Overlapping_Intervals.Size = new System.Drawing.Size(325, 26);
             this.btn_Merge_Overlapping_Intervals.TabIndex = 16;
@@ -317,7 +318,7 @@
             // btn_Random_number_generator_in_arbitrary_probability_distribution_fashion
             // 
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Location = new System.Drawing.Point(10, 550);
-            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Name = "btn_Random_number_generator_in_arbitrary_probability_distribution_fashion";
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.Size = new System.Drawing.Size(325, 28);
             this.btn_Random_number_generator_in_arbitrary_probability_distribution_fashion.TabIndex = 17;
@@ -328,7 +329,7 @@
             // btn_Sum_the_first_two_min_elements_from_the_given_array
             // 
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Location = new System.Drawing.Point(10, 582);
-            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Sum_the_first_two_min_elements_from_the_given_array.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Name = "btn_Sum_the_first_two_min_elements_from_the_given_array";
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.Size = new System.Drawing.Size(325, 27);
             this.btn_Sum_the_first_two_min_elements_from_the_given_array.TabIndex = 18;
@@ -339,7 +340,7 @@
             // btn_Arrange_all_zero_in_an_array_toward_right
             // 
             this.btn_Arrange_all_zero_in_an_array_toward_right.Location = new System.Drawing.Point(335, 2);
-            this.btn_Arrange_all_zero_in_an_array_toward_right.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Arrange_all_zero_in_an_array_toward_right.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Arrange_all_zero_in_an_array_toward_right.Name = "btn_Arrange_all_zero_in_an_array_toward_right";
             this.btn_Arrange_all_zero_in_an_array_toward_right.Size = new System.Drawing.Size(324, 27);
             this.btn_Arrange_all_zero_in_an_array_toward_right.TabIndex = 19;
@@ -350,7 +351,7 @@
             // btn_Max_sub_series_sum_in_an_given_array
             // 
             this.btn_Max_sub_series_sum_in_an_given_array.Location = new System.Drawing.Point(335, 32);
-            this.btn_Max_sub_series_sum_in_an_given_array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Max_sub_series_sum_in_an_given_array.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Max_sub_series_sum_in_an_given_array.Name = "btn_Max_sub_series_sum_in_an_given_array";
             this.btn_Max_sub_series_sum_in_an_given_array.Size = new System.Drawing.Size(324, 24);
             this.btn_Max_sub_series_sum_in_an_given_array.TabIndex = 20;
@@ -361,7 +362,7 @@
             // btn_Reduce_Array_After_removing_input_element
             // 
             this.btn_Reduce_Array_After_removing_input_element.Location = new System.Drawing.Point(335, 93);
-            this.btn_Reduce_Array_After_removing_input_element.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Reduce_Array_After_removing_input_element.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Reduce_Array_After_removing_input_element.Name = "btn_Reduce_Array_After_removing_input_element";
             this.btn_Reduce_Array_After_removing_input_element.Size = new System.Drawing.Size(324, 25);
             this.btn_Reduce_Array_After_removing_input_element.TabIndex = 21;
@@ -372,7 +373,7 @@
             // btn_Find_all_the_integer_value_lies_in_a_array_till_N
             // 
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Location = new System.Drawing.Point(335, 61);
-            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Name = "btn_Find_all_the_integer_value_lies_in_a_array_till_N";
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.Size = new System.Drawing.Size(324, 28);
             this.btn_Find_all_the_integer_value_lies_in_a_array_till_N.TabIndex = 22;
@@ -383,7 +384,7 @@
             // btn_Robbing_a_home_2
             // 
             this.btn_Robbing_a_home_2.Location = new System.Drawing.Point(335, 157);
-            this.btn_Robbing_a_home_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Robbing_a_home_2.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Robbing_a_home_2.Name = "btn_Robbing_a_home_2";
             this.btn_Robbing_a_home_2.Size = new System.Drawing.Size(324, 29);
             this.btn_Robbing_a_home_2.TabIndex = 24;
@@ -394,7 +395,7 @@
             // btn_Robbing_a_home_1
             // 
             this.btn_Robbing_a_home_1.Location = new System.Drawing.Point(335, 122);
-            this.btn_Robbing_a_home_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Robbing_a_home_1.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Robbing_a_home_1.Name = "btn_Robbing_a_home_1";
             this.btn_Robbing_a_home_1.Size = new System.Drawing.Size(324, 31);
             this.btn_Robbing_a_home_1.TabIndex = 23;
@@ -405,7 +406,7 @@
             // btn_Array_Puzzle_1
             // 
             this.btn_Array_Puzzle_1.Location = new System.Drawing.Point(335, 224);
-            this.btn_Array_Puzzle_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Array_Puzzle_1.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Array_Puzzle_1.Name = "btn_Array_Puzzle_1";
             this.btn_Array_Puzzle_1.Size = new System.Drawing.Size(326, 26);
             this.btn_Array_Puzzle_1.TabIndex = 25;
@@ -416,7 +417,7 @@
             // btn_Robbing_a_home_3
             // 
             this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(335, 190);
-            this.btn_Robbing_a_home_3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Robbing_a_home_3.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Robbing_a_home_3.Name = "btn_Robbing_a_home_3";
             this.btn_Robbing_a_home_3.Size = new System.Drawing.Size(324, 29);
             this.btn_Robbing_a_home_3.TabIndex = 26;
@@ -427,7 +428,7 @@
             // btn_Arrange_Char_Array_R_G_B_In_Place
             // 
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Location = new System.Drawing.Point(335, 254);
-            this.btn_Arrange_Char_Array_R_G_B_In_Place.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Arrange_Char_Array_R_G_B_In_Place.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Name = "btn_Arrange_Char_Array_R_G_B_In_Place";
             this.btn_Arrange_Char_Array_R_G_B_In_Place.Size = new System.Drawing.Size(322, 29);
             this.btn_Arrange_Char_Array_R_G_B_In_Place.TabIndex = 27;
@@ -438,7 +439,7 @@
             // btn_Finding_Missing_Integer_from_the_given_array
             // 
             this.btn_Finding_Missing_Integer_from_the_given_array.Location = new System.Drawing.Point(335, 288);
-            this.btn_Finding_Missing_Integer_from_the_given_array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Finding_Missing_Integer_from_the_given_array.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Finding_Missing_Integer_from_the_given_array.Name = "btn_Finding_Missing_Integer_from_the_given_array";
             this.btn_Finding_Missing_Integer_from_the_given_array.Size = new System.Drawing.Size(322, 27);
             this.btn_Finding_Missing_Integer_from_the_given_array.TabIndex = 28;
@@ -449,7 +450,7 @@
             // btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z
             // 
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Location = new System.Drawing.Point(336, 318);
-            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Margin = new System.Windows.Forms.Padding(2);
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Name = "btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z";
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.Size = new System.Drawing.Size(323, 25);
             this.btn_No_of_ways_to_Encode_for_the_given_int_array_based_on_A_Z.TabIndex = 29;
@@ -460,7 +461,7 @@
             // btn_Length_Of_The_Longest_Increasing_Subsequence
             // 
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(336, 347);
-            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Length_Of_The_Longest_Increasing_Subsequence.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Name = "btn_Length_Of_The_Longest_Increasing_Subsequence";
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(322, 30);
             this.btn_Length_Of_The_Longest_Increasing_Subsequence.TabIndex = 30;
@@ -471,7 +472,7 @@
             // btn_Validate_Email_and_Count_Valid_Emails
             // 
             this.btn_Validate_Email_and_Count_Valid_Emails.Location = new System.Drawing.Point(335, 380);
-            this.btn_Validate_Email_and_Count_Valid_Emails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Validate_Email_and_Count_Valid_Emails.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Validate_Email_and_Count_Valid_Emails.Name = "btn_Validate_Email_and_Count_Valid_Emails";
             this.btn_Validate_Email_and_Count_Valid_Emails.Size = new System.Drawing.Size(324, 24);
             this.btn_Validate_Email_and_Count_Valid_Emails.TabIndex = 31;
@@ -482,7 +483,7 @@
             // btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n
             // 
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Location = new System.Drawing.Point(336, 406);
-            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Name = "btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n";
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.Size = new System.Drawing.Size(322, 28);
             this.btn_Given_array_of_2_integers_which_makes_max_sum_of_min_of_ai_bi_for_all_i_to_n.TabIndex = 32;
@@ -493,7 +494,7 @@
             // btn_Maximize_Distance_to_Closest_Person
             // 
             this.btn_Maximize_Distance_to_Closest_Person.Location = new System.Drawing.Point(338, 439);
-            this.btn_Maximize_Distance_to_Closest_Person.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Maximize_Distance_to_Closest_Person.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Maximize_Distance_to_Closest_Person.Name = "btn_Maximize_Distance_to_Closest_Person";
             this.btn_Maximize_Distance_to_Closest_Person.Size = new System.Drawing.Size(320, 24);
             this.btn_Maximize_Distance_to_Closest_Person.TabIndex = 33;
@@ -504,7 +505,7 @@
             // btn_Garden_No_Adjacent
             // 
             this.btn_Garden_No_Adjacent.Location = new System.Drawing.Point(339, 467);
-            this.btn_Garden_No_Adjacent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Garden_No_Adjacent.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Garden_No_Adjacent.Name = "btn_Garden_No_Adjacent";
             this.btn_Garden_No_Adjacent.Size = new System.Drawing.Size(320, 24);
             this.btn_Garden_No_Adjacent.TabIndex = 34;
@@ -515,7 +516,7 @@
             // btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots
             // 
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Location = new System.Drawing.Point(338, 496);
-            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Name = "btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_s" +
     "lots";
             this.btn_Given_a_list_of_tasks_to_run_with_cooldown_interval_find_min_number_of_time_slots.Size = new System.Drawing.Size(319, 21);
@@ -528,7 +529,7 @@
             // btn_Find_Peak_in_an_integer_array
             // 
             this.btn_Find_Peak_in_an_integer_array.Location = new System.Drawing.Point(339, 522);
-            this.btn_Find_Peak_in_an_integer_array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_Peak_in_an_integer_array.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_Peak_in_an_integer_array.Name = "btn_Find_Peak_in_an_integer_array";
             this.btn_Find_Peak_in_an_integer_array.Size = new System.Drawing.Size(316, 28);
             this.btn_Find_Peak_in_an_integer_array.TabIndex = 36;
@@ -539,7 +540,7 @@
             // btn_Search_Insert_Position
             // 
             this.btn_Search_Insert_Position.Location = new System.Drawing.Point(338, 554);
-            this.btn_Search_Insert_Position.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Search_Insert_Position.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Search_Insert_Position.Name = "btn_Search_Insert_Position";
             this.btn_Search_Insert_Position.Size = new System.Drawing.Size(316, 24);
             this.btn_Search_Insert_Position.TabIndex = 37;
@@ -550,7 +551,7 @@
             // btn_Find_the_two_elements_that_appear_only_once
             // 
             this.btn_Find_the_two_elements_that_appear_only_once.Location = new System.Drawing.Point(339, 582);
-            this.btn_Find_the_two_elements_that_appear_only_once.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_the_two_elements_that_appear_only_once.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_the_two_elements_that_appear_only_once.Name = "btn_Find_the_two_elements_that_appear_only_once";
             this.btn_Find_the_two_elements_that_appear_only_once.Size = new System.Drawing.Size(321, 24);
             this.btn_Find_the_two_elements_that_appear_only_once.TabIndex = 38;
@@ -561,7 +562,7 @@
             // btn_Plus_One
             // 
             this.btn_Plus_One.Location = new System.Drawing.Point(10, 613);
-            this.btn_Plus_One.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Plus_One.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Plus_One.Name = "btn_Plus_One";
             this.btn_Plus_One.Size = new System.Drawing.Size(327, 22);
             this.btn_Plus_One.TabIndex = 39;
@@ -572,7 +573,7 @@
             // btn_Min_Max_Sum
             // 
             this.btn_Min_Max_Sum.Location = new System.Drawing.Point(340, 609);
-            this.btn_Min_Max_Sum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Min_Max_Sum.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Min_Max_Sum.Name = "btn_Min_Max_Sum";
             this.btn_Min_Max_Sum.Size = new System.Drawing.Size(316, 28);
             this.btn_Min_Max_Sum.TabIndex = 40;
@@ -583,7 +584,7 @@
             // btn_Array_partition_based_on_Pivot
             // 
             this.btn_Array_partition_based_on_Pivot.Location = new System.Drawing.Point(664, 307);
-            this.btn_Array_partition_based_on_Pivot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Array_partition_based_on_Pivot.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Array_partition_based_on_Pivot.Name = "btn_Array_partition_based_on_Pivot";
             this.btn_Array_partition_based_on_Pivot.Size = new System.Drawing.Size(240, 27);
             this.btn_Array_partition_based_on_Pivot.TabIndex = 41;
@@ -594,7 +595,7 @@
             // btn_Blow_out_tallest_candles
             // 
             this.btn_Blow_out_tallest_candles.Location = new System.Drawing.Point(664, 2);
-            this.btn_Blow_out_tallest_candles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Blow_out_tallest_candles.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Blow_out_tallest_candles.Name = "btn_Blow_out_tallest_candles";
             this.btn_Blow_out_tallest_candles.Size = new System.Drawing.Size(236, 26);
             this.btn_Blow_out_tallest_candles.TabIndex = 42;
@@ -605,7 +606,7 @@
             // btn_Between_Sets
             // 
             this.btn_Between_Sets.Location = new System.Drawing.Point(666, 31);
-            this.btn_Between_Sets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Between_Sets.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Between_Sets.Name = "btn_Between_Sets";
             this.btn_Between_Sets.Size = new System.Drawing.Size(231, 24);
             this.btn_Between_Sets.TabIndex = 43;
@@ -616,7 +617,7 @@
             // btn_Breaking_the_records
             // 
             this.btn_Breaking_the_records.Location = new System.Drawing.Point(666, 58);
-            this.btn_Breaking_the_records.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Breaking_the_records.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Breaking_the_records.Name = "btn_Breaking_the_records";
             this.btn_Breaking_the_records.Size = new System.Drawing.Size(232, 26);
             this.btn_Breaking_the_records.TabIndex = 44;
@@ -627,7 +628,7 @@
             // btn_BirthDay_Chocolate
             // 
             this.btn_BirthDay_Chocolate.Location = new System.Drawing.Point(666, 87);
-            this.btn_BirthDay_Chocolate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_BirthDay_Chocolate.Margin = new System.Windows.Forms.Padding(2);
             this.btn_BirthDay_Chocolate.Name = "btn_BirthDay_Chocolate";
             this.btn_BirthDay_Chocolate.Size = new System.Drawing.Size(232, 26);
             this.btn_BirthDay_Chocolate.TabIndex = 45;
@@ -638,7 +639,7 @@
             // btn_Divsible_Sum_Pairs
             // 
             this.btn_Divsible_Sum_Pairs.Location = new System.Drawing.Point(666, 117);
-            this.btn_Divsible_Sum_Pairs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Divsible_Sum_Pairs.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Divsible_Sum_Pairs.Name = "btn_Divsible_Sum_Pairs";
             this.btn_Divsible_Sum_Pairs.Size = new System.Drawing.Size(231, 25);
             this.btn_Divsible_Sum_Pairs.TabIndex = 47;
@@ -649,7 +650,7 @@
             // btn_Migratory_Birds
             // 
             this.btn_Migratory_Birds.Location = new System.Drawing.Point(665, 146);
-            this.btn_Migratory_Birds.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Migratory_Birds.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Migratory_Birds.Name = "btn_Migratory_Birds";
             this.btn_Migratory_Birds.Size = new System.Drawing.Size(233, 25);
             this.btn_Migratory_Birds.TabIndex = 48;
@@ -660,7 +661,7 @@
             // btn_Best_Time_to_Buy_and_Sell_Stock
             // 
             this.btn_Best_Time_to_Buy_and_Sell_Stock.Location = new System.Drawing.Point(666, 176);
-            this.btn_Best_Time_to_Buy_and_Sell_Stock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Best_Time_to_Buy_and_Sell_Stock.Name = "btn_Best_Time_to_Buy_and_Sell_Stock";
             this.btn_Best_Time_to_Buy_and_Sell_Stock.Size = new System.Drawing.Size(233, 24);
             this.btn_Best_Time_to_Buy_and_Sell_Stock.TabIndex = 49;
@@ -671,7 +672,7 @@
             // btn_Socks_Merchant
             // 
             this.btn_Socks_Merchant.Location = new System.Drawing.Point(665, 228);
-            this.btn_Socks_Merchant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Socks_Merchant.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Socks_Merchant.Name = "btn_Socks_Merchant";
             this.btn_Socks_Merchant.Size = new System.Drawing.Size(237, 21);
             this.btn_Socks_Merchant.TabIndex = 50;
@@ -682,7 +683,7 @@
             // btn_Steps_To_Make_0_from_binary
             // 
             this.btn_Steps_To_Make_0_from_binary.Location = new System.Drawing.Point(667, 254);
-            this.btn_Steps_To_Make_0_from_binary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Steps_To_Make_0_from_binary.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Steps_To_Make_0_from_binary.Name = "btn_Steps_To_Make_0_from_binary";
             this.btn_Steps_To_Make_0_from_binary.Size = new System.Drawing.Size(234, 24);
             this.btn_Steps_To_Make_0_from_binary.TabIndex = 51;
@@ -693,7 +694,7 @@
             // btn_Best_Time_to_Buy_and_Sell_Stock_II
             // 
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Location = new System.Drawing.Point(668, 200);
-            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Name = "btn_Best_Time_to_Buy_and_Sell_Stock_II";
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II.Size = new System.Drawing.Size(234, 24);
             this.btn_Best_Time_to_Buy_and_Sell_Stock_II.TabIndex = 52;
@@ -704,7 +705,7 @@
             // btn_Container_With_Most_Water
             // 
             this.btn_Container_With_Most_Water.Location = new System.Drawing.Point(665, 281);
-            this.btn_Container_With_Most_Water.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Container_With_Most_Water.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Container_With_Most_Water.Name = "btn_Container_With_Most_Water";
             this.btn_Container_With_Most_Water.Size = new System.Drawing.Size(237, 21);
             this.btn_Container_With_Most_Water.TabIndex = 53;
@@ -715,7 +716,7 @@
             // btn_Merge_Overlapping_Intervals_with_DSets
             // 
             this.btn_Merge_Overlapping_Intervals_with_DSets.Location = new System.Drawing.Point(10, 522);
-            this.btn_Merge_Overlapping_Intervals_with_DSets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Merge_Overlapping_Intervals_with_DSets.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Merge_Overlapping_Intervals_with_DSets.Name = "btn_Merge_Overlapping_Intervals_with_DSets";
             this.btn_Merge_Overlapping_Intervals_with_DSets.Size = new System.Drawing.Size(325, 26);
             this.btn_Merge_Overlapping_Intervals_with_DSets.TabIndex = 54;
@@ -726,7 +727,7 @@
             // btn_3_Sum
             // 
             this.btn_3_Sum.Location = new System.Drawing.Point(664, 336);
-            this.btn_3_Sum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_3_Sum.Margin = new System.Windows.Forms.Padding(2);
             this.btn_3_Sum.Name = "btn_3_Sum";
             this.btn_3_Sum.Size = new System.Drawing.Size(240, 25);
             this.btn_3_Sum.TabIndex = 55;
@@ -737,7 +738,7 @@
             // btn_New_Year_Chaos
             // 
             this.btn_New_Year_Chaos.Location = new System.Drawing.Point(667, 418);
-            this.btn_New_Year_Chaos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_New_Year_Chaos.Margin = new System.Windows.Forms.Padding(2);
             this.btn_New_Year_Chaos.Name = "btn_New_Year_Chaos";
             this.btn_New_Year_Chaos.Size = new System.Drawing.Size(237, 24);
             this.btn_New_Year_Chaos.TabIndex = 56;
@@ -748,7 +749,7 @@
             // btn_3_Sum_Closest
             // 
             this.btn_3_Sum_Closest.Location = new System.Drawing.Point(664, 364);
-            this.btn_3_Sum_Closest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_3_Sum_Closest.Margin = new System.Windows.Forms.Padding(2);
             this.btn_3_Sum_Closest.Name = "btn_3_Sum_Closest";
             this.btn_3_Sum_Closest.Size = new System.Drawing.Size(240, 25);
             this.btn_3_Sum_Closest.TabIndex = 57;
@@ -759,7 +760,7 @@
             // btn_Find_Intersection_of_all_Intervals
             // 
             this.btn_Find_Intersection_of_all_Intervals.Location = new System.Drawing.Point(668, 446);
-            this.btn_Find_Intersection_of_all_Intervals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_Intersection_of_all_Intervals.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_Intersection_of_all_Intervals.Name = "btn_Find_Intersection_of_all_Intervals";
             this.btn_Find_Intersection_of_all_Intervals.Size = new System.Drawing.Size(236, 27);
             this.btn_Find_Intersection_of_all_Intervals.TabIndex = 58;
@@ -770,7 +771,7 @@
             // btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix
             // 
             this.btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix.Location = new System.Drawing.Point(668, 475);
-            this.btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix.Name = "btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix";
             this.btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix.Size = new System.Drawing.Size(232, 43);
             this.btn_Count_all_possible_paths_from_top_left_to_bottom_right_of_a_mXn_matrix.TabIndex = 59;
@@ -781,7 +782,7 @@
             // btn_Number_of_flips_to_make_coin_head_or_tails
             // 
             this.btn_Number_of_flips_to_make_coin_head_or_tails.Location = new System.Drawing.Point(668, 522);
-            this.btn_Number_of_flips_to_make_coin_head_or_tails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Number_of_flips_to_make_coin_head_or_tails.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Number_of_flips_to_make_coin_head_or_tails.Name = "btn_Number_of_flips_to_make_coin_head_or_tails";
             this.btn_Number_of_flips_to_make_coin_head_or_tails.Size = new System.Drawing.Size(235, 31);
             this.btn_Number_of_flips_to_make_coin_head_or_tails.TabIndex = 60;
@@ -792,7 +793,7 @@
             // btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y
             // 
             this.btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y.Location = new System.Drawing.Point(670, 557);
-            this.btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y.Name = "btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y";
             this.btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y.Size = new System.Drawing.Size(237, 47);
             this.btn_Pair_of_groups_merge_the_group_which_matches_X_and_Y.TabIndex = 61;
@@ -803,7 +804,7 @@
             // btn_4_Sum
             // 
             this.btn_4_Sum.Location = new System.Drawing.Point(666, 390);
-            this.btn_4_Sum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_4_Sum.Margin = new System.Windows.Forms.Padding(2);
             this.btn_4_Sum.Name = "btn_4_Sum";
             this.btn_4_Sum.Size = new System.Drawing.Size(240, 25);
             this.btn_4_Sum.TabIndex = 62;
@@ -814,7 +815,7 @@
             // btn_Last_Stone_Weight
             // 
             this.btn_Last_Stone_Weight.Location = new System.Drawing.Point(670, 608);
-            this.btn_Last_Stone_Weight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Last_Stone_Weight.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Last_Stone_Weight.Name = "btn_Last_Stone_Weight";
             this.btn_Last_Stone_Weight.Size = new System.Drawing.Size(233, 27);
             this.btn_Last_Stone_Weight.TabIndex = 63;
@@ -825,7 +826,7 @@
             // btn_Contiguous_Array
             // 
             this.btn_Contiguous_Array.Location = new System.Drawing.Point(904, 2);
-            this.btn_Contiguous_Array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Contiguous_Array.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Contiguous_Array.Name = "btn_Contiguous_Array";
             this.btn_Contiguous_Array.Size = new System.Drawing.Size(179, 27);
             this.btn_Contiguous_Array.TabIndex = 64;
@@ -836,7 +837,7 @@
             // btn_Perform_String_Shifts
             // 
             this.btn_Perform_String_Shifts.Location = new System.Drawing.Point(904, 32);
-            this.btn_Perform_String_Shifts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Perform_String_Shifts.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Perform_String_Shifts.Name = "btn_Perform_String_Shifts";
             this.btn_Perform_String_Shifts.Size = new System.Drawing.Size(178, 22);
             this.btn_Perform_String_Shifts.TabIndex = 65;
@@ -847,7 +848,7 @@
             // btn_Subarray_Sum_Equals_K
             // 
             this.btn_Subarray_Sum_Equals_K.Location = new System.Drawing.Point(908, 59);
-            this.btn_Subarray_Sum_Equals_K.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Subarray_Sum_Equals_K.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Subarray_Sum_Equals_K.Name = "btn_Subarray_Sum_Equals_K";
             this.btn_Subarray_Sum_Equals_K.Size = new System.Drawing.Size(173, 24);
             this.btn_Subarray_Sum_Equals_K.TabIndex = 66;
@@ -858,7 +859,7 @@
             // btn_Counting_Elements
             // 
             this.btn_Counting_Elements.Location = new System.Drawing.Point(907, 89);
-            this.btn_Counting_Elements.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Counting_Elements.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Counting_Elements.Name = "btn_Counting_Elements";
             this.btn_Counting_Elements.Size = new System.Drawing.Size(176, 30);
             this.btn_Counting_Elements.TabIndex = 67;
@@ -869,7 +870,7 @@
             // btn_Jump_Game
             // 
             this.btn_Jump_Game.Location = new System.Drawing.Point(904, 124);
-            this.btn_Jump_Game.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Jump_Game.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Jump_Game.Name = "btn_Jump_Game";
             this.btn_Jump_Game.Size = new System.Drawing.Size(177, 29);
             this.btn_Jump_Game.TabIndex = 68;
@@ -880,7 +881,7 @@
             // btn_First_Unique_Number
             // 
             this.btn_First_Unique_Number.Location = new System.Drawing.Point(905, 157);
-            this.btn_First_Unique_Number.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_First_Unique_Number.Margin = new System.Windows.Forms.Padding(2);
             this.btn_First_Unique_Number.Name = "btn_First_Unique_Number";
             this.btn_First_Unique_Number.Size = new System.Drawing.Size(176, 25);
             this.btn_First_Unique_Number.TabIndex = 69;
@@ -891,7 +892,7 @@
             // btn_Uncrossed_Lines
             // 
             this.btn_Uncrossed_Lines.Location = new System.Drawing.Point(907, 184);
-            this.btn_Uncrossed_Lines.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Uncrossed_Lines.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Uncrossed_Lines.Name = "btn_Uncrossed_Lines";
             this.btn_Uncrossed_Lines.Size = new System.Drawing.Size(176, 24);
             this.btn_Uncrossed_Lines.TabIndex = 70;
@@ -902,7 +903,7 @@
             // btn_Random_Pick_with_Weight
             // 
             this.btn_Random_Pick_with_Weight.Location = new System.Drawing.Point(907, 212);
-            this.btn_Random_Pick_with_Weight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Random_Pick_with_Weight.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Random_Pick_with_Weight.Name = "btn_Random_Pick_with_Weight";
             this.btn_Random_Pick_with_Weight.Size = new System.Drawing.Size(176, 28);
             this.btn_Random_Pick_with_Weight.TabIndex = 71;
@@ -913,7 +914,7 @@
             // btn_Coin_Change_2
             // 
             this.btn_Coin_Change_2.Location = new System.Drawing.Point(906, 245);
-            this.btn_Coin_Change_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Coin_Change_2.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Coin_Change_2.Name = "btn_Coin_Change_2";
             this.btn_Coin_Change_2.Size = new System.Drawing.Size(175, 28);
             this.btn_Coin_Change_2.TabIndex = 72;
@@ -944,7 +945,7 @@
             // btn_Single_Number_II
             // 
             this.btn_Single_Number_II.Location = new System.Drawing.Point(911, 340);
-            this.btn_Single_Number_II.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Single_Number_II.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Single_Number_II.Name = "btn_Single_Number_II";
             this.btn_Single_Number_II.Size = new System.Drawing.Size(167, 21);
             this.btn_Single_Number_II.TabIndex = 75;
@@ -965,7 +966,7 @@
             // btn_Top_K_Frequent_Elements
             // 
             this.btn_Top_K_Frequent_Elements.Location = new System.Drawing.Point(912, 418);
-            this.btn_Top_K_Frequent_Elements.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Top_K_Frequent_Elements.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Top_K_Frequent_Elements.Name = "btn_Top_K_Frequent_Elements";
             this.btn_Top_K_Frequent_Elements.Size = new System.Drawing.Size(168, 26);
             this.btn_Top_K_Frequent_Elements.TabIndex = 77;
@@ -1016,7 +1017,7 @@
             // btn_Find_All_Duplicates_in_an_Array
             // 
             this.btn_Find_All_Duplicates_in_an_Array.Location = new System.Drawing.Point(911, 550);
-            this.btn_Find_All_Duplicates_in_an_Array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_All_Duplicates_in_an_Array.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_All_Duplicates_in_an_Array.Name = "btn_Find_All_Duplicates_in_an_Array";
             this.btn_Find_All_Duplicates_in_an_Array.Size = new System.Drawing.Size(170, 28);
             this.btn_Find_All_Duplicates_in_an_Array.TabIndex = 82;
@@ -1177,7 +1178,7 @@
             // btn_Summary_Ranges
             // 
             this.btn_Summary_Ranges.Location = new System.Drawing.Point(1089, 406);
-            this.btn_Summary_Ranges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Summary_Ranges.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Summary_Ranges.Name = "btn_Summary_Ranges";
             this.btn_Summary_Ranges.Size = new System.Drawing.Size(145, 29);
             this.btn_Summary_Ranges.TabIndex = 98;
@@ -1188,7 +1189,7 @@
             // btn_Number_of_Longest_Increasing_Subsequence
             // 
             this.btn_Number_of_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(1090, 441);
-            this.btn_Number_of_Longest_Increasing_Subsequence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Number_of_Longest_Increasing_Subsequence.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Number_of_Longest_Increasing_Subsequence.Name = "btn_Number_of_Longest_Increasing_Subsequence";
             this.btn_Number_of_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(149, 43);
             this.btn_Number_of_Longest_Increasing_Subsequence.TabIndex = 99;
@@ -1199,7 +1200,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(0, 0);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(50, 15);
             this.button3.TabIndex = 100;
@@ -1209,7 +1210,7 @@
             // btn_Find_the_Smallest_Divisor_Given_a_Threshold
             // 
             this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Location = new System.Drawing.Point(1090, 492);
-            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Name = "btn_Find_the_Smallest_Divisor_Given_a_Threshold";
             this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.Size = new System.Drawing.Size(149, 37);
             this.btn_Find_the_Smallest_Divisor_Given_a_Threshold.TabIndex = 101;
@@ -1230,7 +1231,7 @@
             // btn_Permutations_II
             // 
             this.btn_Permutations_II.Location = new System.Drawing.Point(1090, 556);
-            this.btn_Permutations_II.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Permutations_II.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Permutations_II.Name = "btn_Permutations_II";
             this.btn_Permutations_II.Size = new System.Drawing.Size(149, 32);
             this.btn_Permutations_II.TabIndex = 103;
@@ -1240,7 +1241,7 @@
             // 
             // btn_Longest_Mountain_in_Array
             // 
-            this.btn_Longest_Mountain_in_Array.Location = new System.Drawing.Point(1089, 593);
+            this.btn_Longest_Mountain_in_Array.Location = new System.Drawing.Point(1089, 590);
             this.btn_Longest_Mountain_in_Array.Name = "btn_Longest_Mountain_in_Array";
             this.btn_Longest_Mountain_in_Array.Size = new System.Drawing.Size(146, 28);
             this.btn_Longest_Mountain_in_Array.TabIndex = 104;
@@ -1248,11 +1249,22 @@
             this.btn_Longest_Mountain_in_Array.UseVisualStyleBackColor = true;
             this.btn_Longest_Mountain_in_Array.Click += new System.EventHandler(this.btn_Longest_Mountain_in_Array_Click);
             // 
+            // btn_Numbers_At_Most_N_Given_Digit_Set
+            // 
+            this.btn_Numbers_At_Most_N_Given_Digit_Set.Location = new System.Drawing.Point(1089, 622);
+            this.btn_Numbers_At_Most_N_Given_Digit_Set.Name = "btn_Numbers_At_Most_N_Given_Digit_Set";
+            this.btn_Numbers_At_Most_N_Given_Digit_Set.Size = new System.Drawing.Size(145, 23);
+            this.btn_Numbers_At_Most_N_Given_Digit_Set.TabIndex = 105;
+            this.btn_Numbers_At_Most_N_Given_Digit_Set.Text = "Numbers At Most N Given Digit Set";
+            this.btn_Numbers_At_Most_N_Given_Digit_Set.UseVisualStyleBackColor = true;
+            this.btn_Numbers_At_Most_N_Given_Digit_Set.Click += new System.EventHandler(this.btn_Numbers_At_Most_N_Given_Digit_Set_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 682);
+            this.Controls.Add(this.btn_Numbers_At_Most_N_Given_Digit_Set);
             this.Controls.Add(this.btn_Longest_Mountain_in_Array);
             this.Controls.Add(this.btn_Permutations_II);
             this.Controls.Add(this.btn_Valid_Square);
@@ -1469,5 +1481,6 @@
         private System.Windows.Forms.Button btn_Valid_Square;
         private System.Windows.Forms.Button btn_Permutations_II;
         private System.Windows.Forms.Button btn_Longest_Mountain_in_Array;
+        private System.Windows.Forms.Button btn_Numbers_At_Most_N_Given_Digit_Set;
     }
 }
