@@ -1782,6 +1782,9 @@ namespace WindowsFormsApplication3
                 11111 = 1111 * 10 + 1 We only need to store remainders modulo K.
                    Hide Hint #2  
                 If we never get a remainder of 0, why would that happen, and how would we know that?
+             
+                Time Complexity         : O(K)
+                Space Complexity        : O(1)
              */
 
 
