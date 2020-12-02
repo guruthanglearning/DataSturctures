@@ -5356,6 +5356,84 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Linked_List_Random_Node_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a singly linked list, return a random node's value from the linked list. Each node must have the same probability of being chosen.
+
+                Follow up:
+                What if the linked list is extremely large and its length is unknown to you? Could you solve this efficiently without using extra space?
+
+                Example:
+
+                // Init a singly linked list [1,2,3].
+                ListNode head = new ListNode(1);
+                head.next = new ListNode(2);
+                head.next.next = new ListNode(3);
+                Solution solution = new Solution(head);
+
+                // getRandom() should return either 1, 2, or 3 randomly. Each element should have equal probability of returning.
+                solution.getRandom();
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1,2,3 }), Find = 3 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1 }), Find = 3});
+           
+
+            foreach (var input in inputs)
+            {
+                RandonLinkListSolution s = new RandonLinkListSolution(input.Node1);
+                StringBuilder temp = new StringBuilder();
+                for (int i = 1; i <= input.Find;i++)
+                {
+                    temp.AppendLine($"{s.GetRandom()}");
+                }
+                result.AppendLine($"Random nodes from the given linked list {this.GetListNodeData(input.Node1)} are below {Environment.NewLine}{temp.ToString()}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public class RandonLinkListSolution
+        {
+
+            Random rand = null;
+            ListNode root = null;
+
+            public RandonLinkListSolution(ListNode head)
+            {
+                rand = new Random();
+                root = head;
+
+            }
+
+            public int GetRandom()
+            {
+                int k = 0;
+                int result = 0;
+                ListNode node = root;
+                while (node != null)
+                {
+                    k++;
+
+                    if ((rand.Next() % k) == 0)
+                    {
+                        result = node.val;
+                    }
+                    node = node.next;
+                }
+
+                return result;
+            }
+        }
     }
 
 

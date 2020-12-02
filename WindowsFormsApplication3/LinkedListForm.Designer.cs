@@ -88,6 +88,7 @@
             this.btn_Linked_List_Cycle_II = new System.Windows.Forms.Button();
             this.btn_Add_Two_Numbers_II = new System.Windows.Forms.Button();
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer = new System.Windows.Forms.Button();
+            this.btn_Linked_List_Random_Node = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -716,17 +717,28 @@
             // 
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Location = new System.Drawing.Point(885, 623);
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Name = "btn_Convert_Binary_Number_in_a_Linked_List_to_Integer";
-            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Size = new System.Drawing.Size(325, 41);
+            this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Size = new System.Drawing.Size(325, 66);
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.TabIndex = 63;
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Text = "Convert Binary Number in a Linked List to Integer";
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.UseVisualStyleBackColor = true;
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer.Click += new System.EventHandler(this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer_Click);
+            // 
+            // btn_Linked_List_Random_Node
+            // 
+            this.btn_Linked_List_Random_Node.Location = new System.Drawing.Point(885, 701);
+            this.btn_Linked_List_Random_Node.Name = "btn_Linked_List_Random_Node";
+            this.btn_Linked_List_Random_Node.Size = new System.Drawing.Size(321, 42);
+            this.btn_Linked_List_Random_Node.TabIndex = 64;
+            this.btn_Linked_List_Random_Node.Text = "Linked List Random Node";
+            this.btn_Linked_List_Random_Node.UseVisualStyleBackColor = true;
+            this.btn_Linked_List_Random_Node.Click += new System.EventHandler(this.btn_Linked_List_Random_Node_Click);
             // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1671, 1049);
+            this.Controls.Add(this.btn_Linked_List_Random_Node);
             this.Controls.Add(this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer);
             this.Controls.Add(this.btn_Add_Two_Numbers_II);
             this.Controls.Add(this.btn_Linked_List_Cycle_II);
@@ -858,5 +870,6 @@
         private System.Windows.Forms.Button btn_Linked_List_Cycle_II;
         private System.Windows.Forms.Button btn_Add_Two_Numbers_II;
         private System.Windows.Forms.Button btn_Convert_Binary_Number_in_a_Linked_List_to_Integer;
+        private System.Windows.Forms.Button btn_Linked_List_Random_Node;
     }
 }
