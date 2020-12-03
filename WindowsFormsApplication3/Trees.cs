@@ -1510,7 +1510,7 @@ namespace WindowsFormsApplication3
 
         }
 
-        private Node BST(ref Node root, int data)
+        private void BST(ref Node root, int data)
         {
 
             if (root == null)
@@ -1529,8 +1529,7 @@ namespace WindowsFormsApplication3
                     BST(ref root.right, data);
                 }
             }
-
-            return root;
+            
          
         }
 
@@ -3394,6 +3393,105 @@ namespace WindowsFormsApplication3
 
             return lr + rr + root.val;
         }
+
+        private void btn_Increasing_Order_Search_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                    Given the root of a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only one right child.
+
+                    Example 1:
+                                		 5									1
+                                       /   \								 \
+                                      /     \								  2
+                                     3        6								   \		
+                                   /    \       \           					3
+                                  /      \       \							     \
+                                 2        4       8								  4
+								/				 / \							   \
+							   /				/	\								5		
+							  1				   7	 9							     \
+																					  6				
+																					   \
+																					    7
+																						 \
+																						  8
+																						   \
+																						    9
+                                        
+                    Input: root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
+                    Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
+            
+                    Example 2:
+                                         5									1
+                                       /   \								 \
+                                      /     \								  5
+                                     1       7								   \		
+                                                                                7
+                    Input: root = [5,1,7]
+                    Output: [1,null,5,null,7]
+ 
+
+                    Constraints:
+
+                    The number of nodes in the given tree will be in the range [1, 100].
+                    0 <= Node.val <= 1000
+             
+                    Time Complexity         :   O(N) where N is the number of nodes in BST
+                    Space Complexity        :   O(N)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 5, 3, 6, 2, 4,  8, 1, 7, 9 })});
+            inputs.Add(new Common() { Tree = this.CreateBST(new int[] { 5,1,7 })});
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Increasing Order Search Tree for the given BST tree {this.TraverseBinaryTree(input.Tree)} is {this.TraverseBinaryTree(this.IncreasingBST(input.Tree))}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public Node IncreasingBST(Node root)
+        {
+            if (root == null)
+                return root;
+
+
+            Node result = null;
+            InOrderTreeNode(root, ref result);
+            return result;
+        }
+
+        private void InOrderTreeNode(Node root, ref Node result)
+        {
+
+            if (root == null)
+                return;
+
+            InOrderTreeNode(root.left, ref result);
+            InsertIntoBSTForIncreasingBST(ref result, root.val);
+            InOrderTreeNode(root.right, ref result);
+        }
+
+
+        private void InsertIntoBSTForIncreasingBST(ref Node node, int data)
+        {
+
+            if (node == null)
+            {
+                node = new Node() { data = data };
+            }
+            else
+            {
+                InsertIntoBSTForIncreasingBST(ref node.right, data);
+            }
+        }
+
+
 
     }
 

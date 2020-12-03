@@ -60,6 +60,7 @@
             this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory = new System.Windows.Forms.Button();
             this.btn_Range_Sum_of_BST = new System.Windows.Forms.Button();
             this.btn_Binary_Tree_Tilt = new System.Windows.Forms.Button();
+            this.btn_Increasing_Order_Search_Tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -412,11 +413,22 @@
             this.btn_Binary_Tree_Tilt.UseVisualStyleBackColor = true;
             this.btn_Binary_Tree_Tilt.Click += new System.EventHandler(this.btn_Binary_Tree_Tilt_Click);
             // 
+            // btn_Increasing_Order_Search_Tree
+            // 
+            this.btn_Increasing_Order_Search_Tree.Location = new System.Drawing.Point(318, 818);
+            this.btn_Increasing_Order_Search_Tree.Name = "btn_Increasing_Order_Search_Tree";
+            this.btn_Increasing_Order_Search_Tree.Size = new System.Drawing.Size(225, 44);
+            this.btn_Increasing_Order_Search_Tree.TabIndex = 67;
+            this.btn_Increasing_Order_Search_Tree.Text = "Increasing Order Search Tree";
+            this.btn_Increasing_Order_Search_Tree.UseVisualStyleBackColor = true;
+            this.btn_Increasing_Order_Search_Tree.Click += new System.EventHandler(this.btn_Increasing_Order_Search_Tree_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 878);
+            this.ClientSize = new System.Drawing.Size(1805, 1196);
+            this.Controls.Add(this.btn_Increasing_Order_Search_Tree);
             this.Controls.Add(this.btn_Binary_Tree_Tilt);
             this.Controls.Add(this.btn_Range_Sum_of_BST);
             this.Controls.Add(this.btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory);
@@ -490,5 +502,6 @@
         private System.Windows.Forms.Button btn_Populating_Next_Right_Pointers_in_Each_Node_No_Memory;
         private System.Windows.Forms.Button btn_Range_Sum_of_BST;
         private System.Windows.Forms.Button btn_Binary_Tree_Tilt;
+        private System.Windows.Forms.Button btn_Increasing_Order_Search_Tree;
     }
 }
