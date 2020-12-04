@@ -1818,6 +1818,86 @@ namespace WindowsFormsApplication3
 
             return l;
         }
+
+        private void btn_The_kth_Factor_of_n_Click(object sender, EventArgs e)
+        {
+
+            /*
+             
+                Given two positive integers n and k.
+                A factor of an integer n is defined as an integer i where n % i == 0.
+                Consider a list of all factors of n sorted in ascending order, return the kth factor 
+                in this list or return -1 if n has less than k factors.
+
+                Example 1:
+                Input: n = 12, k = 3
+                Output: 3
+                Explanation: Factors list is [1, 2, 3, 4, 6, 12], the 3rd factor is 3.
+                
+                Example 2:
+                Input: n = 7, k = 2
+                Output: 7
+                Explanation: Factors list is [1, 7], the 2nd factor is 7.
+                
+                Example 3:
+                Input: n = 4, k = 4
+                Output: -1
+                Explanation: Factors list is [1, 2, 4], there is only 3 factors. We should return -1.
+                
+                Example 4:
+                Input: n = 1, k = 1
+                Output: 1
+                Explanation: Factors list is [1], the 1st factor is 1.
+                
+                Example 5:
+                Input: n = 1000, k = 3
+                Output: 4
+                Explanation: Factors list is [1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000].
+ 
+                Constraints:
+
+                1 <= k <= n <= 1000
+                   Hide Hint #1  
+                The factors of n will be always in the range [1, n].
+                   Hide Hint #2  
+                Keep a list of all factors sorted. Loop i from 1 to n and add i if n % i == 0. Return the kth factor if it exist in this list.
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+             
+             */
+
+            List<TwoInt> inputs = new List<TwoInt>();
+            inputs.Add(new TwoInt() { Input1 = 12, Input2 = 3 });
+            inputs.Add(new TwoInt() { Input1 = 7, Input2 = 2 });
+            inputs.Add(new TwoInt() { Input1 = 4, Input2 = 4 });
+            inputs.Add(new TwoInt() { Input1 = 1, Input2 = 1 });
+            inputs.Add(new TwoInt() { Input1 = 1000, Input2 = 3 });
+
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Kth factor of n for the given N :{input.Input1} and K : {input.Input2} is { this.KthFactor(input.Input1, input.Input2)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+        public int KthFactor(int n, int k)
+        {
+
+            int factCount = 0;
+            for (int i = 1; i <= n; i++) // 12 3
+            {
+                if (n % i == 0)
+                    factCount++;
+
+                if (factCount == k)
+                    return i;
+            }
+
+            return -1;
+        }
     }
 }
 
