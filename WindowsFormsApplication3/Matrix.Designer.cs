@@ -57,6 +57,8 @@
             this.btn_Search_a_2D_Matrix = new System.Windows.Forms.Button();
             this.btn_Flipping_an_Image = new System.Windows.Forms.Button();
             this.btn_Merge_Intervals = new System.Windows.Forms.Button();
+            this.btn_The_Skyline_Problem = new System.Windows.Forms.Button();
+            this.btn_Spiral_Matrix_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -376,11 +378,33 @@
             this.btn_Merge_Intervals.UseVisualStyleBackColor = true;
             this.btn_Merge_Intervals.Click += new System.EventHandler(this.btn_Merge_Intervals_Click);
             // 
+            // btn_The_Skyline_Problem
+            // 
+            this.btn_The_Skyline_Problem.Location = new System.Drawing.Point(336, 482);
+            this.btn_The_Skyline_Problem.Name = "btn_The_Skyline_Problem";
+            this.btn_The_Skyline_Problem.Size = new System.Drawing.Size(266, 48);
+            this.btn_The_Skyline_Problem.TabIndex = 105;
+            this.btn_The_Skyline_Problem.Text = "The Skyline Problem";
+            this.btn_The_Skyline_Problem.UseVisualStyleBackColor = true;
+            this.btn_The_Skyline_Problem.Click += new System.EventHandler(this.btn_The_Skyline_Problem_Click);
+            // 
+            // btn_Spiral_Matrix_II
+            // 
+            this.btn_Spiral_Matrix_II.Location = new System.Drawing.Point(336, 537);
+            this.btn_Spiral_Matrix_II.Name = "btn_Spiral_Matrix_II";
+            this.btn_Spiral_Matrix_II.Size = new System.Drawing.Size(263, 42);
+            this.btn_Spiral_Matrix_II.TabIndex = 106;
+            this.btn_Spiral_Matrix_II.Text = "Spiral Matrix II";
+            this.btn_Spiral_Matrix_II.UseVisualStyleBackColor = true;
+            this.btn_Spiral_Matrix_II.Click += new System.EventHandler(this.btn_Spiral_Matrix_II_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Spiral_Matrix_II);
+            this.Controls.Add(this.btn_The_Skyline_Problem);
             this.Controls.Add(this.btn_Merge_Intervals);
             this.Controls.Add(this.btn_Flipping_an_Image);
             this.Controls.Add(this.btn_Search_a_2D_Matrix);
@@ -449,5 +473,7 @@
         private System.Windows.Forms.Button btn_Search_a_2D_Matrix;
         private System.Windows.Forms.Button btn_Flipping_an_Image;
         private System.Windows.Forms.Button btn_Merge_Intervals;
+        private System.Windows.Forms.Button btn_The_Skyline_Problem;
+        private System.Windows.Forms.Button btn_Spiral_Matrix_II;
     }
 }

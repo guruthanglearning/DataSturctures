@@ -3474,5 +3474,349 @@ namespace WindowsFormsApplication3
             return s.ToArray<int[]>();
 
         }
+
+        private void btn_The_Skyline_Problem_Click(object sender, EventArgs e)
+        {
+            
+
+            int i = 0, ri = 0;
+            /*
+             
+             A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. 
+             Now suppose you are given the locations and height of all the buildings as shown on a cityscape photo (Figure A), 
+             write a program to output the skyline formed by these buildings collectively (Figure B).
+
+
+            The geometric information of each building is represented by a triplet of integers [Li, Ri, Hi], where Li and Ri are the x coordinates of the left and right 
+            edge of the ith building, respectively, and Hi is its height. It is guaranteed that 0 ≤ Li, Ri ≤ INT_MAX, 0 < Hi ≤ INT_MAX, and Ri - Li > 0. You may assume 
+            all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
+
+            For instance, the dimensions of all buildings in Figure A are recorded as: [ [2 9 10], [3 7 15], [5 12 12], [15 20 10], [19 24 8] ] .
+
+            The output is a list of "key points" (red dots in Figure B) in the format of [ [x1,y1], [x2, y2], [x3, y3], ... ] that uniquely defines a skyline. A key point is the left endpoint of a horizontal line segment. Note that the last key point, where the rightmost building ends, is merely used to mark the termination of the skyline, and always has zero height. Also, the ground in between any two adjacent buildings should be considered part of the skyline contour.
+
+            For instance, the skyline in Figure B should be represented as:[ [2 10], [3 15], [7 12], [12 0], [15 10], [20 8], [24, 0] ].
+
+            Notes:
+
+            The number of buildings in any input list is guaranteed to be in the range [0, 10000].
+            The input list is already sorted in ascending order by the left x position Li.
+            The output list must be sorted by the x position.
+            There must be no consecutive horizontal lines of equal height in the output skyline. 
+            For instance, [...[2 3], [4 5], [7 5], [11 5], [12 7]...] is not acceptable; the three lines of height 5 should be merged into one in the final output as 
+            such: [...[2 3], [4 5], [12 7], ...]
+
+             
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                         new int[] {2,9,10},
+                                         new int[] {3,7,15},
+                                         new int[] {5,12,12},
+                                         new int[] {15,20,10},
+                                         new int[] {19,24,8}
+                                    }
+            });
+
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The Skyline Problem for the given input array : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} ");
+
+                var res = this.GetSkyline(input.Input);
+                foreach (var r in res)
+                    result.AppendLine($"{string.Join(",", r)}");
+                
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public IList<IList<int>> GetSkyline(int[][] buildings)
+        {
+            List<IList<int>> returnValue = new List<IList<int>>();
+
+            // BuildingPoint is the event. The isStart boolean will tell which kind
+            List<BuildingPoint> points = new List<BuildingPoint>();
+            for (int i = 0; i < buildings.GetLength(0); i++)
+            {
+                int x1 = buildings[i][0];
+                int x2 = buildings[i][1];
+                int y = buildings[i][2]; // in production code we should throw for y == 0
+                points.Add(new BuildingPoint(x1, y, true));
+
+                // You might think y = 0 is the right thing to add here, but we will use the
+                // y in the end event to find a corresponding start event with that y and 
+                // remove it from the priority queue
+                points.Add(new BuildingPoint(x2, y, false));
+            }
+            
+            points.Sort(buildingPointComparison);
+
+            // SortedSet and SortedDictionary are tree based.
+            // We can have multiple y's so we need a count to manage that 
+            // Right now, you can't simply use a SortedDictionary<int, int> (of y to its count)
+            // because SortedDictionary can't extract max/min in O(log n) even though it is based
+            // on SortedSet, which can extract max/min in O(log n).
+            // To use a SortedSet and keep a count as well, we use the NumberCount class and
+            // NumberCountComparer
+            SortedSet<NumberCount> setAsPriorityQueue = new SortedSet<NumberCount>(new NumberCountComparer());
+
+            // This makes it so we allways have an oldYMax in the loop. The count of 1
+            // could be anything. We will never remove this because 0 is not in the input as a height
+            setAsPriorityQueue.Add(new NumberCount(0, 1));
+
+            // Finally do what I wrote above
+            foreach (BuildingPoint point in points)
+            {
+                int oldYMax = setAsPriorityQueue.Max.number;
+                if (point.isStart)
+                {
+                    AddInSetAsPriorityQueue(setAsPriorityQueue, point.y);
+                }
+                else // the poit is an end
+                {
+                    RemoveFromSetAsPriorityQueue(setAsPriorityQueue, point.y);
+                }
+
+                int newYMax = setAsPriorityQueue.Max.number;
+                if (newYMax != oldYMax)
+                {
+                    returnValue.Add(new List<int>() { point.x, newYMax });
+                }
+            }
+
+            return returnValue;
+
+        }
+
+        private static NumberCount placeHolderNumberCount = new NumberCount(0, 0);
+
+        /// <summary>
+        /// Helper to add a new NumberCount or increment its count
+        /// </summary>
+        private static void AddInSetAsPriorityQueue(SortedSet<NumberCount> setAsPriorityQueue, int number)
+        {
+            // I wish I could use SortedDictionary. SortedSet's main scenario is Contains
+            // Extracting the object we added is not the main scenario. Thankfully GetViewBetween does that
+            placeHolderNumberCount.number = number;
+            SortedSet<NumberCount> existing = setAsPriorityQueue.GetViewBetween(placeHolderNumberCount, placeHolderNumberCount);
+
+            if (existing.Count == 1)
+            {
+                existing.Max.count++;
+            }
+            else
+            {
+                setAsPriorityQueue.Add(new NumberCount(number, 1));
+            }
+        }
+
+        /// <summary>
+        /// Helper to decrement a NumberCount or remove it when it reaches 0
+        /// </summary>
+        private static void RemoveFromSetAsPriorityQueue(SortedSet<NumberCount> setAsPriorityQueue, int number)
+        {
+            placeHolderNumberCount.number = number;
+            SortedSet<NumberCount> existing = setAsPriorityQueue.GetViewBetween(placeHolderNumberCount, placeHolderNumberCount);
+
+            // assert existing.Count == 1
+            NumberCount numberCount = existing.Max;
+            if (numberCount.count == 1)
+            {
+                setAsPriorityQueue.Remove(numberCount);
+            }
+            else
+            {
+                numberCount.count--;
+            }
+        }
+
+        private static Comparison<BuildingPoint> buildingPointComparison = (BuildingPoint first, BuildingPoint second) =>
+        {
+            if (first.x != second.x)
+            {
+                return first.x - second.x;
+            }
+
+            // from here forward first.x == second.x
+
+            if (first.isStart && second.isStart)
+            {
+                // Biggest y first means descending (second - first)
+                return second.y - first.y;
+            }
+
+            if (!first.isStart && !second.isStart)
+            {
+                // Smallest y first is the usual ascending (first - second)
+                return first.y - second.y;
+            }
+
+            // from here forward one is a start and the other is an end
+            // either second.isStart (first.isEnd will be true) ...
+            if (second.isStart)
+            {
+                return 1; // A positive value causes a swap (think first = 2, second = 1)
+                          // and the regular ascending first-second
+            }
+
+            // ...or first.isStart && second.isEnd
+            return -1; // causes first and second to remain as they are
+        };
+
+        class BuildingPoint
+        {
+            public int x;
+            public int y;
+            public bool isStart;
+            public BuildingPoint(int x, int y, bool isStart)
+            {
+                this.x = x;
+                this.y = y;
+                this.isStart = isStart;
+            }
+        }
+
+        class NumberCount
+        {
+            public int number;
+            public int count;
+            public NumberCount(int number, int count)
+            {
+                this.number = number;
+                this.count = count;
+            }
+        }
+
+        class NumberCountComparer : IComparer<NumberCount>
+        {
+            public int Compare(NumberCount first, NumberCount second)
+            {
+                return first.number - second.number;
+            }
+        }
+
+        private void btn_Spiral_Matrix_II_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a positive integer n, generate an n x n matrix filled with elements 
+                from 1 to n2 in spiral order.
+
+                    Example 1:
+                        1   2   3
+                        8   9   4
+                        7   6   5
+
+                    Input: n = 3
+                    Output: [[1,2,3],[8,9,4],[7,6,5]]
+                    Example 2:
+
+                    Input: n = 1
+                    Output: [[1]]
+ 
+
+                    Constraints:
+
+                    1 <= n <= 20
+
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int> inputs = new List<int>();
+            inputs.Add(1);
+            inputs.Add(2);
+            inputs.Add(3);
+            inputs.Add(4);
+            inputs.Add(5);
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Sprial Matrix 2 for the given matrix dimension {input} X {input}: {Environment.NewLine}{this.PrintJaggedArrayForJudeges(GenerateMatrix(input))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+        public int[][] GenerateMatrix(int n)
+        {
+
+            if (n == 0)
+                return new int[n + 1][];
+
+            int[][] result = new int[n][];
+            for (int i = 0; i < n; i++)
+                result[i] = new int[n];
+
+            int counter = 1;
+            int l = 0, r = n - 1, t = 0, d = n - 1;
+
+
+            while (true)
+            {
+                if (l > r || t > d)
+                    break;
+
+                //Left to right
+                for (int i = l; i <= r; i++)
+                {
+                    result[l][i] = counter++;
+                }
+
+                t++;
+
+                if (l > r || t > d)
+                    break;
+
+                //Top to down;
+                for (int i = t; i <= d; i++)
+                {
+                    result[i][d] = counter++;
+
+                }
+
+                r--;
+
+                if (l > r || t > d)
+                    break;
+
+                //Right to left
+                for (int i = r; i >= l; i--)
+                {
+                    result[d][i] = counter++;
+                }
+
+                d--;
+
+
+                if (l > r || t > d)
+                    break;
+
+                //down to top
+                for (int i = d; i >= t; i--)
+                {
+                    result[i][l] = counter++;
+                }
+                l++;
+
+            }
+
+            return result;
+        }
     }
 }
