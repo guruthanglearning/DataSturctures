@@ -8783,6 +8783,87 @@ namespace WindowsFormsApplication3
 
             return result + 1;
         }
+
+        private void btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60_Click(object sender, EventArgs e)
+        {
+            /*
+            You are given a list of songs where the ith song has a duration of time[i] seconds.
+
+            Return the number of pairs of songs for which their total duration in seconds is 
+            divisible by 60. Formally, we want the number of indices i, j such that i < j with 
+            (time[i] + time[j]) % 60 == 0. 
+
+            Example 1:
+            Input: time = [30,20,150,100,40]
+            Output: 3
+            Explanation: Three pairs have a total duration divisible by 60:
+            (time[0] = 30, time[2] = 150): total duration 180
+            (time[1] = 20, time[3] = 100): total duration 120
+            (time[1] = 20, time[4] = 40): total duration 60
+            
+            Example 2:
+            Input: time = [60,60,60]
+            Output: 3
+            Explanation: All three pairs have a total duration of 120, which is divisible by 60.
+ 
+
+            Constraints:
+
+            1 <= time.length <= 6 * 104
+            1 <= time[i] <= 500
+               Hide Hint #1  
+            We only need to consider each song length modulo 60.
+               Hide Hint #2  
+            We can count the number of songs with (length % 60) equal to r, and store that in an array of size 60.
+ 
+            Time Complexity     : O(N)
+            Space Complexity    : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 30, 20, 150, 100, 40 });
+            inputs.Add(new int[] { 60,60,60 });
+        
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Pairs of Songs With Total Durations Divisible by 60 for the given array {string.Join(",",input)} is {this.NumPairsDivisibleBy60(input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int NumPairsDivisibleBy60(int[] time)
+        {
+            if (time == null || time.Length == 0)
+                return 0;
+
+            int result = 0;
+            int[] dict = new int[60];
+            int temp = 0;
+            // result = 2;
+           //30 - 2     20 - 1  40 -2
+
+            foreach (int i in time)
+            {
+                temp = i % 60;
+
+                if (temp == 0)
+                    result += dict[temp];
+                else
+                    result += dict[60 - temp];
+
+                dict[temp]++;
+
+            }
+
+            return result;
+
+        }
     }
 }
 

@@ -132,6 +132,7 @@
             this.btn_Permutations_II = new System.Windows.Forms.Button();
             this.btn_Longest_Mountain_in_Array = new System.Windows.Forms.Button();
             this.btn_Numbers_At_Most_N_Given_Digit_Set = new System.Windows.Forms.Button();
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1208,11 +1209,22 @@
             this.btn_Numbers_At_Most_N_Given_Digit_Set.UseVisualStyleBackColor = true;
             this.btn_Numbers_At_Most_N_Given_Digit_Set.Click += new System.EventHandler(this.btn_Numbers_At_Most_N_Given_Digit_Set_Click);
             // 
+            // btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60
+            // 
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Location = new System.Drawing.Point(15, 983);
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Name = "btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60";
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Size = new System.Drawing.Size(268, 59);
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.TabIndex = 106;
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Text = "Pairs of Songs With Total Durations Divisible by 60";
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.UseVisualStyleBackColor = true;
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Click += new System.EventHandler(this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1049);
+            this.Controls.Add(this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60);
             this.Controls.Add(this.btn_Numbers_At_Most_N_Given_Digit_Set);
             this.Controls.Add(this.btn_Longest_Mountain_in_Array);
             this.Controls.Add(this.btn_Permutations_II);
@@ -1430,5 +1442,6 @@
         private System.Windows.Forms.Button btn_Permutations_II;
         private System.Windows.Forms.Button btn_Longest_Mountain_in_Array;
         private System.Windows.Forms.Button btn_Numbers_At_Most_N_Given_Digit_Set;
+        private System.Windows.Forms.Button btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60;
     }
 }
