@@ -133,6 +133,7 @@
             this.btn_Longest_Mountain_in_Array = new System.Windows.Forms.Button();
             this.btn_Numbers_At_Most_N_Given_Digit_Set = new System.Windows.Forms.Button();
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60 = new System.Windows.Forms.Button();
+            this.btn_Can_Place_Flowers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1219,11 +1220,22 @@
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.UseVisualStyleBackColor = true;
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Click += new System.EventHandler(this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60_Click);
             // 
+            // btn_Can_Place_Flowers
+            // 
+            this.btn_Can_Place_Flowers.Location = new System.Drawing.Point(289, 983);
+            this.btn_Can_Place_Flowers.Name = "btn_Can_Place_Flowers";
+            this.btn_Can_Place_Flowers.Size = new System.Drawing.Size(242, 59);
+            this.btn_Can_Place_Flowers.TabIndex = 107;
+            this.btn_Can_Place_Flowers.Text = "Can Place Flowers";
+            this.btn_Can_Place_Flowers.UseVisualStyleBackColor = true;
+            this.btn_Can_Place_Flowers.Click += new System.EventHandler(this.btn_Can_Place_Flowers_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1049);
+            this.Controls.Add(this.btn_Can_Place_Flowers);
             this.Controls.Add(this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60);
             this.Controls.Add(this.btn_Numbers_At_Most_N_Given_Digit_Set);
             this.Controls.Add(this.btn_Longest_Mountain_in_Array);
@@ -1443,5 +1455,6 @@
         private System.Windows.Forms.Button btn_Longest_Mountain_in_Array;
         private System.Windows.Forms.Button btn_Numbers_At_Most_N_Given_Digit_Set;
         private System.Windows.Forms.Button btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60;
+        private System.Windows.Forms.Button btn_Can_Place_Flowers;
     }
 }
