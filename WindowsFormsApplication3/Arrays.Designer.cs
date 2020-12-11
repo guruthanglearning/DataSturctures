@@ -135,6 +135,7 @@
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60 = new System.Windows.Forms.Button();
             this.btn_Can_Place_Flowers = new System.Windows.Forms.Button();
             this.btn_Remove_Duplicates_from_Sorted_Array_II = new System.Windows.Forms.Button();
+            this.btn_Valid_Mountain_Array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1241,11 +1242,22 @@
             this.btn_Remove_Duplicates_from_Sorted_Array_II.UseVisualStyleBackColor = true;
             this.btn_Remove_Duplicates_from_Sorted_Array_II.Click += new System.EventHandler(this.btn_Remove_Duplicates_from_Sorted_Array_II_Click);
             // 
+            // btn_Valid_Mountain_Array
+            // 
+            this.btn_Valid_Mountain_Array.Location = new System.Drawing.Point(739, 983);
+            this.btn_Valid_Mountain_Array.Name = "btn_Valid_Mountain_Array";
+            this.btn_Valid_Mountain_Array.Size = new System.Drawing.Size(213, 54);
+            this.btn_Valid_Mountain_Array.TabIndex = 109;
+            this.btn_Valid_Mountain_Array.Text = "Valid Mountain Array";
+            this.btn_Valid_Mountain_Array.UseVisualStyleBackColor = true;
+            this.btn_Valid_Mountain_Array.Click += new System.EventHandler(this.btn_Valid_Mountain_Array_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1049);
+            this.Controls.Add(this.btn_Valid_Mountain_Array);
             this.Controls.Add(this.btn_Remove_Duplicates_from_Sorted_Array_II);
             this.Controls.Add(this.btn_Can_Place_Flowers);
             this.Controls.Add(this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60);
@@ -1469,5 +1481,6 @@
         private System.Windows.Forms.Button btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60;
         private System.Windows.Forms.Button btn_Can_Place_Flowers;
         private System.Windows.Forms.Button btn_Remove_Duplicates_from_Sorted_Array_II;
+        private System.Windows.Forms.Button btn_Valid_Mountain_Array;
     }
 }

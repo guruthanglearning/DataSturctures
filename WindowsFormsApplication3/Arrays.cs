@@ -8997,11 +8997,9 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 1, 1, 1, 2, 2, 3 });
             inputs.Add(new int[] { 0, 0, 1, 1, 1, 1, 2, 3, 3 });
            
-
-
             foreach (var input in inputs)
             {                
-                result.AppendLine($"Remove Duplicates from Sorted Array II for the given input {string.Join(",", input)} is {this.RemoveDuplicates(input)} and after removal of array {string.Join(", ", input)}");
+                result.AppendLine($"Remove Duplicates from Sorted Array II for the given input {string.Join(",", input)} is {this.RemoveDuplicates(input)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -9031,6 +9029,91 @@ namespace WindowsFormsApplication3
             return nums.Length;
 
         }
+
+        private void btn_Valid_Mountain_Array_Click(object sender, EventArgs e)
+        {
+            /*
+             Given an array of integers arr, return true if and only if it is a valid mountain array.
+                
+            Recall that arr is a mountain array if and only if:
+
+            arr.length >= 3
+            There exists some i with 0 < i < arr.length - 1 such that:
+            arr[0] < arr[1] < ... < arr[i - 1] < A[i]
+            arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+
+            Example 1:
+            Input: arr = [2,1]
+            Output: false
+            
+            Example 2:
+            Input: arr = [3,5,5]
+            Output: false
+            
+            Example 3:
+            Input: arr = [0,3,2,1]
+            Output: true
+ 
+
+            Constraints:
+            1 <= arr.length <= 104
+            0 <= arr[i] <= 104
+               Hide Hint #1  
+            It's very easy to keep track of a monotonically increasing or decreasing ordering of elements. 
+            You just need to be able to determine the start of the valley in the mountain and from that point 
+            onwards, it should be a valley i.e. no mini-hills after that. Use this information in regards to 
+            the values in the array and you will be able to come up with a straightforward solution.
+             
+               Time Complexity     : O(N)
+               Space Complexity    : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 2, 1 });
+            inputs.Add(new int[] { 3, 5, 5 });
+            inputs.Add(new int[] { 0, 3, 2, 1 });
+            inputs.Add(new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
+            inputs.Add(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });    
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Mountain array {(this.ValidMountainArray(input) ? "" :"not ")} exists for the given input array {string.Join(",", input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public bool ValidMountainArray(int[] arr)
+        {
+            if (arr == null || arr.Length < 3 || arr[0] >= arr[1])
+                return false;
+
+            bool isDipExists = false;
+
+            int i = 0;
+            for (; i < arr.Length - 1; i++)
+            {
+                if (!isDipExists)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        isDipExists = true;
+                    }
+                    else if (arr[i] == arr[i + 1])
+                        return false;
+                }
+                else
+                {
+                    if (arr[i] <= arr[i + 1])
+                        return false;
+                }
+            }
+            return isDipExists && true;
+        }
+
+
     }
 }
 
