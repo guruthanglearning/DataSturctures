@@ -134,6 +134,7 @@
             this.btn_Numbers_At_Most_N_Given_Digit_Set = new System.Windows.Forms.Button();
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60 = new System.Windows.Forms.Button();
             this.btn_Can_Place_Flowers = new System.Windows.Forms.Button();
+            this.btn_Remove_Duplicates_from_Sorted_Array_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1230,11 +1231,22 @@
             this.btn_Can_Place_Flowers.UseVisualStyleBackColor = true;
             this.btn_Can_Place_Flowers.Click += new System.EventHandler(this.btn_Can_Place_Flowers_Click);
             // 
+            // btn_Remove_Duplicates_from_Sorted_Array_II
+            // 
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.Location = new System.Drawing.Point(537, 986);
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.Name = "btn_Remove_Duplicates_from_Sorted_Array_II";
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.Size = new System.Drawing.Size(195, 56);
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.TabIndex = 108;
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.Text = "Remove Duplicates from Sorted Array II";
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.UseVisualStyleBackColor = true;
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.Click += new System.EventHandler(this.btn_Remove_Duplicates_from_Sorted_Array_II_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1049);
+            this.Controls.Add(this.btn_Remove_Duplicates_from_Sorted_Array_II);
             this.Controls.Add(this.btn_Can_Place_Flowers);
             this.Controls.Add(this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60);
             this.Controls.Add(this.btn_Numbers_At_Most_N_Given_Digit_Set);
@@ -1456,5 +1468,6 @@
         private System.Windows.Forms.Button btn_Numbers_At_Most_N_Given_Digit_Set;
         private System.Windows.Forms.Button btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60;
         private System.Windows.Forms.Button btn_Can_Place_Flowers;
+        private System.Windows.Forms.Button btn_Remove_Duplicates_from_Sorted_Array_II;
     }
 }
