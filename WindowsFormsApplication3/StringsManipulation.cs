@@ -6462,7 +6462,10 @@ namespace WindowsFormsApplication3
                     Constraints:
 
                     1 <= s.length <= 16
-                    s contains only lowercase English letters.             
+                    s contains only lowercase English letters.          
+            
+                    Time Complexity         : O(N 2^n) exponential
+                    Space Complexity        : O(N)
              
              */
 
