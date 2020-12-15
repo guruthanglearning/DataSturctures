@@ -6351,6 +6351,207 @@ namespace WindowsFormsApplication3
             return result.Count;
 
         }
+
+        private void btn_Basic_Calculator_II_Click(object sender, EventArgs e)
+        {
+            /*
+             
+
+                Un completed solution and needs to be worked on
+                Implement a basic calculator to evaluate a simple expression string.
+
+                The expression string contains only non-negative integers, +, -, *, / operators and empty spaces . The integer division should truncate toward zero.
+
+                Example 1:
+
+                Input: "3+2*2"
+                Output: 7
+                Example 2:
+
+                Input: " 3/2 "
+                Output: 1
+                Example 3:
+
+                Input: " 3+5 / 2 "
+                Output: 5
+                Note:
+
+                You may assume that the given expression is always valid.
+                Do not use the eval built-in library function.
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            //inputs.Add("3+2*2");
+            //inputs.Add("3+2*2");
+            //inputs.Add(" 3/2 ");
+            inputs.Add(" 3+5 / 2 ");
+            //inputs.Add("1");
+            //inputs.Add("42");
+            //inputs.Add("1337");
+
+            foreach (string input in inputs)
+            {
+                result.AppendLine($"Basic calculator value for the given string {string.Join(",", input)}  is {Calculate(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int Calculate(String s)
+        {
+            if (string.IsNullOrWhiteSpace(s)) 
+                return 0;
+            int length = s.Length;
+            int currentNumber = 0,  // 2
+            lastNumber = 0,         // 3
+            result = 0;             // 0
+            char operation = '+';  // + 
+
+            for (int i = 0; i < length; i++)
+            {                
+                char currentChar = s[i];
+                if (currentChar == ' ')
+                    continue;
+                else if (char.IsNumber(currentChar))
+                {
+                    currentNumber = (currentNumber * 10) + (currentChar - '0');
+                }
+                if (!char.IsNumber(currentChar) && !char.IsNumber(currentChar) || i == length - 1)
+                {
+                    if (operation == '+' || operation == '-')
+                    {
+                        result += lastNumber;
+                        lastNumber = (operation == '+') ? currentNumber : -currentNumber;
+                    }
+                    else if (operation == '*')
+                    {
+                        lastNumber = lastNumber * currentNumber;
+                    }
+                    else if (operation == '/')
+                    {
+                        lastNumber = lastNumber / currentNumber;
+                    }
+                    operation = currentChar;
+                    currentNumber = 0;
+                }
+            }
+
+            result += lastNumber;
+            return result;
+        }
+
+        private void btn_Palindrome_Partitioning_Click(object sender, EventArgs e)
+        {
+            /*
+                    Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
+
+                    A palindrome string is a string that reads the same backward as forward.
+
+                    Example 1:
+                    Input: s = "aab"
+                    Output: [["a","a","b"],["aa","b"]]
+                    
+                    Example 2:
+                    Input: s = "a"
+                    Output: [["a"]]
+ 
+                    Constraints:
+
+                    1 <= s.length <= 16
+                    s contains only lowercase English letters.             
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            //inputs.Add("aab");
+            //inputs.Add("a");
+            inputs.Add("abbab");
+            
+
+            foreach (string input in inputs)
+            {
+                var res = this.Partition(input);
+                result.AppendLine($"Palindrome Partitioning for the given string {string.Join(",", input)}  is ");
+                foreach (var r in res)
+                {
+                    result.AppendLine($"{string.Join(",",r)}");
+                }                                
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public IList<IList<string>> Partition(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return new List<IList<string>>();
+
+            List<IList<string>> result = new List<IList<string>>();
+            GeneratePartition(s, new List<string>(), ref result);
+            return result;
+
+
+        }
+
+
+        private void GeneratePartition(string s, List<string> current, ref List<IList<string>> result)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                result.Add(new List<string>(current));
+                
+            }
+
+            string left = string.Empty;
+            string right = string.Empty;
+
+            for (int i = 1; i <= s.Length; i++)
+            {
+
+                left = s.Substring(0, i);
+                right = s.Substring(i);
+
+                if (IsPalindromeForStringPartition(left))
+                {
+                    var copy = new List<string>(current);
+                    copy.Add(left);
+                    GeneratePartition(right, copy, ref result);                    
+                    
+                }
+            }
+
+
+        }
+
+
+
+        private bool IsPalindromeForStringPartition(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return false;
+
+            int i = 0;
+            int j = s.Length - 1;
+
+            while (i <= j)
+            {
+                if (s[i] != s[j])
+                    return false;
+                i++;
+                j--;
+            }
+
+            return true;
+
+        }
     }
 }
 

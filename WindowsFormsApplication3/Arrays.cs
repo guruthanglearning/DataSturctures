@@ -8932,7 +8932,7 @@ namespace WindowsFormsApplication3
                     prev = i == 0 ? 0 : flowerbed[i - 1];
                     next = i == len - 1 ? 0 : flowerbed[i + 1];
 
-                    if ((prev | next) == 0)
+                    if ((prev + next) == 0)
                     {
                         flowerbed[i] = 1;
                         result++;
