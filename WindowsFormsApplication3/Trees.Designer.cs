@@ -62,6 +62,7 @@
             this.btn_Binary_Tree_Tilt = new System.Windows.Forms.Button();
             this.btn_Increasing_Order_Search_Tree = new System.Windows.Forms.Button();
             this.btn_Binary_Search_Tree_Iterator = new System.Windows.Forms.Button();
+            this.btn_Validate_Binary_Search_Tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -434,11 +435,22 @@
             this.btn_Binary_Search_Tree_Iterator.UseVisualStyleBackColor = true;
             this.btn_Binary_Search_Tree_Iterator.Click += new System.EventHandler(this.btn_Binary_Search_Tree_Iterator_Click);
             // 
+            // btn_Validate_Binary_Search_Tree
+            // 
+            this.btn_Validate_Binary_Search_Tree.Location = new System.Drawing.Point(324, 869);
+            this.btn_Validate_Binary_Search_Tree.Name = "btn_Validate_Binary_Search_Tree";
+            this.btn_Validate_Binary_Search_Tree.Size = new System.Drawing.Size(216, 49);
+            this.btn_Validate_Binary_Search_Tree.TabIndex = 69;
+            this.btn_Validate_Binary_Search_Tree.Text = " Validate Binary Search Tree";
+            this.btn_Validate_Binary_Search_Tree.UseVisualStyleBackColor = true;
+            this.btn_Validate_Binary_Search_Tree.Click += new System.EventHandler(this.btn_Validate_Binary_Search_Tree_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 1050);
+            this.Controls.Add(this.btn_Validate_Binary_Search_Tree);
             this.Controls.Add(this.btn_Binary_Search_Tree_Iterator);
             this.Controls.Add(this.btn_Increasing_Order_Search_Tree);
             this.Controls.Add(this.btn_Binary_Tree_Tilt);
@@ -516,5 +528,6 @@
         private System.Windows.Forms.Button btn_Binary_Tree_Tilt;
         private System.Windows.Forms.Button btn_Increasing_Order_Search_Tree;
         private System.Windows.Forms.Button btn_Binary_Search_Tree_Iterator;
+        private System.Windows.Forms.Button btn_Validate_Binary_Search_Tree;
     }
 }

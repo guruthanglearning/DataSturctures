@@ -3010,7 +3010,8 @@ namespace WindowsFormsApplication3
         {
             /*
 
-            Given the root of a binary tree, find the maximum value V for which there exist different nodes A and B where V = |A.val - B.val| and A is an ancestor of B.
+            Given the root of a binary tree, find the maximum value V for which there exist different nodes A and B where V = |A.val - B.val| and 
+            A is an ancestor of B.
 
             A node A is an ancestor of B if either: any child of A is equal to B, or any child of A is an ancestor of B.
 
@@ -3122,6 +3123,15 @@ namespace WindowsFormsApplication3
 
                Example 1:
 
+
+                                            1
+                                       /        \
+                                      /          \
+                                     2----------> 3
+                                  /    \         /   \           
+                                 /      \       /     \
+                                4------>5----> 6------>7
+                                      
 
 
                Input: root = [1,2,3,4,5,6,7]
@@ -3262,8 +3272,7 @@ namespace WindowsFormsApplication3
                 result += GetRangeSum(root.left, l, h);            
             else 
                 result += GetRangeSum(root.right, l, h);
-        
-           
+            
             return result;
 
         }
@@ -3274,7 +3283,9 @@ namespace WindowsFormsApplication3
             
             Given the root of a binary tree, return the sum of every tree node's tilt.
 
-            The tilt of a tree node is the absolute difference between the sum of all left subtree node values and all right subtree node values. If a node does not have a left child, then the sum of the left subtree node values is treated as 0. The rule is similar if there the node does not have a right child.
+            The tilt of a tree node is the absolute difference between the sum of all left subtree node values and all right subtree node values. 
+            If a node does not have a left child, then the sum of the left subtree node values is treated as 0. The rule is similar if there the node does not have a
+            right child.
 
  
 
@@ -3612,6 +3623,87 @@ namespace WindowsFormsApplication3
             }
         }
 
+        private void btn_Validate_Binary_Search_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+                Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+                A valid BST is defined as follows:
+
+                The left subtree of a node contains only nodes with keys less than the node's key.
+                The right subtree of a node contains only nodes with keys greater than the node's key.
+                Both the left and right subtrees must also be binary search trees.
+ 
+
+                Example 1:
+                                            2
+                                        /       \
+                                       /         \
+                                      1          3
+
+
+
+                Input: root = [2,1,3]
+                Output: true
+                
+                Example 2:
+
+                                            5
+                                        /       \
+                                       /         \
+                                      1           4
+                                                /   \
+                                               /     \
+                                              3       6
+
+                Input: root = [5,1,4,null,null,3,6]
+                Output: false
+                Explanation: The root node's value is 5 but its right child's value is 4.
+ 
+
+                Constraints:
+
+                The number of nodes in the tree is in the range [1, 104].
+                -231 <= Node.val <= 231 - 1
+             
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 2,1,3 }) });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 5, 1, 4, null, null, 3, 6 }) });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1,1}) });
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Given BST tree {this.TraverseBinaryTree(input.Tree)} is {(this.IsValidBST(input.Tree) ? "" : "not")} BST Tree");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public bool IsValidBST(Node root)
+        {
+
+            if (root == null)
+                return false;
+
+            return IsBST(root, long.MinValue, long.MaxValue);
+        }
+
+        public bool IsBST(Node root, long min, long max)
+        {
+            if (root == null)
+                return true;
+
+            if (min < root.val && root.val < max)
+                return (IsBST(root.left, min, root.val) && IsBST(root.right, root.val, max));
+
+            return false;
+        }
     }
 
 }

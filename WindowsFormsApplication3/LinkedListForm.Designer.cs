@@ -61,7 +61,6 @@
             this.Check_whether_BST_contains_Dead_End_or_not = new System.Windows.Forms.Button();
             this.ConnectNodes = new System.Windows.Forms.Button();
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree = new System.Windows.Forms.Button();
-            this.btnBinary_Tree_Is_BST = new System.Windows.Forms.Button();
             this.btn_Clone_a_linked_list_with_next_and_random_pointer = new System.Windows.Forms.Button();
             this.btn_Clone_a_linked_list_with_next_pointer = new System.Windows.Forms.Button();
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree = new System.Windows.Forms.Button();
@@ -445,16 +444,6 @@
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.UseVisualStyleBackColor = true;
             this.btnDistance_of_two_nodes_in_Binary_Search_Tree.Click += new System.EventHandler(this.btnDistance_of_two_nodes_in_Binary_Search_Tree_Click);
             // 
-            // btnBinary_Tree_Is_BST
-            // 
-            this.btnBinary_Tree_Is_BST.Location = new System.Drawing.Point(14, 682);
-            this.btnBinary_Tree_Is_BST.Name = "btnBinary_Tree_Is_BST";
-            this.btnBinary_Tree_Is_BST.Size = new System.Drawing.Size(472, 43);
-            this.btnBinary_Tree_Is_BST.TabIndex = 37;
-            this.btnBinary_Tree_Is_BST.Text = "Binary Tree Is BST";
-            this.btnBinary_Tree_Is_BST.UseVisualStyleBackColor = true;
-            this.btnBinary_Tree_Is_BST.Click += new System.EventHandler(this.btnBinary_Tree_Is_BST_Click);
-            // 
             // btn_Clone_a_linked_list_with_next_and_random_pointer
             // 
             this.btn_Clone_a_linked_list_with_next_and_random_pointer.Location = new System.Drawing.Point(1222, 872);
@@ -477,7 +466,7 @@
             // 
             // btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree
             // 
-            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(14, 731);
+            this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Location = new System.Drawing.Point(16, 678);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Name = "btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree";
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.Size = new System.Drawing.Size(471, 48);
             this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree.TabIndex = 40;
@@ -487,7 +476,7 @@
             // 
             // btn_Build_Binary_Tree_for_the_given_arithmatic_expression
             // 
-            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(10, 785);
+            this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Location = new System.Drawing.Point(12, 732);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Name = "btn_Build_Binary_Tree_for_the_given_arithmatic_expression";
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.Size = new System.Drawing.Size(472, 51);
             this.btn_Build_Binary_Tree_for_the_given_arithmatic_expression.TabIndex = 41;
@@ -518,7 +507,7 @@
             // 
             // btn_Robbing_a_home_3
             // 
-            this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(15, 842);
+            this.btn_Robbing_a_home_3.Location = new System.Drawing.Point(17, 789);
             this.btn_Robbing_a_home_3.Name = "btn_Robbing_a_home_3";
             this.btn_Robbing_a_home_3.Size = new System.Drawing.Size(466, 51);
             this.btn_Robbing_a_home_3.TabIndex = 44;
@@ -538,7 +527,7 @@
             // 
             // btn_Searilzing_and_De_serialzing_Binary_Tree
             // 
-            this.btn_Searilzing_and_De_serialzing_Binary_Tree.Location = new System.Drawing.Point(14, 897);
+            this.btn_Searilzing_and_De_serialzing_Binary_Tree.Location = new System.Drawing.Point(16, 844);
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.Name = "btn_Searilzing_and_De_serialzing_Binary_Tree";
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.Size = new System.Drawing.Size(471, 40);
             this.btn_Searilzing_and_De_serialzing_Binary_Tree.TabIndex = 46;
@@ -548,7 +537,7 @@
             // 
             // btn_Count_the_number_of_unival_subtrees
             // 
-            this.btn_Count_the_number_of_unival_subtrees.Location = new System.Drawing.Point(12, 943);
+            this.btn_Count_the_number_of_unival_subtrees.Location = new System.Drawing.Point(14, 890);
             this.btn_Count_the_number_of_unival_subtrees.Name = "btn_Count_the_number_of_unival_subtrees";
             this.btn_Count_the_number_of_unival_subtrees.Size = new System.Drawing.Size(471, 45);
             this.btn_Count_the_number_of_unival_subtrees.TabIndex = 47;
@@ -765,7 +754,6 @@
             this.Controls.Add(this.btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree);
             this.Controls.Add(this.btn_Clone_a_linked_list_with_next_pointer);
             this.Controls.Add(this.btn_Clone_a_linked_list_with_next_and_random_pointer);
-            this.Controls.Add(this.btnBinary_Tree_Is_BST);
             this.Controls.Add(this.btnDistance_of_two_nodes_in_Binary_Search_Tree);
             this.Controls.Add(this.ConnectNodes);
             this.Controls.Add(this.Check_whether_BST_contains_Dead_End_or_not);
@@ -843,7 +831,6 @@
         private System.Windows.Forms.Button Check_whether_BST_contains_Dead_End_or_not;
         private System.Windows.Forms.Button ConnectNodes;
         private System.Windows.Forms.Button btnDistance_of_two_nodes_in_Binary_Search_Tree;
-        private System.Windows.Forms.Button btnBinary_Tree_Is_BST;
         private System.Windows.Forms.Button btn_Clone_a_linked_list_with_next_and_random_pointer;
         private System.Windows.Forms.Button btn_Clone_a_linked_list_with_next_pointer;
         private System.Windows.Forms.Button btn_Sum_of_the_nodes_at_each_level_in_a_Binary_tree;
