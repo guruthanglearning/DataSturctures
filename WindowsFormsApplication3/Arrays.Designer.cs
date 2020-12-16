@@ -136,6 +136,7 @@
             this.btn_Can_Place_Flowers = new System.Windows.Forms.Button();
             this.btn_Remove_Duplicates_from_Sorted_Array_II = new System.Windows.Forms.Button();
             this.btn_Valid_Mountain_Array = new System.Windows.Forms.Button();
+            this.btn_Squares_of_a_Sorted_Array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1214,7 +1215,7 @@
             // 
             // btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60
             // 
-            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Location = new System.Drawing.Point(15, 983);
+            this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Location = new System.Drawing.Point(1865, 3);
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Name = "btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60";
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.Size = new System.Drawing.Size(268, 59);
             this.btn_Pairs_of_Songs_With_Total_Durations_Divisible_by_60.TabIndex = 106;
@@ -1224,9 +1225,9 @@
             // 
             // btn_Can_Place_Flowers
             // 
-            this.btn_Can_Place_Flowers.Location = new System.Drawing.Point(289, 983);
+            this.btn_Can_Place_Flowers.Location = new System.Drawing.Point(1865, 70);
             this.btn_Can_Place_Flowers.Name = "btn_Can_Place_Flowers";
-            this.btn_Can_Place_Flowers.Size = new System.Drawing.Size(242, 59);
+            this.btn_Can_Place_Flowers.Size = new System.Drawing.Size(268, 35);
             this.btn_Can_Place_Flowers.TabIndex = 107;
             this.btn_Can_Place_Flowers.Text = "Can Place Flowers";
             this.btn_Can_Place_Flowers.UseVisualStyleBackColor = true;
@@ -1234,9 +1235,9 @@
             // 
             // btn_Remove_Duplicates_from_Sorted_Array_II
             // 
-            this.btn_Remove_Duplicates_from_Sorted_Array_II.Location = new System.Drawing.Point(537, 986);
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.Location = new System.Drawing.Point(1865, 111);
             this.btn_Remove_Duplicates_from_Sorted_Array_II.Name = "btn_Remove_Duplicates_from_Sorted_Array_II";
-            this.btn_Remove_Duplicates_from_Sorted_Array_II.Size = new System.Drawing.Size(195, 56);
+            this.btn_Remove_Duplicates_from_Sorted_Array_II.Size = new System.Drawing.Size(268, 56);
             this.btn_Remove_Duplicates_from_Sorted_Array_II.TabIndex = 108;
             this.btn_Remove_Duplicates_from_Sorted_Array_II.Text = "Remove Duplicates from Sorted Array II";
             this.btn_Remove_Duplicates_from_Sorted_Array_II.UseVisualStyleBackColor = true;
@@ -1244,19 +1245,30 @@
             // 
             // btn_Valid_Mountain_Array
             // 
-            this.btn_Valid_Mountain_Array.Location = new System.Drawing.Point(739, 983);
+            this.btn_Valid_Mountain_Array.Location = new System.Drawing.Point(1865, 172);
             this.btn_Valid_Mountain_Array.Name = "btn_Valid_Mountain_Array";
-            this.btn_Valid_Mountain_Array.Size = new System.Drawing.Size(213, 54);
+            this.btn_Valid_Mountain_Array.Size = new System.Drawing.Size(268, 27);
             this.btn_Valid_Mountain_Array.TabIndex = 109;
             this.btn_Valid_Mountain_Array.Text = "Valid Mountain Array";
             this.btn_Valid_Mountain_Array.UseVisualStyleBackColor = true;
             this.btn_Valid_Mountain_Array.Click += new System.EventHandler(this.btn_Valid_Mountain_Array_Click);
             // 
+            // btn_Squares_of_a_Sorted_Array
+            // 
+            this.btn_Squares_of_a_Sorted_Array.Location = new System.Drawing.Point(1865, 202);
+            this.btn_Squares_of_a_Sorted_Array.Name = "btn_Squares_of_a_Sorted_Array";
+            this.btn_Squares_of_a_Sorted_Array.Size = new System.Drawing.Size(268, 38);
+            this.btn_Squares_of_a_Sorted_Array.TabIndex = 110;
+            this.btn_Squares_of_a_Sorted_Array.Text = "Squares of a Sorted Array";
+            this.btn_Squares_of_a_Sorted_Array.UseVisualStyleBackColor = true;
+            this.btn_Squares_of_a_Sorted_Array.Click += new System.EventHandler(this.btn_Squares_of_a_Sorted_Array_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1049);
+            this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Squares_of_a_Sorted_Array);
             this.Controls.Add(this.btn_Valid_Mountain_Array);
             this.Controls.Add(this.btn_Remove_Duplicates_from_Sorted_Array_II);
             this.Controls.Add(this.btn_Can_Place_Flowers);
@@ -1482,5 +1494,6 @@
         private System.Windows.Forms.Button btn_Can_Place_Flowers;
         private System.Windows.Forms.Button btn_Remove_Duplicates_from_Sorted_Array_II;
         private System.Windows.Forms.Button btn_Valid_Mountain_Array;
+        private System.Windows.Forms.Button btn_Squares_of_a_Sorted_Array;
     }
 }
