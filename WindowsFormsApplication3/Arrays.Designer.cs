@@ -137,6 +137,7 @@
             this.btn_Remove_Duplicates_from_Sorted_Array_II = new System.Windows.Forms.Button();
             this.btn_Valid_Mountain_Array = new System.Windows.Forms.Button();
             this.btn_Squares_of_a_Sorted_Array = new System.Windows.Forms.Button();
+            this.btn_Increasing_Triplet_Subsequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1263,11 +1264,22 @@
             this.btn_Squares_of_a_Sorted_Array.UseVisualStyleBackColor = true;
             this.btn_Squares_of_a_Sorted_Array.Click += new System.EventHandler(this.btn_Squares_of_a_Sorted_Array_Click);
             // 
+            // btn_Increasing_Triplet_Subsequence
+            // 
+            this.btn_Increasing_Triplet_Subsequence.Location = new System.Drawing.Point(1865, 249);
+            this.btn_Increasing_Triplet_Subsequence.Name = "btn_Increasing_Triplet_Subsequence";
+            this.btn_Increasing_Triplet_Subsequence.Size = new System.Drawing.Size(268, 38);
+            this.btn_Increasing_Triplet_Subsequence.TabIndex = 111;
+            this.btn_Increasing_Triplet_Subsequence.Text = "Increasing Triplet Subsequence";
+            this.btn_Increasing_Triplet_Subsequence.UseVisualStyleBackColor = true;
+            this.btn_Increasing_Triplet_Subsequence.Click += new System.EventHandler(this.btn_Increasing_Triplet_Subsequence_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Increasing_Triplet_Subsequence);
             this.Controls.Add(this.btn_Squares_of_a_Sorted_Array);
             this.Controls.Add(this.btn_Valid_Mountain_Array);
             this.Controls.Add(this.btn_Remove_Duplicates_from_Sorted_Array_II);
@@ -1495,5 +1507,6 @@
         private System.Windows.Forms.Button btn_Remove_Duplicates_from_Sorted_Array_II;
         private System.Windows.Forms.Button btn_Valid_Mountain_Array;
         private System.Windows.Forms.Button btn_Squares_of_a_Sorted_Array;
+        private System.Windows.Forms.Button btn_Increasing_Triplet_Subsequence;
     }
 }

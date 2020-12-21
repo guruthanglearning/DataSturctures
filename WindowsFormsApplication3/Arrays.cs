@@ -9193,6 +9193,85 @@ namespace WindowsFormsApplication3
 
             return result;
         }
+
+        private void btn_Increasing_Triplet_Subsequence_Click(object sender, EventArgs e)
+        {
+
+            string temp = string.Concat(Enumerable.Repeat("test", 0));
+            string t = "sdfdf";
+
+            StringBuilder test = new StringBuilder();
+            
+            /*
+            
+                    Given an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists, return false.
+
+                    Example 1:
+
+                    Input: nums = [1,2,3,4,5]
+                    Output: true
+                    Explanation: Any triplet where i < j < k is valid.
+                    Example 2:
+
+                    Input: nums = [5,4,3,2,1]
+                    Output: false
+                    Explanation: No triplet exists.
+                    Example 3:
+
+                    Input: nums = [2,1,5,0,4,6]
+                    Output: true
+                    Explanation: The triplet (3, 4, 5) is valid because nums[3] == 0 < nums[4] == 4 < nums[5] == 6.
+ 
+
+                    Constraints:
+
+                    1 <= nums.length <= 105
+                    -231 <= nums[i] <= 231 - 1
+ 
+
+                    Follow up: Could you implement a solution that runs in O(n) time complexity and O(1) space complexity?
+                    
+                    Time Complexity     :   O(N)
+                    Space Complexity    :   O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 1, 2, 3, 4, 5 });
+            inputs.Add(new int[] { 5, 4, 3, 2, 1 });
+            inputs.Add(new int[] { 2, 1, 5, 0, 4, 6 });
+            
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Increasing Triplet Subsequence  {(this.IncreasingTriplet(input) ? "" : " not " )} exists for the given input array {string.Join(",", input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+        public bool IncreasingTriplet(int[] nums)
+        {
+            int left = int.MaxValue, mid = int.MaxValue;
+
+            foreach (int n in nums)
+            {
+                if (n > mid)
+                    return true;
+                else if (left < n && n < mid)
+                {
+                    mid = n;
+                }
+                else if (n < left)
+                {
+                    left = n;
+                }
+            }
+
+            return false;
+        }
     }
 }
 
