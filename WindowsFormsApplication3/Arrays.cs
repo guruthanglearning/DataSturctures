@@ -9272,6 +9272,78 @@ namespace WindowsFormsApplication3
 
             return false;
         }
+
+        private void btn_Smallest_Range_II_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array A of integers, for each integer A[i] we need to choose either x = -K or x = K, and add x to A[i] (only once).
+                After this process, we have some array B.
+                Return the smallest possible difference between the maximum value of B and the minimum value of B.
+
+                Example 1:
+                Input: A = [1], K = 0
+                Output: 0
+                Explanation: B = [1]
+
+                Example 2:
+                Input: A = [0,10], K = 2
+                Output: 6
+                Explanation: B = [2,8]
+
+                Example 3:
+                Input: A = [1,3,6], K = 3
+                Output: 3
+                Explanation: B = [4,6,3]
+
+                Note:
+                1 <= A.length <= 10000
+                0 <= A[i] <= 10000
+                0 <= K <= 10000 
+
+                Time Complexity     :   O(NlogN)
+                Space Complexity    :   O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Array2n> inputs = new List<Array2n>();
+            inputs.Add(new Array2n() { Data = new int[] {1 }, N = 0 });
+            inputs.Add(new Array2n() { Data = new int[] { 0, 10 }, N = 2 }); 
+            inputs.Add(new Array2n() { Data = new int[] { 1,3,6 }, N = 3 }); 
+            inputs.Add(new Array2n() { Data = new int[] { 2,7,2 }, N = 1 }); 
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Small Range II is {this.SmallestRangeII(input.Data, input.N)} for the given array { string.Join(",", input.Data)} and K : {input.N}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int SmallestRangeII(int[] A, int K)
+        {
+            if (A == null || A.Length == 0)
+                return 0;
+            
+            Array.Sort(A);
+
+            int min = 0;
+            int max = 0;
+            int len = A.Length;
+            int result = A[len - 1] - A[0];
+
+            for (int i = 0; i < len - 1; i++)
+            {
+                min = Math.Min(A[0] + K, A[i + 1] - K);
+                max = Math.Max(A[len - 1] - K, A[i] + K);
+                result = Math.Min(result, max - min);
+            }
+
+
+            return result;
+        }
     }
 }
 
