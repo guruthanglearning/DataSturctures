@@ -56,6 +56,7 @@
             this.btn_Mirror_Reflection = new System.Windows.Forms.Button();
             this.btn_Smallest_Integer_Divisible_by_K = new System.Windows.Forms.Button();
             this.btn_The_kth_Factor_of_n = new System.Windows.Forms.Button();
+            this.btn_Next_Greater_Element_III = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -347,11 +348,22 @@
             this.btn_The_kth_Factor_of_n.UseVisualStyleBackColor = true;
             this.btn_The_kth_Factor_of_n.Click += new System.EventHandler(this.btn_The_kth_Factor_of_n_Click);
             // 
+            // btn_Next_Greater_Element_III
+            // 
+            this.btn_Next_Greater_Element_III.Location = new System.Drawing.Point(422, 398);
+            this.btn_Next_Greater_Element_III.Name = "btn_Next_Greater_Element_III";
+            this.btn_Next_Greater_Element_III.Size = new System.Drawing.Size(267, 45);
+            this.btn_Next_Greater_Element_III.TabIndex = 89;
+            this.btn_Next_Greater_Element_III.Text = "Next Greater Element III";
+            this.btn_Next_Greater_Element_III.UseVisualStyleBackColor = true;
+            this.btn_Next_Greater_Element_III.Click += new System.EventHandler(this.btn_Next_Greater_Element_III_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 1050);
+            this.Controls.Add(this.btn_Next_Greater_Element_III);
             this.Controls.Add(this.btn_The_kth_Factor_of_n);
             this.Controls.Add(this.btn_Smallest_Integer_Divisible_by_K);
             this.Controls.Add(this.btn_Mirror_Reflection);
@@ -416,5 +428,6 @@
         private System.Windows.Forms.Button btn_Mirror_Reflection;
         private System.Windows.Forms.Button btn_Smallest_Integer_Divisible_by_K;
         private System.Windows.Forms.Button btn_The_kth_Factor_of_n;
+        private System.Windows.Forms.Button btn_Next_Greater_Element_III;
     }
 }

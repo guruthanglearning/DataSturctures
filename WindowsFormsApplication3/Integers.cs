@@ -1898,6 +1898,112 @@ namespace WindowsFormsApplication3
 
             return -1;
         }
+
+        private void btn_Next_Greater_Element_III_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a positive integer n, find the smallest integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive integer exists, return -1.
+
+                Note that the returned integer should fit in 32-bit integer, if there is a valid answer but it does not fit in 32-bit integer, return -1.
+
+ 
+
+                Example 1:
+
+                Input: n = 12
+                Output: 21
+                Example 2:
+
+                Input: n = 21
+                Output: -1
+ 
+
+                Constraints:
+
+                1 <= n <= 231 - 1
+
+
+                Time Complexity     : O(N) N is the Length of the integer
+                Space Complexity    : O(N)
+             
+             */
+
+
+            List<int> inputs = new List<int>();
+            inputs.Add(12);
+            inputs.Add(21);
+            inputs.Add(1234321);
+            inputs.Add(123456);
+            inputs.Add(12222333);
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Next Greater Element III: is { this.NextGreaterElement(input)} for the given integer value {input}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int NextGreaterElement(int n)
+        {
+            if (n == 0)
+                return n;
+
+            char[] digits = n.ToString().ToCharArray();
+
+            int j = digits.Length - 1;
+            int i = j - 1;
+            long result = 0;
+            string digitsResult = null;
+
+            while (i >= 0 && digits[i] >= digits[i + 1])
+                i--;
+
+            if (i == -1)
+                return -1;
+
+            while (j > i && digits[j] <= digits[i])
+                j--;
+
+            Swap(digits, i, j);
+            Reverse(digits, i+1);
+            digitsResult = new string(digits);
+            result = long.Parse(digitsResult);
+
+            if (result > int.MaxValue || result <= n)
+                return -1;
+            else
+                return int.Parse(digitsResult);
+
+
+        }
+
+        private void Reverse(char[] digits, int s)
+        {
+            if (digits == null || digits.Length == 0)
+                return;
+
+            int e = digits.Length - 1;
+
+
+            while (s < e)
+            {
+                Swap(digits, s, e);
+                s++;
+                e--;
+            }
+        }
+
+        private void Swap(char[] digits, int i, int j)
+        {
+            if (digits == null || digits.Length == 0)
+                return;
+
+            char t = digits[i];
+            digits[i] = digits[j];
+            digits[j] = t;
+        }
+
     }
 }
 
