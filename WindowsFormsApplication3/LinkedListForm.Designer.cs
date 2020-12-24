@@ -88,6 +88,7 @@
             this.btn_Add_Two_Numbers_II = new System.Windows.Forms.Button();
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer = new System.Windows.Forms.Button();
             this.btn_Linked_List_Random_Node = new System.Windows.Forms.Button();
+            this.btn_Swap_Nodes_in_Pairs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -714,7 +715,7 @@
             // 
             // btn_Linked_List_Random_Node
             // 
-            this.btn_Linked_List_Random_Node.Location = new System.Drawing.Point(885, 701);
+            this.btn_Linked_List_Random_Node.Location = new System.Drawing.Point(885, 694);
             this.btn_Linked_List_Random_Node.Name = "btn_Linked_List_Random_Node";
             this.btn_Linked_List_Random_Node.Size = new System.Drawing.Size(321, 42);
             this.btn_Linked_List_Random_Node.TabIndex = 64;
@@ -722,11 +723,22 @@
             this.btn_Linked_List_Random_Node.UseVisualStyleBackColor = true;
             this.btn_Linked_List_Random_Node.Click += new System.EventHandler(this.btn_Linked_List_Random_Node_Click);
             // 
+            // btn_Swap_Nodes_in_Pairs
+            // 
+            this.btn_Swap_Nodes_in_Pairs.Location = new System.Drawing.Point(885, 742);
+            this.btn_Swap_Nodes_in_Pairs.Name = "btn_Swap_Nodes_in_Pairs";
+            this.btn_Swap_Nodes_in_Pairs.Size = new System.Drawing.Size(323, 41);
+            this.btn_Swap_Nodes_in_Pairs.TabIndex = 65;
+            this.btn_Swap_Nodes_in_Pairs.Text = "Swap Nodes in Pairs";
+            this.btn_Swap_Nodes_in_Pairs.UseVisualStyleBackColor = true;
+            this.btn_Swap_Nodes_in_Pairs.Click += new System.EventHandler(this.btn_Swap_Nodes_in_Pairs_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1671, 1049);
+            this.Controls.Add(this.btn_Swap_Nodes_in_Pairs);
             this.Controls.Add(this.btn_Linked_List_Random_Node);
             this.Controls.Add(this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer);
             this.Controls.Add(this.btn_Add_Two_Numbers_II);
@@ -858,5 +870,6 @@
         private System.Windows.Forms.Button btn_Add_Two_Numbers_II;
         private System.Windows.Forms.Button btn_Convert_Binary_Number_in_a_Linked_List_to_Integer;
         private System.Windows.Forms.Button btn_Linked_List_Random_Node;
+        private System.Windows.Forms.Button btn_Swap_Nodes_in_Pairs;
     }
 }

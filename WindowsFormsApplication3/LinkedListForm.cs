@@ -5314,6 +5314,86 @@ namespace WindowsFormsApplication3
                 return result;
             }
         }
+
+        private void btn_Swap_Nodes_in_Pairs_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a linked list, swap every two adjacent nodes and return its head.
+
+                You may not modify the values in the list's nodes. Only nodes itself may be changed.
+
+                Example 1:
+
+                1->2->3->4
+                2->1->4->3
+
+                Input: head = [1,2,3,4]
+                Output: [2,1,4,3]
+                Example 2:
+
+                Input: head = []
+                Output: []
+                Example 3:
+
+                Input: head = [1]
+                Output: [1]
+ 
+
+                Constraints:
+
+                The number of nodes in the list is in the range [0, 100].
+                0 <= Node.val <= 100
+
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4 })});
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1 })});
+
+
+            foreach (var input in inputs)
+            {                
+                result.AppendLine($"Swap Nodes in Pairs from the given linked list {this.GetListNodeData(input.Node1)} is {Environment.NewLine}{this.GetListNodeData(SwapPairs(input.Node1))}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public ListNode SwapPairs(ListNode head)
+        {
+            if (head == null)
+                return head;
+            return this.Swap(head);
+        }
+
+
+        private ListNode Swap(ListNode head)
+        {
+            ListNode root = new ListNode();
+            ListNode runner = root;
+            runner.next = head;
+
+            ListNode previous = null;
+            ListNode current = null;
+
+            while (runner != null && runner.next != null && runner.next.next != null)
+            {
+                previous = runner.next;
+                current = previous.next;
+                runner.next = current;
+                previous.next = current.next;
+                current.next = previous;                
+                runner = previous;
+            }
+
+            return root.next;
+        }
     }
 
 
