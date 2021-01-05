@@ -89,6 +89,7 @@
             this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer = new System.Windows.Forms.Button();
             this.btn_Linked_List_Random_Node = new System.Windows.Forms.Button();
             this.btn_Swap_Nodes_in_Pairs = new System.Windows.Forms.Button();
+            this.btn_Remove_Duplicates_from_Sorted_List_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -733,11 +734,22 @@
             this.btn_Swap_Nodes_in_Pairs.UseVisualStyleBackColor = true;
             this.btn_Swap_Nodes_in_Pairs.Click += new System.EventHandler(this.btn_Swap_Nodes_in_Pairs_Click);
             // 
+            // btn_Remove_Duplicates_from_Sorted_List_II
+            // 
+            this.btn_Remove_Duplicates_from_Sorted_List_II.Location = new System.Drawing.Point(885, 791);
+            this.btn_Remove_Duplicates_from_Sorted_List_II.Name = "btn_Remove_Duplicates_from_Sorted_List_II";
+            this.btn_Remove_Duplicates_from_Sorted_List_II.Size = new System.Drawing.Size(322, 38);
+            this.btn_Remove_Duplicates_from_Sorted_List_II.TabIndex = 66;
+            this.btn_Remove_Duplicates_from_Sorted_List_II.Text = "Remove Duplicates from Sorted List II";
+            this.btn_Remove_Duplicates_from_Sorted_List_II.UseVisualStyleBackColor = true;
+            this.btn_Remove_Duplicates_from_Sorted_List_II.Click += new System.EventHandler(this.btn_Remove_Duplicates_from_Sorted_List_II_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1671, 1049);
+            this.Controls.Add(this.btn_Remove_Duplicates_from_Sorted_List_II);
             this.Controls.Add(this.btn_Swap_Nodes_in_Pairs);
             this.Controls.Add(this.btn_Linked_List_Random_Node);
             this.Controls.Add(this.btn_Convert_Binary_Number_in_a_Linked_List_to_Integer);
@@ -871,5 +883,6 @@
         private System.Windows.Forms.Button btn_Convert_Binary_Number_in_a_Linked_List_to_Integer;
         private System.Windows.Forms.Button btn_Linked_List_Random_Node;
         private System.Windows.Forms.Button btn_Swap_Nodes_in_Pairs;
+        private System.Windows.Forms.Button btn_Remove_Duplicates_from_Sorted_List_II;
     }
 }

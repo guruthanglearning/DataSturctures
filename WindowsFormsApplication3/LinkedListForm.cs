@@ -5394,6 +5394,100 @@ namespace WindowsFormsApplication3
 
             return root.next;
         }
+
+        private void btn_Remove_Duplicates_from_Sorted_List_II_Click(object sender, EventArgs e)
+        {
+            /*
+                Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.
+                Example 1:
+
+                Input: head = [1,2,3,3,4,4,5]
+                Output: [1,2,5]
+            
+                Example 2:
+                Input: head = [1,1,1,2,3]
+                Output: [2,3]
+ 
+                Constraints:
+
+                The number of nodes in the list is in the range [0, 300].
+                -100 <= Node.val <= 100
+                The list is guaranteed to be sorted in ascending order.
+             
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 3, 4, 4, 5 }) });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 1, 1, 2, 3 }) });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 1, 1 }) });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 2 }) });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Remove Duplicates from Sorted List II for the given {this.GetListNodeData(input.Node1)} is {Environment.NewLine}{this.GetListNodeData(DeleteDuplicates(input.Node1))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public ListNode DeleteDuplicates(ListNode head)
+        {
+            /* 1,2,3,3,4,4,5
+               1,1,1,2,3
+               1,2,2,3,3
+               1
+            */
+
+            if (head == null)
+                return head;
+
+            while (head != null && head.next != null && head.val == head.next.val)
+            {
+                head = RemoveDuplicate(head, head.val);
+            }
+
+            ListNode current = head != null ? head.next : null;
+            ListNode prev = head;
+
+
+            while (current != null)
+            {
+                if (current.next != null && current.val == current.next.val)
+                {
+                    current = RemoveDuplicate(current, current.val);
+                    prev.next = current;
+                }
+                else
+                {
+                    prev = current;
+                    current = current.next;
+                }                
+            }
+
+            return head;
+        }
+
+        public ListNode RemoveDuplicate(ListNode current, int val)
+        {
+
+            if (current == null)
+                return current;
+
+            while (current != null && current.val == val)
+            {
+                current = current.next;
+            }
+
+            return current;
+
+        }
+
     }
 
 
