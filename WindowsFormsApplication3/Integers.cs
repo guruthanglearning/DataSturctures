@@ -2004,6 +2004,77 @@ namespace WindowsFormsApplication3
             digits[j] = t;
         }
 
+        private void btn_Beautiful_Arrangement_Click(object sender, EventArgs e)
+        {
+            /*
+                Suppose you have n integers labeled 1 through n. A permutation of those n integers perm (1-indexed) is considered a beautiful arrangement if for every i (1 <= i <= n), either of the following is true:
+
+                perm[i] is divisible by i.
+                i is divisible by perm[i].
+                Given an integer n, return the number of the beautiful arrangements that you can construct.
+
+                Example 1:
+                Input: n = 2
+                Output: 2
+                Explanation: 
+                The first beautiful arrangement is [1,2]:
+                    - perm[1] = 1 is divisible by i = 1
+                    - perm[2] = 2 is divisible by i = 2
+                The second beautiful arrangement is [2,1]:
+                    - perm[1] = 2 is divisible by i = 1
+                    - i = 2 is divisible by perm[2] = 1
+                
+                Example 2:
+                Input: n = 1
+                Output: 1
+                Constraints:
+
+                1 <= n <= 15
+             
+                Time Complexity     : O(valid n! permutation)
+                Space Complexity    : O(N+1)
+
+             */
+
+
+            List<int> inputs = new List<int>();
+            inputs.Add(1);
+            inputs.Add(2);
+            inputs.Add(3);            
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Beautiful Arrangement for the given integer value {input} is { this.CountArrangement(input)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+
+        }
+
+        public int CountArrangement(int n)
+        {
+            int count = 0;
+            CountBeautifulArrangement(n, 1, new bool[n+1], ref count);
+            return count;
+        }
+
+        public void CountBeautifulArrangement(int n, int pos, bool[] visited, ref int count)
+        {
+            if (pos > n)
+                count++;
+
+            for(int i = 1; i<=n ; i++)
+            {
+                if (!visited[i] && ((pos%i) == 0 || (i % pos) == 0))
+                {
+                    visited[i] = true;
+                    CountBeautifulArrangement(n, pos + 1, visited, ref count);
+                    visited[i] = false;
+                }
+            }
+        }
     }
 }
 
