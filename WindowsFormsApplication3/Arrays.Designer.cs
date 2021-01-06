@@ -139,6 +139,7 @@
             this.btn_Squares_of_a_Sorted_Array = new System.Windows.Forms.Button();
             this.btn_Increasing_Triplet_Subsequence = new System.Windows.Forms.Button();
             this.btn_Smallest_Range_II = new System.Windows.Forms.Button();
+            this.btn_Kth_Missing_Positive_Number = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1277,7 +1278,7 @@
             // 
             // btn_Smallest_Range_II
             // 
-            this.btn_Smallest_Range_II.Location = new System.Drawing.Point(1865, 296);
+            this.btn_Smallest_Range_II.Location = new System.Drawing.Point(1865, 292);
             this.btn_Smallest_Range_II.Name = "btn_Smallest_Range_II";
             this.btn_Smallest_Range_II.Size = new System.Drawing.Size(268, 34);
             this.btn_Smallest_Range_II.TabIndex = 112;
@@ -1285,11 +1286,22 @@
             this.btn_Smallest_Range_II.UseVisualStyleBackColor = true;
             this.btn_Smallest_Range_II.Click += new System.EventHandler(this.btn_Smallest_Range_II_Click);
             // 
+            // btn_Kth_Missing_Positive_Number
+            // 
+            this.btn_Kth_Missing_Positive_Number.Location = new System.Drawing.Point(1865, 332);
+            this.btn_Kth_Missing_Positive_Number.Name = "btn_Kth_Missing_Positive_Number";
+            this.btn_Kth_Missing_Positive_Number.Size = new System.Drawing.Size(268, 37);
+            this.btn_Kth_Missing_Positive_Number.TabIndex = 113;
+            this.btn_Kth_Missing_Positive_Number.Text = "Kth Missing Positive Number";
+            this.btn_Kth_Missing_Positive_Number.UseVisualStyleBackColor = true;
+            this.btn_Kth_Missing_Positive_Number.Click += new System.EventHandler(this.btn_Kth_Missing_Positive_Number_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Kth_Missing_Positive_Number);
             this.Controls.Add(this.btn_Smallest_Range_II);
             this.Controls.Add(this.btn_Increasing_Triplet_Subsequence);
             this.Controls.Add(this.btn_Squares_of_a_Sorted_Array);
@@ -1521,5 +1533,6 @@
         private System.Windows.Forms.Button btn_Squares_of_a_Sorted_Array;
         private System.Windows.Forms.Button btn_Increasing_Triplet_Subsequence;
         private System.Windows.Forms.Button btn_Smallest_Range_II;
+        private System.Windows.Forms.Button btn_Kth_Missing_Positive_Number;
     }
 }

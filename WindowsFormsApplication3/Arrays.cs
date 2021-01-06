@@ -9344,6 +9344,115 @@ namespace WindowsFormsApplication3
 
             return result;
         }
+
+        private void btn_Kth_Missing_Positive_Number_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array arr of positive integers sorted in a strictly increasing order, and an integer k.
+                Find the kth positive integer that is missing from this array.
+
+                Example 1:
+                Input: arr = [2,3,4,7,11], k = 5
+                Output: 9
+                Explanation: The missing positive integers are [1,5,6,8,9,10,12,13,...]. The 5th missing positive integer is 9.
+                
+                Example 2:
+                Input: arr = [1,2,3,4], k = 2
+                Output: 6
+                Explanation: The missing positive integers are [5,6,7,...]. The 2nd missing positive integer is 6.
+ 
+                Constraints:
+
+                1 <= arr.length <= 1000
+                1 <= arr[i] <= 1000
+                1 <= k <= 1000
+                arr[i] < arr[j] for 1 <= i < j <= arr.length
+                
+                Hide Hint #1  
+                Keep track of how many positive numbers are missing as you scan the array.
+            
+            
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Array2n> inputs = new List<Array2n>();
+            inputs.Add(new Array2n() { Data = new int[] { 2, 3, 4, 7, 11 }, N = 5 });
+            inputs.Add(new Array2n() { Data = new int[] { 1, 2, 3, 4 }, N = 2 });
+            inputs.Add(new Array2n() { Data = new int[] { 1, 2, 4, 6 }, N = 2 });
+            
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Kth Missing Positive Number mine : {this.FindKthPositive(input.Data, input.N)}  others: {FindKthPositive_Others(input.Data,input.N)} for the given array { string.Join(",", input.Data)} and K : {input.N}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int FindKthPositive(int[] arr, int k)
+        {
+            if (arr == null || k == 0)
+                return 0;
+
+            int missingNumber = 0;
+            int arrCounter = 0;
+            int i = 1;
+            int len = arr.Length;
+            /*        
+                2,3,4,7,11  k = 5
+                1,2,3,4     k = 2
+
+                i = 6   arrCounter = 4   missingNumber = 6  k = 0
+
+            */
+
+            while (i <= arr[len - 1] + k)
+            {
+                while (arrCounter < len && i != arr[arrCounter])
+                {
+                    missingNumber = i;
+                    i++;
+                    k--;
+                    if (k == 0)
+                    {
+                        return missingNumber;
+                    }
+                }
+
+                if (arrCounter < len)
+                    arrCounter++;
+                else
+                {
+                    missingNumber = i;
+                    k--;
+                    if (k == 0)
+                    {
+                        return missingNumber;
+                    }
+                }
+
+                i++;
+
+            }
+
+            return missingNumber;
+        }
+
+        public int FindKthPositive_Others(int[] arr, int k)
+        {
+            int cntr = 0;
+            int missing = 0;
+            int answer = 0;
+            for (int i = 1; i <= 2001 && missing < k; i++, answer++)
+            {
+                if (arr[cntr] != i) missing++;
+                else if (cntr < arr.Length - 1) cntr++;
+            }
+            return answer;
+        }
     }
 }
 
