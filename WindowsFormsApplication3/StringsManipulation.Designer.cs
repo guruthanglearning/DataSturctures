@@ -113,6 +113,7 @@
             this.btn_Unique_Morse_Code_Words = new System.Windows.Forms.Button();
             this.btn_Basic_Calculator_II = new System.Windows.Forms.Button();
             this.btn_Palindrome_Partitioning = new System.Windows.Forms.Button();
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1042,11 +1043,22 @@
             this.btn_Palindrome_Partitioning.UseVisualStyleBackColor = true;
             this.btn_Palindrome_Partitioning.Click += new System.EventHandler(this.btn_Palindrome_Partitioning_Click);
             // 
+            // btn_Check_If_Two_String_Arrays_are_Equivalent
+            // 
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent.Location = new System.Drawing.Point(1671, 454);
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent.Name = "btn_Check_If_Two_String_Arrays_are_Equivalent";
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent.Size = new System.Drawing.Size(224, 34);
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent.TabIndex = 86;
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent.Text = "Check If Two String Arrays are Equivalent";
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent.UseVisualStyleBackColor = true;
+            this.btn_Check_If_Two_String_Arrays_are_Equivalent.Click += new System.EventHandler(this.btn_Check_If_Two_String_Arrays_are_Equivalent_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 849);
+            this.Controls.Add(this.btn_Check_If_Two_String_Arrays_are_Equivalent);
             this.Controls.Add(this.btn_Palindrome_Partitioning);
             this.Controls.Add(this.btn_Basic_Calculator_II);
             this.Controls.Add(this.btn_Unique_Morse_Code_Words);
@@ -1227,5 +1239,6 @@
         private System.Windows.Forms.Button btn_Unique_Morse_Code_Words;
         private System.Windows.Forms.Button btn_Basic_Calculator_II;
         private System.Windows.Forms.Button btn_Palindrome_Partitioning;
+        private System.Windows.Forms.Button btn_Check_If_Two_String_Arrays_are_Equivalent;
     }
 }

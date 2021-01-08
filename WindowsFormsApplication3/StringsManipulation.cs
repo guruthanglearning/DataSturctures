@@ -891,7 +891,7 @@ namespace WindowsFormsApplication3
                 Time Complexity  : O(n)
                 Space Complexity : O(m) where m is the input character set
              */
-            MessageBox.Show(this.lengthOfLongestSubstring("abcac").ToString());
+            MessageBox.Show(this.lengthOfLongestSubstring("pwwkew").ToString());
         }
 
 
@@ -938,6 +938,16 @@ namespace WindowsFormsApplication3
             }
 
             return ans;
+
+
+            /* j = 5  i = 2  ans = 3
+               p = 1
+               w = 3
+               k = 4
+               e = 5
+               w = 6
+             
+             */
         }
 
 
@@ -6446,6 +6456,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Palindrome_Partitioning_Click(object sender, EventArgs e)
         {
+            
             /*
                     Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
 
@@ -6555,6 +6566,78 @@ namespace WindowsFormsApplication3
             return true;
 
         }
+
+
+        public class Common
+        {
+            public string[] word1;
+            public string[] word2;
+        }
+
+
+        private void btn_Check_If_Two_String_Arrays_are_Equivalent_Click(object sender, EventArgs e)
+        {
+            /*
+                Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+
+                A string is represented by an array if the array elements concatenated in order forms the string.
+
+                Example 1:
+                Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
+                Output: true
+                Explanation:
+                word1 represents string "ab" + "c" -> "abc"
+                word2 represents string "a" + "bc" -> "abc"
+                The strings are the same, so return true.
+                
+                Example 2:
+                Input: word1 = ["a", "cb"], word2 = ["ab", "c"]
+                Output: false
+                
+                Example 3:
+                Input: word1  = ["abc", "d", "defg"], word2 = ["abcddefg"]
+                Output: true 
+
+                Constraints:
+
+                1 <= word1.length, word2.length <= 103
+                1 <= word1[i].length, word2[i].length <= 103
+                1 <= sum(word1[i].length), sum(word2[i].length) <= 103
+                word1[i] and word2[i] consist of lowercase letters.
+                   Hide Hint #1  
+                Concatenate all strings in the first array into a single string in the given order, the same for the second array.
+                   Hide Hint #2  
+                Both arrays represent the same string if and only if the generated strings are the same.
+             
+                Time Complexity         : O(N * L)
+                Space Complexity        : O(1)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() {word1 = new string[] { "ab", "c" }, word2 = new string[] { "a", "bc" } });
+            inputs.Add(new Common() { word1 = new string[] { "a", "cb" }, word2 = new string[] { "ab", "c" } });
+            inputs.Add(new Common() { word1 = new string[] { "abc", "d","defg" }, word2 = new string[] { "abcddefg" } });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($" Check If Two String Arrays are Equivalent is {ArrayStringsAreEqual(input.word1, input.word2)} for the given word1 : {string.Join(",",input.word1)} and word1 : {string.Join(",", input.word2)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public bool ArrayStringsAreEqual(string[] word1, string[] word2)
+        {
+            if (word1 == null || word1.Length == 0 || word2 == null || word2.Length == 0)
+                return false;
+
+            return string.Concat(word1).Equals(string.Concat(word2));
+        }
+
     }
 }
 
