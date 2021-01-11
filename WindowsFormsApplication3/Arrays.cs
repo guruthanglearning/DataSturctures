@@ -31,92 +31,94 @@ namespace WindowsFormsApplication3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // int?[] array = new int?[10]; --Nullable Array
 
-            //int[] arr1 = new int[10];
-            //arr1[0] = 4;
-            //arr1[1] = 5;
-            //arr1[2] = 6;
-            //arr1[3] = 7;
-            //arr1[4] = 8;
-            //arr1[5] = 9;
-            //arr1[6] = 10;
-            //int[] arr2 = new int[3];
-            //arr2[0] = 1;
-            //arr2[1] = 2;
-            //arr2[2] = 3; //Worst Case O(n+m)
+            /*
+            
+                Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
 
-            //int[] arr1 = new int[10];
-            //arr1[0] = 1;
-            //arr1[1] = 2;
-            //arr1[2] = 3;
-            //arr1[3] = 7;
-            //arr1[4] = 8;
-            //arr1[5] = 9;
-            //arr1[6] = 10;
-            //int[] arr2 = new int[3];
-            //arr2[0] = 4;
-            //arr2[1] = 5;
-            //arr2[2] = 6;//Worst Case O(n+m)
+                The number of elements initialized in nums1 and nums2 are m and n respectively. You may assume that nums1 has enough space 
+                (size that is equal to m + n) to hold additional elements from nums2.
 
-            int[] arr1 = new int[10];
-            arr1[0] = 1;
-            arr1[1] = 2;
-            arr1[2] = 3;
-            arr1[3] = 4;
-            arr1[4] = 5;
-            arr1[5] = 6;
-            arr1[6] = 7;
-            int[] arr2 = new int[3];
-            arr2[0] = 3;
-            arr2[1] = 9;
-            arr2[2] = 10; //Best Case O(n+m)
+                Example 1:
+                Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+                Output: [1,2,2,3,5,6]
+                
+                Example 2:
+                Input: nums1 = [1], m = 1, nums2 = [], n = 0
+                Output: [1]
 
-            //int[] arr1 = new int[1];
-            //arr1[0] = 0;
 
-            //int[] arr2 = new int[1];
-            //arr2[0] = 1;
+                Constraints:
+                0 <= n, m <= 200
+                1 <= n + m <= 200
+                nums1.length == m + n
+                nums2.length == n
+                -109 <= nums1[i], nums2[i] <= 109
+                
+                Hide Hint #1  
+                You can easily solve this problem if you simply think about two elements at a time rather than two arrays. We know that each of the individual arrays is sorted. What we don't know is how they will intertwine. Can we take a local decision and arrive at an optimal solution?
+                
+                Hide Hint #2  
+                If you simply consider one element each at a time from the two arrays and make a decision and proceed accordingly, you will arrive at the optimal solution.
 
-            MessageBox.Show($"Before Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
+                Time Complexity     : O(M+N)
+                Space Complexity    : O(1)
 
-            MergeArrays(arr1, arr2);
+            */
 
-            //Merge(arr2, arr1);
-            MessageBox.Show($"After Arr1 = {Display(arr1)} \n Arr2 = {Display(arr2)}");
+
+
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 1, 2, 3, 0, 0, 0 }, m = 3, input2 = new int[] { 2, 5, 6 }, n = 3 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 1 }, m = 1, input2 = new int[] { }, n = 0 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 0 }, m = 0, input2 = new int[] { 1 }, n = 1 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { }, m = 0, input2 = new int[] { 1 }, n = 1 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] {4,5,6,0,0,0 }, m = 3, input2 = new int[] { 1,2,3 }, n = 3 });
+
+
+            foreach (var input in inputs)
+            {
+                string temp = $"for nums1:{string.Join(",", input.input1)} m : {input.m} and nums2:{string.Join(",", input.input2)} n:{input.n}";
+                this.Merge(input.input1, input.m, input.input2, input.n);
+                result.AppendLine($"Merge Sorted Array is : {string.Join(",", input.input1)} {temp}");
+            }
+
+            MessageBox.Show(result.ToString());
 
         }
 
-        void MergeArrays(int[] arr1, int[] arr2)
+
+        public void Merge(int[] nums1, int m, int[] nums2, int n)
         {
-            /*
-               arr1 = 1  2  3   4   5   6   7   0   0   0
-               arr2 = 3  9  10
-            */
+            if (nums2 == null || nums2.Length == 0 || n == 0)
+                return;
 
-            int arr1Length = arr1.Length - 1;
-            int arr1LastFilledIndex = this.GetLastFilledArrayIndex(arr1);
-            int arr2Length = arr2.Length - 1;
+           
+            int n1Len = nums1.Length - 1;
 
-            while (true)
+            while (n - 1 >= 0 && m - 1 >= 0)
             {
-                if (arr2Length < 0)
+                if (nums2[n - 1] > nums1[m - 1])
                 {
-                    break;
-                }
-
-                if (arr1LastFilledIndex >= 0 && arr1[arr1LastFilledIndex] > arr2[arr2Length])
-                {
-                    arr1[arr1Length] = arr1[arr1LastFilledIndex];
-                    arr1[arr1LastFilledIndex] = 0;
-                    arr1LastFilledIndex--;
+                    nums1[n1Len] = nums2[n - 1];
+                    n--;
                 }
                 else
                 {
-                    arr1[arr1Length] = arr2[arr2Length];
-                    arr2Length--;
+                    nums1[n1Len] = nums1[m - 1];
+                    m--;
                 }
-                arr1Length--;
+
+                n1Len--;
+            }
+
+            while (n - 1 >= 0 && nums1.Length > 0)
+            {
+                nums1[n1Len] = nums2[n - 1];
+                n--;
+                n1Len--;
             }
         }
 
@@ -2791,6 +2793,10 @@ namespace WindowsFormsApplication3
         public class ArrayAndValue
         {
             public int[] input;
+            public int[] input1;
+            public int[] input2;
+            public int m;
+            public int n;
             public string[] stringinput;
             public int find;
         }
