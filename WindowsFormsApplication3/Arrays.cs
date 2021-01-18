@@ -9459,6 +9459,121 @@ namespace WindowsFormsApplication3
             }
             return answer;
         }
+
+        private void btn_Max_Number_of_K_Sum_Pairs_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                    You are given an integer array nums and an integer k.
+                    In one operation, you can pick two numbers from the array whose sum equals k and remove them from the array.
+
+                    Return the maximum number of operations you can perform on the array.
+ 
+                    Example 1:
+                    Input: nums = [1,2,3,4], k = 5
+                    Output: 2
+                    Explanation: Starting with nums = [1,2,3,4]:
+                    - Remove numbers 1 and 4, then nums = [2,3]
+                    - Remove numbers 2 and 3, then nums = []
+                    There are no more pairs that sum up to 5, hence a total of 2 operations.
+                    
+                    Example 2:
+                    Input: nums = [3,1,3,4,3], k = 6
+                    Output: 1
+                    Explanation: Starting with nums = [3,1,3,4,3]:
+                    - Remove the first two 3's, then nums = [1,4,3]
+                    There are no more pairs that sum up to 6, hence a total of 1 operation.
+ 
+
+                    Constraints:
+
+                    1 <= nums.length <= 105
+                    1 <= nums[i] <= 109
+                    1 <= k <= 109
+                       Hide Hint #1  
+                    The abstract problem asks to count the number of disjoint pairs with a given sum k.
+                       Hide Hint #2  
+                    For each possible value x, it can be paired up with k - x.
+                       Hide Hint #3  
+                    The number of such pairs equals to min(count(x), count(k-x)), unless that x = k / 2, where the number of such pairs will be floor(count(x) / 2).
+
+                    Time Complexity     : O(N)
+                    Space Complexity    : O(N)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Array2n> inputs = new List<Array2n>();
+            inputs.Add(new Array2n() { Data = new int[] { 1,2,3,4 }, N = 5 });
+            inputs.Add(new Array2n() { Data = new int[] { 3, 1, 3, 4, 3 }, N = 6 });            
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Max Number of K-Sum Pairs : {this.MaxOperations(input.Data, input.N)}  or the given array { string.Join(",", input.Data)} and K : {input.N}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int MaxOperations(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0 || k == 0)
+                return 0;
+
+            /*
+                [1,2,3,4], k = 5
+                [3,1,3,4,3], k = 6
+            */
+
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            foreach (int i in nums)
+            {
+                if (dict.ContainsKey(i))
+                    dict[i] = 1;
+                else
+                    dict[i]++;
+            }
+
+            int result = 0;
+            int diff = 0;
+            int temp1 = 0;
+            int temp2 = 0;
+
+
+            foreach (int i in nums)
+            {
+                diff = k - i;
+                dict.TryGetValue(diff, out temp1);
+                if (temp1 == 0)
+                    continue;
+
+                if (diff == i)
+                {
+                    if (temp1 > 1)
+                    {
+                        result++;
+                        dict[i] -= 2;
+                    }
+                }
+                else
+                {
+                    dict.TryGetValue(i, out temp2);
+                    if ( temp2 > 0)
+                    {
+                        result++;
+                        dict[diff]--;
+                        dict[i]--;
+
+                    }
+                }
+            }
+
+
+            return result;
+
+        }
     }
 }
 

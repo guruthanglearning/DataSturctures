@@ -140,6 +140,7 @@
             this.btn_Increasing_Triplet_Subsequence = new System.Windows.Forms.Button();
             this.btn_Smallest_Range_II = new System.Windows.Forms.Button();
             this.btn_Kth_Missing_Positive_Number = new System.Windows.Forms.Button();
+            this.btn_Max_Number_of_K_Sum_Pairs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1288,7 +1289,7 @@
             // 
             // btn_Kth_Missing_Positive_Number
             // 
-            this.btn_Kth_Missing_Positive_Number.Location = new System.Drawing.Point(1865, 332);
+            this.btn_Kth_Missing_Positive_Number.Location = new System.Drawing.Point(1865, 334);
             this.btn_Kth_Missing_Positive_Number.Name = "btn_Kth_Missing_Positive_Number";
             this.btn_Kth_Missing_Positive_Number.Size = new System.Drawing.Size(268, 37);
             this.btn_Kth_Missing_Positive_Number.TabIndex = 113;
@@ -1296,11 +1297,22 @@
             this.btn_Kth_Missing_Positive_Number.UseVisualStyleBackColor = true;
             this.btn_Kth_Missing_Positive_Number.Click += new System.EventHandler(this.btn_Kth_Missing_Positive_Number_Click);
             // 
+            // btn_Max_Number_of_K_Sum_Pairs
+            // 
+            this.btn_Max_Number_of_K_Sum_Pairs.Location = new System.Drawing.Point(1865, 377);
+            this.btn_Max_Number_of_K_Sum_Pairs.Name = "btn_Max_Number_of_K_Sum_Pairs";
+            this.btn_Max_Number_of_K_Sum_Pairs.Size = new System.Drawing.Size(268, 43);
+            this.btn_Max_Number_of_K_Sum_Pairs.TabIndex = 114;
+            this.btn_Max_Number_of_K_Sum_Pairs.Text = "Max Number of K-Sum Pairs";
+            this.btn_Max_Number_of_K_Sum_Pairs.UseVisualStyleBackColor = true;
+            this.btn_Max_Number_of_K_Sum_Pairs.Click += new System.EventHandler(this.btn_Max_Number_of_K_Sum_Pairs_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Max_Number_of_K_Sum_Pairs);
             this.Controls.Add(this.btn_Kth_Missing_Positive_Number);
             this.Controls.Add(this.btn_Smallest_Range_II);
             this.Controls.Add(this.btn_Increasing_Triplet_Subsequence);
@@ -1534,5 +1546,6 @@
         private System.Windows.Forms.Button btn_Increasing_Triplet_Subsequence;
         private System.Windows.Forms.Button btn_Smallest_Range_II;
         private System.Windows.Forms.Button btn_Kth_Missing_Positive_Number;
+        private System.Windows.Forms.Button btn_Max_Number_of_K_Sum_Pairs;
     }
 }
