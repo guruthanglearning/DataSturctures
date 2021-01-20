@@ -9574,6 +9574,45 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Kth_Largest_Element_in_an_Array_Click(object sender, EventArgs e)
+        {
+            /*
+                Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+                Example 1:
+                Input: [3,2,1,5,6,4] and k = 2
+                Output: 5
+                
+                Example 2:
+                Input: [3,2,3,1,2,4,5,5,6] and k = 4
+                Output: 4
+                Note:
+                You may assume k is always valid, 1 ≤ k ≤ array's length.  
+            
+                Time Complexity     : O(NlogN)
+                Space Complexity    : O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Array2n> inputs = new List<Array2n>();
+            inputs.Add(new Array2n() { Data = new int[] { 3, 2, 1, 5, 6, 4 }, N = 2 });
+            inputs.Add(new Array2n() { Data = new int[] { 3, 2, 3, 1, 2, 4, 5, 5, 6 }, N = 4 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Kth Largest Element in an Array : {this.MaxOperations(input.Data, input.N)}  or the given array { string.Join(",", input.Data)} and K : {input.N}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int FindKthLargest(int[] nums, int k)
+        {
+            Array.Sort(nums);
+
+            return nums[nums.Length - k];
+        }
     }
 }
 

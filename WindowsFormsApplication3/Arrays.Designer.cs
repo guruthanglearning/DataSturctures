@@ -141,6 +141,7 @@
             this.btn_Smallest_Range_II = new System.Windows.Forms.Button();
             this.btn_Kth_Missing_Positive_Number = new System.Windows.Forms.Button();
             this.btn_Max_Number_of_K_Sum_Pairs = new System.Windows.Forms.Button();
+            this.btn_Kth_Largest_Element_in_an_Array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1307,11 +1308,22 @@
             this.btn_Max_Number_of_K_Sum_Pairs.UseVisualStyleBackColor = true;
             this.btn_Max_Number_of_K_Sum_Pairs.Click += new System.EventHandler(this.btn_Max_Number_of_K_Sum_Pairs_Click);
             // 
+            // btn_Kth_Largest_Element_in_an_Array
+            // 
+            this.btn_Kth_Largest_Element_in_an_Array.Location = new System.Drawing.Point(1864, 427);
+            this.btn_Kth_Largest_Element_in_an_Array.Name = "btn_Kth_Largest_Element_in_an_Array";
+            this.btn_Kth_Largest_Element_in_an_Array.Size = new System.Drawing.Size(268, 48);
+            this.btn_Kth_Largest_Element_in_an_Array.TabIndex = 115;
+            this.btn_Kth_Largest_Element_in_an_Array.Text = "Kth Largest Element in an Array";
+            this.btn_Kth_Largest_Element_in_an_Array.UseVisualStyleBackColor = true;
+            this.btn_Kth_Largest_Element_in_an_Array.Click += new System.EventHandler(this.btn_Kth_Largest_Element_in_an_Array_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Kth_Largest_Element_in_an_Array);
             this.Controls.Add(this.btn_Max_Number_of_K_Sum_Pairs);
             this.Controls.Add(this.btn_Kth_Missing_Positive_Number);
             this.Controls.Add(this.btn_Smallest_Range_II);
@@ -1547,5 +1559,6 @@
         private System.Windows.Forms.Button btn_Smallest_Range_II;
         private System.Windows.Forms.Button btn_Kth_Missing_Positive_Number;
         private System.Windows.Forms.Button btn_Max_Number_of_K_Sum_Pairs;
+        private System.Windows.Forms.Button btn_Kth_Largest_Element_in_an_Array;
     }
 }
