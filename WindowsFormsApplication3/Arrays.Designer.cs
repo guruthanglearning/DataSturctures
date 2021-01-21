@@ -142,6 +142,7 @@
             this.btn_Kth_Missing_Positive_Number = new System.Windows.Forms.Button();
             this.btn_Max_Number_of_K_Sum_Pairs = new System.Windows.Forms.Button();
             this.btn_Kth_Largest_Element_in_an_Array = new System.Windows.Forms.Button();
+            this.btn_Find_the_Most_Competitive_Subsequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1318,11 +1319,22 @@
             this.btn_Kth_Largest_Element_in_an_Array.UseVisualStyleBackColor = true;
             this.btn_Kth_Largest_Element_in_an_Array.Click += new System.EventHandler(this.btn_Kth_Largest_Element_in_an_Array_Click);
             // 
+            // btn_Find_the_Most_Competitive_Subsequence
+            // 
+            this.btn_Find_the_Most_Competitive_Subsequence.Location = new System.Drawing.Point(1865, 479);
+            this.btn_Find_the_Most_Competitive_Subsequence.Name = "btn_Find_the_Most_Competitive_Subsequence";
+            this.btn_Find_the_Most_Competitive_Subsequence.Size = new System.Drawing.Size(268, 49);
+            this.btn_Find_the_Most_Competitive_Subsequence.TabIndex = 116;
+            this.btn_Find_the_Most_Competitive_Subsequence.Text = "Find the Most Competitive Subsequence";
+            this.btn_Find_the_Most_Competitive_Subsequence.UseVisualStyleBackColor = true;
+            this.btn_Find_the_Most_Competitive_Subsequence.Click += new System.EventHandler(this.btn_Find_the_Most_Competitive_Subsequence_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Find_the_Most_Competitive_Subsequence);
             this.Controls.Add(this.btn_Kth_Largest_Element_in_an_Array);
             this.Controls.Add(this.btn_Max_Number_of_K_Sum_Pairs);
             this.Controls.Add(this.btn_Kth_Missing_Positive_Number);
@@ -1560,5 +1572,6 @@
         private System.Windows.Forms.Button btn_Kth_Missing_Positive_Number;
         private System.Windows.Forms.Button btn_Max_Number_of_K_Sum_Pairs;
         private System.Windows.Forms.Button btn_Kth_Largest_Element_in_an_Array;
+        private System.Windows.Forms.Button btn_Find_the_Most_Competitive_Subsequence;
     }
 }

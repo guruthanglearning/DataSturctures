@@ -9613,6 +9613,89 @@ namespace WindowsFormsApplication3
 
             return nums[nums.Length - k];
         }
+
+        private void btn_Find_the_Most_Competitive_Subsequence_Click(object sender, EventArgs e)
+        {
+
+            /*
+                Given an integer array nums and a positive integer k, return the most competitive subsequence of nums of size k.
+
+                An array's subsequence is a resulting sequence obtained by erasing some (possibly zero) elements from the array.
+
+                We define that a subsequence a is more competitive than a subsequence b (of the same length) if in the first position where a and b differ, subsequence a has a number less than the corresponding number in b. For example, [1,3,4] is more competitive than [1,3,5] because the first position they differ is at the final number, and 4 is less than 5.
+
+ 
+
+                Example 1:
+
+                Input: nums = [3,5,2,6], k = 2
+                Output: [2,6]
+                Explanation: Among the set of every possible subsequence: {[3,5], [3,2], [3,6], [5,2], [5,6], [2,6]}, [2,6] is the most competitive.
+                Example 2:
+
+                Input: nums = [2,4,3,3,5,4,9,6], k = 4
+                Output: [2,3,3,4]
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 105
+                0 <= nums[i] <= 109
+                1 <= k <= nums.length
+                   Hide Hint #1  
+                In lexicographical order, the elements to the left have higher priority than those that come after. Can you think of a strategy that incrementally builds the answer from left to right?
+                
+                Time Complexity         : O(N)
+                Space Complexity        : O(N)
+            */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Array2n> inputs = new List<Array2n>();
+            //inputs.Add(new Array2n() { Data = new int[] { 3, 5, 2, 6 }, N = 2 });
+            //inputs.Add(new Array2n() { Data = new int[] { 2, 4, 3, 3, 5, 4, 9, 6 }, N = 4 });
+            inputs.Add(new Array2n() { Data = new int[] { 71, 18, 52, 29, 55, 73, 24, 42, 66, 8, 80, 2 }, N = 3 });
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Most Competitive Subsequence : {string.Join(",",this.MostCompetitive(input.Data, input.N))}  or the given array { string.Join(",", input.Data)} and K : {input.N}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int[] MostCompetitive(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0 || k == 0)
+                return nums;
+
+            Stack<int> s = new Stack<int>();
+            int len = nums.Length;
+            /*
+                   [3,5,2,6], k = 2
+                   [2,4,3,3,5,4,9,6], k = 4
+            */
+
+            for (int i = 0; i < len; i++)
+            {
+                while (s.Count > 0 && s.Peek() > nums[i] && (s.Count + len - i > k))
+                {
+                    s.Pop();
+                }
+                if (s.Count < k)
+                    s.Push(nums[i]);
+            }
+
+            int[] result = new int[k];
+
+            while (s.Count > 0)
+
+                result[--k] = s.Pop();
+
+            return result;
+        }
     }
 }
 
