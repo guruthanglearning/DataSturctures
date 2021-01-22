@@ -59,6 +59,7 @@
             this.btn_Next_Greater_Element_III = new System.Windows.Forms.Button();
             this.btn_Beautiful_Arrangement = new System.Windows.Forms.Button();
             this.btn_Get_Maximum_in_Generated_Array = new System.Windows.Forms.Button();
+            this.btn_Count_Sorted_Vowel_Strings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -380,11 +381,22 @@
             this.btn_Get_Maximum_in_Generated_Array.UseVisualStyleBackColor = true;
             this.btn_Get_Maximum_in_Generated_Array.Click += new System.EventHandler(this.btn_Get_Maximum_in_Generated_Array_Click);
             // 
+            // btn_Count_Sorted_Vowel_Strings
+            // 
+            this.btn_Count_Sorted_Vowel_Strings.Location = new System.Drawing.Point(422, 538);
+            this.btn_Count_Sorted_Vowel_Strings.Name = "btn_Count_Sorted_Vowel_Strings";
+            this.btn_Count_Sorted_Vowel_Strings.Size = new System.Drawing.Size(267, 51);
+            this.btn_Count_Sorted_Vowel_Strings.TabIndex = 116;
+            this.btn_Count_Sorted_Vowel_Strings.Text = "Count Sorted Vowel Strings";
+            this.btn_Count_Sorted_Vowel_Strings.UseVisualStyleBackColor = true;
+            this.btn_Count_Sorted_Vowel_Strings.Click += new System.EventHandler(this.btn_Count_Sorted_Vowel_Strings_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 1049);
+            this.Controls.Add(this.btn_Count_Sorted_Vowel_Strings);
             this.Controls.Add(this.btn_Get_Maximum_in_Generated_Array);
             this.Controls.Add(this.btn_Beautiful_Arrangement);
             this.Controls.Add(this.btn_Next_Greater_Element_III);
@@ -455,5 +467,6 @@
         private System.Windows.Forms.Button btn_Next_Greater_Element_III;
         private System.Windows.Forms.Button btn_Beautiful_Arrangement;
         private System.Windows.Forms.Button btn_Get_Maximum_in_Generated_Array;
+        private System.Windows.Forms.Button btn_Count_Sorted_Vowel_Strings;
     }
 }
