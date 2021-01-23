@@ -59,6 +59,7 @@
             this.btn_Merge_Intervals = new System.Windows.Forms.Button();
             this.btn_The_Skyline_Problem = new System.Windows.Forms.Button();
             this.btn_Spiral_Matrix_II = new System.Windows.Forms.Button();
+            this.btn_Sort_the_Matrix_Diagonally = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -398,11 +399,22 @@
             this.btn_Spiral_Matrix_II.UseVisualStyleBackColor = true;
             this.btn_Spiral_Matrix_II.Click += new System.EventHandler(this.btn_Spiral_Matrix_II_Click);
             // 
+            // btn_Sort_the_Matrix_Diagonally
+            // 
+            this.btn_Sort_the_Matrix_Diagonally.Location = new System.Drawing.Point(334, 587);
+            this.btn_Sort_the_Matrix_Diagonally.Name = "btn_Sort_the_Matrix_Diagonally";
+            this.btn_Sort_the_Matrix_Diagonally.Size = new System.Drawing.Size(265, 47);
+            this.btn_Sort_the_Matrix_Diagonally.TabIndex = 107;
+            this.btn_Sort_the_Matrix_Diagonally.Text = "Sort the Matrix Diagonally";
+            this.btn_Sort_the_Matrix_Diagonally.UseVisualStyleBackColor = true;
+            this.btn_Sort_the_Matrix_Diagonally.Click += new System.EventHandler(this.btn_Sort_the_Matrix_Diagonally_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Sort_the_Matrix_Diagonally);
             this.Controls.Add(this.btn_Spiral_Matrix_II);
             this.Controls.Add(this.btn_The_Skyline_Problem);
             this.Controls.Add(this.btn_Merge_Intervals);
@@ -475,5 +487,6 @@
         private System.Windows.Forms.Button btn_Merge_Intervals;
         private System.Windows.Forms.Button btn_The_Skyline_Problem;
         private System.Windows.Forms.Button btn_Spiral_Matrix_II;
+        private System.Windows.Forms.Button btn_Sort_the_Matrix_Diagonally;
     }
 }

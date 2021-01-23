@@ -3818,5 +3818,103 @@ namespace WindowsFormsApplication3
 
             return result;
         }
+
+        private void btn_Sort_the_Matrix_Diagonally_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                A matrix diagonal is a diagonal line of cells starting from some cell in either the topmost row or leftmost column and going in the bottom-right direction until 
+                reaching the matrix's end. For example, the matrix diagonal starting from mat[2][0], where mat is a 6 x 3 matrix, includes cells mat[2][0], mat[3][1], and mat[4][2].
+
+                Given an m x n matrix mat of integers, sort each matrix diagonal in ascending order and return the resulting matrix.
+                
+                Example 1:
+                Input: mat = [[3,3,1,1],[2,2,1,2],[1,1,1,2]]
+                Output: [[1,1,1,1],[1,2,2,2],[1,2,3,3]]
+ 
+                Constraints:
+
+                m == mat.length
+                n == mat[i].length
+                1 <= m, n <= 100
+                1 <= mat[i][j] <= 100
+ 
+                Hide Hint #1  
+                Use a data structure to store all values of each diagonal.
+                
+                Hide Hint #2  
+                How to index the data structure with the id of the diagonal?
+                
+                Hide Hint #3  
+                All cells in the same diagonal (i,j) have the same difference so we can get the diagonal of a cell using the difference i-j.
+             
+                Time Complexity  : O(RCD) D is the Length  of the item in the list
+                Space Complexity : O(D) is the Length  of the item in the list
+                    
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                         new int[] {3,3,1,1},
+                                         new int[] {2,2,1,2},
+                                         new int[] {1,1,1,2}
+                                    }
+            });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Sort the Matrix Diagonally for the given input array : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} {Environment.NewLine} {this.PrintJaggedArray(this.DiagonalSort(input.Input))}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int[][] DiagonalSort(int[][] mat)
+        {
+            for (int i = 0; i < mat.Length; i++)
+            {
+                mat = SortDiagonal(i, 0, mat);
+            }
+            for (int i = 1; i < mat[0].Length; i++)
+            {
+                mat = SortDiagonal(0, i, mat);
+            }
+            return mat;
+        }
+        private int[][] SortDiagonal(int row, int col, int[][] mat)
+        {
+            List<int> diagEle = new List<int>();
+            int i = row;
+            int j = col;
+            while (i < mat.Length && j < mat[i].Length)
+            {
+                diagEle.Add(mat[i][j]);
+                i++;
+                j++;
+            }
+            diagEle.Sort();
+            int k = 0;
+            i = row;
+            j = col;
+            while (i < mat.Length && j < mat[i].Length)
+            {
+                mat[i][j] = diagEle[k];
+                k++;
+                i++;
+                j++;
+            }
+            return mat;
+        }
+
+
     }
 }
