@@ -3587,127 +3587,98 @@ namespace WindowsFormsApplication3
                   1->3->4,
                   2->6
             */
-            List<LinkList> lists = new List<LinkList>();
-            //LinkList LLNodeFirst = null;
-            //LLNodeFirst = InsertLinkList(LLNodeFirst, 1);
-            //LLNodeFirst = InsertLinkList(LLNodeFirst, 4);
-            //LLNodeFirst = InsertLinkList(LLNodeFirst, 5);
-            //lists.Add(LLNodeFirst);
-            //LinkList LLNodeFirst1 = null;
-            //LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 1);
-            //LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 3);
-            //LLNodeFirst1 = InsertLinkList(LLNodeFirst1, 4);
-            //lists.Add(LLNodeFirst1);
-            //LinkList LLNodeFirst2 = null;
-            //LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 2);
-            //LLNodeFirst2 = InsertLinkList(LLNodeFirst2, 6);
-            //lists.Add(LLNodeFirst2);
+            StringBuilder result = new StringBuilder();
+            List<IList<ListNode>> inputs = new List<IList<ListNode>>();
+            List<ListNode> input = new List<ListNode>();
+            input.Add(this.InsertListNode(new int[] { 1, 4, 5 }));
+            input.Add(this.InsertListNode(new int[] { 1, 3, 4 }));
+            input.Add(this.InsertListNode(new int[] { 2, 6 }));
+            inputs.Add(input);
+            
 
-            LinkList LLNodeFirst3 = null;
-            LLNodeFirst3 = InsertLinkList(LLNodeFirst3, 1);
-            LinkList LLNodeFirst4 = null;
-            LLNodeFirst4 = InsertLinkList(LLNodeFirst4, 0);
-            lists.Add(LLNodeFirst3);
-            lists.Add(LLNodeFirst4);
-
-            datas.Clear();
-
-            LinkList result = null;
-
-            foreach (LinkList linkList in lists)
+            foreach (var linkList in inputs)
             {
-                result = this.MergeLinkListWithoutExtraMemory(result, linkList);
+
+                result.AppendLine($"The result of merging k link list is { GetListNodeData(this.MergeKLists(linkList.ToArray<ListNode>()))}");
+
+
             }
 
 
-            DisplayLinkList(result);
-            MessageBox.Show($"The result of merging two link list is {datas.ToString()}");
+            MessageBox.Show(result.ToString());
 
 
         }
 
-        private LinkList MergeLinkListWithoutExtraMemory(LinkList linklist1, LinkList linklist2)
+        public ListNode MergeKLists(ListNode[] lists)
+        {
+            if (lists == null || lists.Length == 0)
+                return null;
+            
+
+            return BinaryMerge(lists, 0, lists.Length - 1);
+        }
+
+        public ListNode BinaryMerge(ListNode[] lists, int start, int end)
         {
 
+            if (start == end)
+                return lists[start];
 
-            if (linklist1 == null && linklist2 == null)
-                return null;
-            else if (linklist1 == null)
+            int mid = start + ((end - start) / 2);
+            ListNode l1 = BinaryMerge(lists, start, mid);
+            ListNode l2 = BinaryMerge(lists, mid + 1, end);
+            return Merge(l1, l2);
+
+
+
+        }
+
+        public ListNode Merge(ListNode a, ListNode b)
+        {
+            if (a == null) return b;
+            if (b == null) return a;
+
+            ListNode first;
+            ListNode second;
+            ListNode prev = null;
+
+            if (a.val < b.val)
             {
-                return linklist2;
+                first = a;
+                second = b;
             }
-            else if (linklist2 == null)
-                return linklist1;
-
-            LinkList result = linklist1;
-
-            LinkList t1 = null;
-            LinkList t2 = null;
-            LinkList linkList1Previous = linklist1;
-            bool isLinkListMoveFirstTime = false;
-
-            while (linklist1 != null && linklist2 != null)
+            else
             {
-                t1 = null;
-                t2 = null;
-
-                if (linklist1.data < linklist2.data)
-                {
-
-                    if (!isLinkListMoveFirstTime)
-                    {
-                        isLinkListMoveFirstTime = true;
-                    }
-
-                    if (isLinkListMoveFirstTime)
-                    {
-                        linkList1Previous = linklist1;
-                    }
-                    linklist1 = linklist1.next;
-                }
-                else if (linklist2.data < linklist1.data)
-                {
-
-                    if (linkList1Previous == linklist1)
-                    {
-                        t2 = linklist2.next;
-                        linklist2.next = linklist1;
-                        linklist1 = linklist2;
-                        linklist2 = t2;
-                        linkList1Previous = linklist1;
-                        result = linklist1;
-                    }
-                    else
-                    {
-
-                        t1 = linkList1Previous.next;
-                        t2 = linklist2.next;
-                        linklist2.next = null;
-                        linkList1Previous.next = linklist2;
-                        linkList1Previous = linkList1Previous.next;
-                        linkList1Previous.next = t1;
-                        linklist2 = t2;
-                    }
-                }
-                else if (linklist1.data == linklist2.data)
-                {
-                    t1 = linklist1.next;
-                    t2 = linklist2.next;
-                    linklist2.next = null;
-                    linklist1.next = linklist2;
-                    linklist1 = linklist1.next;
-                    linklist1.next = t1;
-                    linklist2 = t2;
-                }
-
+                first = b;
+                second = a;
             }
 
-            if (linklist2 != null)
+            var head = first;
+
+
+
+        while (first != null && second != null)
             {
-                linkList1Previous.next = linklist2;
+                if (first.val <= second.val)
+                {
+                    prev = first;
+                    first = first.next;
+                }
+                else
+                {
+                    var other = second;
+                    second = second.next;
+                    other.next = first;
+                    prev.next = other;
+                    first = prev.next;
+                }
             }
 
-            return result;
+            if (second != null)
+                prev.next = second;
+
+            return head;
         }
 
         private void btn_Searilzing_and_De_serialzing_Binary_Tree_Click(object sender, EventArgs e)
