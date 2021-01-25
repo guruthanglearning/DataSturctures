@@ -143,6 +143,7 @@
             this.btn_Max_Number_of_K_Sum_Pairs = new System.Windows.Forms.Button();
             this.btn_Kth_Largest_Element_in_an_Array = new System.Windows.Forms.Button();
             this.btn_Find_the_Most_Competitive_Subsequence = new System.Windows.Forms.Button();
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1329,11 +1330,22 @@
             this.btn_Find_the_Most_Competitive_Subsequence.UseVisualStyleBackColor = true;
             this.btn_Find_the_Most_Competitive_Subsequence.Click += new System.EventHandler(this.btn_Find_the_Most_Competitive_Subsequence_Click);
             // 
+            // btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away
+            // 
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Location = new System.Drawing.Point(1865, 534);
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Name = "btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away";
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Size = new System.Drawing.Size(267, 46);
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.TabIndex = 117;
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Text = "Check If All 1\'s Are at Least Length K Places Away";
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.UseVisualStyleBackColor = true;
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Click += new System.EventHandler(this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away);
             this.Controls.Add(this.btn_Find_the_Most_Competitive_Subsequence);
             this.Controls.Add(this.btn_Kth_Largest_Element_in_an_Array);
             this.Controls.Add(this.btn_Max_Number_of_K_Sum_Pairs);
@@ -1573,5 +1585,6 @@
         private System.Windows.Forms.Button btn_Max_Number_of_K_Sum_Pairs;
         private System.Windows.Forms.Button btn_Kth_Largest_Element_in_an_Array;
         private System.Windows.Forms.Button btn_Find_the_Most_Competitive_Subsequence;
+        private System.Windows.Forms.Button btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away;
     }
 }

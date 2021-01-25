@@ -9696,6 +9696,88 @@ namespace WindowsFormsApplication3
 
             return result;
         }
+
+        private void btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given an array nums of 0s and 1s and an integer k, return True if all 1's are at least k places away from each other, otherwise return False.
+
+                Example 1:
+                Input: nums = [1,0,0,0,1,0,0,1], k = 2
+                Output: true
+                Explanation: Each of the 1s are at least 2 places away from each other.
+                
+                Example 2:
+                Input: nums = [1,0,0,1,0,1], k = 2
+                Output: false
+                Explanation: The second 1 and third 1 are only one apart from each other.
+                
+                Example 3:
+                Input: nums = [1,1,1,1,1], k = 0
+                Output: true
+                
+                Example 4:
+                Input: nums = [0,1,0,1], k = 1
+                Output: true
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 105
+                0 <= k <= nums.length
+                nums[i] is 0 or 1
+                   Hide Hint #1  
+                Each time you find a number 1, check whether or not it is K or more places away from the next one. If it's not, return false.
+            
+                Time Complexity         : O(N)
+                Space Complexity        : O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Array2n> inputs = new List<Array2n>();
+            inputs.Add(new Array2n() { Data = new int[] { 1, 0, 0, 0, 1, 0, 0, 1 }, N = 2 });
+            inputs.Add(new Array2n() { Data = new int[] { 1, 0, 0, 1, 0, 1 }, N = 2 });
+            inputs.Add(new Array2n() { Data = new int[] { 1, 1, 1, 1, 1 }, N = 0 });
+            inputs.Add(new Array2n() { Data = new int[] { 0, 1, 0, 1 }, N = 1 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Length K Places Away {(this.KLengthApart(input.Data, input.N) ? "" :" not ") }  exists for the given array { string.Join(",", input.Data)} and K : {input.N}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+        public bool KLengthApart(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0)
+                return false;
+
+
+            int prevInd = -1;
+            /*
+                [1,0,0,0,1,0,0,1], k = 2
+                [1,0,0,1,0,1], k = 2
+                [1,1,1,1,1], k = 0
+                [0,1,0,1], k = 1
+            */
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (prevInd > -1)
+                {
+                    if (nums[i] == 1)
+                    {
+                        if (i - prevInd - 1 < k)
+                            return false;
+                        prevInd = i;
+                    }
+
+                }
+                else if (prevInd == -1 && nums[i] == 1)
+                    prevInd = i;
+            }
+            return true;
+        }
     }
 }
 
