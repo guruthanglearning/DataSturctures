@@ -60,6 +60,7 @@
             this.btn_Beautiful_Arrangement = new System.Windows.Forms.Button();
             this.btn_Get_Maximum_in_Generated_Array = new System.Windows.Forms.Button();
             this.btn_Count_Sorted_Vowel_Strings = new System.Windows.Forms.Button();
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -391,11 +392,22 @@
             this.btn_Count_Sorted_Vowel_Strings.UseVisualStyleBackColor = true;
             this.btn_Count_Sorted_Vowel_Strings.Click += new System.EventHandler(this.btn_Count_Sorted_Vowel_Strings_Click);
             // 
+            // btn_Concatenation_of_Consecutive_Binary_Numbers
+            // 
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers.Location = new System.Drawing.Point(422, 596);
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers.Name = "btn_Concatenation_of_Consecutive_Binary_Numbers";
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers.Size = new System.Drawing.Size(267, 58);
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers.TabIndex = 117;
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers.Text = "Concatenation of Consecutive Binary Numbers";
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers.UseVisualStyleBackColor = true;
+            this.btn_Concatenation_of_Consecutive_Binary_Numbers.Click += new System.EventHandler(this.btn_Concatenation_of_Consecutive_Binary_Numbers_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 1049);
+            this.Controls.Add(this.btn_Concatenation_of_Consecutive_Binary_Numbers);
             this.Controls.Add(this.btn_Count_Sorted_Vowel_Strings);
             this.Controls.Add(this.btn_Get_Maximum_in_Generated_Array);
             this.Controls.Add(this.btn_Beautiful_Arrangement);
@@ -468,5 +480,6 @@
         private System.Windows.Forms.Button btn_Beautiful_Arrangement;
         private System.Windows.Forms.Button btn_Get_Maximum_in_Generated_Array;
         private System.Windows.Forms.Button btn_Count_Sorted_Vowel_Strings;
+        private System.Windows.Forms.Button btn_Concatenation_of_Consecutive_Binary_Numbers;
     }
 }
