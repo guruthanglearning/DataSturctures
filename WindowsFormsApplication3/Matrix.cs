@@ -3915,6 +3915,120 @@ namespace WindowsFormsApplication3
             return mat;
         }
 
+        private void btn_Max_Area_of_Island_Click(object sender, EventArgs e)
+        {
+            /*
+                You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+                The area of an island is the number of cells with a value 1 in the island.
+                Return the maximum area of an island in grid. If there is no island, return 0.
+                Input: grid =
+                [
 
+			                  [0,0,1,0,0,0,0,1,0,0,0,0,0],
+			                  [0,0,0,0,0,0,0,1,1,1,0,0,0],
+			                  [0,1,1,0,1,0,0,0,0,0,0,0,0],
+			                  [0,1,0,0,1,1,0,0,1,0,1,0,0],
+			                  [0,1,0,0,1,1,0,0,1,1,1,0,0],
+			                  [0,0,0,0,0,0,0,0,0,0,1,0,0],
+			                  [0,0,0,0,0,0,0,1,1,1,0,0,0],
+			                  [0,0,0,0,0,0,0,1,1,0,0,0,0]
+                ]
+
+                Output: 6
+	                Explanation: The answer is not 11, because the island must be connected 4-directionally.
+
+                Example 2:
+                Input: grid =
+                [
+                  [0,0,0,0,0,0,0,0]
+                ]
+
+                Output: 0
+                Constraints:
+	                m == grid.length
+	                n == grid[i].length
+	                1 <= m, n <= 50
+	                grid[i][j] is either 0 or 1.
+
+
+            Time Complexity         : O(RC)
+            Space Complexity         : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
+                                          new int[]{0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+                                          new int[] { 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                          new int[]{0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0 },
+                                          new int[]{0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0 },
+                                          new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+                                          new int[]{0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+                                          new int[]{0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 }
+                                    }
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{0,0,0,0,0,0,0,0 }
+                                    }
+            });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Max Area of Island for the given input array : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} {Environment.NewLine} {this.MaxAreaOfIsland(input.Input)}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int MaxAreaOfIsland(int[][] grid)
+        {
+            var largestIsland = 0;
+            for (var i = 0; i < grid.Length; i++)
+            {
+                for (var j = 0; j < grid[i].Length; j++)
+                {
+                    if (grid[i][j] == 1)
+                    {
+                        var islandSize = FindIslandSize(grid, i, j);
+                        if (islandSize > largestIsland) largestIsland = islandSize;
+                    }
+                }
+            }
+            return largestIsland;
+        }
+
+       public  int FindIslandSize(int[][] grid, int i, int j)
+        {
+            var islandSize = 0;
+            if (j < 0 || i < 0 || i >= grid.Length || j >= grid[i].Length)            
+                return 0;
+            if (grid[i][j] == 1)
+            {
+                islandSize++;
+                grid[i][j] = 0;
+                islandSize += FindIslandSize(grid, i + 1, j);
+                islandSize += FindIslandSize(grid, i - 1, j);
+                islandSize += FindIslandSize(grid, i, j + 1);
+                islandSize += FindIslandSize(grid, i, j - 1);
+            }
+
+
+
+            return islandSize;
+
+        }
     }
 }
