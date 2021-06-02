@@ -316,7 +316,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Search Suggestions System for the given string  {string.Join(",", input.Input)} for the given search string {input.SearchWord}  is {string.Join(",", (this.SuggestedProducts(input.Input, input.Search)))}" );
+                result.AppendLine($"Search Suggestions System for the given string  {string.Join(",", input.Input)} for the given search string {input.SearchWord}  is {string.Join(",", (this.SuggestedProducts(input.Products, input.SearchWord)))}" );
             }
 
             MessageBox.Show(result.ToString());

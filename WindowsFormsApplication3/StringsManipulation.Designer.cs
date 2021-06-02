@@ -114,6 +114,7 @@
             this.btn_Basic_Calculator_II = new System.Windows.Forms.Button();
             this.btn_Palindrome_Partitioning = new System.Windows.Forms.Button();
             this.btn_Check_If_Two_String_Arrays_are_Equivalent = new System.Windows.Forms.Button();
+            this.btn_Interleaving_String = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1053,11 +1054,22 @@
             this.btn_Check_If_Two_String_Arrays_are_Equivalent.UseVisualStyleBackColor = true;
             this.btn_Check_If_Two_String_Arrays_are_Equivalent.Click += new System.EventHandler(this.btn_Check_If_Two_String_Arrays_are_Equivalent_Click);
             // 
+            // btn_Interleaving_String
+            // 
+            this.btn_Interleaving_String.Location = new System.Drawing.Point(1671, 494);
+            this.btn_Interleaving_String.Name = "btn_Interleaving_String";
+            this.btn_Interleaving_String.Size = new System.Drawing.Size(224, 43);
+            this.btn_Interleaving_String.TabIndex = 87;
+            this.btn_Interleaving_String.Text = "Interleaving String";
+            this.btn_Interleaving_String.UseVisualStyleBackColor = true;
+            this.btn_Interleaving_String.Click += new System.EventHandler(this.btn_Interleaving_String_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 849);
+            this.Controls.Add(this.btn_Interleaving_String);
             this.Controls.Add(this.btn_Check_If_Two_String_Arrays_are_Equivalent);
             this.Controls.Add(this.btn_Palindrome_Partitioning);
             this.Controls.Add(this.btn_Basic_Calculator_II);
@@ -1240,5 +1252,6 @@
         private System.Windows.Forms.Button btn_Basic_Calculator_II;
         private System.Windows.Forms.Button btn_Palindrome_Partitioning;
         private System.Windows.Forms.Button btn_Check_If_Two_String_Arrays_are_Equivalent;
+        private System.Windows.Forms.Button btn_Interleaving_String;
     }
 }
