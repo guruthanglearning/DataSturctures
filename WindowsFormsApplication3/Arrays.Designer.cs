@@ -145,6 +145,7 @@
             this.btn_Find_the_Most_Competitive_Subsequence = new System.Windows.Forms.Button();
             this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away = new System.Windows.Forms.Button();
             this.btn_Maximum_Gap = new System.Windows.Forms.Button();
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1343,7 +1344,7 @@
             // 
             // btn_Maximum_Gap
             // 
-            this.btn_Maximum_Gap.Location = new System.Drawing.Point(1865, 593);
+            this.btn_Maximum_Gap.Location = new System.Drawing.Point(1865, 583);
             this.btn_Maximum_Gap.Name = "btn_Maximum_Gap";
             this.btn_Maximum_Gap.Size = new System.Drawing.Size(267, 45);
             this.btn_Maximum_Gap.TabIndex = 118;
@@ -1351,11 +1352,22 @@
             this.btn_Maximum_Gap.UseVisualStyleBackColor = true;
             this.btn_Maximum_Gap.Click += new System.EventHandler(this.btn_Maximum_Gap_Click);
             // 
+            // btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts
+            // 
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Location = new System.Drawing.Point(1865, 635);
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Name = "btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts";
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Size = new System.Drawing.Size(267, 48);
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.TabIndex = 119;
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Text = "Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts";
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.UseVisualStyleBackColor = true;
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Click += new System.EventHandler(this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.Controls.Add(this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts);
             this.Controls.Add(this.btn_Maximum_Gap);
             this.Controls.Add(this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away);
             this.Controls.Add(this.btn_Find_the_Most_Competitive_Subsequence);
@@ -1599,5 +1611,6 @@
         private System.Windows.Forms.Button btn_Find_the_Most_Competitive_Subsequence;
         private System.Windows.Forms.Button btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away;
         private System.Windows.Forms.Button btn_Maximum_Gap;
+        private System.Windows.Forms.Button btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts;
     }
 }

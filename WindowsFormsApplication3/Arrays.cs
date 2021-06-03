@@ -9802,7 +9802,7 @@ namespace WindowsFormsApplication3
              
              */
 
-
+            long t = 1L;
 
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
@@ -9832,6 +9832,93 @@ namespace WindowsFormsApplication3
                     max = temp;
             }
 
+            return max;
+
+        }
+
+        private void btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a rectangular cake with height h and width w, and two arrays of integers horizontalCuts and verticalCuts where horizontalCuts[i] is the distance from the top of the rectangular cake to the ith horizontal cut and similarly, 
+                verticalCuts[j] is the distance from the left of the rectangular cake to the jth vertical cut.
+
+                Return the maximum area of a piece of cake after you cut at each horizontal and vertical position provided in the arrays horizontalCuts and verticalCuts. Since the answer can be a huge number, 
+                return this modulo 10^9 + 7.
+
+ 
+
+                Example 1:
+                Input: h = 5, w = 4, horizontalCuts = [1,2,4], verticalCuts = [1,3]
+                Output: 4 
+                Explanation: The figure above represents the given rectangular cake. Red lines are the horizontal and vertical cuts. After you cut the cake, the green piece of cake has the maximum area.
+
+                Example 2:
+                Input: h = 5, w = 4, horizontalCuts = [3,1], verticalCuts = [1]
+                Output: 6
+                Explanation: The figure above represents the given rectangular cake. Red lines are the horizontal and vertical cuts. After you cut the cake, the green and yellow pieces of cake have the maximum area.
+
+                Example 3:
+                Input: h = 5, w = 4, horizontalCuts = [3], verticalCuts = [3]
+                Output: 9
+ 
+                Constraints:
+
+                2 <= h, w <= 10^9
+                1 <= horizontalCuts.length < min(h, 10^5)
+                1 <= verticalCuts.length < min(w, 10^5)
+                1 <= horizontalCuts[i] < h
+                1 <= verticalCuts[i] < w
+                It is guaranteed that all elements in horizontalCuts are distinct.
+                It is guaranteed that all elements in verticalCuts are distinct.
+
+                   Hide Hint #1  
+                        Sort the arrays, then compute the maximum difference between two consecutive elements for horizontal cuts and vertical cuts.
+                   Hide Hint #2  
+                        The answer is the product of these maximum values in horizontal cuts and vertical cuts.             
+
+                Time Complexity  : O(2nlogn) which is O(2nlogn
+                Space Complexity : O(1)
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 1, 2, 4 }, m = 3, input2 = new int[] { 1, 3 }, n = 4 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 3,1 }, m = 5, input2 = new int[] {1 }, n = 4 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 3 }, m = 5, input2 = new int[] { 3 }, n = 4 });
+            
+
+            foreach (var input in inputs)
+            {
+                                
+                result.AppendLine($"Maximum Area of a Piece of Cake After Horizontal {string.Join(",", input.input1)} with height :{input.m} and Vertical Cuts {string.Join(",", input.input2)} with width  : {input.n}  is {this.MaxArea(input.m, input.n, input.input1, input.input2)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int MaxArea(int h, int w, int[] horizontalCuts, int[] verticalCuts)
+        {
+            int horiMax = 0;
+            int vertMax = 0;
+            Array.Sort(horizontalCuts);
+            Array.Sort(verticalCuts);
+
+            horiMax = GetDiffMax(horizontalCuts, h);
+            vertMax = GetDiffMax(verticalCuts, w);
+
+
+            return (horiMax * vertMax) % 1000000007;
+
+        }
+
+        private int GetDiffMax(int[] cuts, int m)
+        {
+            int len = cuts.Length;
+            int max = 0;
+            max = Math.Max(cuts[0], m - cuts[len - 1]);
+            for (int i = 1; i < len; i++)
+                max = Math.Max(cuts[i] - cuts[i - 1], max);
             return max;
 
         }
