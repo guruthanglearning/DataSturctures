@@ -10055,6 +10055,75 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Longest_Consecutive_Sequence_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+
+                You must write an algorithm that runs in O(n) time.
+                Example 1:
+                Input: nums = [100,4,200,1,3,2]
+                Output: 4
+                Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+                
+                Example 2:
+                Input: nums = [0,3,7,2,5,8,4,6,0,1]
+                Output: 9 
+
+                Constraints:
+
+                0 <= nums.length <= 105
+                -109 <= nums[i] <= 109
+             
+                Time Complexity     : O(N)
+                Space Complexity    : O(N)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 100, 4, 200, 1, 3, 2 });
+            inputs.Add(new int[] { 0, 3, 7, 2, 5, 8, 4, 6, 0, 1 });
+            inputs.Add(new int[] { 9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6 });
+
+
+            foreach (var input in inputs)
+                result.AppendLine($"Longest Consecutive Sequence for the given integer {string.Join(",", input)} is {this.LongestConsecutive(input)} ");
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int LongestConsecutive(int[] nums)
+        {
+            if (nums == null || nums.Length == 0)
+                return 0;
+
+            HashSet<int> dict = new HashSet<int>();
+            int min = 0;
+            int currSeq = 0;
+            int prevSeq = 0;
+            foreach (int i in nums)
+            {
+                dict.Add(i);
+                min = Math.Min(min, i);
+            }
+
+            for (int i = min; i <= nums.Length; i++)
+            {
+                if (dict.Contains(i))
+                    currSeq++;
+                else
+                {
+                    prevSeq = Math.Max(prevSeq, currSeq);
+                    currSeq = 0;
+                }
+            }
+
+            return Math.Max(prevSeq, currSeq);
+
+        }
     }
 }
 

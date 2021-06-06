@@ -147,6 +147,7 @@
             this.btn_Maximum_Gap = new System.Windows.Forms.Button();
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts = new System.Windows.Forms.Button();
             this.btn_Open_the_Lock = new System.Windows.Forms.Button();
+            this.btn_Longest_Consecutive_Sequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1373,11 +1374,22 @@
             this.btn_Open_the_Lock.UseVisualStyleBackColor = true;
             this.btn_Open_the_Lock.Click += new System.EventHandler(this.btn_Open_the_Lock_Click);
             // 
+            // btn_Longest_Consecutive_Sequence
+            // 
+            this.btn_Longest_Consecutive_Sequence.Location = new System.Drawing.Point(1864, 734);
+            this.btn_Longest_Consecutive_Sequence.Name = "btn_Longest_Consecutive_Sequence";
+            this.btn_Longest_Consecutive_Sequence.Size = new System.Drawing.Size(268, 51);
+            this.btn_Longest_Consecutive_Sequence.TabIndex = 121;
+            this.btn_Longest_Consecutive_Sequence.Text = "Longest Consecutive Sequence";
+            this.btn_Longest_Consecutive_Sequence.UseVisualStyleBackColor = true;
+            this.btn_Longest_Consecutive_Sequence.Click += new System.EventHandler(this.btn_Longest_Consecutive_Sequence_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Longest_Consecutive_Sequence);
             this.Controls.Add(this.btn_Open_the_Lock);
             this.Controls.Add(this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts);
             this.Controls.Add(this.btn_Maximum_Gap);
@@ -1625,5 +1637,6 @@
         private System.Windows.Forms.Button btn_Maximum_Gap;
         private System.Windows.Forms.Button btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts;
         private System.Windows.Forms.Button btn_Open_the_Lock;
+        private System.Windows.Forms.Button btn_Longest_Consecutive_Sequence;
     }
 }
