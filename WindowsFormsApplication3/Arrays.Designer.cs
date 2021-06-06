@@ -146,6 +146,7 @@
             this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away = new System.Windows.Forms.Button();
             this.btn_Maximum_Gap = new System.Windows.Forms.Button();
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts = new System.Windows.Forms.Button();
+            this.btn_Open_the_Lock = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1362,11 +1363,22 @@
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.UseVisualStyleBackColor = true;
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Click += new System.EventHandler(this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts_Click);
             // 
+            // btn_Open_the_Lock
+            // 
+            this.btn_Open_the_Lock.Location = new System.Drawing.Point(1865, 688);
+            this.btn_Open_the_Lock.Name = "btn_Open_the_Lock";
+            this.btn_Open_the_Lock.Size = new System.Drawing.Size(267, 40);
+            this.btn_Open_the_Lock.TabIndex = 120;
+            this.btn_Open_the_Lock.Text = "Open the Lock";
+            this.btn_Open_the_Lock.UseVisualStyleBackColor = true;
+            this.btn_Open_the_Lock.Click += new System.EventHandler(this.btn_Open_the_Lock_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2536, 1353);
+            this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Open_the_Lock);
             this.Controls.Add(this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts);
             this.Controls.Add(this.btn_Maximum_Gap);
             this.Controls.Add(this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away);
@@ -1612,5 +1624,6 @@
         private System.Windows.Forms.Button btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away;
         private System.Windows.Forms.Button btn_Maximum_Gap;
         private System.Windows.Forms.Button btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts;
+        private System.Windows.Forms.Button btn_Open_the_Lock;
     }
 }
