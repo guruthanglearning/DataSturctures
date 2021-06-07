@@ -148,6 +148,7 @@
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts = new System.Windows.Forms.Button();
             this.btn_Open_the_Lock = new System.Windows.Forms.Button();
             this.btn_Longest_Consecutive_Sequence = new System.Windows.Forms.Button();
+            this.btn_Min_Cost_Climbing_Stairs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1384,11 +1385,22 @@
             this.btn_Longest_Consecutive_Sequence.UseVisualStyleBackColor = true;
             this.btn_Longest_Consecutive_Sequence.Click += new System.EventHandler(this.btn_Longest_Consecutive_Sequence_Click);
             // 
+            // btn_Min_Cost_Climbing_Stairs
+            // 
+            this.btn_Min_Cost_Climbing_Stairs.Location = new System.Drawing.Point(1866, 792);
+            this.btn_Min_Cost_Climbing_Stairs.Name = "btn_Min_Cost_Climbing_Stairs";
+            this.btn_Min_Cost_Climbing_Stairs.Size = new System.Drawing.Size(266, 48);
+            this.btn_Min_Cost_Climbing_Stairs.TabIndex = 122;
+            this.btn_Min_Cost_Climbing_Stairs.Text = "Min Cost Climbing Stairs";
+            this.btn_Min_Cost_Climbing_Stairs.UseVisualStyleBackColor = true;
+            this.btn_Min_Cost_Climbing_Stairs.Click += new System.EventHandler(this.btn_Min_Cost_Climbing_Stairs_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Min_Cost_Climbing_Stairs);
             this.Controls.Add(this.btn_Longest_Consecutive_Sequence);
             this.Controls.Add(this.btn_Open_the_Lock);
             this.Controls.Add(this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts);
@@ -1638,5 +1650,6 @@
         private System.Windows.Forms.Button btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts;
         private System.Windows.Forms.Button btn_Open_the_Lock;
         private System.Windows.Forms.Button btn_Longest_Consecutive_Sequence;
+        private System.Windows.Forms.Button btn_Min_Cost_Climbing_Stairs;
     }
 }
