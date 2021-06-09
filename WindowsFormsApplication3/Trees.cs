@@ -3742,7 +3742,7 @@ namespace WindowsFormsApplication3
                 inorder is guaranteed to be the inorder traversal of the tree.
             
                 Time Complexity     : O(N)
-                Space Complexity    : O(1)  
+                Space Complexity    : O(N)  
 
              */
 
