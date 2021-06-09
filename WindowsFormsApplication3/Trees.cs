@@ -2175,6 +2175,7 @@ namespace WindowsFormsApplication3
         {
             public int[] InOrder;
             public int[] PostOrder;
+            public int[] PreOrder;
         }
 
         public Node BuildTree(int[] inorder, int[] postorder)
@@ -3703,6 +3704,95 @@ namespace WindowsFormsApplication3
                 return (IsBST(root.left, min, root.val) && IsBST(root.right, root.val, max));
 
             return false;
+        }
+
+        private void btn_Construct_Binary_Tree_from__PreOrder_and_InOrder_Traversal_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+
+ 
+
+                Example 1:
+
+                    3
+                   / \
+                  9  20
+                    /  \
+                   15   7
+                    
+
+                Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+                Output: [3,9,20,null,null,15,7]
+                
+                Example 2:
+                Input: preorder = [-1], inorder = [-1]
+                Output: [-1]
+ 
+
+                Constraints:
+
+                1 <= preorder.length <= 3000
+                inorder.length == preorder.length
+                -3000 <= preorder[i], inorder[i] <= 3000
+                preorder and inorder consist of unique values.
+                Each value of inorder also appears in preorder.
+                preorder is guaranteed to be the preorder traversal of the tree.
+                inorder is guaranteed to be the inorder traversal of the tree.
+            
+                Time Complexity     : O(N)
+                Space Complexity    : O(1)  
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<InutArray> inputs = new List<InutArray>();
+            inputs.Add(new InutArray() { PreOrder = new int[] { 3, 9, 20, 15, 7 }, InOrder = new int[] { 9, 3, 15, 20, 7 } });
+            inputs.Add(new InutArray() { PreOrder = new int[] { 1,2 }, InOrder = new int[] { 1,2 } });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($" Binary Tree from Preorder : {string.Join(",", input.PreOrder)} and InOrder : {string.Join(",", input.InOrder)} Traversal is {this.TraverseBinaryTree(this.BuildTree_PreOrder_InOrder(input.PreOrder, input.InOrder))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public Node BuildTree_PreOrder_InOrder(int[] preorder, int[] inorder)
+        {
+            int inc = 0;
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            for (int i = 0; i < inorder.Length; i++)
+                dict[inorder[i]] = i;
+
+            return Build_PreOrder_InOrder(preorder, inorder, 0, inorder.Length - 1, ref inc, dict);
+
+        }
+
+        public Node Build_PreOrder_InOrder(int[] preOrder, int[] inOrder, int start, int end, ref int inc, Dictionary<int,int> dict)
+        {
+
+            if (inc >= preOrder.Length || start > end)
+                return null;
+
+            int index = dict[preOrder[inc]];
+            Node node = new Node() { data = preOrder[inc++] };
+
+            if (start == end)
+                return node;
+
+            if (index >= 0)
+            {
+                node.left = Build_PreOrder_InOrder(preOrder, inOrder, start, index - 1, ref inc, dict);
+                node.right = Build_PreOrder_InOrder(preOrder, inOrder, index + 1, end, ref inc, dict);
+            }
+            else
+                return null;
+            return node;
         }
     }
 
