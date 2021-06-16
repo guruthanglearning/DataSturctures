@@ -61,6 +61,7 @@
             this.btn_Spiral_Matrix_II = new System.Windows.Forms.Button();
             this.btn_Sort_the_Matrix_Diagonally = new System.Windows.Forms.Button();
             this.btn_Max_Area_of_Island = new System.Windows.Forms.Button();
+            this.btn_Maximum_Units_on_a_Truck = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -420,11 +421,22 @@
             this.btn_Max_Area_of_Island.UseVisualStyleBackColor = true;
             this.btn_Max_Area_of_Island.Click += new System.EventHandler(this.btn_Max_Area_of_Island_Click);
             // 
+            // btn_Maximum_Units_on_a_Truck
+            // 
+            this.btn_Maximum_Units_on_a_Truck.Location = new System.Drawing.Point(336, 701);
+            this.btn_Maximum_Units_on_a_Truck.Name = "btn_Maximum_Units_on_a_Truck";
+            this.btn_Maximum_Units_on_a_Truck.Size = new System.Drawing.Size(263, 45);
+            this.btn_Maximum_Units_on_a_Truck.TabIndex = 109;
+            this.btn_Maximum_Units_on_a_Truck.Text = "Maximum Units on a Truck";
+            this.btn_Maximum_Units_on_a_Truck.UseVisualStyleBackColor = true;
+            this.btn_Maximum_Units_on_a_Truck.Click += new System.EventHandler(this.btn_Maximum_Units_on_a_Truck_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Maximum_Units_on_a_Truck);
             this.Controls.Add(this.btn_Max_Area_of_Island);
             this.Controls.Add(this.btn_Sort_the_Matrix_Diagonally);
             this.Controls.Add(this.btn_Spiral_Matrix_II);
@@ -501,5 +513,6 @@
         private System.Windows.Forms.Button btn_Spiral_Matrix_II;
         private System.Windows.Forms.Button btn_Sort_the_Matrix_Diagonally;
         private System.Windows.Forms.Button btn_Max_Area_of_Island;
+        private System.Windows.Forms.Button btn_Maximum_Units_on_a_Truck;
     }
 }

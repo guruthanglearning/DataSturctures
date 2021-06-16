@@ -9610,9 +9610,39 @@ namespace WindowsFormsApplication3
 
         public int FindKthLargest(int[] nums, int k)
         {
-            Array.Sort(nums);
 
-            return nums[nums.Length - k];
+            if (nums == null || nums.Length == 0)
+                return 0;
+
+            List<int> result = new List<int>();
+            int index = 0;
+
+            foreach (int i in nums)
+            {
+                index = Search(result, i);
+                result.Insert(index, i);
+            }
+
+            return result[result.Count - k];
+
+
+        }
+
+        public int Search(List<int> data, int target)
+        {
+            int l = 0; int r = data.Count;
+            int m = 0;
+            while (l < r) // l = 3   r = 3    //1 2 3
+            {
+                m = (l + r) / 2; //2
+                if (target > data[m])
+                    l = m + 1;
+                else
+                    r = m;
+            }
+
+            return l;
+
         }
 
         private void btn_Find_the_Most_Competitive_Subsequence_Click(object sender, EventArgs e)
@@ -9654,8 +9684,8 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<Array2n> inputs = new List<Array2n>();
-            //inputs.Add(new Array2n() { Data = new int[] { 3, 5, 2, 6 }, N = 2 });
-            //inputs.Add(new Array2n() { Data = new int[] { 2, 4, 3, 3, 5, 4, 9, 6 }, N = 4 });
+            inputs.Add(new Array2n() { Data = new int[] { 3, 5, 2, 6 }, N = 2 });
+            inputs.Add(new Array2n() { Data = new int[] { 2, 4, 3, 3, 5, 4, 9, 6 }, N = 4 });
             inputs.Add(new Array2n() { Data = new int[] { 71, 18, 52, 29, 55, 73, 24, 42, 66, 8, 80, 2 }, N = 3 });
             
             foreach (var input in inputs)
@@ -10128,6 +10158,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Min_Cost_Climbing_Stairs_Click(object sender, EventArgs e)
         {
+
             /*
                     You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or two steps.
 
