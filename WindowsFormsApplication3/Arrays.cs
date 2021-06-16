@@ -10190,6 +10190,166 @@ namespace WindowsFormsApplication3
 
             return Math.Min(steps[cost.Length - 1], steps[cost.Length - 2]);
         }
+
+        private void btn_Palindrome_Pairs_Click(object sender, EventArgs e)
+        {
+
+
+            /*
+             
+                Given a list of unique words, return all the pairs of the distinct indices (i, j) in the given list, so that the concatenation of the two words words[i] + words[j] is a palindrome.
+
+                Example 1:
+
+                Input: words = ["abcd","dcba","lls","s","sssll"]
+                Output: [[0,1],[1,0],[3,2],[2,4]]
+                Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
+                Example 2:
+
+                Input: words = ["bat","tab","cat"]
+                Output: [[0,1],[1,0]]
+                Explanation: The palindromes are ["battab","tabbat"]
+                Example 3:
+
+                Input: words = ["a",""]
+                Output: [[0,1],[1,0]]
+ 
+
+                Constraints:
+
+                1 <= words.length <= 5000
+                0 <= words[i].length <= 300
+                words[i] consists of lower-case English letters.
+
+
+                TC      : O(N*K^2)
+                SC      : O(N)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string[]> inputs = new List<string[]>();
+            inputs.Add(new string[] { "abcd", "dcba", "lls", "s", "sssll" });
+            inputs.Add(new string[] { "bat", "tab", "cat" });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Palindrome Pairs for the given strings {string.Join(",", input)} is ");
+                foreach (var r in this.PalindromePairs(input))
+                    result.AppendLine($"{r[0]},{r[1]}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public IList<IList<int>> PalindromePairs(string[] words)
+        {
+
+            IList<IList<int>> result = new List<IList<int>>();
+
+            if (words == null || words.Length <= 1)
+                return result;
+
+            /*
+                "abcd" ,"dcba"
+                 "lls","s"
+                 "lls","sssll"
+                 "aba",""
+                 "s","sssll"
+            */
+
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+
+            for (int i = 0; i < words.Length; i++)
+                if (!dict.ContainsKey(words[i]))
+                    dict[words[i]] = i;
+
+            int ind = 0;
+            string reverse;
+
+            if (dict.ContainsKey(""))
+            {
+                ind = dict[""];
+                for (int i = 0; i < words.Length; i++)
+                    if (ind != i && IsPalidrome(words[i]))
+                    {
+                        result.Add(new List<int> { i, ind });
+                        result.Add(new List<int> { ind, i });
+                    }
+            }
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                reverse = string.Join("", words[i].Reverse<char>());
+                if (dict.ContainsKey(reverse))
+                {
+                    ind = dict[reverse];
+                    if (ind != i)
+                        result.Add(new List<int>() { i, dict[reverse] });
+                }
+            }
+
+            string str;
+            string l;
+            string r;
+            for (int i = 0; i < words.Length; i++)
+            {
+                str = words[i];
+
+                for (int j = 1; j < str.Length; j++)
+                {
+                    l = str.Substring(0, j);
+                    r = str.Substring(j);
+
+                    if (IsPalidrome(l))
+                    {
+                        reverse = string.Join("", r.Reverse<char>());
+                        if (dict.ContainsKey(reverse))
+                        {
+                            ind = dict[reverse];
+                            if (i != ind)
+                                result.Add(new List<int>() { dict[reverse], i, });
+                        }
+                    }
+
+                    if (IsPalidrome(r))
+                    {
+                        reverse = string.Join("", l.Reverse<char>());
+                        if (dict.ContainsKey(reverse))
+                        {
+                            ind = dict[reverse];
+                            if (i != ind)
+                                result.Add(new List<int>() { i, dict[reverse] });
+                        }
+                    }
+
+                }
+            }
+
+
+            return result;
+
+
+        }
+
+
+        public bool IsPalidrome(string word)
+        {
+            int l = 0;
+            int r = word.Length - 1;
+
+            while (l < r)
+            {
+                if (word[l++] != word[r--])
+                    return false;
+            }
+
+            return true;
+
+        }
+
     }
 }
 

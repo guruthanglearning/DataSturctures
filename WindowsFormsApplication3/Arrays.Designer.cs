@@ -149,6 +149,7 @@
             this.btn_Open_the_Lock = new System.Windows.Forms.Button();
             this.btn_Longest_Consecutive_Sequence = new System.Windows.Forms.Button();
             this.btn_Min_Cost_Climbing_Stairs = new System.Windows.Forms.Button();
+            this.btn_Palindrome_Pairs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1395,11 +1396,22 @@
             this.btn_Min_Cost_Climbing_Stairs.UseVisualStyleBackColor = true;
             this.btn_Min_Cost_Climbing_Stairs.Click += new System.EventHandler(this.btn_Min_Cost_Climbing_Stairs_Click);
             // 
+            // btn_Palindrome_Pairs
+            // 
+            this.btn_Palindrome_Pairs.Location = new System.Drawing.Point(1866, 847);
+            this.btn_Palindrome_Pairs.Name = "btn_Palindrome_Pairs";
+            this.btn_Palindrome_Pairs.Size = new System.Drawing.Size(266, 47);
+            this.btn_Palindrome_Pairs.TabIndex = 123;
+            this.btn_Palindrome_Pairs.Text = "Palindrome Pairs";
+            this.btn_Palindrome_Pairs.UseVisualStyleBackColor = true;
+            this.btn_Palindrome_Pairs.Click += new System.EventHandler(this.btn_Palindrome_Pairs_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Palindrome_Pairs);
             this.Controls.Add(this.btn_Min_Cost_Climbing_Stairs);
             this.Controls.Add(this.btn_Longest_Consecutive_Sequence);
             this.Controls.Add(this.btn_Open_the_Lock);
@@ -1651,5 +1663,6 @@
         private System.Windows.Forms.Button btn_Open_the_Lock;
         private System.Windows.Forms.Button btn_Longest_Consecutive_Sequence;
         private System.Windows.Forms.Button btn_Min_Cost_Climbing_Stairs;
+        private System.Windows.Forms.Button btn_Palindrome_Pairs;
     }
 }
