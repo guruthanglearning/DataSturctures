@@ -2336,6 +2336,110 @@ namespace WindowsFormsApplication3
             return Convert.ToInt32(sum % mod);
 
         }
+
+        private void btn_Generate_Parentheses_Click(object sender, EventArgs e)
+        {
+            /*
+                    Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+                    Example 1:
+                    Input: n = 3
+                    Output: ["((()))","(()())","(())()","()(())","()()()"]
+                
+                    Example 2:
+                    Input: n = 1
+                    Output: ["()"]
+
+                    Constraints:
+
+                    1 <= n <= 8
+
+                    TC : O(2^N) //Expontial 
+                    SP : Need to figure it out
+             */
+
+            List<int> inputs = new List<int>();
+            inputs.Add(1);
+            inputs.Add(2);
+            inputs.Add(3);
+         
+
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The list of paranthesis for the given number {input} is { string.Join(Environment.NewLine, this.GenerateParenthesis(input))} ");
+                //result.AppendLine($"The list of paranthesis for the given number {input} is { string.Join(Environment.NewLine, this.GenerateParenthesis_Queue(input))} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public IList<string> GenerateParenthesis(int n)
+        {
+
+            List<string> result = new List<string>();
+            Generate(result, 0, 0, "", n);
+            return result;
+
+        }
+
+
+        private void Generate(List<string> result, int open, int close, string str, int l)
+        {
+            if (str.Length == l * 2)
+            {
+                result.Add(str);
+                return;
+            }
+
+            if (open < l)
+                Generate(result, open + 1, close, str + '(', l);
+
+            if (close < open)
+                Generate(result, open, close + 1, str + ')', l);
+
+
+        }
+
+        public class Paranthesis
+        {
+            public string Paranthes;
+            public int Open;
+            public int Close;
+        }
+
+        public IList<string> GenerateParenthesis_Queue(int n)
+        {
+            IList<string> list = new List<string>();
+            Queue<Paranthesis> queue = new Queue<Paranthesis>();
+            queue.Enqueue(new Paranthesis() { Paranthes = "(", Open = 1, Close = 0 });
+
+            int op = 0;
+            int cl = 0;
+            string str;
+            while (queue.Count() > 0)
+            {
+                Paranthesis  paran = queue.Dequeue();
+                str = paran.Paranthes;
+                op = paran.Open;
+                cl = paran.Close;
+
+                if (op < n)                                    
+                    queue.Enqueue(new Paranthesis() { Paranthes = str + "(", Open = op+ 1, Close = cl});
+                
+
+                if (cl < n && cl < op)
+                    queue.Enqueue(new Paranthesis() { Paranthes = str + ")", Open = op, Close = cl + 1});
+
+                if (op == n && cl == n)
+                {
+                    list.Add(str);
+                }
+            }
+
+            return list;
+        }
     }
 }
 

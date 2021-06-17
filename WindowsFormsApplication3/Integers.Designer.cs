@@ -61,6 +61,7 @@
             this.btn_Get_Maximum_in_Generated_Array = new System.Windows.Forms.Button();
             this.btn_Count_Sorted_Vowel_Strings = new System.Windows.Forms.Button();
             this.btn_Concatenation_of_Consecutive_Binary_Numbers = new System.Windows.Forms.Button();
+            this.btn_Generate_Parentheses = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -402,11 +403,22 @@
             this.btn_Concatenation_of_Consecutive_Binary_Numbers.UseVisualStyleBackColor = true;
             this.btn_Concatenation_of_Consecutive_Binary_Numbers.Click += new System.EventHandler(this.btn_Concatenation_of_Consecutive_Binary_Numbers_Click);
             // 
+            // btn_Generate_Parentheses
+            // 
+            this.btn_Generate_Parentheses.Location = new System.Drawing.Point(420, 660);
+            this.btn_Generate_Parentheses.Name = "btn_Generate_Parentheses";
+            this.btn_Generate_Parentheses.Size = new System.Drawing.Size(268, 39);
+            this.btn_Generate_Parentheses.TabIndex = 118;
+            this.btn_Generate_Parentheses.Text = "Generate Parentheses";
+            this.btn_Generate_Parentheses.UseVisualStyleBackColor = true;
+            this.btn_Generate_Parentheses.Click += new System.EventHandler(this.btn_Generate_Parentheses_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 1049);
+            this.Controls.Add(this.btn_Generate_Parentheses);
             this.Controls.Add(this.btn_Concatenation_of_Consecutive_Binary_Numbers);
             this.Controls.Add(this.btn_Count_Sorted_Vowel_Strings);
             this.Controls.Add(this.btn_Get_Maximum_in_Generated_Array);
@@ -481,5 +493,6 @@
         private System.Windows.Forms.Button btn_Get_Maximum_in_Generated_Array;
         private System.Windows.Forms.Button btn_Count_Sorted_Vowel_Strings;
         private System.Windows.Forms.Button btn_Concatenation_of_Consecutive_Binary_Numbers;
+        private System.Windows.Forms.Button btn_Generate_Parentheses;
     }
 }
