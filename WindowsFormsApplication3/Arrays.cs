@@ -9592,7 +9592,7 @@ namespace WindowsFormsApplication3
                 You may assume k is always valid, 1 ≤ k ≤ array's length.  
             
                 Time Complexity     : O(NlogN)
-                Space Complexity    : O(1)
+                Space Complexity    : O(N)
              */
 
             StringBuilder result = new StringBuilder();
