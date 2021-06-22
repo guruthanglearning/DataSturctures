@@ -10743,5 +10743,169 @@ new RandomizedSetData() { Operation = 1,Data = 413}
                 return left;
             }
         }
+
+        private void btn_Range_Sum_Query_Mutable_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an integer array nums, handle multiple queries of the following types:
+
+                Update the value of an element in nums.
+                Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.
+                Implement the NumArray class:
+
+                NumArray(int[] nums) Initializes the object with the integer array nums.
+                void update(int index, int val) Updates the value of nums[index] to be val.
+                int sumRange(int left, int right) Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).
+ 
+
+                Example 1:
+
+                Input
+                ["NumArray", "sumRange", "update", "sumRange"]
+                [[[1, 3, 5]], [0, 2], [1, 2], [0, 2]]
+                Output
+                [null, 9, null, 8]
+
+                Explanation
+                NumArray numArray = new NumArray([1, 3, 5]);
+                numArray.sumRange(0, 2); // return 1 + 3 + 5 = 9
+                numArray.update(1, 2);   // nums = [1, 2, 5]
+                numArray.sumRange(0, 2); // return 1 + 2 + 5 = 8
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 3 * 104
+                -100 <= nums[i] <= 100
+                0 <= index < nums.length
+                -100 <= val <= 100
+                0 <= left <= right < nums.length
+                At most 3 * 104 calls will be made to update and sumRange.
+
+            
+                
+                FewWick Creation  : TC : O(N) SP :O(N)
+                Sum Range         : TC : O(log N)
+                Update            : TC : O(log N)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<InputNumArray> inputs = new List<InputNumArray>();
+            inputs.Add(new InputNumArray() {Input=new int[] { 1,3,5}, Operations = new List<InputNumArrayOperations>()
+                                                                                                    {
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,2 } },
+                                                                                                        new InputNumArrayOperations(){ Name = "update", Input = new List<int>() {1,2 } },
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,2 } }
+                                                                                                    } 
+                                            });
+
+
+            foreach (var input in inputs)
+            {
+                NumArray numArray = new NumArray(input.Input);
+                result.AppendLine($"Range Sum Query - Mutable for the given input {(string.Join(",", input.Input))} is");
+                foreach (var item in input.Operations)
+                {
+                    if (item.Name == "sumRange")
+                        result.AppendLine($"sumRange({item.Input[0]}, {item.Input[1]}) : {numArray.SumRange(item.Input[0], item.Input[1])}");
+                    else
+                    {
+                        result.AppendLine($"update({item.Input[0]}, {item.Input[1]})");
+                        numArray.Update(item.Input[0], item.Input[1]);
+                    }
+                }
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public class InputNumArray
+        {
+            public int[] Input;
+            public List<InputNumArrayOperations> Operations;
+        }
+
+        public class InputNumArrayOperations
+        {
+            public string Name;
+            public List<int> Input;
+        }
+
+        public class NumArray
+        {
+
+            int[] fenwick;            
+            int[] nums;
+
+            public NumArray(int[] nums)
+            {
+                this.nums = nums;
+                fenwick = new int[this.nums.Length + 1];
+                InitializeFenwick();
+
+
+            }
+            
+            private void InitializeFenwick()
+            {
+
+                fenwick[1] = nums[0];                                
+                for (int i = 1; i < nums.Length; i++)
+                {
+                    fenwick[i + 1] = fenwick[i] + nums[i];
+                }
+                for (int i = nums.Length; i > 0; i--)
+                {
+                    int parent = i - (i & -i);
+                    if (parent >= 0) fenwick[i] -= fenwick[parent];
+                }
+
+                              
+            }
+
+            private void UpdateTree(int i, int val)
+            {
+                i++;
+
+                while(i <= nums.Length)
+                {
+                    fenwick[i] += val;
+                    i += (i & -i);
+                }
+            }
+
+            public void Update(int index, int val)
+            {
+
+                int diff = val - nums[index];
+                nums[index] = val;
+                UpdateTree(index, diff);
+            }
+
+            public int SumRange(int left, int right)
+            {
+                if (left == 0) return GetSum(right);
+                else
+                    return GetSum(right) - GetSum(left - 1);
+            }
+
+            private int GetSum(int i)
+            {
+                int result = 0;
+                i++;
+                while (i > 0)
+                {
+                    result += fenwick[i];
+                    i -= (i & -i);
+                }
+
+                return result;
+            }
+        }
+
+
     }
 }

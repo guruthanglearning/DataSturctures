@@ -309,6 +309,9 @@ namespace WindowsFormsApplication3
             Time Complexity :  O(n) where is 
             */
 
+         
+       
+
             StringBuilder result = new StringBuilder();
             List<IList<int>> datas = this.GeneratePascalTriange(6);
             foreach(var data in datas)
@@ -332,7 +335,7 @@ namespace WindowsFormsApplication3
 
             for (int i = 1; i <= numRows; i++)
             {
-                datas.Clear();
+                datas = new List<int>();
                 if (i == 1)
                 {
                     datas.Add(1);
@@ -2339,6 +2342,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Generate_Parentheses_Click(object sender, EventArgs e)
         {
+            
+
             /*
                     Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 

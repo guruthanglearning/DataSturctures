@@ -34,6 +34,7 @@
             this.btn_Find_Min_Conference_room_for_the_given_meeting_times = new System.Windows.Forms.Button();
             this.btn_Insert_Delete_GetRandom_O_Of_1 = new System.Windows.Forms.Button();
             this.btn_My_Calendar_I = new System.Windows.Forms.Button();
+            this.btn_Range_Sum_Query_Mutable = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Record_Max_population_for_an_year
@@ -97,11 +98,22 @@
             this.btn_My_Calendar_I.UseVisualStyleBackColor = true;
             this.btn_My_Calendar_I.Click += new System.EventHandler(this.btn_My_Calendar_I_Click);
             // 
+            // btn_Range_Sum_Query_Mutable
+            // 
+            this.btn_Range_Sum_Query_Mutable.Location = new System.Drawing.Point(12, 299);
+            this.btn_Range_Sum_Query_Mutable.Name = "btn_Range_Sum_Query_Mutable";
+            this.btn_Range_Sum_Query_Mutable.Size = new System.Drawing.Size(414, 44);
+            this.btn_Range_Sum_Query_Mutable.TabIndex = 40;
+            this.btn_Range_Sum_Query_Mutable.Text = "Range Sum Query - Mutable";
+            this.btn_Range_Sum_Query_Mutable.UseVisualStyleBackColor = true;
+            this.btn_Range_Sum_Query_Mutable.Click += new System.EventHandler(this.btn_Range_Sum_Query_Mutable_Click);
+            // 
             // ObjectOrientatedQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 449);
+            this.Controls.Add(this.btn_Range_Sum_Query_Mutable);
             this.Controls.Add(this.btn_My_Calendar_I);
             this.Controls.Add(this.btn_Insert_Delete_GetRandom_O_Of_1);
             this.Controls.Add(this.btn_Find_Min_Conference_room_for_the_given_meeting_times);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.Button btn_Find_Min_Conference_room_for_the_given_meeting_times;
         private System.Windows.Forms.Button btn_Insert_Delete_GetRandom_O_Of_1;
         private System.Windows.Forms.Button btn_My_Calendar_I;
+        private System.Windows.Forms.Button btn_Range_Sum_Query_Mutable;
     }
 }
