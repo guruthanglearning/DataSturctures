@@ -6570,6 +6570,7 @@ namespace WindowsFormsApplication3
 
         public class Common
         {
+            public string str;
             public string[] word1;
             public string[] word2;
         }
@@ -6640,6 +6641,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Interleaving_String_Click(object sender, EventArgs e)
         {
+            
+
             /*
                 Given strings s1, s2, and s3, find whether s3 is formed by an interleaving of s1 and s2.
 
@@ -6738,6 +6741,100 @@ namespace WindowsFormsApplication3
                 }
             }
             return dp[s2.Length];
+        }
+
+        private void btn_Number_of_Matching_Subsequences_Click(object sender, EventArgs e)
+        {
+            /*
+                    Given a string s and an array of strings words, return the number of words[i] that is a subsequence of s.
+
+                    A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+
+                    For example, "ace" is a subsequence of "abcde".
+ 
+
+                    Example 1:
+
+                    Input: s = "abcde", words = ["a","bb","acd","ace"]
+                    Output: 3
+                    Explanation: There are three strings in words that are a subsequence of s: "a", "acd", "ace".
+                    Example 2:
+
+                    Input: s = "dsahjpjauf", words = ["ahjpjau","ja","ahbwzgqnuk","tnmlanowax"]
+                    Output: 2
+ 
+
+                    Constraints:
+
+                    1 <= s.length <= 5 * 104
+                    1 <= words.length <= 5000
+                    1 <= words[i].length <= 50
+                    s and words[i] consist of only lowercase English letters.
+
+                    TC : O(S*(W*L)) // S : No of character (str) W : No of Words L : Lenght of the word in words
+                    SC : O(W)  
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() {str= "abcde", word1 = new string[] { "a", "bb", "acd", "ace" } });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The Number of Matching Subsequences for the given string {input.str} and words {string.Join(",", input.word1)} is {NumMatchingSubseq(input.str, input.word1)} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int NumMatchingSubseq(string s, string[] words)
+        {
+            if (words == null || words.Length == 0 || s == null || s.Length == 0)
+                return 0;
+
+            int count = 0;
+            HashSet<string> subs = new HashSet<string>();
+            HashSet<string> noSubs = new HashSet<string>();
+            foreach (var word in words)
+            {
+                if (subs.Contains(word))
+                {
+                    count++;
+                    continue;
+                }
+                if (noSubs.Contains(word))
+                {
+                    continue;
+                }
+                if (IsSubsequence_New(word, s))
+                {
+                    subs.Add(word);
+                    count++;
+                }
+                else
+                {
+                    noSubs.Add(word);
+                }
+            }
+            return count;
+        }
+
+        private bool IsSubsequence_New(string s, string subSeq)
+        {
+            int index = 0;
+            foreach (char c in subSeq)
+            {
+                index = s.IndexOf(c, index);
+                if (index == -1)
+                    return false;
+
+                index++;
+            }
+
+            return true;
+
         }
     }
 }
