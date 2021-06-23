@@ -4572,6 +4572,9 @@ namespace WindowsFormsApplication3
             public ListNode Node1;
             public ListNode Node2;
             public int Find;
+            public int Left;
+            public int Right;
+
         }
 
 
@@ -5459,8 +5462,100 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Reverse_Linked_List_II_Click(object sender, EventArgs e)
+        {
+            /*
+                Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
+
+                Example 1:
+
+
+                Input: head = [1,2,3,4,5], left = 2, right = 4
+                Output: [1,4,3,2,5]
+                Example 2:
+
+                Input: head = [5], left = 1, right = 1
+                Output: [5]
+ 
+                Constraints:
+
+                The number of nodes in the list is n.
+                1 <= n <= 500
+                -500 <= Node.val <= 500
+                1 <= left <= right <= n
+ 
+
+                Follow up: Could you do it in one pass?
+
+                TC : O(N)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }),Left=2,Right=4 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }), Left = 4, Right = 5 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 5 }), Left = 1, Right = 1 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 3,5 }), Left = 1, Right = 2 });
+            
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Reverse Linked List II for the given {this.GetListNodeData(input.Node1)} is {Environment.NewLine}{this.GetListNodeData(ReverseBetween(input.Node1, input.Left, input.Right))}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public ListNode ReverseBetween(ListNode head, int left, int right)
+        {
+            if (left == right)
+                return head;
+
+            ListNode dummy = new ListNode() { val = -1, next = head };
+            ListNode start = dummy;
+            ListNode prev = null;
+            ListNode revNode = null;
+            ListNode temp = null;
+            ListNode it = null;
+            ListNode revStartNode = null;
+           
+
+            for (int i = 0; i < left; i++)
+            {
+                prev = start;
+                start = start.next;
+            }
+
+            it = start;
+
+            for (int i = left; i <= right; i++)
+            {
+                temp = it.next;
+                it.next = revNode;
+                revNode = it;
+                it = temp;
+
+                if (revStartNode == null)
+                    revStartNode = revNode;
+            }
+
+
+
+            prev.next = revNode;
+            revStartNode.next = it;
+
+            return dummy.next;
+
+
+
+
+        }
     }
 
+
+   
 
 
     class Graph

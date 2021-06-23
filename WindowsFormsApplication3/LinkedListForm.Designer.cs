@@ -90,6 +90,7 @@
             this.btn_Linked_List_Random_Node = new System.Windows.Forms.Button();
             this.btn_Swap_Nodes_in_Pairs = new System.Windows.Forms.Button();
             this.btn_Remove_Duplicates_from_Sorted_List_II = new System.Windows.Forms.Button();
+            this.btn_Reverse_Linked_List_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -458,7 +459,7 @@
             // 
             // btn_Clone_a_linked_list_with_next_pointer
             // 
-            this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(1226, 946);
+            this.btn_Clone_a_linked_list_with_next_pointer.Location = new System.Drawing.Point(1227, 936);
             this.btn_Clone_a_linked_list_with_next_pointer.Name = "btn_Clone_a_linked_list_with_next_pointer";
             this.btn_Clone_a_linked_list_with_next_pointer.Size = new System.Drawing.Size(291, 51);
             this.btn_Clone_a_linked_list_with_next_pointer.TabIndex = 39;
@@ -744,11 +745,22 @@
             this.btn_Remove_Duplicates_from_Sorted_List_II.UseVisualStyleBackColor = true;
             this.btn_Remove_Duplicates_from_Sorted_List_II.Click += new System.EventHandler(this.btn_Remove_Duplicates_from_Sorted_List_II_Click);
             // 
+            // btn_Reverse_Linked_List_II
+            // 
+            this.btn_Reverse_Linked_List_II.Location = new System.Drawing.Point(885, 835);
+            this.btn_Reverse_Linked_List_II.Name = "btn_Reverse_Linked_List_II";
+            this.btn_Reverse_Linked_List_II.Size = new System.Drawing.Size(321, 49);
+            this.btn_Reverse_Linked_List_II.TabIndex = 67;
+            this.btn_Reverse_Linked_List_II.Text = "Reverse Linked List II";
+            this.btn_Reverse_Linked_List_II.UseVisualStyleBackColor = true;
+            this.btn_Reverse_Linked_List_II.Click += new System.EventHandler(this.btn_Reverse_Linked_List_II_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1671, 1049);
+            this.Controls.Add(this.btn_Reverse_Linked_List_II);
             this.Controls.Add(this.btn_Remove_Duplicates_from_Sorted_List_II);
             this.Controls.Add(this.btn_Swap_Nodes_in_Pairs);
             this.Controls.Add(this.btn_Linked_List_Random_Node);
@@ -884,5 +896,6 @@
         private System.Windows.Forms.Button btn_Linked_List_Random_Node;
         private System.Windows.Forms.Button btn_Swap_Nodes_in_Pairs;
         private System.Windows.Forms.Button btn_Remove_Duplicates_from_Sorted_List_II;
+        private System.Windows.Forms.Button btn_Reverse_Linked_List_II;
     }
 }
