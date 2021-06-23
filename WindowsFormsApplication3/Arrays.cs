@@ -9174,6 +9174,8 @@ namespace WindowsFormsApplication3
 
             int[] result = new int[nums.Length];
 
+            // -4, -1, 0, 3, 10
+
             int i = nums.Length - 1;
             int left = 0;
             int right = 0;
@@ -9202,13 +9204,7 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Increasing_Triplet_Subsequence_Click(object sender, EventArgs e)
-        {
-
-            string temp = string.Concat(Enumerable.Repeat("test", 0));
-            string t = "sdfdf";
-
-            StringBuilder test = new StringBuilder();
-            
+        {            
             /*
             
                     Given an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists, return false.
@@ -9251,7 +9247,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Increasing Triplet Subsequence  {(this.IncreasingTriplet(input) ? "" : " not " )} exists for the given input array {string.Join(",", input)} ");
+                result.AppendLine($"Increasing Triplet Subsequence  {(this.IncreasingTriplet(input) ? "" : " not " )} exists for the given input array {string.Join(",", input)} ");                
             }
 
             MessageBox.Show(result.ToString());
@@ -9259,10 +9255,13 @@ namespace WindowsFormsApplication3
 
         }
 
+
+        
         public bool IncreasingTriplet(int[] nums)
         {
             int left = int.MaxValue, mid = int.MaxValue;
-
+                       
+            
             foreach (int n in nums)
             {
                 if (n > mid)
@@ -9300,7 +9299,7 @@ namespace WindowsFormsApplication3
                 Example 3:
                 Input: A = [1,3,6], K = 3
                 Output: 3
-                Explanation: B = [4,6,3]
+                Explanation: B = [4,6,3]  
 
                 Note:
                 1 <= A.length <= 10000
@@ -9341,13 +9340,19 @@ namespace WindowsFormsApplication3
             int len = A.Length;
             int result = A[len - 1] - A[0];
 
-            for (int i = 0; i < len - 1; i++)
-            {
-                min = Math.Min(A[0] + K, A[i + 1] - K);
-                max = Math.Max(A[len - 1] - K, A[i] + K);
-                result = Math.Min(result, max - min);
-            }
+            /*
+                        1        3       6                  1        3       6
+                        4        0                          4                3
+                        4                3                           6       3
 
+             */
+
+            for (int i = 0; i < len - 1; i++)  // 1, 3, 6   3    i = 2
+            {
+                min = Math.Min(A[0] + K, A[i + 1] - K);   // 3
+                max = Math.Max(A[len - 1] - K, A[i] + K); // 4
+                result = Math.Min(result, max - min); //3
+            }
 
             return result;
         }
@@ -9400,23 +9405,23 @@ namespace WindowsFormsApplication3
         }
 
         public int FindKthPositive(int[] arr, int k)
-        {
+        {            
             if (arr == null || k == 0)
                 return 0;
+
 
             int missingNumber = 0;
             int arrCounter = 0;
             int i = 1;
             int len = arr.Length;
+
             /*        
                 2,3,4,7,11  k = 5
                 1,2,3,4     k = 2
-
-                i = 6   arrCounter = 4   missingNumber = 6  k = 0
-
+                i = 6   arrCounter = 4  missingNumber = 5  k = 1   AL:4
             */
 
-            while (i <= arr[len - 1] + k)
+            while (i <= arr[len - 1] + k) //6
             {
                 while (arrCounter < len && i != arr[arrCounter])
                 {
@@ -9707,7 +9712,7 @@ namespace WindowsFormsApplication3
             int len = nums.Length;
             /*
                    [3,5,2,6], k = 2
-                   [2,4,3,3,5,4,9,6], k = 4
+                   [2,4,3,3,5,4,9,6], k = 4   L:7  Q: 2 i :2
             */
 
             for (int i = 0; i < len; i++)
@@ -9877,7 +9882,23 @@ namespace WindowsFormsApplication3
                 Return the maximum area of a piece of cake after you cut at each horizontal and vertical position provided in the arrays horizontalCuts and verticalCuts. Since the answer can be a huge number, 
                 return this modulo 10^9 + 7.
 
- 
+               Refer this video https://www.youtube.com/watch?v=4XhuvNayp3E&t=297s
+
+              |
+              |  
+             4----|-------|------------------------------------------------------------
+              |   |       |
+              |   |       |
+             3-   |       |
+              |   |       |
+              |   |       |
+             2----|-------|-------------------------------------------------------------
+              |   |       |
+              |   |       |
+             1----|-------|-------------------------------------------------------------
+              |   |       |
+              |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+              0   1   2   3   4   5
 
                 Example 1:
                 Input: h = 5, w = 4, horizontalCuts = [1,2,4], verticalCuts = [1,3]
@@ -9908,7 +9929,7 @@ namespace WindowsFormsApplication3
                    Hide Hint #2  
                         The answer is the product of these maximum values in horizontal cuts and vertical cuts.             
 
-                Time Complexity  : O(2nlogn) which is O(2nlogn
+                Time Complexity  : O(2nlogn) which is O(nlogn)
                 Space Complexity : O(1)
              */
 
@@ -9923,7 +9944,8 @@ namespace WindowsFormsApplication3
             foreach (var input in inputs)
             {
                                 
-                result.AppendLine($"Maximum Area of a Piece of Cake After Horizontal {string.Join(",", input.input1)} with height :{input.m} and Vertical Cuts {string.Join(",", input.input2)} with width  : {input.n}  is {this.MaxArea(input.m, input.n, input.input1, input.input2)}");
+                result.AppendLine($"Maximum Area of a Piece of Cake After Horizontal {string.Join(",", input.input1)} with height :{input.m} and Vertical Cuts {string.Join(",", input.input2)} with width  : {input.n}  is " +
+                    $"{this.MaxArea(input.m, input.n, input.input1, input.input2)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -10046,7 +10068,7 @@ namespace WindowsFormsApplication3
             q.Enqueue("0000");
             HashSet<string> hash = new HashSet<string>(deadends);
             if (hash.Contains("0000")) return -1;
-
+            //{ "0201", "0101", "0102", "1212", "2002" }, stringVal = "0202" }
             while (q.Count > 0)
             {
                 qSize = q.Count;
@@ -10322,6 +10344,8 @@ namespace WindowsFormsApplication3
                 }
             }
 
+
+            // "abcd", "dcba", "lls", "s", "sssll"
             string str;
             string l;
             string r;
@@ -10341,7 +10365,7 @@ namespace WindowsFormsApplication3
                         {
                             ind = dict[reverse];
                             if (i != ind)
-                                result.Add(new List<int>() { dict[reverse], i, });
+                                result.Add(new List<int>() { ind, i });
                         }
                     }
 
@@ -10352,7 +10376,7 @@ namespace WindowsFormsApplication3
                         {
                             ind = dict[reverse];
                             if (i != ind)
-                                result.Add(new List<int>() { i, dict[reverse] });
+                                result.Add(new List<int>() { i, ind });
                         }
                     }
 
