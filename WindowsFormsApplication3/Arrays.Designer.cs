@@ -150,6 +150,7 @@
             this.btn_Longest_Consecutive_Sequence = new System.Windows.Forms.Button();
             this.btn_Min_Cost_Climbing_Stairs = new System.Windows.Forms.Button();
             this.btn_Palindrome_Pairs = new System.Windows.Forms.Button();
+            this.btnCandy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1388,7 +1389,7 @@
             // 
             // btn_Min_Cost_Climbing_Stairs
             // 
-            this.btn_Min_Cost_Climbing_Stairs.Location = new System.Drawing.Point(1866, 792);
+            this.btn_Min_Cost_Climbing_Stairs.Location = new System.Drawing.Point(1861, 792);
             this.btn_Min_Cost_Climbing_Stairs.Name = "btn_Min_Cost_Climbing_Stairs";
             this.btn_Min_Cost_Climbing_Stairs.Size = new System.Drawing.Size(266, 48);
             this.btn_Min_Cost_Climbing_Stairs.TabIndex = 122;
@@ -1406,11 +1407,22 @@
             this.btn_Palindrome_Pairs.UseVisualStyleBackColor = true;
             this.btn_Palindrome_Pairs.Click += new System.EventHandler(this.btn_Palindrome_Pairs_Click);
             // 
+            // btnCandy
+            // 
+            this.btnCandy.Location = new System.Drawing.Point(1864, 901);
+            this.btnCandy.Name = "btnCandy";
+            this.btnCandy.Size = new System.Drawing.Size(268, 50);
+            this.btnCandy.TabIndex = 124;
+            this.btnCandy.Text = "Candy";
+            this.btnCandy.UseVisualStyleBackColor = true;
+            this.btnCandy.Click += new System.EventHandler(this.btnCandy_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btnCandy);
             this.Controls.Add(this.btn_Palindrome_Pairs);
             this.Controls.Add(this.btn_Min_Cost_Climbing_Stairs);
             this.Controls.Add(this.btn_Longest_Consecutive_Sequence);
@@ -1664,5 +1676,6 @@
         private System.Windows.Forms.Button btn_Longest_Consecutive_Sequence;
         private System.Windows.Forms.Button btn_Min_Cost_Climbing_Stairs;
         private System.Windows.Forms.Button btn_Palindrome_Pairs;
+        private System.Windows.Forms.Button btnCandy;
     }
 }
