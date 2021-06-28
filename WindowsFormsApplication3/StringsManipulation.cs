@@ -6836,6 +6836,85 @@ namespace WindowsFormsApplication3
             return true;
 
         }
+
+        private void btn_Remove_All_Adjacent_Duplicates_In_String_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Remove All Adjacent Duplicates In String
+
+                Solution
+                You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent and equal letters and removing them.
+                We repeatedly make duplicate removals on s until we no longer can.
+                Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
+
+                Example 1:
+
+                Input: s = "abbaca"
+                Output: "ca"
+                Explanation: 
+                For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+                Example 2:
+
+                Input: s = "azxxzy"
+                Output: "ay"
+ 
+
+                Constraints:
+
+                1 <= s.length <= 105
+                s consists of lowercase English letters.
+                   Hide Hint #1  
+                Use a stack to process everything greedily.
+
+                TC      : O(N)
+                SC      : O(N)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("abbaca");
+            inputs.Add("azxxzy");
+
+            foreach (var input in inputs)            
+                result.AppendLine($"Remove All Adjacent Duplicates In String for the given string {input} is {RemoveDuplicates(input)}");
+            
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public string RemoveDuplicates(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return s;
+
+            Stack<char> stk = new Stack<char>();
+
+            foreach (char c in s)
+            {
+                if (stk.Count == 0)
+                    stk.Push(c);
+                else if (stk.Peek() != c)
+                    stk.Push(c);
+                else
+                    while (stk.Count > 0 && stk.Peek() == c)
+                        stk.Pop();
+            }
+
+            char[] word = new char[stk.Count];
+            int count = stk.Count;
+
+            for (int i = count - 1; i >= 0; i--)
+                word[i] = stk.Pop();
+
+            return new String(word);
+
+
+
+        }
     }
 }
 
