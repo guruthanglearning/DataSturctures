@@ -151,6 +151,7 @@
             this.btn_Min_Cost_Climbing_Stairs = new System.Windows.Forms.Button();
             this.btn_Palindrome_Pairs = new System.Windows.Forms.Button();
             this.btnCandy = new System.Windows.Forms.Button();
+            this.btn_Max_Consecutive_Ones_III = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1417,11 +1418,22 @@
             this.btnCandy.UseVisualStyleBackColor = true;
             this.btnCandy.Click += new System.EventHandler(this.btnCandy_Click);
             // 
+            // btn_Max_Consecutive_Ones_III
+            // 
+            this.btn_Max_Consecutive_Ones_III.Location = new System.Drawing.Point(1866, 958);
+            this.btn_Max_Consecutive_Ones_III.Name = "btn_Max_Consecutive_Ones_III";
+            this.btn_Max_Consecutive_Ones_III.Size = new System.Drawing.Size(261, 43);
+            this.btn_Max_Consecutive_Ones_III.TabIndex = 125;
+            this.btn_Max_Consecutive_Ones_III.Text = "Max Consecutive Ones III";
+            this.btn_Max_Consecutive_Ones_III.UseVisualStyleBackColor = true;
+            this.btn_Max_Consecutive_Ones_III.Click += new System.EventHandler(this.btn_Max_Consecutive_Ones_III_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Max_Consecutive_Ones_III);
             this.Controls.Add(this.btnCandy);
             this.Controls.Add(this.btn_Palindrome_Pairs);
             this.Controls.Add(this.btn_Min_Cost_Climbing_Stairs);
@@ -1677,5 +1689,6 @@
         private System.Windows.Forms.Button btn_Min_Cost_Climbing_Stairs;
         private System.Windows.Forms.Button btn_Palindrome_Pairs;
         private System.Windows.Forms.Button btnCandy;
+        private System.Windows.Forms.Button btn_Max_Consecutive_Ones_III;
     }
 }

@@ -1458,6 +1458,8 @@ namespace WindowsFormsApplication3
         public class Common
         {
             public Node Tree;
+            public Node P;
+            public Node Q;
             public int K;
             public int low;
             public int high;
@@ -3793,6 +3795,84 @@ namespace WindowsFormsApplication3
             else
                 return null;
             return node;
+        }
+
+        private void btn_Lowest_Common_Ancestor_of_a_Binary_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+                According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+                                                   3
+                                           /              \
+                                          5                 1
+                                       /    \            /     \
+                                      6      2          0       8
+                                           /   \
+                                          7     4
+
+                Example 1:                                                 
+                Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+                Output: 3
+                Explanation: The LCA of nodes 5 and 1 is 3.
+                
+                Example 2:
+                Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+                Output: 5
+                Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+                
+                Example 3:
+                Input: root = [1,2], p = 1, q = 2
+                Output: 1
+ 
+
+                Constraints:
+
+                The number of nodes in the tree is in the range [2, 105].
+                -109 <= Node.val <= 109
+                All Node.val are unique.
+                p != q
+                p and q will exist in the tree.
+
+
+                TC      :   O(N)
+                SC      :   O(N) since we are using internal stack 
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 3, 5, 1, 6, 2, 0, 8, null, null, 7, 4 }),P =this.CreateBinaryTreeFromArray(new int?[] {5}), Q = this.CreateBinaryTreeFromArray(new int?[] { 1 }) });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 3, 5, 1, 6, 2, 0, 8, null, null, 7, 4 }), P = this.CreateBinaryTreeFromArray(new int?[] { 5 }), Q = this.CreateBinaryTreeFromArray(new int?[] { 4 }) });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1,2 }), P = this.CreateBinaryTreeFromArray(new int?[] { 1 }), Q = this.CreateBinaryTreeFromArray(new int?[] { 2 }) });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Lowest Common Ancestor of a Binary Tree for the given Binary tree {this.TraverseBinaryTree(input.Tree)}  for the Nodes P : {this.TraverseBinaryTree(input.P)} and Q: {this.TraverseBinaryTree(input.Q)} is {this.LowestCommonAncestor(input.Tree, input.P, input.Q).val}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public Node LowestCommonAncestor(Node root, Node p, Node q)
+        {
+            if (root == null || root.val == p.val || root.val == q.val)
+                return root;
+
+            Node left = LowestCommonAncestor(root.left, p, q);
+            Node right = LowestCommonAncestor(root.right, p, q);
+
+            if (left != null && right != null)
+                return root;
+            else if (left != null)
+                return left;
+            else
+                return right;
+            
+
         }
     }
 

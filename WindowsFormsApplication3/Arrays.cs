@@ -10487,8 +10487,95 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Max_Consecutive_Ones_III_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
 
-    }
+                Example 1:
+                Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+                Output: 6
+                Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+                Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+                
+                Example 2:
+                Input: nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3
+                Output: 10
+                Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
+                Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 105
+                nums[i] is either 0 or 1.
+                0 <= k <= nums.length
+                   Hide Hint #1  
+                One thing's for sure, we will only flip a zero if it extends an existing window of 1s. Otherwise, there's no point in doing it, right? Think Sliding Window!
+                   Hide Hint #2  
+                Since we know this problem can be solved using the sliding window construct, we might as well focus in that direction for hints. Basically, in a given window, we can never have > K zeros, right?
+                   Hide Hint #3  
+                We don't have a fixed size window in this case. The window size can grow and shrink depending upon the number of zeros we have (we don't actually have to flip the zeros here!).
+                   Hide Hint #4  
+                The way to shrink or expand a window would be based on the number of zeros that can still be flipped and so on.
+             
+                TC : O(N)
+                SP : O(1)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0 },m = 2  });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1 }, m = 3 });
+
+            foreach (var input in inputs)
+                result.AppendLine($"Max Consecutive Ones III for the given input  {string.Join(",", input.input)} and k  {input.m}  is {this.LongestOnes(input.input, input.m)} ");
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int LongestOnes(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0)
+                return 0;
+            /*
+                [1,1,1,0,0,0,1,1,1,1,0], k = 2
+                [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3
+
+            */
+            int start = 0;
+            int end = 0;
+            int longestOnes = 0;
+            int counter = 0;
+            //end = 5   longestOnes = 5   start = 4 counter = 1
+            while (end < nums.Length)
+            {
+                if (nums[end] == 1)
+                    end++;
+                else
+                {
+                    if (counter < k)
+                    {
+                        counter++;
+                        end++;
+                    }
+                    else
+                    {
+
+                        while (counter >= k)
+                        {
+                            if (nums[start] == 0)
+                                counter--;
+                            start++;
+                        }
+                    }
+                }
+                longestOnes = Math.Max(longestOnes, end - start);
+            }
+            return longestOnes;
+        }
     }
 }
 
