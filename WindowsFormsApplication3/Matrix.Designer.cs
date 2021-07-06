@@ -62,6 +62,7 @@
             this.btn_Sort_the_Matrix_Diagonally = new System.Windows.Forms.Button();
             this.btn_Max_Area_of_Island = new System.Windows.Forms.Button();
             this.btn_Maximum_Units_on_a_Truck = new System.Windows.Forms.Button();
+            this.btn_Reshape_the_Matrix = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -431,11 +432,22 @@
             this.btn_Maximum_Units_on_a_Truck.UseVisualStyleBackColor = true;
             this.btn_Maximum_Units_on_a_Truck.Click += new System.EventHandler(this.btn_Maximum_Units_on_a_Truck_Click);
             // 
+            // btn_Reshape_the_Matrix
+            // 
+            this.btn_Reshape_the_Matrix.Location = new System.Drawing.Point(336, 753);
+            this.btn_Reshape_the_Matrix.Name = "btn_Reshape_the_Matrix";
+            this.btn_Reshape_the_Matrix.Size = new System.Drawing.Size(263, 48);
+            this.btn_Reshape_the_Matrix.TabIndex = 110;
+            this.btn_Reshape_the_Matrix.Text = "Reshape the Matrix";
+            this.btn_Reshape_the_Matrix.UseVisualStyleBackColor = true;
+            this.btn_Reshape_the_Matrix.Click += new System.EventHandler(this.btn_Reshape_the_Matrix_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Reshape_the_Matrix);
             this.Controls.Add(this.btn_Maximum_Units_on_a_Truck);
             this.Controls.Add(this.btn_Max_Area_of_Island);
             this.Controls.Add(this.btn_Sort_the_Matrix_Diagonally);
@@ -514,5 +526,6 @@
         private System.Windows.Forms.Button btn_Sort_the_Matrix_Diagonally;
         private System.Windows.Forms.Button btn_Max_Area_of_Island;
         private System.Windows.Forms.Button btn_Maximum_Units_on_a_Truck;
+        private System.Windows.Forms.Button btn_Reshape_the_Matrix;
     }
 }

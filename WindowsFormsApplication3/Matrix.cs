@@ -1380,6 +1380,8 @@ namespace WindowsFormsApplication3
             public int N;
             public char[][] CharInput;
             public string word;
+            public int R;
+            public int C;
         }
 
         private void btn_Find_the_Town_Judge_Click(object sender, EventArgs e)
@@ -4146,5 +4148,120 @@ namespace WindowsFormsApplication3
             return maxUnits;
         }
 
+        private void btn_Reshape_the_Matrix_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                In MATLAB, there is a handy function called reshape which can reshape an m x n matrix into a new one with a different size r x c keeping its original data.
+
+                You are given an m x n matrix mat and two integers r and c representing the row number and column number of the wanted reshaped matrix.
+
+                The reshaped matrix should be filled with all the elements of the original matrix in the same row-traversing order as they were.
+
+                If the reshape operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.
+ 
+                Example 1:
+                Input: mat = [[1,2],[3,4]], r = 1, c = 4
+                Output: [[1,2,3,4]]
+                
+                Example 2:
+                Input: mat = [[1,2],[3,4]], r = 2, c = 4
+                Output: [[1,2],[3,4]] 
+
+                Constraints:
+                m == mat.length
+                n == mat[i].length
+                1 <= m, n <= 100
+                -1000 <= mat[i][j] <= 1000
+                1 <= r, c <= 300
+                
+                Hide Hint #1  
+                Do you know how 2d matrix is stored in 1d memory? Try to map 2-dimensions into one.
+                
+                Hide Hint #2  
+                M[i][j]=M[n*i+j] , where n is the number of cols. This is the one way of converting 2-d indices into one 1-d index. Now, how will you convert 1-d index into 2-d indices?
+                
+                Hide Hint #3  
+                Try to use division and modulus to convert 1-d index into 2-d indices.
+                
+                Hide Hint #4  
+                M[i] => M[i/n][n%i] Will it result in right mapping? Take some example and check this formula.
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{1,2},                                          
+                                          new int[]{3,4}
+
+                                    },
+                        R = 1,
+                        C = 4
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{1,2},
+                                          new int[]{3,4}
+
+                                    },
+                R = 2,
+                C = 4
+            });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Reshape the Matrix for the given matrix  : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} {Environment.NewLine} for the Row :{input.R} and Column: {input.C} is {Environment.NewLine} {this.PrintJaggedArray(this.MatrixReshape(input.Input, input.R, input.C))}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+
+        }
+
+
+        public int[][] MatrixReshape(int[][] mat, int r, int c)
+        {
+            if (mat == null || mat.Length == 0)
+                return mat;
+
+            int m = mat.Length;
+            int n = mat[0].Length;
+            int sr = 0;
+            int sc = 0;
+
+            if (m * n != r * c)
+                return mat;
+
+            int[][] result = new int[r][];
+            for (int i = 0; i < r; i++)
+                result[i] = new int[c];
+
+            for (int i = 0; i < m; i++)
+                for (int j = 0; j < n; j++)
+                {
+                    if (sc >= c)
+                    {
+                        sc = 0;
+                        sr++;
+                    }
+
+                    result[sr][sc] = mat[i][j];
+                    sc++;
+
+                }
+
+            return result;
+
+        }
     }
 }
