@@ -63,6 +63,7 @@
             this.btn_Max_Area_of_Island = new System.Windows.Forms.Button();
             this.btn_Maximum_Units_on_a_Truck = new System.Windows.Forms.Button();
             this.btn_Reshape_the_Matrix = new System.Windows.Forms.Button();
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -442,11 +443,22 @@
             this.btn_Reshape_the_Matrix.UseVisualStyleBackColor = true;
             this.btn_Reshape_the_Matrix.Click += new System.EventHandler(this.btn_Reshape_the_Matrix_Click);
             // 
+            // btn_Kth_Smallest_Element_in_a_Sorted_Matrix
+            // 
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix.Location = new System.Drawing.Point(336, 808);
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix.Name = "btn_Kth_Smallest_Element_in_a_Sorted_Matrix";
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix.Size = new System.Drawing.Size(263, 43);
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix.TabIndex = 111;
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix.Text = "Kth Smallest Element in a Sorted Matrix";
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix.UseVisualStyleBackColor = true;
+            this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix.Click += new System.EventHandler(this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix);
             this.Controls.Add(this.btn_Reshape_the_Matrix);
             this.Controls.Add(this.btn_Maximum_Units_on_a_Truck);
             this.Controls.Add(this.btn_Max_Area_of_Island);
@@ -527,5 +539,6 @@
         private System.Windows.Forms.Button btn_Max_Area_of_Island;
         private System.Windows.Forms.Button btn_Maximum_Units_on_a_Truck;
         private System.Windows.Forms.Button btn_Reshape_the_Matrix;
+        private System.Windows.Forms.Button btn_Kth_Smallest_Element_in_a_Sorted_Matrix;
     }
 }

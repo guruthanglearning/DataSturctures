@@ -4267,5 +4267,117 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Kth_Smallest_Element_in_a_Sorted_Matrix_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an n x n matrix where each of the rows and columns are sorted in ascending order, return the kth smallest element in the matrix.
+
+                Note that it is the kth smallest element in the sorted order, not the kth distinct element.
+
+ 
+
+                Example 1:
+
+                Input: matrix = [[1,5,9],[10,11,13],[12,13,15]], k = 8
+                Output: 13
+                Explanation: The elements in the matrix are [1,5,9,10,11,12,13,13,15], and the 8th smallest number is 13
+                Example 2:
+
+                Input: matrix = [[-5]], k = 1
+                Output: -5
+ 
+
+                Constraints:
+
+                n == matrix.length
+                n == matrix[i].length
+                1 <= n <= 300
+                -109 <= matrix[i][j] <= 109
+                All the rows and columns of matrix are guaranteed to be sorted in non-decreasing order.
+                1 <= k <= n2
+
+                TC  :   NLOGK
+                SC  :   O(1)
+             */
+
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{1,5,9},
+                                          new int[]{ 10, 11, 13 },
+                                          new int[]{ 12,13,15 }                                          
+                                    },C = 8
+
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{-5}                                          
+                                    },C = 1
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{1,5,9},
+                                          new int[]{ 10, 11, 13 },
+                                          new int[]{ 12,13,15 }
+                                    },
+                C = 7
+
+            });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Kth Smallest Element in a Sorted Matrix for the given matrix  : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} {Environment.NewLine} for the given K :{input.C} is {this.KthSmallest(input.Input, input.C)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int KthSmallest(int[][] matrix, int k)
+        {
+            int n = matrix.Length;
+            int left = matrix[0][0], right = matrix[n - 1][n - 1];
+            while (left < right)
+            {
+                int mid = (left + right) / 2; // 13 + 13
+                int count = UpperBound(matrix, mid);
+                if (count >= k)
+                    right = mid;
+                else
+                    left = mid + 1;
+            }
+            return left;
+        }
+
+        public int UpperBound(int[][] matrix, int target)
+        {   
+            int n = matrix.Length;
+            int i = n - 1, j = 0, count = 0;
+            while (i >= 0 && j < n)
+            {
+                if (matrix[i][j] <= target)
+                {
+                    count += i + 1;
+                    j++;
+                }
+                else
+                    i--;
+
+            }
+            return count;
+
+        }
     }
 }
