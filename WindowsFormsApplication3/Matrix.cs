@@ -4150,6 +4150,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Reshape_the_Matrix_Click(object sender, EventArgs e)
         {
+       
             /*
             
                 In MATLAB, there is a handy function called reshape which can reshape an m x n matrix into a new one with a different size r x c keeping its original data.
@@ -4186,6 +4187,9 @@ namespace WindowsFormsApplication3
                 
                 Hide Hint #4  
                 M[i] => M[i/n][n%i] Will it result in right mapping? Take some example and check this formula.
+
+                TC  : O(RC)
+                SC  : O(RC)
              
              */
 
@@ -4225,7 +4229,7 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
 
-
+            
         }
 
 

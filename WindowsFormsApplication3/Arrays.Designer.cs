@@ -152,6 +152,7 @@
             this.btn_Palindrome_Pairs = new System.Windows.Forms.Button();
             this.btnCandy = new System.Windows.Forms.Button();
             this.btn_Max_Consecutive_Ones_III = new System.Windows.Forms.Button();
+            this.btn_Reduce_Array_Size_to_The_Half = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1428,11 +1429,22 @@
             this.btn_Max_Consecutive_Ones_III.UseVisualStyleBackColor = true;
             this.btn_Max_Consecutive_Ones_III.Click += new System.EventHandler(this.btn_Max_Consecutive_Ones_III_Click);
             // 
+            // btn_Reduce_Array_Size_to_The_Half
+            // 
+            this.btn_Reduce_Array_Size_to_The_Half.Location = new System.Drawing.Point(15, 984);
+            this.btn_Reduce_Array_Size_to_The_Half.Name = "btn_Reduce_Array_Size_to_The_Half";
+            this.btn_Reduce_Array_Size_to_The_Half.Size = new System.Drawing.Size(490, 40);
+            this.btn_Reduce_Array_Size_to_The_Half.TabIndex = 126;
+            this.btn_Reduce_Array_Size_to_The_Half.Text = "Reduce Array Size to The Half";
+            this.btn_Reduce_Array_Size_to_The_Half.UseVisualStyleBackColor = true;
+            this.btn_Reduce_Array_Size_to_The_Half.Click += new System.EventHandler(this.btn_Reduce_Array_Size_to_The_Half_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Reduce_Array_Size_to_The_Half);
             this.Controls.Add(this.btn_Max_Consecutive_Ones_III);
             this.Controls.Add(this.btnCandy);
             this.Controls.Add(this.btn_Palindrome_Pairs);
@@ -1690,5 +1702,6 @@
         private System.Windows.Forms.Button btn_Palindrome_Pairs;
         private System.Windows.Forms.Button btnCandy;
         private System.Windows.Forms.Button btn_Max_Consecutive_Ones_III;
+        private System.Windows.Forms.Button btn_Reduce_Array_Size_to_The_Half;
     }
 }
