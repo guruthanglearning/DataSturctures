@@ -10488,7 +10488,7 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Max_Consecutive_Ones_III_Click(object sender, EventArgs e)
-        {
+        {            
             /*
                 Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
 
@@ -10680,6 +10680,75 @@ namespace WindowsFormsApplication3
             }
 
             return counter;
+        }
+
+        private void btn_Maximum_Length_of_Repeated_Subarray_Click(object sender, EventArgs e)
+        {
+            /*
+                Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.
+
+ 
+
+                Example 1:
+
+                Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+                Output: 3
+                Explanation: The repeated subarray with maximum length is [3,2,1].
+                Example 2:
+
+                Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+                Output: 5
+ 
+
+                Constraints:
+
+                1 <= nums1.length, nums2.length <= 1000
+                0 <= nums1[i], nums2[i] <= 100
+                   Hide Hint #1  
+                Use dynamic programming. dp[i][j] will be the answer for inputs A[i:], B[j:].
+             
+
+                TC  : O(NM)
+                SP   :O((N+1)* (N+1))
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 1, 2, 3, 2, 1 }, input2 = new int[] { 3, 2, 1, 4, 7 }  });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 0, 0, 0, 0, 0 }, input2 = new int[] { 0, 0, 0, 0, 0 } });
+
+            foreach (var input in inputs)                
+                result.AppendLine($"Maximum Length of Repeated Subarray from the given arrays {string.Join(" ", input.input1)} and {string.Join(" ", input.input2)} is {this.FindLength(input.input1, input.input2)}");
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public int FindLength(int[] nums1, int[] nums2)
+        {
+            if (nums1.Length == 0 || nums2.Length == 0)
+                return 0;
+
+            int max = 0;
+            int[][] dp = new int[nums1.Length + 1][];
+            for (int i = 0; i < nums1.Length + 1; i++)
+                dp[i] = new int[nums2.Length + 1];
+
+
+            for (int r = 1; r < nums1.Length + 1; r++)
+                for (int c = 1; c < nums2.Length + 1; c++)
+                {
+                    if (nums1[r - 1] == nums2[c - 1])
+                    {
+                        dp[r][c] = dp[r - 1][c - 1] + 1;
+                        max = Math.Max(dp[r][c], max);
+                    }
+                }
+
+
+            return max;
+
         }
     }
 }

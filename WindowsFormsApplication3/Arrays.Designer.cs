@@ -153,6 +153,7 @@
             this.btnCandy = new System.Windows.Forms.Button();
             this.btn_Max_Consecutive_Ones_III = new System.Windows.Forms.Button();
             this.btn_Reduce_Array_Size_to_The_Half = new System.Windows.Forms.Button();
+            this.btn_Maximum_Length_of_Repeated_Subarray = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1439,11 +1440,22 @@
             this.btn_Reduce_Array_Size_to_The_Half.UseVisualStyleBackColor = true;
             this.btn_Reduce_Array_Size_to_The_Half.Click += new System.EventHandler(this.btn_Reduce_Array_Size_to_The_Half_Click);
             // 
+            // btn_Maximum_Length_of_Repeated_Subarray
+            // 
+            this.btn_Maximum_Length_of_Repeated_Subarray.Location = new System.Drawing.Point(511, 986);
+            this.btn_Maximum_Length_of_Repeated_Subarray.Name = "btn_Maximum_Length_of_Repeated_Subarray";
+            this.btn_Maximum_Length_of_Repeated_Subarray.Size = new System.Drawing.Size(470, 38);
+            this.btn_Maximum_Length_of_Repeated_Subarray.TabIndex = 127;
+            this.btn_Maximum_Length_of_Repeated_Subarray.Text = "Maximum Length of Repeated Subarray";
+            this.btn_Maximum_Length_of_Repeated_Subarray.UseVisualStyleBackColor = true;
+            this.btn_Maximum_Length_of_Repeated_Subarray.Click += new System.EventHandler(this.btn_Maximum_Length_of_Repeated_Subarray_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Maximum_Length_of_Repeated_Subarray);
             this.Controls.Add(this.btn_Reduce_Array_Size_to_The_Half);
             this.Controls.Add(this.btn_Max_Consecutive_Ones_III);
             this.Controls.Add(this.btnCandy);
@@ -1703,5 +1715,6 @@
         private System.Windows.Forms.Button btnCandy;
         private System.Windows.Forms.Button btn_Max_Consecutive_Ones_III;
         private System.Windows.Forms.Button btn_Reduce_Array_Size_to_The_Half;
+        private System.Windows.Forms.Button btn_Maximum_Length_of_Repeated_Subarray;
     }
 }
