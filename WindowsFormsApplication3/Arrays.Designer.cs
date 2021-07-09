@@ -154,6 +154,7 @@
             this.btn_Max_Consecutive_Ones_III = new System.Windows.Forms.Button();
             this.btn_Reduce_Array_Size_to_The_Half = new System.Windows.Forms.Button();
             this.btn_Maximum_Length_of_Repeated_Subarray = new System.Windows.Forms.Button();
+            this.btn_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1450,11 +1451,22 @@
             this.btn_Maximum_Length_of_Repeated_Subarray.UseVisualStyleBackColor = true;
             this.btn_Maximum_Length_of_Repeated_Subarray.Click += new System.EventHandler(this.btn_Maximum_Length_of_Repeated_Subarray_Click);
             // 
+            // btn_Longest_Increasing_Subsequence
+            // 
+            this.btn_Longest_Increasing_Subsequence.Location = new System.Drawing.Point(1002, 986);
+            this.btn_Longest_Increasing_Subsequence.Name = "btn_Longest_Increasing_Subsequence";
+            this.btn_Longest_Increasing_Subsequence.Size = new System.Drawing.Size(357, 47);
+            this.btn_Longest_Increasing_Subsequence.TabIndex = 128;
+            this.btn_Longest_Increasing_Subsequence.Text = "Longest Increasing Subsequence";
+            this.btn_Longest_Increasing_Subsequence.UseVisualStyleBackColor = true;
+            this.btn_Longest_Increasing_Subsequence.Click += new System.EventHandler(this.btn_Longest_Increasing_Subsequence_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Longest_Increasing_Subsequence);
             this.Controls.Add(this.btn_Maximum_Length_of_Repeated_Subarray);
             this.Controls.Add(this.btn_Reduce_Array_Size_to_The_Half);
             this.Controls.Add(this.btn_Max_Consecutive_Ones_III);
@@ -1716,5 +1728,6 @@
         private System.Windows.Forms.Button btn_Max_Consecutive_Ones_III;
         private System.Windows.Forms.Button btn_Reduce_Array_Size_to_The_Half;
         private System.Windows.Forms.Button btn_Maximum_Length_of_Repeated_Subarray;
+        private System.Windows.Forms.Button btn_Longest_Increasing_Subsequence;
     }
 }

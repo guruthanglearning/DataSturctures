@@ -10750,6 +10750,99 @@ namespace WindowsFormsApplication3
             return max;
 
         }
+
+        private void btn_Longest_Increasing_Subsequence_Click(object sender, EventArgs e)
+        {
+            /*
+
+                Given an integer array nums, return the length of the longest strictly increasing subsequence.
+
+                A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
+
+                Example 1:
+
+                Input: nums = [10,9,2,5,3,7,101,18]
+                Output: 4
+                Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+                Example 2:
+
+                Input: nums = [0,1,0,3,2,3]
+                Output: 4
+                Example 3:
+
+                Input: nums = [7,7,7,7,7,7,7]
+                Output: 1
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 2500
+                -104 <= nums[i] <= 104
+ 
+
+                Follow up: Can you come up with an algorithm that runs in O(n log(n)) time complexity?
+
+                TC  :   O(NLogN)
+                SC  :   O(N)
+
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 10, 9, 2, 5, 3, 7, 101, 18 });
+            inputs.Add(new int[] { 0, 1, 0, 3, 2, 3 });
+            inputs.Add(new int[] { 7, 7, 7, 7, 7, 7, 7 });
+
+
+            foreach (int[] input in inputs)            
+                result.AppendLine($"Longest Increasing Subsequence for the given input array {(string.Join(",", input))} is {string.Join(" ", LengthOfLIS(input))}");
+            
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int LengthOfLIS(int[] nums)
+        {
+            if (nums == null || nums.Length == 0)
+                return 0;
+            List<int> result = new List<int>();
+
+            foreach (int i in nums)
+            {
+                if (result.Count == 0 || i > result[result.Count - 1])
+                    result.Add(i);
+                else
+                    result[BinarySearch(result, i)] = i;
+            }
+
+            return result.Count;
+
+        }
+
+
+        private int BinarySearch(List<int> result, int find)
+        {
+            int l = 0;
+            int r = result.Count - 1;
+            int m = 0;
+
+            while (l < r)
+            {
+                m = (l + r) / 2;
+
+                if (result[m] == find)
+                    return m;
+
+                if (result[m] < find)
+                    l = m + 1;
+                else
+                    r = m;
+
+            }
+
+            return l;
+
+        }
     }
 }
 
