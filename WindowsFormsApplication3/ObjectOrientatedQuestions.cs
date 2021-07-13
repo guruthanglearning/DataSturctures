@@ -10831,6 +10831,7 @@ new RandomizedSetData() { Operation = 1,Data = 413}
         public class InputNumArrayOperations
         {
             public string Name;
+            public int IntData;
             public List<int> Input;
         }
 
@@ -10906,6 +10907,160 @@ new RandomizedSetData() { Operation = 1,Data = 413}
             }
         }
 
+        private void btn_Find_Median_from_Data_Stream_Click(object sender, EventArgs e)
+        {
+            /*
+
+              The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value and the median is the mean of the two middle values.
+
+              For example, for arr = [2,3,4], the median is 3.
+              For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+              Implement the MedianFinder class:
+
+              MedianFinder() initializes the MedianFinder object.
+              void addNum(int num) adds the integer num from the data stream to the data structure.
+              double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
+
+
+              Example 1:
+
+              Input
+              ["MedianFinder", "addNum", "addNum", "findMedian", "addNum", "findMedian"]
+              [[], [1], [2], [], [3], []]
+              Output
+              [null, null, null, 1.5, null, 2.0]
+
+              Explanation
+              MedianFinder medianFinder = new MedianFinder();
+              medianFinder.addNum(1);    // arr = [1]
+              medianFinder.addNum(2);    // arr = [1, 2]
+              medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+              medianFinder.addNum(3);    // arr[1, 2, 3]
+              medianFinder.findMedian(); // return 2.0
+
+
+              Constraints:
+
+              -105 <= num <= 105
+              There will be at least one element in the data structure before calling findMedian.
+              At most 5 * 104 calls will be made to addNum and findMedian.
+
+
+              Follow up:
+
+              If all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+              If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+
+               TC   : 
+                        AddNumber : O(Log N)
+                        Median    : O(1)
+
+               SC   :  O(N) where N is the number of items in the medinan list
+                
+
+           */
+
+            StringBuilder result = new StringBuilder();
+            List<InputNumArray> inputs = new List<InputNumArray>();
+            inputs.Add(new InputNumArray()
+            {                
+                Operations = new List<InputNumArrayOperations>()
+                                                                                                    {
+                                                                                                        new InputNumArrayOperations(){ Name = "addNum", IntData =  1},
+                                                                                                        new InputNumArrayOperations(){ Name = "addNum", IntData =  2 },
+                                                                                                        new InputNumArrayOperations(){ Name = "findMedian"},
+                                                                                                        new InputNumArrayOperations(){ Name = "addNum", IntData =  3 },
+                                                                                                        new InputNumArrayOperations(){ Name = "findMedian"}
+                                                                                                    }
+            });
+
+
+            foreach (var input in inputs)
+            {
+                MedianFinder medianFinder = new MedianFinder();
+                result.AppendLine($"Median from Data Streamis");
+                foreach (var item in input.Operations)
+                {
+                    if (item.Name == "addNum")
+                    {
+                        result.AppendLine($"Add Number : {item.IntData}");
+                        medianFinder.AddNum(item.IntData);
+                    }
+                    else                    
+                        result.AppendLine($"Median : {medianFinder.FindMedian()}");                        
+                    
+                }
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public class MedianFinder
+        {
+
+            /** initialize your data structure here. */
+            List<double> datas = null;
+            public MedianFinder()
+            {
+                datas = new List<double>();
+            }
+
+            public void AddNum(int num)
+            {
+                datas.Insert(this.GetPosition(num), num);
+            }
+
+            public double FindMedian()
+            {
+
+                double result = 0;
+                int index = 0;
+                /*
+                    1,2,3,4,5,6
+                    1,2,3,4,5
+                    1
+                */
+
+                if (datas.Count == 1)
+                    result = datas[0];
+                else
+                {
+                    index = datas.Count / 2;
+                    if ((datas.Count % 2) == 0)
+                        result = (datas[index - 1] + datas[index]) / 2.0000;
+                    else
+                        result = datas[index];
+                }
+
+                //Console.WriteLine($"{string.Join(",",datas)}");
+
+                return result;
+            }
+
+
+            private int GetPosition(int target)
+            {
+                int l = 0;
+                int r = datas.Count;
+                int m = 0;
+                while (l < r)
+                {
+                    m = (l + r) / 2;
+
+                    if (datas[m] == target)
+                        return m;
+                    else if (datas[m] < target)
+                        l = m + 1;
+                    else
+                        r = m;
+
+                }
+
+                return l;
+            }
+        }
 
     }
 }

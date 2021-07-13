@@ -1714,52 +1714,83 @@ namespace WindowsFormsApplication3
 
         private void btn_Isomorphic_Strings_Click(object sender, EventArgs e)
         {
-            //string input1 = "abb";
-            //string input2 = "cxx";
-            string input1 = textBox1.Text;
-            string input2 = textBox2.Text;
-            Dictionary<char, char> storage = new Dictionary<char, char>();
-            char char1;
-            char char2;
-            bool isIsomorphic = true;
 
-            if (!(string.IsNullOrEmpty(input1) || string.IsNullOrEmpty(input2) || input1.Length != input2.Length))
-            {
-                for (int i = 0; i < input1.Length; i++)
-                {
-                    /* 
-                       I = 2
-                       a --> e
-                       d --> g
-                    */
-                    char1 = input1[i]; // add
-                    char2 = input2[i]; // egh
-                    if (storage.ContainsKey(char1))
-                    {
-                        if (storage[char1] != char2)
-                        {
-                            isIsomorphic = false;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (storage.ContainsValue(char2))
-                        {
-                            isIsomorphic = false;
-                        }
-                        storage[char1] = char2;
-                    }
-                }
-            }
-            else
-            {
-                isIsomorphic = false;
-            }
+            /*
+             
+                Given two strings s and t, determine if they are isomorphic.
 
-            MessageBox.Show($"The given inputs strings {input1} and {input2} is {(isIsomorphic ? "" : "not")} isomorphic strings");
+                Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+                All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+ 
+                Example 1:
+
+                Input: s = "egg", t = "add"
+                Output: true
+                Example 2:
+
+                Input: s = "foo", t = "bar"
+                Output: false
+                Example 3:
+
+                Input: s = "paper", t = "title"
+                Output: true
+ 
+
+                Constraints:
+
+                1 <= s.length <= 5 * 104
+                t.length == s.length
+                s and t consist of any valid ascii character.
+
+                TC  : O(N) where N is the length of the string
+                SP  : O(1) 
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Temp1 = "egg", Temp2 = "add" });
+            inputs.Add(new Common() { Temp1 = "foo", Temp2 = "bar" });
+            inputs.Add(new Common() { Temp1 = "paper", Temp2 = "title" });
+
+            foreach (var input in inputs)
+                result.AppendLine($"Given string1 : {input.Temp1} and string 2 : {input.Temp2} is {(this.IsIsomorphic(input.Temp1, input.Temp2) ? "" : "not") } Isomorphic ");
+
+
+            MessageBox.Show(result.ToString());
+
+           
         }
 
+         public bool IsIsomorphic(string s, string t) {
+        if (string.IsNullOrWhiteSpace(s) || string.IsNullOrWhiteSpace(t) || s.Length != t.Length)
+            return false;
+                
+        int[] dict1 = Enumerable.Repeat(-1,256).ToArray();
+        int[] dict2 = Enumerable.Repeat(-1,256).ToArray();
+        char c1 = '\0';
+        char c2 = '\0';
+        
+        for(int i = 0; i < s.Length; i++)
+        {
+            c1 = s[i];
+            c2 = t[i];
+            
+            if (dict1[c1] == -1 && dict2[c2] == -1)
+            {
+                dict1[c1] = c2;
+                dict2[c2] = c1;
+            }
+            else if (!(dict1[c1] == c2 &&  dict2[c2] == c1 ))
+                return false;
+            
+        }
+        
+        
+        return true;
+        
+    }
 
         public class WorkBreak
         {
@@ -6571,6 +6602,8 @@ namespace WindowsFormsApplication3
         public class Common
         {
             public string str;
+            public string Temp1;
+            public string Temp2;
             public string[] word1;
             public string[] word2;
         }
