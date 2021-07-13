@@ -2348,7 +2348,7 @@ namespace WindowsFormsApplication3
             {
                 int l = 0;
                 int r = input.Length - 1;
-                int m = -1;
+                int m = 0;
 
                 if (input.Length == 0 || input.Length == 1)
                 {
@@ -2357,37 +2357,31 @@ namespace WindowsFormsApplication3
                 }
 
                 //-4, -3, -2, -1, 1, 2, 3, 0  
-                while (l < r)
+                while (r < l)
                 {
-                    m = (l + r) / 2;
+                    if (input == null || input.Length == 0)
+                    {
+                        l = -1;
+                        break;
+                    }
 
-                    if (m == 0)
+
+                    int n = input.Length;
+                    if (n == 1 || input[0] > input[1])
                     {
-                        if (input[l] > input[r])
-                        {
-                            m = l;
-                        }
-                        else
-                        {
-                            m = -1;
-                        }
+                        l = 0;
                         break;
                     }
-                    else if (input[m - 1] < input[m] && input[m] > input[m + 1])
-                    {
-                        break;
-                    }
-                    else if (input[l] < input[m])
-                    {
-                        l = m + 1;
-                    }
-                    else
-                    {
+                    
+                    m= l + (r - l) / 2;
+                    if (input[m] > input[m + 1])
                         r = m;
-                    }
+                    else
+                        l = m + 1;
+                    
                 }
 
-                result.Append($"The peak index is {m} for the given int array {string.Join(" ", input)} \n");
+                result.Append($"The peak index is {l} for the given int array {string.Join(" ", input)} \n");
             }
 
 
