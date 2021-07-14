@@ -117,6 +117,7 @@
             this.btn_Interleaving_String = new System.Windows.Forms.Button();
             this.btn_Number_of_Matching_Subsequences = new System.Windows.Forms.Button();
             this.btn_Remove_All_Adjacent_Duplicates_In_String = new System.Windows.Forms.Button();
+            this.btn_Custom_Sort_String = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1086,11 +1087,22 @@
             this.btn_Remove_All_Adjacent_Duplicates_In_String.UseVisualStyleBackColor = true;
             this.btn_Remove_All_Adjacent_Duplicates_In_String.Click += new System.EventHandler(this.btn_Remove_All_Adjacent_Duplicates_In_String_Click);
             // 
+            // btn_Custom_Sort_String
+            // 
+            this.btn_Custom_Sort_String.Location = new System.Drawing.Point(1671, 642);
+            this.btn_Custom_Sort_String.Name = "btn_Custom_Sort_String";
+            this.btn_Custom_Sort_String.Size = new System.Drawing.Size(224, 45);
+            this.btn_Custom_Sort_String.TabIndex = 90;
+            this.btn_Custom_Sort_String.Text = "Custom Sort String";
+            this.btn_Custom_Sort_String.UseVisualStyleBackColor = true;
+            this.btn_Custom_Sort_String.Click += new System.EventHandler(this.btn_Custom_Sort_String_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 849);
+            this.Controls.Add(this.btn_Custom_Sort_String);
             this.Controls.Add(this.btn_Remove_All_Adjacent_Duplicates_In_String);
             this.Controls.Add(this.btn_Number_of_Matching_Subsequences);
             this.Controls.Add(this.btn_Interleaving_String);
@@ -1279,5 +1291,6 @@
         private System.Windows.Forms.Button btn_Interleaving_String;
         private System.Windows.Forms.Button btn_Number_of_Matching_Subsequences;
         private System.Windows.Forms.Button btn_Remove_All_Adjacent_Duplicates_In_String;
+        private System.Windows.Forms.Button btn_Custom_Sort_String;
     }
 }

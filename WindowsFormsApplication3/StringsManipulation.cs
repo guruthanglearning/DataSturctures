@@ -6948,6 +6948,89 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void btn_Custom_Sort_String_Click(object sender, EventArgs e)
+        {
+            /*
+                order and str are strings composed of lowercase letters. In order, no letter occurs more than once.
+
+                order was sorted in some custom order previously. We want to permute the characters of str so that they match the order that order was sorted. More specifically, if x occurs before y in order, then x should occur before y in the returned string.
+
+                Return any permutation of str (as a string) that satisfies this property.
+
+                Example:
+                Input: 
+                order = "cba"
+                str = "abcd"
+                Output: "cbad"
+                Explanation: 
+                "a", "b", "c" appear in order, so the order of "a", "b", "c" should be "c", "b", and "a". 
+                Since "d" does not appear in order, it can be at any position in the returned string. "dcba", "cdba", "cbda" are also valid outputs.
+ 
+
+                Note:
+
+                order has length at most 26, and no character is repeated in order.
+                str has length at most 200.
+                order and str consist of lowercase letters only.
+
+                TC  : O(N + M) where n is the length of the order and m is the length of the str
+                SC  : O(N + M)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() {Temp1= "cba", Temp2 = "abcd" });
+
+            foreach (var input in inputs)
+                result.AppendLine($"Custom Sort String for the given strings {input.Temp1} and {input.Temp2} is {CustomSortString(input.Temp1,input.Temp2)}");
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+
+        public string CustomSortString(string order, string str)
+        {
+
+            if (string.IsNullOrEmpty(order) || string.IsNullOrEmpty(str))
+                return string.Empty;
+
+            int[] dict = new int[26];
+            List<char> result = new List<char>();
+
+            foreach (char c in str)
+                dict[c - 'a']++;
+
+
+            foreach (char c in order)
+            {
+                while (dict[c - 'a'] > 0)
+                {
+                    dict[c - 'a']--;
+                    result.Add(c);
+                }
+            }
+
+            int ind = 0;
+            for (int i = 0; i < 26; i++)
+            {
+                ind = 'a' + i;
+                while (dict[i] > 0)
+                {
+                    result.Add((char)ind);
+                    dict[i]--;
+                }
+            }
+
+
+            return string.Join("", result);
+
+
+
+        }
     }
 }
 
