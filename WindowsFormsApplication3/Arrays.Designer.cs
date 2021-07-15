@@ -155,6 +155,7 @@
             this.btn_Reduce_Array_Size_to_The_Half = new System.Windows.Forms.Button();
             this.btn_Maximum_Length_of_Repeated_Subarray = new System.Windows.Forms.Button();
             this.btn_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
+            this.btn_Valid_Triangle_Number = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1461,11 +1462,22 @@
             this.btn_Longest_Increasing_Subsequence.UseVisualStyleBackColor = true;
             this.btn_Longest_Increasing_Subsequence.Click += new System.EventHandler(this.btn_Longest_Increasing_Subsequence_Click);
             // 
+            // btn_Valid_Triangle_Number
+            // 
+            this.btn_Valid_Triangle_Number.Location = new System.Drawing.Point(1368, 984);
+            this.btn_Valid_Triangle_Number.Name = "btn_Valid_Triangle_Number";
+            this.btn_Valid_Triangle_Number.Size = new System.Drawing.Size(246, 49);
+            this.btn_Valid_Triangle_Number.TabIndex = 129;
+            this.btn_Valid_Triangle_Number.Text = "Valid Triangle Number";
+            this.btn_Valid_Triangle_Number.UseVisualStyleBackColor = true;
+            this.btn_Valid_Triangle_Number.Click += new System.EventHandler(this.btn_Valid_Triangle_Number_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Valid_Triangle_Number);
             this.Controls.Add(this.btn_Longest_Increasing_Subsequence);
             this.Controls.Add(this.btn_Maximum_Length_of_Repeated_Subarray);
             this.Controls.Add(this.btn_Reduce_Array_Size_to_The_Half);
@@ -1729,5 +1741,6 @@
         private System.Windows.Forms.Button btn_Reduce_Array_Size_to_The_Half;
         private System.Windows.Forms.Button btn_Maximum_Length_of_Repeated_Subarray;
         private System.Windows.Forms.Button btn_Longest_Increasing_Subsequence;
+        private System.Windows.Forms.Button btn_Valid_Triangle_Number;
     }
 }

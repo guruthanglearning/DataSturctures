@@ -10837,6 +10837,85 @@ namespace WindowsFormsApplication3
             return l;
 
         }
+
+        private void btn_Valid_Triangle_Number_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an integer array nums, return the number of triplets chosen from the array that can make triangles if we take them as side lengths of a triangle.
+
+                Example 1:
+
+                Input: nums = [2,2,3,4]
+                Output: 3
+                Explanation: Valid combinations are: 
+                2,3,4 (using the first 2)
+                2,3,4 (using the second 2)
+                2,2,3
+                Example 2:
+
+                Input: nums = [4,2,3,4]
+                Output: 4
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 1000
+                0 <= nums[i] <= 1000
+
+                TC  : O(NLogN)
+                SC  : O(1)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            inputs.Add(new int[] { 2, 2, 3, 4 });
+            inputs.Add(new int[] { 4, 2, 3, 4 });
+          ;
+
+
+            foreach (int[] input in inputs)
+                result.AppendLine($"Valid Triangle Number for the given input array {(string.Join(",", input))} is {TriangleNumber(input)}");
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int TriangleNumber(int[] nums)
+        {
+            if (nums == null || nums.Length < 3)
+                return 0;
+
+            int result = 0;
+
+            Array.Sort(nums);
+
+            int l = 0;
+            int r = 0;
+
+            for (int i = 2; i < nums.Length; i++)
+            {
+                l = 0;
+                r = i - 1;
+
+                while (l < r)
+                {
+                    if (nums[l] + nums[r] > nums[i])
+                    {
+                        result += (r - l);
+                        r--;
+                    }
+                    else
+                        l++;
+                }
+            }
+
+
+
+            return result;
+        }
     }
 }
 
