@@ -36,6 +36,7 @@
             this.btn_My_Calendar_I = new System.Windows.Forms.Button();
             this.btn_Range_Sum_Query_Mutable = new System.Windows.Forms.Button();
             this.btn_Find_Median_from_Data_Stream = new System.Windows.Forms.Button();
+            this.btn_Shuffle_an_Array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Record_Max_population_for_an_year
@@ -119,11 +120,22 @@
             this.btn_Find_Median_from_Data_Stream.UseVisualStyleBackColor = true;
             this.btn_Find_Median_from_Data_Stream.Click += new System.EventHandler(this.btn_Find_Median_from_Data_Stream_Click);
             // 
+            // btn_Shuffle_an_Array
+            // 
+            this.btn_Shuffle_an_Array.Location = new System.Drawing.Point(12, 400);
+            this.btn_Shuffle_an_Array.Name = "btn_Shuffle_an_Array";
+            this.btn_Shuffle_an_Array.Size = new System.Drawing.Size(414, 45);
+            this.btn_Shuffle_an_Array.TabIndex = 42;
+            this.btn_Shuffle_an_Array.Text = "Shuffle an Array";
+            this.btn_Shuffle_an_Array.UseVisualStyleBackColor = true;
+            this.btn_Shuffle_an_Array.Click += new System.EventHandler(this.btn_Shuffle_an_Array_Click);
+            // 
             // ObjectOrientatedQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.ClientSize = new System.Drawing.Size(800, 601);
+            this.Controls.Add(this.btn_Shuffle_an_Array);
             this.Controls.Add(this.btn_Find_Median_from_Data_Stream);
             this.Controls.Add(this.btn_Range_Sum_Query_Mutable);
             this.Controls.Add(this.btn_My_Calendar_I);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Button btn_My_Calendar_I;
         private System.Windows.Forms.Button btn_Range_Sum_Query_Mutable;
         private System.Windows.Forms.Button btn_Find_Median_from_Data_Stream;
+        private System.Windows.Forms.Button btn_Shuffle_an_Array;
     }
 }

@@ -11062,5 +11062,129 @@ new RandomizedSetData() { Operation = 1,Data = 413}
             }
         }
 
+        private void btn_Shuffle_an_Array_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given an integer array nums, design an algorithm to randomly shuffle the array. All permutations of the array should be equally likely as a result of the shuffling.
+
+                Implement the Solution class:
+
+                Solution(int[] nums) Initializes the object with the integer array nums.
+                int[] reset() Resets the array to its original configuration and returns it.
+                int[] shuffle() Returns a random shuffling of the array.
+ 
+
+                Example 1:
+
+                Input
+                ["Solution", "shuffle", "reset", "shuffle"]
+                [[[1, 2, 3]], [], [], []]
+                Output
+                [null, [3, 1, 2], [1, 2, 3], [1, 3, 2]]
+
+                Explanation
+                Solution solution = new Solution([1, 2, 3]);
+                solution.shuffle();    // Shuffle the array [1,2,3] and return its result.
+                                       // Any permutation of [1,2,3] must be equally likely to be returned.
+                                       // Example: return [3, 1, 2]
+                solution.reset();      // Resets the array back to its original configuration [1,2,3]. Return [1, 2, 3]
+                solution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example: return [1, 3, 2]
+
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 200
+                -106 <= nums[i] <= 106
+                All the elements of nums are unique.
+                At most 5 * 104 calls in total will be made to reset and shuffle.
+                   Hide Hint #1  
+                The solution expects that we always use the original array to shuffle() else some of the test cases fail. (Credits; @snehasingh31)
+
+                TC  : O(N)
+                SC  : O(N)
+
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<InputNumArray> inputs = new List<InputNumArray>();
+            inputs.Add(new InputNumArray()
+            {
+                Operations = new List<InputNumArrayOperations>()
+                                                                                                    {
+                                                                                                         new InputNumArrayOperations(){ Name = "", Input = new List<int>() { 1, 2, 3 } },
+                                                                                                         new InputNumArrayOperations(){ Name = "shuffle"},
+                                                                                                         new InputNumArrayOperations(){ Name = "reset"},
+                                                                                                         new InputNumArrayOperations(){ Name = "shuffle"},
+                                                                                                    }
+            });
+
+
+            foreach (var input in inputs)
+            {
+                Solution s = null;
+                result.AppendLine($"Shuffle an Array");
+                foreach (var item in input.Operations)
+                {
+                    if (item.Name == "")
+                    {
+                        s = new Solution(item.Input.ToArray<int>());
+                        result.AppendLine($"Inputs : {string.Join(",",s.Reset() )}");
+                    }
+                    else if (item.Name == "shuffle")
+                        result.AppendLine($"{item.Name} : {string.Join(",", s.Shuffle())}");
+                    else 
+                        result.AppendLine($"{item.Name} : {string.Join(",", s.Reset())}");
+                }
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public class Solution
+        {
+
+            int[] nums;
+
+            Random rand = null;
+
+            public Solution(int[] nums)
+            {
+                this.nums = nums;
+                rand = new Random();
+            }
+
+            /** Resets the array to its original configuration and return it. */
+            public int[] Reset()
+            {
+                return nums;
+            }
+
+            /** Returns a random shuffling of the array. */
+            public int[] Shuffle()
+            {
+
+                int[] result = new int[nums.Length];
+                Array.Copy(nums, result, nums.Length);
+                int t = 0;
+                int index = 0;
+                int temp = 0;
+
+                for (int i = nums.Length - 1; i > 0; i--)
+                {
+                    index = rand.Next(i + 1);
+                    temp = result[index];
+                    result[index] = result[i];
+                    result[i] = temp;
+                }
+
+                return result;
+
+            }
+
+        }
     }
 }
