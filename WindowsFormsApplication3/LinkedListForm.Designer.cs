@@ -91,6 +91,7 @@
             this.btn_Swap_Nodes_in_Pairs = new System.Windows.Forms.Button();
             this.btn_Remove_Duplicates_from_Sorted_List_II = new System.Windows.Forms.Button();
             this.btn_Reverse_Linked_List_II = new System.Windows.Forms.Button();
+            this.btn_Reverse_Nodes_in_k_Group = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -755,11 +756,22 @@
             this.btn_Reverse_Linked_List_II.UseVisualStyleBackColor = true;
             this.btn_Reverse_Linked_List_II.Click += new System.EventHandler(this.btn_Reverse_Linked_List_II_Click);
             // 
+            // btn_Reverse_Nodes_in_k_Group
+            // 
+            this.btn_Reverse_Nodes_in_k_Group.Location = new System.Drawing.Point(885, 891);
+            this.btn_Reverse_Nodes_in_k_Group.Name = "btn_Reverse_Nodes_in_k_Group";
+            this.btn_Reverse_Nodes_in_k_Group.Size = new System.Drawing.Size(321, 58);
+            this.btn_Reverse_Nodes_in_k_Group.TabIndex = 68;
+            this.btn_Reverse_Nodes_in_k_Group.Text = "Reverse Nodes in k-Group";
+            this.btn_Reverse_Nodes_in_k_Group.UseVisualStyleBackColor = true;
+            this.btn_Reverse_Nodes_in_k_Group.Click += new System.EventHandler(this.btn_Reverse_Nodes_in_k_Group_Click);
+            // 
             // LinkedListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1671, 1049);
+            this.Controls.Add(this.btn_Reverse_Nodes_in_k_Group);
             this.Controls.Add(this.btn_Reverse_Linked_List_II);
             this.Controls.Add(this.btn_Remove_Duplicates_from_Sorted_List_II);
             this.Controls.Add(this.btn_Swap_Nodes_in_Pairs);
@@ -897,5 +909,6 @@
         private System.Windows.Forms.Button btn_Swap_Nodes_in_Pairs;
         private System.Windows.Forms.Button btn_Remove_Duplicates_from_Sorted_List_II;
         private System.Windows.Forms.Button btn_Reverse_Linked_List_II;
+        private System.Windows.Forms.Button btn_Reverse_Nodes_in_k_Group;
     }
 }

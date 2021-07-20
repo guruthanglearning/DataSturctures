@@ -5552,10 +5552,180 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void btn_Reverse_Nodes_in_k_Group_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+
+                k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+
+                You may not alter the values in the list's nodes, only nodes themselves may be changed.
+
+ 
+
+                Example 1:
+
+
+                Input: head = [1,2,3,4,5], k = 2
+                Output: [2,1,4,3,5]
+                Example 2:
+
+
+                Input: head = [1,2,3,4,5], k = 3
+                Output: [3,2,1,4,5]
+                Example 3:
+
+                Input: head = [1,2,3,4,5], k = 1
+                Output: [1,2,3,4,5]
+                Example 4:
+
+                Input: head = [1], k = 1
+                Output: [1]
+ 
+
+                Constraints:
+
+                The number of nodes in the list is in the range sz.
+                1 <= sz <= 5000
+                0 <= Node.val <= 1000
+                1 <= k <= sz
+ 
+
+                Follow-up: Can you solve the problem in O(1) extra memory space?
+
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }), Find = 2 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }), Find = 3 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }), Find = 1 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1}), Left = 1, Find = 1 });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"ReverseReverse Nodes in k-Group for the given list {this.GetListNodeData(input.Node1)}  and K : {input.Find} is {Environment.NewLine}{this.GetListNodeData(ReverseKGroup(input.Node1, input.Find))}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public ListNode ReverseKGroup_New(ListNode head, int k)
+        {
+            if (head == null || k < 2)
+                return head;
+
+            ListNode temp = null;
+            ListNode tempReverse = null;
+            ListNode result = null;
+            ListNode pEnd = null;
+            ListNode cEnd = null;
+
+            int c = k;
+
+            while (head!=null)
+            {
+                if (c == 0)
+                {
+                    c = k;
+                    if (result == null)
+                    {
+                        result = tempReverse;                                                
+                    }
+                    else
+                    {
+                        pEnd.next = tempReverse;
+                    }                    
+                }
+                else
+                {
+                    temp = head
+                }
+
+            }
+
+
+
+
+
+        }
+
+
+
+        public ListNode ReverseKGroup(ListNode head, int k)
+        {
+
+            if (head == null || k < 2)
+                return head;
+
+            ListNode result = new ListNode();
+            ListNode rResult = result;
+            int c = 0;
+
+            while (head != null && c == 0)
+            {
+                while (rResult.next != null)
+                    rResult = rResult.next;
+                rResult.next = GetReverse(ref head, k, out c);
+
+            }
+
+            if (c > 0)
+                rResult.next = head;
+
+            return result.next;
+        }
+
+
+
+        private ListNode GetReverse(ref ListNode head, int k, out int c)
+        {
+
+            ListNode temp = null;
+            ListNode reverse = null;
+            ListNode original = new ListNode();
+            ListNode cOriginal = original;
+
+            /*        
+                    [1,2,3,4,5], k = 3
+
+                    o : 0->1->2->3
+                    r : 3->2->1
+
+            */
+
+            while (head != null && k > 0)
+            {
+                cOriginal.next = new ListNode() { val = head.val };
+                temp = head.next;
+                head.next = reverse;
+                reverse = head;
+                head = temp;
+                k--;
+                cOriginal = cOriginal.next;
+            }
+
+            if (k > 0)
+            {
+                cOriginal.next = head;
+                head = original.next;
+            }
+
+            c = k;
+            return k == 0 ? reverse : null;
+
+
+        }
     }
 
 
-   
+
 
 
     class Graph
