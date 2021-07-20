@@ -5615,49 +5615,7 @@ namespace WindowsFormsApplication3
 
         }
 
-
-        public ListNode ReverseKGroup_New(ListNode head, int k)
-        {
-            if (head == null || k < 2)
-                return head;
-
-            ListNode temp = null;
-            ListNode tempReverse = null;
-            ListNode result = null;
-            ListNode pEnd = null;
-            ListNode cEnd = null;
-
-            int c = k;
-
-            while (head!=null)
-            {
-                if (c == 0)
-                {
-                    c = k;
-                    if (result == null)
-                    {
-                        result = tempReverse;                                                
-                    }
-                    else
-                    {
-                        pEnd.next = tempReverse;
-                    }                    
-                }
-                else
-                {
-                    temp = head
-                }
-
-            }
-
-
-
-
-
-        }
-
-
-
+     
         public ListNode ReverseKGroup(ListNode head, int k)
         {
 
