@@ -7031,6 +7031,153 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void btn_Push_Dominoes_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                There are n dominoes in a line, and we place each domino vertically upright. In the beginning, we simultaneously push some of the dominoes either to the left or to the right.
+
+                After each second, each domino that is falling to the left pushes the adjacent domino on the left. Similarly, the dominoes falling to the right push their adjacent dominoes standing on the right.
+
+                When a vertical domino has dominoes falling on it from both sides, it stays still due to the balance of the forces.
+
+                For the purposes of this question, we will consider that a falling domino expends no additional force to a falling or already fallen domino.
+
+                You are given a string dominoes representing the initial state where:
+
+                dominoes[i] = 'L', if the ith domino has been pushed to the left,
+                dominoes[i] = 'R', if the ith domino has been pushed to the right, and
+                dominoes[i] = '.', if the ith domino has not been pushed.
+                Return a string representing the final state.
+
+ 
+
+                Example 1:
+
+                Input: dominoes = "RR.L"
+                Output: "RR.L"
+                Explanation: The first domino expends no additional force on the second domino.
+                Example 2:
+
+
+                Input: dominoes = ".L.R...LR..L.."
+                Output: "LL.RR.LLRRLL.."
+ 
+
+                Constraints:
+
+                n == dominoes.length
+                1 <= n <= 105
+                dominoes[i] is either 'L', 'R', or '.'.
+
+                TC  : O(N)
+                SC  : O(N)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("RR.L");
+            inputs.Add(".L.R...LR..L..");
+
+            foreach (var input in inputs)
+                result.AppendLine($"Push Dominoes for the given string {input} is {PushDominoes(input)}");
+
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public string PushDominoes(string dominoes)
+        {
+
+            if (dominoes == null || dominoes.Length == 0)
+                return dominoes;
+
+            int len = dominoes.Length;
+            char?[] left = new char?[len];
+            char?[] right = new char?[len];
+            StringBuilder result = new StringBuilder();
+
+            char p = '\0';
+
+
+            /*
+                    .   L   .   R   .   .   .   L   R   .   .   L   .   .                
+            Left :  L   L   n   R   L   L   L   L   R   L   L   L   n   n        
+            Right:  n   L   n   R   R   R   R   L   R   R   R   L   n   n
+
+            */
+
+            for (int i = len - 1; i >= 0; i--)
+            {
+                if (p == 'L' && dominoes[i] == '.')
+                    left[i] = 'L';
+                else if (dominoes[i] == 'R')
+                {
+                    p = '\0';
+                    left[i] = 'R';
+                }
+                else if (dominoes[i] == 'L')
+                {
+                    p = 'L';
+                    left[i] = 'L';
+                }
+            }
+
+            p = '\0';
+            for (int i = 0; i < len; i++)
+            {
+                if (p == 'R' && dominoes[i] == '.')
+                    right[i] = 'R';
+                else if (dominoes[i] == 'L')
+                {
+                    p = '\0';
+                    right[i] = 'L';
+                }
+                else if (dominoes[i] == 'R')
+                {
+                    p = 'R';
+                    right[i] = 'R';
+                }
+            }
+
+            for (int i = 0; i < len; i++)
+            {
+                if ((left[i] == null && right[i] == 'R') || (left[i] == 'R' && right[i] == 'R'))
+                    result.Append('R');
+                else if ((left[i] == 'L' && right[i] == null) || (left[i] == 'L' && right[i] == 'L'))
+                    result.Append('L');
+                else if (left[i] == null && right[i] == null)
+                    result.Append('.');
+                else if (left[i] == 'L' && right[i] == 'R')
+                {
+                    int l = i - 1;
+                    int r = i + 1;
+                    char lc = '\0';
+                    char rc = '\0';
+
+                    while (dominoes[l] == '.')
+                        l--;
+                    lc = dominoes[l];
+
+                    while (dominoes[r] == '.')
+                        r++;
+                    rc = dominoes[r];
+
+                    if (i - l < r - i)
+                        result.Append(lc);
+                    else if (i - l == r - i)
+                        result.Append(".");
+                    else
+                        result.Append(rc);
+                }
+
+            }
+
+            return result.ToString();
+        }
     }
 }
 

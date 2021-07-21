@@ -118,6 +118,7 @@
             this.btn_Number_of_Matching_Subsequences = new System.Windows.Forms.Button();
             this.btn_Remove_All_Adjacent_Duplicates_In_String = new System.Windows.Forms.Button();
             this.btn_Custom_Sort_String = new System.Windows.Forms.Button();
+            this.btn_Push_Dominoes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1097,11 +1098,22 @@
             this.btn_Custom_Sort_String.UseVisualStyleBackColor = true;
             this.btn_Custom_Sort_String.Click += new System.EventHandler(this.btn_Custom_Sort_String_Click);
             // 
+            // btn_Push_Dominoes
+            // 
+            this.btn_Push_Dominoes.Location = new System.Drawing.Point(1671, 692);
+            this.btn_Push_Dominoes.Name = "btn_Push_Dominoes";
+            this.btn_Push_Dominoes.Size = new System.Drawing.Size(224, 45);
+            this.btn_Push_Dominoes.TabIndex = 91;
+            this.btn_Push_Dominoes.Text = "Push Dominoes";
+            this.btn_Push_Dominoes.UseVisualStyleBackColor = true;
+            this.btn_Push_Dominoes.Click += new System.EventHandler(this.btn_Push_Dominoes_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 849);
+            this.Controls.Add(this.btn_Push_Dominoes);
             this.Controls.Add(this.btn_Custom_Sort_String);
             this.Controls.Add(this.btn_Remove_All_Adjacent_Duplicates_In_String);
             this.Controls.Add(this.btn_Number_of_Matching_Subsequences);
@@ -1292,5 +1304,6 @@
         private System.Windows.Forms.Button btn_Number_of_Matching_Subsequences;
         private System.Windows.Forms.Button btn_Remove_All_Adjacent_Duplicates_In_String;
         private System.Windows.Forms.Button btn_Custom_Sort_String;
+        private System.Windows.Forms.Button btn_Push_Dominoes;
     }
 }
