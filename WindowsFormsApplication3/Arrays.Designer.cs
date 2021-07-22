@@ -156,6 +156,7 @@
             this.btn_Maximum_Length_of_Repeated_Subarray = new System.Windows.Forms.Button();
             this.btn_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
             this.btn_Valid_Triangle_Number = new System.Windows.Forms.Button();
+            this.btn_Partition_Array_into_Disjoint_Intervals = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1472,11 +1473,22 @@
             this.btn_Valid_Triangle_Number.UseVisualStyleBackColor = true;
             this.btn_Valid_Triangle_Number.Click += new System.EventHandler(this.btn_Valid_Triangle_Number_Click);
             // 
+            // btn_Partition_Array_into_Disjoint_Intervals
+            // 
+            this.btn_Partition_Array_into_Disjoint_Intervals.Location = new System.Drawing.Point(1630, 1000);
+            this.btn_Partition_Array_into_Disjoint_Intervals.Name = "btn_Partition_Array_into_Disjoint_Intervals";
+            this.btn_Partition_Array_into_Disjoint_Intervals.Size = new System.Drawing.Size(222, 54);
+            this.btn_Partition_Array_into_Disjoint_Intervals.TabIndex = 130;
+            this.btn_Partition_Array_into_Disjoint_Intervals.Text = "Partition Array into Disjoint Intervals";
+            this.btn_Partition_Array_into_Disjoint_Intervals.UseVisualStyleBackColor = true;
+            this.btn_Partition_Array_into_Disjoint_Intervals.Click += new System.EventHandler(this.btn_Partition_Array_into_Disjoint_Intervals_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Partition_Array_into_Disjoint_Intervals);
             this.Controls.Add(this.btn_Valid_Triangle_Number);
             this.Controls.Add(this.btn_Longest_Increasing_Subsequence);
             this.Controls.Add(this.btn_Maximum_Length_of_Repeated_Subarray);
@@ -1742,5 +1754,6 @@
         private System.Windows.Forms.Button btn_Maximum_Length_of_Repeated_Subarray;
         private System.Windows.Forms.Button btn_Longest_Increasing_Subsequence;
         private System.Windows.Forms.Button btn_Valid_Triangle_Number;
+        private System.Windows.Forms.Button btn_Partition_Array_into_Disjoint_Intervals;
     }
 }

@@ -10916,6 +10916,78 @@ namespace WindowsFormsApplication3
 
             return result;
         }
+
+        private void btn_Partition_Array_into_Disjoint_Intervals_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Given an array nums, partition it into two (contiguous) subarrays left and right so that:
+
+                Every element in left is less than or equal to every element in right.
+                left and right are non-empty.
+                left has the smallest possible size.
+                Return the length of left after such a partitioning.  It is guaranteed that such a partitioning exists.
+
+ 
+
+                Example 1:
+
+                Input: nums = [5,0,3,8,6]
+                Output: 3
+                Explanation: left = [5,0,3], right = [8,6]
+                Example 2:
+
+                Input: nums = [1,1,1,0,6,12]
+                Output: 4
+                Explanation: left = [1,1,1,0], right = [6,12]
+ 
+
+                Note:
+
+                2 <= nums.length <= 30000
+                0 <= nums[i] <= 106
+                It is guaranteed there is at least one way to partition nums as described.
+
+
+                TC  :   O(N)
+                SC  :   O(1)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 5, 0, 3, 8, 6 } });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 1, 1, 0, 6, 12 });
+
+            foreach (var input in inputs)
+                result.AppendLine($"Partition Array into Disjoint Intervals for the given input  {string.Join(",", input.input)}   is {this.PartitionDisjoint(input.input)} ");
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int PartitionDisjoint(int[] nums)
+        {
+            int prevMax = nums[0];
+            int curMax = nums[0];
+            int prevMaxIndex = 0;
+
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i] > curMax)
+                {
+                    curMax = nums[i];
+                }
+                else if (nums[i] < prevMax)
+                {
+                    prevMax = curMax;
+                    prevMaxIndex = i;
+                }
+            }
+            return prevMaxIndex + 1;
+
+        }
     }
 }
 
