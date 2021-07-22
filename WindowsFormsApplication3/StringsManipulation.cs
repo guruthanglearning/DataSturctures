@@ -5686,9 +5686,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_the_Difference_Click(object sender, EventArgs e)
         {
-          
 
-
+            
             /*
             
                 Given two strings s and t which consist of only lowercase letters.
