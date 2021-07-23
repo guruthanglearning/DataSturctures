@@ -3799,6 +3799,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Lowest_Common_Ancestor_of_a_Binary_Tree_Click(object sender, EventArgs e)
         {
+            
             /*
                 Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
                 According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
@@ -3873,6 +3874,123 @@ namespace WindowsFormsApplication3
                 return right;
             
 
+        }
+
+        private void btn_Binary_Tree_Pruning_Click(object sender, EventArgs e)
+        {
+            /*
+             
+             Given the root of a binary tree, return the same tree where every subtree (of the given tree) not containing a 1 has been removed.
+
+            A subtree of a node node is node plus every node that is a descendant of node.
+ 
+
+            Example 1:
+
+            
+                                                        1
+                                                          \
+                                                           0
+                                                        /     \
+                                                       0       1
+                                            
+                                            
+                                                        1
+                                                          \
+                                                           0
+                                                             \
+                                                              1
+
+
+
+                    Input: root = [1,null,0,0,1]
+                    Output: [1,null,0,null,1]
+                    Explanation: 
+                    Only the red nodes satisfy the property "every subtree not containing a 1".
+                    The diagram on the right represents the answer.
+                    Example 2:
+
+
+                    Input: root = [1,0,1,0,0,0,1]
+                    Output: [1,null,1,null,1]
+                    Example 3:
+
+
+                    Input: root = [1,1,0,1,1,0,1,0]
+                    Output: [1,1,0,1,1,null,1]
+ 
+
+                    Constraints:
+
+                    The number of nodes in the tree is in the range [1, 200].
+                    Node.val is either 0 or 1.
+             
+                    TC  :   O(N)
+                    SC  :   O(1)
+                
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<int?[]> inputs = new List<int?[]>();
+            inputs.Add(new int?[] { 1, null, 0, 0, 1 });
+            inputs.Add(new int?[] { 1, 0, 1, 0, 0, 0, 1});
+            inputs.Add(new int?[] { 1, 1, 0, 1, 1, 0, 1, 0});
+
+            foreach (var input in inputs)
+            {
+                Node my = CreateBinaryTreeFromArray(input);
+                Node other = CreateBinaryTreeFromArray(input);
+                result.AppendLine($"Binary Tree Pruning for the given Binary tree {this.TraverseBinaryTree(my)}  is {Environment.NewLine}My solution : {TraverseBinaryTree(PruneTree_My(my))} {Environment.NewLine}other solution : {TraverseBinaryTree(PruneTree(other))}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public Node PruneTree_My(Node root)
+        {
+            if (root == null)
+                return root;
+            return Prune(root);
+        }
+
+        public Node Prune(Node root)
+        {
+            if (root == null || (root.left == null && root.right == null && root.val == 0))
+                return null;
+
+            if (root.left != null)
+                root.left = Prune(root.left);
+
+            if (root.right != null)
+                root.right = Prune(root.right);
+
+            if (root.left == null && root.right == null && root.val == 0)
+                root = null;
+
+            return root;
+
+        }
+
+        public Node PruneTree(Node root)
+        {
+            if (!ContainsOne(root))
+                return null;
+            root.left = PruneTree(root.left);
+            root.right = PruneTree(root.right);
+
+            return root;
+        }
+
+        private bool ContainsOne(Node root)
+        {
+            if (root == null)
+                return false;
+
+            if (root.val == 1)
+                return true;
+
+            return ContainsOne(root.left) || ContainsOne(root.right);
         }
     }
 

@@ -65,6 +65,7 @@
             this.btn_Validate_Binary_Search_Tree = new System.Windows.Forms.Button();
             this.btn_Construct_Binary_Tree_from__PreOrder_and_InOrder_Traversal = new System.Windows.Forms.Button();
             this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree = new System.Windows.Forms.Button();
+            this.btn_Binary_Tree_Pruning = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -467,11 +468,22 @@
             this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree.UseVisualStyleBackColor = true;
             this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree.Click += new System.EventHandler(this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree_Click);
             // 
+            // btn_Binary_Tree_Pruning
+            // 
+            this.btn_Binary_Tree_Pruning.Location = new System.Drawing.Point(551, 123);
+            this.btn_Binary_Tree_Pruning.Name = "btn_Binary_Tree_Pruning";
+            this.btn_Binary_Tree_Pruning.Size = new System.Drawing.Size(248, 54);
+            this.btn_Binary_Tree_Pruning.TabIndex = 72;
+            this.btn_Binary_Tree_Pruning.Text = "Binary Tree Pruning";
+            this.btn_Binary_Tree_Pruning.UseVisualStyleBackColor = true;
+            this.btn_Binary_Tree_Pruning.Click += new System.EventHandler(this.btn_Binary_Tree_Pruning_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 1050);
+            this.Controls.Add(this.btn_Binary_Tree_Pruning);
             this.Controls.Add(this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree);
             this.Controls.Add(this.btn_Construct_Binary_Tree_from__PreOrder_and_InOrder_Traversal);
             this.Controls.Add(this.btn_Validate_Binary_Search_Tree);
@@ -555,5 +567,6 @@
         private System.Windows.Forms.Button btn_Validate_Binary_Search_Tree;
         private System.Windows.Forms.Button btn_Construct_Binary_Tree_from__PreOrder_and_InOrder_Traversal;
         private System.Windows.Forms.Button btn_Lowest_Common_Ancestor_of_a_Binary_Tree;
+        private System.Windows.Forms.Button btn_Binary_Tree_Pruning;
     }
 }

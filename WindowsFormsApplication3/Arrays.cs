@@ -10958,7 +10958,7 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();
             inputs.Add(new ArrayAndValue() { input = new int[] { 5, 0, 3, 8, 6 } });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 1, 1, 0, 6, 12 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 1, 1, 0, 6, 12 } });
 
             foreach (var input in inputs)
                 result.AppendLine($"Partition Array into Disjoint Intervals for the given input  {string.Join(",", input.input)}   is {this.PartitionDisjoint(input.input)} ");
