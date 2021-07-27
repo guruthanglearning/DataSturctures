@@ -62,6 +62,7 @@
             this.btn_Count_Sorted_Vowel_Strings = new System.Windows.Forms.Button();
             this.btn_Concatenation_of_Consecutive_Binary_Numbers = new System.Windows.Forms.Button();
             this.btn_Generate_Parentheses = new System.Windows.Forms.Button();
+            this.btn_Non_negative_Integers_without_Consecutive_Ones = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -413,11 +414,22 @@
             this.btn_Generate_Parentheses.UseVisualStyleBackColor = true;
             this.btn_Generate_Parentheses.Click += new System.EventHandler(this.btn_Generate_Parentheses_Click);
             // 
+            // btn_Non_negative_Integers_without_Consecutive_Ones
+            // 
+            this.btn_Non_negative_Integers_without_Consecutive_Ones.Location = new System.Drawing.Point(422, 706);
+            this.btn_Non_negative_Integers_without_Consecutive_Ones.Name = "btn_Non_negative_Integers_without_Consecutive_Ones";
+            this.btn_Non_negative_Integers_without_Consecutive_Ones.Size = new System.Drawing.Size(266, 37);
+            this.btn_Non_negative_Integers_without_Consecutive_Ones.TabIndex = 119;
+            this.btn_Non_negative_Integers_without_Consecutive_Ones.Text = "Non-negative Integers without Consecutive Ones";
+            this.btn_Non_negative_Integers_without_Consecutive_Ones.UseVisualStyleBackColor = true;
+            this.btn_Non_negative_Integers_without_Consecutive_Ones.Click += new System.EventHandler(this.btn_Non_negative_Integers_without_Consecutive_Ones_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 1049);
+            this.Controls.Add(this.btn_Non_negative_Integers_without_Consecutive_Ones);
             this.Controls.Add(this.btn_Generate_Parentheses);
             this.Controls.Add(this.btn_Concatenation_of_Consecutive_Binary_Numbers);
             this.Controls.Add(this.btn_Count_Sorted_Vowel_Strings);
@@ -494,5 +506,6 @@
         private System.Windows.Forms.Button btn_Count_Sorted_Vowel_Strings;
         private System.Windows.Forms.Button btn_Concatenation_of_Consecutive_Binary_Numbers;
         private System.Windows.Forms.Button btn_Generate_Parentheses;
+        private System.Windows.Forms.Button btn_Non_negative_Integers_without_Consecutive_Ones;
     }
 }
