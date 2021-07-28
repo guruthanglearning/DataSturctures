@@ -63,6 +63,7 @@
             this.btn_Concatenation_of_Consecutive_Binary_Numbers = new System.Windows.Forms.Button();
             this.btn_Generate_Parentheses = new System.Windows.Forms.Button();
             this.btn_Non_negative_Integers_without_Consecutive_Ones = new System.Windows.Forms.Button();
+            this.btn_Beautiful_Array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -424,11 +425,22 @@
             this.btn_Non_negative_Integers_without_Consecutive_Ones.UseVisualStyleBackColor = true;
             this.btn_Non_negative_Integers_without_Consecutive_Ones.Click += new System.EventHandler(this.btn_Non_negative_Integers_without_Consecutive_Ones_Click);
             // 
+            // btn_Beautiful_Array
+            // 
+            this.btn_Beautiful_Array.Location = new System.Drawing.Point(422, 751);
+            this.btn_Beautiful_Array.Name = "btn_Beautiful_Array";
+            this.btn_Beautiful_Array.Size = new System.Drawing.Size(266, 43);
+            this.btn_Beautiful_Array.TabIndex = 120;
+            this.btn_Beautiful_Array.Text = "Beautiful Array";
+            this.btn_Beautiful_Array.UseVisualStyleBackColor = true;
+            this.btn_Beautiful_Array.Click += new System.EventHandler(this.btn_Beautiful_Array_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 1049);
+            this.Controls.Add(this.btn_Beautiful_Array);
             this.Controls.Add(this.btn_Non_negative_Integers_without_Consecutive_Ones);
             this.Controls.Add(this.btn_Generate_Parentheses);
             this.Controls.Add(this.btn_Concatenation_of_Consecutive_Binary_Numbers);
@@ -507,5 +519,6 @@
         private System.Windows.Forms.Button btn_Concatenation_of_Consecutive_Binary_Numbers;
         private System.Windows.Forms.Button btn_Generate_Parentheses;
         private System.Windows.Forms.Button btn_Non_negative_Integers_without_Consecutive_Ones;
+        private System.Windows.Forms.Button btn_Beautiful_Array;
     }
 }

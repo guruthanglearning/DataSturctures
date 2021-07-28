@@ -2448,6 +2448,8 @@ namespace WindowsFormsApplication3
 
         private void btn_Non_negative_Integers_without_Consecutive_Ones_Click(object sender, EventArgs e)
         {
+            
+
             /*
                 Given a positive integer n, return the number of the integers in the range [0, n] whose binary representations do not contain consecutive ones.
 
@@ -2524,6 +2526,86 @@ namespace WindowsFormsApplication3
             }
 
             return res + 1;
+        }
+
+        private void btn_Beautiful_Array_Click(object sender, EventArgs e)
+        {
+            /*
+                For some fixed n, an array nums is beautiful if it is a permutation of the integers 1, 2, ..., n, such that:
+
+                For every i < j, there is no k with i < k < j such that nums[k] * 2 = nums[i] + nums[j].
+
+                Given n, return any beautiful array nums.  (It is guaranteed that one exists.)
+
+ 
+
+                Example 1:
+
+                Input: n = 4
+                Output: [2,1,4,3]
+                Example 2:
+
+                Input: n = 5
+                Output: [3,1,2,5,4]
+ 
+
+                Note:
+
+                1 <= n <= 1000
+
+                TC  : O(N)
+                SC  : O(N)
+                
+
+             */
+
+            List<int> inputs = new List<int>();
+            inputs.Add(5);
+            inputs.Add(4);
+            inputs.Add(1);
+            inputs.Add(2);
+            inputs.Add(3);
+
+
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Beautiful array for the given number {input} is { string.Join(",", this.BeautifulArray(input))} ");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int[] BeautifulArray(int n)
+        {
+            List<int> res = new List<int>
+            {
+                1
+            };
+
+            while (res.Count < n)
+            {
+                List<int> next = new List<int>();
+                foreach (int i in res)
+                {
+                    if (i * 2 - 1 <= n)
+                    {
+                        next.Add(i * 2 - 1);
+                    }
+                }
+
+                foreach (int j in res)
+                {
+                    if (j * 2 <= n)
+                    {
+                        next.Add(j * 2);
+                    }
+                }
+
+                res = next;
+            }
+
+            return res.ToArray();
         }
     }
 }
