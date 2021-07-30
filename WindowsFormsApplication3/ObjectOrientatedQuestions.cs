@@ -10832,6 +10832,7 @@ new RandomizedSetData() { Operation = 1,Data = 413}
         {
             public string Name;
             public int IntData;
+            public string stringData;
             public List<int> Input;
         }
 
@@ -11064,6 +11065,9 @@ new RandomizedSetData() { Operation = 1,Data = 413}
 
         private void btn_Shuffle_an_Array_Click(object sender, EventArgs e)
         {
+            
+
+
             /*
              
                 Given an integer array nums, design an algorithm to randomly shuffle the array. All permutations of the array should be equally likely as a result of the shuffling.
@@ -11185,6 +11189,170 @@ new RandomizedSetData() { Operation = 1,Data = 413}
 
             }
 
+        }
+
+        private void btn_Map_Sum_Pairs_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                    Implement the MapSum class:
+                    MapSum() Initializes the MapSum object.
+                    void insert(String key, int val) Inserts the key-val pair into the map. If the key already existed, the original key-value pair will be overridden to the new one.
+                    int sum(string prefix) Returns the sum of all the pairs' value whose key starts with the prefix. 
+
+                    Example 1:
+                    Input
+                    ["MapSum", "insert", "sum", "insert", "sum"]
+                    [[], ["apple", 3], ["ap"], ["app", 2], ["ap"]]
+                    Output
+                    [null, null, 3, null, 5]
+
+                    Explanation
+                    MapSum mapSum = new MapSum();
+                    mapSum.insert("apple", 3);  
+                    mapSum.sum("ap");           // return 3 (apple = 3)
+                    mapSum.insert("app", 2);    
+                    mapSum.sum("ap");           // return 5 (apple + app = 3 + 2 = 5)
+ 
+
+                    Constraints:
+
+                    1 <= key.length, prefix.length <= 50
+                    key and prefix consist of only lowercase English letters.
+                    1 <= val <= 1000
+                    At most 50 calls will be made to insert and sum.
+
+                    TC  : O(N) N is the number of string that are getting added
+                    SC  : O(N) N is the number of string that are getting stored in Dictionary and Trie
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<InputNumArray> inputs = new List<InputNumArray>();
+            inputs.Add(new InputNumArray()
+            {
+                Operations = new List<InputNumArrayOperations>()
+                                                                                                    {
+                                                                                                         new InputNumArrayOperations(){ Name = "insert", stringData = "apple", IntData = 3},
+                                                                                                         new InputNumArrayOperations(){ Name = "sum", stringData ="ap"},
+                                                                                                         new InputNumArrayOperations(){ Name = "insert", stringData = "app", IntData = 2},
+                                                                                                         new InputNumArrayOperations(){  Name = "sum", stringData ="ap"},
+                                                                                                    }
+            });
+
+
+            foreach (var input in inputs)
+            {
+                MapSum s = new MapSum();
+                result.AppendLine($"Map Sum Pairs");
+                foreach (var item in input.Operations)
+                {
+                    if (item.Name == "insert")
+                    {
+                        result.AppendLine($"{item.Name}: {item.stringData} : {item.IntData} ");
+                        s.Insert(item.stringData, item.IntData);
+                    }
+                    else
+                        result.AppendLine($"{item.Name} for prefix :  {item.stringData}  is {string.Join(",", s.Sum(item.stringData))}");
+                }
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public class MapSum
+        {
+
+            Dictionary<string, int> dict = null;
+            Trie trie = null;
+
+            public MapSum()
+            {
+
+                dict = new Dictionary<string, int>();
+                trie = new Trie();
+            }
+
+            public void Insert(string key, int val)
+            {
+
+                if (!dict.ContainsKey(key))
+                    InsertTrie(key);
+
+                dict[key] = val;
+            }
+
+            public int Sum(string prefix)
+            {
+
+                int result = 0;
+                int temp = 0;
+                if (string.IsNullOrEmpty(prefix))
+                    return 0;
+
+                List<string> keys = new List<string>();
+                GetKeys(prefix, ref keys);
+
+                foreach (string k in keys)
+                {
+                    temp = 0;
+                    dict.TryGetValue(k, out temp);
+                    result += temp;
+                }
+
+                return result;
+            }
+
+            private void InsertTrie(string data)
+            {
+                Trie writer = trie;
+                foreach (char c in data)
+                {
+                    if (writer.Data[c - 'a'] == null)
+                        writer.Data[c - 'a'] = new Trie();
+
+                    writer = writer.Data[c - 'a'];
+                }
+
+                writer.IsLast = true;
+            }
+
+            private void GetKeys(string prefix, ref List<string> keys)
+            {
+                Trie reader = trie;
+
+                foreach (char c in prefix)
+                    if (reader.Data[c - 'a'] != null)
+                        reader = reader.Data[c - 'a'];
+
+                Retrive(reader, prefix, ref keys);
+
+            }
+
+
+            private void Retrive(Trie reader, string prefix, ref List<string> keys)
+            {
+                if (reader == null)
+                    return;
+
+                if (reader.IsLast)
+                    keys.Add(prefix);
+
+                for (int i = 0; i < 26; i++)
+                {
+                    Trie t = reader;
+                    if (t != null)
+                        Retrive(t.Data[i], prefix + (char)('a' + i), ref keys);
+                }
+            }
+
+
+            public class Trie
+            {
+                public Trie[] Data = new Trie[26];
+                public bool IsLast;
+            }
         }
     }
 }
