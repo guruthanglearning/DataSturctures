@@ -4379,5 +4379,144 @@ namespace WindowsFormsApplication3
             return count;
 
         }
+
+        private void btn_01_Matrix_Click(object sender, EventArgs e)
+        {
+            /*
+             Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
+                
+                The distance between two adjacent cells is 1.
+
+ 
+
+                Example 1:
+
+
+                Input: mat = [[0,0,0],[0,1,0],[0,0,0]]
+                Output: [[0,0,0],[0,1,0],[0,0,0]]
+                Example 2:
+
+
+                Input: mat = [[0,0,0],[0,1,0],[1,1,1]]
+                Output: [[0,0,0],[0,1,0],[1,2,1]]
+ 
+
+                Constraints:
+
+                m == mat.length
+                n == mat[i].length
+                1 <= m, n <= 104
+                1 <= m * n <= 104
+                mat[i][j] is either 0 or 1.
+                There is at least one 0 in mat.
+
+                TC  :   O(RC)
+                SC  :   O(RC)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{0,0,0},
+                                          new int[]{ 0,1,0 },
+                                          new int[]{ 0, 0, 0 }
+                                    }
+
+            });
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{ 0, 0, 0 },
+                                          new int[]{ 0, 1, 0 },
+                                          new int[]{ 1, 1, 1 }
+                                    }
+
+            });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"01 Matrix for the given matrix  : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} {Environment.NewLine} is {Environment.NewLine}  {this.PrintJaggedArray(this.UpdateMatrix(input.Input))}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int[][] UpdateMatrix(int[][] mat)
+        {
+            if (mat == null || mat.Length == 0)
+                return mat;
+
+
+            Queue<int[]> q = new Queue<int[]>();
+
+            int rl = mat.Length;
+            int cl = mat[0].Length;
+            int l = 0;
+            int size = 0;
+            int r = 0;
+            int c = 0;
+
+            for (r = 0; r < rl; r++)
+                for (c = 0; c < cl; c++)
+                    if (mat[r][c] == 0)
+                        q.Enqueue(new int[] { r, c });
+                    else
+                        mat[r][c] = -1;
+
+
+            while (q.Count > 0)
+            {
+                size = q.Count;
+                l++;
+                while(size >0)
+                {
+                    int[] rc = q.Dequeue();
+                    r = rc[0];
+                    c = rc[1];
+                    
+                    if (c-1 >=0 && mat[r][c-1] == -1)
+                    {
+                        q.Enqueue(new int[]{r,c-1 });
+                        mat[r][c - 1] = l;
+                    }
+
+                    if (c + 1 < cl && mat[r][c + 1] == -1)
+                    {
+                        q.Enqueue(new int[] { r, c + 1 });
+                        mat[r][c + 1] = l;
+                    }
+
+                    if (r - 1 >= 0 && mat[r-1][c] == -1)
+                    {
+                        q.Enqueue(new int[] { r-1, c });
+                        mat[r-1][c] = l;
+                    }
+
+                    if (r + 1 < rl && mat[r+1][c] == -1)
+                    {
+                        q.Enqueue(new int[] { r+1, c});
+                        mat[r+1][c] = l;
+                    }
+
+                    size--;
+
+                }
+
+            }
+
+
+            return mat;
+
+
+        }
     }
 }
