@@ -157,6 +157,7 @@
             this.btn_Longest_Increasing_Subsequence = new System.Windows.Forms.Button();
             this.btn_Valid_Triangle_Number = new System.Windows.Forms.Button();
             this.btn_Partition_Array_into_Disjoint_Intervals = new System.Windows.Forms.Button();
+            this.btn_Subsets_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1483,11 +1484,22 @@
             this.btn_Partition_Array_into_Disjoint_Intervals.UseVisualStyleBackColor = true;
             this.btn_Partition_Array_into_Disjoint_Intervals.Click += new System.EventHandler(this.btn_Partition_Array_into_Disjoint_Intervals_Click);
             // 
+            // btn_Subsets_II
+            // 
+            this.btn_Subsets_II.Location = new System.Drawing.Point(1866, 1007);
+            this.btn_Subsets_II.Name = "btn_Subsets_II";
+            this.btn_Subsets_II.Size = new System.Drawing.Size(266, 47);
+            this.btn_Subsets_II.TabIndex = 131;
+            this.btn_Subsets_II.Text = "Subsets II";
+            this.btn_Subsets_II.UseVisualStyleBackColor = true;
+            this.btn_Subsets_II.Click += new System.EventHandler(this.btn_Subsets_II_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Subsets_II);
             this.Controls.Add(this.btn_Partition_Array_into_Disjoint_Intervals);
             this.Controls.Add(this.btn_Valid_Triangle_Number);
             this.Controls.Add(this.btn_Longest_Increasing_Subsequence);
@@ -1755,5 +1767,6 @@
         private System.Windows.Forms.Button btn_Longest_Increasing_Subsequence;
         private System.Windows.Forms.Button btn_Valid_Triangle_Number;
         private System.Windows.Forms.Button btn_Partition_Array_into_Disjoint_Intervals;
+        private System.Windows.Forms.Button btn_Subsets_II;
     }
 }

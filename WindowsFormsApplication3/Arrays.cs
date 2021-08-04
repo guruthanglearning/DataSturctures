@@ -10482,7 +10482,8 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Max_Consecutive_Ones_III_Click(object sender, EventArgs e)
-        {            
+        {
+
             /*
                 Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
 
@@ -10987,6 +10988,116 @@ namespace WindowsFormsApplication3
             }
             return prevMaxIndex + 1;
 
+        }
+
+        IList<IList<int>> subSet2_result = new List<IList<int>>();
+        private void btn_Subsets_II_Click(object sender, EventArgs e)
+        {
+            /*
+            
+                Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+
+                The solution set must not contain duplicate subsets. Return the solution in any order.
+
+ 
+
+                Example 1:
+
+                Input: nums = [1,2,2]
+                Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+                Example 2:
+
+                Input: nums = [0]
+                Output: [[],[0]]
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 10
+                -10 <= nums[i] <= 10
+
+
+                TC  : O(NlogN)
+                SC  : 
+             */
+
+
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 2,3 }});
+            inputs.Add(new ArrayAndValue() { input = new int[] { 0} });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Subsets II  the given input  {string.Join(",", input.input)}   is ");
+                var res = this.SubsetsWithDup_Other(input.input);
+                foreach (var r in res)
+                    result.AppendLine($"{string.Join(",",r)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        
+        public IList<IList<int>> SubsetsWithDup(int[] nums)
+        {
+
+            if (nums == null || nums.Length == 0)
+                return subSet2_result;
+
+            Array.Sort(nums);
+            SubSets(nums, new List<int>(), 0);
+            return subSet2_result;
+        }
+
+  
+
+        private void SubSets(int[] nums, List<int> subSet, int start)
+        {
+            subSet2_result.Add(new List<int>(subSet));
+
+            for (int i = start; i < nums.Length; i++)
+            {
+                if (i != start && nums[i] == nums[i - 1])
+                    continue;
+
+                subSet.Add(nums[i]);
+                SubSets(nums, subSet, 1 + 1);
+                subSet.RemoveAt(subSet.Count - 1);
+            }
+        }
+
+        public IList<IList<int>> SubsetsWithDup_Other(int[] nums)
+        {
+
+            Array.Sort(nums);
+
+            IList<IList<int>> subsets = new List<IList<int>>();
+            subsets.Add(new List<int>());
+
+            int startIndex = 0;
+            int endIndex = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                startIndex = 0;
+
+                if (i > 0 && nums[i] == nums[i - 1])
+                {
+                    startIndex = endIndex + 1;
+                }
+                endIndex = subsets.Count - 1;
+
+                for (int j = startIndex; j <= endIndex; j++)
+                {
+                    IList<int> subset = new List<int>(subsets[j]);
+                    subset.Add(nums[i]);
+                    subsets.Add(subset);
+                }
+            }
+
+            return subsets;
         }
     }
 }
