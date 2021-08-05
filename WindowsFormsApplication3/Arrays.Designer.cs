@@ -158,6 +158,7 @@
             this.btn_Valid_Triangle_Number = new System.Windows.Forms.Button();
             this.btn_Partition_Array_into_Disjoint_Intervals = new System.Windows.Forms.Button();
             this.btn_Subsets_II = new System.Windows.Forms.Button();
+            this.btn_Stone_Game = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1494,11 +1495,22 @@
             this.btn_Subsets_II.UseVisualStyleBackColor = true;
             this.btn_Subsets_II.Click += new System.EventHandler(this.btn_Subsets_II_Click);
             // 
+            // btn_Stone_Game
+            // 
+            this.btn_Stone_Game.Location = new System.Drawing.Point(2140, 3);
+            this.btn_Stone_Game.Name = "btn_Stone_Game";
+            this.btn_Stone_Game.Size = new System.Drawing.Size(165, 40);
+            this.btn_Stone_Game.TabIndex = 132;
+            this.btn_Stone_Game.Text = "Stone Game";
+            this.btn_Stone_Game.UseVisualStyleBackColor = true;
+            this.btn_Stone_Game.Click += new System.EventHandler(this.btn_Stone_Game_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Stone_Game);
             this.Controls.Add(this.btn_Subsets_II);
             this.Controls.Add(this.btn_Partition_Array_into_Disjoint_Intervals);
             this.Controls.Add(this.btn_Valid_Triangle_Number);
@@ -1768,5 +1780,6 @@
         private System.Windows.Forms.Button btn_Valid_Triangle_Number;
         private System.Windows.Forms.Button btn_Partition_Array_into_Disjoint_Intervals;
         private System.Windows.Forms.Button btn_Subsets_II;
+        private System.Windows.Forms.Button btn_Stone_Game;
     }
 }
