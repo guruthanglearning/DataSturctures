@@ -3992,6 +3992,104 @@ namespace WindowsFormsApplication3
 
             return ContainsOne(root.left) || ContainsOne(root.right);
         }
+
+
+        private void btn_Path_Sum_II_Click(object sender, EventArgs e)
+        {
+            /*
+             Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where each path's sum equals targetSum.
+
+            A leaf is a node with no children.
+
+ 
+
+            Example 1:
+                                                                5
+
+                                                         /              \
+                                                        4                 8
+                                                    /                  /     \
+                                                   11                 13       4
+                                                 /   \                       /   \                                                 
+                                                7     2                     5     1      
+
+            Input: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22
+            Output: [[5,4,11,2],[5,8,4,5]]
+            Example 2:
+
+
+            Input: root = [1,2,3], targetSum = 5
+            Output: []
+            Example 3:
+
+            Input: root = [1,2], targetSum = 0
+            Output: []
+ 
+
+            Constraints:
+
+            The number of nodes in the tree is in the range [0, 5000].
+            -1000 <= Node.val <= 1000
+            -1000 <= targetSum <= 1000
+
+
+                TC  : O(N) n is the number of nodes
+                SC  : O(Log N)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1 }), K = 22 });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3 }), K = 5 });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1, 2 }), K = 0 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Path Sum II  for the given Binary tree {this.TraverseBinaryTree(input.Tree)}  and target : {input.K} is ");
+                var res = this.PathSum2(input.Tree, input.K);
+                foreach (var r in res)
+                    result.AppendLine($"{string.Join(",", r)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public IList<IList<int>> PathSum2(Node root, int targetSum)
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+            if (root == null)
+                return result;
+
+            Path2(root, new List<int>(), targetSum, 0, ref result);
+            return result;
+
+        }
+
+        private void Path2(Node root, List<int> subSet, int targetSum, int sum, ref IList<IList<int>> result)
+        {
+            if (root.left == null && root.right == null && sum + root.val == targetSum)
+            {
+                subSet.Add(root.val);
+                result.Add(new List<int>(subSet));
+                subSet.RemoveAt(subSet.Count - 1);
+                return;
+            }
+
+            subSet.Add(root.val);
+            int temp = sum + root.val;
+            if (root.left != null)
+                Path2(root.left, subSet, targetSum, temp, ref result);
+
+
+            if (root.right != null)
+                Path2(root.right, subSet, targetSum, temp, ref result);
+
+            subSet.RemoveAt(subSet.Count - 1);
+        }
+
     }
+
 
 }

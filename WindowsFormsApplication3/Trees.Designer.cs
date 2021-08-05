@@ -66,6 +66,7 @@
             this.btn_Construct_Binary_Tree_from__PreOrder_and_InOrder_Traversal = new System.Windows.Forms.Button();
             this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Binary_Tree_Pruning = new System.Windows.Forms.Button();
+            this.btn_Path_Sum_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -478,11 +479,22 @@
             this.btn_Binary_Tree_Pruning.UseVisualStyleBackColor = true;
             this.btn_Binary_Tree_Pruning.Click += new System.EventHandler(this.btn_Binary_Tree_Pruning_Click);
             // 
+            // btn_Path_Sum_II
+            // 
+            this.btn_Path_Sum_II.Location = new System.Drawing.Point(551, 183);
+            this.btn_Path_Sum_II.Name = "btn_Path_Sum_II";
+            this.btn_Path_Sum_II.Size = new System.Drawing.Size(248, 49);
+            this.btn_Path_Sum_II.TabIndex = 73;
+            this.btn_Path_Sum_II.Text = "Path Sum II";
+            this.btn_Path_Sum_II.UseVisualStyleBackColor = true;
+            this.btn_Path_Sum_II.Click += new System.EventHandler(this.btn_Path_Sum_II_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 1050);
+            this.Controls.Add(this.btn_Path_Sum_II);
             this.Controls.Add(this.btn_Binary_Tree_Pruning);
             this.Controls.Add(this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree);
             this.Controls.Add(this.btn_Construct_Binary_Tree_from__PreOrder_and_InOrder_Traversal);
@@ -568,5 +580,6 @@
         private System.Windows.Forms.Button btn_Construct_Binary_Tree_from__PreOrder_and_InOrder_Traversal;
         private System.Windows.Forms.Button btn_Lowest_Common_Ancestor_of_a_Binary_Tree;
         private System.Windows.Forms.Button btn_Binary_Tree_Pruning;
+        private System.Windows.Forms.Button btn_Path_Sum_II;
     }
 }
