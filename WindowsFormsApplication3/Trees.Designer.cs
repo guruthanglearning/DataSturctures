@@ -67,6 +67,7 @@
             this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Binary_Tree_Pruning = new System.Windows.Forms.Button();
             this.btn_Path_Sum_II = new System.Windows.Forms.Button();
+            this.btn_Nary_Tree_Level_Order_Traversal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -489,11 +490,22 @@
             this.btn_Path_Sum_II.UseVisualStyleBackColor = true;
             this.btn_Path_Sum_II.Click += new System.EventHandler(this.btn_Path_Sum_II_Click);
             // 
+            // btn_Nary_Tree_Level_Order_Traversal
+            // 
+            this.btn_Nary_Tree_Level_Order_Traversal.Location = new System.Drawing.Point(551, 238);
+            this.btn_Nary_Tree_Level_Order_Traversal.Name = "btn_Nary_Tree_Level_Order_Traversal";
+            this.btn_Nary_Tree_Level_Order_Traversal.Size = new System.Drawing.Size(248, 42);
+            this.btn_Nary_Tree_Level_Order_Traversal.TabIndex = 74;
+            this.btn_Nary_Tree_Level_Order_Traversal.Text = "N-ary Tree Level Order Traversal";
+            this.btn_Nary_Tree_Level_Order_Traversal.UseVisualStyleBackColor = true;
+            this.btn_Nary_Tree_Level_Order_Traversal.Click += new System.EventHandler(this.btn_Nary_Tree_Level_Order_Traversal_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 1050);
+            this.Controls.Add(this.btn_Nary_Tree_Level_Order_Traversal);
             this.Controls.Add(this.btn_Path_Sum_II);
             this.Controls.Add(this.btn_Binary_Tree_Pruning);
             this.Controls.Add(this.btn_Lowest_Common_Ancestor_of_a_Binary_Tree);
@@ -581,5 +593,6 @@
         private System.Windows.Forms.Button btn_Lowest_Common_Ancestor_of_a_Binary_Tree;
         private System.Windows.Forms.Button btn_Binary_Tree_Pruning;
         private System.Windows.Forms.Button btn_Path_Sum_II;
+        private System.Windows.Forms.Button btn_Nary_Tree_Level_Order_Traversal;
     }
 }

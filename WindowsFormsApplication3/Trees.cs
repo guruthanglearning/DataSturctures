@@ -272,6 +272,14 @@ namespace WindowsFormsApplication3
             public int val;
         }
 
+        public class N_Ary
+        {
+            public int val;
+            public IList<N_Ary> Childrens;
+        }
+
+
+
         public class NodeAndInput
         {
             public Node TreeNode;
@@ -1463,7 +1471,8 @@ namespace WindowsFormsApplication3
             public int K;
             public int low;
             public int high;
-            public List<string> operations; 
+            public List<string> operations;
+            public N_Ary NAry;
         }
 
         public int KthSmallest(Node root, int k)
@@ -4089,6 +4098,114 @@ namespace WindowsFormsApplication3
             subSet.RemoveAt(subSet.Count - 1);
         }
 
+        private void btn_Nary_Tree_Level_Order_Traversal_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an n-ary tree, return the level order traversal of its nodes' values.
+
+                Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).
+
+ 
+
+                Example 1:
+            
+                                                                5
+
+                                                         /      |        \
+                                                        3       2         4 
+                                                      /   \                
+                                                     5     4               
+
+
+                Input: root = [1,null,3,2,4,null,5,6]
+                Output: [[1],[3,2,4],[5,6]]
+                Example 2:
+                                                                    1
+                
+                                                         /      /        \        \
+                                                        2      3         4         5
+                                                            /   \        |      /     \
+                                                          6      7       8     9       10
+                                                                 |       |     |
+                                                                 11     12    13
+                                                                 |
+                                                                14
+
+                Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+                Output: [[1],[2,3,4,5],[6,7,8,9,10],[11,12,13],[14]]
+ 
+
+                Constraints:
+
+                The height of the n-ary tree is less than or equal to 1000
+                The total number of nodes is between [0, 104]
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { NAry = this.CreateN_Ary(new int?[] { 1, null, 3, 2, 4, null, 5, 6 })});
+            
+
+            foreach (var input in inputs)
+            {                
+                result.AppendLine($"N-Ary for the given N-Ary tree   {this.LevelOrder(input.NAry)}  is ");
+                var res = this.LevelOrder(input.NAry);
+                foreach (var r in res)
+                    result.AppendLine($"{string.Join(",", r)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public IList<IList<int>> LevelOrder(N_Ary root)
+        {
+            List<IList<int>> result = new List<IList<int>>();
+            if (root == null)
+                return result;
+
+            Queue<N_Ary> q = new Queue<N_Ary>();
+            List<int> temp = null;
+            q.Enqueue(root);
+            int size;
+
+            while (q.Count > 0)
+            {
+                size = q.Count;
+                temp = new List<int>();
+                while (size > 0)
+                {
+                    N_Ary node = q.Dequeue();
+                    temp.Add(node.val);
+                    foreach (N_Ary n in node.Childrens)
+                        q.Enqueue(n);
+                    size--;
+                }
+
+                result.Add(temp);
+            }
+
+            return result;
+        }
+
+        public N_Ary CreateN_Ary(int?[] input)
+        {
+            N_Ary node = null;
+            Q
+            foreach(int? i in input)
+            {
+                if (!i.HasValue)
+                {
+                    continue;
+                }
+                    
+                if (node == null)
+                    node = new N_Ary() { val = i.Value };
+            }
+
+            return node;
+        }
     }
 
 
