@@ -4145,11 +4145,12 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
             inputs.Add(new Common() { NAry = this.CreateN_Ary(new int?[] { 1, null, 3, 2, 4, null, 5, 6 })});
-            
+            inputs.Add(new Common() { NAry = this.CreateN_Ary(new int?[] { 1, null, 2, 3, 4, 5, null, null, 6, 7, null, 8, null, 9, 10, null, null, 11, null, 12, null, 13, null, null, 14 }) });
+
 
             foreach (var input in inputs)
             {                
-                result.AppendLine($"N-Ary for the given N-Ary tree   {this.LevelOrder(input.NAry)}  is ");
+                result.AppendLine($"N-Ary for the given N-Ary tree  is ");
                 var res = this.LevelOrder(input.NAry);
                 foreach (var r in res)
                     result.AppendLine($"{string.Join(",", r)}");
@@ -4178,8 +4179,9 @@ namespace WindowsFormsApplication3
                 {
                     N_Ary node = q.Dequeue();
                     temp.Add(node.val);
-                    foreach (N_Ary n in node.Childrens)
-                        q.Enqueue(n);
+                    if (node.Childrens != null)
+                        foreach (N_Ary n in node.Childrens)
+                            q.Enqueue(n);
                     size--;
                 }
 
@@ -4190,18 +4192,31 @@ namespace WindowsFormsApplication3
         }
 
         public N_Ary CreateN_Ary(int?[] input)
-        {
-            N_Ary node = null;
-            Q
-            foreach(int? i in input)
+        {            
+            N_Ary node = null;            
+            Queue<N_Ary> q = new Queue<N_Ary>();
+            N_Ary n = new N_Ary();
+            node = new N_Ary() { val = input[0].Value };
+            q.Enqueue(node);
+
+            for(int i = 1; i < input.Length; i++)
             {
-                if (!i.HasValue)
+                if (!input[i].HasValue)
                 {
+                    n = q.Dequeue();
                     continue;
                 }
-                    
-                if (node == null)
-                    node = new N_Ary() { val = i.Value };
+
+                if (n.Childrens == null)
+                    n.Childrens = new List<N_Ary>();
+
+                N_Ary t = new N_Ary() { val = input[i].Value };
+                n.Childrens.Add(t);
+                q.Enqueue(t);
+                
+
+
+                
             }
 
             return node;
