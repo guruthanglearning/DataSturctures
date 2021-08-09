@@ -119,6 +119,7 @@
             this.btn_Remove_All_Adjacent_Duplicates_In_String = new System.Windows.Forms.Button();
             this.btn_Custom_Sort_String = new System.Windows.Forms.Button();
             this.btn_Push_Dominoes = new System.Windows.Forms.Button();
+            this.btn_Add_Strings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1108,11 +1109,22 @@
             this.btn_Push_Dominoes.UseVisualStyleBackColor = true;
             this.btn_Push_Dominoes.Click += new System.EventHandler(this.btn_Push_Dominoes_Click);
             // 
+            // btn_Add_Strings
+            // 
+            this.btn_Add_Strings.Location = new System.Drawing.Point(1670, 742);
+            this.btn_Add_Strings.Name = "btn_Add_Strings";
+            this.btn_Add_Strings.Size = new System.Drawing.Size(225, 38);
+            this.btn_Add_Strings.TabIndex = 92;
+            this.btn_Add_Strings.Text = "Add Strings";
+            this.btn_Add_Strings.UseVisualStyleBackColor = true;
+            this.btn_Add_Strings.Click += new System.EventHandler(this.btn_Add_Strings_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 849);
+            this.Controls.Add(this.btn_Add_Strings);
             this.Controls.Add(this.btn_Push_Dominoes);
             this.Controls.Add(this.btn_Custom_Sort_String);
             this.Controls.Add(this.btn_Remove_All_Adjacent_Duplicates_In_String);
@@ -1305,5 +1317,6 @@
         private System.Windows.Forms.Button btn_Remove_All_Adjacent_Duplicates_In_String;
         private System.Windows.Forms.Button btn_Custom_Sort_String;
         private System.Windows.Forms.Button btn_Push_Dominoes;
+        private System.Windows.Forms.Button btn_Add_Strings;
     }
 }
