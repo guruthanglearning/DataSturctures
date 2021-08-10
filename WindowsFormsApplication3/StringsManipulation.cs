@@ -7182,6 +7182,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Add_Strings_Click(object sender, EventArgs e)
         {
+            
             /*
              
                 Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
@@ -7255,6 +7256,86 @@ namespace WindowsFormsApplication3
                 result.Insert(0, (char)('0' + rem));
 
             return result.ToString();
+
+        }
+
+        private void btn_Flip_String_to_Monotone_Increasing_Click(object sender, EventArgs e)
+        {
+            /*
+                A binary string is monotone increasing if it consists of some number of 0's (possibly none), followed by some number of 1's (also possibly none).
+
+                You are given a binary string s. You can flip s[i] changing it from 0 to 1 or from 1 to 0.
+
+                Return the minimum number of flips to make s monotone increasing.
+
+ 
+
+                Example 1:
+
+                Input: s = "00110"
+                Output: 1
+                Explanation: We flip the last digit to get 00111.
+                Example 2:
+
+                Input: s = "010110"
+                Output: 2
+                Explanation: We flip to get 011111, or alternatively 000111.
+                Example 3:
+
+                Input: s = "00011000"
+                Output: 2
+                Explanation: We flip to get 00000000.
+ 
+
+                Constraints:
+
+                1 <= s.length <= 105
+                s[i] is either '0' or '1'.
+
+                TC : O(N)
+                SC : O(1)
+             
+             */
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            inputs.Add("00110");
+            inputs.Add("010110");
+            inputs.Add("00011000");
+
+            foreach (var input in inputs)
+                result.AppendLine($"Flip String to Monotone Increasing for the given string {input} is {MinFlipsMonoIncr(input)}");
+
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int MinFlipsMonoIncr(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return 0;
+
+            int zt1 = 0;
+            int oc = 0;
+            /*
+                00110
+                010110
+                00011000
+
+            */
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '0')
+                    zt1++;
+                else
+                    oc++;
+
+                if (zt1 > oc)
+                    zt1 = oc;
+            }
+
+            return zt1;
 
         }
     }
