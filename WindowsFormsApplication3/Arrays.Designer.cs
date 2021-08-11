@@ -159,6 +159,7 @@
             this.btn_Partition_Array_into_Disjoint_Intervals = new System.Windows.Forms.Button();
             this.btn_Subsets_II = new System.Windows.Forms.Button();
             this.btn_Stone_Game = new System.Windows.Forms.Button();
+            this.btn_Array_of_Doubled_Pairs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1505,11 +1506,22 @@
             this.btn_Stone_Game.UseVisualStyleBackColor = true;
             this.btn_Stone_Game.Click += new System.EventHandler(this.btn_Stone_Game_Click);
             // 
+            // btn_Array_of_Doubled_Pairs
+            // 
+            this.btn_Array_of_Doubled_Pairs.Location = new System.Drawing.Point(9, 1030);
+            this.btn_Array_of_Doubled_Pairs.Name = "btn_Array_of_Doubled_Pairs";
+            this.btn_Array_of_Doubled_Pairs.Size = new System.Drawing.Size(187, 43);
+            this.btn_Array_of_Doubled_Pairs.TabIndex = 133;
+            this.btn_Array_of_Doubled_Pairs.Text = "Array of Doubled Pairs";
+            this.btn_Array_of_Doubled_Pairs.UseVisualStyleBackColor = true;
+            this.btn_Array_of_Doubled_Pairs.Click += new System.EventHandler(this.btn_Array_of_Doubled_Pairs_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Array_of_Doubled_Pairs);
             this.Controls.Add(this.btn_Stone_Game);
             this.Controls.Add(this.btn_Subsets_II);
             this.Controls.Add(this.btn_Partition_Array_into_Disjoint_Intervals);
@@ -1781,5 +1793,6 @@
         private System.Windows.Forms.Button btn_Partition_Array_into_Disjoint_Intervals;
         private System.Windows.Forms.Button btn_Subsets_II;
         private System.Windows.Forms.Button btn_Stone_Game;
+        private System.Windows.Forms.Button btn_Array_of_Doubled_Pairs;
     }
 }

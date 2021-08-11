@@ -10993,6 +10993,7 @@ namespace WindowsFormsApplication3
         IList<IList<int>> subSet2_result = new List<IList<int>>();
         private void btn_Subsets_II_Click(object sender, EventArgs e)
         {
+            
             /*
             
                 Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
@@ -11193,6 +11194,105 @@ namespace WindowsFormsApplication3
             {
                 return false;
             }
+        }
+
+        private void btn_Array_of_Doubled_Pairs_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of integers arr of even length, return true if and only if it is possible to reorder it such that arr[2 * i + 1] = 2 * arr[2 * i] for every 0 <= i < len(arr) / 2.
+
+                Example 1:
+
+                Input: arr = [3,1,3,6]
+                Output: false
+                Example 2:
+
+                Input: arr = [2,1,2,6]
+                Output: false
+                Example 3:
+
+                Input: arr = [4,-2,2,-4]
+                Output: true
+                Explanation: We can take two groups, [-2,-4] and [2,4] to form [-2,-4,2,4] or [2,4,-2,-4].
+                Example 4:
+
+                Input: arr = [1,2,4,16,8,4]
+                Output: false
+ 
+
+                Constraints:
+
+                0 <= arr.length <= 3 * 104
+                arr.length is even.
+                -105 <= arr[i] <= 105 
+
+                TC  :   O(N)
+                SC  :   O(N)
+
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 3, 1, 3, 6 } });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 1, 2, 6 } });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 4, -2, 2, -4 } });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 4, 16, 8, 4 } });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Array of Doubled Pairs for the given input  {string.Join(",", input.input)}  {(CanReorderDoubled(input.input) ? "" : " not ")} exists");
+                
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public bool CanReorderDoubled(int[] arr)
+        {
+            if (arr == null || arr.Length == 0)
+                return true;
+
+            Array.Sort(arr);
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            /*
+               [-2,-2,1,-2,-1,2]
+
+               -2,-2,-2, -1, 1 , 2
+               -2->3
+               -1->1
+                1->1
+                2->1
+            */
+
+            foreach (int i in arr)
+                if (dict.ContainsKey(i))
+                    dict[i]++;
+                else
+                    dict[i] = 1;
+
+            int target = 0;
+            List<int> keys = new List<int>(dict.Keys);
+            foreach (int k in keys)
+            {
+                if (dict[k] <= 0)
+                    continue;
+
+                target = k < 0 ? k / 2 : k * 2;
+
+                int temp = 0;
+                dict.TryGetValue(target, out temp);
+                if (!dict.ContainsKey(target) || (k < 0 && k % 2 != 0) || dict[k] > temp)
+                    return false;
+
+
+                dict[target] = temp - dict[k];
+
+            }
+
+
+            return true;
+
+
         }
     }
 }
