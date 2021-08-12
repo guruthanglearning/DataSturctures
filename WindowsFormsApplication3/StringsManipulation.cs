@@ -1375,6 +1375,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_index_of_homogenous_continous_charcter_Click(object sender, EventArgs e)
         {
+            
             string input = "AAAABBCBBBDEEEEEFFFF";
             //string input = "DBCAAB";
             //string input = "ABCCDEF";
@@ -7336,6 +7337,94 @@ namespace WindowsFormsApplication3
             }
 
             return zt1;
+
+        }
+
+        private void btn_Group_Anagrams_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+                An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+ 
+
+                Example 1:
+
+                Input: strs = ["eat","tea","tan","ate","nat","bat"]
+                Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+                Example 2:
+
+                Input: strs = [""]
+                Output: [[""]]
+                Example 3:
+
+                Input: strs = ["a"]
+                Output: [["a"]]
+ 
+
+                Constraints:
+
+                1 <= strs.length <= 104
+                0 <= strs[i].length <= 100
+                strs[i] consists of lower-case English letters.
+
+                TC  : O(N*M) where N is the number of strings and M is the length of the each string
+                SC  : O(N) 
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string[]> inputs = new List<string[]>();
+            inputs.Add(new string[]{ "eat", "tea", "tan", "ate", "nat", "bat" });
+            inputs.Add(new string[] { "" });
+            inputs.Add(new string[] { "a" });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Group Anagrams for the given strings {string.Join(",", input)} is");
+                var res = this.GroupAnagrams(input);
+                foreach (var r in res)
+                    result.AppendLine($"{string.Join(",", r)}");
+
+            }
+
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            List<IList<string>> result = new List<IList<string>>();
+
+            Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+
+            foreach (string s in strs)
+            {
+                int[] chrs = new int[26];
+                StringBuilder sb = new StringBuilder();
+                string str;
+                foreach (char c in s)
+                    chrs[c - 'a']++;
+
+                for (int i = 0; i < 26; i++)
+                {
+                    if (chrs[i] > 0)
+                        sb.Append(new string((char)('a' + i), chrs[i]));
+                }
+
+                str = sb.ToString();
+                if (dict.ContainsKey(str))
+                    dict[str].Add(s);
+                else
+                    dict[str] = new List<string>() { s };
+            }
+
+            result.AddRange(dict.Values);
+            return result;
 
         }
     }

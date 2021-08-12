@@ -121,6 +121,7 @@
             this.btn_Push_Dominoes = new System.Windows.Forms.Button();
             this.btn_Add_Strings = new System.Windows.Forms.Button();
             this.btn_Flip_String_to_Monotone_Increasing = new System.Windows.Forms.Button();
+            this.btn_Group_Anagrams = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1130,11 +1131,22 @@
             this.btn_Flip_String_to_Monotone_Increasing.UseVisualStyleBackColor = true;
             this.btn_Flip_String_to_Monotone_Increasing.Click += new System.EventHandler(this.btn_Flip_String_to_Monotone_Increasing_Click);
             // 
+            // btn_Group_Anagrams
+            // 
+            this.btn_Group_Anagrams.Location = new System.Drawing.Point(446, 820);
+            this.btn_Group_Anagrams.Name = "btn_Group_Anagrams";
+            this.btn_Group_Anagrams.Size = new System.Drawing.Size(411, 43);
+            this.btn_Group_Anagrams.TabIndex = 94;
+            this.btn_Group_Anagrams.Text = "Group Anagrams";
+            this.btn_Group_Anagrams.UseVisualStyleBackColor = true;
+            this.btn_Group_Anagrams.Click += new System.EventHandler(this.btn_Group_Anagrams_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1912, 849);
+            this.ClientSize = new System.Drawing.Size(1929, 904);
+            this.Controls.Add(this.btn_Group_Anagrams);
             this.Controls.Add(this.btn_Flip_String_to_Monotone_Increasing);
             this.Controls.Add(this.btn_Add_Strings);
             this.Controls.Add(this.btn_Push_Dominoes);
@@ -1331,5 +1343,6 @@
         private System.Windows.Forms.Button btn_Push_Dominoes;
         private System.Windows.Forms.Button btn_Add_Strings;
         private System.Windows.Forms.Button btn_Flip_String_to_Monotone_Increasing;
+        private System.Windows.Forms.Button btn_Group_Anagrams;
     }
 }
