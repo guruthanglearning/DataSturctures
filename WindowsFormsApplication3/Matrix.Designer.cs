@@ -65,6 +65,7 @@
             this.btn_Reshape_the_Matrix = new System.Windows.Forms.Button();
             this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix = new System.Windows.Forms.Button();
             this.btn_01_Matrix = new System.Windows.Forms.Button();
+            this.btn_Set_Matrix_Zeroes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -464,11 +465,22 @@
             this.btn_01_Matrix.UseVisualStyleBackColor = true;
             this.btn_01_Matrix.Click += new System.EventHandler(this.btn_01_Matrix_Click);
             // 
+            // btn_Set_Matrix_Zeroes
+            // 
+            this.btn_Set_Matrix_Zeroes.Location = new System.Drawing.Point(336, 907);
+            this.btn_Set_Matrix_Zeroes.Name = "btn_Set_Matrix_Zeroes";
+            this.btn_Set_Matrix_Zeroes.Size = new System.Drawing.Size(263, 43);
+            this.btn_Set_Matrix_Zeroes.TabIndex = 113;
+            this.btn_Set_Matrix_Zeroes.Text = "Set Matrix Zeroes";
+            this.btn_Set_Matrix_Zeroes.UseVisualStyleBackColor = true;
+            this.btn_Set_Matrix_Zeroes.Click += new System.EventHandler(this.btn_Set_Matrix_Zeroes_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Set_Matrix_Zeroes);
             this.Controls.Add(this.btn_01_Matrix);
             this.Controls.Add(this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix);
             this.Controls.Add(this.btn_Reshape_the_Matrix);
@@ -553,5 +565,6 @@
         private System.Windows.Forms.Button btn_Reshape_the_Matrix;
         private System.Windows.Forms.Button btn_Kth_Smallest_Element_in_a_Sorted_Matrix;
         private System.Windows.Forms.Button btn_01_Matrix;
+        private System.Windows.Forms.Button btn_Set_Matrix_Zeroes;
     }
 }

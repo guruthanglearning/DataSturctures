@@ -4518,5 +4518,165 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private void btn_Set_Matrix_Zeroes_Click(object sender, EventArgs e)
+        {
+            /*
+            Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's, and return the matrix.
+
+            You must do it in place.
+
+ 
+
+            Example 1:
+
+
+            Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
+            Output: [[1,0,1],[0,0,0],[1,0,1]]
+            Example 2:
+
+
+            Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+            Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+ 
+
+            Constraints:
+
+            m == matrix.length
+            n == matrix[0].length
+            1 <= m, n <= 200
+            -231 <= matrix[i][j] <= 231 - 1
+ 
+
+            Follow up:
+
+            A straightforward solution using O(mn) space is probably a bad idea.
+            A simple improvement uses O(m + n) space, but still not the best solution.
+            Could you devise a constant space solution?
+             
+            Hide Hint #1  
+            If any cell of the matrix has a zero we can record its row and column number using additional memory. But if you don't want to use extra memory then you can manipulate the array instead. i.e. simulating exactly what the question says.
+            
+            Hide Hint #2  
+            Setting cell values to zero on the fly while iterating might lead to discrepancies. What if you use some other integer value as your marker? There is still a better approach for this problem with 0(1) space.
+            
+            Hide Hint #3  
+            We could have used 2 sets to keep a record of rows/columns which need to be set to zero. But for an O(1) space solution, you can use one of the rows and and one of the columns to keep track of this information.
+            
+            Hide Hint #4  
+            We can use the first cell of every row and column as a flag. This flag would determine whether a row or column has been set to zero.
+
+            TC  : O(MN)
+            SC  : O(1)
+             
+             */
+
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{1},
+                                          new int[]{ 0 }
+                                    }
+
+            });
+            
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{1,1,1},
+                                          new int[]{ 1,0,1 },
+                                          new int[]{ 1, 1, 1 }
+                                    }
+
+            });
+
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{ 0,1,2,0 },
+                                          new int[]{ 3,4,5,2 },
+                                          new int[]{ 1, 3, 1, 5 }
+                                    }
+
+            });
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Set Zeroes for the given matrix  : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} is {Environment.NewLine}");
+                  SetZeroes(input.Input);
+                result.AppendLine($"{ this.PrintJaggedArray(input.Input)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public void SetZeroes(int[][] matrix)
+        {
+            if (matrix == null || matrix.Length == 0)
+                return;
+          
+            bool isFirstRowZero = false;
+            bool isFirstColZero = false;
+
+            int rl = matrix.Length;
+            int cl = matrix[0].Length;
+
+            for (int r = 0; r < rl; r++)
+                for (int c = 0; c < cl; c++)
+                {
+                    if (matrix[r][c] == 0)
+                    {
+                        matrix[r][0] = 0;
+                        matrix[0][c] = 0;
+
+                        if (r==0)
+                            isFirstRowZero = true;
+
+                        if (c == 0)
+                            isFirstColZero = true;
+                    }
+                }
+
+            for (int r = 1; r < rl; r++)
+                if (matrix[r][0] == 0)                
+                    FillMatrix(matrix, rl, cl, -1, r);
+                
+                
+
+            for (int c = 0; c < cl; c++)
+                if (matrix[0][c] == 0)                
+                    FillMatrix(matrix, rl, cl, c, -1);
+                    
+            
+            if (isFirstRowZero)
+                FillMatrix(matrix,rl,cl,-1, 0);
+
+            if (isFirstRowZero)
+                FillMatrix(matrix, rl, cl, -1, 0);
+
+
+        }
+
+        private void FillMatrix(int[][] matrix, int rl, int cl, int c, int r)
+        {
+            if (c > -1)
+                for (int ir = 0; ir < rl; ir++)
+                    matrix[ir][c] = 0;
+
+            if (r > -1)
+                for (int ic = 0; ic < cl; ic++)
+                    matrix[r][ic] = 0;
+
+
+
+        }
     }
 }
