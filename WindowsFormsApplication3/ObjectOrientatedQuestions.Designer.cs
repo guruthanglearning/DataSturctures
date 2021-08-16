@@ -38,6 +38,7 @@
             this.btn_Find_Median_from_Data_Stream = new System.Windows.Forms.Button();
             this.btn_Shuffle_an_Array = new System.Windows.Forms.Button();
             this.btn_Map_Sum_Pairs = new System.Windows.Forms.Button();
+            this.btn_Range_Sum_Query_Immutable = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Record_Max_population_for_an_year
@@ -141,11 +142,22 @@
             this.btn_Map_Sum_Pairs.UseVisualStyleBackColor = true;
             this.btn_Map_Sum_Pairs.Click += new System.EventHandler(this.btn_Map_Sum_Pairs_Click);
             // 
+            // btn_Range_Sum_Query_Immutable
+            // 
+            this.btn_Range_Sum_Query_Immutable.Location = new System.Drawing.Point(13, 505);
+            this.btn_Range_Sum_Query_Immutable.Name = "btn_Range_Sum_Query_Immutable";
+            this.btn_Range_Sum_Query_Immutable.Size = new System.Drawing.Size(413, 40);
+            this.btn_Range_Sum_Query_Immutable.TabIndex = 44;
+            this.btn_Range_Sum_Query_Immutable.Text = "Range Sum Query - Immutable";
+            this.btn_Range_Sum_Query_Immutable.UseVisualStyleBackColor = true;
+            this.btn_Range_Sum_Query_Immutable.Click += new System.EventHandler(this.btn_Range_Sum_Query_Immutable_Click);
+            // 
             // ObjectOrientatedQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 601);
+            this.Controls.Add(this.btn_Range_Sum_Query_Immutable);
             this.Controls.Add(this.btn_Map_Sum_Pairs);
             this.Controls.Add(this.btn_Shuffle_an_Array);
             this.Controls.Add(this.btn_Find_Median_from_Data_Stream);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Button btn_Find_Median_from_Data_Stream;
         private System.Windows.Forms.Button btn_Shuffle_an_Array;
         private System.Windows.Forms.Button btn_Map_Sum_Pairs;
+        private System.Windows.Forms.Button btn_Range_Sum_Query_Immutable;
     }
 }

@@ -4613,10 +4613,13 @@ namespace WindowsFormsApplication3
                 result.AppendLine($"Set Zeroes for the given matrix  : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} is {Environment.NewLine}");
                   SetZeroes(input.Input);
                 result.AppendLine($"{ this.PrintJaggedArray(input.Input)}");
+
+                //Refer SetZeroes_Others
             }
 
             MessageBox.Show(result.ToString());
         }
+
 
         public void SetZeroes(int[][] matrix)
         {
@@ -4661,8 +4664,6 @@ namespace WindowsFormsApplication3
 
             if (isFirstRowZero)
                 FillMatrix(matrix, rl, cl, -1, 0);
-
-
         }
 
         private void FillMatrix(int[][] matrix, int rl, int cl, int c, int r)
@@ -4674,9 +4675,73 @@ namespace WindowsFormsApplication3
             if (r > -1)
                 for (int ic = 0; ic < cl; ic++)
                     matrix[r][ic] = 0;
+        }
 
 
+        public void SetZeroes_Others(int[][] matrix)
+        {
+            bool firstRowZero = false;
+            bool firstColumnZero = false;
 
+            for (int y = 0; y < matrix.Length; y++)
+            {
+                for (int x = 0; x < matrix[y].Length; x++)
+                {
+                    if (matrix[y][x] == 0)
+                    {
+                        matrix[0][x] = 0;
+                        matrix[y][0] = 0;
+
+                        if (x == 0)
+                        {
+                            firstColumnZero = true;
+                        }
+                        if (y == 0)
+                        {
+                            firstRowZero = true;
+                        }
+                    }
+                }
+            }
+
+            for (int y = 1; y < matrix.Length; y++)
+            {
+                if (matrix[y][0] == 0)
+                {
+                    for (int x = 0; x < matrix[y].Length; x++)
+                    {
+                        matrix[y][x] = 0;
+                    }
+                }
+            }
+
+            for (int x = 1; x < matrix[0].Length; x++)
+            {
+                if (matrix[0][x] == 0)
+                {
+                    for (int y = 0; y < matrix.Length; y++)
+                    {
+                        matrix[y][x] = 0;
+                    }
+                }
+            }
+
+            // Clear rows + columns
+            if (firstColumnZero)
+            {
+                for (int y = 1; y < matrix.Length; y++)
+                {
+                    matrix[y][0] = 0;
+                }
+            }
+
+            if (firstRowZero)
+            {
+                for (int x = 1; x < matrix[0].Length; x++)
+                {
+                    matrix[0][x] = 0;
+                }
+            }
         }
     }
 }

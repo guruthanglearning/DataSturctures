@@ -10793,13 +10793,28 @@ new RandomizedSetData() { Operation = 1,Data = 413}
 
             StringBuilder result = new StringBuilder();
             List<InputNumArray> inputs = new List<InputNumArray>();
-            inputs.Add(new InputNumArray() {Input=new int[] { 1,3,5}, Operations = new List<InputNumArrayOperations>()
+            inputs.Add(new InputNumArray()
+            {
+                Input = new int[] { 1, 3, 5 },
+                Operations = new List<InputNumArrayOperations>()
                                                                                                     {
                                                                                                         new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,2 } },
                                                                                                         new InputNumArrayOperations(){ Name = "update", Input = new List<int>() {1,2 } },
                                                                                                         new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,2 } }
-                                                                                                    } 
-                                            });
+                                                                                                    }
+            });
+
+
+            inputs.Add(new InputNumArray()
+            {
+                Input = new int[] { -2, 0, 3, -5, 2, -1 },
+                Operations = new List<InputNumArrayOperations>()
+                                                                                                    {
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,2 } },
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {2,5 } },
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,5 } }
+                                                                                                    }
+            });
 
 
             foreach (var input in inputs)
@@ -11354,5 +11369,117 @@ new RandomizedSetData() { Operation = 1,Data = 413}
                 public bool IsLast;
             }
         }
+
+        private void btn_Range_Sum_Query_Immutable_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given an integer array nums, handle multiple queries of the following type:
+
+                Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.
+                Implement the NumArray class:
+
+                NumArray(int[] nums) Initializes the object with the integer array nums.
+                int sumRange(int left, int right) Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).
+ 
+
+                Example 1:
+
+                Input
+                ["NumArray", "sumRange", "sumRange", "sumRange"]
+                [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+                Output
+                [null, 1, -1, -3]
+
+                Explanation
+                NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
+                numArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1
+                numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1
+                numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 104
+                -105 <= nums[i] <= 105
+                0 <= left <= right < nums.length
+                At most 104 calls will be made to sumRange.
+
+                Initialization
+                        TC  : O(N)
+                        SC  : O(N)
+
+                SumRange :
+                        TC  :   O(1)
+                        SC  :   O(1)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<InputNumArray> inputs = new List<InputNumArray>();
+           
+
+            inputs.Add(new InputNumArray()
+            {
+                Input = new int[] { -2, 0, 3, -5, 2, -1 },
+                Operations = new List<InputNumArrayOperations>()
+                                                                                                    {
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,2 } },
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {2,5 } },
+                                                                                                        new InputNumArrayOperations(){ Name = "sumRange", Input = new List<int>() {0,5 } }
+                                                                                                    }
+            });
+
+
+            foreach (var input in inputs)
+            {
+                NumArray numArray = new NumArray(input.Input);
+                result.AppendLine($"Range Sum Query - Immutable for the given input {(string.Join(",", input.Input))} is");
+                foreach (var item in input.Operations)
+                {
+                    if (item.Name == "sumRange")
+                        result.AppendLine($"sumRange({item.Input[0]}, {item.Input[1]}) : {numArray.SumRange(item.Input[0], item.Input[1])}");
+                    else
+                    {
+                        result.AppendLine($"update({item.Input[0]}, {item.Input[1]})");
+                        numArray.Update(item.Input[0], item.Input[1]);
+                    }
+                }
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public class NumArrayImmutable
+        {
+
+            private int[] Sum;
+
+            public NumArrayImmutable(int[] nums)
+            {
+
+                Sum = new int[nums.Length];
+
+                Sum[0] = nums[0];
+
+                for (int i = 1; i < nums.Length; i++)
+                {
+
+                    Sum[i] = Sum[i - 1] + nums[i];
+                }
+            }
+
+            public int SumRange(int left, int right)
+            {
+
+                if (left == 0) return Sum[right];
+                return Sum[right] - Sum[left - 1];
+
+            }
+        }
+
+
     }
 }

@@ -11226,7 +11226,7 @@ namespace WindowsFormsApplication3
                 arr.length is even.
                 -105 <= arr[i] <= 105 
 
-                TC  :   O(N)
+                TC  :   O(NLogN)
                 SC  :   O(N)
 
              */
