@@ -68,6 +68,7 @@
             this.btn_Binary_Tree_Pruning = new System.Windows.Forms.Button();
             this.btn_Path_Sum_II = new System.Windows.Forms.Button();
             this.btn_Nary_Tree_Level_Order_Traversal = new System.Windows.Forms.Button();
+            this.btn_Count_Good_Nodes_in_Binary_Tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -500,11 +501,22 @@
             this.btn_Nary_Tree_Level_Order_Traversal.UseVisualStyleBackColor = true;
             this.btn_Nary_Tree_Level_Order_Traversal.Click += new System.EventHandler(this.btn_Nary_Tree_Level_Order_Traversal_Click);
             // 
+            // btn_Count_Good_Nodes_in_Binary_Tree
+            // 
+            this.btn_Count_Good_Nodes_in_Binary_Tree.Location = new System.Drawing.Point(551, 286);
+            this.btn_Count_Good_Nodes_in_Binary_Tree.Name = "btn_Count_Good_Nodes_in_Binary_Tree";
+            this.btn_Count_Good_Nodes_in_Binary_Tree.Size = new System.Drawing.Size(248, 51);
+            this.btn_Count_Good_Nodes_in_Binary_Tree.TabIndex = 75;
+            this.btn_Count_Good_Nodes_in_Binary_Tree.Text = "Count Good Nodes in Binary Tree";
+            this.btn_Count_Good_Nodes_in_Binary_Tree.UseVisualStyleBackColor = true;
+            this.btn_Count_Good_Nodes_in_Binary_Tree.Click += new System.EventHandler(this.btn_Count_Good_Nodes_in_Binary_Tree_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 1050);
+            this.Controls.Add(this.btn_Count_Good_Nodes_in_Binary_Tree);
             this.Controls.Add(this.btn_Nary_Tree_Level_Order_Traversal);
             this.Controls.Add(this.btn_Path_Sum_II);
             this.Controls.Add(this.btn_Binary_Tree_Pruning);
@@ -594,5 +606,6 @@
         private System.Windows.Forms.Button btn_Binary_Tree_Pruning;
         private System.Windows.Forms.Button btn_Path_Sum_II;
         private System.Windows.Forms.Button btn_Nary_Tree_Level_Order_Traversal;
+        private System.Windows.Forms.Button btn_Count_Good_Nodes_in_Binary_Tree;
     }
 }
