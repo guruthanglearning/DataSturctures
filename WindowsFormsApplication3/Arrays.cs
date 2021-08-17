@@ -11064,7 +11064,7 @@ namespace WindowsFormsApplication3
                     continue;
 
                 subSet.Add(nums[i]);
-                SubSets(nums, subSet, 1 + 1);
+                SubSets(nums, subSet, i + 1);
                 subSet.RemoveAt(subSet.Count - 1);
             }
         }
