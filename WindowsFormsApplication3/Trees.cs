@@ -4319,6 +4319,122 @@ namespace WindowsFormsApplication3
                 GetCount(root.right, ref count, maxValue);
         }
 
+        private void bnt_Maximum_Product_of_Splitted_Binary_Tree_Click(object sender, EventArgs e)
+        {
+            /*
+             
+                Given the root of a binary tree, split the binary tree into two subtrees by removing one edge such that the product of the sums of the subtrees is maximized.
+
+                Return the maximum product of the sums of the two subtrees. Since the answer may be too large, return it modulo 109 + 7.
+
+                Note that you need to maximize the answer before taking the mod and not after taking it.
+
+ 
+
+                Example 1:
+
+                                                                1
+
+                                                         /              \
+                                                        2                 3
+                                                    /      \            /     
+                                                   4        5         6       
+            
+
+                                                        2                 1
+                                                    /      \                \     
+                                                   4        5                 3
+                                                                             /
+                                                                            6
+
+
+
+                Input: root = [1,2,3,4,5,6]
+                Output: 110
+                Explanation: Remove the red edge and get 2 binary trees with sum 11 and 10. Their product is 110 (11*10)
+                Example 2:
+
+
+                Input: root = [1,null,2,3,4,null,null,5,6]
+                Output: 90
+                Explanation: Remove the red edge and get 2 binary trees with sum 15 and 6.Their product is 90 (15*6)
+                Example 3:
+
+                Input: root = [2,3,9,10,7,8,6,5,4,11,1]
+                Output: 1025
+                Example 4:
+
+                Input: root = [1,1]
+                Output: 1
+ 
+
+                Constraints:
+
+                The number of nodes in the tree is in the range [2, 5 * 104].
+                1 <= Node.val <= 104
+                   Hide Hint #1  
+                If we know the sum of a subtree, the answer is max( (total_sum - subtree_sum) * subtree_sum) in each node.
+
+
+                TC : O(N)
+                SC : O(1)
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1, 2, 3, 4, 5, 6 }) });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 1, null, 2, 3, 4, null, null, 5, 6 }) });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 2, 3, 9, 10, 7, 8, 6, 5, 4, 11, 1 }) });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] {1,1 }) });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Count Good Nodes in Binary Tree  for the given Binary tree {this.TraverseBinaryTree(input.Tree)}  is {this.MaxProduct(input.Tree)}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int MaxProduct(Node root)
+        {
+            long mod = 1000000007;
+            long maxProd = 0;
+            long ts = 0;
+
+            ts = GetSum(root);
+            GetProduct(root, ts, ref maxProd);
+            return (int)(maxProd % mod);
+
+        }
+
+
+        public long GetProduct(Node root, long totalSum, ref long maxProduct)
+        {
+            if (root == null)
+                return 0;
+
+            long l = GetProduct(root.left, totalSum, ref maxProduct);
+            long r = GetProduct(root.right, totalSum, ref maxProduct);
+            long subTreeSum = l + r + root.val;
+            maxProduct = Math.Max(maxProduct, (totalSum - subTreeSum) * subTreeSum);
+            return subTreeSum;
+
+        }
+
+
+        public int GetSum(Node root)
+        {
+            if (root == null)
+                return 0;
+
+            int result = root.val + GetSum(root.left);
+            result += GetSum(root.right);
+
+            return result;
+        }
+
     }
 
 
