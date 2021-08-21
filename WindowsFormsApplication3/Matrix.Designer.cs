@@ -66,6 +66,7 @@
             this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix = new System.Windows.Forms.Button();
             this.btn_01_Matrix = new System.Windows.Forms.Button();
             this.btn_Set_Matrix_Zeroes = new System.Windows.Forms.Button();
+            this.btn_Valid_Sudoku = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -467,19 +468,30 @@
             // 
             // btn_Set_Matrix_Zeroes
             // 
-            this.btn_Set_Matrix_Zeroes.Location = new System.Drawing.Point(336, 907);
+            this.btn_Set_Matrix_Zeroes.Location = new System.Drawing.Point(336, 906);
             this.btn_Set_Matrix_Zeroes.Name = "btn_Set_Matrix_Zeroes";
-            this.btn_Set_Matrix_Zeroes.Size = new System.Drawing.Size(263, 43);
+            this.btn_Set_Matrix_Zeroes.Size = new System.Drawing.Size(263, 33);
             this.btn_Set_Matrix_Zeroes.TabIndex = 113;
             this.btn_Set_Matrix_Zeroes.Text = "Set Matrix Zeroes";
             this.btn_Set_Matrix_Zeroes.UseVisualStyleBackColor = true;
             this.btn_Set_Matrix_Zeroes.Click += new System.EventHandler(this.btn_Set_Matrix_Zeroes_Click);
+            // 
+            // btn_Valid_Sudoku
+            // 
+            this.btn_Valid_Sudoku.Location = new System.Drawing.Point(334, 945);
+            this.btn_Valid_Sudoku.Name = "btn_Valid_Sudoku";
+            this.btn_Valid_Sudoku.Size = new System.Drawing.Size(265, 37);
+            this.btn_Valid_Sudoku.TabIndex = 114;
+            this.btn_Valid_Sudoku.Text = "Valid Sudoku";
+            this.btn_Valid_Sudoku.UseVisualStyleBackColor = true;
+            this.btn_Valid_Sudoku.Click += new System.EventHandler(this.btn_Valid_Sudoku_Click);
             // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Valid_Sudoku);
             this.Controls.Add(this.btn_Set_Matrix_Zeroes);
             this.Controls.Add(this.btn_01_Matrix);
             this.Controls.Add(this.btn_Kth_Smallest_Element_in_a_Sorted_Matrix);
@@ -566,5 +578,6 @@
         private System.Windows.Forms.Button btn_Kth_Smallest_Element_in_a_Sorted_Matrix;
         private System.Windows.Forms.Button btn_01_Matrix;
         private System.Windows.Forms.Button btn_Set_Matrix_Zeroes;
+        private System.Windows.Forms.Button btn_Valid_Sudoku;
     }
 }

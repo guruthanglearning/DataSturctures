@@ -1153,6 +1153,22 @@ namespace WindowsFormsApplication3
             return result.ToString();
         }
 
+        private string PrintJaggedArray_String(string[][] input)
+        {
+            StringBuilder result = new StringBuilder();
+
+            for (int r = 0; r < input.Length; r++)
+            {
+                for (int c = 0; c < input[r].Length; c++)
+                {
+                    result.Append($"{input[r][c]} \t");
+                }
+                result.AppendLine();
+            }
+
+            return result.ToString();
+        }
+
         private void btn_Flood_Fill_Click(object sender, EventArgs e)
         {
 
@@ -4521,6 +4537,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Set_Matrix_Zeroes_Click(object sender, EventArgs e)
         {
+            
             /*
             Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's, and return the matrix.
 
@@ -4742,6 +4759,125 @@ namespace WindowsFormsApplication3
                     matrix[0][x] = 0;
                 }
             }
+        }
+
+        private void btn_Valid_Sudoku_Click(object sender, EventArgs e)
+        {
+            /*
+                Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+                Each row must contain the digits 1-9 without repetition.
+                Each column must contain the digits 1-9 without repetition.
+                Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+                Note:
+
+                A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+                Only the filled cells need to be validated according to the mentioned rules.
+ 
+
+                Example 1:
+
+
+                Input: board = 
+                [["5","3",".",".","7",".",".",".","."]
+                ,["6",".",".","1","9","5",".",".","."]
+                ,[".","9","8",".",".",".",".","6","."]
+                ,["8",".",".",".","6",".",".",".","3"]
+                ,["4",".",".","8",".","3",".",".","1"]
+                ,["7",".",".",".","2",".",".",".","6"]
+                ,[".","6",".",".",".",".","2","8","."]
+                ,[".",".",".","4","1","9",".",".","5"]
+                ,[".",".",".",".","8",".",".","7","9"]]
+                Output: true
+                Example 2:
+
+                Input: board = 
+                [["8","3",".",".","7",".",".",".","."]
+                ,["6",".",".","1","9","5",".",".","."]
+                ,[".","9","8",".",".",".",".","6","."]
+                ,["8",".",".",".","6",".",".",".","3"]
+                ,["4",".",".","8",".","3",".",".","1"]
+                ,["7",".",".",".","2",".",".",".","6"]
+                ,[".","6",".",".",".",".","2","8","."]
+                ,[".",".",".","4","1","9",".",".","5"]
+                ,[".",".",".",".","8",".",".","7","9"]]
+                Output: false
+                Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
+ 
+
+                Constraints:
+
+                board.length == 9
+                board[i].length == 9
+                board[i][j] is a digit or '.'.
+
+                TC  : O(9*9)
+                SC  : O(9*9)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string[][]> inputs = new List<string[][]>();
+
+            inputs.Add(new string[][]   {
+                            new string[] { "8", "3", ".", ".", "7", ".", ".", ".", "." },
+                            new string[] {"6",".",".","1","9","5",".",".","." },
+                            new string[] {".", "9", "8", ".", ".", ".", ".", "6", "." },
+                            new string[] {"8", ".", ".", ".", "6", ".", ".", ".", "3" },
+                            new string[] {"4", ".", ".", "8", ".", "3", ".", ".", "1" },
+                            new string[] {"7", ".", ".", ".", "2", ".", ".", ".", "6"},
+                            new string[] {".", "6", ".", ".", ".", ".", "2", "8", "." },
+                            new string[] {".", ".", ".", "4", "1", "9", ".", ".", "5" },
+                            new string[] {".", ".", ".", ".", "8", ".", ".", "7", "9" }
+                                    }
+                       );
+            
+
+       
+
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The Given Sudoku : {Environment.NewLine} {this.PrintJaggedArray_String(input)} is {Environment.NewLine} {(IsValidSudoku(input) ? "" : " not")} valid");
+               
+
+             
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public bool IsValidSudoku(string[][] board)
+        {
+            if (board == null)
+                return false;
+
+            HashSet<string> dict = new HashSet<string>();
+
+            for (int r = 0; r < board.Length; r++)
+                for (int c = 0; c < board[0].Length; c++)
+                {
+                    if (board[r][c] != ".")
+                    {
+                        if ((dict.Contains($"{board[r][c]}_R_{r}")) ||
+                            (dict.Contains($"{board[r][c]}_C_{c}")) ||
+                            (dict.Contains($"{board[r][c]}_B_{r / 3}_{c / 3}")))
+                            return false;
+                        else
+                        {
+                            dict.Add($"{board[r][c]}_R_{r}");
+                            dict.Add($"{board[r][c]}_C_{c}");
+                            dict.Add($"{board[r][c]}_B_{r / 3}_{c / 3}");
+                        }
+                    }
+                }
+
+
+            return true;
+
         }
     }
 }
