@@ -67,6 +67,7 @@
             this.btn_01_Matrix = new System.Windows.Forms.Button();
             this.btn_Set_Matrix_Zeroes = new System.Windows.Forms.Button();
             this.btn_Valid_Sudoku = new System.Windows.Forms.Button();
+            this.btn_Sudoku_Solver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -486,11 +487,22 @@
             this.btn_Valid_Sudoku.UseVisualStyleBackColor = true;
             this.btn_Valid_Sudoku.Click += new System.EventHandler(this.btn_Valid_Sudoku_Click);
             // 
+            // btn_Sudoku_Solver
+            // 
+            this.btn_Sudoku_Solver.Location = new System.Drawing.Point(613, 18);
+            this.btn_Sudoku_Solver.Name = "btn_Sudoku_Solver";
+            this.btn_Sudoku_Solver.Size = new System.Drawing.Size(204, 39);
+            this.btn_Sudoku_Solver.TabIndex = 115;
+            this.btn_Sudoku_Solver.Text = "Sudoku Solver";
+            this.btn_Sudoku_Solver.UseVisualStyleBackColor = true;
+            this.btn_Sudoku_Solver.Click += new System.EventHandler(this.btn_Sudoku_Solver_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Sudoku_Solver);
             this.Controls.Add(this.btn_Valid_Sudoku);
             this.Controls.Add(this.btn_Set_Matrix_Zeroes);
             this.Controls.Add(this.btn_01_Matrix);
@@ -579,5 +591,6 @@
         private System.Windows.Forms.Button btn_01_Matrix;
         private System.Windows.Forms.Button btn_Set_Matrix_Zeroes;
         private System.Windows.Forms.Button btn_Valid_Sudoku;
+        private System.Windows.Forms.Button btn_Sudoku_Solver;
     }
 }

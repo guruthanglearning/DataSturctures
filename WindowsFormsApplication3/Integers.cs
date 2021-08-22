@@ -2607,6 +2607,47 @@ namespace WindowsFormsApplication3
 
             return res.ToArray();
         }
+
+        private void btn_Base_62_For_7_Characters_Click(object sender, EventArgs e)
+        {
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 1; i < 10; i++)
+                result.AppendLine($"{i} : {Base62String(i)}");
+
+            
+            long j = int.MaxValue;
+            for (int i = 0; i < 10; i++)
+            {
+                j++;
+                result.AppendLine($"{j} : {Base62String(j)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public string Base62String(long data)
+        {
+            string base62 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            int counter = 7;
+            StringBuilder result = new StringBuilder();
+
+            int reminder = 0;
+
+            while (counter > 0 || data >0)
+            {
+                reminder = (int) (data % 62);
+                if (data > 0)
+                    data /= 62;
+                counter--;
+                result.Append(base62[reminder]);
+            }
+
+            return result.ToString();
+        }
+
     }
 }
 

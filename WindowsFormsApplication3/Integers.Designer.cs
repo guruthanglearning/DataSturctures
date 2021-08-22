@@ -64,6 +64,7 @@
             this.btn_Generate_Parentheses = new System.Windows.Forms.Button();
             this.btn_Non_negative_Integers_without_Consecutive_Ones = new System.Windows.Forms.Button();
             this.btn_Beautiful_Array = new System.Windows.Forms.Button();
+            this.btn_Base_62_For_7_Characters = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Reverse_Integer
@@ -435,11 +436,22 @@
             this.btn_Beautiful_Array.UseVisualStyleBackColor = true;
             this.btn_Beautiful_Array.Click += new System.EventHandler(this.btn_Beautiful_Array_Click);
             // 
+            // btn_Base_62_For_7_Characters
+            // 
+            this.btn_Base_62_For_7_Characters.Location = new System.Drawing.Point(422, 801);
+            this.btn_Base_62_For_7_Characters.Name = "btn_Base_62_For_7_Characters";
+            this.btn_Base_62_For_7_Characters.Size = new System.Drawing.Size(266, 45);
+            this.btn_Base_62_For_7_Characters.TabIndex = 121;
+            this.btn_Base_62_For_7_Characters.Text = "Base 62 For 7 Characters";
+            this.btn_Base_62_For_7_Characters.UseVisualStyleBackColor = true;
+            this.btn_Base_62_For_7_Characters.Click += new System.EventHandler(this.btn_Base_62_For_7_Characters_Click);
+            // 
             // Integers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 1049);
+            this.Controls.Add(this.btn_Base_62_For_7_Characters);
             this.Controls.Add(this.btn_Beautiful_Array);
             this.Controls.Add(this.btn_Non_negative_Integers_without_Consecutive_Ones);
             this.Controls.Add(this.btn_Generate_Parentheses);
@@ -520,5 +532,6 @@
         private System.Windows.Forms.Button btn_Generate_Parentheses;
         private System.Windows.Forms.Button btn_Non_negative_Integers_without_Consecutive_Ones;
         private System.Windows.Forms.Button btn_Beautiful_Array;
+        private System.Windows.Forms.Button btn_Base_62_For_7_Characters;
     }
 }
