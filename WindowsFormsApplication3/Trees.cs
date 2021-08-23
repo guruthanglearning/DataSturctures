@@ -4435,6 +4435,127 @@ namespace WindowsFormsApplication3
             return result;
         }
 
+        private void btn_Two_Sum_IV_Input_is_a_BS_Click(object sender, EventArgs e)
+        {
+            /*
+                Given the root of a Binary Search Tree and a target number k, return true if there exist two elements in the BST such that their sum is equal to the given target.
+
+ 
+
+                Example 1:
+
+                                                                5
+                                                         /              \
+                                                        3                6
+                                                    /      \               \     
+                                                   2        4               7       
+            
+
+                Input: root = [5,3,6,2,4,null,7], k = 9
+                Output: true
+                Example 2:
+
+
+                Input: root = [5,3,6,2,4,null,7], k = 28
+                Output: false
+                Example 3:
+
+                Input: root = [2,1,3], k = 4
+                Output: true
+                Example 4:
+
+                Input: root = [2,1,3], k = 1
+                Output: false
+                Example 5:
+
+                Input: root = [2,1,3], k = 3
+                Output: true
+ 
+
+                Constraints:
+
+                The number of nodes in the tree is in the range [1, 104].
+                -104 <= Node.val <= 104
+                root is guaranteed to be a valid binary search tree.
+                -105 <= k <= 105
+
+                TC  : O(N) where N is the list of nodes
+                SC  : O(N) 
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 5, 3, 6, 2, 4, null, 7 }), K= 9 });
+            inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 5, 3, 6, 2, 4, null, 7 }), K = 28 });
+            //inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 2,1,3 }), K = 4 });
+            //inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 2, 1, 3 }), K = 1 });
+            //inputs.Add(new Common() { Tree = this.CreateBinaryTreeFromArray(new int?[] { 2, 1, 3 }), K = 3 });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Two Sum IV - Input is a BST for the given Binary Search tree {this.TraverseBinaryTree(input.Tree)} and K :{input.K}  is {(this.FindTarget(input.Tree, input.K) ? "": "not")} exists");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public bool FindTarget_Other(Node root, int k)
+        {
+
+            if (root == null) return false;
+            List<int> io = new List<int>();
+            inorder(root, ref io);
+
+            for (int i = 0, j = io.Count - 1; i < j;)
+            {
+                if (io[i] + io[j] == k) return true;
+                else if (io[i] + io[j] < k) i++;
+                else j--;
+            }
+
+            return false;
+
+
+        }
+
+        public void inorder(Node root, ref List<int> io)
+        {
+            if (root == null) return;
+            inorder(root.left, ref io);
+            io.Add(root.val);
+            inorder(root.right, ref io);
+
+        }
+
+        public bool FindTarget(Node root, int k)
+        {
+
+            var dict = new HashSet<int>();
+            return IsNumberExists(root, k, ref dict);
+
+
+        }
+
+        private bool IsNumberExists(Node root, int sum, ref HashSet<int> dict)
+        {
+            int diff = sum - root.val;
+            if (dict.Contains(root.val))
+                return true;
+
+            dict.Add(diff);
+
+            if (root.left != null && IsNumberExists(root.left, sum, ref dict))
+                return true;
+
+            if (root.right != null && IsNumberExists(root.right, sum, ref dict))
+                return true;
+
+            return false;
+        }
     }
 
 

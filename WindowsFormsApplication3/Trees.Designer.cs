@@ -70,6 +70,7 @@
             this.btn_Nary_Tree_Level_Order_Traversal = new System.Windows.Forms.Button();
             this.btn_Count_Good_Nodes_in_Binary_Tree = new System.Windows.Forms.Button();
             this.bnt_Maximum_Product_of_Splitted_Binary_Tree = new System.Windows.Forms.Button();
+            this.btn_Two_Sum_IV_Input_is_a_BS = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -522,11 +523,22 @@
             this.bnt_Maximum_Product_of_Splitted_Binary_Tree.UseVisualStyleBackColor = true;
             this.bnt_Maximum_Product_of_Splitted_Binary_Tree.Click += new System.EventHandler(this.bnt_Maximum_Product_of_Splitted_Binary_Tree_Click);
             // 
+            // btn_Two_Sum_IV_Input_is_a_BS
+            // 
+            this.btn_Two_Sum_IV_Input_is_a_BS.Location = new System.Drawing.Point(551, 412);
+            this.btn_Two_Sum_IV_Input_is_a_BS.Name = "btn_Two_Sum_IV_Input_is_a_BS";
+            this.btn_Two_Sum_IV_Input_is_a_BS.Size = new System.Drawing.Size(248, 52);
+            this.btn_Two_Sum_IV_Input_is_a_BS.TabIndex = 77;
+            this.btn_Two_Sum_IV_Input_is_a_BS.Text = "Two Sum IV - Input is a BS";
+            this.btn_Two_Sum_IV_Input_is_a_BS.UseVisualStyleBackColor = true;
+            this.btn_Two_Sum_IV_Input_is_a_BS.Click += new System.EventHandler(this.btn_Two_Sum_IV_Input_is_a_BS_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 1050);
+            this.Controls.Add(this.btn_Two_Sum_IV_Input_is_a_BS);
             this.Controls.Add(this.bnt_Maximum_Product_of_Splitted_Binary_Tree);
             this.Controls.Add(this.btn_Count_Good_Nodes_in_Binary_Tree);
             this.Controls.Add(this.btn_Nary_Tree_Level_Order_Traversal);
@@ -620,5 +632,6 @@
         private System.Windows.Forms.Button btn_Nary_Tree_Level_Order_Traversal;
         private System.Windows.Forms.Button btn_Count_Good_Nodes_in_Binary_Tree;
         private System.Windows.Forms.Button bnt_Maximum_Product_of_Splitted_Binary_Tree;
+        private System.Windows.Forms.Button btn_Two_Sum_IV_Input_is_a_BS;
     }
 }
