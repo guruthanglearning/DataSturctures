@@ -71,6 +71,7 @@
             this.btn_Count_Good_Nodes_in_Binary_Tree = new System.Windows.Forms.Button();
             this.bnt_Maximum_Product_of_Splitted_Binary_Tree = new System.Windows.Forms.Button();
             this.btn_Two_Sum_IV_Input_is_a_BS = new System.Windows.Forms.Button();
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Same_Tree
@@ -533,11 +534,22 @@
             this.btn_Two_Sum_IV_Input_is_a_BS.UseVisualStyleBackColor = true;
             this.btn_Two_Sum_IV_Input_is_a_BS.Click += new System.EventHandler(this.btn_Two_Sum_IV_Input_is_a_BS_Click);
             // 
+            // btn_Verify_Preorder_Serialization_of_a_Binary_Tree
+            // 
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree.Location = new System.Drawing.Point(551, 471);
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree.Name = "btn_Verify_Preorder_Serialization_of_a_Binary_Tree";
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree.Size = new System.Drawing.Size(248, 75);
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree.TabIndex = 78;
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree.Text = "Verify Preorder Serialization of a Binary Tree";
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree.UseVisualStyleBackColor = true;
+            this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree.Click += new System.EventHandler(this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree_Click);
+            // 
             // Trees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 1050);
+            this.Controls.Add(this.btn_Verify_Preorder_Serialization_of_a_Binary_Tree);
             this.Controls.Add(this.btn_Two_Sum_IV_Input_is_a_BS);
             this.Controls.Add(this.bnt_Maximum_Product_of_Splitted_Binary_Tree);
             this.Controls.Add(this.btn_Count_Good_Nodes_in_Binary_Tree);
@@ -633,5 +645,6 @@
         private System.Windows.Forms.Button btn_Count_Good_Nodes_in_Binary_Tree;
         private System.Windows.Forms.Button bnt_Maximum_Product_of_Splitted_Binary_Tree;
         private System.Windows.Forms.Button btn_Two_Sum_IV_Input_is_a_BS;
+        private System.Windows.Forms.Button btn_Verify_Preorder_Serialization_of_a_Binary_Tree;
     }
 }
