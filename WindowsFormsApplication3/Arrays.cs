@@ -6557,39 +6557,37 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             foreach (var input in inputs)
             {
-                result.Append($"Minimum in Rotated Sorted Array is {this.FindMin(input)} for the given  array {string.Join(" ", input)}\n");
+                result.Append($"Minimum in Rotated Sorted Array is {this.FindMin(input)}   for the given  array {string.Join(" ", input)}\n");
             }
 
             MessageBox.Show(result.ToString());
 
         }
 
+
         public int FindMin(int[] nums)
         {
             if (nums == null && nums.Length == 0)
                 return -1;
 
-            int s = 0;
-            int e = nums.Length - 1;
+            int l = 0;
+            int r = nums.Length - 1;
             int m = 0;
             
-            while (s < e)
+            while (l < r)
             {
-                if (s == e)
-                    break;
+                if (nums[l] < nums[r])
+                    return nums[l];
 
-                m = (s + e) / 2;
-
-                if (nums[m] > nums[e])
-                    s = m + 1;
-                else if (nums[m] < nums[e])
-                    e = m;
+                m = (l + r) / 2;
+                if (nums[m] > nums[r])
+                    l = m + 1;
                 else
-                    e--;
+                    r = m;
 
             }
 
-            return nums[s];
+            return nums[l];
 
         }
 
@@ -11294,6 +11292,8 @@ namespace WindowsFormsApplication3
 
 
         }
+
+     
     }
 }
 

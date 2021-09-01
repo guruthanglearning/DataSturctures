@@ -5013,7 +5013,87 @@ namespace WindowsFormsApplication3
             return true;
         }
 
-      
+        private void btn_Range_Addition_II_Click(object sender, EventArgs e)
+        {
+            /*
+               You are given an m x n matrix M initialized with all 0's and an array of operations ops, where ops[i] = [ai, bi] means M[x][y] should be incremented by one for all 0 <= x < ai and 0 <= y < bi.
+
+               Count and return the number of maximum integers in the matrix after performing all the operations.
+
+
+               Example 1:
+
+                   0   0   0           1   1   0           2   2   1
+                   0   0   0           1   1   0           2   2   1
+                   0   0   0           0   0   0           1   1   1
+
+
+               Input: m = 3, n = 3, ops = [[2,2],[3,3]]
+               Output: 4
+               Explanation: The maximum integer in M is 2, and there are four of it in M. So return 4.
+               Example 2:
+
+               Input: m = 3, n = 3, ops = [[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3]]
+               Output: 4
+               Example 3:
+
+               Input: m = 3, n = 3, ops = []
+               Output: 9
+
+
+               Constraints:
+
+               1 <= m, n <= 4 * 104
+               0 <= ops.length <= 104
+               ops[i].length == 2
+               1 <= ai <= m
+               1 <= bi <= n
+
+                TC : O(N) where N s the number of operation for the given matrix
+                SC : O(1)
+            */
+
+
+
+            StringBuilder result = new StringBuilder();            
+            List<Common> inputs = new List<Common>();
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                          new int[]{2,2},
+                                          new int[]{ 3,3 }
+                                    }, R = 3, C = 3
+
+            });
+
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Range Addition II for the given input Matrix Row :{input.R} and Column :{input.C}  for the given Operations : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} is {Environment.NewLine} {MaxCount(input.R, input.C, input.Input)}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+        public int MaxCount(int m, int n, int[][] ops)
+        {
+
+            if (ops == null || ops.Length == 0)
+                return m * n;
+
+            int minRow = m;
+            int minCol = n;
+            for (int i = 0; i < ops.Length; i++)
+            {
+                minRow = Math.Min(ops[i][0], minRow);
+                minCol = Math.Min(ops[i][1], minCol);
+            }
+
+            return minRow * minCol;
+        }
     }
 
 }
