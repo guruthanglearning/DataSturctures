@@ -160,6 +160,7 @@
             this.btn_Subsets_II = new System.Windows.Forms.Button();
             this.btn_Stone_Game = new System.Windows.Forms.Button();
             this.btn_Array_of_Doubled_Pairs = new System.Windows.Forms.Button();
+            this.btn_Intersection_of_Two_Arrays_II = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1516,11 +1517,22 @@
             this.btn_Array_of_Doubled_Pairs.UseVisualStyleBackColor = true;
             this.btn_Array_of_Doubled_Pairs.Click += new System.EventHandler(this.btn_Array_of_Doubled_Pairs_Click);
             // 
+            // btn_Intersection_of_Two_Arrays_II
+            // 
+            this.btn_Intersection_of_Two_Arrays_II.Location = new System.Drawing.Point(203, 1031);
+            this.btn_Intersection_of_Two_Arrays_II.Name = "btn_Intersection_of_Two_Arrays_II";
+            this.btn_Intersection_of_Two_Arrays_II.Size = new System.Drawing.Size(234, 42);
+            this.btn_Intersection_of_Two_Arrays_II.TabIndex = 134;
+            this.btn_Intersection_of_Two_Arrays_II.Text = "Intersection of Two Arrays II";
+            this.btn_Intersection_of_Two_Arrays_II.UseVisualStyleBackColor = true;
+            this.btn_Intersection_of_Two_Arrays_II.Click += new System.EventHandler(this.btn_Intersection_of_Two_Arrays_II_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2308, 1266);
+            this.Controls.Add(this.btn_Intersection_of_Two_Arrays_II);
             this.Controls.Add(this.btn_Array_of_Doubled_Pairs);
             this.Controls.Add(this.btn_Stone_Game);
             this.Controls.Add(this.btn_Subsets_II);
@@ -1794,5 +1806,6 @@
         private System.Windows.Forms.Button btn_Subsets_II;
         private System.Windows.Forms.Button btn_Stone_Game;
         private System.Windows.Forms.Button btn_Array_of_Doubled_Pairs;
+        private System.Windows.Forms.Button btn_Intersection_of_Two_Arrays_II;
     }
 }
