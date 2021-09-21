@@ -69,6 +69,7 @@
             this.btn_Valid_Sudoku = new System.Windows.Forms.Button();
             this.btn_Sudoku_Solver = new System.Windows.Forms.Button();
             this.btn_Range_Addition_II = new System.Windows.Forms.Button();
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -508,11 +509,22 @@
             this.btn_Range_Addition_II.UseVisualStyleBackColor = true;
             this.btn_Range_Addition_II.Click += new System.EventHandler(this.btn_Range_Addition_II_Click);
             // 
+            // btn_Find_Winner_on_a_Tic_Tac_Toe_Game
+            // 
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.Location = new System.Drawing.Point(613, 110);
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.Name = "btn_Find_Winner_on_a_Tic_Tac_Toe_Game";
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.Size = new System.Drawing.Size(204, 43);
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.TabIndex = 136;
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.Text = "Find Winner on a Tic Tac Toe Game";
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.UseVisualStyleBackColor = true;
+            this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.Click += new System.EventHandler(this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game);
             this.Controls.Add(this.btn_Range_Addition_II);
             this.Controls.Add(this.btn_Sudoku_Solver);
             this.Controls.Add(this.btn_Valid_Sudoku);
@@ -605,5 +617,6 @@
         private System.Windows.Forms.Button btn_Valid_Sudoku;
         private System.Windows.Forms.Button btn_Sudoku_Solver;
         private System.Windows.Forms.Button btn_Range_Addition_II;
+        private System.Windows.Forms.Button btn_Find_Winner_on_a_Tic_Tac_Toe_Game;
     }
 }
