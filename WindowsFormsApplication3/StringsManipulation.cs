@@ -2065,6 +2065,9 @@ namespace WindowsFormsApplication3
                 s = "mississippi"
                 p = "mis*is*p*."
                 Output: false 
+
+                Time Complexity : O(MN) where N is the length of string and M is length of the pattern
+                Space Complexity : O(MN)
             */
             StringBuilder result = new StringBuilder();
             Dictionary<string, string> inputs = new Dictionary<string, string>();
@@ -2074,17 +2077,10 @@ namespace WindowsFormsApplication3
             inputs.Add("c* a*b", "aab");
             inputs.Add("mis*is*p*.", "mississippi");
 
-
-
-
-            string input = "aabb";
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("*");
-            MessageBox.Show($" {(regex.IsMatch(input) ? "Match" : "No Match")}");
-
             result.Append($"For the given ");
             foreach (string key in inputs.Keys)
             {
-                result.AppendLine($"strings {inputs[key]} and pattern {key}  = {(this.IsMatch(inputs[key], key) ? " Match" : "No Match")}");
+                result.AppendLine($"strings {inputs[key]} and pattern {key}  = {(this.IsMatch(key, inputs[key]) ? " Match" : "No Match")}");
             }
 
 
@@ -2112,97 +2108,32 @@ namespace WindowsFormsApplication3
                 mis sis s ippi
             */
 
-            bool[][] lookup = new bool[s.Length][];
-            for (int i = 0; i < s.Length; i++)
+            bool[][] lookup = new bool[s.Length+1][];
+            for (int i = 0; i < s.Length+1; i++)
             {
-                lookup[i] = new bool[p.Length];
+                lookup[i] = new bool[p.Length+1];
             }
 
+            bool first_match = false;
 
-            for (int i = 0; i < s.Length; i++)
+            lookup[s.Length][p.Length] = true;
+            for (int i = s.Length; i >= 0; i--)
             {
-                for (int j = 0; j < p.Length; j++)
+                for (int j = p.Length - 1; j >= 0; j--)
                 {
-                    if (p[j] == '*')
+                    first_match = (i < s.Length && (p[j] == s[i] || p[j] == '.'));
+                    if (j + 1 < p.Length && p[j + 1] == '*')
                     {
-                        if (j > 0 && p[j - 1] == s[i])
-                        {
-                            lookup[i][j] = lookup[i][j - 1];
-                        }
-                        else if (j == 0)
-                        {
-                            lookup[i][j] = true;
-                        }
-                    }
-                    else if (p[j] == '.' || p[j] == s[i])
-                    {
-                        lookup[i][j] = true;
+                        lookup[i][j] = lookup[i][j + 2] || first_match && lookup[i + 1][j];
                     }
                     else
-                    {
-                        lookup[i][j] = false;
+                     {
+                        lookup[i][j] = first_match && lookup[i + 1][j + 1];
                     }
                 }
             }
 
-            return lookup[s.Length - 1][p.Length - 1];
-
-            //lookup[0, 0] = true;
-
-            //for (int j = 1; j <= s.Length; j++)
-            //    if (p[j - 1] == '*')
-            //    {
-            //        lookup[0,j] = lookup[0,j - 1];
-            //    }
-
-
-            //for (int i = 1; i<= s.Length; i++)
-            //{
-            //    for (int j = 1; j <= p.Length; j++)
-            //    {
-            //         if (p[j-1] == '*')
-            //        {
-            //            lookup[i, j] = lookup[i, j - 1] || lookup[i-1, j];
-            //        }
-            //        else if (p[j-1] == '?' || s[i-1] == p[j-1])
-            //        {
-            //            lookup[i,j] =  lookup[i - 1, j - 1];
-            //        }
-            //        else
-            //        {
-            //            lookup[i, j] = false;
-            //        }
-            //    }
-            //}
-
-
-
-            //bool[][] dp = new bool[s.Length + 1][];
-            //for(int i = 0; i < dp.Length; i ++)
-            //{
-            //    dp[i] = new bool[p.Length + 1];
-            //}
-
-
-            //for (int i = s.Length; i >= 0; i--)
-            //{
-            //    for (int j = p.Length - 1; j >= 0; j--)
-            //    {
-            //        bool first_match = (i < s.Length &&
-            //                               (p[j] == s[i] ||
-            //                                p[j] == '.'));
-            //        if (j + 1 < p.Length && p[j + 1] == '*')
-            //        {
-            //            dp[i][j] = dp[i][j + 2] || first_match && dp[i + 1][ j];
-            //        }
-            //        else
-            //        {
-            //            dp[i][j] = first_match && dp[i + 1][j + 1];
-            //        }
-            //    }
-            //}
-            //return dp[0][0];
-
+            return lookup[0][0];
         }
 
         private void btn_Implement_Auto_Complete_Click(object sender, EventArgs e)

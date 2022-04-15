@@ -5097,6 +5097,10 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_Winner_on_a_Tic_Tac_Toe_Game_Click(object sender, EventArgs e)
         {
+
+            Guid t = Guid.NewGuid();
+            MessageBox.Show(t.GetHashCode().ToString());
+
             /*
                     Tic-tac-toe is played by two players A and B on a 3 x 3 grid.
 

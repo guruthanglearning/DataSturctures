@@ -123,8 +123,7 @@ namespace WindowsFormsApplication3
             if (node== null)
             {
                 node = new DoubleLL();
-                node.Data = data;
-                
+                node.Data = data;                
             }
             else
             {
@@ -290,6 +289,8 @@ namespace WindowsFormsApplication3
 
         }
 
+        DoubleLL start;
+        DoubleLL runner;
         private void btn_Convert_Binary_Tree_into_Double_Linked_List_Click(object sender, EventArgs e)
         {
 
@@ -329,14 +330,14 @@ namespace WindowsFormsApplication3
             InsertNodeIntoBSTTree(ref root, 6);
             InsertNodeIntoBSTTree(ref root, 9);
             InsertNodeIntoBSTTree(ref root, 2);
-            
-            DoubleLL runner = null;
-            ConvertBSTToDoubleLinkedList(root, ref runner);
-            PrintBackward(ref runner);
-            MessageBox.Show($"Forward :{ PrintForward(ref runner) } \nBackward :{PrintBackward(ref runner)}");            
+                        
+            ConvertBSTToDoubleLinkedList(root);
+            runner = start;            
+            MessageBox.Show($"Forward :{ PrintForward(ref runner) } \nBackward :{PrintBackward(ref runner)}");
+            start = null;
         }
 
-        private void ConvertBSTToDoubleLinkedList(Node root,ref DoubleLL runner)
+        private void ConvertBSTToDoubleLinkedList(Node root)
         {
                 /*
                 https://www.geeksforgeeks.org/convert-given-binary-tree-doubly-linked-list-set-3/
@@ -363,19 +364,20 @@ namespace WindowsFormsApplication3
 
             if (root  != null)
             {
-                ConvertBSTToDoubleLinkedList(root.left, ref runner);
+                ConvertBSTToDoubleLinkedList(root.left);
 
                 if (runner == null)
                 {
-                    runner = new DoubleLL() { Data = root.data};                    
+                    runner = new DoubleLL() { Data = root.data};
+                    start = runner;
                 }
                 else
                 {
                     runner.Next = new DoubleLL { Data = root.data, Previous = runner};                    
                     runner = runner.Next;
-                }                
-
-                ConvertBSTToDoubleLinkedList(root.right, ref runner);
+                }
+                
+                ConvertBSTToDoubleLinkedList(root.right);
             }
         }
 
@@ -504,7 +506,7 @@ namespace WindowsFormsApplication3
 
         private DoubleLL FattenNode(DoubleLL node)
         {
-
+            //1, 2, 3, 4, 5, 6, null, null, null, 7, 8, 9, 10, null, null, 11, 12 
             if (node == null)
                 return node;
 
@@ -575,6 +577,5 @@ namespace WindowsFormsApplication3
 
             return node;
         }
-
     }
 }

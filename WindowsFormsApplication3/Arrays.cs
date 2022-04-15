@@ -577,17 +577,17 @@ namespace WindowsFormsApplication3
 
             for (i = 0; i < max; i++)
             {
-                temp = arr[i];
-                j = i;
+                temp = arr[i]; //1
+                j = i; //0
                 while (true)
                 {
-                    k = j + d;
+                    k = j + d; //  k = 7  j = 5  d=2
                     if (k >= n)
-                        k = k - n;
+                        k = k - n; //k =0
                     if (k == i)
                         break;
                     arr[j] = arr[k];
-                    j = k;
+                    j = k;  // 5
                 }
                 arr[j] = temp;
             }
@@ -10642,6 +10642,14 @@ namespace WindowsFormsApplication3
         {
             if (arr == null || arr.Length == 0)
                 return 0;
+            
+            /*
+                inputs.Add(new int[] { 3, 3, 3, 3, 5, 5, 5, 2, 2, 7 });     //3->4, 5->3, 2->2, 7->1
+                inputs.Add(new int[] { 7, 7, 7, 7, 7, 7 });
+                inputs.Add(new int[] { 1, 9 });
+                inputs.Add(new int[] { 1000, 1000, 3, 7 });
+                inputs.Add(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            */
 
             Dictionary<int, int> dict = new Dictionary<int, int>();
             List<int> datas = new List<int>();
@@ -10662,7 +10670,7 @@ namespace WindowsFormsApplication3
             datas.Sort();
             datas.Reverse();
 
-            //Console.WriteLine($"{string.Join(",",datas)}");
+            //Console.WriteLine($"{string.Join(",",datas)}");  //3->4, 5->3, 2->2, 7->1
             int sum = 0;
             for (int i = 0; i < datas.Count; i++)
             {
@@ -11197,7 +11205,8 @@ namespace WindowsFormsApplication3
         private void btn_Array_of_Doubled_Pairs_Click(object sender, EventArgs e)
         {
             /*
-                Given an array of integers arr of even length, return true if and only if it is possible to reorder it such that arr[2 * i + 1] = 2 * arr[2 * i] for every 0 <= i < len(arr) / 2.
+                Given an array of integers arr of even length, return true if and only if it is possible to reorder it such that 
+                arr[2 * i + 1] = 2 * arr[2 * i] for every 0 <= i < len(arr) / 2.
 
                 Example 1:
 
@@ -11253,13 +11262,12 @@ namespace WindowsFormsApplication3
             Array.Sort(arr);
             Dictionary<int, int> dict = new Dictionary<int, int>();
             /*
-               [-2,-2,1,-2,-1,2]
-
-               -2,-2,-2, -1, 1 , 2
-               -2->3
-               -1->1
-                1->1
-                2->1
+                Before Sort        4, -2, 2, -4 
+                After Sort        -4, -2, 2,  4
+                -4 ->1
+                -2 ->1
+                 2 ->1
+                 4 ->1
             */
 
             foreach (int i in arr)
@@ -11340,7 +11348,11 @@ namespace WindowsFormsApplication3
         }
 
         public int[] Intersect(int[] nums1, int[] nums2)
-        {
+        {   /*
+                Input 1 : 4, 9, 5    Input 2 : 9, 4, 9, 8, 4 
+                        : 4, 5, 9              4, 4, 8, 9, 9 
+            */
+
             int length_1 = nums1.Length;
             int length_2 = nums2.Length;
             int[] answer;

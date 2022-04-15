@@ -60,23 +60,15 @@ namespace WindowsFormsApplication3
 
              */
             int input = 6;
-            int result = 0;
-            if ((input & 3) == 0)
-            {
+            int result = 0;            
+            if (input % 4 == 0) // If n is a multiple of 4
                 result = input;
-            }
-            else if ((input & 3) == 1)
-            {
-                result = 1;
-            }
-            else if ((input & 3) == 2)
-            {
-                result = input++;
-            }
-            else if ((input & 3) ==3)
-            {
-                result = 0;
-            }
+            else if (input % 4 == 1) // If n%4 gives remainder 1
+                result = 1;            
+            else if (input % 4 == 2) // If n%4 gives remainder 2
+                result = input + 1;
+            else 
+                result = 0;             // If n%4 gives remainder 3
 
             MessageBox.Show(result.ToString());
             

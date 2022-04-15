@@ -334,13 +334,9 @@ namespace WindowsFormsApplication3
 
         public void Put(string dataKey, string data)
         {
-
-            List<string> l = new List<string>();
-            
-
             if (Cache.ContainsKey(dataKey))
             {
-                return;// this.Get(dataKey);
+                return; //this.Get(dataKey);
             }
 
             if (Cache.Count >= 5)
