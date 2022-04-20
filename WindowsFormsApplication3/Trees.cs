@@ -787,7 +787,7 @@ namespace WindowsFormsApplication3
              		        10
 					   /         \  
                       /			  \
-					 4			  15	
+					 4			  15
 					/ \			 /	
                    /   \		/
 				  6    20     1
@@ -1048,6 +1048,11 @@ namespace WindowsFormsApplication3
 
         private void btn_Binary_Tree_Maximum_Path_Sum_Click(object sender, EventArgs e)
         {
+
+            /*
+                Refer : https://leetcode.com/problems/binary-tree-maximum-path-sum/
+            
+             */
             StringBuilder result = new StringBuilder();
             List<Node> inputs = new List<Node>();
             inputs.Add(this.CreateBinaryTreeFromArray(new int?[] { 10, 4, 15, 6, 20, 1 })); // 50
@@ -1111,7 +1116,8 @@ namespace WindowsFormsApplication3
             /*
              
             
-                Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+                Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the 
+                longest path between any two nodes in a tree. This path may or may not pass through the root.
 
                 Example:
                 Given a binary tree
@@ -3578,8 +3584,8 @@ namespace WindowsFormsApplication3
                 Could you implement next() and hasNext() to run in average O(1) time and use O(h) memory, 
                 where h is the height of the tree?
              
-                Time Complexity     :   O(N) where n is the total number of nodes
-                Space Complexity    :   O(N) 
+                Time Complexity     :  Average Complexity
+                Space Complexity    :   O(H) where H is the hight
                 
              */
             StringBuilder result = new StringBuilder();
@@ -3602,21 +3608,32 @@ namespace WindowsFormsApplication3
         public class BSTIterator
         {
 
-            Queue<Node> q = new Queue<Node>();
+            Stack<Node> q = new Stack<Node>();
             public BSTIterator(Node root)
             {
-                InOrderTraversal(root);
-            }
+                Node curr = root;
 
+                while (curr != null)
+                {
+                    q.Push(root);
+                    curr = curr.left;
+                }
+
+            }
 
             public int Next()
             {
-                if (q.Count > 0)
+                Node curr = q.Pop();
+                int returnData = curr.val;
+                curr = curr.right;
+
+                while(curr!=null)
                 {
-                    return q.Dequeue().val;
+                    q.Push(curr.left);
+                    curr = curr.left;
                 }
 
-                return -1;
+                return returnData;
             }
 
             public bool HasNext()
