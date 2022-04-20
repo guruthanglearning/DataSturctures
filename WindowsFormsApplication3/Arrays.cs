@@ -1665,17 +1665,16 @@ namespace WindowsFormsApplication3
                     continue;
                 }
 
+                int arrSum = 0;
+                int rollSum = 0;
+
                 for (int i = 0; i < input.Length; i++)
                 {
-                    if (input[i] <= 0)
-                    {
-                        missing ^= i ^ 0;
-                    }
-                    else
-                    {
-                        missing ^= i ^ input[i];
-                    }
+                    arrSum += input[i];
+                    rollSum += (i + 1);
                 }
+
+                missing = rollSum - arrSum;
 
                 result.AppendLine($"Missing number is {missing} for the given array {string.Join(" ", input)}");
 
