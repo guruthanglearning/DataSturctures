@@ -3629,7 +3629,7 @@ namespace WindowsFormsApplication3
 
                 while(curr!=null)
                 {
-                    q.Push(curr.left);
+                    q.Push(curr);
                     curr = curr.left;
                 }
 
@@ -3647,7 +3647,7 @@ namespace WindowsFormsApplication3
                     return;
 
                 InOrderTraversal(root.left);
-                q.Enqueue(root);
+                q.Push(root);
                 InOrderTraversal(root.right);
             }
         }
