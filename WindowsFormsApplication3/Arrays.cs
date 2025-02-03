@@ -456,52 +456,52 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 1, 2, 1, 1, 3, 4, 0 });
             inputs.Add(new int[] { 3, 2, 3 });
             inputs.Add(new int[] { 2, 2, 1, 1, 1, 2, 2 });
-
+            inputs.Add(new int[] { 2, 2, 1, 1, 2, 2, 3, 2, 2 });
 
             foreach (var input in inputs)
-            {
-                result.AppendLine($"Majority element is {this.FindMajorityElement(input)} for the given input array {(string.Join(",", input))}");
+            {                
+                result.AppendLine($"Majority element is {this.FindMajorityElementWithOf1Memory(input)} for the given input array {(string.Join(",", input))} without additional memory");                
             }
 
             MessageBox.Show(result.ToString());
-        }
+        }       
 
-        public int FindMajorityElement(int[] nums)
+        public int FindMajorityElementWithOf1Memory(int[] arr)
         {
+            // Phase 1: Find a candidate using the Boyer-Moore Voting Algorithm.
+            int candidate = arr[0];
+            int count = 1; //2, 2, 1, 1, 2, 2, 3, 2, 2
 
-            if (nums == null || nums.Length == 0)
+            for (int i = 1; i < arr.Length; i++)
             {
-                return 0;
-            }
-
-            Dictionary<int, int> dict = new Dictionary<int, int>();
-
-            int temp = 0;
-            foreach (int i in nums)
-            {
-                if (dict.TryGetValue(i, out temp))
+                if (arr[i] == candidate)
                 {
-                    dict[i]++;
+                    count++;
                 }
                 else
                 {
-                    dict[i] = 1;
+                    count--;
+                    if (count == 0)
+                    {
+                        candidate = arr[i];
+                        count = 1;
+                    }
                 }
             }
 
-            temp = nums.Length / 2;
-
-            foreach (int i in dict.Keys)
+            // Phase 2: Verify the candidate by counting its occurrences.
+            count = 0;
+            for (int i = 0; i < arr.Length; i++)
             {
-                if (dict[i] > temp)
-                {
-                    return i;
-                }
+                if (arr[i] == candidate)
+                    count++;
             }
 
-            return 0;
-
-
+            // Check if the candidate is indeed the majority element.
+            if (count > arr.Length / 2)
+                return candidate;
+            else
+                return -1;  // Indicates that no majority element exists.
         }
 
         private void Find_the_Number_Occurring_Odd_Number_of_Times_Click(object sender, EventArgs e)
