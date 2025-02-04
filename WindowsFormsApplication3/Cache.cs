@@ -28,7 +28,16 @@ namespace WindowsFormsApplication3
                 MRU -->Removes the most recently used item from the cache (delete from the end of the double link list)
             */
 
-            LRUCacheWithDictionaryValueAsLinkedList c = new LRUCacheWithDictionaryValueAsLinkedList(5);
+            LRUCacheWithDictionaryValueAsLinkedList c = new LRUCacheWithDictionaryValueAsLinkedList(3);
+
+            c.Put("1", "1");
+            c.Put("2", "2");
+            c.Put("3", "3");
+            c.Get("2");
+
+
+            MessageBox.Show($"Foward list \n{c.DisplayForward()}\n\nBackward list \n{c.DisplayBackward()}");
+
 
             /*c.Put("10", "13");
             c.Put("3", "17");
@@ -140,14 +149,6 @@ namespace WindowsFormsApplication3
             c.Put("13", "28");
             c.Put("11", "26");
             */
-
-            c.Put("1","1");
-            c.Put("2","2");
-            c.Put("3","3");
-            c.Get("1");
-
-
-            MessageBox.Show($"Foward list \n{c.DisplayForward()}\n\nBackward list \n{c.DisplayBackward()}");
 
 
         }
@@ -266,6 +267,8 @@ namespace WindowsFormsApplication3
                     if (start.Next == null)
                     {
                         start.Data = value;
+                        start.Key = value;
+                        runner = start;
                     }
                     else
                     {
@@ -330,6 +333,16 @@ namespace WindowsFormsApplication3
         public LFU_LeastFrequentlyUsedCache()
         {
             FrequencyData.Add(1, new List<string>());
+            /*
+                1,2,3,4,5, 6
+            
+                C : 2,3,4,5,6
+                F : 4[1],5[1],6[1],2[2],3[2]
+                FD: 1[4,5,6]
+                    2[2,3]
+
+                Get 2 -                
+            */
         }
 
         public void Put(string dataKey, string data)
