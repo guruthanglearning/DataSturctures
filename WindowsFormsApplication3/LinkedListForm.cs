@@ -1238,10 +1238,7 @@ namespace WindowsFormsApplication3
                         }
                         else if (node.data > root.data)
                         {
-                            if (succ == null)
-                            {
-                                succ = root;
-                            }
+                           
                             root = root.right;
                         }
                         else
