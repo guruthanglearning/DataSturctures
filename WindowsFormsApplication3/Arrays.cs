@@ -282,7 +282,7 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    reductionCost += sum; //, 9
+                    reductionCost += sum; //, 3,9
                     sum += input[incrementer]; //6, 10
                 }
                 incrementer++;
@@ -364,8 +364,71 @@ namespace WindowsFormsApplication3
 
         private void Sort_int_array_through_binary_digits_based_on_1_Click(object sender, EventArgs e)
         {
-            //Not Implemented
-            MessageBox.Show(this.IntToBinaryString(60));
+             /*
+                Time Complexity : O(N log N)
+                Space Complexity : O(1)
+             */
+
+            int[] arr = { 3, 7, 8, 9 };
+            StringBuilder result = new StringBuilder( $"Before Change : {string.Join(", ", arr)} \n");
+
+            QuickSort(arr, 0, arr.Length - 1);
+            result.Append($"After Change : {string.Join(", ", arr)} \n");
+
+            // Print sorted array
+            MessageBox.Show(result.ToString());
+        }
+
+        private int CountOnes(int num)
+        {
+            int count = 0;
+            while (num > 0)
+            {
+                count += num & 1; // Check last bit
+                num >>= 1;        // Right shift
+            }
+            return count;
+        }
+
+        private int Partition(int[] arr, int left, int right)
+        {
+            int pivot = arr[right]; // Choosing the last element as pivot
+            int pivotOnes = this.CountOnes(pivot);
+            int i = left - 1;
+
+            for (int j = left; j < right; j++)
+            {
+                int countOnesJ = this.CountOnes(arr[j]);
+
+                // Compare by ones count, if same then by numerical order
+                if (countOnesJ < pivotOnes || (countOnesJ == pivotOnes && arr[j] < pivot))
+                {
+                    i++;
+                    // Swap arr[i] and arr[j]
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+
+            // Swap pivot element to its correct position
+            int temp2 = arr[i + 1];
+            arr[i + 1] = arr[right];
+            arr[right] = temp2;
+
+            return i + 1;
+        }
+
+        // QuickSort function
+        private void QuickSort(int[] arr, int left, int right)
+        {
+            if (left < right)
+            {
+                int pivotIndex = this.Partition(arr, left, right);
+
+                QuickSort(arr, left, pivotIndex - 1);
+                QuickSort(arr, pivotIndex + 1, right);
+            }
         }
 
         private string FindPairs(int[] input, int sum)
@@ -683,92 +746,56 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             result.Append($"Before Swap {this.printArray(arr)}");
-            this.LeftRotateBlockSwap(arr, 7, arr.Length);
+            this.LeftRotateBlockSwap(arr, 2, arr.Length);
             result.AppendLine($"After Swap {this.printArray(arr)}");
             MessageBox.Show(result.ToString());
-
         }
 
 
-        public double findMedianSortedArrays(int[] A, int[] B)
+        public double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
-            int m = A.Length;
-            int n = B.Length;
-            if (m > n)
+            if (nums1.Length > nums2.Length)
+                return FindMedianSortedArrays(nums2, nums1);
+
+            int x = nums1.Length;
+            int y = nums2.Length;
+            int low = 0, high = x;
+
+            /*
+                int[] nums1 = new int[] { 3, 4, 5, 6 };
+                int[] nums2 = new int[] { 1, 2, 3, 7 };
+             */
+
+            while (low <= high)
             {
-                // to ensure m<=n. Always maching array A is smalles array
-                int[] temp = A; A = B; B = temp;
-                int tmp = m; m = n; n = tmp;
-            }
+                int partitionX = (low + high) / 2;
+                int partitionY = ((x + y + 1) / 2) - partitionX;
 
-            int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
-            while (iMin <= iMax)
-            {
-                /*                    
-                    int[] nums1 = new int[] { 2, 3, 4, 5 };
-                    int[] nums2 = new int[] { 1, 2, };
-                    Before swap m=4, n= 2
-                    
-                    After swap m=2 , n=4
-                    int[] nums1 = new int[] { 1, 2, };   1 2 2 3 4 5
-                    int[] nums2 = new int[] { 2, 3, 4, 5 };
-                    
-                    iMin = 0 Max = 2, halfLen = 3, i = 1, j = 2
-                    iMin = 1 (iMin +1) Max = 2, halfLen = 3, i = 1, j = 2
-                    iMin = 2 (iMin +1) Max = 2, halfLen = 3, i = 2, j = 1
-                */
+                int maxLeftX = (partitionX == 0) ? int.MinValue : nums1[partitionX - 1];
+                int minRightX = (partitionX == x) ? int.MaxValue : nums1[partitionX];
 
-                int i = (iMin + iMax) / 2;
-                int j = halfLen - i;
+                int maxLeftY = (partitionY == 0) ? int.MinValue : nums2[partitionY - 1];
+                int minRightY = (partitionY == y) ? int.MaxValue : nums2[partitionY];
 
-                if (i < iMax && B[j - 1] > A[i])
+                if (maxLeftX <= minRightY && maxLeftY <= minRightX)
                 {
-                    iMin = iMin + 1; // i is too small
+                    // If total number of elements is odd
+                    if ((x + y) % 2 == 1)
+                        return Math.Max(maxLeftX, maxLeftY);
+
+                    // If total number of elements is even
+                    return (Math.Max(maxLeftX, maxLeftY) + Math.Min(minRightX, minRightY)) / 2.0;
                 }
-                else if (i > iMin && A[i - 1] > B[j])
+                else if (maxLeftX > minRightY)
                 {
-                    iMax = iMax - 1; // i is too big
+                    high = partitionX - 1;
                 }
                 else
                 {
-                    // i is perfect
-                    int maxLeft = 0;
-                    if (i == 0) //When A array is empty
-                    {
-                        maxLeft = B[j - 1];
-                    }
-                    else if (j == 0) //When B array is empty
-                    {
-                        maxLeft = A[i - 1];
-                    }
-                    else
-                    {
-                        maxLeft = Math.Max(A[i - 1], B[j - 1]);
-                    }
-
-                    if ((m + n) % 2 == 1)
-                    {
-                        return maxLeft;
-                    }
-
-                    int minRight = 0;
-                    if (i == m) //When A array is empty
-                    {
-                        minRight = B[j];
-                    }
-                    else if (j == n) //When B array is empty
-                    {
-                        minRight = A[i];
-                    }
-                    else
-                    {
-                        minRight = Math.Min(B[j], A[i]);
-                    }
-
-                    return (maxLeft + minRight) / 2.0;
+                    low = partitionX + 1;
                 }
             }
-            return 0.0;
+            return 0;
         }
 
         private void btn_Median_of_Two_sorted_arrays_Click(object sender, EventArgs e)
@@ -812,7 +839,7 @@ namespace WindowsFormsApplication3
 
 
 
-            MessageBox.Show(this.findMedianSortedArrays(nums1, nums2).ToString());
+            MessageBox.Show(this.FindMedianSortedArrays(nums1, nums2).ToString());
 
         }
 
