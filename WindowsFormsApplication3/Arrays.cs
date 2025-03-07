@@ -617,7 +617,7 @@ namespace WindowsFormsApplication3
 
         private void leftRotate(int[] arr, int d, int n)
         {
-            // input  1, 2, 3, 4, 5, 6, 7 
+            // input  1, 2, 3, 4, 5, 6, 7  
             int i, j, k, temp;
             /* move i-th values of blocks 
                  i = 0, j= 5, d = 6,  k = j + d = 0, temp = arr[i] = 1
@@ -757,27 +757,30 @@ namespace WindowsFormsApplication3
             if (nums1.Length > nums2.Length)
                 return FindMedianSortedArrays(nums2, nums1);
 
-            int x = nums1.Length;
-            int y = nums2.Length;
-            int low = 0, high = x;
+            int x = nums1.Length; //2
+            int y = nums2.Length; //4
+            int low = 0, high = x; //2
 
             /*
                 int[] nums1 = new int[] { 3, 4, 5, 6 };
                 int[] nums2 = new int[] { 1, 2, 3, 7 };
+
+                1, 2,
+                2, 3, 4, 5 
              */
 
             while (low <= high)
             {
-                int partitionX = (low + high) / 2;
-                int partitionY = ((x + y + 1) / 2) - partitionX;
+                int partitionX = (low + high) / 2; //1
+                int partitionY = ((x + y + 1) / 2) - partitionX; //1
 
-                int maxLeftX = (partitionX == 0) ? int.MinValue : nums1[partitionX - 1];
-                int minRightX = (partitionX == x) ? int.MaxValue : nums1[partitionX];
+                int maxLeftX = (partitionX == 0) ? int.MinValue : nums1[partitionX - 1]; //1
+                int minRightX = (partitionX == x) ? int.MaxValue : nums1[partitionX]; //2
 
-                int maxLeftY = (partitionY == 0) ? int.MinValue : nums2[partitionY - 1];
-                int minRightY = (partitionY == y) ? int.MaxValue : nums2[partitionY];
+                int maxLeftY = (partitionY == 0) ? int.MinValue : nums2[partitionY - 1]; //3
+                int minRightY = (partitionY == y) ? int.MaxValue : nums2[partitionY];//4
 
-                if (maxLeftX <= minRightY && maxLeftY <= minRightX)
+                if (maxLeftX <= minRightY && maxLeftY <= minRightX) //1 <= 4 && 3 <= 2
                 {
                     // If total number of elements is odd
                     if ((x + y) % 2 == 1)
@@ -786,7 +789,7 @@ namespace WindowsFormsApplication3
                     // If total number of elements is even
                     return (Math.Max(maxLeftX, maxLeftY) + Math.Min(minRightX, minRightY)) / 2.0;
                 }
-                else if (maxLeftX > minRightY)
+                else if (maxLeftX > minRightY) //1 >4
                 {
                     high = partitionX - 1;
                 }
@@ -10702,7 +10705,7 @@ namespace WindowsFormsApplication3
             {
                 sum += datas[i];
                 counter++;
-                if (l - sum <= l / 2)
+                if (sum >= l / 2)
                     break;
             }
 
