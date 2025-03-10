@@ -11305,25 +11305,21 @@ namespace WindowsFormsApplication3
                 else
                     dict[i] = 1;
 
-            int target = 0;
-            List<int> keys = new List<int>(dict.Keys);
-            foreach (int k in keys)
+            for (int i = 0; i < n; i++)
             {
-                if (dict[k] <= 0)
-                    continue;
+                int num = arr[i];
+                if (freq[num] == 0) continue; // Already paired
 
-                target = k < 0 ? k / 2 : k * 2;
+                int target = num < 0 ? num / 2 : num * 2; // Handle negatives carefully
 
-                int temp = 0;
-                dict.TryGetValue(target, out temp);
-                if (!dict.ContainsKey(target) || (k < 0 && k % 2 != 0) || dict[k] > temp)
+                // Check if valid pair exists
+                if (!freq.ContainsKey(target) || freq[target] == 0)
                     return false;
 
-
-                dict[target] = temp - dict[k];
-
+                // Reduce frequency count after pairing
+                freq[num]--;
+                freq[target]--;
             }
-
 
             return true;
 
