@@ -11288,6 +11288,9 @@ namespace WindowsFormsApplication3
             if (arr == null || arr.Length == 0)
                 return true;
 
+            int n = arr.Length;
+            if (n % 2 != 0) return false; // Array length must be even
+
             Array.Sort(arr);
             Dictionary<int, int> dict = new Dictionary<int, int>();
             /*
@@ -11308,17 +11311,17 @@ namespace WindowsFormsApplication3
             for (int i = 0; i < n; i++)
             {
                 int num = arr[i];
-                if (freq[num] == 0) continue; // Already paired
+                if (dict[num] == 0) continue; // Already paired
 
                 int target = num < 0 ? num / 2 : num * 2; // Handle negatives carefully
 
                 // Check if valid pair exists
-                if (!freq.ContainsKey(target) || freq[target] == 0)
+                if (!dict.ContainsKey(target) || dict[target] == 0)
                     return false;
 
                 // Reduce frequency count after pairing
-                freq[num]--;
-                freq[target]--;
+                dict[num]--;
+                dict[target]--;
             }
 
             return true;
@@ -11329,7 +11332,8 @@ namespace WindowsFormsApplication3
         private void btn_Intersection_of_Two_Arrays_II_Click(object sender, EventArgs e)
         {
             /*
-                    Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+                    Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as 
+                    it shows in both arrays and you may return the result in any order.
 
                     Example 1:
 
