@@ -1318,20 +1318,29 @@ namespace WindowsFormsApplication3
 
                 for (int i = 0; i < input.Length; i++)
                 {
-                    //31, -41, 26, 59, -53, 58, 97, -93, -23, 84
-                    sum += input[i];
+                    //-2, 1, -3, 4, -1, 2, 1, -5, 4
+
+                    /*
+                         i  = 7
+                         s  = 7
+                         ms = 7
+                         si = 3
+                         ei = 6
+                     */
+
+                    sum += input[i]; 
 
                     if (sum < input[i])
                     {
-                        sum = input[i];
+                        sum = input[i]; 
                         startIndex = i;
                         endIndex = i;
                     }
 
                     if (sum > maxSum)
                     {
-                        maxSum = sum;
-                        endIndex = i;
+                        maxSum = sum; 
+                        endIndex = i; 
                     }
                 }
                 result.Append($"Largest Subarray Sum in array is {maxSum.ToString()} for the given array {string.Join(" ", input)} starting index {startIndex.ToString()} and ending index {endIndex.ToString()} \n");
@@ -1387,14 +1396,42 @@ namespace WindowsFormsApplication3
                 
 
              */
+            //Works for integers and it wont work for large numbers > 31
             int[] input = new int[] { 4, 2, 1, 3 }; //new int[] { 1, 2, 3, 3 }; //
             int x = 0;
             for (int i = 0; i < input.Length; i++)
             {
-                x |= 1 << (input[i] - 1); //               
+                x |= 1 << (input[i] - 1); // This only support till 1<<31,  1<<32 will throw overflow exception
             }
 
+
             MessageBox.Show($"All integers for the given input array is {(x == (1 << input.Length) - 1 ? "present" : "is not present")}");
+
+            //This solution works for large numbers 
+            input = new int[]{ 45, 2, 1, 100, 3, 99, 102, 50, 200 };
+            int N = input.Length; // Supports numbers up to 500
+            StringBuilder result = new StringBuilder();
+            BitArray bitSet = new BitArray(N + 1);
+
+            foreach (int num in input)
+            {
+                if (num <= N)
+                    bitSet[num] = true;
+            }
+            
+            for (int i = 1; i <= N; i++)
+            {
+                if (bitSet[i])
+                    result.Append(i + " ");
+                else
+                {
+                    result.Clear();
+                    break;
+                }
+            }
+
+            MessageBox.Show($"All integers for the given input array is {(result.Length > 0 ? "present" : "is not present")}");
+
 
         }
 
@@ -1411,6 +1448,7 @@ namespace WindowsFormsApplication3
                 inputs[5] = new int[] { 0, 1 };
                 inputs[6] = new int[] { 2, 4, 6, 2, 5 };
                 inputs[7] = new int[] { 5, 1, 1, 5 };
+                inputs[8= new int[] { 2, 7, 9, 3, 1|}
              */
 
             int firstOld = 0;
@@ -1424,11 +1462,11 @@ namespace WindowsFormsApplication3
                     return input[0];
                 }
 
-                for (int i = 0; i < end; i++) // 6
+                for (int i = 0; i < end; i++) // 4
                 {
-                    thirdOld = Math.Max(input[i] + firstOld, secondOld); //
-                    firstOld = secondOld; //12 
-                    secondOld = thirdOld; //15
+                    thirdOld = Math.Max(input[i] + firstOld, secondOld); //12
+                    firstOld = secondOld; // 11
+                    secondOld = thirdOld; // 12
                 }
             }
             return thirdOld;
@@ -1538,13 +1576,13 @@ namespace WindowsFormsApplication3
             for (i = 0; i < n; i++)
             {
                 /* 0 : 1  t : 1         input[0] = 1
-                   1 : 1  t : 1         input[1] = 2
-                   2 : 2  t : 2         input[2] = 3
-                   3 : 6  t : 6         input[3] = 4
-                   4 : 24 t : 24        input[4] = 5
+                   1 : 1  t : 2         input[1] = 2
+                   2 : 2  t : 6         input[2] = 3
+                   3 : 6  t : 24         input[3] = 4
+                   4 : 24 t : 120        input[4] = 5
                 */
-                prod[i] = temp;
-                temp *= input[i];
+                prod[i] = temp; 
+                temp *= input[i]; 
             }
 
             /* Initialize temp to 1 for product on  
@@ -1695,16 +1733,18 @@ namespace WindowsFormsApplication3
                     continue;
                 }
 
-                int arrSum = 0;
-                int rollSum = 0;
+                int n = input.Length + 1;
+                int xorAll = 0, xorArr = 0;
 
-                for (int i = 0; i < input.Length; i++)
-                {
-                    arrSum += input[i];
-                    rollSum += (i + 1);
-                }
+                // XOR all numbers from 1 to n
+                for (int i = 1; i <= n; i++)
+                    xorAll ^= i;
 
-                missing = rollSum - arrSum;
+                // XOR all numbers in the given array
+                foreach (int num in input)
+                    xorArr ^= num;
+
+                missing = xorAll ^ xorArr; // Missing number                
 
                 result.AppendLine($"Missing number is {missing} for the given array {string.Join(" ", input)}");
 
