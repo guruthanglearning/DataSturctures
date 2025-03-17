@@ -1833,8 +1833,10 @@ namespace WindowsFormsApplication3
 
             int[] dp = new int[inputs.Length];
             int len = 0;
+            List<int> sub = new List<int>();
             foreach (int input in inputs)
             {
+                //First Solution
                 //https://www.geeksforgeeks.org/how-to-use-array-binarysearch-method-in-c-sharp-set-1/#3rd
                 int i = Array.BinarySearch(dp, 0, len, input);
                 if (i < 0)
@@ -1846,9 +1848,26 @@ namespace WindowsFormsApplication3
                 {
                     len++;
                 }
+
+                
+                //Second solution
+                int left = 0, right = sub.Count - 1;
+                while (left <= right)
+                {
+                    int mid = left + (right - left) / 2;
+                    if (sub[mid] >= input)
+                        right = mid - 1;
+                    else
+                        left = mid + 1;
+                }
+
+                if (left < sub.Count)
+                    sub[left] = input;
+                else
+                    sub.Add(input);                               
             }
 
-            MessageBox.Show($"Length of the longest increasing subquence of a given array {string.Join(",", inputs)} is {len} and subsequence array is {string.Join(",", dp)}");
+            MessageBox.Show($"Length of the longest increasing subquence of a given array {string.Join(",", inputs)} is : 1st solution : {len}, 2nd solution : {sub.Count} and subsequence array 1st result  : {string.Join(",", dp)} 2nd result  : {string.Join(",", sub)}");
 
         }
 
@@ -2097,6 +2116,72 @@ namespace WindowsFormsApplication3
             return distance;
         }
 
+
+        private int TotlaFruit_Solution2(int[] input)
+        {
+            int last = 0;
+            int secondLast = 0;
+            int Max = 0;
+            int secondMax = 0;
+            int final = 0;
+            int currentValue = 0;
+
+            currentValue = 0;
+            last = 0;
+            secondLast = 0;
+            max = 0;
+            secondMax = 0;
+            final = 0; //
+            for (int i = 0; i < input.Length; i++)
+            {
+                currentValue = input[i];
+                max = currentValue == last || currentValue == secondLast ? max + 1 : secondMax + 1;
+                secondMax = currentValue == secondLast ? secondMax + 1 : 1;
+
+                if (currentValue != secondLast)
+                {
+                    last = secondLast;
+                    secondLast = currentValue;
+                }
+
+                final = Math.Max(final, max);
+            }
+            return final;
+        }
+
+        private int TotalFruit_Solution1(int[] tree)
+        {
+            Dictionary<int, int> basket = new Dictionary<int, int>();
+            int left = 0, maxFruits = 0;
+
+            for (int right = 0; right < tree.Length; right++)
+            {
+                int fruit = tree[right];
+
+                // Add fruit to basket
+                if (!basket.ContainsKey(fruit))
+                    basket[fruit] = 0;
+                basket[fruit]++;
+
+                // If more than 2 types of fruits exist, shrink window
+                while (basket.Count > 2)
+                {
+                    int leftFruit = tree[left];
+                    basket[leftFruit]--;
+
+                    if (basket[leftFruit] == 0)
+                        basket.Remove(leftFruit);
+
+                    left++; // Move left pointer
+                }
+
+                // Update max fruits collected
+                maxFruits = Math.Max(maxFruits, right - left + 1);
+            }
+
+            return maxFruits;
+        }
+
         private void btn_Garden_No_Adjacent_Click(object sender, EventArgs e)
         {
 
@@ -2154,16 +2239,11 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[] { 1, 2, 3, 2, 2 });
             inputs.Add(new int[] { 3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4 });
             StringBuilder result = new StringBuilder();
-            int last = 0;
-            int secondLast = 0;
-            int Max = 0;
-            int secondMax = 0;
-            int final = 0;
-            int currentValue = 0;
+            
             foreach (int[] input in inputs)
-            {
-
-                /*  1   2   1
+            {                
+                result.Append($"Longest subarray is solution1: {this.TotalFruit_Solution1(input)} solution2 : {this.TotlaFruit_Solution2(input)}  for the array {string.Join(" ", input)} \n");
+                /*  1   2   1l
                     Last = 0 SecondLast = 0      LastMax = 0        SecondLastMax = 0       Final = 0
                  
                     I       Current Value       Last    SecondLast      LastMax         SecondLastMax       Final  
@@ -2172,30 +2252,7 @@ namespace WindowsFormsApplication3
                     1           2                 1         2              2                 1              2
                     2           1                 2         1              3                 1              3
                     
-                 */
-                currentValue = 0;
-                last = 0;
-                secondLast = 0;
-                max = 0;
-                secondMax = 0;
-                final = 0; //
-                for (int i = 0; i < input.Length; i++)
-                {
-                    currentValue = input[i];
-                    max = currentValue == last || currentValue == secondLast ? max + 1 : secondMax + 1;
-                    secondMax = currentValue == secondLast ? secondMax + 1 : 1;
-
-                    if (currentValue != secondLast)
-                    {
-                        last = secondLast;
-                        secondLast = currentValue;
-                    }
-
-                    final = Math.Max(final, max);
-                }
-
-                result.Append($"Longest subarray is {final} for the array {string.Join(" ", input)} \n");
-
+                 */            
             }
 
             MessageBox.Show(result.ToString());
@@ -2359,7 +2416,7 @@ namespace WindowsFormsApplication3
                 int result = 0;
                 int taskIndex = 0;
                 int last = 0;
-                while (taskIndex < task.Task.Length)
+                while (taskIndex < task.Task.Length) //5 < 5  1->3 , 2->4   result = 5
                 {
                     if (!taskEntry.ContainsKey(task.Task[taskIndex]))
                     {
@@ -2370,7 +2427,7 @@ namespace WindowsFormsApplication3
                     {
                         // result = 8 taskIndex = 5
                         last = taskEntry[task.Task[taskIndex]]; // 1 --> 6, 2 -->7
-                        if ((result - last) > task.Cooldown)
+                        if ((result - last) > task.Cooldown) // >2
                         {
                             taskEntry[task.Task[taskIndex]] = result;
                             taskIndex++;
@@ -2419,37 +2476,21 @@ namespace WindowsFormsApplication3
                 int r = input.Length - 1;
                 int m = 0;
 
-                if (input.Length == 0 || input.Length == 1)
-                {
-                    result.Append($"The peak index is -1 for the given int array {string.Join(" ", input)} \n");
-                    continue;
-                }
-
-                //-4, -3, -2, -1, 1, 2, 3, 0  
-                while (r < l)
-                {
-                    if (input == null || input.Length == 0)
+                if (input == null || input.Length == 0)
+                    l = -1; // No peak exists
+                else
+                {                    
+                    while (l < r)  // Corrected loop condition
                     {
-                        l = -1;
-                        break;
+                        m = l + (r - l) / 2;
+                        // Check right neighbor before accessing it
+                        if (input[m] > input[m + 1])
+                            r = m;  // Move left
+                        else
+                            l = m + 1; // Move right
                     }
 
-
-                    int n = input.Length;
-                    if (n == 1 || input[0] > input[1])
-                    {
-                        l = 0;
-                        break;
-                    }
-                    
-                    m= l + (r - l) / 2;
-                    if (input[m] > input[m + 1])
-                        r = m;
-                    else
-                        l = m + 1;
-                    
                 }
-
                 result.Append($"The peak index is {l} for the given int array {string.Join(" ", input)} \n");
             }
 
