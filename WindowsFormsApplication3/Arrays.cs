@@ -2624,17 +2624,27 @@ namespace WindowsFormsApplication3
                 }
 
                 /* 14 - Binary
-                    1110
-                    0001 -->1s compliment
-                    0001 Adding 1
-                    ----
-                    0010 --> 2s Compliment
+                    1110 -->14
+                    
+                    0001 -->1s Compliment of 14
+                       1 -->2s Compliment of 14
+                   ------
+                    0010 --> -14 is 2 (binary format 10)
 
                     1110(14) & 0010 (-14)
                     becomes 2
+         
+                    We separate numbers based on whether the bit at position 2 is 0 or 1.
+                    Group 1 (Bit at position 2 = 0): Numbers where rightmostSetBit is not set (0 at that position)  - {1, 1, 5}
+                    Group 2 (Bit at position 2 = 1): Numbers where rightmostSetBit is set (1 at that position)      - {2, 2, 3}
+
+                    XOR Each Group - Now, we XOR each group separately:
+                    Group 1: {1, 1, 5} : 1 ^ 1 ^ 5 = 5  
+                    Group 2: {2, 2, 3} : 2 ^ 2 ^ 3 = 3  
+                    Final Unique Numbers: [3, 5]                    
                  */
 
-                int set_bit_no = xor & ~(xor - 1);
+                int set_bit_no = xor & -xor ;
                 int x = 0; y = 0;
                 for (int i = 0; i < input.Length; i++)
                 {
@@ -10841,24 +10851,23 @@ namespace WindowsFormsApplication3
             if (nums1.Length == 0 || nums2.Length == 0)
                 return 0;
 
-            int max = 0;
-            int[][] dp = new int[nums1.Length + 1][];
-            for (int i = 0; i < nums1.Length + 1; i++)
-                dp[i] = new int[nums2.Length + 1];
+            int n = nums1.Length, m = nums2.Length;
+            int[,] dp = new int[n + 1, m + 1]; // DP Table
+            int maxLength = 0;
 
-
-            for (int r = 1; r < nums1.Length + 1; r++)
-                for (int c = 1; c < nums2.Length + 1; c++)
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
                 {
-                    if (nums1[r - 1] == nums2[c - 1])
+                    if (nums1[i - 1] == nums2[j - 1])
                     {
-                        dp[r][c] = dp[r - 1][c - 1] + 1;
-                        max = Math.Max(dp[r][c], max);
+                        dp[i, j] = dp[i - 1, j - 1] + 1;
+                        maxLength = Math.Max(maxLength, dp[i, j]);
                     }
                 }
+            }
 
-
-            return max;
+            return maxLength;
 
         }
 
