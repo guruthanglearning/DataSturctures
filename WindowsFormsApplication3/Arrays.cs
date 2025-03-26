@@ -3212,20 +3212,20 @@ namespace WindowsFormsApplication3
                 m = 4
             */
 
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Length; i++)  // 4
             {
-                counter++;
-                sum += s[i];
+                counter++; //1
+                sum += s[i]; //1
 
-                if (counter == m)
+                if (counter == m) // 2==2
                 {
-                    if (sum == d)
+                    if (sum == d) // 4 == 3
                     {
-                        result++;
+                        result++; //2
                     }
 
-                    counter--;
-                    sum -= s[i - (m - 1)];
+                    counter--; 
+                    sum -= s[i - (m - 1)]; //4-(2-1) = 4-1 = 3
                 }
             }
             
@@ -3269,33 +3269,21 @@ namespace WindowsFormsApplication3
             foreach (var input in inputs)
             {
                 int[] inArray = input.input;
-                int[] fr = new int[input.find];
+                int[] fr = new int[input.find]; //0:1    1:2     2:2     3:2
                 int k = input.find;
-                int sum = 0;
+                int sum = 0; //3
                 int r = 0;
-                for (int i = 0; i < inArray.Length; i++) 
+                int complement = 0;
+                foreach (int num in inArray) 
                 {
-                    r = inArray[i] % k;
-                    if (r > 0)
-                    {
-                        sum += fr[k - r];
-                    }
-                    else
-                    {
-                        sum += fr[0];
-                    }
+                    r = num % k;
+                    complement = (k - r) % k; // Handles case when mod == 0
 
+                    // Count pairs with current number
+                    sum += fr[complement];
+
+                    // Update frequency for this remainder
                     fr[r]++;
-
-                    /* sum = 3
-                        fr : 
-                          0:0
-                          1:3
-                          2:2
-                          3:1
-                        
-                     */
-
                 }
                 result.AppendLine($"There are {sum} pairs which are divisible by {k} from the given array {string.Join(" ", inArray)}");
 
@@ -3422,42 +3410,26 @@ namespace WindowsFormsApplication3
 
         private int MaxProfit(int[] prices)
         {
-            if (prices.Length == 0 || prices.Length == 1)
-            {
-                return 0;
-            }
+            if (prices == null || prices.Length < 2) return 0;
 
-            int pmax = 0;
-            int pmin = 0;
-            int p = 0;
-            int c = 0;
-            int min = prices[0];
-            int max = min;
+            int minPrice = prices[0];
+            int maxProfit = 0;
 
-            // 7, 1, 5, 3, 6, 4 // 2, 4, 1
             for (int i = 1; i < prices.Length; i++)
             {
-
-                if (prices[i] < min)
+                if (prices[i] < minPrice)
                 {
-                    if ((pmax - pmin) < (max - min))
-                    {
-                        pmax = max;
-                        pmin = min;
-                    }
-                    min = prices[i];
-                    max = min;
+                    minPrice = prices[i]; // update buy price
                 }
-                else if (prices[i] > max)
+                else
                 {
-                    max = prices[i];
+                    int profit = prices[i] - minPrice;
+                    if (profit > maxProfit)
+                        maxProfit = profit;
                 }
             }
 
-            p = pmax - pmin;
-            c = max - min;
-
-            return p > c ? p : c;
+            return maxProfit;
         }
 
         private void btn_Socks_Merchant_Click(object sender, EventArgs e)
