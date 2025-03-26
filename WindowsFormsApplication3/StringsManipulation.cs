@@ -882,7 +882,7 @@ namespace WindowsFormsApplication3
         {
             /*
                 https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
-                iven a string, find the length of the longest substring without repeating characters.
+                Given a string, find the length of the longest substring without repeating characters.
                 Examples:
                 Given "abcabcbb", the answer is "abc", which the length is 3.
                 Given "bbbbb", the answer is "b", with the length of 1.
@@ -898,56 +898,27 @@ namespace WindowsFormsApplication3
         public int lengthOfLongestSubstring(String s)
         {
 
-            int n = s.Length, ans = 0;
-            //using dictionary
+            int maxLength = 0;
+            int start = 0;
+            Dictionary<char, int> map = new Dictionary<char, int>();
 
-            //Time Complexity  : O(n)
-            //Space Complexity : O(m) where m is the input character set
-            //Using array
-            //int[] index = new int[128]; // current index of character
-            // try to extend the range [i, j]
-            //for (int j = 0, i = 0; j < n; j++)
-            //{
-            //    i = Math.Max(index[s[j]], i);
-            //    ans = Math.Max(ans, j - i + 1);
-            //    index[s[j]] = j + 1;
-            //}
-
-
-            /* 
-             Time Complexity  : O(n)
-             Space Complexity : O(min(m,n)) where m is the input character in the dictionary and n is the total input 
-             character set
-             
-             Input = pwwkew
-
-             abcac
-
-             */
-            n = s.Length; ans = 0;
-            Dictionary<char, int> index = new Dictionary<char, int>();
-            for (int j = 0, i = 0; j < n; j++)
+            for (int end = 0; end < s.Length; end++)
             {
-                if (index.ContainsKey(s[j]))
+                char currentChar = s[end];
+
+                // If character is repeated inside window, move the start
+                if (map.ContainsKey(currentChar) && map[currentChar] >= start)
                 {
-                    i = Math.Max(index[s[j]], i);
+                    start = map[currentChar] + 1;
                 }
 
-                ans = Math.Max(ans, j - i + 1); //
-                index[s[j]] = j + 1; //
+                map[currentChar] = end; // update last seen index
+                maxLength = Math.Max(maxLength, end - start + 1);
             }
 
-            return ans;
+            return maxLength;
 
 
-            /* j = 5  i = 2  ans = 3
-               p = 1
-               w = 3
-               k = 4
-               e = 5
-               w = 6
-             
-             */
         }
 
 
@@ -1982,8 +1953,7 @@ namespace WindowsFormsApplication3
                     int row = 0;
                     string[] arr = new string[numRows];
                     bool down = true;
-
-
+                    
                     foreach (char c in s)
                     {
                         arr[row] += c.ToString();
@@ -3224,16 +3194,18 @@ namespace WindowsFormsApplication3
 
             List<string> inputs = new List<string>();
             StringBuilder result = new StringBuilder();
-            inputs.Add("babad");
-            inputs.Add("cbbd");
-            inputs.Add(null);
-            inputs.Add("GEEKSFORGEEKS");
-            inputs.Add("This is madam malayalam");
+            //inputs.Add("babad");
+            //inputs.Add("cbbd");
+            //inputs.Add(null);
+            //inputs.Add("GEEKSFORGEEKS");
+            //inputs.Add("This is madam malayalam");
             inputs.Add("m");
+            inputs.Add("me");
             string tempResult = string.Empty;
             foreach (string input in inputs)
             {
-                tempResult = this.LongestPalindromicSubstring(input);
+                //tempResult = this.LongestPalindromicSubstring(input);
+                tempResult = this.LongestPalindrome_Manacher(input);
                 result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input) } is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult) }");
             }
 
@@ -3241,6 +3213,51 @@ namespace WindowsFormsApplication3
 
 
         }
+
+        private string LongestPalindrome_Manacher(string s)
+        {
+            if (string.IsNullOrEmpty(s) || s.Length == 1)
+                return s;
+
+            string t = "^#" + string.Join("#", s.ToCharArray()) + "#$"; // ✅ Fix here
+            int n = t.Length;
+            int[] p = new int[n];
+            int c = 0;
+            int r = 0;
+
+            for (int i = 1; i < n - 1; i++)
+            {
+                int m = 2 * c - i;
+
+                if (i < r)
+                    p[i] = Math.Min(r - i, p[m]);
+
+                while (t[i + p[i] + 1] == t[i - p[i] - 1])
+                    p[i]++;
+
+                if (i + p[i] > r)
+                {
+                    c = i;
+                    r = i + p[i];
+                }
+            }
+
+            int ml = 0;
+            int ci = 0;
+            for (int i = 1; i < n - 1; i++)
+            {
+                if (p[i] > ml)
+                {
+                    ml = p[i];
+                    ci = i;
+                }
+            }
+
+            string result = ml == 0 ? s.Substring(0, 1) : s.Substring((ci - ml) / 2, ml);
+            return result;
+
+        }
+
 
         private string LongestPalindromicSubstring(string s)
         {
