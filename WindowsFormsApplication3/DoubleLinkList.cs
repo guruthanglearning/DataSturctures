@@ -543,7 +543,6 @@ namespace WindowsFormsApplication3
 
         public DoubleLL InsertDoubleLLWithChildNodes(DoubleLL node, int?[] datas)
         {
-
             //[1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
             int nullCounter = 0;
             for (int i = 0; i < datas.Length; i++)
@@ -566,8 +565,9 @@ namespace WindowsFormsApplication3
                         temp.Child = InsertDoubleLLWithChildNodes(temp.Child, subArray);
                         break;
                     }
-                    else
+                    else                        
                         node = this.InsertDoubleLL(node, datas[i].Value);
+                        
                 }
                 else
                 {

@@ -2870,9 +2870,9 @@ namespace WindowsFormsApplication3
                 h = input.Length - 1;
                 temp = 0;
 
-                while (m <= h)
+                while (m <= h) // 0 <=6
                 {
-                    if (input[m] < arrayAndValue.find)
+                    if (input[m] < arrayAndValue.find) 
                     {
                         temp = input[l];
                         input[l] = input[m];
@@ -3269,7 +3269,7 @@ namespace WindowsFormsApplication3
             foreach (var input in inputs)
             {
                 int[] inArray = input.input;
-                int[] fr = new int[input.find]; //0:1    1:2     2:2     3:2
+                    int[] fr = new int[input.find]; //0:1    1:2     2:2     3:2
                 int k = input.find;
                 int sum = 0; //3
                 int r = 0;
@@ -3410,6 +3410,7 @@ namespace WindowsFormsApplication3
 
         private int MaxProfit(int[] prices)
         {
+            // 3, 2, 6, 5, 0, 3
             if (prices == null || prices.Length < 2) return 0;
 
             int minPrice = prices[0];
@@ -3466,6 +3467,9 @@ namespace WindowsFormsApplication3
                 return 0;
             }
 
+            /* 10, 20, 20, 10, 10, 30, 50, 10, 20 
+             */
+
             HashSet<int> dic = new HashSet<int>();
             int counter = 0;
 
@@ -3488,26 +3492,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Steps_To_Make_0_from_binary_Click(object sender, EventArgs e)
         {
-            /* string input1 = "101";
-            int i1 = input1.Length -1;
-            int pow1 = 1;
-            int result1 = 0;
-            
-            while (i1 >=0)
-            {
-                result1 += ((input1[i1] - '0') * pow1);
-                pow1 *= 2;
-                i1--;
-            }
-
-            MessageBox.Show($"{result1}");
-            */
-
-
-
-            //int.Parse("10",System.Globalization.NumberStyles.Number)
-            /*
-            9.)A non-negative integer variable V is given. There are two actions available that modify its value: 
+            /* A non-negative integer variable V is given. There are two actions available that modify its value: 
                 • if V is odd, subtract 1 from it; 
                 • if V is even, divide it by 2. 
 
@@ -3717,12 +3702,13 @@ namespace WindowsFormsApplication3
                 return 0;
             }
 
+            //7, 1, 5, 3, 6, 4
             int profit = 0;
             int bought = prices[0];
             int sell = 0;
             for (int i = 1; i < prices.Length; i++)
             {
-                if (prices[i] > bought)
+                if (prices[i] > bought) 
                 {
                     profit += (prices[i] - bought);
                 }
@@ -4084,9 +4070,9 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<int[]> inputs = new List<int[]>();
-            inputs.Add(new int[] { 2, 1, 3, 4, 5 });
-            inputs.Add(new int[] { 1, 2, 5, 3, 4, 7, 8, 6 });
-            inputs.Add(new int[] { 5, 1, 2, 3, 7, 8, 6, 4 });
+            //inputs.Add(new int[] { 2, 1, 3, 4, 5 });
+            //inputs.Add(new int[] { 1, 2, 5, 3, 4, 7, 8, 6 });
+            //inputs.Add(new int[] { 5, 1, 2, 3, 7, 8, 6, 4 });
             inputs.Add(new int[] { 1, 2, 5, 3, 7, 8, 6, 4 });
 
             foreach (int[] input in inputs)
@@ -4106,7 +4092,7 @@ namespace WindowsFormsApplication3
             }
 
             int swapCounter = 0;
-            for (int i = q.Length - 1; i >= 0; i--) // Length = 4   Data=  1, 2, 5, 3, 7, 8, 6, 4  // 1, 2, 3, 4, 5, 6, 7, 8  
+            for (int i = q.Length - 1; i >= 0; i--) // Length = 7 i = 6   Data=  1, 2, 5, 3, 7, 8, 6, 4  // 1, 2, 3, 4, 5, 6, 7, 8  
             {
                 if (q[i] != i + 1)
                 {
@@ -4163,49 +4149,39 @@ namespace WindowsFormsApplication3
 
         public int ThreeSumClosest(int[] nums, int target)
         {
-
-            if (nums == null || nums.Length == 0)
-            {
+            if (nums == null || nums.Length < 3)
                 return 0;
-            }
 
             Array.Sort(nums);
-            int l = 0;
-            int r = 0;
-            int cSum = 0;
-            int retSum = 0;
-            int min = int.MaxValue;
+            int closestSum = nums[0] + nums[1] + nums[2];
+            int minDiff = Math.Abs(closestSum - target);
 
-            for (int i = 0; i < nums.Length; i++) // -4, -1, 1, 2   find = 1 
+            for (int i = 0; i < nums.Length - 2; i++)  
             {
-                l = i + 1;
-                r = nums.Length - 1;
+                int l = i + 1;
+                int r = nums.Length - 1;
 
                 while (l < r)
                 {
-                    cSum = nums[i] + nums[l] + nums[r];     // -1
+                    int cSum = nums[i] + nums[l] + nums[r];
+                    int diff = Math.Abs(cSum - target);
 
-                    if (Math.Abs(cSum - target) < min)   //3
+                    if (diff < minDiff)
                     {
-                        min = Math.Abs(cSum - target);  //2
-                        retSum = cSum;                  //-1
+                        minDiff = diff;
+                        closestSum = cSum;
                     }
 
                     if (cSum == target)
-                    {
                         return cSum;
-                    }
-                    else if (cSum > target)
-                    {
-                        r--;
-                    }
-                    else
-                    {
+                    else if (cSum < target)
                         l++;
-                    }
+                    else
+                        r--;
                 }
             }
-            return retSum;
+
+            return closestSum;
         }
 
         private void btn_Find_Intersection_of_all_Intervals_Click(object sender, EventArgs e)
@@ -4276,7 +4252,15 @@ namespace WindowsFormsApplication3
             Interval cInterval = input[0]; 
             Interval current;
 
-            for(int i = 1; i < input.Count; i++)
+
+            /*
+                    new Interval() { Start = 1, End = 6 },
+                    new Interval() { Start = 2, End = 8 },
+                    new Interval() { Start = 3, End = 10 },
+                    new Interval() { Start = 5, End = 8 },
+            */
+
+            for (int i = 1; i < input.Count; i++)
             {
                 current = input[i];
                 if(current.Start > cInterval.Start && current.Start> cInterval.End)
@@ -4311,8 +4295,21 @@ namespace WindowsFormsApplication3
             /*
              
                 https://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
-                Time Complexity : O(1)
+                Time Complexity : O(min(m, n))
                 Space Complexity : O(1)
+
+                Combinatorial Formula
+                    The robot must take:
+
+                    (m - 1) down moves
+                    (n - 1) right moves
+
+                    Total moves = (m + n - 2)
+                    We are choosing n - 1 right moves (or m - 1 down moves) out of (m + n - 2) steps.
+                    So the number of paths = 
+                            C(m+n-2,n-1) = (m+n-2)!/(n-1)!*(m-1)!
+​
+
              */
 
             StringBuilder result = new StringBuilder();
@@ -4372,8 +4369,8 @@ namespace WindowsFormsApplication3
             {
                 return fhCount;
             }
-
-            for(int i = 0; i < input.Length; i++)
+            //1, 0, 1, 0, 1, 1
+            for (int i = 0; i < input.Length; i++)
             {
                 if (input[i] != fh)
                 {
@@ -4402,8 +4399,12 @@ namespace WindowsFormsApplication3
                                                 new Interval() { Start = 10, End = 12 },
                                                 new Interval() { Start = 8, End = 3 }
                                             });
-        }
 
+
+
+
+        }
+     
         private List<int> MergeIntervalsMatchXAndY(List<Interval> input)
         {
             List<int> result = new List<int>();

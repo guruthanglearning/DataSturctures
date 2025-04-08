@@ -18,30 +18,65 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Reverse_Integer_Click(object sender, EventArgs e)
-        {          
-            int input = -2147;
-            int quotent = input/10;
-            int reminder = 0;
-            long reverseInput = input % 10;
-             
-            while (Math.Abs(quotent) > 0)
+        {
+            //int input = -2147;
+            //int quotent = input/10;
+            //int reminder = 0;
+            //long reverseInput = input % 10;
+
+            //while (Math.Abs(quotent) > 0)
+            //{
+            //    reminder = quotent % 10;
+            //    quotent = quotent / 10;
+            //    reverseInput = (reverseInput * 10) + (reminder);
+            //    if (reverseInput > int.MaxValue || reverseInput < int.MinValue)
+            //    {
+            //        reverseInput = 0;
+            //        break;
+            //    }
+            //}
+
+            //MessageBox.Show($"Reverse Integer for {input.ToString()} is {reverseInput.ToString()}");
+            int x = -2147483648;
+            long result = 0;
+            bool IsNegative = false;
+            if (x > -1 && x < 10)
+                result = x;            
+            else if (x >= int.MaxValue || x <= int.MinValue)
+                result = 0;
+            else
             {
-                reminder = quotent % 10;
-                quotent = quotent / 10;
-                reverseInput = (reverseInput * 10) + (reminder);
-                if (reverseInput > int.MaxValue || reverseInput < int.MinValue)
+              
+                if (x < 0)
                 {
-                    reverseInput = 0;
-                    break;
+                    IsNegative = true;
+                    x = (-1 * x);
+                }
+
+                int reminder = x % 10; //3
+                int quotent = x / 10; //12
+                result = reminder; //3
+
+                while (quotent > 0)
+                {
+                    reminder = quotent % 10; //1
+                    quotent = quotent / 10; //0            
+                    result = (result * 10) + reminder; //321
+                    if (result > int.MaxValue)
+                    {
+                        result = 0;
+                        break;
+                    }
                 }
             }
 
-            MessageBox.Show($"Reverse Integer for {input.ToString()} is {reverseInput.ToString()}");
+             MessageBox.Show($"{(IsNegative ? (-1 * result) : result)}");
+
         }
 
         private void btn_Check_the_given_integer_is_Plandrom_Click(object sender, EventArgs e)
         {
-            List<int> inputs = new List<int>() {121, -121, 10 };
+            List<int> inputs = new List<int>() {1221, -121, 10 };
             StringBuilder result = new StringBuilder();
             
             foreach (int x in inputs)

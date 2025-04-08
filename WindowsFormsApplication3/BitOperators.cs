@@ -12,7 +12,6 @@ namespace WindowsFormsApplication3
 {
     public partial class BitOperators : Form
     {
-
         /* Bitwise operations
          * 
             4	    1	0	0               1   0   0           1   0   0
@@ -20,6 +19,7 @@ namespace WindowsFormsApplication3
                     ----------              ---------           ----------
               Add   1	0	0           OR  1   1   0       XOR 0   1   0                                        
         */
+
         public BitOperators()
         {
             InitializeComponent();

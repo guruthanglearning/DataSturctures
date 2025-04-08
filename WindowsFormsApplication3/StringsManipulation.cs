@@ -1113,111 +1113,63 @@ namespace WindowsFormsApplication3
 
         private void StringToInt_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this.MyAtoi("52").ToString());
-            List<string> inputs = new List<string>();
-            inputs.Add("+1");
-            inputs.Add("-+1");
-            inputs.Add("4193 with words");
-            inputs.Add("words and 987");
-            inputs.Add("   -42");
-            inputs.Add("42");
-            inputs.Add("-91283472332");
-            inputs.Add("      +0 123");
-            inputs.Add("2147483648");
-            inputs.Add("-   234");
-            inputs.Add("-2147483647");
+            //OldStringToInt
+            string s = "-91283472332";
+            int result = 0;
 
-            StringBuilder outputs = new StringBuilder();
-            outputs.Append("Results \n");
-
-            int intValue = 0;
-            bool isNegative = false;
-            bool isResultAssigned = false;
-            long result = 0;
-            int continousplusMinus = 0;
-
-            foreach (string str in inputs)
+            if (string.IsNullOrWhiteSpace(s))
+                MessageBox.Show($"{result}");
+            else
             {
-                intValue = 0;
-                isNegative = false;
-                isResultAssigned = false;
-                result = 0;
-                continousplusMinus = 0;
+                MessageBox.Show($"Result 1: {this.MyAtoi_1(s)}  Result 2: {this.MyAtoi_2(s)} ");
 
-                if (string.IsNullOrEmpty(str))
-                {
-                    result = 0;
-                }
-
-                foreach (char c in str)
-                {
-                    if (continousplusMinus == 2)
-                    {
-                        result = 0;
-                        break;
-                    }
-                    if (isResultAssigned && !(c >= 48 && c <= 57)) // ascii for 0 is 48 and 9 is 57
-                    {
-                        break;
-                    }
-                    else if (c == 32) // ascii value of ' ' is 32
-                    {
-                        if (isResultAssigned || continousplusMinus > 0)
-                        {
-                            break;
-                        }
-                    }
-                    else if (c == 43) // '+' is 43
-                    {
-                        if (isResultAssigned)
-                        {
-                            break;
-                        }
-                        continousplusMinus++;
-                    }
-                    else if (c == 45 && result == 0) //ascii code for '-' is 45
-                    {
-                        if (isResultAssigned)
-                        {
-                            break;
-                        }
-                        continousplusMinus++;
-                        isNegative = true;
-                    }
-                    else if (char.IsNumber(c))
-                    {
-                        isResultAssigned = true;
-                        intValue = Int32.Parse(c.ToString());
-                        if (result == 0)
-                        {
-                            result = intValue;
-                        }
-                        else
-                        {
-                            result = (result * 10) + intValue;
-                            if (result > int.MaxValue || result < int.MinValue)
-                            {
-                                result = isNegative ? int.MinValue : int.MaxValue;
-                                isNegative = false;
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                if (isNegative)
-                {
-                    result = result * -1;
-                }
-
-                outputs.Append($"{str} is {((int)result).ToString()} \n");
             }
-            MessageBox.Show(outputs.ToString());
+            
 
+        }
+
+        private int MyAtoi_2(string s)
+        {
+            int result = 0;
+            bool IsNegative = false;
+            int i = 0;
+            int l = s.Length;
+            int val = 0;
+
+            while (i < l)
+            {
+                if (s[i] == ' ')
+                {
+                    i++;
+                    continue;
+                }
+                break;
+            }
+
+            if (s[i] == '-')
+            {
+                IsNegative = true;
+                i++;
+            }
+            else if (s[i] == '+')
+            {
+                i++;
+            }
+
+            for (; i < l; i++)
+            {
+                if (char.IsDigit(s[i]))
+                    val = s[i] - '0';
+                else
+                    break;
+
+                if (result > ((int.MaxValue - val) / 10))
+                    return IsNegative ? int.MinValue : int.MaxValue;
+
+                result = (result * 10) + val;
+            }
+
+            return IsNegative ? -1 * result : result;
         }
 
         private void FibonociSeries_Click(object sender, EventArgs e)
@@ -1893,7 +1845,7 @@ namespace WindowsFormsApplication3
             else if (c == '-') return -3;
             else return -4;
         }
-        public int MyAtoi(string str)
+        public int MyAtoi_1(string str)
         {
             int sign = 1;
             Int64 value = 0;
@@ -2044,13 +1996,13 @@ namespace WindowsFormsApplication3
             inputs.Add("a", "aa");
             inputs.Add("a*", "aba");
             inputs.Add(".*", "ab");
-            inputs.Add("c* a*b", "aab");
+            inputs.Add("c*a*b", "aab");
             inputs.Add("mis*is*p*.", "mississippi");
 
             result.Append($"For the given ");
             foreach (string key in inputs.Keys)
             {
-                result.AppendLine($"strings {inputs[key]} and pattern {key}  = {(this.IsMatch(key, inputs[key]) ? " Match" : "No Match")}");
+                result.AppendLine($"strings {inputs[key]} and pattern {key}  = {(this.IsMatch(inputs[key], key) ? " Match" : "No Match")}");
             }
 
 
@@ -2070,14 +2022,13 @@ namespace WindowsFormsApplication3
             /*
                 inputs.Add("a", "aa");
                 inputs.Add("a*", "aa");
-                inputs.Add(".*", "aa");
+                inputs.Add(".*", "aa"); --
                 inputs.Add("c*a*b", "aab");
                 inputs.Add("mis*is*p*.", "mississippi");
 
                 mis *is * p*.
                 mis sis s ippi
             */
-
             bool[][] lookup = new bool[s.Length+1][];
             for (int i = 0; i < s.Length+1; i++)
             {
@@ -2089,16 +2040,16 @@ namespace WindowsFormsApplication3
             lookup[s.Length][p.Length] = true;
             for (int i = s.Length; i >= 0; i--)
             {
-                for (int j = p.Length - 1; j >= 0; j--)
+                for (int j = p.Length; j >= 0; j--)
                 {
                     first_match = (i < s.Length && (p[j] == s[i] || p[j] == '.'));
-                    if (j + 1 < p.Length && p[j + 1] == '*')
+                    if (j < p.Length && p[j] == '*')
                     {
-                        lookup[i][j] = lookup[i][j + 2] || first_match && lookup[i + 1][j];
+                        lookup[i][j] = lookup[i][j + 1] || first_match && lookup[i + 1][j];
                     }
                     else
                      {
-                        lookup[i][j] = first_match && lookup[i + 1][j + 1];
+                        lookup[i][j] = first_match && lookup[i + 1][j];
                     }
                 }
             }
