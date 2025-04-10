@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
 using WebAPIAuth.Areas.HelpPage.ModelDescriptions;
@@ -59,13 +58,6 @@ namespace WebAPIAuth.Areas.HelpPage.Controllers
             }
 
             return View(ErrorViewName);
-        }
-
-        public ActionResult Wadl(string controllerDescriptor)
-        {
-            var apiDescriptions = Configuration.Services.GetApiExplorer().ApiDescriptions;
-            var apisWithHelp = apiDescriptions.Select(api => Configuration.GetHelpPageApiModel(api.GetFriendlyId()));
-            return View(apisWithHelp);
         }
     }
 }
