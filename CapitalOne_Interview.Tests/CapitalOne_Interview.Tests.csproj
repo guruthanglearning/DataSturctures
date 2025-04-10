@@ -43,12 +43,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapitalOne_Interview\CapitalOne_Interview.csproj">
-      <Project>{3AB0D48F-E089-4454-A584-28F1309736AB}</Project>
-      <Name>CapitalOne_Interview</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ProcessTest.CalculateTransactionsTest.g.cs">
       <DependentUpon>ProcessTest.cs</DependentUpon>
     </Compile>
