@@ -1022,6 +1022,7 @@ namespace WindowsFormsApplication3
 
         private void button21_Click(object sender, EventArgs e)
         {
+         
             //MMMCMXCIX
             Dictionary<char, int> _romanMap = new Dictionary<char, int> { { 'I', 1 }, { 'V', 5 }, { 'X', 10 },
                                                                           { 'L', 50 }, { 'C', 100 }, { 'D', 500 },
@@ -1048,7 +1049,45 @@ namespace WindowsFormsApplication3
                 }
             }
             MessageBox.Show(totalValue.ToString());
+            /*
+          string s = textBox1.Text;
+          Dictionary<string, int> dic = new Dictionary<string, int>();
+          dic.Add("I", 1);
+          dic.Add("IV", 4);
+          dic.Add("V", 5);
+          dic.Add("IX", 9);
+          dic.Add("X", 10);
+          dic.Add("XL", 40);
+          dic.Add("L", 50);
+          dic.Add("XC", 90);
+          dic.Add("C", 100);
+          dic.Add("CD", 100);
+          dic.Add("D", 500);
+          dic.Add("CM", 900);
+          dic.Add("M", 1000);
 
+          char prev = '\0';
+          int result = 0;
+          int temp = 0;
+          string key;
+
+          foreach (char c in s)
+          {
+              key = new string(new[] { prev , c});
+              temp = 0;
+              dic.TryGetValue(key, out temp);
+              if (temp > 0)
+              {
+                  result -= dic[prev.ToString()];
+                  result += temp;
+              }
+              else
+                  result += dic[c.ToString()];
+              prev = c;
+          }
+
+          MessageBox.Show(result.ToString());
+           */
         }
 
         private void Query_nth_most_frequent_word_Click(object sender, EventArgs e)
@@ -3334,7 +3373,8 @@ namespace WindowsFormsApplication3
             string res;
             foreach (int input in inputs)
             {
-                res = this.IntToRoman(input);
+                res = "IntToRoman :" + this.IntToRoman(input) + Environment.NewLine;
+                res += "IntToRoman_1 :" + this.IntToRoman_1(input) + Environment.NewLine;
                 result.AppendLine($"Roman value for the given integer {input} is {(string.IsNullOrEmpty(res) ? "Empty" : res)}");
             }
 
@@ -3343,7 +3383,28 @@ namespace WindowsFormsApplication3
 
         }
 
+        private string IntToRoman_1(int num)
+        {
+            if (num <= 0)
+                return string.Empty;
 
+            int[] val = new int[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+            string[] sym = new string[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+
+            StringBuilder res = new StringBuilder();
+
+            for (int i = 0; i < val.Length && num > 0; i++)
+            {
+                while (num >= val[i])
+                {
+                    num -= val[i];
+                    res.Append(sym[i]);
+                }
+            }
+
+            return res.ToString();
+
+        }
         private string IntToRoman(int num)
         {            
             if (num == 0)

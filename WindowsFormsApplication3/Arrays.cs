@@ -3928,7 +3928,8 @@ namespace WindowsFormsApplication3
 
             //inputs.Add(new int[] { -1, 0, 1, 2, -1, -4 });
             //inputs.Add(new int[] { 0, 0, 0 });
-            inputs.Add(new int[] { 0, 0, 0, 0 });
+            //inputs.Add(new int[] { 0, 0, 0, 0 });
+            inputs.Add(new int[] { 2, 2, 2, 2, 2 });
             //inputs.Add(new int[] { 1, -1, -1, 0 });
             //inputs.Add(new int[] { 3, 0, -2, -1, 1, 2 });
 
@@ -4434,7 +4435,10 @@ namespace WindowsFormsApplication3
 
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();
             //inputs.Add(new ArrayAndValue() { input = new int[] { 1, 0, -1, 0, -2, 2, 0 }, find = 0 });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 0 ,0 ,0 , 0 }, find = 1 });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 0 ,0 ,0 , 0 }, find = 1 });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 1, 0, -1, 0, -2, 2 }, find = 0 });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 2, 2,2,2,2 }, find = 8 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1000000000, 1000000000, 1000000000, 1000000000 }, find = -294967296 }); 
 
             foreach (var arrayAndValue in inputs)
             { 
@@ -4448,48 +4452,40 @@ namespace WindowsFormsApplication3
 
         }
 
+
+
         public IList<IList<int>> FourSum(int[] nums, int target)
         {
 
-            if (nums == null || nums.Length == 0 || nums.Length <= 3)
-            {
-                return new List<IList<int>>();
-            }
-
             Array.Sort(nums);
-            HashSet<string> dict = new HashSet<string>();
-            string dictKey = string.Empty;
+            var result = new List<IList<int>>();
 
-            int f = 0;
-            int s = 0;
-            int l = 0;
-            int r = nums.Length - 1;
-
-            List<IList<int>> result = new List<IList<int>>();
-            int sum = 0;
-
-            for (f = 0; f < nums.Length; f++)
+            for (int f = 0; f < nums.Length - 3; f++)
             {
-                s = f + 1;
-                for (; s < nums.Length; s++)
+                if (f > 0 && nums[f] == nums[f - 1]) continue;
+
+                for (int s = f + 1; s < nums.Length - 2; s++)
                 {
-                    r = nums.Length - 1;
-                    l = s + 1;
+                    if (s > f + 1 && nums[s] == nums[s - 1]) continue;
+
+                    int l = s + 1;
+                    int r = nums.Length - 1;
+
                     while (l < r)
                     {
-                        sum = nums[f] + nums[s] + nums[l] + nums[r];
+                        long sum = (long)nums[f] + nums[s] + nums[l] + nums[r];
+
                         if (sum == target)
                         {
-                            dictKey = $"{nums[f] },{nums[s]},{nums[l]},{nums[r]}";
-                            if (!dict.Contains(dictKey))
-                            {
-                                result.Add(new List<int>() { nums[f], nums[s], nums[l], nums[r] });
-                                dict.Add(dictKey);
-                            }
+                            result.Add(new List<int> { nums[f], nums[s], nums[l], nums[r] });
+
+                            // Skip duplicates
+                            while (l < r && nums[l] == nums[l + 1]) l++;
+                            while (l < r && nums[r] == nums[r - 1]) r--;
+
                             l++;
                             r--;
-
-                        } 
+                        }
                         else if (sum < target)
                         {
                             l++;
@@ -4501,6 +4497,7 @@ namespace WindowsFormsApplication3
                     }
                 }
             }
+
             return result;
         }
 
