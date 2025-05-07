@@ -2407,8 +2407,8 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             foreach (var input in inputs)
             {
-                result.AppendLine($"The list of paranthesis for the given number {input} is { string.Join(Environment.NewLine, this.GenerateParenthesis(input))} ");
-                //result.AppendLine($"The list of paranthesis for the given number {input} is { string.Join(Environment.NewLine, this.GenerateParenthesis_Queue(input))} ");
+                //result.AppendLine($"The list of paranthesis for the given number {input} is { string.Join(Environment.NewLine, this.GenerateParenthesis(input))} ");
+                result.AppendLine($"The list of paranthesis for the given number {input} is { string.Join(Environment.NewLine, this.GenerateParenthesis_Queue(input))} ");
             }
 
             MessageBox.Show(result.ToString());
