@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30517.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication3", "WindowsFormsApplication3\WindowsFormsApplication3.csproj", "{A4DCFB2F-CDA2-4165-859C-771842266137}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure_WF", "WindowsFormsApplication3\DataStructure_WF.csproj", "{A4DCFB2F-CDA2-4165-859C-771842266137}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study_Angular", "Study_Angular\Study_Angular.csproj", "{9E04175F-E004-4118-99DD-664167F94761}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "ServiceFabric", "ServiceFabric\ServiceFabric.sfproj", "{FE22D48A-FA30-422A-BB82-1609A62E26B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{EAEAC3DD-ADCF-4E86-B143-E899B9406712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure_Ext_Console", "DataStructure\DataStructure_Ext_Console.csproj", "{269B8705-40BA-446D-A340-7C7538C7BC83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,22 @@ Global
 		{EAEAC3DD-ADCF-4E86-B143-E899B9406712}.Release|x64.Build.0 = Release|Any CPU
 		{EAEAC3DD-ADCF-4E86-B143-E899B9406712}.Release|x86.ActiveCfg = Release|Any CPU
 		{EAEAC3DD-ADCF-4E86-B143-E899B9406712}.Release|x86.Build.0 = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|x64.Build.0 = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Debug|x86.Build.0 = Debug|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|x64.ActiveCfg = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|x64.Build.0 = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|x86.ActiveCfg = Release|Any CPU
+		{269B8705-40BA-446D-A340-7C7538C7BC83}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
