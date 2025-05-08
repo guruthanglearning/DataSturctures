@@ -11,6 +11,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Web.UI.WebControls;
 using System.Runtime.Remoting.Messaging;
+using static WindowsFormsApplication3.Arrays;
 
 //using OfficeOpenXml;
 //using OfficeOpenXml.Style;
@@ -5329,14 +5330,42 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {                
-                result.AppendLine($"Swap Nodes in Pairs from the given linked list {this.GetListNodeData(input.Node1)} is {Environment.NewLine}{this.GetListNodeData(SwapPairs(input.Node1))}");
+                result.AppendLine($"Swap Nodes in Pairs from the given linked list {this.GetListNodeData(input.Node1)} is {Environment.NewLine} Approach 1 : {this.GetListNodeData(SwapPairs_1(input.Node1))} \n Approach 1 : {this.GetListNodeData(SwapPairs_2(input.Node1))}");
             }
 
             MessageBox.Show(result.ToString());
         }
 
 
-        public ListNode SwapPairs(ListNode head)
+
+        public ListNode SwapPairs_2(ListNode head)
+        {
+            if (head == null || head.next == null)
+                return head;
+
+            ListNode dummy = new ListNode();
+            dummy.next = head;
+            ListNode prev = dummy;
+
+            while (head != null && head.next != null)
+            {
+                ListNode first = head;
+                ListNode second = head.next;
+
+                // Swap
+                prev.next = second;
+                first.next = second.next;
+                second.next = first;
+
+                // Move pointers forward
+                prev = first;
+                head = first.next;
+            }
+
+            return dummy.next;
+        }
+
+        public ListNode SwapPairs_1(ListNode head)
         {
             if (head == null)
                 return head;
@@ -5601,18 +5630,67 @@ namespace WindowsFormsApplication3
             inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }), Find = 3 });
             inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2, 3, 4, 5 }), Find = 1 });
             inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1}), Left = 1, Find = 1 });
+            inputs.Add(new Common() { Node1 = this.InsertListNode(new int[] { 1, 2 }), Left = 1, Find = 2 });
 
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"ReverseReverse Nodes in k-Group for the given list {this.GetListNodeData(input.Node1)}  and K : {input.Find} is {Environment.NewLine}{this.GetListNodeData(ReverseKGroup(input.Node1, input.Find))}");
+                result.AppendLine($"ReverseReverse Nodes in k-Group for the given list {this.GetListNodeData(input.Node1)}  and K : {input.Find} is {Environment.NewLine}{this.GetListNodeData(ReverseKGroup_New(input.Node1, input.Find))}");
             }
 
             MessageBox.Show(result.ToString());
 
         }
 
-     
+        public ListNode ReverseKGroup_New(ListNode head, int k)
+        {
+            if (head == null || k == 0)
+                return null;
+
+            ListNode result = new ListNode();
+            ListNode tail = result;
+            ListNode current = head;
+            ListNode temp = null;
+            Stack<ListNode> dict = new Stack<ListNode>();
+
+            while(current!=null)
+            {
+                temp = current;
+                int i = 0;
+                while (temp != null && i < k)
+                {
+                    dict.Push(temp);
+                    temp = temp.next;
+                    i++;
+                }
+                if (i == k)
+                {
+                    while (dict.Count > 0)
+                    {
+                        tail.next = dict.Pop();
+                        tail = tail.next;
+                    }
+                }
+                else
+                {
+                    ListNode[] arr = dict.ToArray();
+                    
+                    for(int j = arr.Length -1; j >=0; j--)
+                    {
+                        tail.next = arr[j];
+                        tail = tail.next;
+                    }                    
+                }
+                current = temp;
+            }
+
+            tail.next = temp;
+
+            return result.next;
+
+
+        }
+
         public ListNode ReverseKGroup(ListNode head, int k)
         {
 
