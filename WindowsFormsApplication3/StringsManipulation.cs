@@ -7387,6 +7387,89 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Find_the_Index_of_the_First_Occurrence_in_a_String_Click(object sender, EventArgs e)
+        {
+            /*
+                Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+                    Example 1:
+
+                    Input: haystack = "sadbutsad", needle = "sad"
+                    Output: 0
+                    Explanation: "sad" occurs at index 0 and 6.
+                    The first occurrence is at index 0, so we return 0.
+                    Example 2:
+
+                    Input: haystack = "leetcode", needle = "leeto"
+                    Output: -1
+                    Explanation: "leeto" did not occur in "leetcode", so we return -1.
+ 
+
+                    Constraints:
+
+                    1 <= haystack.length, needle.length <= 104
+                    haystack and needle consist of only lowercase English characters.
+
+                   Time Complexity         : O(N * M)   
+                   Space Complexity        :  O(1)
+             */
+
+            Tuple<string, string>[] inputs = new Tuple<string, string>[]
+            {
+                new Tuple<string, string>("sadbutsad", "sad"),
+                new Tuple<string, string>("leetcode", "leeto"),
+                new Tuple<string, string>("a", "a"),
+                new Tuple<string, string>("mississippi", "issip"),
+                new Tuple<string, string>("hello", "ll")
+            };
+
+            StringBuilder result = new StringBuilder();
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"The first occurrence of {input.Item2} in {input.Item1} is {StrStr(input.Item1, input.Item2)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int StrStr(string haystack, string needle)
+        {
+            if (string.IsNullOrWhiteSpace(haystack) || string.IsNullOrWhiteSpace(needle))
+                return -1;
+
+            int r = 0;
+            int j = 0;
+            int si = -1;
+
+            //mississippi  issip  
+            for (int i = 0; i <= haystack.Length - needle.Length; i++) // i = 0
+            {
+                r = i;
+                while (r < haystack.Length)  //r = 3, j = 3
+                {
+                    if (haystack[r] == needle[j])
+                        j++;
+                    else
+                    {
+                        si = -1;
+                        j = 0;
+                        break;
+                    }
+                    r++;
+
+                    if (j == needle.Length)
+                    {
+                        si = r - j;
+                        return si;
+                    }
+                }
+            }
+
+            return si;
+
+        }
     }
 }
 

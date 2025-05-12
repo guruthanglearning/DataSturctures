@@ -148,33 +148,54 @@ namespace WindowsFormsApplication3
         {
 
             //Time Complexity is O(n)
-            int[] buffer = new int[] { 1, 2, 3, 3, 3, 4, 4, 5, 5 };
+            //int[] buffer = new int[] { 1, 2, 3, 3, 3, 4, 4, 5, 5 };
+            int[] buffer = new int[] { 1, 1, 2 };
+            
 
-            int insert = 0;
-            for (int i = 1; i < buffer.Length - 1; i++)
+            // 0,1,2,3,4,2,2,3,3,4
+            int i = 0;
+            for (int j = 1; j < buffer.Length; j++) // i = 4, j = 9
             {
-                /*                    
-                    Index   :   0   1   2   3   4   5   6   7   8
-                    buffer  :   1   2   3   4   5   4   4   5   5
-                    i = 8   insert = 4
-                */
-
-                if (buffer[i] != buffer[insert])
+                if (buffer[i] != buffer[j])
                 {
-                    insert++;
-
-                    if (insert != i)
+                    if (i != j)
                     {
-                        buffer[insert] = buffer[i];
+                        i++;
+                        buffer[i] = buffer[j];
                     }
                 }
             }
-            Array.Resize(ref buffer, insert + 1);
+
+            
+
+            //int insert = 0;
+            //for (int i = 1; i < buffer.Length - 1; i++)
+            //{
+            //    /*                    
+            //        Index   :   0   1   2   3   4   5   6   7   8
+            //        buffer  :   1   2   3   4   5   4   4   5   5
+            //        i = 8   insert = 4
+            //    */
+
+            //    if (buffer[i] != buffer[insert])
+            //    {
+            //        insert++;
+
+            //        if (insert != i)
+            //        {
+            //            buffer[insert] = buffer[i];
+            //        }
+            //    }
+            //}
+            //Array.Resize(ref buffer, insert + 1);
 
 
 
-            MessageBox.Show(string.Join(",", buffer));
+            MessageBox.Show($"i:{i++} {string.Join(",", buffer)}");
         }
+
+
+
 
         public void MergeArraysDuplicateValues(int[] arr1, int[] arr2)
         {
