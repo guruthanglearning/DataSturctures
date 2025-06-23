@@ -123,6 +123,7 @@
             this.btn_Flip_String_to_Monotone_Increasing = new System.Windows.Forms.Button();
             this.btn_Group_Anagrams = new System.Windows.Forms.Button();
             this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String = new System.Windows.Forms.Button();
+            this.btn_Substring_with_Concatenation_of_All_Words = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1146,17 +1147,28 @@
             // 
             this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.Location = new System.Drawing.Point(878, 838);
             this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.Name = "btn_Find_the_Index_of_the_First_Occurrence_in_a_String";
-            this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.Size = new System.Drawing.Size(411, 43);
+            this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.Size = new System.Drawing.Size(453, 43);
             this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.TabIndex = 95;
             this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.Text = "Find the Index of the First Occurrence in a String";
             this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.UseVisualStyleBackColor = true;
             this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String.Click += new System.EventHandler(this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String_Click);
+            // 
+            // btn_Substring_with_Concatenation_of_All_Words
+            // 
+            this.btn_Substring_with_Concatenation_of_All_Words.Location = new System.Drawing.Point(1340, 833);
+            this.btn_Substring_with_Concatenation_of_All_Words.Name = "btn_Substring_with_Concatenation_of_All_Words";
+            this.btn_Substring_with_Concatenation_of_All_Words.Size = new System.Drawing.Size(318, 52);
+            this.btn_Substring_with_Concatenation_of_All_Words.TabIndex = 96;
+            this.btn_Substring_with_Concatenation_of_All_Words.Text = "Substring with Concatenation of All Words";
+            this.btn_Substring_with_Concatenation_of_All_Words.UseVisualStyleBackColor = true;
+            this.btn_Substring_with_Concatenation_of_All_Words.Click += new System.EventHandler(this.btn_Substring_with_Concatenation_of_All_Words_Click);
             // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1929, 904);
+            this.Controls.Add(this.btn_Substring_with_Concatenation_of_All_Words);
             this.Controls.Add(this.btn_Find_the_Index_of_the_First_Occurrence_in_a_String);
             this.Controls.Add(this.btn_Group_Anagrams);
             this.Controls.Add(this.btn_Flip_String_to_Monotone_Increasing);
@@ -1357,5 +1369,6 @@
         private System.Windows.Forms.Button btn_Flip_String_to_Monotone_Increasing;
         private System.Windows.Forms.Button btn_Group_Anagrams;
         private System.Windows.Forms.Button btn_Find_the_Index_of_the_First_Occurrence_in_a_String;
+        private System.Windows.Forms.Button btn_Substring_with_Concatenation_of_All_Words;
     }
 }

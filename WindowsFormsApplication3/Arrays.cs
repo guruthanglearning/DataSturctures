@@ -299,12 +299,12 @@ namespace WindowsFormsApplication3
                 // incrementer = 3 , sum = 10, reductionCost = 9
                 if (incrementer == 1)
                 {
-                    sum += input[incrementer]; // 3
+                    sum += input[incrementer]; //1 
                 }
                 else
                 {
-                    reductionCost += sum; //, 3,9
-                    sum += input[incrementer]; //6, 10
+                    reductionCost += sum; //1,3,6
+                    sum += input[incrementer]; //3,6,10
                 }
                 incrementer++;
             }
@@ -1029,6 +1029,38 @@ namespace WindowsFormsApplication3
             int[] input2 = new int[] { 3, 8, 6, 20, 7 };
 
 
+            var union = GetUnion(input1, input2);
+            var intersection = GetIntersection(input1, input2);
+
+            MessageBox.Show("Union: " + string.Join(", ", union) + "\n" + "Intersection: " + string.Join(", ", intersection));
+        }
+
+
+        public static List<int> GetUnion(int[] arr1, int[] arr2)
+        {
+            HashSet<int> unionSet = new HashSet<int>();
+
+            foreach (int num in arr1)
+                unionSet.Add(num);
+
+            foreach (int num in arr2)
+                unionSet.Add(num);
+
+            return new List<int>(unionSet);
+        }
+
+        public static List<int> GetIntersection(int[] arr1, int[] arr2)
+        {
+            HashSet<int> set1 = new HashSet<int>(arr1);
+            HashSet<int> result = new HashSet<int>();
+
+            foreach (int num in arr2)
+            {
+                if (set1.Contains(num))
+                    result.Add(num);
+            }
+
+            return new List<int>(result);
         }
 
         private void btn_Merge_Overlapping_Intervals_Click(object sender, EventArgs e)

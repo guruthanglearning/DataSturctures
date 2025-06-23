@@ -220,7 +220,6 @@ namespace WindowsFormsApplication3
                 return "-1";
             }
 
-
             if (start.Next == null)
             {
                 return start.Data;
