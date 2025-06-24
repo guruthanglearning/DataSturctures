@@ -57,15 +57,88 @@ namespace WindowsFormsApplication3
 
         private void N_Queens_Backtracking_Algorithm_Click(object sender, EventArgs e)
         {
-            int[,] queens = new int[3, 3];
-
-
+            /*
             
+                Time Complexity	        : O(S(N) × N²)
+                Space Complexity	    : O(S(N) × N²)
+                Aux Space (no results)	: O(N²)
+                Optimized for	Backtracking with pruning
 
+             Time Complexity
+                Let:
+
+                N = board size
+
+                S(N) = number of valid solutions for given N
+
+                ✔️ Backtracking Time:
+                In worst case, you try N choices per row for N rows → O(N!)
+
+                Due to pruning with cols, diag1, diag2, it’s faster in practice
+
+                For each valid solution, you build a board → O(N²)
+            
+            */
+            var results = this.SolveNQueens(4);
+
+            Console.WriteLine("Number of Solutions: " + results.Count);
+            foreach (var solution in results)
+            {
+                foreach (var line in solution)
+                    Console.WriteLine(line);
+                Console.WriteLine();
+            }
 
 
         }
 
+
+        public IList<IList<string>> SolveNQueens(int n)
+        {
+            var results = new List<IList<string>>();
+            var board = new char[n][];
+            for (int i = 0; i < n; i++)
+                board[i] = new string('.', n).ToCharArray();
+
+            // Use HashSets to track columns, diagonals
+            HashSet<int> cols = new HashSet<int>();
+            HashSet<int> diag1 = new HashSet<int>(); // (row - col)
+            HashSet<int> diag2 = new HashSet<int>(); // (row + col)
+
+            Backtrack(0, board, cols, diag1, diag2, results, n);
+            return results;
+        }
+
+        private void Backtrack(int row, char[][] board, HashSet<int> cols, HashSet<int> diag1, HashSet<int> diag2, IList<IList<string>> results, int n)
+        {
+            if (row == n)
+            {
+                var solution = new List<string>();
+                foreach (var r in board)
+                    solution.Add(new string(r));
+                results.Add(solution);
+                return;
+            }
+
+            for (int col = 0; col < n; col++)
+            {
+                if (cols.Contains(col) || diag1.Contains(row - col) || diag2.Contains(row + col))
+                    continue;
+
+                board[row][col] = 'Q';
+                cols.Add(col);
+                diag1.Add(row - col);
+                diag2.Add(row + col);
+
+                Backtrack(row + 1, board, cols, diag1, diag2, results, n);
+
+                // Backtrack
+                board[row][col] = '.';
+                cols.Remove(col);
+                diag1.Remove(row - col);
+                diag2.Remove(row + col);
+            }
+        }
 
 
         private void btn_Overlapping_rectangles_Click(object sender, EventArgs e)

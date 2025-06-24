@@ -1182,8 +1182,7 @@ namespace WindowsFormsApplication3
 
             // prefix[n-1] is sum of all frequencies. Generate a random number
             // with value from 1 to this sum
-            int r = (random.Next() % prefix[n - 1]) + 1; // random.Next(1, prefix[n - 1]); 
-
+            int r = random.Next(1, prefix[n - 1] + 1);
             // Find index of ceiling of r in prefix array
             int indexc = FindCeil(prefix, r);
             return arr[indexc];
@@ -10786,8 +10785,8 @@ namespace WindowsFormsApplication3
             if (arr == null || arr.Length == 0)
                 return 0;
             
-            /*
-                inputs.Add(new int[] { 3, 3, 3, 3, 5, 5, 5, 2, 2, 7 });     //3->4, 5->3, 2->2, 7->1
+            
+            /*    inputs.Add(new int[] { 3, 3, 3, 3, 5, 5, 5, 2, 2, 7 });     //3->4, 5->3, 2->2, 7->1
                 inputs.Add(new int[] { 7, 7, 7, 7, 7, 7 });
                 inputs.Add(new int[] { 1, 9 });
                 inputs.Add(new int[] { 1000, 1000, 3, 7 });
@@ -11382,10 +11381,10 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();
-            inputs.Add(new ArrayAndValue() { input = new int[] { 3, 1, 3, 6 } });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 1, 2, 6 } });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 3, 1, 3, 6 } });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 2, 1, 2, 6 } });
             inputs.Add(new ArrayAndValue() { input = new int[] { 4, -2, 2, -4 } });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 4, 16, 8, 4 } });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 4, 16, 8, 4 } });
 
             foreach (var input in inputs)
             {
