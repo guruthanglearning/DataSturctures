@@ -243,7 +243,7 @@ namespace WindowsFormsApplication3
             node = this.InsertDoubleLLSortedOrder(node, 2);
             node = this.InsertDoubleLLSortedOrder(node, 5);
             node = this.InsertDoubleLLSortedOrder(node, 10);
-            node = this.InsertDoubleLLSortedOrder(node, 9);
+            node = this.InsertDoubleLLSortedOrder(node, 10);
             node = this.InsertDoubleLLSortedOrder(node, 4);
 
             MessageBox.Show(string.Format("Before deleting Forward: {0} \nBackward: {1}", this.PrintForward(ref node), this.PrintBackward(ref node)));
@@ -263,7 +263,7 @@ namespace WindowsFormsApplication3
             while (current != null)
             {
                 if (current.Data == deleteNode)
-                {
+                {                    
                     if (current.Next != null)
                     {
                         current = current.Next;
@@ -275,13 +275,14 @@ namespace WindowsFormsApplication3
                         previous.Next = null;
                         current = null;
                         break;
-                    }
+                    }                    
                 }
 
-                current = current.Next;
-                previous = previous.Next;
-                
-
+                if (current.Data != deleteNode)
+                {
+                    current = current.Next;
+                    previous = previous.Next;
+                }
             }
 
             MessageBox.Show(string.Format("After deleting Forward: {0} \nBackward: {1}", this.PrintForward(ref node), this.PrintBackward(ref node)));
