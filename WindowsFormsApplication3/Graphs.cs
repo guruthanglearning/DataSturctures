@@ -356,7 +356,7 @@ namespace WindowsFormsApplication3
 				                /		|
 			                   8		4
 			                  /			|
-			                 G-----    E                        
+			                 G-----      E                        
 		                   /   \   \     |
 		                  7		10  \    5
 		                 /		 \   6   |
@@ -508,7 +508,24 @@ namespace WindowsFormsApplication3
 
         public void TraverseGraphForEdges(GraphWeight node, Dictionary<string, string> result, int sum)
         {
-            
+            /*
+                                    A
+                                 /  |  \
+                                /	|	\
+                               1	2	 3
+                              /		|	  \
+                             B		C	   D
+                            /		|
+                           8		4
+                          /			|
+                         G-----    E                        
+                       /   \   \     |
+                      7		10  \    5
+                     /		 \   6   |
+                    H 		  M   \  |
+                                   \-F
+         */
+
             if (node != null)
             {
                 foreach(var edge in node.Edges)

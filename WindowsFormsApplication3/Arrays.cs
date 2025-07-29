@@ -1395,6 +1395,7 @@ namespace WindowsFormsApplication3
                         endIndex = i; 
                     }
                 }
+
                 result.Append($"Largest Subarray Sum in array is {maxSum.ToString()} for the given array {string.Join(" ", input)} starting index {startIndex.ToString()} and ending index {endIndex.ToString()} \n");
             }
             MessageBox.Show(result.ToString());
@@ -1411,7 +1412,7 @@ namespace WindowsFormsApplication3
             //int[] input = new int[] { 3,2,2,3 }; //3
             //int[] input = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
             int[] input = new int[] { 0, 1, 3, 4, 5, 6 };
-            int removeElement = 2;
+            int removeElement = 1;
             int index = -1;
             int i = 0;
             for (i = 0; i < input.Length; i++)
@@ -1461,6 +1462,8 @@ namespace WindowsFormsApplication3
 
             //This solution works for large numbers 
             input = new int[]{ 45, 2, 1, 100, 3, 99, 102, 50, 200 };
+
+            //Using arrays
             int N = input.Length; // Supports numbers up to 500
             StringBuilder result = new StringBuilder();
             BitArray bitSet = new BitArray(N + 1);
@@ -1481,6 +1484,20 @@ namespace WindowsFormsApplication3
                     break;
                 }
             }
+
+            /*
+                Using HashSet
+            */
+
+            var set = new HashSet<int>(input);
+            var res = new List<int>();
+
+            for (int i = 1; i <= N; i++)
+            {
+                if (set.Contains(i))
+                    res.Add(i);
+            }
+            
 
             MessageBox.Show($"All integers for the given input array is {(result.Length > 0 ? "present" : "is not present")}");
 
@@ -1516,9 +1533,9 @@ namespace WindowsFormsApplication3
 
                 for (int i = 0; i < end; i++) // 4
                 {
-                    thirdOld = Math.Max(input[i] + firstOld, secondOld); //12
-                    firstOld = secondOld; // 11
-                    secondOld = thirdOld; // 12
+                    thirdOld = Math.Max(input[i] + firstOld, secondOld); //22
+                    firstOld = secondOld; // 20
+                    secondOld = thirdOld; // 22
                 }
             }
             return thirdOld;
@@ -1723,7 +1740,7 @@ namespace WindowsFormsApplication3
 
 
                  */
-                switch (inputs[m])
+                switch (inputs[m]) 
                 {
                     case 'R':
                         {
@@ -11471,7 +11488,7 @@ namespace WindowsFormsApplication3
                     What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
 
                     TC  : O(NlogN)
-                    SC  : O(Min(Input1.Length, Input2.Length))
+                    SC  : O(1)
              */
 
 
@@ -11494,33 +11511,17 @@ namespace WindowsFormsApplication3
                         : 4, 5, 9              4, 4, 8, 9, 9 
             */
 
-            int length_1 = nums1.Length;
-            int length_2 = nums2.Length;
-            int[] answer;
-            int[] final_answer;
-            if (length_1 == 0 || length_2 == 0)
-            {
-                return null;
-            }
-            if (length_1 > length_2)
-            {
-                answer = new int[length_2];
-            }
-            else
-            {
-                answer = new int[length_1];
-            }
-            int i = 0;
-            int j = 0;
-            int counter = 0;
             Array.Sort(nums1);
             Array.Sort(nums2);
-            while (i < length_1 && j < length_2)
+
+            int i = 0, j = 0;
+            var result = new List<int>();
+
+            while (i < nums1.Length && j < nums2.Length)
             {
                 if (nums1[i] == nums2[j])
                 {
-                    answer[counter] = nums1[i];
-                    counter++;
+                    result.Add(nums1[i]);
                     i++;
                     j++;
                 }
@@ -11533,13 +11534,9 @@ namespace WindowsFormsApplication3
                     j++;
                 }
             }
-            final_answer = new int[counter];
-            for (int k = 0; k < counter; k++)
-            {
-                final_answer[k] = answer[k];
-            }
 
-            return final_answer;
+            return result.ToArray();
+
         }
 
     }
