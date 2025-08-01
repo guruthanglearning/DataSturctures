@@ -282,7 +282,7 @@ namespace WindowsFormsApplication3
             {
                 MessageBox.Show("Invalid inputs");
             }
-            int sum = input[0];
+            int sum = input[0]; 
             int reductionCost = 0;
             int incrementer = 1;
             /*
@@ -296,15 +296,15 @@ namespace WindowsFormsApplication3
 
             while (incrementer < input.Length)
             {
-                // incrementer = 3 , sum = 10, reductionCost = 9
+                // incrementer = 4 , sum = 10, reductionCost = 9
                 if (incrementer == 1)
                 {
                     sum += input[incrementer]; //1 
                 }
                 else
                 {
-                    reductionCost += sum; //1,3,6
-                    sum += input[incrementer]; //3,6,10
+                    reductionCost += sum; 
+                    sum += input[incrementer]; 
                 }
                 incrementer++;
             }
@@ -611,7 +611,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show($"Odd Number {res.ToString()}");
         }
 
-        private int GCD(int a, int b)
+        private int GCD(int a, int b) // 2,7
         {
             /* 
                 a=2, b= 7
@@ -628,9 +628,9 @@ namespace WindowsFormsApplication3
             int temp = 0;
             while (b != 0)
             {
-                temp = b;
-                b = a % b;
-                a = temp;
+                temp = b; //1
+                b = a % b; //2%1 = 0
+                a = temp; //1
             }
 
             return a;
@@ -657,7 +657,7 @@ namespace WindowsFormsApplication3
                */
             /* Instead of moving one by one, divide the array in different sets where number of sets is equal to GCD of n and d and move the elements within sets.             
                If GCD is 1 as is for the above example array(n = 7 and d = 2) */
-            int max = this.GCD(d, n);
+            int max = this.GCD(d, n); //1
 
             for (i = 0; i < max; i++)
             {
@@ -692,17 +692,49 @@ namespace WindowsFormsApplication3
                Step 3   : 0 to Input.Length-1-2
             */
             int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            int[] input1 = new int[] { 1, 2, 3, 4, 5, 6, 7 }; 
+
             int d = 2;
             inputDisplayBuilder.Clear();
-            MessageBox.Show($"Input Array is {printArray(input)}");
+            MessageBox.Show($"Approach 1 : Input Array is {printArray(input)}");            
             this.leftRotate(input, d, input.Length);
-            MessageBox.Show($"After rotation array is {printArray(input)}");
+            MessageBox.Show($"Approach 1 : After rotation array is {printArray(input)}");
 
-            //int i = 7;
-            //int j = 10;
+            MessageBox.Show($"Approach 2 : Input Array is {printArray(input1)}");
+            this.rotateArr(input1, d);
+            MessageBox.Show($"Approach 2 : After rotation array is {printArray(input1)}");
+           
 
-            //MessageBox.Show($"GCD of {i} and {j} is {this.GCD(i,j).ToString()}");
+        }
 
+        private void rotateArr(int[] arr, int d)
+        {
+            int n = arr.Length;
+
+            // Handle the case where d > size of array
+            d %= n;
+
+            // Reverse the first d elements
+            reverse(arr, 0, d - 1);
+
+            // Reverse the remaining n-d elements
+            reverse(arr, d, n - 1);
+
+            // Reverse the entire array
+            reverse(arr, 0, n - 1);
+        }
+
+        // Function to reverse a portion of the array
+        private void reverse(int[] arr, int start, int end)
+        {
+            while (start < end)
+            {
+                int temp = arr[start];
+                arr[start] = arr[end];
+                arr[end] = temp;
+                start++;
+                end--;
+            }
         }
 
 
@@ -792,14 +824,14 @@ namespace WindowsFormsApplication3
 
             while (low <= high)
             {
-                int partitionX = (low + high) / 2; //1
+                int partitionX = (low + high) / 2; //2
                 int partitionY = ((x + y + 1) / 2) - partitionX; //1
 
-                int maxLeftX = (partitionX == 0) ? int.MinValue : nums1[partitionX - 1]; //1
-                int minRightX = (partitionX == x) ? int.MaxValue : nums1[partitionX]; //2
+                int maxLeftX = (partitionX == 0) ? int.MinValue : nums1[partitionX - 1]; //2
+                int minRightX = (partitionX == x) ? int.MaxValue : nums1[partitionX]; //int.Max
 
-                int maxLeftY = (partitionY == 0) ? int.MinValue : nums2[partitionY - 1]; //3
-                int minRightY = (partitionY == y) ? int.MaxValue : nums2[partitionY];//4
+                int maxLeftY = (partitionY == 0) ? int.MinValue : nums2[partitionY - 1]; //2
+                int minRightY = (partitionY == y) ? int.MaxValue : nums2[partitionY];//3
 
                 if (maxLeftX <= minRightY && maxLeftY <= minRightX) //1 <= 4 && 3 <= 2
                 {
@@ -887,24 +919,24 @@ namespace WindowsFormsApplication3
             int[] heights = new int[] { 1, 2, 4, 2, 1 };
             int tempPos = 0;
             int tempHist = 0;
-            Stack pos = new Stack();
-            Stack histogram = new Stack();
+            Stack<int> pos = new Stack<int>();
+            Stack<int> histogram = new Stack<int>();
             int largest = 0;
             for (int i = 0; i < heights.Length; i++)
             {
                 int h = heights[i];
-                if (histogram.Count == 0 || h >= (int)histogram.Peek())
+                if (histogram.Count == 0 || h >= histogram.Peek())
                 {
                     histogram.Push(h);
                     pos.Push(i);
                 }
                 else
                 {
-                    while (histogram.Count > 0 && h < (int)histogram.Peek())
+                    while (histogram.Count > 0 && h < histogram.Peek())
                     {
-                        tempPos = (int)pos.Pop();
-                        tempHist = (int)histogram.Pop();
-                        largest = Math.Max(tempHist * (i - tempPos), largest);
+                        tempPos = pos.Pop(); //2
+                        tempHist = histogram.Pop(); //1
+                        largest = Math.Max(tempHist * (i - tempPos), largest);//6  i =4
                     }
                     histogram.Push(h);
                     pos.Push(tempPos);
@@ -913,8 +945,8 @@ namespace WindowsFormsApplication3
             }
             while (histogram.Count > 0)
             {
-                tempPos = (int)pos.Pop();
-                tempHist = (int)histogram.Pop();
+                tempPos = pos.Pop(); //1
+                tempHist = histogram.Pop();//0
                 largest = Math.Max(tempHist * (heights.Length - tempPos), largest);
             }
 
@@ -3876,11 +3908,76 @@ namespace WindowsFormsApplication3
 
             List<IntervalRange> res = MergeIntervals(a, b);
 
-            
-            result.AppendLine($"Result  : \n{this.PrintIntervals(res)}");
+
+            result.AppendLine($"Solution 1 Result  : \n{this.PrintIntervals(res)}");
 
             MessageBox.Show(result.ToString());
-                
+
+
+            // Fix for CS1950 and CS1503 errors
+            List<List<IntervalRange>> allIntervalSets = new List<List<IntervalRange>>
+            {
+                new List<IntervalRange>
+                {
+                    new IntervalRange() { Start = 1, End = 3 },
+                    new IntervalRange() { Start = 2, End = 6 }
+                },
+                new List<IntervalRange>
+                {
+                    new IntervalRange() { Start = 8, End = 10 },
+                    new IntervalRange() { Start = 9, End = 12 }
+                },
+                new List<IntervalRange>
+                {
+                    new IntervalRange() { Start = 14, End = 16 },
+                    new IntervalRange() { Start = 13, End = 15 }
+                }
+            };
+
+            result.Clear();            
+
+            foreach (var set in allIntervalSets)
+            {
+                result.AppendLine($"Solution 2 : Intervals : \n{this.PrintIntervals(set)}");
+            }
+
+            //MessageBox.Show("Solution 2 : Sets: " + result.ToString());
+
+            var flattened = allIntervalSets.SelectMany(s => s).ToList();
+            var mergedAll = MergeIntervals(flattened);
+
+            result.AppendLine($"Solution 2 : Merged Set: \n{this.PrintIntervals(mergedAll)}");
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private List<IntervalRange> MergeIntervals(List<IntervalRange> intervals)
+        {
+            if (intervals == null || intervals.Count == 0)
+                return new List<IntervalRange>();
+
+            // Sort intervals by start time
+            intervals.Sort((a, b) => a.Start.CompareTo(b.Start));
+
+            List<IntervalRange> result = new List<IntervalRange>();
+            IntervalRange current = intervals[0];
+
+            for (int i = 1; i < intervals.Count; i++)
+            {
+                if (intervals[i].Start <= current.End)
+                {
+                    // Merge overlapping intervals
+                    current.End = Math.Max(current.End, intervals[i].End);
+                }
+                else
+                {
+                    result.Add(current);
+                    current = intervals[i];
+                }
+            }
+
+            result.Add(current); // Add last merged interval
+            return result;
         }
 
 

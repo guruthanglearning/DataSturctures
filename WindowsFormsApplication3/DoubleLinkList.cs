@@ -520,9 +520,7 @@ namespace WindowsFormsApplication3
                     DoubleLL endNode = FattenNode(runner.Child);
                     if (endNode != null)
                     { 
-                        endNode.Next = runner.Next;
-                        if (runner.Next != null)
-                            runner.Next.Previous = endNode;
+                        endNode.Next = runner.Next;                       
                         runner.Next.Previous = endNode;
                         DoubleLL child = runner.Child;
                         runner.Child = null;
