@@ -11636,6 +11636,90 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void btn_Minimum_Subarray_with_k_distinct_elements_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an integer array nums and an integer k, return the number of good subarrays of nums.
+
+                A good array is an array where the number of different integers in that array is exactly k.
+
+                For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.
+                A subarray is a contiguous part of an array.
+
+                Example 1:
+
+                Input: nums = [1,2,1,2,3], k = 2
+                Output: 7
+                Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2]
+                Example 2:
+
+                Input: nums = [1,2,1,3,4], k = 3
+                Output: 3
+                Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 2 * 104
+                1 <= nums[i], k <= nums.length
+
+                Complexity : 
+                Time	O(n) — sliding window scans once
+                Space	O(k) — to store counts of up to k distinct elements
+                
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 1, 2, 3 },m = 2 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 1, 2, 1, 3, 4 }, m = 3 });
+
+            foreach (var input in inputs)
+            {                
+                var res = this.MinSubarrayWithKDistinct(input.input, input.m);
+                result.AppendLine($"Subarrays with K Different Integers for the given  {string.Join(",", input.input)}   is {res}");
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private int MinSubarrayWithKDistinct(int[] nums, int k)
+        {
+            /*
+             {1, 2, 1, 2, 3 },m = 2
+
+             1->2
+             2->2             
+             */
+
+            int left = 1;
+            int minLen = int.MaxValue;
+            Dictionary<int, int> freq = new Dictionary<int, int>();
+
+            for (int right = 0; right < nums.Length; right++) //4
+            {
+                // Expand the right
+                if (!freq.ContainsKey(nums[right]))
+                    freq[nums[right]] = 0;
+                freq[nums[right]]++;
+
+                // Shrink from left if we have more than k distinct
+                while (freq.Count > k)
+                {
+                    freq[nums[left]]--;
+                    if (freq[nums[left]] == 0)
+                        freq.Remove(nums[left]);
+                    left++;
+                }
+
+                // Check if exactly k distinct
+                if (freq.Count == k)
+                    minLen = Math.Min(minLen, right - left + 1); //4-1 = 3+1
+            }
+
+            return minLen == int.MaxValue ? -1 : minLen;
+        }
     }
 }
 

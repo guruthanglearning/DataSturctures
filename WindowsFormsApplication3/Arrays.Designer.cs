@@ -161,6 +161,7 @@
             this.btn_Stone_Game = new System.Windows.Forms.Button();
             this.btn_Array_of_Doubled_Pairs = new System.Windows.Forms.Button();
             this.btn_Intersection_of_Two_Arrays_II = new System.Windows.Forms.Button();
+            this.btn_Minimum_Subarray_with_k_distinct_elements = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1630,9 +1631,9 @@
             // btn_Stone_Game
             // 
             this.btn_Stone_Game.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Stone_Game.Location = new System.Drawing.Point(2188, 38);
+            this.btn_Stone_Game.Location = new System.Drawing.Point(2186, 42);
             this.btn_Stone_Game.Name = "btn_Stone_Game";
-            this.btn_Stone_Game.Size = new System.Drawing.Size(165, 40);
+            this.btn_Stone_Game.Size = new System.Drawing.Size(226, 40);
             this.btn_Stone_Game.TabIndex = 132;
             this.btn_Stone_Game.Text = "Stone Game";
             this.btn_Stone_Game.UseVisualStyleBackColor = true;
@@ -1660,11 +1661,23 @@
             this.btn_Intersection_of_Two_Arrays_II.UseVisualStyleBackColor = true;
             this.btn_Intersection_of_Two_Arrays_II.Click += new System.EventHandler(this.btn_Intersection_of_Two_Arrays_II_Click);
             // 
+            // btn_Minimum_Subarray_with_k_distinct_elements
+            // 
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Location = new System.Drawing.Point(2186, 85);
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Name = "btn_Minimum_Subarray_with_k_distinct_elements";
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Size = new System.Drawing.Size(226, 40);
+            this.btn_Minimum_Subarray_with_k_distinct_elements.TabIndex = 135;
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Text = "Minimum Subarray with k distinct elements";
+            this.btn_Minimum_Subarray_with_k_distinct_elements.UseVisualStyleBackColor = true;
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Click += new System.EventHandler(this.btn_Minimum_Subarray_with_k_distinct_elements_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(4214, 1948);
+            this.Controls.Add(this.btn_Minimum_Subarray_with_k_distinct_elements);
             this.Controls.Add(this.btn_Intersection_of_Two_Arrays_II);
             this.Controls.Add(this.btn_Array_of_Doubled_Pairs);
             this.Controls.Add(this.btn_Stone_Game);
@@ -1940,5 +1953,6 @@
         private System.Windows.Forms.Button btn_Stone_Game;
         private System.Windows.Forms.Button btn_Array_of_Doubled_Pairs;
         private System.Windows.Forms.Button btn_Intersection_of_Two_Arrays_II;
+        private System.Windows.Forms.Button btn_Minimum_Subarray_with_k_distinct_elements;
     }
 }
