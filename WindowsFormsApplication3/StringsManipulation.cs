@@ -1022,13 +1022,30 @@ namespace WindowsFormsApplication3
 
         private void button21_Click(object sender, EventArgs e)
         {
-         
+
             //MMMCMXCIX
+
+            List<string> inputs = new List<string>() { 
+                                                        "MMMCMXCIX",
+                                                        "III"
+                                                     };
+            
+            StringBuilder result = new StringBuilder();
+            foreach(string s in inputs)
+            {
+                result.Append($"Roman to Int for the given input {s} is Solution 1  : {this.RomanToInt_Solution1(s)} Solution 2 : {this.RomanToInt_Solution2(s)} \n");
+            }
+
+            MessageBox.Show(result.ToString());
+            
+        }
+
+        private string RomanToInt_Solution1(string s)
+        {
             Dictionary<char, int> _romanMap = new Dictionary<char, int> { { 'I', 1 }, { 'V', 5 }, { 'X', 10 },
                                                                           { 'L', 50 }, { 'C', 100 }, { 'D', 500 },
-                                                                          { 'M', 1000 } };
-            textBox1.Text = "MMMCMXCIX";
-            string text = textBox1.Text;
+                                                                          { 'M', 1000 } };            
+            string text = s;
             int totalValue = 0, prevValue = 0;
             foreach (var c in text)
             {
@@ -1048,47 +1065,50 @@ namespace WindowsFormsApplication3
                     prevValue = crtValue; //X
                 }
             }
-            MessageBox.Show(totalValue.ToString());
-            /*
-          string s = textBox1.Text;
-          Dictionary<string, int> dic = new Dictionary<string, int>();
-          dic.Add("I", 1);
-          dic.Add("IV", 4);
-          dic.Add("V", 5);
-          dic.Add("IX", 9);
-          dic.Add("X", 10);
-          dic.Add("XL", 40);
-          dic.Add("L", 50);
-          dic.Add("XC", 90);
-          dic.Add("C", 100);
-          dic.Add("CD", 100);
-          dic.Add("D", 500);
-          dic.Add("CM", 900);
-          dic.Add("M", 1000);
-
-          char prev = '\0';
-          int result = 0;
-          int temp = 0;
-          string key;
-
-          foreach (char c in s)
-          {
-              key = new string(new[] { prev , c});
-              temp = 0;
-              dic.TryGetValue(key, out temp);
-              if (temp > 0)
-              {
-                  result -= dic[prev.ToString()];
-                  result += temp;
-              }
-              else
-                  result += dic[c.ToString()];
-              prev = c;
-          }
-
-          MessageBox.Show(result.ToString());
-           */
+            return totalValue.ToString();
         }
+
+        private string RomanToInt_Solution2(string s)
+        {
+            Dictionary<string, int> dic = new Dictionary<string, int>();
+            dic.Add("I", 1);
+            dic.Add("IV", 4);
+            dic.Add("V", 5);
+            dic.Add("IX", 9);
+            dic.Add("X", 10);
+            dic.Add("XL", 40);
+            dic.Add("L", 50);
+            dic.Add("XC", 90);
+            dic.Add("C", 100);
+            dic.Add("CD", 100);
+            dic.Add("D", 500);
+            dic.Add("CM", 900);
+            dic.Add("M", 1000);
+
+            char prev = '\0';
+            int result = 0;
+            int temp = 0;
+            string key;
+
+            foreach (char c in s)
+            {
+                key = new string(new[] { prev, c });
+                temp = 0;
+                dic.TryGetValue(key, out temp);
+                if (temp > 0)
+                {
+                    result -= dic[prev.ToString()];
+                    result += temp;
+                }
+                else
+                    result += dic[c.ToString()];
+                prev = c;
+            }
+
+            return result.ToString();
+
+        }
+
 
         private void Query_nth_most_frequent_word_Click(object sender, EventArgs e)
         {
@@ -2032,11 +2052,11 @@ namespace WindowsFormsApplication3
             */
             StringBuilder result = new StringBuilder();
             Dictionary<string, string> inputs = new Dictionary<string, string>();
-            inputs.Add("a", "aa");
+            /*inputs.Add("a", "aa");
             inputs.Add("a*", "aba");
-            inputs.Add(".*", "ab");
+            inputs.Add(".*", "ab");*/
             inputs.Add("c*a*b", "aab");
-            inputs.Add("mis*is*p*.", "mississippi");
+            //inputs.Add("mis*is*p*.", "mississippi");
 
             result.Append($"For the given ");
             foreach (string key in inputs.Keys)
@@ -3194,9 +3214,10 @@ namespace WindowsFormsApplication3
             string tempResult = string.Empty;
             foreach (string input in inputs)
             {
-                //tempResult = this.LongestPalindromicSubstring(input);
+                tempResult = this.LongestPalindromicSubstring(input);
+                result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input)} is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult)}");
                 tempResult = this.LongestPalindrome_Manacher(input);
-                result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input) } is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult) }");
+                result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input) } using Manacher is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult) }");
             }
 
             MessageBox.Show(result.ToString());
@@ -3256,14 +3277,13 @@ namespace WindowsFormsApplication3
                 return s;
             }
 
-
-            int j = 0;
+            int j = 0; //babad
             int k = 0;
             int start = 0;
             int length = 1;
             int tempLength = 0;
 
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Length; i++) //babad i = 2
             {
                 tempLength = 0;
                 j = i;

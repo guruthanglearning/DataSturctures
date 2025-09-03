@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace WindowsFormsApplication3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Integers());   
+            Application.Run(new Arrays());   
         }
     }
 }

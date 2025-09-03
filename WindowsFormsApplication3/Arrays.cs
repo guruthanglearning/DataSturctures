@@ -951,7 +951,7 @@ namespace WindowsFormsApplication3
             }
 
 
-            MessageBox.Show($"Largest rectangle in histogram is {largest.ToString()} ");
+            MessageBox.Show($"Solution 1: Largest rectangle in histogram is {largest.ToString()} ");            
 
         }
 
@@ -1315,6 +1315,7 @@ namespace WindowsFormsApplication3
             inputs.Add(3, new int[] { 1, 2, 3, 0, 0, 0 });
             inputs.Add(4, new int[] { 0, 0, 0, 1, 2, 3 });
             inputs.Add(5, new int[] { 0, 0, 0, 1, 0, 0 });
+
             int lastIndexOfZero = 0;
             StringBuilder result = new StringBuilder();
 
@@ -1452,12 +1453,12 @@ namespace WindowsFormsApplication3
                 // index = 5 i = 7
                 if (index == -1 && input[i] == removeElement)
                 {
-                    index = i;
+                    index = i; //1
                 }
                 else if (index >= 0 && input[i] != removeElement)
                 {
                     input[index] = input[i];
-                    index++;
+                    index++; 
                 }
             }
 
@@ -4084,8 +4085,8 @@ namespace WindowsFormsApplication3
                   [-1, -1, 2]
                 ]
 
-
-                Time Complexity : O(N) where N is the list of items in the array
+                Both solution leads to the below complexities
+                Time Complexity : O(N^2) where N is the list of items in the array
                 Space Complexity : O(log N)
              */
 
@@ -11719,6 +11720,87 @@ namespace WindowsFormsApplication3
             }
 
             return minLen == int.MaxValue ? -1 : minLen;
+        }
+
+        private void btn_Next_Permutation_Click(object sender, EventArgs e)
+        {
+            /*
+                A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
+
+                For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
+                The next permutation of an array of integers is the next lexicographically greater permutation of its integer. More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+
+                For example, the next permutation of arr = [1,2,3] is [1,3,2].
+                Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+                While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+                Given an array of integers nums, find the next permutation of nums.
+
+                The replacement must be in place and use only constant extra memory.
+
+ 
+
+                Example 1:
+
+                Input: nums = [1,2,3]
+                Output: [1,3,2]
+                Example 2:
+
+                Input: nums = [3,2,1]
+                Output: [1,2,3]
+                Example 3:
+
+                Input: nums = [1,1,5]
+                Output: [1,5,1]
+
+                Complexity:
+                Time    :   O(N)
+                Space   :   O(1)
+ 
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<int[]> inputs = new List<int[]>();
+            //inputs.Add(new int[] {1,2,3  });
+            inputs.Add(new int[] { 3, 2, 1 });
+            //inputs.Add(new int[] { 1, 1, 5 });
+
+            foreach (var input in inputs)
+            {
+                result.Append($"Next Permutation for the given array {string.Join(", ", input)} is ");
+                this.NextPermutation(input);
+                result.Append($"{string.Join(", ", input)} \n");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public void NextPermutation(int[] input)
+        {
+            if (input == null || input.Length == 0)
+                return;
+
+            int i = input.Length - 2;
+            int j = input.Length - 1;
+
+            while (i >=0 && input[i] >= input[i + 1])
+                i--;
+
+            if (i < 0)
+            {
+                Array.Reverse(input);
+                return;
+            }
+
+            while (input[j] <= input[i] )
+                j--;
+
+            (input[i], input[j]) = (input[j], input[i]);
+
+            Array.Reverse(input, i + 1, input.Length - (i+1));
+
         }
     }
 }
