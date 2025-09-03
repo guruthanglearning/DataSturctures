@@ -7624,6 +7624,85 @@ namespace WindowsFormsApplication3
 
             return result;            
         }
+
+        private void btn_Longest_Valid_Parentheses_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses substring.
+
+                Example 1:
+
+                Input: s = "(()"
+                Output: 2
+                Explanation: The longest valid parentheses substring is "()".
+                Example 2:
+
+                Input: s = ")()())"
+                Output: 4
+                Explanation: The longest valid parentheses substring is "()()".
+                Example 3:
+
+                Input: s = ""
+                Output: 0
+ 
+
+                Constraints:
+
+                0 <= s.length <= 3 * 104
+                s[i] is '(', or ')'.
+
+                Complexity 
+                Time  : O(N)
+                Space : O(N)
+             
+             */
+
+
+            StringBuilder result = new StringBuilder();
+            List<string> inputs = new List<string>();
+            //inputs.Add("(()");
+            //inputs.Add(")()())");
+            //inputs.Add("");
+            inputs.Add("()(()");
+
+            foreach (var input in inputs)
+                result.AppendLine($"Longest Valid Parentheses for the given string {input} is {LongestValidParentheses(input)}");
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public int LongestValidParentheses(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return 0;
+
+
+            Stack<int> track = new Stack<int>();
+            track.Push(-1);
+            int result = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '(')
+                    track.Push(i);
+                else
+                {
+                    track.Pop();
+                    if (track.Count == 0)
+                    {
+                        track.Push(i);
+                    }
+                    else
+                    {
+                        result = Math.Max(result, i - track.Peek());
+                    }
+
+                }
+            }
+            return result;
+
+        }
     }
 }
 
