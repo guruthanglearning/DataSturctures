@@ -163,6 +163,8 @@
             this.btn_Intersection_of_Two_Arrays_II = new System.Windows.Forms.Button();
             this.btn_Minimum_Subarray_with_k_distinct_elements = new System.Windows.Forms.Button();
             this.btn_Next_Permutation = new System.Windows.Forms.Button();
+            this.btn_Search_in_Rotated_Sorted_Array = new System.Windows.Forms.Button();
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1425,7 +1427,7 @@
             this.btn_Valid_Mountain_Array.Location = new System.Drawing.Point(1275, 135);
             this.btn_Valid_Mountain_Array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Valid_Mountain_Array.Name = "btn_Valid_Mountain_Array";
-            this.btn_Valid_Mountain_Array.Size = new System.Drawing.Size(179, 18);
+            this.btn_Valid_Mountain_Array.Size = new System.Drawing.Size(179, 30);
             this.btn_Valid_Mountain_Array.TabIndex = 109;
             this.btn_Valid_Mountain_Array.Text = "Valid Mountain Array";
             this.btn_Valid_Mountain_Array.UseVisualStyleBackColor = true;
@@ -1434,7 +1436,7 @@
             // btn_Squares_of_a_Sorted_Array
             // 
             this.btn_Squares_of_a_Sorted_Array.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Squares_of_a_Sorted_Array.Location = new System.Drawing.Point(1275, 154);
+            this.btn_Squares_of_a_Sorted_Array.Location = new System.Drawing.Point(1275, 169);
             this.btn_Squares_of_a_Sorted_Array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Squares_of_a_Sorted_Array.Name = "btn_Squares_of_a_Sorted_Array";
             this.btn_Squares_of_a_Sorted_Array.Size = new System.Drawing.Size(179, 25);
@@ -1446,7 +1448,7 @@
             // btn_Increasing_Triplet_Subsequence
             // 
             this.btn_Increasing_Triplet_Subsequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Increasing_Triplet_Subsequence.Location = new System.Drawing.Point(1275, 185);
+            this.btn_Increasing_Triplet_Subsequence.Location = new System.Drawing.Point(1275, 200);
             this.btn_Increasing_Triplet_Subsequence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Increasing_Triplet_Subsequence.Name = "btn_Increasing_Triplet_Subsequence";
             this.btn_Increasing_Triplet_Subsequence.Size = new System.Drawing.Size(179, 25);
@@ -1458,7 +1460,7 @@
             // btn_Smallest_Range_II
             // 
             this.btn_Smallest_Range_II.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Smallest_Range_II.Location = new System.Drawing.Point(1275, 213);
+            this.btn_Smallest_Range_II.Location = new System.Drawing.Point(1275, 228);
             this.btn_Smallest_Range_II.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Smallest_Range_II.Name = "btn_Smallest_Range_II";
             this.btn_Smallest_Range_II.Size = new System.Drawing.Size(179, 22);
@@ -1470,7 +1472,7 @@
             // btn_Kth_Missing_Positive_Number
             // 
             this.btn_Kth_Missing_Positive_Number.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Kth_Missing_Positive_Number.Location = new System.Drawing.Point(1275, 240);
+            this.btn_Kth_Missing_Positive_Number.Location = new System.Drawing.Point(1275, 255);
             this.btn_Kth_Missing_Positive_Number.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Kth_Missing_Positive_Number.Name = "btn_Kth_Missing_Positive_Number";
             this.btn_Kth_Missing_Positive_Number.Size = new System.Drawing.Size(179, 24);
@@ -1482,7 +1484,7 @@
             // btn_Max_Number_of_K_Sum_Pairs
             // 
             this.btn_Max_Number_of_K_Sum_Pairs.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Max_Number_of_K_Sum_Pairs.Location = new System.Drawing.Point(1275, 268);
+            this.btn_Max_Number_of_K_Sum_Pairs.Location = new System.Drawing.Point(1275, 283);
             this.btn_Max_Number_of_K_Sum_Pairs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Max_Number_of_K_Sum_Pairs.Name = "btn_Max_Number_of_K_Sum_Pairs";
             this.btn_Max_Number_of_K_Sum_Pairs.Size = new System.Drawing.Size(179, 28);
@@ -1494,7 +1496,7 @@
             // btn_Kth_Largest_Element_in_an_Array
             // 
             this.btn_Kth_Largest_Element_in_an_Array.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Kth_Largest_Element_in_an_Array.Location = new System.Drawing.Point(1275, 301);
+            this.btn_Kth_Largest_Element_in_an_Array.Location = new System.Drawing.Point(1275, 316);
             this.btn_Kth_Largest_Element_in_an_Array.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Kth_Largest_Element_in_an_Array.Name = "btn_Kth_Largest_Element_in_an_Array";
             this.btn_Kth_Largest_Element_in_an_Array.Size = new System.Drawing.Size(179, 31);
@@ -1506,7 +1508,7 @@
             // btn_Find_the_Most_Competitive_Subsequence
             // 
             this.btn_Find_the_Most_Competitive_Subsequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Find_the_Most_Competitive_Subsequence.Location = new System.Drawing.Point(1275, 334);
+            this.btn_Find_the_Most_Competitive_Subsequence.Location = new System.Drawing.Point(1275, 349);
             this.btn_Find_the_Most_Competitive_Subsequence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Find_the_Most_Competitive_Subsequence.Name = "btn_Find_the_Most_Competitive_Subsequence";
             this.btn_Find_the_Most_Competitive_Subsequence.Size = new System.Drawing.Size(179, 32);
@@ -1518,7 +1520,7 @@
             // btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away
             // 
             this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Location = new System.Drawing.Point(1275, 370);
+            this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Location = new System.Drawing.Point(1275, 385);
             this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Name = "btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away";
             this.btn_Check_If_All_1s_Are_at_Least_Length_K_Places_Away.Size = new System.Drawing.Size(178, 30);
@@ -1530,7 +1532,7 @@
             // btn_Maximum_Gap
             // 
             this.btn_Maximum_Gap.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Maximum_Gap.Location = new System.Drawing.Point(1275, 402);
+            this.btn_Maximum_Gap.Location = new System.Drawing.Point(1275, 417);
             this.btn_Maximum_Gap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Maximum_Gap.Name = "btn_Maximum_Gap";
             this.btn_Maximum_Gap.Size = new System.Drawing.Size(178, 29);
@@ -1542,7 +1544,7 @@
             // btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts
             // 
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Location = new System.Drawing.Point(1275, 436);
+            this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Location = new System.Drawing.Point(1275, 451);
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Name = "btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts";
             this.btn_Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts.Size = new System.Drawing.Size(178, 31);
@@ -1554,7 +1556,7 @@
             // btn_Open_the_Lock
             // 
             this.btn_Open_the_Lock.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Open_the_Lock.Location = new System.Drawing.Point(1275, 470);
+            this.btn_Open_the_Lock.Location = new System.Drawing.Point(1275, 485);
             this.btn_Open_the_Lock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Open_the_Lock.Name = "btn_Open_the_Lock";
             this.btn_Open_the_Lock.Size = new System.Drawing.Size(178, 26);
@@ -1566,7 +1568,7 @@
             // btn_Longest_Consecutive_Sequence
             // 
             this.btn_Longest_Consecutive_Sequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Longest_Consecutive_Sequence.Location = new System.Drawing.Point(1275, 500);
+            this.btn_Longest_Consecutive_Sequence.Location = new System.Drawing.Point(1275, 515);
             this.btn_Longest_Consecutive_Sequence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Longest_Consecutive_Sequence.Name = "btn_Longest_Consecutive_Sequence";
             this.btn_Longest_Consecutive_Sequence.Size = new System.Drawing.Size(179, 33);
@@ -1578,7 +1580,7 @@
             // btn_Min_Cost_Climbing_Stairs
             // 
             this.btn_Min_Cost_Climbing_Stairs.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Min_Cost_Climbing_Stairs.Location = new System.Drawing.Point(1273, 538);
+            this.btn_Min_Cost_Climbing_Stairs.Location = new System.Drawing.Point(1273, 553);
             this.btn_Min_Cost_Climbing_Stairs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Min_Cost_Climbing_Stairs.Name = "btn_Min_Cost_Climbing_Stairs";
             this.btn_Min_Cost_Climbing_Stairs.Size = new System.Drawing.Size(177, 31);
@@ -1590,7 +1592,7 @@
             // btn_Palindrome_Pairs
             // 
             this.btn_Palindrome_Pairs.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Palindrome_Pairs.Location = new System.Drawing.Point(1276, 574);
+            this.btn_Palindrome_Pairs.Location = new System.Drawing.Point(1276, 589);
             this.btn_Palindrome_Pairs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Palindrome_Pairs.Name = "btn_Palindrome_Pairs";
             this.btn_Palindrome_Pairs.Size = new System.Drawing.Size(177, 31);
@@ -1602,7 +1604,7 @@
             // btnCandy
             // 
             this.btnCandy.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCandy.Location = new System.Drawing.Point(1275, 609);
+            this.btnCandy.Location = new System.Drawing.Point(1275, 624);
             this.btnCandy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCandy.Name = "btnCandy";
             this.btnCandy.Size = new System.Drawing.Size(179, 32);
@@ -1614,7 +1616,7 @@
             // btn_Max_Consecutive_Ones_III
             // 
             this.btn_Max_Consecutive_Ones_III.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Max_Consecutive_Ones_III.Location = new System.Drawing.Point(1276, 646);
+            this.btn_Max_Consecutive_Ones_III.Location = new System.Drawing.Point(1276, 661);
             this.btn_Max_Consecutive_Ones_III.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Max_Consecutive_Ones_III.Name = "btn_Max_Consecutive_Ones_III";
             this.btn_Max_Consecutive_Ones_III.Size = new System.Drawing.Size(174, 28);
@@ -1686,7 +1688,7 @@
             // btn_Subsets_II
             // 
             this.btn_Subsets_II.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Subsets_II.Location = new System.Drawing.Point(1276, 678);
+            this.btn_Subsets_II.Location = new System.Drawing.Point(1276, 693);
             this.btn_Subsets_II.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Subsets_II.Name = "btn_Subsets_II";
             this.btn_Subsets_II.Size = new System.Drawing.Size(177, 31);
@@ -1701,7 +1703,7 @@
             this.btn_Stone_Game.Location = new System.Drawing.Point(1457, 27);
             this.btn_Stone_Game.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Stone_Game.Name = "btn_Stone_Game";
-            this.btn_Stone_Game.Size = new System.Drawing.Size(151, 26);
+            this.btn_Stone_Game.Size = new System.Drawing.Size(250, 26);
             this.btn_Stone_Game.TabIndex = 132;
             this.btn_Stone_Game.Text = "Stone Game";
             this.btn_Stone_Game.UseVisualStyleBackColor = true;
@@ -1737,7 +1739,7 @@
             this.btn_Minimum_Subarray_with_k_distinct_elements.Location = new System.Drawing.Point(1457, 55);
             this.btn_Minimum_Subarray_with_k_distinct_elements.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Minimum_Subarray_with_k_distinct_elements.Name = "btn_Minimum_Subarray_with_k_distinct_elements";
-            this.btn_Minimum_Subarray_with_k_distinct_elements.Size = new System.Drawing.Size(151, 26);
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Size = new System.Drawing.Size(250, 26);
             this.btn_Minimum_Subarray_with_k_distinct_elements.TabIndex = 135;
             this.btn_Minimum_Subarray_with_k_distinct_elements.Text = "Minimum Subarray with k distinct elements";
             this.btn_Minimum_Subarray_with_k_distinct_elements.UseVisualStyleBackColor = true;
@@ -1749,17 +1751,43 @@
             this.btn_Next_Permutation.Location = new System.Drawing.Point(1457, 82);
             this.btn_Next_Permutation.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Next_Permutation.Name = "btn_Next_Permutation";
-            this.btn_Next_Permutation.Size = new System.Drawing.Size(151, 26);
+            this.btn_Next_Permutation.Size = new System.Drawing.Size(250, 26);
             this.btn_Next_Permutation.TabIndex = 136;
             this.btn_Next_Permutation.Text = "Next Permutation";
             this.btn_Next_Permutation.UseVisualStyleBackColor = true;
             this.btn_Next_Permutation.Click += new System.EventHandler(this.btn_Next_Permutation_Click);
+            // 
+            // btn_Search_in_Rotated_Sorted_Array
+            // 
+            this.btn_Search_in_Rotated_Sorted_Array.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search_in_Rotated_Sorted_Array.Location = new System.Drawing.Point(1458, 110);
+            this.btn_Search_in_Rotated_Sorted_Array.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Search_in_Rotated_Sorted_Array.Name = "btn_Search_in_Rotated_Sorted_Array";
+            this.btn_Search_in_Rotated_Sorted_Array.Size = new System.Drawing.Size(249, 31);
+            this.btn_Search_in_Rotated_Sorted_Array.TabIndex = 137;
+            this.btn_Search_in_Rotated_Sorted_Array.Text = "Search in Rotated Sorted Array";
+            this.btn_Search_in_Rotated_Sorted_Array.UseVisualStyleBackColor = true;
+            this.btn_Search_in_Rotated_Sorted_Array.Click += new System.EventHandler(this.btn_Search_in_Rotated_Sorted_Array_Click);
+            // 
+            // btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array
+            // 
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Location = new System.Drawing.Point(1457, 146);
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Name = "btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array";
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Size = new System.Drawing.Size(249, 31);
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.TabIndex = 138;
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Text = "Find First and Last Position of Element in Sorted Array";
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.UseVisualStyleBackColor = true;
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Click += new System.EventHandler(this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2809, 1266);
+            this.Controls.Add(this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array);
+            this.Controls.Add(this.btn_Search_in_Rotated_Sorted_Array);
             this.Controls.Add(this.btn_Next_Permutation);
             this.Controls.Add(this.btn_Minimum_Subarray_with_k_distinct_elements);
             this.Controls.Add(this.btn_Intersection_of_Two_Arrays_II);
@@ -2038,5 +2066,7 @@
         private System.Windows.Forms.Button btn_Intersection_of_Two_Arrays_II;
         private System.Windows.Forms.Button btn_Minimum_Subarray_with_k_distinct_elements;
         private System.Windows.Forms.Button btn_Next_Permutation;
+        private System.Windows.Forms.Button btn_Search_in_Rotated_Sorted_Array;
+        private System.Windows.Forms.Button btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExtensionMethodsDemo1;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1415,6 +1416,7 @@ namespace WindowsFormsApplication3
             public string word;
             public int R;
             public int C;
+            public int[,] Matrix;
         }
 
         private void btn_Find_the_Town_Judge_Click(object sender, EventArgs e)
@@ -5326,6 +5328,96 @@ namespace WindowsFormsApplication3
 
             return "Draw";
 
+        }
+
+        private void btn_Mirroring_an_image_using_a_matrix_Click(object sender, EventArgs e)
+        {
+            /*
+             
+             Complexity : 
+             Time : O(n * m)
+             Space : O(1) (in-place)
+            */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+            inputs.Add(new Common()
+            {
+                Matrix = new int[,] {
+                                          { 1, 2, 3 },
+                                          { 4, 5, 6 },
+                                          { 7, 8, 9 }
+                }
+            });
+
+            foreach(var input in inputs)
+            {
+                result.AppendLine($"Mirroring an image using a matrix for the given matrix {Environment.NewLine} {this.PrintMatrix(input.Matrix)} {Environment.NewLine}");
+                Solution1_MirrorMatrix(input.Matrix);
+                result.AppendLine($" is {this.PrintMatrix(input.Matrix)}");
+                Solution2_MirrorMatrix(input.Matrix);
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void Solution1_MirrorMatrix(int[,] matrix)
+        {
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols / 2; c++)
+                {
+                    // Swap elements horizontally
+                    int temp = matrix[r, c];
+                    matrix[r, c] = matrix[r, cols - 1 - c];
+                    matrix[r, cols - 1 - c] = temp;
+                }
+            }
+        }
+
+        private void Solution2_MirrorMatrix(int[,] matrix)
+        {
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            for (int row = 0; row < rows; row++)
+            {
+                int left = 0;
+                int right = cols - 1;
+
+                while (left < right)
+                {
+                    // Swap left and right pixels in the row
+                    int temp = matrix[row, left];
+                    matrix[row, left] = matrix[row, right];
+                    matrix[row, right] = temp;
+
+                    left++;
+                    right--;
+                }
+            }
+        }
+
+        private string PrintMatrix(int[,] matrix)
+        {
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+            StringBuilder result = new StringBuilder();
+
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    result.Append(matrix[r, c] + " ");
+                }
+                result.AppendLine();
+            }
+
+            return result.ToString().TrimEnd();
         }
 
 

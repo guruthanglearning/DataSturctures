@@ -70,6 +70,7 @@
             this.btn_Sudoku_Solver = new System.Windows.Forms.Button();
             this.btn_Range_Addition_II = new System.Windows.Forms.Button();
             this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game = new System.Windows.Forms.Button();
+            this.btn_Mirroring_an_image_using_a_matrix = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -519,11 +520,22 @@
             this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.UseVisualStyleBackColor = true;
             this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game.Click += new System.EventHandler(this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game_Click);
             // 
+            // btn_Mirroring_an_image_using_a_matrix
+            // 
+            this.btn_Mirroring_an_image_using_a_matrix.Location = new System.Drawing.Point(613, 158);
+            this.btn_Mirroring_an_image_using_a_matrix.Name = "btn_Mirroring_an_image_using_a_matrix";
+            this.btn_Mirroring_an_image_using_a_matrix.Size = new System.Drawing.Size(204, 55);
+            this.btn_Mirroring_an_image_using_a_matrix.TabIndex = 137;
+            this.btn_Mirroring_an_image_using_a_matrix.Text = "Mirroring an image using a matrix";
+            this.btn_Mirroring_an_image_using_a_matrix.UseVisualStyleBackColor = true;
+            this.btn_Mirroring_an_image_using_a_matrix.Click += new System.EventHandler(this.btn_Mirroring_an_image_using_a_matrix_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Mirroring_an_image_using_a_matrix);
             this.Controls.Add(this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game);
             this.Controls.Add(this.btn_Range_Addition_II);
             this.Controls.Add(this.btn_Sudoku_Solver);
@@ -618,5 +630,6 @@
         private System.Windows.Forms.Button btn_Sudoku_Solver;
         private System.Windows.Forms.Button btn_Range_Addition_II;
         private System.Windows.Forms.Button btn_Find_Winner_on_a_Tic_Tac_Toe_Game;
+        private System.Windows.Forms.Button btn_Mirroring_an_image_using_a_matrix;
     }
 }

@@ -4159,9 +4159,9 @@ namespace WindowsFormsApplication3
                 if (nums[mid] == search)
                     return mid;
                 else if (nums[mid] > search)
-                    r--;
+                    r = mid -1;
                 else
-                    l++;
+                    l= mid + 1;
             }
 
 
@@ -11801,6 +11801,193 @@ namespace WindowsFormsApplication3
 
             Array.Reverse(input, i + 1, input.Length - (i+1));
 
+        }
+
+        private void btn_Search_in_Rotated_Sorted_Array_Click(object sender, EventArgs e)
+        {
+            /*
+                There is an integer array nums sorted in ascending order (with distinct values).
+
+                Prior to being passed to your function, nums is possibly left rotated at an unknown index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be left rotated by 3 indices and become [4,5,6,7,0,1,2].
+
+                Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+                You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+                Example 1:
+
+                Input: nums = [4,5,6,7,0,1,2], target = 0
+                Output: 4
+                Example 2:
+
+                Input: nums = [4,5,6,7,0,1,2], target = 3
+                Output: -1
+                Example 3:
+
+                Input: nums = [1], target = 0
+                Output: -1
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 5000
+                -104 <= nums[i] <= 104
+                All values of nums are unique.
+                nums is an ascending array that is possibly rotated.
+                -104 <= target <= 104
+
+                Time Complexity     : O(log N)
+                Space Complexity    : O(1)
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 4, 5, 6, 7, 0, 1, 2 }, find = 0 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 4, 5, 6, 7, 0, 1, 2 }, find = 3 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 1 }, find = 0 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 5, 1, 3 }, find = 0 });
+            
+            foreach (var input in inputs)
+            {
+                result.Append($"The given value {input.find} in Rotated Sorted Array {string.Join(", ", input.input1)} is found in with solution 1 : {this.Search_In_Rotated_Sorted_Array_Solution_1(input.input1, input.find)} " +
+                    $"and solution 2 : {this.Search_In_Rotated_Sorted_Array_Solution_2(input.input2, input.find)} \n");                
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+        public int Search_In_Rotated_Sorted_Array_Solution_1(int[] nums, int target)
+        {
+            if (nums == null || nums.Length == 0)
+                return -1;
+
+            int m = 0;
+            int result = -1;
+
+            int pivot = FindPivot(nums);
+            result = BinarySearch(nums, target, pivot, nums.Length - 1);
+            if (result < 0)
+                result = BinarySearch(nums, target, 0, pivot);
+
+            return result;
+
+        }
+
+        private int FindPivot(int[] nums)
+        {
+            int l = 0;
+            int h = nums.Length - 1;
+            int m = 0;
+
+            if (nums[l] < nums[h])
+                return 0;
+
+            while (l < h)
+            {
+                m = (l + h) / 2;
+                if (nums[m] > nums[h])
+                    l = m + 1;
+                else
+                    h = m;
+            }
+
+            return l;
+        }
+
+        public  int Search_In_Rotated_Sorted_Array_Solution_2(int[] a, int target)
+        {
+            if (a == null || a.Length == 0) return -1;
+
+            int lo = 0, hi = a.Length - 1;
+            while (lo <= hi)
+            {
+                int mid = lo + ((hi - lo) >> 1);
+                if (a[mid] == target) return mid;
+
+                // Left half is sorted
+                if (a[lo] <= a[mid])
+                {
+                    if (a[lo] <= target && target < a[mid]) hi = mid - 1;
+                    else lo = mid + 1;
+                }
+                // Right half is sorted
+                else
+                {
+                    if (a[mid] < target && target <= a[hi]) lo = mid + 1;
+                    else hi = mid - 1;
+                }
+            }
+            return -1;
+        }
+
+        private void btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array_Click(object sender, EventArgs e)
+        {
+            /*
+                Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+                If target is not found in the array, return [-1, -1].
+
+                You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+                Example 1:
+
+                Input: nums = [5,7,7,8,8,10], target = 8
+                Output: [3,4]
+                Example 2:
+
+                Input: nums = [5,7,7,8,8,10], target = 6
+                Output: [-1,-1]
+                Example 3:
+
+                Input: nums = [], target = 0
+                Output: [-1,-1]
+ 
+
+                Constraints:
+
+                0 <= nums.length <= 105
+                -109 <= nums[i] <= 109
+                nums is a non-decreasing array.
+                -109 <= target <= 109
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 5, 7, 7, 8, 8, 10 }, find = 8 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 5, 7, 7, 8, 8, 10 }, find = 6 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] {  }, find = 0 });
+            inputs.Add(new ArrayAndValue() { input1 = new int[] { 1 }, find = 1 });
+
+            foreach (var input in inputs)
+            {
+                int[] range = new int[2];
+                range = SearchRange(input.input1, input.find);
+                result.AppendLine($"First and Last Position of Element in for the given Sorted Array {{ {string.Join(", ", input.input1)} }} and for the search value {input.find} is found between {range[0]}  and {range[1]} the ranges \n");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int[] SearchRange(int[] nums, int target)
+        {
+
+            if (nums == null || nums.Length == 0)
+                return new int[] { -1, -1 };
+
+            int fo = 0;
+            int so = 0;
+            int index = this.BinarySearch(nums, 0, nums.Length - 1, target);
+            fo = so = index;
+            while (fo - 1 >= 0 && nums[fo - 1] == target)
+                fo--;
+            while (so + 1 < nums.Length && nums[so + 1] == target)
+                so++;
+
+            return new int[] { fo, so };
         }
     }
 }
