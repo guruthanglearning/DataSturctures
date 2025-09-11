@@ -7703,6 +7703,89 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Count_and_Say_Click(object sender, EventArgs e)
+        {
+            /*
+              The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
+
+                countAndSay(1) = "1"
+                countAndSay(n) is the run-length encoding of countAndSay(n - 1).
+                Run-length encoding (RLE) is a string compression method that works by replacing consecutive identical characters (repeated 2 or more times) with the concatenation of the character and the number marking the count of the characters (length of the run). For example, to compress the string "3322251" we replace "33" with "23", replace "222" with "32", replace "5" with "15" and replace "1" with "11". Thus the compressed string becomes "23321511".
+
+                Given a positive integer n, return the nth element of the count-and-say sequence.
+
+ 
+
+                Example 1:
+
+                Input: n = 4
+
+                Output: "1211"
+
+                Explanation:
+
+                countAndSay(1) = "1"
+                countAndSay(2) = RLE of "1" = "11"
+                countAndSay(3) = RLE of "11" = "21"
+                countAndSay(4) = RLE of "21" = "1211"
+                Example 2:
+
+                Input: n = 1
+
+                Output: "1"
+
+                Explanation:
+
+                This is the base case.
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<int> inputs = new List<int>() { 4, 5, 6 };
+            
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Count And Say for the given integer {input} is {CountAndSay(input)}");
+            }
+
+
+            MessageBox.Show(result.ToString());
+        }
+
+
+
+        private string CountAndSay(int n)
+        {            
+            if (n<= 0)
+                return string.Empty;
+
+
+            string result = "1";
+                        
+            for (int i = 1; i < n; i++)
+                result = this.CountAndSayNext(result);
+
+            return result;
+        }
+
+        private string CountAndSayNext(string result)
+        {            
+        
+            StringBuilder sb = new StringBuilder(result.Length * 2);
+            int i = 0;
+            while (i < result.Length)
+            {
+                char c = result[i];
+                int j= i +1;
+                while (j < result.Length && result[j] == c) j++;
+                int count = j - i;
+                sb.Append(count);
+                sb.Append(c);
+                i = j;
+            }
+   
+            return sb.ToString();
+        }
     }
 }
 
