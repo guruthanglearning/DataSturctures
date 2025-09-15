@@ -7635,19 +7635,26 @@ namespace WindowsFormsApplication3
 
             List<ArrayAndValue> inputs = new List<ArrayAndValue>();
             inputs.Add(new ArrayAndValue() { input = new int[] { 2, 3, 6, 7 }, find = 7 });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 3, 5 }, find = 8 });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 2 }, find = 1 });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 1}, find = 1 });
-            inputs.Add(new ArrayAndValue() { input = new int[] { 1}, find = 2 });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 2, 3, 5 }, find = 8 });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 2 }, find = 1 });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 1}, find = 1 });
+            //inputs.Add(new ArrayAndValue() { input = new int[] { 1}, find = 2 });
             
 
 
             StringBuilder result = new StringBuilder();
             foreach (var sip in inputs)
             {
-                result.AppendLine($"Combination Sum  for the given int array {string.Join(" ", sip.input)} for given target {sip.find} is  \n");
+                result.AppendLine($"Solution 1 : Combination Sum  for the given int array {string.Join(" ", sip.input)} for given target {sip.find} is \n ");
                 foreach (List<int> i in this.CombinationSum(sip.input, sip.find))
-                    result.Append($"{string.Join(",",i)}");
+                    result.Append($"{{{string.Join(",",i)} }}");
+
+                result.AppendLine(Environment.NewLine);
+
+                result.AppendLine($"Solution 2 : Combination Sum  for the given int array {string.Join(" ", sip.input)} for given target {sip.find} is  \n");
+                foreach (List<int> i in this.CombinationSum_Solution2(sip.input, sip.find))
+                    result.Append($"{{{string.Join(",", i)}}}");
+
                 result.AppendLine();
 
 
@@ -7688,6 +7695,46 @@ namespace WindowsFormsApplication3
             }
 
         }
+
+
+        public IList<IList<int>> CombinationSum_Solution2(int[] candidates, int target)
+        {
+
+            List<IList<int>> result = new List<IList<int>>();
+            List<int> list = new List<int>();
+            
+            Array.Sort(candidates);
+
+            void DFS(int start, int remain)
+            {
+                if (remain == 0)
+                {
+                    result.Add(new List<int>(list));
+                    return;
+                }
+
+                for(int i = start; i < candidates.Length; i++)
+                {
+
+                    if (i > start && candidates[i] == candidates[i-1])
+                        continue;
+
+                    int x = candidates[i];
+                    if (x > remain)
+                        break;
+
+                    list.Add(x);
+                    DFS(i, remain - x);
+                    list.RemoveAt(list.Count() - 1);
+                }                
+            }
+
+
+            DFS(0, target);
+            return result;
+
+        }
+
 
         private void btn_K_diff_Pairs_in_an_Array_Click(object sender, EventArgs e)
         {
@@ -11988,6 +12035,101 @@ namespace WindowsFormsApplication3
                 so++;
 
             return new int[] { fo, so };
+        }
+
+        private void btn_CombinationSum2_Click(object sender, EventArgs e)
+        {
+            /*
+                Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
+
+                Each number in candidates may only be used once in the combination.
+
+                Note: The solution set must not contain duplicate combinations.
+
+                Example 1:
+
+                Input: candidates = [10,1,2,7,6,1,5], target = 8
+                Output: 
+                [
+                [1,1,6],
+                [1,2,5],
+                [1,7],
+                [2,6]
+                ]
+                Example 2:
+
+                Input: candidates = [2,5,2,1,2], target = 5
+                Output: 
+                [
+                [1,2,2],
+                [5]
+                ]
+ 
+
+                Constraints:
+
+                1 <= candidates.length <= 100
+                1 <= candidates[i] <= 50
+                1 <= target <= 30
+
+                Complexity: 
+                Time: Exponential in worst case (subset search), but improved with pruning and dup-skips.
+                Space: O(k) recursion depth (k ≤ number of elements) plus output size.
+            */
+
+
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 10, 1, 2, 7, 6, 1, 5 }, find = 8 });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 2, 5, 2, 1, 2 }, find = 5 });
+            
+
+            StringBuilder result = new StringBuilder();
+            foreach (var sip in inputs)
+            {
+                result.AppendLine($" Combination Sum2  for the given int array {string.Join(" ", sip.input)} for given target {sip.find} is \n ");
+                foreach (List<int> i in this.CombinationSum2(sip.input, sip.find))
+                    result.Append($"{{{string.Join(",", i)} }}");
+                result.AppendLine(Environment.NewLine);
+            }
+
+            MessageBox.Show(result.ToString());
+        }
+
+        public IList<IList<int>> CombinationSum2(int[] candidates, int target)
+        {
+            if (candidates == null || candidates.Length == 0)
+                return null;
+
+            List<IList<int>> result = new List<IList<int>>();
+            List<int> set = new List<int>();
+            Array.Sort(candidates);
+
+            void DFSCombinationSum2(int start, int search)
+            {
+                if (search == 0)
+                {
+                    result.Add(new List<int>(set));
+                    return;
+                }
+
+                for (int i = start; i < candidates.Length; i++)
+                {
+                    if (i > start && candidates[i] == candidates[i - 1])
+                        continue;
+
+                    int x = candidates[i];
+                    if (x > search)
+                        break;
+
+                    set.Add(x);
+                    DFSCombinationSum2(i + 1, search - x);
+                    set.RemoveAt(set.Count - 1);
+
+                }
+            }
+
+            DFSCombinationSum2(0, target);
+            return result;
         }
     }
 }
