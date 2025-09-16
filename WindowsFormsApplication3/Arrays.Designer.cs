@@ -166,6 +166,7 @@
             this.btn_Search_in_Rotated_Sorted_Array = new System.Windows.Forms.Button();
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array = new System.Windows.Forms.Button();
             this.btn_CombinationSum2 = new System.Windows.Forms.Button();
+            this.btn_Trapping_Rain_Water = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1721,11 +1722,24 @@
             this.btn_CombinationSum2.UseVisualStyleBackColor = true;
             this.btn_CombinationSum2.Click += new System.EventHandler(this.btn_CombinationSum2_Click);
             // 
+            // btn_Trapping_Rain_Water
+            // 
+            this.btn_Trapping_Rain_Water.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Trapping_Rain_Water.Location = new System.Drawing.Point(2186, 321);
+            this.btn_Trapping_Rain_Water.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Trapping_Rain_Water.Name = "btn_Trapping_Rain_Water";
+            this.btn_Trapping_Rain_Water.Size = new System.Drawing.Size(374, 34);
+            this.btn_Trapping_Rain_Water.TabIndex = 140;
+            this.btn_Trapping_Rain_Water.Text = "Trapping Rain Water";
+            this.btn_Trapping_Rain_Water.UseVisualStyleBackColor = true;
+            this.btn_Trapping_Rain_Water.Click += new System.EventHandler(this.btn_Trapping_Rain_Water_Click);
+            // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(4214, 1948);
+            this.Controls.Add(this.btn_Trapping_Rain_Water);
             this.Controls.Add(this.btn_CombinationSum2);
             this.Controls.Add(this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array);
             this.Controls.Add(this.btn_Search_in_Rotated_Sorted_Array);
@@ -2011,5 +2025,6 @@
         private System.Windows.Forms.Button btn_Search_in_Rotated_Sorted_Array;
         private System.Windows.Forms.Button btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array;
         private System.Windows.Forms.Button btn_CombinationSum2;
+        private System.Windows.Forms.Button btn_Trapping_Rain_Water;
     }
 }

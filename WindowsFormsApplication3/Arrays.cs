@@ -12131,6 +12131,86 @@ namespace WindowsFormsApplication3
             DFSCombinationSum2(0, target);
             return result;
         }
+
+        private void btn_Trapping_Rain_Water_Click(object sender, EventArgs e)
+        {
+            /*
+                Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+
+                Refer this link https://leetcode.com/problems/trapping-rain-water/description/
+ 
+
+                Example 1:
+
+
+                Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+                Output: 6
+                Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+                Example 2:
+
+                Input: height = [4,2,0,3,2,5]
+                Output: 9
+ 
+
+                Constraints:
+
+                n == height.length
+                1 <= n <= 2 * 104
+                0 <= height[i] <= 105
+
+                Complexity :
+                Time    : O(N)
+                Space   : O(1)
+             
+             */
+
+            List<ArrayAndValue> inputs = new List<ArrayAndValue>();
+            inputs.Add(new ArrayAndValue() { input = new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 } });
+            inputs.Add(new ArrayAndValue() { input = new int[] { 4, 2, 0, 3, 2, 5 } });
+
+
+            StringBuilder result = new StringBuilder();
+            foreach (var sip in inputs)            
+                result.AppendLine($" Trapping Rain Water  for the given array {string.Join(" ", sip.input)} is  {this.Trap(sip.input)} \n ");                            
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int Trap(int[] height)
+        {
+            if (height == null || height.Length == 0)
+                return 0;
+
+            int result = 0;
+
+            int l = 0;
+            int r = height.Length - 1;
+            int maxLeft = 0, maxRight = 0;
+
+            while (l < r)
+            {
+                if (height[l] < height[r])
+                {
+                    if (height[l] >= maxLeft)
+                        maxLeft = height[l];
+                    else
+                        result += maxLeft - height[l];
+                    l++;
+                }
+                else
+                {
+                    if (height[r] >= maxRight)
+                        maxRight = height[r];
+                    else
+                        result += maxRight - height[r];
+                    r--;
+                }   
+            }
+
+            return result;
+
+        }
     }
 }
 
