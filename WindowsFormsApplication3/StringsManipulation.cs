@@ -1025,26 +1025,26 @@ namespace WindowsFormsApplication3
 
             //MMMCMXCIX
 
-            List<string> inputs = new List<string>() { 
+            List<string> inputs = new List<string>() {
                                                         "MMMCMXCIX",
                                                         "III"
                                                      };
-            
+
             StringBuilder result = new StringBuilder();
-            foreach(string s in inputs)
+            foreach (string s in inputs)
             {
                 result.Append($"Roman to Int for the given input {s} is Solution 1  : {this.RomanToInt_Solution1(s)} Solution 2 : {this.RomanToInt_Solution2(s)} \n");
             }
 
             MessageBox.Show(result.ToString());
-            
+
         }
 
         private string RomanToInt_Solution1(string s)
         {
             Dictionary<char, int> _romanMap = new Dictionary<char, int> { { 'I', 1 }, { 'V', 5 }, { 'X', 10 },
                                                                           { 'L', 50 }, { 'C', 100 }, { 'D', 500 },
-                                                                          { 'M', 1000 } };            
+                                                                          { 'M', 1000 } };
             string text = s;
             int totalValue = 0, prevValue = 0;
             foreach (var c in text)
@@ -1113,7 +1113,7 @@ namespace WindowsFormsApplication3
         private void Query_nth_most_frequent_word_Click(object sender, EventArgs e)
         {
             int frequentWord = 2;
-            string[] words = new string[] { "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C","C" };
+            string[] words = new string[] { "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C" };
             string word = this.GetNthMostFrequentWord(words, frequentWord);
             MessageBox.Show($"{frequentWord} frequent words from the given words {string.Join(",", words)} is {(word == null ? "is Nothing" : word)} ");
 
@@ -1130,7 +1130,7 @@ namespace WindowsFormsApplication3
 
             Dictionary<string, int> wordCount = new Dictionary<string, int>();
             Dictionary<int, HashSet<string>> freq = new Dictionary<int, HashSet<string>>();
-            freq.Add(1, new HashSet<string>() {});
+            freq.Add(1, new HashSet<string>() { });
             string maxword = string.Empty;
             int freqKey = 0;
             foreach (string word in words)
@@ -1140,10 +1140,10 @@ namespace WindowsFormsApplication3
                     freqKey = wordCount[word];
                     if (freq.ContainsKey(freqKey))
                     {
-                        freq[freqKey].Remove(word);                        
+                        freq[freqKey].Remove(word);
                     }
                     freqKey++;
-                    wordCount[word]= freqKey;
+                    wordCount[word] = freqKey;
                     if (freq.ContainsKey(freqKey))
                     {
                         freq[freqKey].Add(word);
@@ -1183,7 +1183,7 @@ namespace WindowsFormsApplication3
                 MessageBox.Show($"Result 1: {this.MyAtoi_1(s)}  Result 2: {this.MyAtoi_2(s)} ");
 
             }
-            
+
 
         }
 
@@ -1263,13 +1263,13 @@ namespace WindowsFormsApplication3
                 {
                     temp = previous;
                     previous = current;
-                    current = current + temp;                    
+                    current = current + temp;
                 }
             }
 
             if (isNegativeInput)
             {
-                if ((i -1) % 2 == 0)
+                if ((i - 1) % 2 == 0)
                 {
                     current *= -1;
                 }
@@ -1357,7 +1357,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Find_index_of_homogenous_continous_charcter_Click(object sender, EventArgs e)
         {
-            
+
             string input = "AAAABBCBBBDEEEEEFFFF";
             //string input = "DBCAAB";
             //string input = "ABCCDEF";
@@ -1574,7 +1574,7 @@ namespace WindowsFormsApplication3
             HashSet<char> dict = new HashSet<char>();
             int cs = 0, cl = 0, ps = 0, pl = 0;
 
-            for(int i = 0; i < input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 if (dict.Contains(input[i]))
                 {
@@ -1585,18 +1585,18 @@ namespace WindowsFormsApplication3
                     }
                     dict.Clear();
                     cs = i;
-                    cl = 0; 
+                    cl = 0;
                 }
-                dict.Add(input[i]);                
+                dict.Add(input[i]);
                 cl++;
             }
-            
+
             if (pl < cl)
             {
                 pl = cl;
                 ps = cs;
             }
-                                 
+
 
             MessageBox.Show($"Longest Substring of an given string {input}  is {previousString} \n " +
                             $"With second approach {input.Substring(ps, pl)}");
@@ -1738,42 +1738,42 @@ namespace WindowsFormsApplication3
             inputs.Add(new Common() { Temp1 = "paper", Temp2 = "title" });
 
             foreach (var input in inputs)
-                result.AppendLine($"Given string1 : {input.Temp1} and string 2 : {input.Temp2} is {(this.IsIsomorphic(input.Temp1, input.Temp2) ? "" : "not") } Isomorphic ");
+                result.AppendLine($"Given string1 : {input.Temp1} and string 2 : {input.Temp2} is {(this.IsIsomorphic(input.Temp1, input.Temp2) ? "" : "not")} Isomorphic ");
 
 
             MessageBox.Show(result.ToString());
 
-           
+
         }
 
-         public bool IsIsomorphic(string s, string t) {
-        if (string.IsNullOrWhiteSpace(s) || string.IsNullOrWhiteSpace(t) || s.Length != t.Length)
-            return false;
-                
-        int[] dict1 = Enumerable.Repeat(-1,256).ToArray();
-        int[] dict2 = Enumerable.Repeat(-1,256).ToArray();
-        char c1 = '\0';
-        char c2 = '\0';
-        
-        for(int i = 0; i < s.Length; i++)
-        {
-            c1 = s[i];
-            c2 = t[i];
-            
-            if (dict1[c1] == -1 && dict2[c2] == -1)
-            {
-                dict1[c1] = c2;
-                dict2[c2] = c1;
-            }
-            else if (!(dict1[c1] == c2 &&  dict2[c2] == c1 ))
+        public bool IsIsomorphic(string s, string t) {
+            if (string.IsNullOrWhiteSpace(s) || string.IsNullOrWhiteSpace(t) || s.Length != t.Length)
                 return false;
-            
+
+            int[] dict1 = Enumerable.Repeat(-1, 256).ToArray();
+            int[] dict2 = Enumerable.Repeat(-1, 256).ToArray();
+            char c1 = '\0';
+            char c2 = '\0';
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                c1 = s[i];
+                c2 = t[i];
+
+                if (dict1[c1] == -1 && dict2[c2] == -1)
+                {
+                    dict1[c1] = c2;
+                    dict2[c2] = c1;
+                }
+                else if (!(dict1[c1] == c2 && dict2[c2] == c1))
+                    return false;
+
+            }
+
+
+            return true;
+
         }
-        
-        
-        return true;
-        
-    }
 
         public class WorkBreak
         {
@@ -1815,7 +1815,7 @@ namespace WindowsFormsApplication3
             inputs.Add(new WorkBreak() { input = "applepenapple", Dictionary = new List<string>() { "apple", "pen" } });
             inputs.Add(new WorkBreak() { input = "pineapplepenapple", Dictionary = new List<string>() { "apple", "pen", "applepen", "pine", "pineapple" } });
             inputs.Add(new WorkBreak() { input = "catsandog", Dictionary = new List<string>() { "cats", "dog", "sand", "and", "cat" } });
-            inputs.Add(new WorkBreak() { input = "ab", Dictionary = new List<string>() { "a","b" } });
+            inputs.Add(new WorkBreak() { input = "ab", Dictionary = new List<string>() { "a", "b" } });
             //inputs.Add(new WorkBreak() { input = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Dictionary = new List<string>() { "a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa" } });
 
 
@@ -1964,7 +1964,7 @@ namespace WindowsFormsApplication3
                     int row = 0;
                     string[] arr = new string[numRows];
                     bool down = true;
-                    
+
                     foreach (char c in s)
                     {
                         arr[row] += c.ToString();
@@ -2088,10 +2088,10 @@ namespace WindowsFormsApplication3
                 mis *is * p*.
                 mis sis s ippi
             */
-            bool[][] lookup = new bool[s.Length+1][];
-            for (int i = 0; i < s.Length+1; i++)
+            bool[][] lookup = new bool[s.Length + 1][];
+            for (int i = 0; i < s.Length + 1; i++)
             {
-                lookup[i] = new bool[p.Length+1];
+                lookup[i] = new bool[p.Length + 1];
             }
 
             bool first_match = false;
@@ -2107,7 +2107,7 @@ namespace WindowsFormsApplication3
                         lookup[i][j] = lookup[i][j + 1] || first_match && lookup[i + 1][j];
                     }
                     else
-                     {
+                    {
                         lookup[i][j] = first_match && lookup[i + 1][j];
                     }
                 }
@@ -2379,7 +2379,7 @@ namespace WindowsFormsApplication3
         private List<string> GetPermuationOfGivenString(string input, string currentString)
         {
             List<string> result = new List<string>();
-            
+
             if (input.Length == 0)
             {
                 result.Add(currentString);
@@ -2456,7 +2456,7 @@ namespace WindowsFormsApplication3
 
             }
 
-            MessageBox.Show($"The longest common prefix for the given input strings {string.Join(" ", strs)} is { strs[0].Substring(0, index)}");
+            MessageBox.Show($"The longest common prefix for the given input strings {string.Join(" ", strs)} is {strs[0].Substring(0, index)}");
 
         }
 
@@ -2687,7 +2687,7 @@ namespace WindowsFormsApplication3
                     result.AppendLine($"Max length is 0 for the last word in this given string {s}");
                 }
                 else
-                {                    
+                {
                     int len = 0;
                     for (int i = input.Length - 1; i >= 0; i--)
                     {
@@ -2762,7 +2762,7 @@ namespace WindowsFormsApplication3
             int carry = 0;
 
             StringBuilder binarySum = new StringBuilder();
-            
+
             inputA = inputA.Trim();
             inputB = inputB.Trim();
 
@@ -2779,7 +2779,7 @@ namespace WindowsFormsApplication3
                 al--;
                 bl--;
             }
-            
+
             while (al >= 0)
             {
                 sum = carry;
@@ -2992,7 +2992,7 @@ namespace WindowsFormsApplication3
                     }
                 }
 
-                MessageBox.Show($"{(result.Length == 0 ? "There is no string matching" : "The below are the string that matches") } this { crossWordPattern } pattern \n{result}");
+                MessageBox.Show($"{(result.Length == 0 ? "There is no string matching" : "The below are the string that matches")} this {crossWordPattern} pattern \n{result}");
             }
         }
 
@@ -3171,11 +3171,11 @@ namespace WindowsFormsApplication3
 
             while (start < end)
             {
-                if (input[start] == 32 || !((input[start] >= 97 && input[end] <= 122) || (input[start] >= 48 && input[end] <= 59))) 
-                start++;
-            else if (input[start] == 32 || !((input[start] >= 97 && input[end] <= 122) || (input[start] >= 48 && input[end] <= 59))) 
-                end--;
-            else if (input[start] != input[end])
+                if (input[start] == 32 || !((input[start] >= 97 && input[end] <= 122) || (input[start] >= 48 && input[end] <= 59)))
+                    start++;
+                else if (input[start] == 32 || !((input[start] >= 97 && input[end] <= 122) || (input[start] >= 48 && input[end] <= 59)))
+                    end--;
+                else if (input[start] != input[end])
                     return false;
 
                 start++;
@@ -3217,7 +3217,7 @@ namespace WindowsFormsApplication3
                 tempResult = this.LongestPalindromicSubstring(input);
                 result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input)} is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult)}");
                 tempResult = this.LongestPalindrome_Manacher(input);
-                result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input) } using Manacher is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult) }");
+                result.AppendLine($"The longest plandromic substring for the string {(string.IsNullOrEmpty(input) ? "NULL" : input)} using Manacher is {(string.IsNullOrEmpty(input) ? "NULL" : tempResult)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -3426,7 +3426,7 @@ namespace WindowsFormsApplication3
 
         }
         private string IntToRoman(int num)
-        {            
+        {
             if (num == 0)
             {
                 return null;
@@ -3450,7 +3450,7 @@ namespace WindowsFormsApplication3
                 div *= 10;
             }
 
-             div /= 10;
+            div /= 10;
 
 
             while (val > 0)  // 1945 
@@ -3467,7 +3467,7 @@ namespace WindowsFormsApplication3
                 }
                 else if (rem >= 5 && rem <= 8)
                 {
-                    res.Append($"{dict[div * 5]}{new String(dict[div], rem - 5) }" );
+                    res.Append($"{dict[div * 5]}{new String(dict[div], rem - 5)}");
                 }
                 else // rem == 9
                 {
@@ -3506,16 +3506,16 @@ namespace WindowsFormsApplication3
              */
 
             StringBuilder result = new StringBuilder();
-            List<string> inputs = new List<string>() {"23","234", "sdf23","1",""};
+            List<string> inputs = new List<string>() { "23", "234", "sdf23", "1", "" };
             IList<string> output = null;
-            foreach(string input in inputs)
+            foreach (string input in inputs)
             {
                 output = this.LetterCombinations(input);
                 result.AppendLine($"List of string for the given input {input} is {(output == null ? "Invalid Input" : string.Join(@",", output))}");
             }
 
             MessageBox.Show(result.ToString());
-       
+
         }
 
         public IList<string> LetterCombinations(string digits)
@@ -3530,9 +3530,9 @@ namespace WindowsFormsApplication3
 
             string[] dict = new string[8] { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
             int key = digits[0] - '2';
-                        
+
             Queue<string> que = new Queue<string>();
-            
+
             foreach (char c in dict[key])
             {
                 que.Enqueue($"{c}");
@@ -3547,7 +3547,7 @@ namespace WindowsFormsApplication3
                 {
                     break;
                 }
-               que.Dequeue();
+                que.Dequeue();
 
                 key = digits[s.Length] - '2';
 
@@ -3559,7 +3559,7 @@ namespace WindowsFormsApplication3
             }
 
             return que.ToList<string>();
-                
+
         }
 
         private void btn_Given_a_sequence_of_words_print_all_anagrams_together_Click(object sender, EventArgs e)
@@ -3571,11 +3571,11 @@ namespace WindowsFormsApplication3
             */
 
             StringBuilder result = new StringBuilder();
-            List<string> strings = new List<string>() { "cat", "dog", "tac", "god", "act","abc" };
+            List<string> strings = new List<string>() { "cat", "dog", "tac", "god", "act", "abc" };
             var anagrams = this.GetListOfAnagrams(strings);
-            foreach(List<string> s in anagrams)
+            foreach (List<string> s in anagrams)
             {
-                result.AppendLine(string.Join(",",s));
+                result.AppendLine(string.Join(",", s));
             }
             MessageBox.Show($"The below are the group of anagrams for the given input strings {string.Join(",", strings)} \n\n {result.ToString()}");
 
@@ -3626,12 +3626,12 @@ namespace WindowsFormsApplication3
         {
 
             Dictionary<int, int> dict = new Dictionary<int, int>();
-            
+
 
             List<AddBinaryInputs> inputs = new List<AddBinaryInputs>() { new AddBinaryInputs() { inputA = "ab#c", inputB = "ad#c" } };
             StringBuilder result = new StringBuilder();
 
-            foreach(var  input in inputs)
+            foreach (var input in inputs)
             {
                 result.AppendLine($"Two strings {input.inputA} and {input.inputB} are backspace  {(this.BackspaceCompare(input.inputA, input.inputB) ? "" : " not ")} equal ");
             }
@@ -3664,7 +3664,7 @@ namespace WindowsFormsApplication3
                 return string.Empty;
             }
 
-            Stack<char> stack = new Stack<char>();          
+            Stack<char> stack = new Stack<char>();
 
             foreach (char c in s)
             {
@@ -3678,13 +3678,13 @@ namespace WindowsFormsApplication3
                 }
             }
 
-          
+
             return string.Join("", stack);
 
 
         }
 
-    
+
         private void btn_Valid_Parenthesis_String_2_Click(object sender, EventArgs e)
         {
             /* 
@@ -3724,7 +3724,7 @@ namespace WindowsFormsApplication3
             inputs.Add("())");
             foreach (string input in inputs)
             {
-                result.AppendLine($"The given string {input} is {(this.IsValidParanthesis(input) ? "" : " not ") } valid string");
+                result.AppendLine($"The given string {input} is {(this.IsValidParanthesis(input) ? "" : " not ")} valid string");
             }
 
             MessageBox.Show(result.ToString());
@@ -3742,12 +3742,12 @@ namespace WindowsFormsApplication3
             int l = 0;
             int h = 0;
 
-            foreach(char c in input)
+            foreach (char c in input)
             {
                 l += c == '(' ? 1 : -1;
                 h += c != ')' ? 1 : -1;
 
-                l = l < 0 ? 0: l;
+                l = l < 0 ? 0 : l;
 
                 if (h < 0)
                 {
@@ -3756,7 +3756,7 @@ namespace WindowsFormsApplication3
 
             }
             return l == 0;
-            
+
         }
 
 
@@ -3793,11 +3793,11 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<IndexOf> inputs = new List<IndexOf>();
-            inputs.Add(new IndexOf() {findIndex = "abcde", input="ace" });
+            inputs.Add(new IndexOf() { findIndex = "abcde", input = "ace" });
             inputs.Add(new IndexOf() { findIndex = "abc", input = "abc" });
             inputs.Add(new IndexOf() { findIndex = "abc", input = "def" });
 
-            foreach (var input in inputs )
+            foreach (var input in inputs)
             {
                 result.AppendLine($"Longest Common Subsequence is {this.LongestCommonSubsequence(input.findIndex, input.input)} for the given strings {input.findIndex} and {input.input}");
             }
@@ -3831,8 +3831,8 @@ namespace WindowsFormsApplication3
                     }
                     else
                     {
-                        dict[row + 1, col + 1] = Math.Max(dict[row +1, col], dict[row,col+1]);
-                    }                    
+                        dict[row + 1, col + 1] = Math.Max(dict[row + 1, col], dict[row, col + 1]);
+                    }
                 }
             }
 
@@ -3885,7 +3885,7 @@ namespace WindowsFormsApplication3
 
             foreach (string key in inputs.Keys)
             {
-                result.AppendLine($"The anagram indexes are {string.Join(",",FindAnagrams(inputs[key], key))} for the given string {inputs[key]} and pattern {key} ");
+                result.AppendLine($"The anagram indexes are {string.Join(",", FindAnagrams(inputs[key], key))} for the given string {inputs[key]} and pattern {key} ");
             }
 
 
@@ -3897,14 +3897,14 @@ namespace WindowsFormsApplication3
         public IList<int> FindAnagrams(string s, string p)
         {
 
-            if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(p) )
+            if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(p))
             {
                 return null;
             }
 
             int[] dict = new int[26];
 
-            foreach(char c in p)
+            foreach (char c in p)
             {
                 dict[c - 'a']++;
             }
@@ -3914,9 +3914,9 @@ namespace WindowsFormsApplication3
             int startIndex = -1;
             int count = 0;
 
-            for(int i= 0; i < s.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                if (dict[s[i] -'a'] > 0)
+                if (dict[s[i] - 'a'] > 0)
                 {
                     count++;
                     if (startIndex == -1)
@@ -3935,7 +3935,7 @@ namespace WindowsFormsApplication3
                 {
                     startIndex = -1;
                     count = 0;
-                }           
+                }
             }
             return result;
         }
@@ -3965,12 +3965,12 @@ namespace WindowsFormsApplication3
             Dictionary<string, string> inputs = new Dictionary<string, string>();
             inputs.Add("eidbaooo", "ab");
             inputs.Add("eidboaoo", "ab");
-            inputs.Add("dcda","adc");
+            inputs.Add("dcda", "adc");
 
 
             foreach (string key in inputs.Keys)
             {
-                result.AppendLine($"There is {(this.CheckInclusion(inputs[key], key) ? "" :" no ")}Permutation in String for the given string  {key} and pattern {inputs[key]} ");
+                result.AppendLine($"There is {(this.CheckInclusion(inputs[key], key) ? "" : " no ")}Permutation in String for the given string  {key} and pattern {inputs[key]} ");
             }
 
 
@@ -3984,7 +3984,7 @@ namespace WindowsFormsApplication3
                 return false;
 
             int[] dic = new int[26];
-            
+
             bool result = false;
 
             foreach (char ch in s1)
@@ -4012,9 +4012,9 @@ namespace WindowsFormsApplication3
                 {
                     prevp = p;
                     while (p > 0)
-                    {                      
-                        dic[s2[c-p] - 'a']++;
-                        p--;                                                    
+                    {
+                        dic[s2[c - p] - 'a']++;
+                        p--;
                     }
                     c -= prevp;
                     prevp = 0;
@@ -4025,7 +4025,7 @@ namespace WindowsFormsApplication3
                     break;
                 }
                 c++;
-            }                                            
+            }
             return result;
 
         }
@@ -4093,7 +4093,7 @@ namespace WindowsFormsApplication3
             {
                 result.AppendLine($"Frequency sort 148 ms is {this.FrequencySort_148ms(input)} for the given strings {input}");
                 result.AppendLine($"Frequency sort 84 ms is {this.FrequencySort_84ms(input)} for the given strings {input}");
-                
+
             }
 
             MessageBox.Show(result.ToString());
@@ -4102,7 +4102,7 @@ namespace WindowsFormsApplication3
 
         public string FrequencySort_84ms(string s)
         {
-            
+
             var ansi = new int[256];
             foreach (var c in s)
             {
@@ -4240,7 +4240,7 @@ namespace WindowsFormsApplication3
             inputs.Add(new AddBinaryInputs() { inputA = "horse", inputB = "ros" });
             inputs.Add(new AddBinaryInputs() { inputA = "intention", inputB = "execution" });
 
-            foreach(var input in inputs)
+            foreach (var input in inputs)
             {
                 result.AppendLine($"Edit Disance is {this.MinDistance(input.inputA, input.inputB)} for the string1 : {input.inputA} and string2: {input.inputB}");
             }
@@ -4251,7 +4251,7 @@ namespace WindowsFormsApplication3
         }
 
 
-        
+
 
         public int MinDistance(string word1, string word2)
         {
@@ -4441,11 +4441,11 @@ namespace WindowsFormsApplication3
             inputs.Add("2001:0db8:85a3:0:0:8A2E:0370:7334");
             inputs.Add("256.256.256.256");
             inputs.Add("2001:0db8:85a3:0:0:8A2E:0370:7334");
-            inputs.Add("1.1.1.01");          
+            inputs.Add("1.1.1.01");
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"The given IP address {input } is {this.ValidIPAddress(input)}");
+                result.AppendLine($"The given IP address {input} is {this.ValidIPAddress(input)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -4555,7 +4555,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Longest_Duplicate_Substring_Click(object sender, EventArgs e)
         {
-                  
+
             /*
             
 
@@ -4583,7 +4583,7 @@ namespace WindowsFormsApplication3
              */
 
             string str = string.Join("", "123", 'c');
-                     
+
         }
 
         private void btn_Reconstruct_Itinerary_Click(object sender, EventArgs e)
@@ -4648,12 +4648,12 @@ namespace WindowsFormsApplication3
             //                new List<string> { "NRT", "JFK" }
             //            });
 
-            
+
 
 
             foreach (var input in inputs)
-            {                
-                result.AppendLine($"The Iternary is {string.Join("-> ", (this.FindItinerary(input))) } for the given input {string.Join(" ",input)} ");
+            {
+                result.AppendLine($"The Iternary is {string.Join("-> ", (this.FindItinerary(input)))} for the given input {string.Join(" ", input)} ");
             }
 
             MessageBox.Show(result.ToString());
@@ -4665,7 +4665,7 @@ namespace WindowsFormsApplication3
 
         public IList<string> FindItinerary(IList<IList<string>> tickets)
         {
-                        
+
             return this.GetItinerary(this.ParseData(tickets));
         }
 
@@ -4679,12 +4679,12 @@ namespace WindowsFormsApplication3
 
             foreach (var ticket in tickets)
             {
-                    if (!dict.TryGetValue(ticket[0], out it))
-                        dict[ticket[0]] = new List<string>() { ticket[1] };
-                    else
-                    {
-                        it.Add(ticket[1]);                        
-                    }                
+                if (!dict.TryGetValue(ticket[0], out it))
+                    dict[ticket[0]] = new List<string>() { ticket[1] };
+                else
+                {
+                    it.Add(ticket[1]);
+                }
             }
 
             return dict;
@@ -4696,7 +4696,7 @@ namespace WindowsFormsApplication3
             if (itr == null || itr.Count == 0)
                 return new List<string>();
 
-          
+
             Stack<string> result = new Stack<string>();
             List<string> tempItr;
             Stack<string> s = new Stack<string>();
@@ -4713,7 +4713,7 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    if (tempItr.Count > 1 )
+                    if (tempItr.Count > 1)
                         tempItr.Sort();
                     s.Push(tempItr[0]);
                     tempItr.RemoveAt(0);
@@ -4725,7 +4725,7 @@ namespace WindowsFormsApplication3
         }
 
 
-        private void  Test()
+        private void Test()
         {
             CounterCreationDataCollection counterDataCollection = new CounterCreationDataCollection();
 
@@ -4803,7 +4803,7 @@ namespace WindowsFormsApplication3
         private void btn_Detect_Capital_Click(object sender, EventArgs e)
         {
 
-         
+
             /*
              
                 Given a word, you need to judge whether the usage of capitals in it is right or not.
@@ -4843,7 +4843,7 @@ namespace WindowsFormsApplication3
             inputs.Add("leetcode");
             inputs.Add("leetCode");
             inputs.Add("123");
-            inputs.Add("g");           
+            inputs.Add("g");
 
             foreach (var input in inputs)
             {
@@ -4852,7 +4852,7 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
 
-           
+
 
         }
 
@@ -4865,20 +4865,20 @@ namespace WindowsFormsApplication3
             if (word.Length == 1)
                 return true;
 
-            bool isFullCaps = word[0]  >= 65 && word[0] <= 90 && word[1]  >= 65 && word[1]  <= 90;
-            bool isFirstCapsAndSmall = !isFullCaps && word[0] >= 65 && word[0] <= 90 && word[1]  >= 97 && word[1]  <= 122;
-            bool isSmall = !isFirstCapsAndSmall && word[0]  >= 97 && word[0]  <= 122 && word[1]  >= 97 && word[1] <= 122;
+            bool isFullCaps = word[0] >= 65 && word[0] <= 90 && word[1] >= 65 && word[1] <= 90;
+            bool isFirstCapsAndSmall = !isFullCaps && word[0] >= 65 && word[0] <= 90 && word[1] >= 97 && word[1] <= 122;
+            bool isSmall = !isFirstCapsAndSmall && word[0] >= 97 && word[0] <= 122 && word[1] >= 97 && word[1] <= 122;
 
             if (!isFullCaps && !isFirstCapsAndSmall && !isSmall)
                 return false;
 
             for (int i = 2; i < word.Length; i++)
             {
-                if (isFullCaps && !(word[i] >= 65 && word[i]<= 90))
+                if (isFullCaps && !(word[i] >= 65 && word[i] <= 90))
                     return false;
-                else if (isFirstCapsAndSmall && !(word[i]  >= 97 && word[i]  <= 122))
+                else if (isFirstCapsAndSmall && !(word[i] >= 97 && word[i] <= 122))
                     return false;
-                else if (isSmall && !(word[i]  >= 97 && word[i] <= 122))
+                else if (isSmall && !(word[i] >= 97 && word[i] <= 122))
                     return false;
 
             }
@@ -4926,7 +4926,7 @@ namespace WindowsFormsApplication3
             inputs.Add("A");
             inputs.Add("ZY");
             inputs.Add("ABA");
-            
+
 
             foreach (var input in inputs)
             {
@@ -4958,7 +4958,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Iterator_for_Combination_Click(object sender, EventArgs e)
         {
-            
+
             /*
             
                 Design an Iterator class, which has:
@@ -5092,7 +5092,7 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             List<string> inputs = new List<string>();
             inputs.Add("abccccdd");
-    
+
 
             foreach (var input in inputs)
             {
@@ -5106,7 +5106,7 @@ namespace WindowsFormsApplication3
         public int LongestPalindrome(string s)
         {
 
-            
+
 
             if (string.IsNullOrEmpty(s))
                 return 0;
@@ -5279,9 +5279,9 @@ namespace WindowsFormsApplication3
             inputs.Add("abcabcabcabc");
             foreach (string input in inputs)
             {
-                result.AppendLine($"Repeated Substring pattern {(RepeatedSubstringPattern(input)? "": " not ")} exists for the given input string {input}");
+                result.AppendLine($"Repeated Substring pattern {(RepeatedSubstringPattern(input) ? "" : " not ")} exists for the given input string {input}");
             }
-            
+
             MessageBox.Show(result.ToString());
 
 
@@ -5297,15 +5297,15 @@ namespace WindowsFormsApplication3
             int l = s.Length;
             int sl = 0;
 
-            for (int i = 0; i < l/2; i++)
+            for (int i = 0; i < l / 2; i++)
             {
                 subString = $"{subString}{s[i]}";
                 sl = subString.Length;
 
                 if ((l % sl) == 0)
                 {
-                    if (s.CompareTo(string.Join("",Enumerable.Repeat(subString, l / subString.Length))) == 0)
-                        return true;                    
+                    if (s.CompareTo(string.Join("", Enumerable.Repeat(subString, l / subString.Length))) == 0)
+                        return true;
                 }
             }
             return false;
@@ -5346,7 +5346,7 @@ namespace WindowsFormsApplication3
             inputs.Add("abcabcabcabc");
             foreach (string input in inputs)
             {
-                result.AppendLine($"Partition Labels is  {string.Join(",",PartitionLabels(input))} for the given input string {input}");
+                result.AppendLine($"Partition Labels is  {string.Join(",", PartitionLabels(input))} for the given input string {input}");
             }
 
             MessageBox.Show(result.ToString());
@@ -5422,11 +5422,11 @@ namespace WindowsFormsApplication3
             inputs.Add(new AddBinaryInputs() { inputA = "abba", inputB = "dog cat cat fish" });
             inputs.Add(new AddBinaryInputs() { inputA = "aaaa", inputB = "dog cat cat dog" });
             inputs.Add(new AddBinaryInputs() { inputA = "abba", inputB = "dog dog dog dog" });
-                        
+
 
             foreach (AddBinaryInputs input in inputs)
             {
-                result.AppendLine($"Word Pattern {(WordPattern(input.inputA, input.inputB) ? "": " not ")}  exists given pattern : {input.inputA} and string : {input.inputB}");
+                result.AppendLine($"Word Pattern {(WordPattern(input.inputA, input.inputB) ? "" : " not ")}  exists given pattern : {input.inputA} and string : {input.inputB}");
             }
 
             MessageBox.Show(result.ToString());
@@ -5436,8 +5436,8 @@ namespace WindowsFormsApplication3
 
         public bool WordPattern(string pattern, string str)
         {
-            
-            
+
+
 
             if (string.IsNullOrEmpty(pattern) || string.IsNullOrEmpty(str))
                 return false;
@@ -5544,7 +5544,7 @@ namespace WindowsFormsApplication3
 
             foreach (AddBinaryInputs input in inputs)
             {
-                result.AppendLine($"Compare Version Numbers is { CompareVersion(input.inputA, input.inputB) }  for the given version 1: {input.inputA} and version 2 : {input.inputB}");
+                result.AppendLine($"Compare Version Numbers is {CompareVersion(input.inputA, input.inputB)}  for the given version 1: {input.inputA} and version 2 : {input.inputB}");
             }
 
             MessageBox.Show(result.ToString());
@@ -5591,7 +5591,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Bulls_and_Cows_Click(object sender, EventArgs e)
         {
-            
+
             /*
              
                 You are playing the following Bulls and Cows game with your friend: You write down a number and ask your friend to guess what the number is. Each time your friend makes a guess, you provide a hint that indicates how many digits in said guess match your secret number exactly in both digit and position (called "bulls") and how many digits match the secret number but locate in the wrong position (called "cows"). Your friend will use successive guesses and hints to eventually derive the secret number.
@@ -5628,7 +5628,7 @@ namespace WindowsFormsApplication3
 
             foreach (AddBinaryInputs input in inputs)
             {
-                result.AppendLine($"Bulls and Cows are { GetHint(input.inputA, input.inputB) }  for the given secret : {input.inputA} and guess : {input.inputB}");
+                result.AppendLine($"Bulls and Cows are {GetHint(input.inputA, input.inputB)}  for the given secret : {input.inputA} and guess : {input.inputB}");
             }
 
             MessageBox.Show(result.ToString());
@@ -5638,7 +5638,7 @@ namespace WindowsFormsApplication3
 
         public string GetHint(string secret, string guess)
         {
-            
+
             string result = string.Empty;
             int cow = 0;
             int bull = 0;
@@ -5668,7 +5668,7 @@ namespace WindowsFormsApplication3
         private void btn_Find_the_Difference_Click(object sender, EventArgs e)
         {
 
-            
+
             /*
             
                 Given two strings s and t which consist of only lowercase letters.
@@ -5702,7 +5702,7 @@ namespace WindowsFormsApplication3
 
             foreach (AddBinaryInputs input in inputs)
             {
-                result.AppendLine($"Difference for the given string 1 : {input.inputA} and string 2 : {input.inputB} is  { FindTheDifference(input.inputA, input.inputB) }");
+                result.AppendLine($"Difference for the given string 1 : {input.inputA} and string 2 : {input.inputB} is  {FindTheDifference(input.inputA, input.inputB)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -5724,7 +5724,7 @@ namespace WindowsFormsApplication3
         }
 
         private void btn_Word_Break_Click(object sender, EventArgs e)
-        {        
+        {
             /*
                 Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 
@@ -5823,7 +5823,7 @@ namespace WindowsFormsApplication3
 
             int i = 0;
             int j = 0;
-            
+
             for (; i < s.Length; i++)
             {
                 dict.TryGetValue(s.Substring(i), out result);
@@ -5835,7 +5835,7 @@ namespace WindowsFormsApplication3
                     continue;
                 }
 
-                for( j = 1; j <= s.Length - i; j++)
+                for (j = 1; j <= s.Length - i; j++)
                 {
                     temp = s.Substring(i, j);
 
@@ -5844,7 +5844,7 @@ namespace WindowsFormsApplication3
                     if (result || wordDict.Contains(temp))
                     {
 
-                        result = true;                       
+                        result = true;
                         dict[temp] = true;
                         j--;
                         break;
@@ -5853,8 +5853,8 @@ namespace WindowsFormsApplication3
                         result = false;
                 }
 
-                if ((i + j) == s.Length-1)
-                    break;                
+                if ((i + j) == s.Length - 1)
+                    break;
                 i += j;
             }
 
@@ -5865,7 +5865,7 @@ namespace WindowsFormsApplication3
         {
 
 
-            
+
 
             /*
                 Given two strings A and B of lowercase letters, return true if you can swap two letters in A so the result is equal to B, otherwise, return false.
@@ -5922,7 +5922,7 @@ namespace WindowsFormsApplication3
 
             foreach (AddBinaryInputs input in inputs)
             {
-                result.AppendLine($"Buddy Strings for the given string 1 : {input.inputA} and string 2 : {input.inputB} is  { BuddyStrings(input.inputA, input.inputB) }");
+                result.AppendLine($"Buddy Strings for the given string 1 : {input.inputA} and string 2 : {input.inputB} is  {BuddyStrings(input.inputA, input.inputB)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -6027,8 +6027,8 @@ namespace WindowsFormsApplication3
 
                 while (chars.Count > 0 && chars.Peek() > c && i < charlastIndex[chars.Peek() - 'a'])
                 {
-                    dict.Remove(chars.Pop());                    
-                    
+                    dict.Remove(chars.Pop());
+
                 }
 
                 chars.Push(c);
@@ -6193,7 +6193,7 @@ namespace WindowsFormsApplication3
 
             foreach (string input in inputs)
             {
-                result.AppendLine($"For the given string : { input } decoded string is {Environment.NewLine}{DecodeString(input)} {Environment.NewLine}{DecodeString_WithOneStack(input)} ");
+                result.AppendLine($"For the given string : {input} decoded string is {Environment.NewLine}{DecodeString(input)} {Environment.NewLine}{DecodeString_WithOneStack(input)} ");
             }
 
             MessageBox.Show(result.ToString());
@@ -6337,7 +6337,7 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             List<string[]> inputs = new List<string[]>();
             inputs.Add(new string[] { "gin", "zen", "gig", "msg" });
-            
+
 
             foreach (string[] input in inputs)
             {
@@ -6356,7 +6356,7 @@ namespace WindowsFormsApplication3
             StringBuilder ws = new StringBuilder();
 
 
-            foreach(string word in words)
+            foreach (string word in words)
             {
                 ws.Clear();
                 foreach (char c in word)
@@ -6424,7 +6424,7 @@ namespace WindowsFormsApplication3
 
         public int Calculate(String s)
         {
-            if (string.IsNullOrWhiteSpace(s)) 
+            if (string.IsNullOrWhiteSpace(s))
                 return 0;
             int length = s.Length;
             int currentNumber = 0,  // 2
@@ -6433,7 +6433,7 @@ namespace WindowsFormsApplication3
             char operation = '+';  // + 
 
             for (int i = 0; i < length; i++)
-            {                
+            {
                 char currentChar = s[i];
                 if (currentChar == ' ')
                     continue;
@@ -6467,7 +6467,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Palindrome_Partitioning_Click(object sender, EventArgs e)
         {
-            
+
             /*
                     Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
 
@@ -6496,7 +6496,7 @@ namespace WindowsFormsApplication3
             //inputs.Add("aab");
             //inputs.Add("a");
             inputs.Add("abbab");
-            
+
 
             foreach (string input in inputs)
             {
@@ -6504,8 +6504,8 @@ namespace WindowsFormsApplication3
                 result.AppendLine($"Palindrome Partitioning for the given string {string.Join(",", input)}  is ");
                 foreach (var r in res)
                 {
-                    result.AppendLine($"{string.Join(",",r)}");
-                }                                
+                    result.AppendLine($"{string.Join(",", r)}");
+                }
             }
 
             MessageBox.Show(result.ToString());
@@ -6532,7 +6532,7 @@ namespace WindowsFormsApplication3
             if (string.IsNullOrEmpty(s))
             {
                 result.Add(new List<string>(current));
-                
+
             }
 
             string left = string.Empty;
@@ -6548,8 +6548,8 @@ namespace WindowsFormsApplication3
                 {
                     var copy = new List<string>(current);
                     copy.Add(left);
-                    GeneratePartition(right, copy, ref result);                    
-                    
+                    GeneratePartition(right, copy, ref result);
+
                 }
             }
 
@@ -6630,14 +6630,14 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
-            inputs.Add(new Common() {word1 = new string[] { "ab", "c" }, word2 = new string[] { "a", "bc" } });
+            inputs.Add(new Common() { word1 = new string[] { "ab", "c" }, word2 = new string[] { "a", "bc" } });
             inputs.Add(new Common() { word1 = new string[] { "a", "cb" }, word2 = new string[] { "ab", "c" } });
-            inputs.Add(new Common() { word1 = new string[] { "abc", "d","defg" }, word2 = new string[] { "abcddefg" } });
+            inputs.Add(new Common() { word1 = new string[] { "abc", "d", "defg" }, word2 = new string[] { "abcddefg" } });
 
 
             foreach (var input in inputs)
             {
-                result.AppendLine($" Check If Two String Arrays are Equivalent is {ArrayStringsAreEqual(input.word1, input.word2)} for the given word1 : {string.Join(",",input.word1)} and word1 : {string.Join(",", input.word2)}");
+                result.AppendLine($" Check If Two String Arrays are Equivalent is {ArrayStringsAreEqual(input.word1, input.word2)} for the given word1 : {string.Join(",", input.word1)} and word1 : {string.Join(",", input.word2)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -6654,7 +6654,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Interleaving_String_Click(object sender, EventArgs e)
         {
-            
+
 
             /*
                 Given strings s1, s2, and s3, find whether s3 is formed by an interleaving of s1 and s2.
@@ -6694,7 +6694,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<string[]> inputs = new List<string[]>();
-            inputs.Add(new string[] { "aabcc","dbbca", "aadbbcbcac" });
+            inputs.Add(new string[] { "aabcc", "dbbca", "aadbbcbcac" });
             inputs.Add(new string[] { "aabcc", "dbbca", "aadbbbaccc" });
             inputs.Add(new string[] { "a", "", "a" });
             inputs.Add(new string[] { "", "a", "a" });
@@ -6703,7 +6703,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"The given strings {input[0]} , {input[1]}, {input[2]} is {(IsInterleave(input[0], input[1], input[2]) ? "" : " not " )} Interleave");
+                result.AppendLine($"The given strings {input[0]} , {input[1]}, {input[2]} is {(IsInterleave(input[0], input[1], input[2]) ? "" : " not ")} Interleave");
             }
 
             MessageBox.Show(result.ToString());
@@ -6712,7 +6712,7 @@ namespace WindowsFormsApplication3
 
         public bool IsInterleave(string s1, string s2, string s3)
         {
-            
+
 
             /*
                 Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
@@ -6743,14 +6743,14 @@ namespace WindowsFormsApplication3
             {
                 for (int j = 0; j <= s2.Length; j++)
                 {
-                    if (i == 0 && j == 0)                    
-                       dp[j] = true;                    
-                    else if (i == 0)                    
-                        dp[j] = dp[j - 1] && s2[j - 1] == s3[i + j - 1];                    
-                    else if (j == 0)                    
-                        dp[j] = dp[j] && s1[i - 1] == s3[i + j - 1];                    
-                    else                    
-                        dp[j] = (dp[j] && s1[i - 1] == s3[i + j - 1]) || (dp[j - 1] && s2[j - 1] == s3[i + j - 1]);                    
+                    if (i == 0 && j == 0)
+                        dp[j] = true;
+                    else if (i == 0)
+                        dp[j] = dp[j - 1] && s2[j - 1] == s3[i + j - 1];
+                    else if (j == 0)
+                        dp[j] = dp[j] && s1[i - 1] == s3[i + j - 1];
+                    else
+                        dp[j] = (dp[j] && s1[i - 1] == s3[i + j - 1]) || (dp[j - 1] && s2[j - 1] == s3[i + j - 1]);
                 }
             }
             return dp[s2.Length];
@@ -6792,7 +6792,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
-            inputs.Add(new Common() {str= "abcde", word1 = new string[] { "a", "bb", "acd", "ace" } });
+            inputs.Add(new Common() { str = "abcde", word1 = new string[] { "a", "bb", "acd", "ace" } });
 
             foreach (var input in inputs)
             {
@@ -6890,9 +6890,9 @@ namespace WindowsFormsApplication3
             inputs.Add("abbaca");
             inputs.Add("azxxzy");
 
-            foreach (var input in inputs)            
+            foreach (var input in inputs)
                 result.AppendLine($"Remove All Adjacent Duplicates In String for the given string {input} is {RemoveDuplicates(input)}");
-            
+
 
             MessageBox.Show(result.ToString());
 
@@ -6961,10 +6961,10 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
-            inputs.Add(new Common() {Temp1= "cba", Temp2 = "abcd" });
+            inputs.Add(new Common() { Temp1 = "cba", Temp2 = "abcd" });
 
             foreach (var input in inputs)
-                result.AppendLine($"Custom Sort String for the given strings {input.Temp1} and {input.Temp2} is {CustomSortString(input.Temp1,input.Temp2)}");
+                result.AppendLine($"Custom Sort String for the given strings {input.Temp1} and {input.Temp2} is {CustomSortString(input.Temp1, input.Temp2)}");
 
 
             MessageBox.Show(result.ToString());
@@ -7015,7 +7015,7 @@ namespace WindowsFormsApplication3
         private void btn_Push_Dominoes_Click(object sender, EventArgs e)
         {
 
-                        
+
             /*
              
                 There are n dominoes in a line, and we place each domino vertically upright. In the beginning, we simultaneously push some of the dominoes either to the left or to the right.
@@ -7163,7 +7163,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Add_Strings_Click(object sender, EventArgs e)
         {
-            
+
             /*
              
                 Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
@@ -7357,7 +7357,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<string[]> inputs = new List<string[]>();
-            inputs.Add(new string[]{ "eat", "tea", "tan", "ate", "nat", "bat" });
+            inputs.Add(new string[] { "eat", "tea", "tan", "ate", "nat", "bat" });
             inputs.Add(new string[] { "" });
             inputs.Add(new string[] { "a" });
 
@@ -7560,7 +7560,7 @@ namespace WindowsFormsApplication3
             };
             StringBuilder result = new StringBuilder();
 
-            foreach(var input in inputs)
+            foreach (var input in inputs)
             {
                 result.AppendLine($"Substring with Concatenation of All Words for the given string {input.Item1} and words {string.Join(",", input.Item2)} is ");
                 var res = this.FindSubstring(input.Item1, input.Item2);
@@ -7573,7 +7573,7 @@ namespace WindowsFormsApplication3
 
         public IList<int> FindSubstring(string s, string[] words)
         {
-            
+
 
             List<int> result = new List<int>();
 
@@ -7622,7 +7622,7 @@ namespace WindowsFormsApplication3
                     result.Add(i);
             }
 
-            return result;            
+            return result;
         }
 
         private void btn_Longest_Valid_Parentheses_Click(object sender, EventArgs e)
@@ -7742,7 +7742,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<int> inputs = new List<int>() { 4, 5, 6 };
-            
+
             foreach (var input in inputs)
             {
                 result.AppendLine($"Count And Say for the given integer {input} is {CountAndSay(input)}");
@@ -7755,13 +7755,13 @@ namespace WindowsFormsApplication3
 
 
         private string CountAndSay(int n)
-        {            
-            if (n<= 0)
+        {
+            if (n <= 0)
                 return string.Empty;
 
 
             string result = "1";
-                        
+
             for (int i = 1; i < n; i++)
                 result = this.CountAndSayNext(result);
 
@@ -7769,22 +7769,101 @@ namespace WindowsFormsApplication3
         }
 
         private string CountAndSayNext(string result)
-        {            
-        
+        {
+
             StringBuilder sb = new StringBuilder(result.Length * 2);
             int i = 0;
             while (i < result.Length)
             {
                 char c = result[i];
-                int j= i +1;
+                int j = i + 1;
                 while (j < result.Length && result[j] == c) j++;
                 int count = j - i;
                 sb.Append(count);
                 sb.Append(c);
                 i = j;
             }
-   
+
             return sb.ToString();
+        }
+
+        private void btn_Multiply_Strings_Click(object sender, EventArgs e)
+        {
+            /*
+                Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+
+                Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
+ 
+                Example 1:
+
+                Input: num1 = "2", num2 = "3"
+                Output: "6"
+                Example 2:
+
+                Input: num1 = "123", num2 = "456"
+                Output: "56088"
+ 
+
+                Constraints:
+
+                1 <= num1.length, num2.length <= 200
+                num1 and num2 consist of digits only.
+                Both num1 and num2 do not contain any leading zero, except the number 0 itself.
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+
+            Tuple<string, string>[] inputs = new Tuple<string, string>[]
+            {
+                //new Tuple<string, string>("2", "3"),
+                new Tuple<string, string>("123", "456"),
+                //new Tuple<string, string>("0", "0"),
+                //new Tuple<string, string>("9133", "0"),
+                //new Tuple<string, string>("123456789", "987654321")
+            };
+
+            foreach(var input in inputs)
+            {
+                result.AppendLine($"Multiply Strings for the given strings {input.Item1} and {input.Item2} is {Multiply(input.Item1, input.Item2)}");
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public string Multiply(string num1, string num2)
+        {
+            if (string.IsNullOrWhiteSpace(num1) || string.IsNullOrWhiteSpace(num2))
+                return "0";
+
+
+            int n1Leng = num1.Length;
+            int n2Leng = num2.Length;
+            int[] res  = new int[n1Leng + n2Leng];
+
+            for (int i = n1Leng - 1; i >= 0; i--)
+            {
+                for (int j = n2Leng - 1; j >= 0; j--)
+                {
+                    int mul = (num1[i] - '0') * (num2[j] - '0');
+                    int sum = mul + res[i + j + 1];
+                    res[i + j + 1] = sum % 10;
+                    res[i + j] += sum / 10;
+                }
+            }
+
+            StringBuilder sb = new StringBuilder();
+            int k = 0;
+            while (k < res.Length - 1 && res[k] == 0)
+                k++;
+
+            for(; k < res.Length; k++)
+                sb.Append(res[k]);
+
+
+            return sb.ToString();
+            
         }
     }
 }

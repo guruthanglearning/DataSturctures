@@ -126,6 +126,7 @@
             this.btn_Substring_with_Concatenation_of_All_Words = new System.Windows.Forms.Button();
             this.btn_Longest_Valid_Parentheses = new System.Windows.Forms.Button();
             this.btn_Count_and_Say = new System.Windows.Forms.Button();
+            this.btn_Multiply_Strings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1186,11 +1187,22 @@
             this.btn_Count_and_Say.UseVisualStyleBackColor = true;
             this.btn_Count_and_Say.Click += new System.EventHandler(this.btn_Count_and_Say_Click);
             // 
+            // btn_Multiply_Strings
+            // 
+            this.btn_Multiply_Strings.Location = new System.Drawing.Point(1902, 12);
+            this.btn_Multiply_Strings.Name = "btn_Multiply_Strings";
+            this.btn_Multiply_Strings.Size = new System.Drawing.Size(226, 32);
+            this.btn_Multiply_Strings.TabIndex = 99;
+            this.btn_Multiply_Strings.Text = "Multiply Strings";
+            this.btn_Multiply_Strings.UseVisualStyleBackColor = true;
+            this.btn_Multiply_Strings.Click += new System.EventHandler(this.btn_Multiply_Strings_Click);
+            // 
             // StringsManipulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2313, 1213);
+            this.Controls.Add(this.btn_Multiply_Strings);
             this.Controls.Add(this.btn_Count_and_Say);
             this.Controls.Add(this.btn_Longest_Valid_Parentheses);
             this.Controls.Add(this.btn_Substring_with_Concatenation_of_All_Words);
@@ -1397,5 +1409,6 @@
         private System.Windows.Forms.Button btn_Substring_with_Concatenation_of_All_Words;
         private System.Windows.Forms.Button btn_Longest_Valid_Parentheses;
         private System.Windows.Forms.Button btn_Count_and_Say;
+        private System.Windows.Forms.Button btn_Multiply_Strings;
     }
 }
