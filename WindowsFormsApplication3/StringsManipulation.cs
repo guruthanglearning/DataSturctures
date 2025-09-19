@@ -2052,16 +2052,18 @@ namespace WindowsFormsApplication3
             */
             StringBuilder result = new StringBuilder();
             Dictionary<string, string> inputs = new Dictionary<string, string>();
-            /*inputs.Add("a", "aa");
-            inputs.Add("a*", "aba");
-            inputs.Add(".*", "ab");*/
-            inputs.Add("c*a*b", "aab");
+            //inputs.Add("a", "aa");
+            inputs.Add("a*", "aa");
+            //inputs.Add(".*", "ab");
+            //inputs.Add("c*a*b", "aab");
             //inputs.Add("mis*is*p*.", "mississippi");
 
             result.Append($"For the given ");
             foreach (string key in inputs.Keys)
             {
-                result.AppendLine($"strings {inputs[key]} and pattern {key}  = {(this.IsMatch(inputs[key], key) ? " Match" : "No Match")}");
+                result.AppendLine($"Solution 1: strings {inputs[key]} and pattern {key}  = {(this.IsMatch(inputs[key], key) ? " Match" : "No Match")}");
+                result.AppendLine($"Solution 2: strings {inputs[key]} and pattern {key}  = {(this.IsMatch_Solution2(inputs[key], key) ? " Match" : "No Match")}");
+
             }
 
 
@@ -2073,47 +2075,75 @@ namespace WindowsFormsApplication3
 
         private bool IsMatch(string s, string p)
         {
-            if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(p))
-            {
-                return false;
-            }
-
             /*
-                inputs.Add("a", "aa");
-                inputs.Add("a*", "aa");
-                inputs.Add(".*", "aa"); --
-                inputs.Add("c*a*b", "aab");
-                inputs.Add("mis*is*p*.", "mississippi");
+                Complexity
+                    Time : (M*N) where M is the length of string and N is the length of pattern
+                    Space: (M*N)    
+             */
 
-                mis *is * p*.
-                mis sis s ippi
-            */
-            bool[][] lookup = new bool[s.Length + 1][];
-            for (int i = 0; i < s.Length + 1; i++)
+            int n = s.Length, m = p.Length;
+            var dp = new bool[n + 1, m + 1];
+            dp[0, 0] = true;
+
+            // pattern prefixes of only '*' can match empty string
+            for (int j = 1; j <= m; j++)
+                dp[0, j] = dp[0, j - 1] && p[j - 1] == '*';
+
+            for (int i = 1; i <= n; i++)
             {
-                lookup[i] = new bool[p.Length + 1];
-            }
-
-            bool first_match = false;
-
-            lookup[s.Length][p.Length] = true;
-            for (int i = s.Length; i >= 0; i--)
-            {
-                for (int j = p.Length; j >= 0; j--)
+                for (int j = 1; j <= m; j++)
                 {
-                    first_match = (i < s.Length && (p[j] == s[i] || p[j] == '.'));
-                    if (j < p.Length && p[j] == '*')
-                    {
-                        lookup[i][j] = lookup[i][j + 1] || first_match && lookup[i + 1][j];
-                    }
-                    else
-                    {
-                        lookup[i][j] = first_match && lookup[i + 1][j];
-                    }
+                    char pc = p[j - 1], sc = s[i - 1];
+                    if (pc == '*')
+                        dp[i, j] = dp[i, j - 1] || dp[i - 1, j]; // * = empty OR consume one char
+                    else if (pc == '?' || pc == sc)
+                        dp[i, j] = dp[i - 1, j - 1];
+                }
+            }
+            return dp[n, m];
+        }
+
+        // Returns true if s matches pattern p (with ? and *)
+        private  bool IsMatch_Solution2(string s, string p)
+        {
+            /*
+                Complexity
+                    Time : O(M+N) where M is the length of string and N is the length of pattern
+                    Space: O(1)
+             */
+
+            int i = 0, j = 0;      // i for s, j for p
+            int star = -1;         // last seen '*' position in p
+            int match = 0;         // position in s to resume from after '*'
+
+            while (i < s.Length)
+            {
+                if (j < p.Length && (p[j] == '?' || p[j] == s[i]))
+                {
+                    // single-char match
+                    i++; j++;
+                }
+                else if (j < p.Length && p[j] == '*')
+                {
+                    // record star and advance pattern; try to match 0 chars first
+                    star = j++;
+                    match = i;
+                }
+                else if (star != -1)
+                {
+                    // backtrack: treat last '*' as consuming one more char
+                    j = star + 1;
+                    i = ++match;
+                }
+                else
+                {
+                    return false;
                 }
             }
 
-            return lookup[0][0];
+            // s consumed; remaining p must be all '*'
+            while (j < p.Length && p[j] == '*') j++;
+            return j == p.Length;
         }
 
         private void btn_Implement_Auto_Complete_Click(object sender, EventArgs e)
