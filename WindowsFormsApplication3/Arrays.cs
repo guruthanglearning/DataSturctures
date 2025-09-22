@@ -8839,7 +8839,7 @@ namespace WindowsFormsApplication3
 
 
             List<int[]> inputs = new List<int[]>();
-            inputs.Add(new int[] { 1,1,2 });
+            //inputs.Add(new int[] { 1,1,2 });
             inputs.Add(new int[] { 1, 2, 3 });   
 
             StringBuilder result = new StringBuilder();
@@ -8877,20 +8877,19 @@ namespace WindowsFormsApplication3
                     dict[i]++;
             }
 
-            GetArrayPermute(nums, new List<int>(), ref result, dict);
+            GetArrayPermute(nums, new List<int>(), result, dict);
 
             return result;
 
         }
 
-        private void GetArrayPermute(int[] input, List<int> data, ref IList<IList<int>> result, Dictionary<int, int> dict)
+        private void GetArrayPermute(int[] input, List<int> data, IList<IList<int>> result, Dictionary<int, int> dict)
         {
            if (data.Count == input.Length)
             {
                 result.Add(new List<int>(data));
                 return;
             }
-
 
            foreach(int key in dict.Keys.ToList<int>())
            {
@@ -8899,11 +8898,10 @@ namespace WindowsFormsApplication3
 
                 data.Add(key);
                 dict[key]--;
-                GetArrayPermute(input, data, ref result, dict);
+                GetArrayPermute(input, data,  result, dict);
                 dict[key]++;
                 data.RemoveAt(data.Count - 1);
            }
-
         }
 
         private void btn_Longest_Mountain_in_Array_Click(object sender, EventArgs e)
@@ -12211,6 +12209,91 @@ namespace WindowsFormsApplication3
             return result;
 
         }
+
+        private void btn_Jump_Game_2_Click(object sender, EventArgs e)
+        {
+            /*
+                You are given a 0-indexed array of integers nums of length n. You are initially positioned at index 0.
+
+                Each element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at index i, you can jump to any index (i + j) where:
+
+                0 <= j <= nums[i] and
+                i + j < n
+                Return the minimum number of jumps to reach index n - 1. The test cases are generated such that you can reach index n - 1.
+
+ 
+
+                Example 1:
+
+                Input: nums = [2,3,1,1,4]
+                Output: 2
+                Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+                Example 2:
+
+                Input: nums = [2,3,0,1,4]
+                Output: 2
+ 
+
+                Constraints:
+
+                1 <= nums.length <= 104
+                0 <= nums[i] <= 1000
+                It's guaranteed that you can reach nums[n - 1].
+
+                Complexity :
+                    Time    : O(N)
+                    Space   : O(1)  
+             */
+
+            List<int[]> inputs = new List<int[]>() {
+                                                        new int[] {2,3,1,1,4},
+                                                        new int[] {2,3,0,1,4 },
+                                                        //new int[] { 3,2,1,0,4 },
+                                                        //new int[] { 2,0,0},
+                                                        //new int[] { 3,2,1,0,4},
+                                                        //new int[] { 1,1,0,1},
+                                                        //new int[] { 3,2,1,0,4},
+                                                        //new int[] { 1,1,0,1},
+                                                        //new int[] { 1,1,1,0},
+                                                        //new int[] { 2,1,0,0},
+                                                        //new int[] { 1,2,0,1}
+
+                                                   };
+
+            StringBuilder result = new StringBuilder();
+            foreach (int[] input in inputs)            
+                result.AppendLine($"The minimum number of jumps to reach index n - 1 is {this.Jump(input)} for the given input {string.Join(",", input)}");            
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+        public int Jump(int[] nums)
+        {
+            if (nums == null || nums.Length == 0 || nums.Length < 2)
+                return 0;
+
+            int jumps = 0, far = 0, cur = 0;
+
+            int len = nums.Length;
+
+            for (int i = 0; i < len; i++)
+            {
+                far = Math.Max(far, i + nums[i]);
+
+                if (i == cur)
+                {
+                    jumps++;
+                    cur = far;
+                    if (cur >= len - 1)
+                        break;
+                }
+            }
+
+            return jumps;
+
+        }
+
     }
 }
 

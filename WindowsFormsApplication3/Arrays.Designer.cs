@@ -167,6 +167,7 @@
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array = new System.Windows.Forms.Button();
             this.btn_CombinationSum2 = new System.Windows.Forms.Button();
             this.btn_Trapping_Rain_Water = new System.Windows.Forms.Button();
+            this.btn_Jump_Game_2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -1638,7 +1639,7 @@
             this.btn_Stone_Game.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Stone_Game.Location = new System.Drawing.Point(2186, 42);
             this.btn_Stone_Game.Name = "btn_Stone_Game";
-            this.btn_Stone_Game.Size = new System.Drawing.Size(375, 40);
+            this.btn_Stone_Game.Size = new System.Drawing.Size(279, 40);
             this.btn_Stone_Game.TabIndex = 132;
             this.btn_Stone_Game.Text = "Stone Game";
             this.btn_Stone_Game.UseVisualStyleBackColor = true;
@@ -1671,7 +1672,7 @@
             this.btn_Minimum_Subarray_with_k_distinct_elements.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Minimum_Subarray_with_k_distinct_elements.Location = new System.Drawing.Point(2186, 85);
             this.btn_Minimum_Subarray_with_k_distinct_elements.Name = "btn_Minimum_Subarray_with_k_distinct_elements";
-            this.btn_Minimum_Subarray_with_k_distinct_elements.Size = new System.Drawing.Size(375, 40);
+            this.btn_Minimum_Subarray_with_k_distinct_elements.Size = new System.Drawing.Size(279, 40);
             this.btn_Minimum_Subarray_with_k_distinct_elements.TabIndex = 135;
             this.btn_Minimum_Subarray_with_k_distinct_elements.Text = "Minimum Subarray with k distinct elements";
             this.btn_Minimum_Subarray_with_k_distinct_elements.UseVisualStyleBackColor = true;
@@ -1682,7 +1683,7 @@
             this.btn_Next_Permutation.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Next_Permutation.Location = new System.Drawing.Point(2186, 126);
             this.btn_Next_Permutation.Name = "btn_Next_Permutation";
-            this.btn_Next_Permutation.Size = new System.Drawing.Size(375, 40);
+            this.btn_Next_Permutation.Size = new System.Drawing.Size(279, 40);
             this.btn_Next_Permutation.TabIndex = 136;
             this.btn_Next_Permutation.Text = "Next Permutation";
             this.btn_Next_Permutation.UseVisualStyleBackColor = true;
@@ -1693,7 +1694,7 @@
             this.btn_Search_in_Rotated_Sorted_Array.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Search_in_Rotated_Sorted_Array.Location = new System.Drawing.Point(2187, 169);
             this.btn_Search_in_Rotated_Sorted_Array.Name = "btn_Search_in_Rotated_Sorted_Array";
-            this.btn_Search_in_Rotated_Sorted_Array.Size = new System.Drawing.Size(374, 48);
+            this.btn_Search_in_Rotated_Sorted_Array.Size = new System.Drawing.Size(278, 48);
             this.btn_Search_in_Rotated_Sorted_Array.TabIndex = 137;
             this.btn_Search_in_Rotated_Sorted_Array.Text = "Search in Rotated Sorted Array";
             this.btn_Search_in_Rotated_Sorted_Array.UseVisualStyleBackColor = true;
@@ -1704,7 +1705,7 @@
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Location = new System.Drawing.Point(2186, 225);
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Name = "btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array";
-            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Size = new System.Drawing.Size(374, 48);
+            this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Size = new System.Drawing.Size(278, 48);
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.TabIndex = 138;
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.Text = "Find First and Last Position of Element in Sorted Array";
             this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array.UseVisualStyleBackColor = true;
@@ -1716,7 +1717,7 @@
             this.btn_CombinationSum2.Location = new System.Drawing.Point(2187, 278);
             this.btn_CombinationSum2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_CombinationSum2.Name = "btn_CombinationSum2";
-            this.btn_CombinationSum2.Size = new System.Drawing.Size(374, 34);
+            this.btn_CombinationSum2.Size = new System.Drawing.Size(278, 34);
             this.btn_CombinationSum2.TabIndex = 139;
             this.btn_CombinationSum2.Text = "Combination Sum2";
             this.btn_CombinationSum2.UseVisualStyleBackColor = true;
@@ -1728,17 +1729,30 @@
             this.btn_Trapping_Rain_Water.Location = new System.Drawing.Point(2186, 321);
             this.btn_Trapping_Rain_Water.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Trapping_Rain_Water.Name = "btn_Trapping_Rain_Water";
-            this.btn_Trapping_Rain_Water.Size = new System.Drawing.Size(374, 34);
+            this.btn_Trapping_Rain_Water.Size = new System.Drawing.Size(278, 34);
             this.btn_Trapping_Rain_Water.TabIndex = 140;
             this.btn_Trapping_Rain_Water.Text = "Trapping Rain Water";
             this.btn_Trapping_Rain_Water.UseVisualStyleBackColor = true;
             this.btn_Trapping_Rain_Water.Click += new System.EventHandler(this.btn_Trapping_Rain_Water_Click);
+            // 
+            // btn_Jump_Game_2
+            // 
+            this.btn_Jump_Game_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Jump_Game_2.Location = new System.Drawing.Point(2186, 361);
+            this.btn_Jump_Game_2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Jump_Game_2.Name = "btn_Jump_Game_2";
+            this.btn_Jump_Game_2.Size = new System.Drawing.Size(278, 34);
+            this.btn_Jump_Game_2.TabIndex = 141;
+            this.btn_Jump_Game_2.Text = "Jump Game 2";
+            this.btn_Jump_Game_2.UseVisualStyleBackColor = true;
+            this.btn_Jump_Game_2.Click += new System.EventHandler(this.btn_Jump_Game_2_Click);
             // 
             // Arrays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(4214, 1948);
+            this.Controls.Add(this.btn_Jump_Game_2);
             this.Controls.Add(this.btn_Trapping_Rain_Water);
             this.Controls.Add(this.btn_CombinationSum2);
             this.Controls.Add(this.btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array);
@@ -2026,5 +2040,6 @@
         private System.Windows.Forms.Button btn_Find_First_and_Last_Position_of_Element_in_Sorted_Array;
         private System.Windows.Forms.Button btn_CombinationSum2;
         private System.Windows.Forms.Button btn_Trapping_Rain_Water;
+        private System.Windows.Forms.Button btn_Jump_Game_2;
     }
 }
