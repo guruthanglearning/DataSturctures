@@ -71,6 +71,7 @@
             this.btn_Range_Addition_II = new System.Windows.Forms.Button();
             this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game = new System.Windows.Forms.Button();
             this.btn_Mirroring_an_image_using_a_matrix = new System.Windows.Forms.Button();
+            this.btn_Rotate_Image = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -530,11 +531,22 @@
             this.btn_Mirroring_an_image_using_a_matrix.UseVisualStyleBackColor = true;
             this.btn_Mirroring_an_image_using_a_matrix.Click += new System.EventHandler(this.btn_Mirroring_an_image_using_a_matrix_Click);
             // 
+            // btn_Rotate_Image
+            // 
+            this.btn_Rotate_Image.Location = new System.Drawing.Point(613, 219);
+            this.btn_Rotate_Image.Name = "btn_Rotate_Image";
+            this.btn_Rotate_Image.Size = new System.Drawing.Size(204, 55);
+            this.btn_Rotate_Image.TabIndex = 138;
+            this.btn_Rotate_Image.Text = "Rotate Image";
+            this.btn_Rotate_Image.UseVisualStyleBackColor = true;
+            this.btn_Rotate_Image.Click += new System.EventHandler(this.btn_Rotate_Image_Click);
+            // 
             // Matrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 1019);
+            this.Controls.Add(this.btn_Rotate_Image);
             this.Controls.Add(this.btn_Mirroring_an_image_using_a_matrix);
             this.Controls.Add(this.btn_Find_Winner_on_a_Tic_Tac_Toe_Game);
             this.Controls.Add(this.btn_Range_Addition_II);
@@ -631,5 +643,6 @@
         private System.Windows.Forms.Button btn_Range_Addition_II;
         private System.Windows.Forms.Button btn_Find_Winner_on_a_Tic_Tac_Toe_Game;
         private System.Windows.Forms.Button btn_Mirroring_an_image_using_a_matrix;
+        private System.Windows.Forms.Button btn_Rotate_Image;
     }
 }

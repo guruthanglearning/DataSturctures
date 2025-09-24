@@ -33,7 +33,7 @@ namespace WindowsFormsApplication3
         private void button1_Click(object sender, EventArgs e)
         {
 
-            
+
             /*
                 http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
                 Time Complexity : O(n + kLogn) where building min heap takes O(n) where n is the dimension of the array. 
@@ -250,7 +250,7 @@ namespace WindowsFormsApplication3
                 }
             }
 
-            MessageBox.Show($"There are {result.ToString()} occurance of {x.ToString()} for the given {input.ToString() } X {input.ToString() } matrix");
+            MessageBox.Show($"There are {result.ToString()} occurance of {x.ToString()} for the given {input.ToString()} X {input.ToString()} matrix");
 
         }
 
@@ -557,7 +557,7 @@ namespace WindowsFormsApplication3
             building.InsertRoom(3, 2, new Room() { Name = "32", NorthDoor = true, WestDoor = true, EastDoor = true });
             building.InsertRoom(3, 3, new Room() { Name = "33", NorthDoor = true, WestDoor = true });
 
-            Console.WriteLine($"Path {(building.IsPathExists() ? "" : "does not") } exists from North West to South East of the building");
+            Console.WriteLine($"Path {(building.IsPathExists() ? "" : "does not")} exists from North West to South East of the building");
 
 
         }
@@ -1179,7 +1179,7 @@ namespace WindowsFormsApplication3
             {
                 for (int c = 0; c < input[r].Length; c++)
                 {
-                    result.Append($"{input[r][c]} {new String(' ',2)}");
+                    result.Append($"{input[r][c]} {new String(' ', 2)}");
                 }
                 result.AppendLine();
             }
@@ -1254,9 +1254,9 @@ namespace WindowsFormsApplication3
         {
             StringBuilder result = new StringBuilder();
 
-            for(int i = 0; i < image.Length; i++)
+            for (int i = 0; i < image.Length; i++)
             {
-                for(int j = 0; j < image[i].Length; j++)
+                for (int j = 0; j < image[i].Length; j++)
                 {
                     result.Append($"{image[i][j]} \t");
                 }
@@ -1295,7 +1295,7 @@ namespace WindowsFormsApplication3
 
             this.Fill(image, sr - 1, sc, newColor, startingPixel);
             this.Fill(image, sr + 1, sc, newColor, startingPixel);
-            this.Fill(image, sr, sc -1, newColor, startingPixel);
+            this.Fill(image, sr, sc - 1, newColor, startingPixel);
             this.Fill(image, sr, sc + 1, newColor, startingPixel);
 
         }
@@ -1351,7 +1351,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Straight line { (this.CheckStraightLine(input) ? "" : " not ") } exists for the given coordinates{Environment.NewLine}{this.PrintJaggedArrayWithCordinates(input)}");
+                result.AppendLine($"Straight line {(this.CheckStraightLine(input) ? "" : " not ")} exists for the given coordinates{Environment.NewLine}{this.PrintJaggedArrayWithCordinates(input)}");
 
             }
 
@@ -1400,8 +1400,8 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
 
             for (int i = 0; i < input.Length; i++)
-            {                
-              result.AppendLine($"({input[i][0]} , {input[i][0]}),");
+            {
+                result.AppendLine($"({input[i][0]} , {input[i][0]}),");
             }
 
             return result.ToString();
@@ -1528,7 +1528,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"The Judge is { this.FindJudge(input.N, input.Input) } for the given inputs{Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
+                result.AppendLine($"The Judge is {this.FindJudge(input.N, input.Input)} for the given inputs{Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
 
             }
 
@@ -1598,7 +1598,7 @@ namespace WindowsFormsApplication3
 
             }
 
-          
+
             return result.ToString();
         }
 
@@ -1620,7 +1620,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Count_Square_Submatrices_with_All_Ones_Click(object sender, EventArgs e)
         {
-         
+
             /*
    
                 Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.
@@ -1660,7 +1660,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<int[][]> inputs = new List<int[][]>();
-            inputs.Add(new int[][] {                    
+            inputs.Add(new int[][] {
                                         new int[] { 0, 1, 1, 1 },
                                         new int[] { 1, 1, 1, 1 },
                                         new int[] { 0, 1, 1, 1 }
@@ -1675,7 +1675,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Total Square is { this.CountSquares(input) } for the given inputs{Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)}");
+                result.AppendLine($"Total Square is {this.CountSquares(input)} for the given inputs{Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)}");
 
             }
 
@@ -1690,7 +1690,7 @@ namespace WindowsFormsApplication3
             int count = 0;
             int rl = matrix.Length;
             int cl = matrix[0].Length;
-            int[][] dict = new int[rl][] ;
+            int[][] dict = new int[rl][];
 
 
             for (int i = 0; i < cl; i++)
@@ -1749,27 +1749,27 @@ namespace WindowsFormsApplication3
                     Space Complexity    : O(N*M)
 
           */
-        
+
             StringBuilder result = new StringBuilder();
             List<IntervalIntersection> inputs = new List<IntervalIntersection>();
             inputs.Add(new IntervalIntersection() { A = new int[][] {
                                         new int[] { 0, 2},
                                         new int[] { 5, 10 },
-                                        new int[] { 13, 23},                                    
+                                        new int[] { 13, 23},
                                         new int[] { 24, 25} },
-                                        B= new int[][]
+                B = new int[][]
                                         {
                                         new int[] { 1, 5},
                                         new int[] { 8, 12 },
                                         new int[] { 15, 24},
                                         new int[] { 25, 26}
                                         }
-                                   });
+            });
 
             inputs.Add(new IntervalIntersection()
             {
                 A = new int[][] {
-                                        new int[] { 1,3} 
+                                        new int[] { 1,3}
                                 },
                 B = new int[][]
                                       {
@@ -1779,7 +1779,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Interval Intersection is {Environment.NewLine}{ this.PrintJaggedArrayForJudeges(this.LeetCodeIntervalIntersection(input.A, input.B)) }for the given inputs{Environment.NewLine} A :{Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.A)} {Environment.NewLine}B :{Environment.NewLine} {this.PrintJaggedArrayForJudeges(input.B)} ");              
+                result.AppendLine($"Interval Intersection is {Environment.NewLine}{this.PrintJaggedArrayForJudeges(this.LeetCodeIntervalIntersection(input.A, input.B))}for the given inputs{Environment.NewLine} A :{Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.A)} {Environment.NewLine}B :{Environment.NewLine} {this.PrintJaggedArrayForJudeges(input.B)} ");
             }
 
             MessageBox.Show(result.ToString());
@@ -2117,12 +2117,12 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"There is {(this.PossibleBipartition(input.N, input.Input) ? "": "no") } possible partition for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
+                result.AppendLine($"There is {(this.PossibleBipartition(input.N, input.Input) ? "" : "no")} possible partition for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
 
             }
 
             MessageBox.Show(result.ToString());
-            
+
         }
 
         public bool PossibleBipartition(int N, int[][] dislikes)
@@ -2132,15 +2132,15 @@ namespace WindowsFormsApplication3
 
             if (N == 1)
                 return true;
-            
-            int[] color = Enumerable.Repeat(-1, N + 1).ToArray<int>();                        
+
+            int[] color = Enumerable.Repeat(-1, N + 1).ToArray<int>();
 
             List<int>[] list = new List<int>[N + 1];
             for (int r = 0; r < dislikes.Length; r++)
             {
-                if (list[dislikes[r][0]] == null)                
+                if (list[dislikes[r][0]] == null)
                     list[dislikes[r][0]] = new List<int>();
-                
+
                 if (list[dislikes[r][1]] == null)
                     list[dislikes[r][1]] = new List<int>();
 
@@ -2148,34 +2148,34 @@ namespace WindowsFormsApplication3
                 list[dislikes[r][1]].Add(dislikes[r][0]);
             }
 
-            for(int i = 1; i<= N; i++)
-            { 
+            for (int i = 1; i <= N; i++)
+            {
                 if (color[i] == -1)
                 {
                     if (!this.IsPartitionExists(list, i, color))
-                        return false; 
+                        return false;
                 }
             }
 
             return true;
         }
 
-        private bool IsPartitionExists(List<int>[] list,  int start, int[] color)
+        private bool IsPartitionExists(List<int>[] list, int start, int[] color)
         {
             bool result = true;
 
             int currC = 0;
-            int currP = start;            
+            int currP = start;
             color[start] = 1;
             Queue<int> q = new Queue<int>();
             q.Enqueue(currP);
-           
-            while(q.Count > 0)
+
+            while (q.Count > 0)
             {
 
                 currP = q.Dequeue();
                 currC = color[currP];
-                
+
                 foreach (int i in list[currP])
                 {
                     if (color[i] == -1)
@@ -2284,7 +2284,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Course can{(this.CanFinish(input.N, input.Input) ? "" : "not") } be completed for the given courses {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
+                result.AppendLine($"Course can{(this.CanFinish(input.N, input.Input) ? "" : "not")} be completed for the given courses {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
 
             }
 
@@ -2298,7 +2298,7 @@ namespace WindowsFormsApplication3
 
             int r = 0;
             int rl = prerequisites.Length;
-            
+
 
             List<int>[] graph = new List<int>[numCourses];
             int[] visit = new int[numCourses];
@@ -2332,7 +2332,7 @@ namespace WindowsFormsApplication3
         {
 
             List<int> sources = null;
-           
+
             if (visit[sCourse] == 0)
             {
                 visit[sCourse] = 1;
@@ -2351,7 +2351,7 @@ namespace WindowsFormsApplication3
             {
                 return true;
             }
-         
+
             return false;
         }
 
@@ -2479,7 +2479,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"{input.N} Closest Points to Origin are {Environment.NewLine}{this.PrintJaggedArrayForJudeges(this.KClosest(input.Input, input.N)) }{Environment.NewLine} for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
+                result.AppendLine($"{input.N} Closest Points to Origin are {Environment.NewLine}{this.PrintJaggedArrayForJudeges(this.KClosest(input.Input, input.N))}{Environment.NewLine} for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -2489,7 +2489,7 @@ namespace WindowsFormsApplication3
 
         void BuildKClostHeap(Distance[] heap, int n)
         {
-            int i = (n -1)/2;
+            int i = (n - 1) / 2;
             while (i >= 0)
             {
                 Heapify(heap, i, n);
@@ -2535,7 +2535,7 @@ namespace WindowsFormsApplication3
             int l = (start * 2);
             int r = (start * 2) + 1;
             Distance temp;
-            
+
             if (l < end && heap[s].Value > heap[l].Value)
                 s = l;
             if (r < end && heap[s].Value > heap[r].Value)
@@ -2547,7 +2547,7 @@ namespace WindowsFormsApplication3
                 heap[s] = temp;
                 Heapify(heap, s, end);
             }
-            
+
         }
 
 
@@ -2660,8 +2660,8 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                
-                result.AppendLine($"Surrounded Regions for the given input{Environment.NewLine}{this.PrintJaggedArrayForJudegesChar(input)} { Environment.NewLine} is ");
+
+                result.AppendLine($"Surrounded Regions for the given input{Environment.NewLine}{this.PrintJaggedArrayForJudegesChar(input)} {Environment.NewLine} is ");
                 this.Solve(input);
                 result.AppendLine($"{this.PrintJaggedArrayForJudegesChar(input)}");
             }
@@ -2679,24 +2679,24 @@ namespace WindowsFormsApplication3
             int cl = board[0].Length;
             var bk = new char[board.Length][];
 
-            for(int r = 0; r < rl; r++)
+            for (int r = 0; r < rl; r++)
             {
                 if (bk[r] == null)
                     bk[r] = new char[cl];
 
-                for(int c = 0; c < cl; c++)
+                for (int c = 0; c < cl; c++)
                 {
                     bk[r][c] = board[r][c];
                 }
             }
 
-            rl--;cl--;
-            
+            rl--; cl--;
+
             for (int r = 1; r < rl; r++)
             {
-                for (int c = 1; c < cl ; c++)
+                for (int c = 1; c < cl; c++)
                 {
-                    
+
                     if (bk[r][c] == '0' &&
                         (
                             ((c - 1 > 0 || c + 1 < cl) && (bk[r][c] == bk[r][c - 1] || bk[r][c] == bk[r][c + 1])) ||
@@ -2706,10 +2706,10 @@ namespace WindowsFormsApplication3
                     {
                         board[r][c] = 'X';
                     }
-                    
+
                 }
             }
-            
+
         }
 
         private void btn_Unique_Paths_Click(object sender, EventArgs e)
@@ -2749,12 +2749,12 @@ namespace WindowsFormsApplication3
             */
             StringBuilder result = new StringBuilder();
             List<RowCol> inputs = new List<RowCol>();
-            inputs.Add(new RowCol() {Row = 3, Col = 2  });
+            inputs.Add(new RowCol() { Row = 3, Col = 2 });
             inputs.Add(new RowCol() { Row = 7, Col = 3 });
 
 
             foreach (var input in inputs)
-            {                               
+            {
                 result.AppendLine($"There are {this.UniquePaths(input.Row, input.Col)} unique paths for the given row : {input.Row} column : {input.Col}");
             }
 
@@ -2822,7 +2822,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Perimeter of an island for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)} { Environment.NewLine} is {this.IslandPerimeter(input)}");                                
+                result.AppendLine($"Perimeter of an island for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)} {Environment.NewLine} is {this.IslandPerimeter(input)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -2922,7 +2922,7 @@ namespace WindowsFormsApplication3
                                      },
                 word = "ABCB"
             });
-            
+
             foreach (var input in inputs)
             {
                 result.AppendLine($"Word {input.word} {(this.Exist(input.CharInput, input.word) ? "" : "not")} exists for the given dictionary {this.PrintJaggedArrayForJudegesChar(input.CharInput)}");
@@ -2973,21 +2973,21 @@ namespace WindowsFormsApplication3
                 char chr = board[r][c];
                 board[r][c] = '\0';
 
-                if ((r >= 0 || r < rl) && c - 1 >= 0 && word[wIndex+1] == board[r][c - 1])                
-                    result = this.IsWordExists(board, word, r, c - 1, wIndex + 1);                    
-                
-                if (!result && (r >= 0 || r < rl) && c + 1 < cl && word[wIndex + 1] == board[r][c + 1])                
-                    result = this.IsWordExists(board, word, r, c + 1, wIndex + 1);                    
-                
-                if (!result && r - 1 >= 0 && (c >= 0 || c < cl) && word[wIndex + 1] == board[r - 1][c])                
-                    result = this.IsWordExists(board, word, r-1, c , wIndex + 1);                    
-                
-                if (!result &&  r + 1 < rl && (c >= 0 || c < cl) && word[wIndex + 1] == board[r + 1][c])
+                if ((r >= 0 || r < rl) && c - 1 >= 0 && word[wIndex + 1] == board[r][c - 1])
+                    result = this.IsWordExists(board, word, r, c - 1, wIndex + 1);
+
+                if (!result && (r >= 0 || r < rl) && c + 1 < cl && word[wIndex + 1] == board[r][c + 1])
+                    result = this.IsWordExists(board, word, r, c + 1, wIndex + 1);
+
+                if (!result && r - 1 >= 0 && (c >= 0 || c < cl) && word[wIndex + 1] == board[r - 1][c])
+                    result = this.IsWordExists(board, word, r - 1, c, wIndex + 1);
+
+                if (!result && r + 1 < rl && (c >= 0 || c < cl) && word[wIndex + 1] == board[r + 1][c])
                     result = this.IsWordExists(board, word, r + 1, c, wIndex + 1);
-                    
+
                 board[r][c] = chr;
             }
-            
+
             return result;
 
         }
@@ -3040,12 +3040,12 @@ namespace WindowsFormsApplication3
             inputs.Add(new int[][]
                                       {
                                                             new int[] { 0, 2 }
-                                                     
+
                                       });
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Min Time to rotten all oranges is { this.OrangesRotting(input) } for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)}");
+                result.AppendLine($"Min Time to rotten all oranges is {this.OrangesRotting(input)} for the given input {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input)}");
             }
 
             MessageBox.Show(result.ToString());
@@ -3147,10 +3147,10 @@ namespace WindowsFormsApplication3
             List<Point> inputs = new List<Point>();
             inputs.Add(new Point() { X = 3, Y = 2 });
 
-            
+
             foreach (var input in inputs)
             {
-                result.AppendLine($"NumberOfPath using DP: { this.NumberOfPathsUsingDP(input.X, input.Y) } and Formual: {this.NumberOfPathsUsingFomula(input.X, input.Y)} for the given matrix Row : {input.X} and Column : {input.Y}");
+                result.AppendLine($"NumberOfPath using DP: {this.NumberOfPathsUsingDP(input.X, input.Y)} and Formual: {this.NumberOfPathsUsingFomula(input.X, input.Y)} for the given matrix Row : {input.X} and Column : {input.Y}");
             }
 
             MessageBox.Show(result.ToString());
@@ -3229,7 +3229,7 @@ namespace WindowsFormsApplication3
 
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
-            
+
 
             inputs.Add(new Common()
             {
@@ -3255,7 +3255,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                result.AppendLine($"Search a 2D Matrix is { this.SearchMatrix(input.Input, input.N) } for the given input array : {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)} and target :{input.N}");
+                result.AppendLine($"Search a 2D Matrix is {this.SearchMatrix(input.Input, input.N)} for the given input array : {Environment.NewLine}{this.PrintJaggedArrayForJudeges(input.Input)} and target :{input.N}");
 
             }
 
@@ -3267,11 +3267,11 @@ namespace WindowsFormsApplication3
         {
             if (matrix == null || matrix.Length == 0 || matrix[0].Length == 0)
                 return false;
-            
+
             int r = 0;
-            int cl = matrix[0].Length -1;            
-           
-            while (cl>=0 && r < matrix.Length)
+            int cl = matrix[0].Length - 1;
+
+            while (cl >= 0 && r < matrix.Length)
             {
                 if (matrix[r][cl] == target)
                     return true;
@@ -3421,7 +3421,7 @@ namespace WindowsFormsApplication3
             StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
 
- 
+
             inputs.Add(new Common()
             {
                 Input = new int[][] {
@@ -3437,7 +3437,7 @@ namespace WindowsFormsApplication3
                 Input = new int[][] {
                                      new int[] {1, 4 },
                                      new int[] {4,5},
-                                   
+
                                     }
             });
 
@@ -3514,7 +3514,7 @@ namespace WindowsFormsApplication3
 
         private void btn_The_Skyline_Problem_Click(object sender, EventArgs e)
         {
-            
+
 
             int i = 0, ri = 0;
             /*
@@ -3563,7 +3563,7 @@ namespace WindowsFormsApplication3
                                     }
             });
 
-            
+
             foreach (var input in inputs)
             {
                 result.AppendLine($"The Skyline Problem for the given input array : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} ");
@@ -3571,7 +3571,7 @@ namespace WindowsFormsApplication3
                 var res = this.GetSkyline(input.Input);
                 foreach (var r in res)
                     result.AppendLine($"{string.Join(",", r)}");
-                
+
             }
 
             MessageBox.Show(result.ToString());
@@ -3596,7 +3596,7 @@ namespace WindowsFormsApplication3
                 // remove it from the priority queue
                 points.Add(new BuildingPoint(x2, y, false));
             }
-            
+
             points.Sort(buildingPointComparison);
 
             // SortedSet and SortedDictionary are tree based.
@@ -4047,10 +4047,10 @@ namespace WindowsFormsApplication3
             return largestIsland;
         }
 
-       public  int FindIslandSize(int[][] grid, int i, int j)
+        public int FindIslandSize(int[][] grid, int i, int j)
         {
             var islandSize = 0;
-            if (j < 0 || i < 0 || i >= grid.Length || j >= grid[i].Length)            
+            if (j < 0 || i < 0 || i >= grid.Length || j >= grid[i].Length)
                 return 0;
             if (grid[i][j] == 1)
             {
@@ -4129,7 +4129,7 @@ namespace WindowsFormsApplication3
                                           new int[]{2,2},
                                           new int[]{3,1}
 
-                                    },N= 4
+                                    }, N = 4
             });
 
             inputs.Add(new Common()
@@ -4162,10 +4162,10 @@ namespace WindowsFormsApplication3
 
             Array.Sort(boxTypes, (x, y) => y[1] - x[1]);
 
-            int maxUnits= 0;
+            int maxUnits = 0;
             int noOfBoxes = 0;
 
-            foreach(var i in boxTypes)
+            foreach (var i in boxTypes)
             {
 
                 if (noOfBoxes + i[0] <= truckSize)
@@ -4177,7 +4177,7 @@ namespace WindowsFormsApplication3
                 {
                     maxUnits += (truckSize - noOfBoxes) * i[1];
                     return maxUnits;
-                }                
+                }
             }
 
             return maxUnits;
@@ -4185,7 +4185,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Reshape_the_Matrix_Click(object sender, EventArgs e)
         {
-       
+
             /*
             
                 In MATLAB, there is a handy function called reshape which can reshape an m x n matrix into a new one with a different size r x c keeping its original data.
@@ -4235,12 +4235,12 @@ namespace WindowsFormsApplication3
             inputs.Add(new Common()
             {
                 Input = new int[][] {
-                                          new int[]{1,2},                                          
+                                          new int[]{1,2},
                                           new int[]{3,4}
 
                                     },
-                        R = 1,
-                        C = 4
+                R = 1,
+                C = 4
             });
 
             inputs.Add(new Common()
@@ -4264,7 +4264,7 @@ namespace WindowsFormsApplication3
 
             MessageBox.Show(result.ToString());
 
-            
+
         }
 
 
@@ -4347,16 +4347,16 @@ namespace WindowsFormsApplication3
                 Input = new int[][] {
                                           new int[]{1,5,9},
                                           new int[]{ 10, 11, 13 },
-                                          new int[]{ 12,13,15 }                                          
-                                    },C = 8
+                                          new int[]{ 12,13,15 }
+                                    }, C = 8
 
             });
 
             inputs.Add(new Common()
             {
                 Input = new int[][] {
-                                          new int[]{-5}                                          
-                                    },C = 1
+                                          new int[]{-5}
+                                    }, C = 1
             });
 
             inputs.Add(new Common()
@@ -4397,7 +4397,7 @@ namespace WindowsFormsApplication3
         }
 
         public int UpperBound(int[][] matrix, int target)
-        {   
+        {
             int n = matrix.Length;
             int i = n - 1, j = 0, count = 0;
             while (i >= 0 && j < n)
@@ -4512,15 +4512,15 @@ namespace WindowsFormsApplication3
             {
                 size = q.Count;
                 l++;
-                while(size >0)
+                while (size > 0)
                 {
                     int[] rc = q.Dequeue();
                     r = rc[0];
                     c = rc[1];
-                    
-                    if (c-1 >=0 && mat[r][c-1] == -1)
+
+                    if (c - 1 >= 0 && mat[r][c - 1] == -1)
                     {
-                        q.Enqueue(new int[]{r,c-1 });
+                        q.Enqueue(new int[] { r, c - 1 });
                         mat[r][c - 1] = l;
                     }
 
@@ -4530,16 +4530,16 @@ namespace WindowsFormsApplication3
                         mat[r][c + 1] = l;
                     }
 
-                    if (r - 1 >= 0 && mat[r-1][c] == -1)
+                    if (r - 1 >= 0 && mat[r - 1][c] == -1)
                     {
-                        q.Enqueue(new int[] { r-1, c });
-                        mat[r-1][c] = l;
+                        q.Enqueue(new int[] { r - 1, c });
+                        mat[r - 1][c] = l;
                     }
 
-                    if (r + 1 < rl && mat[r+1][c] == -1)
+                    if (r + 1 < rl && mat[r + 1][c] == -1)
                     {
-                        q.Enqueue(new int[] { r+1, c});
-                        mat[r+1][c] = l;
+                        q.Enqueue(new int[] { r + 1, c });
+                        mat[r + 1][c] = l;
                     }
 
                     size--;
@@ -4556,7 +4556,7 @@ namespace WindowsFormsApplication3
 
         private void btn_Set_Matrix_Zeroes_Click(object sender, EventArgs e)
         {
-            
+
             /*
             Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's, and return the matrix.
 
@@ -4620,7 +4620,7 @@ namespace WindowsFormsApplication3
                                     }
 
             });
-            
+
             inputs.Add(new Common()
             {
                 Input = new int[][] {
@@ -4647,8 +4647,8 @@ namespace WindowsFormsApplication3
             foreach (var input in inputs)
             {
                 result.AppendLine($"Set Zeroes for the given matrix  : {Environment.NewLine} {this.PrintJaggedArray(input.Input)} is {Environment.NewLine}");
-                  SetZeroes(input.Input);
-                result.AppendLine($"{ this.PrintJaggedArray(input.Input)}");
+                SetZeroes(input.Input);
+                result.AppendLine($"{this.PrintJaggedArray(input.Input)}");
 
                 //Refer SetZeroes_Others
             }
@@ -4661,7 +4661,7 @@ namespace WindowsFormsApplication3
         {
             if (matrix == null || matrix.Length == 0)
                 return;
-          
+
             bool isFirstRowZero = false;
             bool isFirstColZero = false;
 
@@ -4676,7 +4676,7 @@ namespace WindowsFormsApplication3
                         matrix[r][0] = 0;
                         matrix[0][c] = 0;
 
-                        if (r==0)
+                        if (r == 0)
                             isFirstRowZero = true;
 
                         if (c == 0)
@@ -4685,18 +4685,18 @@ namespace WindowsFormsApplication3
                 }
 
             for (int r = 1; r < rl; r++)
-                if (matrix[r][0] == 0)                
+                if (matrix[r][0] == 0)
                     FillMatrix(matrix, rl, cl, -1, r);
-                
-                
+
+
 
             for (int c = 0; c < cl; c++)
-                if (matrix[0][c] == 0)                
+                if (matrix[0][c] == 0)
                     FillMatrix(matrix, rl, cl, c, -1);
-                    
-            
+
+
             if (isFirstRowZero)
-                FillMatrix(matrix,rl,cl,-1, 0);
+                FillMatrix(matrix, rl, cl, -1, 0);
 
             if (isFirstRowZero)
                 FillMatrix(matrix, rl, cl, -1, 0);
@@ -4851,18 +4851,18 @@ namespace WindowsFormsApplication3
                             new string[] {".", ".", ".", ".", "8", ".", ".", "7", "9" }
                                     }
                        );
-            
 
-       
+
+
 
 
 
             foreach (var input in inputs)
             {
                 result.AppendLine($"The Given Sudoku : {Environment.NewLine} {this.PrintJaggedArray_String(input)} is {Environment.NewLine} {(IsValidSudoku(input) ? "" : " not")} valid");
-               
 
-             
+
+
             }
 
             MessageBox.Show(result.ToString());
@@ -4955,7 +4955,7 @@ namespace WindowsFormsApplication3
 
             foreach (var input in inputs)
             {
-                
+
                 result.AppendLine($"Sudoku Solver for the Given Sudoku : {Environment.NewLine} {this.PrintJaggedArray_char(input)} is {Environment.NewLine}");
                 SolveSudoku(input);
                 result.AppendLine($"{this.PrintJaggedArray_char(input)}");
@@ -4966,7 +4966,7 @@ namespace WindowsFormsApplication3
             MessageBox.Show(result.ToString());
         }
 
-  
+
         public void SolveSudoku(char[][] board)
         {
             if (board == null)
@@ -4977,20 +4977,20 @@ namespace WindowsFormsApplication3
 
         public bool SolveSudokuPuzzle(char[][] board)
         {
-            for(int r = 0; r < 9; r++)
-            { 
+            for (int r = 0; r < 9; r++)
+            {
                 for (int c = 0; c < 9; c++)
                 {
                     if (board[r][c] == '.')
                     {
-                        for(char ch = '1'; ch <= '9'; ch++)
+                        for (char ch = '1'; ch <= '9'; ch++)
                         {
-                            if (IsValidSudokoRowCol(board, r,c, ch))
+                            if (IsValidSudokoRowCol(board, r, c, ch))
                             {
                                 board[r][c] = ch;
                                 if (SolveSudokuPuzzle(board))
-                                    return true;                              
-                               board[r][c] = '.';
+                                    return true;
+                                board[r][c] = '.';
                             }
                         }
                         return false;
@@ -5000,12 +5000,12 @@ namespace WindowsFormsApplication3
             return true;
         }
 
-        public bool IsValidSudokoRowCol(char[][] board, int row, int col, char c )
+        public bool IsValidSudokoRowCol(char[][] board, int row, int col, char c)
         {
             int nR = (row / 3) * 3;
-            int nC = (col/ 3) * 3;
+            int nC = (col / 3) * 3;
 
-            for(int i = 0;i < 9; i++)
+            for (int i = 0; i < 9; i++)
             {
                 if (board[row][i] == c) return false;
                 if (board[i][col] == c) return false;
@@ -5057,7 +5057,7 @@ namespace WindowsFormsApplication3
 
 
 
-            StringBuilder result = new StringBuilder();            
+            StringBuilder result = new StringBuilder();
             List<Common> inputs = new List<Common>();
 
             inputs.Add(new Common()
@@ -5192,7 +5192,7 @@ namespace WindowsFormsApplication3
             inputs.Add(new Common()
             {
                 Input = new int[][] {
-                                          new int[]{0,0},                                          
+                                          new int[]{0,0},
                                           new int[]{ 1, 1 },
                                           new int[]{ 0, 1 },
                                           new int[]{ 0, 2 },
@@ -5222,9 +5222,9 @@ namespace WindowsFormsApplication3
             inputs.Add(new Common()
             {
                 Input = new int[][] {
-                                          new int[]{0,0},                                          
+                                          new int[]{0,0},
                                           new int[]{ 1, 1 }
-                                     
+
                                     }
 
             });
@@ -5351,7 +5351,7 @@ namespace WindowsFormsApplication3
                 }
             });
 
-            foreach(var input in inputs)
+            foreach (var input in inputs)
             {
                 result.AppendLine($"Mirroring an image using a matrix for the given matrix {Environment.NewLine} {this.PrintMatrix(input.Matrix)} {Environment.NewLine}");
                 Solution1_MirrorMatrix(input.Matrix);
@@ -5421,6 +5421,131 @@ namespace WindowsFormsApplication3
         }
 
 
+        private string PrintMatrix_Jagged(int[][] matrix)
+        {
+            int rows = matrix.Length;
+            int cols = matrix[0].Length;
+            StringBuilder result = new StringBuilder();
+
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    result.Append(matrix[r][c] + " ");
+                }
+                result.AppendLine();
+            }
+
+            return result.ToString().TrimEnd();
+        }
+
+        private void btn_Rotate_Image_Click(object sender, EventArgs e)
+        {
+            /*
+                You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+                You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+                Example 1:
+
+                        1   2   3               7   4   1
+                        4   5   6      =>       8   5   2
+                        7   8   9               9   6   3   
+
+
+                Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+                Output: [[7,4,1],[8,5,2],[9,6,3]]
+                
+                Example 2:
+
+                    1   2   3   4           13  9   5   1   
+                    5   6   7   8           14 10   6   2
+                    9  10  11  12    =>     15 11   7   3
+                    13  14  15  16          16 12   8   4
+
+
+                Input: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+                Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+ 
+
+                Constraints:
+
+                n == matrix.length == matrix[i].length
+                1 <= n <= 20
+                -1000 <= matrix[i][j] <= 1000
+             
+             */
+
+            StringBuilder result = new StringBuilder();
+            List<Common> inputs = new List<Common>();
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                    new int[]{ 1, 2, 3 },
+                                    new int[]{ 4, 5, 6 },
+                                    new int[]{ 7, 8, 9 }
+                }
+            });
+
+            inputs.Add(new Common()
+            {
+                Input = new int[][] {
+                                     new int[] { 1, 2, 3, 4},
+                                     new int[] { 5, 6, 7, 8 },
+                                     new int[] { 9, 10, 11, 12 },
+                                     new int[] { 13,14,15,16}
+                }
+            });
+
+            foreach (var input in inputs)
+            {
+                result.AppendLine($"Matrix Rotate for the given matrix {Environment.NewLine}");
+                result.AppendLine($" {this.PrintMatrix_Jagged(input.Input)}{Environment.NewLine}");
+                this.Rotate(input.Input);
+                result.AppendLine($" {this.PrintMatrix_Jagged(input.Input)}{Environment.NewLine}");
+
+            }
+
+            MessageBox.Show(result.ToString());
+
+        }
+
+
+        public void Rotate(int[][] matrix)
+        {
+            if (matrix == null || matrix.Length == 0 || matrix.Length != matrix[0].Length)
+                return;
+
+            for (int i = 0; i < matrix.Length;  i++)
+            {
+                for (int j = i + 1; j < matrix.Length; j++)
+                {
+                    (matrix[i][j], matrix[j][i]) = (matrix[j][i], matrix[i][j]);
+                }
+            }
+
+            for (int i = 0; i < matrix.Length; i++)
+                Array.Reverse(matrix[i]);
+
+        }
+
+        public static void Rotate(int[,] matrix)
+        {
+            int n = matrix.GetLength(0);
+            if (n != matrix.GetLength(1)) throw new ArgumentException("Matrix must be square.");
+
+            // transpose
+            for (int i = 0; i < n; i++)
+                for (int j = i + 1; j < n; j++)                
+                    (matrix[i, j], matrix[j, i]) = (matrix[j, i], matrix[i, j]);
+
+
+            // reverse each row
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n / 2; j++)                   
+                    (matrix[i, j],matrix[i, n - 1 - j]) = (matrix[i, n - 1 - j], matrix[i, j]);
+                
+        }
     }
 
 }
